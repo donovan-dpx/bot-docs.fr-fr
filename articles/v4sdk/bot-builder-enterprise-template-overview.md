@@ -1,6 +1,6 @@
 ---
-title: Présentation du modèle de bot d’entreprise | Microsoft Docs
-description: En savoir plus sur les fonctionnalités du modèle de bot d’entreprise
+title: Présentation détaillée du modèle de bot d’entreprise | Microsoft Docs
+description: Obtenez des informations sur la conception du modèle de bot d’entreprise
 author: darrenj
 ms.author: darrenj
 manager: kamrani
@@ -8,39 +8,82 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a0b56b77990c095d1cf8bb28235d06444837d164
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 582ec21d36e15fcbaef2d26616a9e55a04d8e5f2
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224595"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568216"
 ---
-# <a name="enterprise-bot-template"></a>Modèle de bot d’entreprise 
+# <a name="enterprise-bot-template---overview"></a>Vue d’ensemble d’Enterprise Bot Template
 
 > [!NOTE]
 > Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
-La création d’une expérience conversationnelle de haute qualité nécessite un ensemble de fonctionnalités de base. Pour vous aider à créer des expériences conversationnelles optimales, nous avons créé un modèle de bot d’entreprise. Ce modèle réunit toutes les meilleures pratiques et tous les composants de prise en charge que nous avons identifiés lors de la création d’expériences conversationnelles. 
+Enterprise Bot Template offre une base solide des bonnes pratiques et des services nécessaires pour créer une expérience de conversation, avec à la clé une charge de travail moindre et une meilleure qualité. Le modèle tire parti du kit [Bot Builder SDK v4](https://github.com/Microsoft/botbuilder) et des outils [Bot Builder Tools](https://github.com/Microsoft/botbuilder-tools) pour offrir les fonctionnalités suivantes :
 
-Il simplifie considérablement la création d’un nouveau projet de bot. Le modèle propose les fonctionnalités prêtes à l’emploi suivantes, tirant parti du kit [SDK Bot Framework v4](https://github.com/Microsoft/botbuilder) et de [Bot Framework Tools](https://github.com/Microsoft/botbuilder-tools).
-
-Fonctionnalité | Description |
+Fonctionnalité      | Description |
 ------------ | -------------
-Message de présentation | Message de présentation avec une carte adaptative au début de la conversation. Il explique les fonctionnalités des bots, et est muni de boutons pour guider les questions initiales. Les développeurs peuvent ensuite personnaliser ce message comme ils le souhaitent.
-Indicateurs de saisie automatisés  | Envoi d’indicateurs de saisie visuels lors des conversations et répétition pour les opérations dont l’exécution est longue.
-Configuration pilotée du fichier .bot | Toutes les informations de configuration pour votre bot (par exemple, LUIS, points de terminaison du répartiteur, Application Insights) sont incluses dans le fichier .bot et utilisées pour piloter le démarrage de votre bot.
-Intentions conversationnelles de base  | Intentions de base (message d’accueil, d’au revoir, d’aide, d’annulation, etc.) en anglais, français, italien, allemand, espagnol et chinois. Ces intentions se trouvent dans les fichiers .LU (Language Understanding) afin de faciliter leur modification.
-Réponses conversationnelles de base  | Réponses aux intentions conversationnelles de base contenues dans des classes d’affichage séparées. Ces réponses seront déplacées dans les nouveaux fichiers LG (Language Generation) à l’avenir.
-Détection de contenu inapproprié ou d’informations d’identification personnelle (PII)  |Détection de données inappropriées ou PII dans les conversations entrantes grâce à l’utilisation de [Content Moderator](https://azure.microsoft.com/en-us/services/cognitive-services/content-moderator/) dans un composant d’intergiciel.
-Transcriptions  | Transcriptions de toutes les conversations stockées dans Stockage Azure
-Répartiteur | Tout modèle [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS + Code ou passé à QnA Maker.
-Intégration de QnA Maker  | Intégration avec [QnA Maker](https://www.qnamaker.ai) pour répondre à des questions générales à partir d’une base de connaissances qui peut exploiter des sources de données existantes (par exemple, des manuels PDF). Un modèle d’échange QnA Maker est également inclus pour fournir des réponses standard aux demandes courantes ([en savoir plus](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base)).
-Insights conversationnels  | Intégration avec [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) pour collecter la télémétrie de toutes les conversations et un exemple du tableau de bord PowerBI pour vous aider à démarrer avec les insights dans vos expériences conversationnelles.
+Introduction | Message de présentation avec une [carte adaptative]() au début de la conversation
+Indicateurs de saisie  | Indicateurs de saisie visuels automatisés durant les conversations et répétition pour les opérations de longue durée
+Modèle LUIS de base  | Prise en charge des intentions courantes comme **Annuler**, **Aide**, **Escalader**, etc.
+Dialogues de base | Flux de dialogues pour capturer les informations utilisateur de base ainsi que la logique d’interruption pour les intentions Annuler et Aide
+Réponses de base  | Réponses par reconnaissance et synthèse vocales pour les intentions et dialogues de base
+Forum Aux Questions | Intégration à [QnA Maker](https://www.qnamaker.ai) pour répondre aux questions générales à partir d’une base de connaissances 
+Échange de conversation (chit-chat) | Modèle d’échange de conversation professionnel pour fournir des réponses standard aux demandes courantes ([en savoir plus](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
+Répartiteur | Modèle [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS ou QnA Maker
+Support multilingue | Disponible en anglais, français, italien, allemand, espagnol et chinois
+Transcriptions | Transcriptions de toutes les conversations enregistrées dans Stockage Azure
+Télémétrie  | Intégration à [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) pour collecter des données de télémétrie sur toutes les conversations
+Analytics | Exemple de tableau de bord Power BI pour vous aider à démarrer avec les insights dans vos expériences de conversation
+Déploiement automatisé | Déploiement facile de tous les services mentionnés ci-dessus à l’aide des [outils Bot Builder](https://github.com/Microsoft/botbuilder-tools)
 
-De plus, toutes les ressources Azure nécessaires au Bot sont automatiquement déployées : L’inscription de Bot, Azure App Service, LUIS, QnA Maker, Content Moderator, CosmosDB, Stockage Azure et Application Insights. Par ailleurs, les modèles LUIS, QnA Maker et de répartition de base sont créés, entraînés et publiés pour activer immédiatement les tests des intentions de base et du routage.
+# <a name="background"></a>Arrière-plan
 
-Une fois que le modèle est créé et que les étapes de déploiement sont exécutées, vous pouvez appuyer sur F5 pour effectuer un test de bout en bout. Grâce à cela, vous bénéficiez d’une base solide pour commencer votre expérience conversationnelle. Ainsi, vous n’avez plus à passer plusieurs jours à travailler sur chaque projet et la qualité de l’expérience conversationnelle est optimisée.
+## <a name="introduction-card"></a>Carte de présentation
+Une carte de présentation améliore les conversations en fournissant une vue d’ensemble des fonctionnalités du bot ainsi que des exemples d’énoncés pour démarrer plus facilement. Elle établit également la personnalité du bot pour l’utilisateur.
 
-Pour commencer, continuez la [création du projet](bot-builder-enterprise-template-create-project.md). Pour en savoir plus sur les meilleures pratiques et les connaissances qui ont conduit à ces fonctionnalités, consultez l’article sur les [détails du modèle](bot-builder-enterprise-template-overview-detail.md). 
+## <a name="base-luis-model-with-common-intents"></a>Modèle LUIS de base avec les intentions courantes
+Le modèle LUIS de base inclus dans le modèle présente une sélection des intentions les plus courantes que la plupart des bots ont à traiter. Votre bot préconfiguré contient les intentions suivantes :
 
-Le code source complet pour le modèle de bot d’entreprise est disponible sur cet [emplacement GitHub](https://github.com/Microsoft/AI/tree/master/templates/Enterprise-Template)
+Intention       | Exemples d’énoncés |
+-------------|-------------|
+Annuler       |*cancel*, *nevermind*|
+Escalader     |*puis-je parler à quelqu’un ?*|
+FinishTask   |*terminé*, *tout fait*|
+GoBack       |*retour*|
+Aide         |*pouvez-vous m’aider ?*|
+Répéter       |*pouvez-vous répéter ?*|
+SelectAny    |*n’importe lequel*|
+SelectItem   |*le premier*|
+SelectNone   |*aucun*|
+ShowNext     |*afficher plus*|
+ShowPrevious |*afficher le précédent*|
+StartOver    |*restart*|
+Arrêter         |*stop*|
+
+## <a name="qna-maker"></a>QnA Maker
+
+[QnA Maker](https://www.qnamaker.ai/) offre la possibilité aux non-développeurs de générer un ensemble de questions-réponses à l’usage d’un bot. Ces connaissances peuvent être importées à partir de sources de données FAQ et de guides produit, ou créées manuellement dans le portail QnA Maker.
+
+Le modèle contient deux exemples de modèles QnA Maker : un pour les questions-réponses et un pour les [échanges de conversation (chit-chat) professionnels](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base). 
+
+## <a name="dispatch"></a>Dispatch
+
+Le service Dispatch est utilisé pour gérer le routage entre plusieurs modèles LUIS et bases de connaissances QnA Maker, en extrayant les énoncés de chaque service et en créant un modèle LUIS de dispatch centralisé.
+
+Ainsi, un bot peut rapidement identifier le composant qui doit traiter un énoncé donné et garantit que les données QnA Maker sont placées au plus haut niveau du traitement des intentions et pas en bas de la hiérarchie.
+
+Cet outil Dispatch permet également d’évaluer vos modèles pour mettre en évidence les éventuels chevauchements d’énoncés et écarts entre les services.
+
+## <a name="telemetry"></a>Télémétrie
+
+Avoir des insights sur les conversations d’un bot est utile pour mieux comprendre quels sont les niveaux d’engagement utilisateur, les fonctionnalités appréciées des utilisateurs et les questions auxquelles le bot ne parvient pas à répondre.
+
+[Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) capture des données de télémétrie opérationnelles sur votre service de bot ainsi que les événements liés aux conversations. Ces événements peuvent ensuite être agrégés en informations actionnables à l’aide d’outils tels que [Power BI](https://powerbi.microsoft.com/en-us/what-is-power-bi/). Pour illustrer cette fonctionnalité, il y a un exemple de tableau de bord Power BI spécifique que vous pouvez utiliser avec Enterprise Bot Template.
+
+# <a name="next-steps"></a>Étapes suivantes
+Consultez la rubrique [Bien démarrer](bot-builder-enterprise-template-getting-started.md) pour savoir comment créer et déployer votre Enterprise Bot. 
+
+# <a name="resources"></a>Ressources
+Le code source complet pour Enterprise Bot Template est disponible sur [GitHub](https://github.com/Microsoft/AI/tree/master/templates/Enterprise-Template).
