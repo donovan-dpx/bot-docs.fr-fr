@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
 ms.date: 03/01/2019
-ms.openlocfilehash: 0fb0f650b44d320d78a0ada5d46105048019964c
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 28c4ece705c001d5f80fdc877773c03ac400204c
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073845"
 ---
 # <a name="categorized-activities-by-channel"></a>Activités classées par canal
 
@@ -33,7 +33,7 @@ Les activités peuvent être réparties en diverses catégories. Pour chaque cat
 <a name="conversational"></a>Conversationnel
 --------------
 
- \                      | Cortana            | Ligne directe        | Direct Line (discussion web) | Email              | Facebook           | GroupMe            | Kik                | Teams              | Slack              | Skype   | Skype Entreprise | Telegram | Twilio  
+ \                      | Cortana            | Ligne directe        | Direct Line (Web Chat) | Email              | Facebook           | GroupMe            | Kik                | Teams              | Slack              | Skype   | Skype Entreprise | Telegram | Twilio  
 :---------------------- | :-----:            | :----------------: | :--------------------: |:----:              | :------:           | :-----:            | :-----:            | :---:              | :---:              | :---:   | :------------: | :------: | :----:  
 Message                 | :white_check_mark: | :white_check_mark: | :white_check_mark:     | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark:        | :white_check_mark:  | :white_check_mark: 
 MessageReaction         | :x:                | :x:                | :x:                    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :x:                | :x:      | :x:             | :x:       | :x:      
@@ -71,7 +71,7 @@ Event.*                    | :white_large_square: | :white_check_mark: | :white_
 Event.CreateConversation   | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 Event.ContinueConversation | :white_large_square: | :white_large_square: | :white_large_square:   | :white_large_square: | :white_large_square:  | :white_large_square: | :white_large_square: | :white_large_square:  | :white_large_square:  | :white_large_square:  | :white_large_square:           | :white_large_square:     | :white_large_square:  
 
-- Dans _Direct Line_, les activités d’événement constituent un mécanisme d’extensibilité.
+- Les activités d’événement constituent un mécanisme d’extensibilité dans Direct Line (_Web Chat_).
 - Une application qui est propriétaire à la fois du client et du serveur peut choisir de « tunneler » ses propres événements via le service à l’aide de cette activité d’événement.
 
 
@@ -85,7 +85,7 @@ Invoke.ComposeResponse     | :x:      | :x:          | :x: | :x:   | :x:       |
 
 - En plus d’un certain nombre d’autres activités typées, Microsoft Teams définit certaines activités d’appel propres à Teams.
 - Les activités d’appel sont propres à une application et ne sont pas définies par un client.
-- Il n’existe pas de notion générale d’appel, seulement des sous-types d’activité.
+- Il n’existe pas de notion générale de sous-types spécifiques d’appel de l’activité.
 - Les appels sont les seules activités qui déclenchent un comportement de type « demande-réponse » chez le bot.
 
 Important : Si vous utilisez des dialogues pour l’invite OAuth, vous devez transférer l’activité Invoke.TeamsVerification au dialogue.
@@ -120,7 +120,7 @@ Important : Si vous utilisez des dialogues pour l’invite OAuth, vous devez tr
 EndOfConversation       | :x:      | :white_check_mark: | :white_check_mark:     | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 InstallationUpdate      | :x:      | :white_check_mark: | :white_check_mark:     | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 Saisie                  | :x:      | :white_check_mark: | :white_check_mark:     | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
-handoffHandoff                 | :x:      | :x:                | :x:                    | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
+Handoff                 | :x:      | :x:                | :x:                    | :x:   | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 
 
 <a name="out-of-use-includes-payment-specific-invoke"></a>Absence d’utilisation (inclut les appels liés au paiement)
@@ -235,7 +235,7 @@ InstallationUpdate         | :x:                  | :white_check_mark:   | :whit
 Saisie                     | :x:                  | :white_check_mark:   | :white_check_mark:     | :x:                  | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 Handoff                    | :x:                  | :x:                  | :x:                    | :x:                  | :x:      | :x:     | :x:     | :x:   | :x:   | :x:   | :x:            | :x:      | :x:     
 
-## <a name="web-chat"></a>Web Chat 
+## <a name="web-chat"></a>Discussion Web 
 Web Chat envoie :
 - « message » : avec « text » et/ou « attachments »
 - « event » : avec « name » et « value » (au format JSON/chaîne)
