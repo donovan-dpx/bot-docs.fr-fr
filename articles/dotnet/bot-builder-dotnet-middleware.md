@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 03/01/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 54ab447fac81ba17f1fa277347cf7a5aaaab8850
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0e8873d2914d42b928004c31c14c8d60cb35b2a3
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54223774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073765"
 ---
 # <a name="intercept-messages"></a>Intercepter des messages
 
@@ -62,9 +62,9 @@ Bien que, dans cet exemple, seules des informations sur chaque message, vous pou
 
 ## <a name="sample-code"></a>Exemple de code 
 
-Pour obtenir un exemple complet qui montre comment intercepter et journaliser les messages à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">exemple Middleware</a> dans GitHub. 
+Pour obtenir un exemple complet qui montre comment intercepter et journaliser les messages à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-Middleware" target="_blank">exemple Middleware</a> dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">Exemple Middleware (GitHub)</a>
+- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-Middleware" target="_blank">Exemple d’intergiciel (GitHub)</a>

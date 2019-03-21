@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/23/2018
+ms.date: 03/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fdf0b16cc89b322ffa9d36b5516b09b0338ce9dc
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: db7957c611df4a3010469f86f51184b52d49addb
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073855"
 ---
 # <a name="manage-resources-with-a-bot-file"></a>Gérer les ressources avec un fichier .bot
 
@@ -29,7 +29,7 @@ Avec un fichier .bot, vous pouvez inscrire des services comme :
 * [**Azure Bot Service**](https://azure.microsoft.com/en-us/services/bot-service/) - des inscriptions Azure Bot Service.
 * [**LUIS.AI**](https://www.luis.ai/) - LUIS permet à votre bot de communiquer avec des utilisateurs en langage naturel. 
 * [**QnA Maker**](https://qnamaker.ai/) - générez, formez et publiez en quelques minutes un bot de questions-réponses simple reposant sur des URL de FAQ, des documents structurés ou des contenus éditoriaux.
-* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) - des modèles pour une répartition sur plusieurs services.
+* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) - des modèles pour une répartition sur plusieurs services.
 * [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/) - pour des insights et analyses de bot.
 * [**Stockage Blob Azure**](https://azure.microsoft.com/en-us/services/storage/blobs/) - pour la persistance de l’état du bot. 
 * [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/) - un service de base de données multimodèle distribué globalement pour rendre persistant l’état du bot.
