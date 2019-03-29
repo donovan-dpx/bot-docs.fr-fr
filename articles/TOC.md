@@ -7,8 +7,8 @@
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
 # Tutoriels
-## [Créer et déployer un bot de base](v4sdk/bot-builder-tutorial-basic-deploy.md)
-## [Ajouter QnA Maker et redéployer un bot](v4sdk/bot-builder-tutorial-add-qna.md)
+## [1. Créer et déployer un bot de base](v4sdk/bot-builder-tutorial-basic-deploy.md)
+## [2. Ajouter QnA Maker et redéployer un bot](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [Ajouter l’authentification à votre bot](bot-builder-tutorial-authentication.md)
 # Exemples
 ## [Dépôt botbuilder-samples sur GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
