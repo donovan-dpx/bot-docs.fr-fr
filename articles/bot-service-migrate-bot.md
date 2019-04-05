@@ -7,22 +7,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 6/22/2017
+ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6a1ae4d0966928a1b95e45ea7bcc62e9c1d14666
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: c6e91ebfe54857f11772bd4a926e3b5b2776c8cc
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000066"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616935"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migrer votre bot vers Azure
 
-
-
 Tous les bots **Azure Bot Service (préversion)** créés dans le [portail d’infrastructure Bot](http://dev.botframework.com) doivent migrer vers le nouveau Service Bot dans Azure. Le service a été mis à la disposition générale (GA) en décembre 2017. 
 
-Notez que les bots d’inscription connectés uniquement aux canaux suivants ne nécessitent *pas* de migration : **Équipes**, **Skype**, ou **Cortana**. Par exemple, un bot d’inscription connecté à **Facebook** et à **Skype** *doit* migrer, mais un bot d’inscription connecté à **Skype** et **Cortana** *n’a pas besoin* de migrer.
+Notez que les bots d’inscription connectés uniquement aux canaux suivants ne nécessitent *pas* de migration : **Teams**, **Skype** ou **Cortana**. Par exemple, un bot d’inscription connecté à **Facebook** et à **Skype** *doit* migrer, mais un bot d’inscription connecté à **Skype** et **Cortana** *n’a pas besoin* de migrer.
 
 > [!IMPORTANT]
 > Avant de migrer un bot Functions créé avec Node.js, il est nécessaire d’utiliser le **Pack Azure Functions** pour maintenir ensemble les modules **node_modules**. Cela améliore les performances pendant la migration et l’exécution du bot Functions après sa migration. Pour empaqueter vos modules, consultez [Empaqueter un bot Functions avec Funcpack](#package-a-functions-bot-with-funcpack).
@@ -52,14 +50,14 @@ Les bots Functions créés avec Node.js doivent être empaquetés à l’aide de
 6.  Testez votre bot en local en exécutant le bot Functions à l’aide de Bot Framework Channel Emulator. Plus d’informations sur la façon d’exécuter le bot *funcpack* [ici](https://github.com/Azure/azure-functions-pack#how-to-run). 
 7.  Chargez votre code vers Azure. Assurez-vous que le répertoire `.funcpack` est chargé. Vous n’avez pas besoin de charger le répertoire **node_modules**.
 8. Testez votre bot distant pour vous assurer qu’il répond comme prévu.
-9. [Migrez votre bot](#migrate-your-bot-to-azure) à l’aide de la procédure ci-dessus.
+9. Migrez votre bot à l’aide de la procédure ci-dessus.
 
 ## <a name="migration-under-the-hood"></a>La migration vue de l’intérieur
 
 Selon le type de bot pour lequel vous effectuez une migration, la liste ci-dessous peut vous aider à mieux comprendre ce qui se passe vu de l’intérieur.
 
-* **Web App Bot** ou **Functions Bot** : pour ces types de bots, le projet de code source est copié de l’ancien bot vers le nouveau bot. D’autres ressources telles que le stockage de votre bot, Application Insights, LUIS, etc., restent telles quelles. Dans ce cas, le nouveau bot contient une copie des ID/clés/mots de passe correspondant à ces ressources existantes. 
-* **Bot Channels Registration** : pour ce type de bot, le processus de migration crée simplement un nouveau **Bot Channels Registration** et copie remplace son point de terminaison par celui de l’ancien bot. 
+* **Bot Web App** ou **Bot Functions** : pour ces types de bots, le projet de code source est copié de l’ancien bot vers le nouveau bot. D’autres ressources telles que le stockage de votre bot, Application Insights, LUIS, etc., restent telles quelles. Dans ce cas, le nouveau bot contient une copie des ID/clés/mots de passe correspondant à ces ressources existantes. 
+* **Bot Channels Registration** : pour ce type de bots, le processus de migration crée simplement un **Bot Channels Registration** et remplace le point de terminaison par celui de l’ancien bot. 
 * Quel que soit le types de bot que vous migrez, le processus de migration ne modifie pas l’état du bot existant. Cela vous permet de restaurer en toute sécurité si vous en avez le besoin.
 * Si un [déploiement continu](bot-service-build-continuous-deployment.md) est configuré, vous devrez le configurer à nouveau afin que votre contrôle de code source se connecte au nouveau robot.
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 31a0497f1422cee8c4966e59d94a89ae359a5cb7
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: 997399997770db9a810db54c6dcb0cb943a99da9
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453933"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616945"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -121,7 +121,7 @@ Vous pouvez utiliser le contexte du dialogue pour démarrer, continuer, remplace
 
 Les dialogues peuvent être considérés comme une pile programmatique, que nous appelons *pile de dialogues*, avec le gestionnaire de tour comme dirigeant et comme élément de secours si la pile est vide. L’élément le plus haut dans cette pile est considéré comme le *dialogue actif*. Le contexte du dialogue dirige toutes les entrées vers ce dialogue actif.
 
-Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Quand ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Ainsi, il est possible de créer des [branches et des boucles](#looping-and-branching), comme décrit ci-dessous.
+Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Quand ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Ainsi, il est possible de créer des branches et des boucles, comme décrit ci-dessous.
 
 ### <a name="create-the-dialog-context"></a>Créer le contexte du dialogue
 
