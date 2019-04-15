@@ -79,7 +79,7 @@ Cliquez sur **Suivant**. L’onglet **Paramètres** s’ouvre. Spécifiez le ser
 
 ![Cliquez sur Suivant et accédez à l’onglet Paramètres](../media/real-time-media-bot-publish-settings.png)
 
-Vous pouvez éventuellement choisir l’option **Paramètres avancés** et spécifier le compte de stockage des journaux de déploiement (pour déboguer les problèmes).
+Vous pouvez éventuellement choisir l’option **Paramètres avancés** et spécifier le compte de stockage des journaux d’activité de déploiement (pour déboguer les problèmes).
 
 ![Cliquez sur l’onglet Paramètres avancés](../media/real-time-media-bot-publish-advanced-settings.png)
 

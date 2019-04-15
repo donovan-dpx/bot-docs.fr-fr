@@ -143,18 +143,18 @@ Vérifiez qu’une clé Application Insights se trouve dans votre fichier .bot.
     },
 ```
 
-### <a name="check-logs"></a>Inspecter les journaux
+### <a name="check-logs"></a>Inspecter les journaux d’activité
 
-ASP.Net et Node émettent des journaux au niveau serveur que vous pouvez inspecter.
+ASP.Net et Node émettent des journaux d’activité au niveau serveur que vous pouvez inspecter.
 
-#### <a name="set-up-a-browser-to-watch-your-logs"></a>Configurer un navigateur pour consulter vos journaux
+#### <a name="set-up-a-browser-to-watch-your-logs"></a>Configurer un navigateur pour consulter vos journaux d’activité
 
 1. Ouvrez votre bot dans le [portail Azure](http://portal.azure.com/).
 1. Ouvrez la page **Paramètres App Service / Tous les paramètres App Service** pour voir tous les paramètres de service.
 1. Ouvrez la page **Supervision / Journaux de diagnostic** du service d’application.
    - Vérifiez que **Journal des applications (Filesystem)** est activé. Veillez à cliquer sur **Enregistrer** si vous changez ce paramètre.
 1. Basculez sur la page **Supervision / Flux de journaux**.
-   - Sélectionnez **Journaux du serveur web** et vérifiez qu’un message vous dit que vous êtes connecté. La commande doit ressembler à ceci :
+   - Sélectionnez **Journaux d’activité du serveur web** et vérifiez qu’un message vous dit que vous êtes connecté. La commande doit ressembler à ceci :
 
      ```bash
      Connecting...
@@ -169,7 +169,7 @@ ASP.Net et Node émettent des journaux au niveau serveur que vous pouvez inspect
 1. Ouvrez la page **Paramètres App Service / Tous les paramètres App Service** pour voir tous les paramètres de service.
 1. Basculez sur la page **Vue d’ensemble** du service d’application et cliquez sur **Redémarrer**.
    - Un message vous demande si vous êtes sûr, sélectionnez **Oui**.
-1. Revenez dans la première fenêtre du navigateur et consultez les journaux.
-1. Vérifiez que vous recevez de nouveaux journaux.
+1. Revenez dans la première fenêtre du navigateur et consultez les journaux d’activité.
+1. Vérifiez que vous recevez de nouveaux journaux d’activité.
    - Si vous ne voyez aucune activité, redéployez votre bot.
    - Basculez ensuite sur la page **Journaux des applications** et recherchez les erreurs.

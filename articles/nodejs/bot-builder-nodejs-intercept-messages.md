@@ -1,6 +1,6 @@
 ---
 title: Intercepter des messages | Microsoft Docs
-description: Découvrez comment créer des journaux ou d’autres enregistrements en interceptant et traitant des échanges d’informations à l’aide du kit SDK Bot Framework pour Node.js.
+description: Découvrez comment créer des journaux d’activité ou d’autres enregistrements en interceptant et traitant des échanges d’informations à l’aide du kit SDK Bot Framework pour Node.js.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
