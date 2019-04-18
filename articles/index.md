@@ -10,10 +10,10 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2019
 ms.openlocfilehash: 5c6a194c18fff144090c095f9cf01f964a1ad4ce
-ms.sourcegitcommit: 562dd44e38abacaa31427da5675da556a970cf11
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59477122"
 ---
 ::: moniker range="azure-bot-service-3.0"
@@ -41,7 +41,7 @@ ms.locfileid: "59477122"
 <p>Commencez rapidement à concevoir de puissants bots aux fonctionnalités enrichies.</p>
 <ul>
     <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp">.NET</a></li>
-    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node">Node.js</a></li>
+    <li><a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node">Node.JS</a></li>
 </ul>
 <h2 style="margin-top: 36px">Didacticiels pas à pas</h2>
 <p> <a href="/bot-framework/bot-builder-tutorial-authentication">Ajouter l’authentification à votre bot</a> </p>
@@ -66,7 +66,7 @@ ms.locfileid: "59477122"
                     <div class="cardText">
                         <h3>Languages</h3>
                         <p><a href="https://aka.ms/botframework-v3-cs-sdk">.NET</a></p>
-                        <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.js</a></p>
+                        <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.JS</a></p>
                     </div>
                 </div>
             </div>
@@ -115,8 +115,8 @@ ms.locfileid: "59477122"
 </div>
 
 <h2 style="margin-top: 36px">Didacticiels pas à pas</h2>
-<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">1. Créer et déployer un bot de base</a></p>
-<p><a href="/bot-framework/bot-builder-tutorial-add-qna">2. Ajouter QnA Maker et redéployer un bot</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">1.Créer et déployer un bot de base</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-add-qna">2.Ajouter QnA Maker et redéployer un bot</a></p>
 <h2 style="margin-top: 36px">Informations de référence</h2>
 <ul class="panelContent cardsD">
     <li>
