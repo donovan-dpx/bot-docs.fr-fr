@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ba140324fb6b50c2d6696aae6e4bd3e8824fd96
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997566"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59508226"
 ---
 # <a name="activity-processing"></a>Traitement des activités
 
@@ -29,7 +29,7 @@ Les activités, en particulier celles qui sont [envoyées à partir d’un bot](
 
 L’adaptateur de bot encapsule le processus d’authentification et envoie les activités au service Bot Connector et en reçoit de celui-ci. Quand votre bot reçoit une activité, l’adaptateur rassemble tout ce qui concerne cette activité, crée un [objet de contexte](#turn-context) pour le tour, le transmet à la logique d’application de votre bot et envoie les réponses générées par celui-ci au canal de l’utilisateur.
 
-## <a name="authentication"></a>Authentification
+## <a name="authentication"></a>Authentication
 
 L’adaptateur authentifie chaque activité entrante que reçoit l’application, à l’aide des informations issues de l’activité et de l’en-tête `Authentication` de la demande REST. L’adaptateur utilise un objet de connecteur et les informations d’identification de votre application pour authentifier les activités sortantes à destination de l’utilisateur.
 
@@ -46,7 +46,7 @@ Quand un adaptateur reçoit une activité, il génère un objet de **contexte de
 * Activité : les demandes et réponses dans une conversation sont toutes des types d’activités. Ce contexte fournit des informations sur l’activité entrante, y compris les informations de routage, des informations sur le canal, la conversation, l’expéditeur et le destinataire.
 * Informations personnalisées : si vous étendez votre bot en implémentant des middlewares (intergiciels) ou au sein de la logique de votre bot, vous pouvez mettre à disposition des informations supplémentaires à chaque tour.
 
-Vous pouvez également utiliser l’objet de contexte pour envoyer une réponse à l’utilisateur et obtenir une référence à l’adaptateur<!-- to create a new conversation or continue an existing one-->.
+Vous pouvez également utiliser l’objet de contexte pour envoyer une réponse à l’utilisateur et obtenir une référence à l’adaptateur.<!-- to create a new conversation or continue an existing one-->.
 
 > [!NOTE]
 > Votre application et l’adaptateur gèrent les demandes de façon asynchrone ; toutefois, votre logique métier n’a pas besoin d’être contrôlée par un procédé de requête-réponse.
@@ -79,7 +79,7 @@ En plus de la logique de bot et de middleware, vous pouvez ajouter des gestionna
 
 Chaque nouvelle activité obtient un nouveau thread sur lequel s’exécuter. Quand le thread destiné à traiter l’activité est créé, la liste des gestionnaires de cette activité est copiée sur ce nouveau thread. Aucun gestionnaire ajouté après ce point n’est exécuté pour cet événement d’activité spécifique.
 
-Les gestionnaires inscrits sur un objet de contexte sont traités de façon très semblable à la façon dont l’adaptateur gère le [pipeline d’intergiciels](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline). Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué _next_ transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué next, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un [court-circuitage](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting), ce qui empêche l’adaptateur d’envoyer la réponse au canal.
+Les gestionnaires inscrits sur un objet de contexte sont traités d’une façon très semblable à celle dont l’adaptateur gère le [pipeline de middlewares](~/v4sdk/bot-builder-concept-middleware.md#the-bot-middleware-pipeline). Concrètement, les gestionnaires sont appelés dans l’ordre dans lequel ils sont ajoutés, et l’appel du délégué _next_ transmet le contrôle au gestionnaire d’événements inscrit suivant. Si un gestionnaire n’appelle pas le délégué next, aucun des gestionnaires d’événements suivants n’est appelé ; l’événement est victime d’un [court-circuitage](~/v4sdk/bot-builder-concept-middleware.md#short-circuiting), ce qui empêche l’adaptateur d’envoyer la réponse au canal.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

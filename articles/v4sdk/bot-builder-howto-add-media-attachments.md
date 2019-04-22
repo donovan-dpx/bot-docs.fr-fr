@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aea34c068afa6fef3a701bc1179341ff4861e32a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224877"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541095"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -225,9 +225,9 @@ Pour commencer, seuls certains canaux prennent en charge les cartes adaptatives 
 
 Ensuite, les cartes adaptatives remettent les messages au format carte, et le canal détermine la disposition de la carte. Le format des messages remis par MessageFactory dépend du canal et ne correspond pas nécessairement au format carte, sauf si la pièce jointe intègre une carte adaptative. 
 
-Pour connaître les dernières informations sur la prise en charge par les canaux des cartes adaptatives, consultez <a href="http://adaptivecards.io/visualizer/">Adaptive Cards Visualizer</a>.
+Pour connaître les dernières informations sur la prise en charge du canal des cartes adaptatives, consultez <a href="http://adaptivecards.io/designer/">Concepteur de cartes adaptatives</a>.
 
-Pour utiliser des cartes adaptatives, veillez à ajouter le package NuGet `Microsoft.AdaptiveCards`. 
+Pour utiliser des cartes adaptatives, veillez à ajouter le package NuGet `AdaptiveCards`. 
 
 
 > [!NOTE]

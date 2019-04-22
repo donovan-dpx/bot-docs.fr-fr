@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 909294243abe00ac95e8f5d89d6babc2edc4f994
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5de773f6f8f4d46c0c1fe880588f2530c3c68f56
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225681"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508206"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Concepts clés pour la création d’un robot pour Compétence Cortana à l’aide de Node.js
  
@@ -40,57 +40,49 @@ Lorsque vous créez un robot de reconnaissance vocale, vous devez tenter d’ét
 
 Les utilisateurs sont plongés dans la confusion quand un système ne parvient pas fonder leurs énoncés. Par exemple, la conversation suivante peut être une source de confusion quand le robot demande « Et ensuite ? » :
 
-```
-Agent: Did you want to review some more of your profile?
-
-User: No.
-
-Agent: What's next?
-```
+> **Cortana** : Voulez-vous voir d’autres éléments de votre profil ?  
+> **Utilisateur** :  Non.  
+> **Cortana** : Et ensuite ?
 
 Si le robot ajoute « OK » en tant qu’accusé de réception, c’est plus convivial pour l’utilisateur :
 
-```
-Agent: Did you want to review some more of your profile?
-
-User: No.
-
-Agent: **Okay**, what's next?
-```
-
+> **Cortana** : Voulez-vous voir d’autres éléments de votre profil ?  
+> **Utilisateur** :  Non.  
+> **Cortana** : **OK**, et maintenant ?
 
 Degrés de fondement, du plus faible au plus fort :
+
 1. Attention continue
 2. Prochaine contribution pertinente
 3. Accusé de réception : réponse minimale : « Oui », « OK », « d’accord », « super »
 4. Démonstration : marquer la compréhension par une reformulation, une finalisation.
 5. Affichage : répéter en tout ou partie.
 
-#### <a name="acknowledgement-and-next-relevant-contribution"></a>Accusé de réception et contribution pertinents suivante
-Utilisateur : ... Je dois voyager en mai.
-Agent : **Et**, quel jour de mai vouliez-vous voyager ?
-Utilisateur : OK, je dois être là-bas du 12 au 15 ?
-Agent : **Et**, quelle est votre destination ?
+### <a name="acknowledgement-and-next-relevant-contribution"></a>Accusé de réception et contribution pertinents suivante
 
-#### <a name="grounding-by-demonstration"></a>Fondement par démonstration
-Utilisateur : ... Je dois voyager en mai.
-Agent : Et, **quel jour** de mai vouliez-vous voyager ?
-Utilisateur : OK, je dois être là-bas du 12 au 15 ?
-Agent : **Et**, quelle est votre destination ?
+> **Utilisateur** : Je dois voyager en mai.  
+> **Cortana** : **OK**. Quel jour du mois de mai voulez-vous voyager ?  
+> **Utilisateur** : Je dois être là-bas du 12 au 15.  
+> **Cortana** : **OK**. Vous prenez l’avion pour quelle ville ?  
 
+### <a name="grounding-by-demonstration"></a>Fondement par démonstration
 
+> **Utilisateur** : Je dois voyager en mai.  
+> **Cortana** : Et, **quel jour** de mai vouliez-vous voyager ?  
+> **Utilisateur** : Je dois être là-bas du 12 au 15.  
+> **Cortana** : **Et**, quelle est votre destination ?  
+    
 ### <a name="closure"></a>Fermeture
 
-Le robot effectuant une action doit présenter une preuve de son accomplissement.
-Il est également important d’indiquer l’échec ou la compréhension. 
-* Fermeture non vocale : si vous appuyez sur un bouton d’ascenseur, son témoin s’allume.
-Processus en deux étapes :
-* Présentation 
-* Acceptation
+Le robot effectuant une action doit présenter une preuve de son accomplissement. Il est également important d’indiquer l’échec ou la compréhension. 
 
+* Fermeture non vocale : si vous appuyez sur un bouton d’ascenseur, son témoin s’allume.  
+Le processus comprend deux étapes :
+    * Présentation (lorsque vous appuyez sur le bouton)
+    * Acceptation (lorsque le bouton s’allume)
 
-### <a name="differences-in-content-presentation"></a>Différences de présentation du contenu
-Lors de la conception de votre robot à fonctions vocale, gardez à l’esprit que le dialogue parlé diffère souvent des messages textuels que votre robot envoie.
+## <a name="differences-in-content-presentation"></a>Différences de présentation du contenu
+N’oubliez pas que Cortana est pris en charge sur divers types d’appareils, mais que tous ne sont pas équipés d’un écran. Lorsque vous concevez un bot de reconnaissance vocale, vous devez prendre en compte le fait que les dialogues réels ne correspondront pas forcément au texte affiché par votre bot.
 <!-- If there are differences in what the bot will say, in the text vs the speak fields of a prompt or in a waterfall, for example, discuss them here.
 
 ## Speech
@@ -119,7 +111,7 @@ The **inputHint** property can take the following values:
 * **acceptingInput**: Indicates that the bot is passively ready for input but is not waiting on a response. Cortana accepts input from the user if the user holds down the microphone button.
 * **ignoringInput**: Cortana is ignoring input. Your bot may send this hint if it is actively processing a request and will ignore input from users until the request is complete.
 
-Prompts can take a `speak:` or `retrySpeak` option.
+Prompts must use the `speak:` option.
 
 ```javascript
         builder.Prompts.choice(session, "Decision Options", choices, {
@@ -130,12 +122,9 @@ Prompts can take a `speak:` or `retrySpeak` option.
 
 Prompts.number has *ordinal support*, meaning that you can say "the last", "the first", "the next-to-last" to choose an item in a list.
 
-
-
-
 ## Using synonyms
 
-<!-- Axl Rose example -->     
+<!-- Axl Rose example -->
 ```javascript   
          var choices = [
             { 
@@ -165,13 +154,12 @@ Prompts.number has *ordinal support*, meaning that you can say "the last", "the 
         });
 ```
 
-
 ## <a name="configuring-your-bot"></a>Configuration de votre robot
 
 ## <a name="prompts"></a>Invites
 
-
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[CortanaGetstarted]: /cortana/getstarted
-[SSMLRef]: https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx
+Documentation Cortana : [Documentation sur les compétences Cortana](/cortana/skills/)
+
+Informations de référence sur SSML Cortana : [Informations de référence sur SSML (Speech Synthesis Markup Language)](/cortana/skills/speech-synthesis-markup-language)

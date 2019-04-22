@@ -9,12 +9,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 62b5608de20bb89a31106c7e652b20f32b099d15
-ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
+ms.openlocfilehash: 54742bdeddee410ec9307157d0dbd34cc4fbe3c8
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58655499"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541075"
 ---
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]  
 
@@ -68,7 +68,7 @@ La dernière section décompose une partie du code du bot.
 
 ## <a name="create-your-bot-and-an-authentication-application"></a>Créer votre bot et une application d’authentification
 
-Vous devez créer un bot d’inscription sur lequel vous allez publier le code de votre bot et vous devez créer une application Azure AD (v1 ou v2) pour autoriser votre bot à accéder à Office 365.
+Vous devez créer un bot d’inscription où vous allez définir le point de terminaison de messagerie sur le code de votre bot déployé, puis créer une application Azure AD (v1 ou v2) pour autoriser votre bot à accéder à Office 365.
 
 > [!NOTE]
 > Ces fonctionnalités d’authentification fonctionnent avec d’autres types de bots. Toutefois, ce tutoriel utilise un bot d’inscription uniquement.
@@ -234,10 +234,10 @@ Vous pouvez maintenant utiliser ce nom de connexion dans le code de votre bot po
     </appSettings>
     ```
 
-    Si vous ne savez pas comment obtenir les valeurs de **l’ID d’application Microsoft** et du **mot de passe d’application Microsoft**, effectuez une recherche dans les **paramètres d’application** du service d’application Azure qui a été provisionné pour votre bot sur le portail Azure.
+    Si vous ne savez pas comment récupérer votre **ID d’application Microsoft** et votre **mot de passe d’application Microsoft**, vous pouvez créer un nouveau mot de passe comme décrit ici : [bot-channels-registration-password](bot-service-quickstart-registration.md#bot-channels-registration-password). Sinon, vous pouvez récupérer l’**ID d’application Microsoft** et le **mot de passe d’application Microsoft** provisionnés avec **Bot Channels Registration** à partir du déploiement décrit ici : [find-your-azure-bots-appid-and-appsecret](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret)
 
     > [!NOTE]
-    > Maintenant, vous pouvez publier ce code de bot sur votre abonnement Azure (cliquez avec le bouton droit sur le projet et choisissez **Publier**), mais cela n’est pas nécessaire pour ce tutoriel. Vous devriez définir une configuration de publication qui utilise l’application et le plan d’hébergement que vous avez utilisés quand vous avez configuré le bot dans le portail Azure.
+    > Maintenant, vous pouvez publier ce code de bot sur votre abonnement Azure (cliquez avec le bouton droit sur le projet et choisissez **Publier**), mais ce n’est pas nécessaire pour ce tutoriel. Vous devriez définir une configuration de publication qui utilise l’application et le plan d’hébergement que vous avez utilisés quand vous avez configuré le bot dans le portail Azure.
 
 ## <a name="use-the-emulator-to-test-your-bot"></a>Utiliser l’émulateur pour tester votre bot
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/28/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a30a3f5dfe4693d67a4cd42a50d35893f8888e07
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 1f077cb5efd838f8a91a0f18a9bcc2f64455ceb6
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591037"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541115"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -42,7 +42,7 @@ Connectez-vous au portail LUIS pour créer votre propre version de l’exemple d
 Une fois votre application LUIS publiée, vous pouvez y accéder à partir de votre bot. Vous devrez enregistrer plusieurs valeurs pour accéder à votre application LUIS à partir de votre bot. Vous pouvez récupérer ces informations à l’aide du portail LUIS.
 
 #### <a name="retrieve-application-information-from-the-luisai-portal"></a>Récupérer des informations sur l’application à partir du portail LUIS.ai
-Le fichier .bot agit comme le lieu de rassemblement pour toutes les références de service. Les informations que vous récupérez seront ajoutées au fichier .bot dans la section suivante. 
+Le fichier .bot agit comme le lieu de rassemblement pour toutes les références de service. Les informations que vous récupérez seront ajoutées au fichier .bot dans la section suivante. 
 1. Sélectionnez votre application LUIS publiée à partir du portail [luis.ai](https://www.luis.ai).
 1. Ouvrez votre application LUIS publiée, et sélectionnez l’onglet **MANAGE** (Gérer).
 1. Sélectionnez l’onglet **Application Information** (Informations sur l’application) à gauche, enregistrez la valeur affichée pour _Application ID_ (ID d’Application) en tant que <YOUR_APP_ID>.

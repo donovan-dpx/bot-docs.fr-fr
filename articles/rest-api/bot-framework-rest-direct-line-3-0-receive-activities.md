@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: c2d4b9a8e2b8ffc1656df44e04ee1bde912e36ea
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: dd5e81ba3feaba09e60011c138dcbe1537144b5a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998156"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541005"
 ---
 # <a name="receive-activities-from-the-bot"></a>Recevoir des activités du bot
 
@@ -21,7 +21,7 @@ ms.locfileid: "49998156"
 
 ## <a name="websocket-vs-http-get"></a>Comparaison entre WebSocket et HTTP GET
 
-Un WebSocket qui diffuse des données en continu envoie (push) les messages aux clients, alors que l’interface GET permet aux clients de demander explicitement des messages. Bien que l’utilisation des WebSockets soit souvent préférable en raison de leur efficacité, l’utilisation de GET peut être utile pour les clients qui ne peuvent pas utiliser de WebSockets ou pour ceux qui souhaitent récupérer l’historique des conversations. 
+Un WebSocket qui diffuse des données en continu envoie (push) les messages aux clients, alors que l’interface GET permet aux clients de demander explicitement des messages. Même si l’utilisation des WebSockets est souvent préférable en raison de leur efficacité, l’utilisation de GET peut être utile pour les clients qui ne peuvent pas utiliser de WebSockets. 
 
 Certains [types d’activités](bot-framework-rest-connector-activities.md) ne sont pas disponibles à la fois dans WebSocket et dans HTTP GET. Le tableau suivant montre la disponibilité des différents types d’activités pour les clients qui utilisent le protocole Direct Line.
 
@@ -99,9 +99,9 @@ Le flux WebSocket contient des mises à jour automatiques et des messages très 
 
 ## <a id="http-get"></a> Récupérer des activités avec HTTP GET
 
-Les clients qui ne peuvent pas utiliser les WebSockets, ou ceux qui souhaitent obtenir l’historique des conversations peuvent récupérer des activités à l’aide de `HTTP GET`.
+Les clients qui ne peuvent pas utiliser de WebSockets peuvent récupérer les activités à l’aide de `HTTP GET`.
 
-Pour récupérer les messages d’une conversation, envoyez une requête `GET` au point de terminaison `/v3/directline/conversations/{conversationId}/activities`, en spécifiant, si vous le souhaitez, le paramètre `watermark`, pour indiquer le dernier message qu’a vu le client. 
+Pour récupérer les messages d’une conversation, envoyez une requête `GET` au point de terminaison `/v3/directline/conversations/{conversationId}/activities`, en spécifiant, si vous le souhaitez, le paramètre `watermark`, pour indiquer le dernier message que le client a vu. 
 
 Les extraits de code suivants montrent un exemple de requête Obtenir les activités de la conversation, avec sa réponse. La réponse à la requête contient `watermark` en tant que propriété de [ActivitySet](bot-framework-rest-direct-line-3-0-api-reference.md#activityset-object). Les clients doivent parcourir les activités disponibles en augmentant la valeur `watermark` jusqu’à ce qu’aucune activité ne soit plus retournée.
 
@@ -163,9 +163,9 @@ La plupart des clients souhaitent conserver l’historique complet de leurs mess
 
 Les clients qui interrogent les données à l’aide de `HTTP GET` doivent choisir un intervalle d’interrogation qui corresponde à leur utilisation prévue.
 
-- Les applications de service à service utilisent souvent un intervalle d’interrogation de 5 ou 10 secondes.
+- Les applications de service à service utilisent souvent un intervalle d’interrogation de 5 ou 10 secondes.
 
-- Les applications orientées client utilisent souvent un intervalle d’interrogation de 1 seconde, et émettent une requête supplémentaire environ 300 millisecondes après chaque message envoyé par le client (pour récupérer rapidement la réponse d’un robot). Ce délai de 300 millisecondes doit être ajusté en fonction de la rapidité du robot et de son temps de transit.
+- Les applications orientées client utilisent souvent un intervalle d’interrogation de 1 seconde, et émettent une requête supplémentaire après chaque message envoyé par le client, afin de récupérer rapidement la réponse d’un bot. Ce délai peut être très court (300 millisecondes), toutefois, il doit être réglé selon la vitesse et le temps de transit du bot. Sur une longue période, l’interrogation ne doit pas se produire plus d’une fois par seconde.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

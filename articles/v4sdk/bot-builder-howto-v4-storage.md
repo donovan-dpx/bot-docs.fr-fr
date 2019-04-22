@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7d881e5e7748da11ea46721c23c5489597cdc94
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073825"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541125"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
@@ -621,7 +621,7 @@ public ConversationHistoryBot(AzureBlobTranscriptStore transcriptStore)
 ```
 
 ### <a name="store-user-conversations-in-azure-blob-transcripts"></a>Stocker les conversations utilisateur dans les transcriptions d’objets blob Azure
-Une fois qu’un conteneur d’objets blob est disponible pour stocker les transcriptions, vous pouvez commencer à conserver les conversations de vos utilisateurs avec votre bot. Celles-ci peuvent être utilisées plus tard en tant qu’outil de débogage pour observer la façon dont les utilisateurs interagissent avec votre bot. Le code suivant conserve les entrées des conversations utilisateur lorsque l’élément activity.text reçoit le message d’entrée _!history_.
+Une fois TranscriptLoggerMiddleware ajouté, le magasin de transcriptions commence automatiquement à conserver les conversations de vos utilisateurs avec votre bot. Celles-ci peuvent être utilisées plus tard en tant qu’outil de débogage pour observer la façon dont les utilisateurs interagissent avec votre bot. Le code suivant récupère la transcription, puis l’envoie à la conversation actuelle lorsque activity.text reçoit le message d’entrée _!history_. Remarque : La méthode SendConversationHistoryAsync est prise en charge par les canaux Direct Line, Web Chat et Emulator.
 
 
 ```csharp
