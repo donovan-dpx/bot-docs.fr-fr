@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/18
+ms.date: 4/13/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 1f74e34c0eaf303e612f94605104482cd5f1f080
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541125"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904494"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Vous pouvez lire et écrire directement dans votre objet de stockage sans utiliser d’intergiciel ou d’objet de contexte. Cela peut convenir pour les données que votre bot utilise, qui proviennent d’une source en dehors du flux de la conversation de votre bot. Par exemple, supposons que votre bot permet à l’utilisateur de demander les prévisions météo et que votre bot les récupère pour une date spécifiée, en les lisant à partir d’une base de données externe. Le contenu de la base de données météo ne dépend pas des informations sur l’utilisateur ou du contexte de la conversation ; vous pouvez donc simplement le lire directement à partir du stockage au lieu d’utiliser le gestionnaire d’état. Les exemples de code dans cet article vous montrent comment lire et écrire des données dans le stockage à l’aide du **stockage mémoire**, de **Cosmos DB**, du **Stockage Blob** et du **magasin de transcription d’objets blob Azure**. 
 

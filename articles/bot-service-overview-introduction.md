@@ -7,77 +7,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 1/10/2019
-ms.openlocfilehash: 4e11ecfa2d42b93b85d186a5078b612ef64e7cdd
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.date: 04/18/2019
+ms.openlocfilehash: 86a75fb315ec303cb8a519bfa02063c4e6780307
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317649"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904812"
 ---
-::: moniker range="azure-bot-service-3.0"
-
 # <a name="about-azure-bot-service"></a>À propos d’Azure Bot Service
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
-
-Azure Bot Service fournit des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. Dans le framework modulable et extensible fourni par le SDK, les développeurs peuvent utiliser des modèles pour créer des bots qui proposent des fonctionnalités de voix, de compréhension du langage naturel, de questions-réponses, et bien plus encore.  
-
-## <a name="what-is-a-bot"></a>Qu’est-ce qu’un bot ?
-Un bot est une application avec laquelle les utilisateurs interagissent par le biais d’une conversation textuelle, graphique (cartes) ou vocale. Il peut s’agir d’un simple dialogue de questions-réponses, ou d’un bot sophistiqué permettant aux utilisateurs d’interagir avec les services de manière intelligente, à l’aide de critères spéciaux, d’un suivi de l’état et de techniques d’intelligence artificielle bien intégrées aux services professionnels existants. 
-
-## <a name="building-a-bot"></a>Création d’un bot 
-Vous pouvez choisir d’utiliser votre environnement de développement ou vos outils en ligne de commande favoris pour créer votre bot en C# ou en Node.js. Nous fournissons des outils pour les différentes étapes du développement de bots, qui vous permettront de bien démarrer avec la création de bots.    
-
-![Présentation des bots](media/bot-service-overview.png) 
-
-## <a name="plan"></a>Planification 
-Avant d’écrire votre code, consultez les [instructions relatives à la conception](bot-service-design-principles.md)  des bots, pour connaître les bonnes pratiques et déterminer les besoins de votre bot. Vous pouvez créer un bot simple ou inclure des fonctionnalités plus sophistiquées, telles que la voix, la compréhension du langage naturel, les questions-réponses, ou la capacité à extraire des informations de plusieurs sources pour fournir des réponses intelligentes.  
-
-> [!TIP]
-> Créez un compte [Azure](https://portal.azure.com). 
-
-## <a name="build-your-bot"></a>Créer votre bot 
-Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Service. Vous pouvez créer cette solution dans autant d’environnements et de langages que vous le souhaitez. D’ailleurs, pour bien démarrer, nous vous proposons des outils faciles à utiliser pour Visual Studio et Yeoman. Vous pouvez également créer la solution directement dans le portail Azure. Vous trouverez ci-dessous certains des outils et services que vous pouvez utiliser.
-
-> [!TIP]
-> Créez un bot à l’aide du [portail Azure](bot-service-quickstart.md). Si nécessaire, ajoutez des composants, tels que : 
-> - Language Understanding [LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/home). 
-> - Base de connaissances [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/home) pour répondre aux questions posées par les utilisateurs.  
-
-## <a name="test-your-bot"></a>Tester votre robot 
-Les bots sont des applications complexes composées de nombreux éléments différents qui fonctionnent ensemble. Comme pour toutes les applications complexes, des bogues intéressants ou des comportements inattendus peuvent se produire. Avant de le publier, testez votre bot.
-
-> [!TIP] 
-> - Tester le bot dans [Web Chat](bot-service-manage-test-webchat.md) ou tester le bot localement avec l’[émulateur](bot-service-debug-emulator.md)
-
-## <a name="publish"></a>Publish 
-Lorsque vous êtes prêt, publiez votre bot dans Azure ou dans votre propre centre de données ou service web. Vous pouvez configurer un déploiement continu pour développer votre bot localement. Un tel déploiement est utile si votre bot est archivé dans un contrôle de code source comme GitHub ou Visual Studio Team Services. Quand vous archivez vos modifications dans votre référentiel source, elles sont automatiquement déployées dans Azure.
-
-> [!Tip]
-> - [Télécharger et redéployer le code dans Azure](bot-service-build-download-source-code.md)
-
-## <a name="connect"></a>Connecter          
-Connecter votre bot aux canaux tels que Facebook, Messenger, Kik, Skype, Slack, Microsoft Teams, Telegram, SMS, Twilio, Cortana et Skype, pour augmenter les interactions et atteindre davantage de clients.  
-  
-> [!TIP]
-> - [Choisir les canaux à ajouter](bot-service-manage-channels.md)
-
-
-## <a name="evaluate"></a>Évaluer 
-Utilisez les données collectées dans le portail Azure pour identifier les opportunités d’améliorer les fonctionnalités et les performances de votre bot. Vous pouvez obtenir des données relatives au service et à l’instrumentation, comme le trafic, la latence et les intégrations. L’outil d’analyse permet également de créer des rapports de conversation à partir des données sur les utilisateurs, les messages et les canaux.
-
-> [!Tip]
-> - [Collecter des données d’analyse](bot-service-manage-analytics.md) 
-
-
-::: moniker-end
-
-::: moniker range="azure-bot-service-4.0"
-
-# <a name="about-azure-bot-service"></a>À propos d’Azure Bot Service
-
-[!INCLUDE [pre-release-label](includes/pre-release-label.md)]
+[!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
 Azure Bot Service fournit des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. L’infrastructure modulable et extensible fournie par le Kit de développement logiciel (SDK), les outils, les modèles et les services d’intelligence artificielle permettent aux développeurs de créer des bots en mesure d’offrir des fonctionnalités vocales, de comprendre le langage naturel, de traiter les questions-réponses, et bien davantage.
 
@@ -147,5 +87,3 @@ Utilisez les données collectées dans le portail Azure pour identifier les oppo
 Découvrez des [études de cas](https://azure.microsoft.com/services/bot-service/) sur des bots ou cliquez sur le lien ci-dessous pour créer un bot.
 > [!div class="nextstepaction"]
 > [Créer un robot](bot-service-quickstart.md)
-
-::: moniker-end

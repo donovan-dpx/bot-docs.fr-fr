@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/28/2018
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 997399997770db9a810db54c6dcb0cb943a99da9
-ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.openlocfilehash: 36ccbb796c2cd014118d4ae1f426acd44aabed76
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58616945"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904892"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Les *dialogues* constituent un concept central dans le SDK. Ils offrent un moyen utile de gérer une conversation avec l’utilisateur. Les dialogues sont des structures dans votre bot qui agissent comme des fonctions dans le programme de votre bot ; chaque dialogue est conçu pour effectuer une tâche spécifique, dans un ordre spécifique. Vous pouvez spécifier l’ordre des dialogues individuels pour guider la conversation, puis les appeler de différentes façons : parfois, en réponse à un utilisateur, parfois en réponse à des stimuli extérieurs ou à partir d’autres dialogues.
 

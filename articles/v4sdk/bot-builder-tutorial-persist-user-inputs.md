@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/19/2018
+ms.date: 04/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 97a89744282ca1e31a99aa0e45345656e43f5cd0
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: bb1e909de69a7690e844701e182dddcebf91cc87
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225314"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904922"
 ---
 # <a name="persist-user-data"></a>Conserver les données utilisateur
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Quand le bot invite l’utilisateur à entrer des informations, il est possible que vous souhaitiez conserver une partie de ces informations sur un stockage sous une forme ou une autre. Le SDK Bot Framework vous permet de stocker les entrées utilisateur en utilisant un *stockage en mémoire* ou un stockage de base de données comme *CosmosDB*. Les types de stockage local sont principalement utilisés lors du test ou du prototypage de votre bot. Toutefois, les types de stockage persistant (le stockage de base de données, par exemple) sont plus adaptés aux bots de production.
 

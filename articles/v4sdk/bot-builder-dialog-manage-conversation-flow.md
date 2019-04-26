@@ -8,25 +8,25 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/18/2018
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 5361b2e411e12b296b60a0f27b560dee5f1f769f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317613"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904862"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues. Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine. Dans cet article, nous utilisons un _dialogue en cascade_, quelques _invites_ et un _ensemble de dialogues_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
 
 ## <a name="prerequisites"></a>Prérequis
 - [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
 - Le code dans cet article est basé sur l’exemple d’**invite à plusieurs tours**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-multi-prompts-sample) ou en [JS](https://aka.ms/js-multi-prompts-sample).
-- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de dialogues](bot-builder-concept-dialog.md), de [l’état des dialogues](bot-builder-dialog-state.md) et du fichier [.bot](bot-file-basics.md).
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md), de [l’état de boîte de dialogue](bot-builder-dialog-state.md), et du fichier [.bot](bot-file-basics.md).
 
 
 Les sections suivantes reflètent les étapes que vous devez suivre pour implémenter des dialogues simples pour la plupart des bots :
@@ -117,7 +117,7 @@ Le constructeur du bot va créer les accesseurs de propriété d’état pour le
 
 ## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Mettre à jour le gestionnaire de tours du bot pour qu’il appelle le dialogue
 
-Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de dialogues, mais en règle générale, vous devez simplement en définir un pour votre bot. 
+Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de boîtes de dialogue, mais en règle générale, vous devez simplement en définir un pour votre bot. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

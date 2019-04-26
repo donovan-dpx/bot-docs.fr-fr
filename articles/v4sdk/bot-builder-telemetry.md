@@ -10,14 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c268bc40b7dc3315232d8f695bdb79343b15e21
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: 75e12ab44915783c33c3b2ee10775cc6f00487bb
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55795585"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905032"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Ajouter des données de télémétrie à votre bot
+
+[!INCLUDE[applies-to](../includes/applies-to.md)]
+
 Dans la version 4.2 du SDK Bot Framework, la journalisation des données de télémétrie a été ajoutée au produit.  Elle permet aux applications bot d’envoyer des données d’événement à des services comme Application Insights.
 
 Ce document explique comment intégrer votre bot aux nouvelles fonctionnalités de télémétrie.  
@@ -244,7 +247,7 @@ Journalisé quand le bot reçoit un nouveau message.
 - RecipientName
 - ConversationId
 - ConversationName
-- Locale
+- Paramètres régionaux
 
 ### <a name="customevent-botmessagesend"></a>CustomEvent : BotMessageSend 
 **Journalisé à partir de :** TelemetryLoggerMiddleware (**Exemple Entreprise**)

@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/13/2018
+ms.date: 04/13/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: d72c374978f509bec0a17ba99c585578757ded61
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59508226"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904472"
 ---
 # <a name="activity-processing"></a>Traitement des activités
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Le bot et l’utilisateur interagissent et échangent des informations par le biais des activités. Chaque activité reçue par votre application de bot est passée à un adaptateur de bot, qui transmet les informations de l’activité à la logique de votre bot, avant d’envoyer les réponses à l’utilisateur. La réception d’une activité, puis son traitement par l’intermédiaire de votre bot, s’appelle un tour. Il s’agit d’un cycle complet du bot. Un tour s’achève lorsque l’exécution est effectuée dans son intégralité, l’activité entièrement traitée et toutes les couches du bot terminées.
 

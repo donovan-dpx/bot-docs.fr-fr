@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 04/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b72ffa951e176a174dd8b00e69229b27bf28a360
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: c0b225cd114f369d14978c16108827f493434390
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711993"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905142"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Imaginez que vous créez un bot d’hôtel qui gère plusieurs tâches telles que l’accueil de l’utilisateur, la réservation d’une table dans un restaurant, la commande d’un plat, le réglage d’une alarme, l’affichage de la météo, et bien d’autres tâches. Vous pouvez gérer chacune de ces tâches au sein de votre bot à l’aide d’un objet de dialogue, mais cela risque de rendre votre code de dialogue trop volumineux et confus.
 
