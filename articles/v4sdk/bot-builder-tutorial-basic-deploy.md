@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 1/9/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7927ab97dc88657a198c8f1d8e56bcb1ddf0fabe
-ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
+ms.openlocfilehash: bf3c8ffb00034a39700f10cd326af764b8deeb6c
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568236"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905122"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Ce tutoriel vous aide à créer pas à pas un bot de base avec le kit SDK Bot Framework et à le déployer dans Azure. Si vous avez déjà créé un bot de base et qu’il s’exécute localement, passez directement à la section [Déployer votre bot](#deploy-your-bot).
 
