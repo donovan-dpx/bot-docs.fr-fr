@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
-ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
+ms.openlocfilehash: 28074e7ad59249cabbd38436bd02dc48bcab5b88
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50234472"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904882"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Informations de référence sur l’API - API Direct Line 3.0
 
@@ -192,7 +192,7 @@ Le schéma Direct Line 3.0 inclut tous les objets définis par le [schéma Bot F
 ### <a name="activityset-object"></a>Objet ActivitySet 
 Définit un ensemble d’activités.<br/><br/>
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
 | **activités** | [Activité](bot-framework-rest-connector-api-reference.md#activity-object)[] | Tableau d’objets **Activity**. |
 | **watermark** | chaîne | Filigrane maximal des activités au sein de l’ensemble. Un client peut utiliser la valeur `watermark` pour indiquer le message le plus récent qu’il a vu, soit lors de la [récupération d’activités à partir du bot](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get), soit lors de la [génération d’une nouvelle URL de flux de données WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
@@ -200,7 +200,7 @@ Définit un ensemble d’activités.<br/><br/>
 ### <a name="conversation-object"></a>Objet Conversation
 Définit une conversation Direct Line.<br/><br/>
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
 | **conversationId** | chaîne | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
 | **expires_in** | number | Nombre de secondes avant l’expiration du jeton. |
@@ -223,6 +223,6 @@ Lorsqu’un client envoie une [activité](bot-framework-rest-connector-api-refer
 - La propriété `from` doit être remplie avec un ID d’utilisateur choisi par le client.
 - Les pièces jointes peuvent contenir des URL de ressources existantes, ou des URL chargés via le point de terminaison de pièce jointe de Direct Line.
 - La propriété `channelData` est conservée sans modification.
-- La taille totale de l’activité, lorsqu’elle est sérialisée dans JSON, ne doit pas dépasser 300 000 caractères.
+- La taille totale de l’activité, quand elle est sérialisée dans JSON et chiffrée, ne doit pas dépasser 256 000 caractères. Nous vous recommandons donc de limiter les activités à 150 000 caractères. Si vous avez besoin d’une quantité plus importante de données, songez à diviser l’activité en plusieurs parties et/ou à utiliser des pièces jointes.
 
 Un client peut [envoyer](bot-framework-rest-direct-line-3-0-send-activity.md) une seule activité par requête. 

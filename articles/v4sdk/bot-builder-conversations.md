@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/01/2018
+ms.date: 04/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7f35b8a135cdde6ffaf11798a5c0e4a3688d5b4f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225078"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904822"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Quand vous concevez le flux de conversation d’un bot, vous devez déterminer la façon dont celui-ci doit répondre à ce que lui dit l’utilisateur. Tout d’abord, un bot reconnaît la tâche ou le sujet de la conversation en fonction d’un message de l’utilisateur. Pour déterminer la tâche ou le sujet (connu sous le nom *d’intention*) associé au message d’un utilisateur, le bot peut rechercher des mots ou des modèles dans le texte du message ou il peut tirer parti de services tels que [Language Understanding](bot-builder-concept-luis.md) et [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
 
@@ -102,7 +102,8 @@ Il n’existe aucune réponse correcte à cette question. En effet, la meilleure
 
 ## <a name="conversation-lifetime"></a>Durée de vie de la conversation
 
-<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links --> Un bot reçoit une activité de _mise à jour d’une conversation_ chaque fois qu’il est ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés d’une conversation ou que les métadonnées de la conversation ont changé.
+<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links -->
+Un bot reçoit une activité de _mise à jour d’une conversation_ chaque fois qu’il est ajouté à une conversation, que d’autres membres ont été ajoutés ou supprimés d’une conversation ou que les métadonnées de la conversation ont changé.
 Vous pouvez faire en sorte que votre bot réagisse aux activités de mise à jour d’une conversation en saluant l’utilisateur ou en se présentant.
 
 Un bot reçoit une activité de _fin de conversation_ pour indiquer que l’utilisateur a mis fin à la conversation. Un bot peut envoyer une activité de _fin de conversation_ pour indiquer que la conversation va se terminer.
