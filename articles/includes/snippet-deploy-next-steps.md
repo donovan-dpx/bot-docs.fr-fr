@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 8e5677fe59dd9edad6ac1da9d029e5f7c08bf179
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563961"
+---
 ## <a name="next-steps"></a>Étapes suivantes
 Une fois que vous avez déployé votre bot dans le cloud et vérifié la réussite de ce déploiement en testant le bot à l’aide de l’application Bot Framework Emulator, l’étape suivante du processus de publication du bot dépend de si vous avez déjà inscrit ou non votre bot auprès de Bot Framework.
 

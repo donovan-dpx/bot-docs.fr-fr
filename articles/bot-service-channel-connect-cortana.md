@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: 9e3f2f19c480a9d2fe6df0baea74d449bb584b4f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6bb4945801ee127cfa954289792987a57eae7fd5
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999083"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032990"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Connecter un bot à Cortana
 
@@ -105,11 +105,10 @@ Lorsque vous avez rempli le formulaire d’inscription pour votre compétence Co
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* [Cortana Skills Kit](https://aka.ms/CortanaSkillsDocs) (Kit de compétences Cortana)
+* [Cortana Skills Kit](https://aka.ms/CortanaSkillsKitOverview) (Kit de compétences Cortana)
 * [Activer le débogage](bot-service-debug-cortana-skill.md)
 * [Publishing Cortana Skills][publish] (Publier des compétences Cortana)
 
 [invocation]: https://docs.microsoft.com/en-us/cortana/skills/cortana-invocation-guidelines
 [publish]: https://docs.microsoft.com/en-us/cortana/skills/publish-skill
-[connected]: https://aka.ms/CortanaSkillsBotConnectedAccount
 [CortanaEntity]: https://aka.ms/lgvcto

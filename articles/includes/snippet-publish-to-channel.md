@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 88fe2e3dca0559c101c55edb4353f3b57096a8d4
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563734"
+---
 ### <a name="cortana"></a>Cortana
 Les bots sont publiés dans Cortana à partir du [tableau de bord](https://aka.ms/cortana-publish) et sont utilisés pour améliorer les compétences de Cortana. La publication d’un bot l’envoie en révision. Les compétences de Cortana peuvent être déployées pour votre usage personnel, sur un petit groupe ou dans le monde entier.
 

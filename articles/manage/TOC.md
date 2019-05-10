@@ -4,7 +4,10 @@
 ## [Connecter un bot à des canaux](../bot-service-manage-channels.md)
 ## [Implémenter des fonctionnalités spécifiques au canal](../v4sdk/bot-builder-channeldata.md)
 ## [Cortana](../bot-service-channel-connect-cortana.md) 
-## [Direct Line](../bot-service-channel-connect-directline.md)
+## Ligne directe
+### [À propos de Direct Line](../bot-service-channel-directline.md)
+### [Se connecter à Direct Line](../bot-service-channel-connect-directline.md)
+### [Se connecter à Direct Line Speech](../bot-service-channel-connect-directlinespeech.md)
 ## [E-mail](../bot-service-channel-connect-email.md)
 ## [Activer la reconnaissance vocale dans le chat web](../bot-service-channel-connect-webchat-speech.md)
 ## [Facebook](../bot-service-channel-connect-facebook.md) 

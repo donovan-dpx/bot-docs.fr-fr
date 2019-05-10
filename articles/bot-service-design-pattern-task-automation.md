@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/13/2018
-ms.openlocfilehash: c14814dc7e2c83f740202db90b7e41efcdfb66a5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: 21324f68332be6a60f55e6ab55545fc6102bedb9
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224404"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033020"
 ---
 # <a name="create-task-automation-bots"></a>Créer des bots d’automatisation de tâche
 
@@ -28,8 +29,6 @@ Pour mieux comprendre la nature d’un bot de tâche, examinez l’exemple de ca
 Chaque jour, le support technique de la société Contoso reçoit plusieurs appels d’employés ayant besoin de réinitialiser leur mot de passe. Pour permettre aux agents du support technique de se consacrer à la résolution de problèmes plus complexes, Contoso souhaite automatiser cette tâche simple et reproductible qui consiste à réinitialiser le mot de passe d’un employé. 
 
 John, un développeur expérimenté de Contoso, décide de créer un bot pour automatiser la tâche de réinitialisation de mot de passe. Il commence par rédiger une spécification de conception du bot, comme il le ferait pour créer une application ou un site web. 
-
-::: moniker range="azure-bot-service-3.0"
 
 ### <a name="navigation-model"></a>Modèle de navigation
 
@@ -63,10 +62,7 @@ La spécification décrit la boîte de dialogue racine comme illustré dans la c
 
 #### <a name="resetpassword-dialog"></a>Boîte de dialogue ResetPassword
 
-Lorsque l’utilisateur choisit l’option **Réinitialiser le mot de passe** dans la boîte de dialogue racine, la boîte de dialogue `ResetPassword` est appelée. 
-La boîte de dialogue `ResetPassword` appelle ensuite deux autres boîtes de dialogue. 
-Tout d’abord, elle appelle la boîte de dialogue `PromptStringRegex` pour recueillir le numéro de téléphone de l’utilisateur. 
-Puis, elle appelle la boîte de dialogue `PromptDate` pour recueillir sa date de naissance. 
+Lorsque l’utilisateur choisit l’option **Réinitialiser le mot de passe** dans la boîte de dialogue racine, la boîte de dialogue `ResetPassword` est appelée. La boîte de dialogue `ResetPassword` appelle ensuite deux autres boîtes de dialogue. Tout d’abord, elle appelle la boîte de dialogue `PromptStringRegex` pour recueillir le numéro de téléphone de l’utilisateur. Puis, elle appelle la boîte de dialogue `PromptDate` pour recueillir sa date de naissance. 
 
 > [!NOTE]
 > Dans cet exemple, la logique implémentée par John pour recueillir le numéro de téléphone et la date de naissance de l’utilisateur repose sur deux boîtes de dialogue distinctes. Cette approche simplifie le code requis pour chaque boîte de dialogue. De plus, les boîtes de dialogue seront plus facilement réutilisables dans d’autres scénarios. 
@@ -77,9 +73,7 @@ La spécification décrit la boîte de dialogue `ResetPassword`.
 
 #### <a name="promptstringregex-dialog"></a>Boîte de dialogue PromptStringRegex
 
-La boîte de dialogue `PromptStringRegex` invite l’utilisateur à entrer son numéro de téléphone et vérifie que ce numéro respecte le format attendu. 
-Elle gère également le scénario où l’utilisateur fournit une entrée non valide à plusieurs reprises. 
-La spécification décrit la boîte de dialogue `PromptStringRegex`.
+La boîte de dialogue `PromptStringRegex` invite l’utilisateur à entrer son numéro de téléphone et vérifie que ce numéro respecte le format attendu. Elle gère également le scénario où l’utilisateur fournit une entrée non valide à plusieurs reprises. La spécification décrit la boîte de dialogue `PromptStringRegex`.
 
 ![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task4.png)
 
@@ -89,8 +83,6 @@ Enfin, la spécification fournit l’exemple d’un utilisateur qui communique a
 
 ![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task5.png)
 
-::: moniker-end 
-
 ## <a name="bot-app-or-website"></a>Bot, application ou site web ?
 
 Vous vous demandez peut-être pourquoi ne pas simplement créer une application ou un site web, dans la mesure où un bot d’automatisation de tâche s’y apparente étroitement. Selon votre scénario, il peut être judicieux de créer une application ou un site web plutôt qu’un bot. Vous pouvez même choisir d’incorporer votre bot dans une application en utilisant [l’API Direct Line du Bot Framework][directLineAPI] ou le <a href="https://aka.ms/BotFramework-WebChat" target="_blank">contrôle Discussion Web</a>. L’implémentation de votre bot dans le contexte d’une application s’avère doublement avantageuse dans la mesure où elle assure à la fois une expérience d’application riche et une expérience de conversation. 
@@ -99,7 +91,6 @@ Cependant, dans de nombreux cas, il peut être beaucoup plus complexe et beaucou
 
 En outre, les bots offrent une grande liberté en termes de développement et d’extension. Par exemple, un développeur peut choisir d’ajouter des capacités vocales et de langage naturel au bot de réinitialisation de mot de passe afin de le rendre accessible par appel audio. Il peut également ajouter la prise en prise en charge de messages texte. La société peut configurer des bornes dans l’ensemble du bâtiment et incorporer le bot de réinitialisation de mot de passe dans cette expérience.
 
-::: moniker range="azure-bot-service-3.0"
 <!-- TODO: SimpleTaskAutomation no longer exists
 ## Sample code
 
@@ -114,6 +105,5 @@ For a complete sample that shows how to implement simple task automation using t
 - [Gérer un flux de conversation avec des dialogues (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Gérer un flux de conversation avec des dialogues (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
 
-::: moniker-end
 
 [directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle

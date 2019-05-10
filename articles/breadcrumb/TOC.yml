@@ -6,7 +6,7 @@
       tocHref: /Bot-Framework/
       topicHref: /Bot-Framework/index
       items:
-        - name: SDK Bot Builder pour .NET
+        - name: Kit de développement logiciel Bot Builder pour .NET
           tocHref: /Bot-Framework/dotnet
           topicHref: /Bot-Framework/dotnet/
         - name: SDK Bot Builder pour Node.js

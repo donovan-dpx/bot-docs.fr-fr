@@ -6,13 +6,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 5/2/2019
+ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225734"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033053"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversations de transition de robot à humain
 
@@ -71,10 +71,6 @@ Une fois que l’agent connecté au robot, celui-ci commence à router les messa
 
 > [!NOTE]
 > Dans des scénarios plus avancés, le robot peut assumer une responsabilité au-delà du simple routage des messages entre l’utilisateur et l’agent. Par exemple, le robot peut déterminer quelle réponse est appropriée et simplement demander à l’agent de confirmer avant de continuer.
-
-## <a name="sample-code"></a>Exemple de code
-
-Pour une présentation complète de la manière de transférer des conversations de bot à humain à l’aide du kit SDK Bot Framework pour Node.js, consultez l’exemple <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Bot-HandOff</a> dans GitHub.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

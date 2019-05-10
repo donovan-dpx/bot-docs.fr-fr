@@ -9,11 +9,11 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996896"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64564012"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
 
@@ -241,7 +241,7 @@ Pour créer un message Kik natif, définissez la propriété `channelData` de l�
 
 | Propriété | Description |
 |----|----|
-| Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
+|  Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
 
 Cet extrait de code montre un exemple de la propriété `channelData` pour un message Kik natif.
 

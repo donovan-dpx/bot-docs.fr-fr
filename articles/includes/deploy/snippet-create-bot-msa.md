@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: fed6222fb9cf2d7793776c5575dfbcda49b54224
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: 14d9632ad578014a36b5f13e6dee883e2a6e1722
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360886"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035684"
 ---
-1. Connectez-vous au [**portail d’inscription des applications**](https://apps.dev.microsoft.com/).
+1. Connectez-vous au [**portail d’inscription des applications**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 1. Cliquez sur **Ajouter une application** pour inscrire votre application, créez un **ID d’application**, puis **générez un nouveau mot de passe**. Si vous avez déjà une application et un mot de passe mais que vous avez oublié le mot de passe, vous devrez en générer un nouveau dans la section des secrets d’application.
 1. Enregistrez l’ID d’application et le nouveau mot de passe que vous venez de générer afin de pouvoir les utiliser avec la commande `az bot create`.  
 

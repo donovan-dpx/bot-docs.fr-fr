@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: cc7e656d7c8a61e7bf784db579d0065c3bff331a
+ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035764"
+---
 Si vous utilisez des services tels que LUIS, vous devez également passer `luisAuthoringKey`. Si vous souhaitez utiliser un groupe de ressources existant dans Azure, utilisez l’argument `groupName` avec la commande ci-dessus.
 
 Il est vivement recommandé d’utiliser l’option `verbose` permettant de résoudre les problèmes qui peuvent survenir lors du déploiement du bot. Les autres options utilisées avec la commande `msbot clone services` sont décrites ci-dessous :

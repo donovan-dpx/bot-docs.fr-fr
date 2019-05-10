@@ -28,11 +28,13 @@
 ## [Implémenter des fonctionnalités spécifiques au canal](bot-builder-dotnet-channeldata.md)
 ## [Générer une compétence Cortana](bot-builder-dotnet-cortana-skill.md)
 ## [Passer des appels audio avec Skype](bot-builder-dotnet-audio-calls.md)
-## Passer des appels multimédia en temps réel avec Skype
-### [Concepts d’appel multimédia en temps réel](bot-builder-dotnet-real-time-media-concepts.md)
-### [Configuration requise pour les bots multimédia en temps réel](bot-builder-dotnet-real-time-media-requirements.md)
-### [Concevoir un bot multimédia en temps réel](bot-builder-dotnet-real-time-audio-video-call-overview.md)
-### [Déployer un bot multimédia en temps réel](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+<!--
+## Conduct real-time media calls with Skype
+### [Real-time media calling concepts](bot-builder-dotnet-real-time-media-concepts.md)
+### [Requirements for real-time media bots](bot-builder-dotnet-real-time-media-requirements.md)
+### [Build a real-time media bot](bot-builder-dotnet-real-time-audio-video-call-overview.md)
+### [Deploy a real-time media bot](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+-->
 # Données d’état
 ## [Gérer les données d’état](bot-builder-dotnet-state.md)
 ## [Gérer les données d’état avec Cosmos DB](bot-builder-dotnet-state-azure-cosmosdb.md)

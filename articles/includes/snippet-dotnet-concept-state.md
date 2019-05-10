@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 0b991c438c0006d1fb4bafa90982f73f4a18be77
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563446"
+---
 L’infrastructure Bot Builder permet à votre bot de stocker et de récupérer les données d’état qui sont associées à un utilisateur, à une conversation ou à un utilisateur spécifique dans le contexte d’une conversation donnée. Les données d’état peuvent servir à de nombreuses fins, par exemple pour déterminer l’endroit où une conversation précédente s’était arrêtée ou simplement pour accueillir un utilisateur régulier par son nom. Si vous stockez les préférences d’un utilisateur, vous pouvez utiliser ces informations pour personnaliser la prochaine conversation. Par exemple, vous pourriez avertir l’utilisateur de la publication d’un article sur un sujet qui l’intéresse ou bien l’informer de la disponibilité d’une date de rendez-vous. 
 
 À des fins de test et de prototypage, vous pouvez utiliser le stockage de données en mémoire de l’infrastructure Bot Builder. Pour les bots de production, vous pouvez implémenter votre propre adaptateur de stockage ou utiliser l’une des Extensions Azure. Les Extensions Azure permettent de stocker les données d’état de votre bot dans Stockage Table, CosmosDB ou SQL. Cet article montre comment utiliser l’adaptateur de stockage en mémoire pour stocker les données d’état de votre bot. 

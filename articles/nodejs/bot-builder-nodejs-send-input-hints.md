@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fa5e2a151bc0b41f160d0b71cb97e24fe1efacaa
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 513a5aa5b71bf8ec051a26027a56e67c01b1784a
+ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225794"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64906290"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 
@@ -56,7 +56,3 @@ Si vous ne définissez pas de conseil de saisie pour un message, le kit SDK Bot 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Ajouter la reconnaissance vocale aux messages](bot-builder-nodejs-text-to-speech.md)
-- [Informations de référence sur le kit SDK Bot Framework pour Node.js][SDKReference]
-
-[SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
-

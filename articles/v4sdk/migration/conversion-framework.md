@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240175"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033465"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migrer un bot du SDK .NET v3 vers v4
 
@@ -111,7 +111,7 @@ namespace ContosoHelpdeskChatBot
 
 ## <a name="update-your-globalasaxcs-file"></a>Mettre à jour votre fichier Global.asax.cs
 
-Une partie de la génération de modèles automatique a changé et nous devons configurer des composants de l’infrastructure de [gestion d’état](/articles/v4sdk/bot-builder-concept-state.md) nous-mêmes dans v4. Par exemple, v4 utilise un adaptateur de bot pour gérer l’authentification et transférer des activités au code de votre bot, et nous devons déclarer les propriétés d’état en amont.
+Une partie de la génération de modèles automatique a changé et nous devons configurer des composants de l’infrastructure de [gestion d’état](../bot-builder-concept-state.md) nous-mêmes dans v4. Par exemple, v4 utilise un adaptateur de bot pour gérer l’authentification et transférer des activités au code de votre bot, et nous devons déclarer les propriétés d’état en amont.
 
 Nous allons créer une propriété d’état pour `DialogState`, dont nous avons maintenant besoin pour la prise en charge des dialogues dans v4. Nous allons utiliser l’injection de dépendances pour faire parvenir les informations nécessaires au contrôleur et au code de bot.
 
@@ -246,7 +246,7 @@ C’est là où le gestionnaire de tour intervient dans v4 et les changements so
         }
     }
     ```
-1. Ajoutez une méthode **OnTurnAsync** qui contient le code de [gestionnaire de tour](/articles/v4sdk/bot-builder-basics.md#the-activity-processing-stack) du bot.
+1. Ajoutez une méthode **OnTurnAsync** qui contient le code de [gestionnaire de tour](../bot-builder-basics.md#the-activity-processing-stack) du bot.
     > [!NOTE]
     > Les dialogues scorables n’existent pas en tant que tels dans v4. Nous recherchons un message `cancel` de l’utilisateur dans le gestionnaire de tour du bot avant de poursuivre tout dialogue actif.
     ```csharp
@@ -353,8 +353,8 @@ Remarques concernant le code v4 :
 
 Dans ce bot, le dialogue racine invite l’utilisateur à choisir parmi un ensemble d’options, puis démarre un dialogue enfant en fonction de ce choix. Celui-ci effectue ensuite une boucle pendant la durée de vie de la conversation.
 
-- Nous pouvons définir le flux principal opérationnel comme dialogue en cascade, ce qui est un nouveau concept dans le kit SDK v4. Il s’exécute via un ensemble fixe d’étapes dans l’ordre. Pour plus d’informations, consultez [Implémenter des flux de conversation séquentiels](/articles/v4sdk/bot-builder-dialog-manage-conversation-flow).
-- L’invite est désormais gérée par le biais de classes d’invite, qui sont des dialogues enfants courts qui demandent une entrée, effectuent un traitement minimal et une validation, et retournent une valeur. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue](/articles/v4sdk/bot-builder-prompts.md).
+- Nous pouvons définir le flux principal opérationnel comme dialogue en cascade, ce qui est un nouveau concept dans le kit SDK v4. Il s’exécute via un ensemble fixe d’étapes dans l’ordre. Pour plus d’informations, consultez [Implémenter des flux de conversation séquentiels](~/v4sdk/bot-builder-dialog-manage-conversation-flow.md).
+- L’invite est désormais gérée par le biais de classes d’invite, qui sont des dialogues enfants courts qui demandent une entrée, effectuent un traitement minimal et une validation, et retournent une valeur. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue](~/v4sdk/bot-builder-prompts.md).
 
 Dans le fichier **Dialogs/RootDialog.cs** :
 
@@ -425,7 +425,7 @@ Dans le fichier **Dialogs/RootDialog.cs** :
     }
     ```
 1. Nous pouvons remplacer **OnOptionSelected** par la deuxième étape de notre cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
-   - L’invite de choix retourne une valeur `FoundChoice`. Cela s’affiche dans la propriété `Result` du contexte d’étape. La pile de dialogues traite toutes les valeurs de retour comme des objets. Si la valeur de retour provient d’un de vos dialogues, vous connaissez le type de valeur de l’objet. Consultez [Types d’invites](/articles/v4sdk/bot-builder-concept-dialog.md#prompt-types) pour obtenir une liste ce que chaque type d’invite retourne.
+   - L’invite de choix retourne une valeur `FoundChoice`. Cela s’affiche dans la propriété `Result` du contexte d’étape. La pile de dialogues traite toutes les valeurs de retour comme des objets. Si la valeur de retour provient d’un de vos dialogues, vous connaissez le type de valeur de l’objet. Consultez [Types d’invites](../bot-builder-concept-dialog.md#prompt-types) pour obtenir une liste ce que chaque type d’invite retourne.
    - Étant donné que l’invite de choix ne va pas lever d’exception, le bloc try-catch peut être supprimé.
    - Nous devons ajouter un passage afin que cette méthode retourne toujours une valeur appropriée. Ce code ne doit jamais être atteint mais, si c’est le cas, il permettra au dialogue d’« échouer de manière appropriée ».
     ```csharp
