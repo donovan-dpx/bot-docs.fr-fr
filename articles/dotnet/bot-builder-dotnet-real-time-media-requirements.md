@@ -1,21 +1,18 @@
 ---
-title: Exigences et considérations relatives aux bots multimédias en temps réel| Microsoft Docs
-description: Appréhendez les exigences et les considérations importantes en matière de création de bots multimédias en temps réel pour Skype en utilisant le kit SDK Bot Framework pour .NET.
-author: ssulzer
-ms.author: ssulzer
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 8868ee0d72aa0de6480a392368469b6adf18b561
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224934"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032906"
 ---
+<a name="--"></a><!--
+---
+titre : Exigences et considérations relatives aux bots multimédias en temps réel| Microsoft Docs Description : Appréhendez les exigences et les considérations importantes en matière de création de bots multimédias en temps réel pour Skype en utilisant le kit SDK Bot Framework pour .NET.
+author: ssulzer ms.author: ssulzer manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Exigences et considérations relatives aux bots multimédias en temps réel
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -54,3 +51,4 @@ Certains conseils applicables au développement de bots d’appel de système de
   2. La plateforme multimédia en temps réel ne tire profit d’aucun processeur graphique (GPU) disponible sur la machine virtuelle pour se décharger du codage/décodage vidéo H.264. À la place, le codage et le décodage vidéo s’effectuent dans le logiciel sur l’unité centrale. Si un GPU est disponible, le bot peut en tirer avantage pour son propre rendu graphique (par exemple, si le bot utilise un moteur graphique 3D).
 
 - L’instance de machine virtuelle qui héberge le bot multimédia en temps réel doit comporter au moins 2 cœurs de processeur. Pour Azure, l’utilisation d’une machine virtuelle série Dv2 est recommandée. Vous trouverez des informations détaillées sur les types de machines virtuelles Azure dans la <a href="/azure/virtual-machines/windows/sizes-general" target="_blank">documentation Azure</a>. 
+-->

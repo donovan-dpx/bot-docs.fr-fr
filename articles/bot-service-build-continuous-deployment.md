@@ -1,73 +1,74 @@
 ---
-redirect_url: /bot-framework/bot-builder-deploy-az-cli
-ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+title: Configurer le déploiement continu pour un service de bot | Microsoft Docs
+description: Découvrez comment configurer le déploiement continu à partir du contrôle de code source pour un service de bot.
+keywords: déploiement continu, publier, déployer, portail azure
+author: ivorb
+ms.author: v-ivorb
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.date: 05/01/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: d755572c6559ca1de7f0cf93a120273aa0fff947
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971423"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033097"
 ---
-<a name="--"></a><!--
----
-titre : Configurer le déploiement continu pour Bot Service | Microsoft Docs description: Découvrez comment configurer le déploiement continu à partir du contrôle de code source pour un service de bot. keywords: déploiement continu, publier, déployer, portail azure author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: article ms.service: bot-service ms.date: 06/12/2018
----
-
 # <a name="set-up-continuous-deployment"></a>Configurer un déploiement continu
-Si votre code est archivé dans **GitHub** ou **Azure DevOps (anciennement Visual Studio Team Services)**, utilisez le déploiement continu pour déployer automatiquement les modifications de code à partir de votre référentiel source vers Azure. Dans cette rubrique, nous parlerons de la configuration du déploiement continu pour **GitHub** et **Azure DevOps**.
 
-> [!NOTE]
-> Le scénario décrit dans cet article suppose que vous avez déployé votre bot sur Azure et que vous souhaitez maintenant activer le déploiement continu pour ce bot. De plus, sachez qu’une fois que le déploiement continu est configuré, l’éditeur de code en ligne dans le portail Azure s’affiche en lecture seule.
+[!INCLUDE [applies-to](./includes/applies-to.md)]
+
+Cet article vous explique comment configurer un déploiement continu pour votre bot. Vous pouvez activer le déploiement continu pour déployer automatiquement les modifications de code à partir de votre dépôt source dans Azure. Dans cette rubrique, nous parlerons de la configuration du déploiement continu pour GitHub. Pour des informations sur la configuration du déploiement continu avec d’autres systèmes de contrôle de code source, consultez la section des ressources supplémentaires au bas de cette page.
+
+## <a name="prerequisites"></a>Prérequis
+- Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](http://portal.azure.com) avant de commencer.
+- Vous **devez** [déployer votre bot dans Azure](bot-builder-deploy-az-cli.md) avant d’activer le déploiement continu.
+
+## <a name="prepare-your-repository"></a>Préparer votre dépôt
+Vérifiez que la racine de votre dépôt comprend les fichiers nécessaires à votre projet. Cela vous permettra d’obtenir des builds automatiques à partir du serveur de build Kudu d’Azure App Service. 
+
+|Runtime | Fichiers du répertoire racine |
+|:-------|:---------------------|
+| ASP.NET Core | .sln ou .csproj |
+| Node.js | server.js, app.js ou package.json avec un script de démarrage |
+
 
 ## <a name="continuous-deployment-using-github"></a>Déploiement continu avec GitHub
+Pour activer le déploiement continu avec GitHub, accédez à la page **App Service** de votre bot dans le portail Azure.
 
-Pour configurer un déploiement continu à l’aide du dépôt GitHub qui contient le code source à déployer sur Azure, effectuez les étapes suivantes :
+Cliquez sur **Centre de déploiement** > **GitHub** > **Autoriser**.
 
-1. Dans le [portail Azure](https://portal.azure.com), accédez au panneau de **tous les paramètres App Service** et cliquez sur **Options de déploiement (classiques)**. 
+![Déploiement continu](~/media/azure-bot-build/azure-deployment.png)
 
-1. Cliquez sur **Choisir une source** et sélectionnez **GitHub**.
+Dans la fenêtre de navigateur qui s’ouvre, cliquez sur **Autoriser AzureAppService**. 
 
-   ![Choisissez GitHub](~/media/azure-bot-build/continuous-deployment-setup-github.png)
+![Autorisation d’Azure Github](~/media/azure-bot-build/azure-deployment-github.png)
 
-1. Cliquez sur **Autorisation**, puis sur le bouton **Autoriser**, et suivez les invites pour donner l’autorisation à Azure d’accéder à votre compte GitHub.
+Après avoir autorisé **AzureAppService**, revenez au **Centre de déploiement** dans le portail Azure.
 
-1. Cliquez sur **Choisir un projet** et sélectionnez un projet.
+1. Cliquez sur **Continuer**. 
 
-1. Cliquez sur **Choisir une branche** et sélectionnez une branche.
+1. Sélectionnez **Service de build App Service**.
 
-1. Cliquez sur **OK** pour terminer le processus de configuration.
+1. Cliquez sur **Continuer**.
 
-Votre déploiement continu avec la configuration GitHub est terminé. Chaque fois que vous validez dans le référentiel de code source, vos modifications sont automatiquement déployées dans Azure Bot Service.
+1. Sélectionnez **Organisation**, **Référentiel** et **Branche**.
 
-## <a name="continuous-deployment-using-azure-devops"></a>Déploiement continu avec Azure DevOps
+1. Cliquez sur **Continuer**, puis sur **Terminer** pour terminer la configuration.
 
-1. Dans le [portail Azure](https://portal.azure.com), accédez au panneau de **tous les paramètres App Service** et cliquez sur **Options de déploiement (classiques)**. 
-2. Cliquez sur **Choisir une source** et sélectionnez **Visual Studio Team Services**. Gardez à l’esprit que Visual Studio Team Services s’appelle désormais Azure DevOps Services.
-
-   ![Choisissez Visual Studio Team Services](~/media/azure-bot-build/continuous-deployment-setup-vs.png)
-
-3. Cliquez sur **Choisir votre compte** et sélectionnez un compte.
-
-> [!NOTE]
-> Si votre compte n’est pas listé, vous devrez [le lier à votre abonnement Azure](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=vsts&tabs=new-nav). Notez que seuls les projets VSTS Git sont pris en charge.
-
-4. Cliquez sur **Choisir un projet** et sélectionnez un projet.
-5. Cliquez sur **Choisir une branche** et sélectionnez une branche.
-6. Cliquez sur **OK** pour terminer le processus de configuration.
-
-   ![Configuration de Visual Studio](~/media/azure-bot-build/continuous-deployment-setup-vs-configuration.png)
-
-Votre déploiement continu avec la configuration Azure DevOps est terminé. Chaque fois que vous validez, vos modifications sont automatiquement déployées sur Azure.
+À ce stade, le déploiement continu avec GitHub est configuré. Chaque fois que vous validez dans le référentiel de code source, vos modifications sont automatiquement déployées dans Azure Bot Service.
 
 ## <a name="disable-continuous-deployment"></a>Désactiver le déploiement continu
 
 Même si votre bot est configuré pour le déploiement continu, vous ne pouvez pas utiliser l’éditeur de code en ligne pour apporter des modifications à votre bot. Si vous souhaitez utiliser l’éditeur de code en ligne, vous pouvez désactiver temporairement le déploiement continu.
 
 Pour désactiver le déploiement continu, procédez comme suit :
-1. Dans le [portail Azure](https://portal.azure.com), accédez au panneau de **tous les paramètres App Service** et cliquez sur **Options de déploiement (classiques)**. 
-2. Cliquez sur **Déconnecter** pour désactiver le déploiement continu. Pour réactiver le déploiement continu, répétez les étapes décrites dans les sections correspondantes ci-dessus.
+1. Dans le [portail Azure](https://portal.azure.com), accédez au panneau de **tous les paramètres App Service** et cliquez sur **Centre de déploiement**. 
+1. Cliquez sur **Déconnecter** pour désactiver le déploiement continu. Pour réactiver le déploiement continu, répétez les étapes décrites dans les sections correspondantes ci-dessus.
 
-## <a name="additional-information"></a>Informations supplémentaires
-- Visual Studio Team Services s’appelle désormais [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts)
+## <a name="additional-resources"></a>Ressources supplémentaires
+- Pour activer le déploiement continu à partir de BitBucket et d’Azure DevOps Services, consultez [Déploiement continu à l’aide d’Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment).
 
 
--->

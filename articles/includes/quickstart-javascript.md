@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b3f9a0d2c24809c0814baa9bfb8f993a4ba55ef7
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: ee2c261f6b028542b20771801b114d0b23ab21ca
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59551526"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033207"
 ---
 ## <a name="prerequisites"></a>Prérequis
 
@@ -12,7 +12,7 @@ ms.locfileid: "59551526"
 - [Node.JS](https://nodejs.org/)
 - [Yeoman](http://yeoman.io/), qui utilise un générateur afin de créer un bot pour vous
 - [git](https://git-scm.com/)
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator)
+- [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
 - Connaissances de [restify](http://restify.com/) et de la programmation asynchrone en JavaScript
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Yeoman vous invite à entrer des informations afin de créer votre bot. Pour ce 
 Grâce au modèle, votre projet contient tout le code nécessaire pour créer le bot dans ce guide de démarrage rapide. En fait, vous n’avez pas besoin d’écrire du code supplémentaire.
 
 > [!NOTE]
-> Si vous choisissez de créer un bot `Basic`, vous aurez besoin d’un modèle de langage LUIS. Vous pouvez en créer un sur le portail [luis.ai](https://www.luis.ai). Après avoir créé le modèle, mettez à jour le fichier .bot. Votre fichier bot ressemble à [ceci](../v4sdk/bot-builder-service-file.md).
+> Si vous choisissez de créer un bot `Basic`, vous aurez besoin d’un modèle de langage LUIS. Vous pouvez en créer un sur le portail [luis.ai](https://www.luis.ai). Après avoir créé le modèle, mettez à jour le fichier de configuration.
 
 ## <a name="start-your-bot"></a>Démarrer votre robot
 
@@ -73,8 +73,8 @@ Dans un terminal ou une invite de commandes, remplacez les répertoires par celu
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 
 1. Démarrez le Bot Framework Emulator.
-2. Cliquez sur le lien **Ouvrir le bot** de l’onglet de bienvenue de l’émulateur.
-3. Sélectionnez le fichier .bot situé dans le répertoire de création du projet.
+2. Cliquez sur le lien **Create a new bot configuration** (Créer une configuration de bot) sous l’onglet « Welcome » de l’émulateur. 
+3. Renseignez les champs pour votre bot, puis cliquez sur **Enregistrer et se connecter**.
 
 Envoyez un message à votre bot, et le bot vous enverra un message à son tour.
 ![Émulateur en cours d’exécution](../media/emulator-v4/js-quickstart.png)

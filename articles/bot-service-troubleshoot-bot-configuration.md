@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/26/2019
-ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 4/30/2019
+ms.openlocfilehash: c208cef52d1850a00b62828ae0ea622a2606ec5b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224847"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033425"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Résoudre les problèmes de configuration de bot
 
@@ -72,7 +72,7 @@ Les liens ci-dessous fournissent des instructions pour configurer les canaux pri
 
 ### <a name="channel-specific-behavior"></a>Comportement spécifique au canal
 
-L’implémentation de certaines fonctionnalités peut différer selon le canal. Par exemple, les canaux ne prennent pas tous en charge les cartes adaptatives. La plupart des canaux prennent en charge les boutons, mais les restituent selon leur propre mode d’affichage. Si vous voyez des différences de fonctionnement de certains types de messages dans les différents canaux, consultez [Channel Inspector](https://docs.botframework.com/channel-inspector/channels/Skype).
+L’implémentation de certaines fonctionnalités peut différer selon le canal. Par exemple, les canaux ne prennent pas tous en charge les cartes adaptatives. La plupart des canaux prennent en charge les boutons, mais les restituent selon leur propre mode d’affichage. Si vous voyez des différences de fonctionnement de certains types de messages dans les différents canaux, consultez les [informations de référence sur les canaux](bot-service-channels-reference.md).
 
 Voici quelques liens supplémentaires qui peuvent aider sur chacun des canaux :
 

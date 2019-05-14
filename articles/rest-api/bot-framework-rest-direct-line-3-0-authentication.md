@@ -7,15 +7,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 96f2963604d12c9c9e235288ad4df25924f45af4
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 04/10/2019
+ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998006"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032640"
 ---
-# <a name="authentication"></a>Authentification
+# <a name="authentication"></a>Authentication
 
 Un client peut authentifier les demandes adressées à l’API Direct Line 3.0 soit à l’aide d’un **secret** que vous [obtenez dans la page de configuration du canal Direct Line](../bot-service-channel-connect-directline.md) sur le portail Bot Framework, ou à l’aide d’un **jeton** que vous obtenez au moment de l’exécution. Le secret ou le jeton doivent être spécifiés dans l’en-tête `Authorization` de chaque demande, en utilisant le format suivant : 
 
@@ -59,6 +59,26 @@ Les extraits de code suivants illustrent la demande et la réponse dans le cadre
 POST https://directline.botframework.com/v3/directline/tokens/generate
 Authorization: Bearer RCurR_XV9ZA.cwA.BKA.iaJrC8xpy8qbOF5xnR2vtCX7CZj0LdjAPGfiCpg4Fv0
 ```
+
+La charge utile de la demande, qui contient les paramètres de jeton, est facultative mais recommandée. Lorsque vous générez un jeton qui peut être renvoyé au service Direct Line, fournissez la charge utile suivante pour renforcer la sécurité de la connexion. Lorsque vous incluez ces valeurs, Direct Line peut effectuer une validation de sécurité supplémentaire du nom et de l’ID utilisateur, ce qui empêche la falsification de ces valeurs par des clients malveillants. L’ajout de ces valeurs améliore également la capacité de Direct Line à envoyer l’activité de _mise à jour de la conversation_, ce qui lui permet de générer la mise à jour de la conversation dès que l’utilisateur rejoint la conversation. Lorsque ces informations ne sont pas fournies, l’utilisateur doit envoyer du contenu pour que Direct Line puisse envoyer la mise à jour de la conversation.
+
+```json
+{
+  "user": {
+    "id": "string",
+    "name": "string"
+  },
+  "trustedOrigins": [
+    "string"
+  ]
+}
+```
+
+| Paramètre | Type | Description |
+| :--- | :--- | :--- |
+| `user.id` | chaîne | facultatif. ID spécifique au canal de l’utilisateur à encoder dans le jeton. Pour un utilisateur Direct Line, il doit commencer par `dl_`. Vous pouvez créer un ID utilisateur unique pour chaque conversation et, pour une meilleure sécurité, vous devez faire en sorte que cet ID ne puisse pas être deviné. |
+| `user.name` | chaîne | facultatif. Nom convivial complet de l’utilisateur à encoder dans le jeton. |
+| `trustedOrigins` | tableau de chaînes | facultatif. Liste des domaines approuvés à incorporer dans le jeton. Ce sont les domaines qui peuvent héberger le client Web Chat du bot. Elle doit correspondre à la liste figurant dans la page de configuration Direct Line de votre bot. |
 
 ### <a name="response"></a>response
 

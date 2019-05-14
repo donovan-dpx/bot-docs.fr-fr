@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 3c4f8549f40740961feea24f73aa2e4b9b7bc82f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 04/30/2019
+ms.openlocfilehash: 28932ca45c6faaad2f17ecc03f026ba04352a5a1
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998886"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033068"
 ---
 # <a name="id-fields-in-the-bot-framework"></a>Champs d’ID dans Bot Framework
 
@@ -36,13 +36,13 @@ Par convention, tous les ID de canal sont en minuscules. Les canaux garantissent
 
 ## <a name="bot-handle"></a>Descripteur de robot
 
-Chaque robot inscrit auprès du Bot Framework a un descripteur.
+Chaque bot qui a été inscrit auprès d’Azure Bot Service a un descripteur de bot.
 
 Exemple : `FooBot`
 
-Un descripteur de robot représente une inscription de robot auprès de Bot Framework en ligne. Cette inscription est associée à un point de terminaison de webhook HTTP et à des inscriptions auprès de canaux.
+Un descripteur de bot représente l’inscription d’un bot auprès du service en ligne Azure Bot Service. Cette inscription est associée à un point de terminaison de webhook HTTP et à des inscriptions auprès de canaux.
 
-Le portail de développement de Bot Framework garantit l’unicité des descripteurs de robot. Le portail effectue une vérification de l’unicité ne tenant pas compte de la casse (ce qui signifie que les variations d’un descripteur de robot sont traitées comme s’il s’agissait d’un même descripteur), bien qu’il s’agisse d’une caractéristique du portail de développement, et pas nécessairement du descripteur de robot proprement dit.
+Azure Bot Service garantit l’unicité des descripteurs de bot. Le portail Azure effectue une vérification de l’unicité ne tenant pas compte de la casse (ce qui signifie que les variations de casse d’un descripteur de bot sont traitées comme un même descripteur), bien qu’il s’agisse d’une caractéristique du portail Azure, et pas nécessairement du descripteur de bot proprement dit.
 
 ### <a name="rules-for-bot-handles"></a>Règles pour les descripteurs de robot
 
@@ -50,7 +50,7 @@ Le portail de développement de Bot Framework garantit l’unicité des descript
 
 ## <a name="app-id"></a>ID d'application
 
-Chaque robot inscrit auprès du Bot Framework a un ID d’application.
+Chaque bot qui a été inscrit auprès d’Azure Bot Service a un ID d’application.
 
 > [!NOTE]
 > Auparavant, les applications étaient communément appelées « Applications MSA » ou « Applications MSA/AAD ». Les applications sont désormais plus généralement appelées simplement « applications », mais il se peut que certains éléments de protocole continuent à faire référence aux applications en tant qu’« Applications MSA » à perpétuité.

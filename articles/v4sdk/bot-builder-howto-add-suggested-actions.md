@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bf0c5c0bba335c41a268d43014e925f6a9289d75
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 3dac86bbcd98d48c636521b44d107f1e6341a3f7
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904972"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033382"
 ---
 # <a name="use-button-for-input"></a>Utiliser un bouton pour fournir une entrée
 
@@ -29,41 +29,23 @@ Les *actions suggérées* permettent à votre bot de présenter des boutons. Vou
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Vous pouvez accéder au code source utilisé ici à partir de [GitHub](https://aka.ms/SuggestedActionsCSharp).
+Le code source affiché ici repose sur l’[exemple de suggestions d’actions](https://aka.ms/SuggestedActionsCSharp).
 
-```csharp
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Schema;
-
-var reply = turnContext.Activity.CreateReply("What is your favorite color?");
-
-reply.SuggestedActions = new SuggestedActions()
-{
-    Actions = new List<CardAction>()
-    {
-        new CardAction() { Title = "Red", Type = ActionTypes.ImBack, Value = "Red" },
-        new CardAction() { Title = "Yellow", Type = ActionTypes.ImBack, Value = "Yellow" },
-        new CardAction() { Title = "Blue", Type = ActionTypes.ImBack, Value = "Blue" },
-    },
-
-};
-await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
-```
+[!code-csharp[suggested actions](~/../botbuilder-samples/samples/csharp_dotnetcore/08.suggested-actions/Bots/SuggestedActionsBot.cs?range=87-100)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-Vous pouvez accéder au code source utilisé ici à partir de [GitHub](https://aka.ms/SuggestActionsJS).
 
-```javascript
-const { ActivityTypes, MessageFactory, TurnContext } = require('botbuilder');
+Le code source affiché ici repose sur l’[exemple d’actions suggérées](https://aka.ms/SuggestActionsJS).
 
-async sendSuggestedActions(turnContext) {
-    var reply = MessageFactory.suggestedActions(['Red', 'Yellow', 'Blue'], 'What is the best color?');
-    await turnContext.sendActivity(reply);
-}
-```
+[!code-javascript[suggested actions](~/../botbuilder-samples/samples/javascript_nodejs/08.suggested-actions/bots/suggestedActionsBot.js?range=61-64)]
 
 ---
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Vous pouvez également accéder au code source complet affiché ici à partir de GitHub [[C#](https://aka.ms/SuggestedActionsCSharp) | [JS](https://aka.ms/SuggestActionsJS)].
+Vous pouvez accéder au code source complet affiché ici : l’[exemple CSharp](https://aka.ms/SuggestedActionsCSharp) ou l’[exemple JavaScript](https://aka.ms/SuggestActionsJS).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+> [!div class="nextstepaction"]
+> [Enregistrer les données d’utilisateur et de conversation](./bot-builder-howto-v4-state.md)

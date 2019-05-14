@@ -1,5 +1,5 @@
 ---
-title: Ajouter la reconnaissance vocale aux messages | Microsoft Docs
+title: Ajouter des fonctionnalités vocales aux messages | Microsoft Docs
 description: Découvrez comment ajouter la reconnaissance vocale aux messages à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
+ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224294"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64906300"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 
@@ -31,7 +31,7 @@ Si vous générez un bot pour un canal où sont activées les fonctionnalités v
 
 Avec le kit SDK Bot Framework pour Node.js, il existe plusieurs façons de spécifier le texte que doit prononcer le bot sur un canal à reconnaissance vocale. Vous pouvez définir la propriété `IMessage.speak` et envoyer le message à l’aide de la méthode `session.send()`, envoyer le message à l’aide de la méthode `session.say()` (en transmettant les paramètres qui spécifient le texte affiché, le texte parlé et les options), ou envoyer le message à l’aide d’une invite intégrée (en spécifiant les options `speak` et `retrySpeak`).
 
-### <a id="message-speak"></a> IMessage.speak 
+### <a id="message-speak"></a> IMessage.speak
 
 Si vous créez un message qui sera envoyé à l’aide de la méthode `session.send()`, définissez la propriété `speak` afin qu’elle spécifie le texte à énoncer par votre bot. L’exemple de code suivant crée un message qui spécifie le texte à énoncer et indique que le bot [accepte l’entrée utilisateur](bot-builder-nodejs-send-input-hints.md).
 
@@ -47,7 +47,7 @@ Comme alternative à l’utilisation de `session.send()`, vous pouvez appeler la
 |----|----|
 | `displayText` | Texte à afficher. |
 | `speechText` | Texte (en texte brut ou au format <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>) à prononcer. |
-| `options` | Un objet [IMessage][IMessage] qui peut contenir une pièce jointe ou [un conseil de saisie](bot-builder-nodejs-send-input-hints.md). |
+| `options` | Un `IMessage`objet qui peut contenir une pièce jointe ou un [indicateur d’entrée](bot-builder-nodejs-send-input-hints.md). |
 
 L’exemple de code suivant envoie un message qui spécifie le texte à afficher et le texte à énoncer et indique que le bot [ignore l’entrée utilisateur](bot-builder-nodejs-send-input-hints.md).
 
@@ -78,10 +78,3 @@ Pour un exemple complet qui montre comment créer un bot à reconnaissance vocal
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Exemple Roller (GitHub)</a>
-- [Informations de référence sur le kit SDK Bot Framework pour Node.js][SDKReference]
-
-[SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
-
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage

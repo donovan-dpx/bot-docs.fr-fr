@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/11/2019
+ms.date: 03/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7e5440e7d47d88b7ff6827359e7eb621bce53e3c
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: 55b5a4073340bb29074af5b2ee74dd952ea40f0c
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240487"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032239"
 ---
 # <a name="differences-between-the-v3-and-v4-net-sdk"></a>Différences entre les kits SDK .NET v3 et v4
 
@@ -25,15 +25,15 @@ La v4 du kit SDK Bot Framework prend en charge le même service Bot Framework s
   - L’adaptateur gère l’authentification du Bot Framework.
   - L’adaptateur gère le trafic entrant et sortant entre un canal et le gestionnaire de tour de votre bot, encapsulant les appels au Bot Framework Connector.
   - L’adaptateur initialise le contexte pour chaque tour.
-  - Pour plus d’informations, consultez la rubrique sur le [fonctionnement des bots](../bot-builder-basics.md).
+  - Pour plus d’informations, consultez la rubrique sur le [fonctionnement des bots][about-bots].
 - Gestion de l’état refactorisée.
   - Les données d’état ne sont plus automatiquement disponibles au sein d’un bot.
   - L’état est désormais géré par le biais d’objets de gestion d’état et d’accesseurs de propriété.
-  - Pour plus d’informations, consultez la rubrique sur la [gestion de l’état](../bot-builder-concept-state.md).
+  - Pour plus d’informations, consultez la rubrique sur la [gestion de l’état][about-state].
 - Nouvelle bibliothèque de dialogues.
   - Les dialogues v3 doivent être réécrits pour la nouvelle bibliothèque de dialogues.
-  - Les dialogues scorables n’existent plus. Vous pouvez rechercher des commandes « globales » dans le gestionnaire de tour, avant de passer le contrôle à vos dialogues.
-  - Pour plus d’informations, consultez la rubrique sur la [bibliothèque de dialogues](../bot-builder-concept-dialog.md).
+  - Les dialogues scorables n’existent plus. Avant de passer le contrôle à vos dialogues, vous pouvez rechercher des commandes « globales » dans le gestionnaire de tours. Selon la façon dont vous concevez votre bot v4, cette opération peut s’effectuer dans le gestionnaire de messages ou dans un dialogue parent. Pour consulter un exemple, reportez-vous à la rubrique sur la [gestion des interruptions utilisateur][interruptions].
+  - Pour plus d’informations, consultez la rubrique sur la [bibliothèque de dialogues][about-dialogs].
 - Prise en charge d’ASP.NET Core.
   - Les modèles pour la création de bots C# ciblent le framework ASP.NET Core.
   - Vous pouvez toujours utiliser ASP.NET pour vos bots, mais notre objectif pour la v4 est de prendre en charge le framework ASP.NET Core.
@@ -41,39 +41,33 @@ La v4 du kit SDK Bot Framework prend en charge le même service Bot Framework s
 
 ## <a name="activity-processing"></a>Traitement des activités
 
-Quand vous créez l’adaptateur pour votre bot, vous fournissez également un délégué de gestionnaire de tour qui reçoit les activités entrantes des canaux et des utilisateurs. L’adaptateur crée un objet de contexte de tour pour chaque activité reçue. Il transmet l’objet de contexte de tour au gestionnaire de tour, puis supprime l’objet une fois le tour terminé.
+Quand vous créez l’adaptateur pour votre bot, vous fournissez également un délégué de gestionnaire de messages qui reçoit les activités entrantes des canaux et des utilisateurs. L’adaptateur crée un objet de contexte de tour pour chaque activité reçue. Il transmet l’objet de contexte de tour au gestionnaire de tours du bot, puis supprime l’objet une fois le tour terminé.
 
-Le gestionnaire de tour peut recevoir de nombreux types d’activités. En général, vous ne transférez que les activités liées aux _messages_ vers les dialogues de votre bot. Pour obtenir des informations détaillées sur les types d’activités, consultez la rubrique sur le [schéma d’activité](https://aka.ms/botSpecs-activitySchema).
+Le gestionnaire de tour peut recevoir de nombreux types d’activités. En général, vous ne transférez que les activités liées aux _messages_ vers les dialogues de votre bot. Si vous dérivez votre bot de `ActivityHandler`, le gestionnaire de tours du bot transfère toutes les activités de message à `OnMessageActivityAsync`. Substituez cette méthode pour ajouter la logique de gestion des messages. Pour obtenir des informations détaillées sur les types d’activités, consultez la rubrique sur le [schéma d’activité][].
 
 ### <a name="handling-turns"></a>Gestion des tours
 
-Votre gestionnaire de tour doit correspondre à la signature d’un `BotCallbackHandler` :
-
-```csharp
-public delegate Task BotCallbackHandler(
-    ITurnContext turnContext,
-    CancellationToken cancellationToken);
-```
-
-Lors du traitement d’un tour, utilisez le contexte de tour pour obtenir des informations sur l’activité entrante et envoyer des activités à l’utilisateur :
+Lors du traitement d’un message, utilisez le contexte de tour pour obtenir des informations sur l’activité entrante et envoyer des activités à l’utilisateur :
 
 | | |
 |-|-|
 | Pour obtenir l’activité entrante | Obtenez la propriété `Activity` du contexte de tour. |
-| Pour créer une activité et l’envoyer à l’utilisateur | Appelez la méthode `SendActivityAsync` du contexte de tour.<br/>Pour plus d’informations, consultez les rubriques sur l’[envoi et la réception d’un message texte](../bot-builder-howto-send-messages.md) et sur l’[ajout de médias à des messages](../bot-builder-howto-add-media-attachments.md) |
+| Pour créer une activité et l’envoyer à l’utilisateur | Appelez la méthode `SendActivityAsync` du contexte de tour.<br/>Pour plus d’informations, consultez les rubriques sur l’[envoi et la réception d’un message textuel][send-messages] et sur l’[ajout d’actifs multimédias aux messages][send-media]. |
 
 La classe `MessageFactory` fournit des méthodes d’assistance pour créer et mettre en forme des activités.
 
 ### <a name="scorables-is-gone"></a>Disparition des dialogues scorables
 
-Gérez ces éléments dans la boucle de messages du bot. Pour la procédure à suivre avec les dialogues v4, consultez la rubrique sur la [gestion des interruptions de l’utilisateur](../bot-builder-howto-handle-user-interrupt.md).
+Gérez ces éléments dans la boucle de messages du bot. La description de la procédure à suivre pour les dialogues v4 se trouve dans la rubrique sur la [gestion des interruptions utilisateur][interruptions].
 
 Les arborescences de dispatch scorables composables et les dialogues de chaînes composables, comme l’_exception par défaut_, ont également disparu. Un moyen de reproduire cette fonctionnalité consiste à l’implémenter dans le gestionnaire de tour de votre bot.
 
 ## <a name="state-management"></a>Gestion de l'état
 
+Dans v3, vous pouvez stocker des données de conversation dans le service Bot State, qui fait partie d’un ensemble plus vaste de services fournis par Bot Framework. Toutefois, le service a été supprimé depuis le 31 mars 2018. À partir de v4, les considérations de conception sur la gestion de l’état sont celles de n’importe quelle application web ; un nombre d’options sont disponibles. Sa mise en cache en mémoire et dans le même processus est généralement le plus simple. Toutefois, pour les applications de production, vous devez stocker l’état plus durablement, par exemple dans une base de données SQL ou NoSQL, ou sous forme d’objets blob.
+
 La v4 n’utilise ni les propriétés `UserData`, `ConversationData` et `PrivateConversationData` ni les conteneurs de données pour gérer l’état.
-L’état est désormais géré par le biais d’objets de gestion d’état et d’accesseurs de propriété, comme décrit dans la [gestion de l’état](../bot-builder-concept-state.md).
+L’état est désormais géré par le biais d’objets de gestion d’état et d’accesseurs de propriété, comme décrit dans la [gestion de l’état][about-state].
 
 La v4 définit des classes `UserState`, `ConversationState` et `PrivateConversationState` qui gèrent les données d’état pour le bot. Vous devez créer un accesseur de propriété d’état pour chaque propriété à rendre persistante, au lieu de simplement lire et écrire dans un conteneur de données prédéfini.
 
@@ -101,8 +95,6 @@ Vous pouvez utiliser l’injection de dépendances pour accéder à ces élémen
 | Mettre à jour la valeur actuelle mise en cache d’une propriété | Appelez `IStatePropertyAccessor<T>.SetAsync`.<br/>Seul le cache est mis à jour (pas la couche de stockage de sauvegarde). |
 | Rendre les changements d’état apportés au stockage persistants | Appelez `BotState.SaveChangesAsync` pour tout objet de gestion d’état dans lequel l’état a changé avant la fermeture du gestionnaire de tour. |
 
-Pour plus d’informations, consultez la rubrique sur la [gestion de l’état](../bot-builder-concept-state.md#saving-state).
-
 ### <a name="managing-concurrency"></a>Gérer l'accès concurrentiel
 
 Votre bot peut avoir besoin de gérer la concurrence de l’état. Pour plus d’informations, consultez la section [Enregistrement de l’état](../bot-builder-concept-state.md#saving-state) dans **Gestion de l’état** et la section [Gérer la concurrence à l’aide des étiquettes d’entité](../bot-builder-howto-v4-storage.md#manage-concurrency-using-etags) dans **Écrire directement dans le stockage**.
@@ -120,25 +112,21 @@ Voici quelques-uns des principaux changements apportés aux dialogues :
 
 ### <a name="defining-dialogs"></a>Définition des dialogues
 
+Même si v3 offrait un moyen souple d’implémenter des dialogues avec l’interface `IDialog`, cette façon de faire supposait que vous implémentiez votre propre code pour les fonctionnalités, telles que la validation. Dans v4, il existe désormais des classes d’invite qui valident automatiquement l’entrée utilisateur pour vous, en la limitant à un type particulier (par exemple, un entier) et en invitant l’utilisateur à intervenir de nouveau jusqu’à ce qu’il renseigne une entrée valide. En règle générale, cela signifie moins de code à écrire pour le développeur.
+
 Vous disposez à présent de plusieurs options pour définir des dialogues :
 
-- Dialogue en cascade (instance de la classe `WaterfallDialog`).
+| | |
+|:--|:--|
+| Dialogue composant (dérivé de la classe `ComponentDialog`) | Vous permet d’encapsuler le code du dialogue sans conflits de nommage avec les contextes externes. Consultez la rubrique sur la [réutilisation des dialogues][reuse-dialogs]. |
+| Dialogue en cascade (instance de la classe `WaterfallDialog`) | Conçu pour bien fonctionner avec des dialogues d’invite, qui proposent et valident différents types d’entrées utilisateur. Une cascade automatise la majeure partie du processus pour vous, mais impose une certaine forme à votre code de dialogue (consultez la rubrique sur les [flux de conversation séquentiels][sequential-flow]). |
+| Dialogue personnalisé (dérivé de la classe abstraite `Dialog`) | Cette option vous donne le plus de flexibilité dans la gestion du comportement de vos dialogues, mais vous oblige également à en savoir plus sur la manière dont la pile de dialogues est implémentée. |
 
-  Il est conçu pour fonctionner avec les dialogues d’invite, qui invitent l’utilisateur à saisir différents types d’entrées et les valident. Consultez la rubrique sur l’[invite à saisir une entrée](../bot-builder-prompts.md).
+Dans v3, vous avez utilisé `FormFlow` pour effectuer un nombre défini d’étapes pour une tâche. Dans v4, le dialogue en cascade remplace FormFlow. Lorsque vous créez un dialogue en cascade, vous définissez les étapes du dialogue dans le constructeur. L’ordre des étapes exécutées suit exactement la progression selon laquelle vous les avez déclarées, et les fait se succéder automatiquement l’une après l’autre.
 
-  Ceci automatise la majeure partie du processus pour vous, mais impose une certaine forme à votre code de dialogue (consultez la rubrique sur les [flux de conversation séquentiels](../bot-builder-dialog-manage-conversation-flow.md)). Toutefois, vous pouvez créer d’autres flux de contrôle en ajoutant plusieurs dialogues à un jeu de dialogues (consultez la rubrique sur les [flux de conversation avancés](../bot-builder-dialog-manage-complex-conversation-flow.md)).
+Vous pouvez également créer des flux de contrôle complexes avec plusieurs dialogues ; consultez la rubrique sur les [flux de conversation avancés][complex-flow].
 
-- Un dialogue de composant (dérivé de la classe `ComponentDialog`).
-
-  Cela vous permet d’encapsuler le code du dialogue sans conflits de nommage avec les contextes externes. Consultez la rubrique sur la [réutilisation des dialogues](../bot-builder-compositcontrol.md).
-
-- Dialogue personnalisé (dérivé de la classe abstraite `Dialog`).
-
-  Cette option vous donne le plus de flexibilité dans la gestion du comportement de vos dialogues, mais vous oblige également à en savoir plus sur la manière dont la pile de dialogues est implémentée.
-
-Pour accéder à un dialogue, vous devez placer une instance de celui-ci dans un _jeu de dialogues_, puis générer un _contexte de dialogue_ pour ce jeu.
-
-Vous devez fournir un accesseur de propriété d’état de dialogue quand vous créez un jeu de dialogues. Le framework peut ainsi rendre l’état du dialogue persistant d’un tour à l’autre. [Gestion de l’état](../bot-builder-concept-state.md) décrit la façon dont l’état est géré dans la v4.
+Pour accéder à un dialogue, vous devez placer une instance de celui-ci dans un _jeu de dialogues_, puis générer un _contexte de dialogue_ pour ce jeu. Vous devez fournir un accesseur de propriété d’état de dialogue quand vous créez un jeu de dialogues. Le framework peut ainsi rendre l’état du dialogue persistant d’un tour à l’autre. La [Gestion de l’état][about-state] décrit la façon dont l’état est géré dans v4.
 
 ### <a name="using-dialogs"></a>Utilisation de dialogues
 
@@ -158,7 +146,7 @@ Voici une liste des opérations courantes dans la v3 et la procédure à suivre
 
 Autres remarques concernant le code v4 :
 
-- Les différentes classes dérivées de `Prompt` dans la v4 implémentent les invites utilisateur en tant que dialogues à deux étapes distinctes. Découvrez comment [collecter les entrées utilisateur avec une invite de dialogue](../bot-builder-prompts.md).
+- Les différentes classes dérivées de `Prompt` dans la v4 implémentent les invites utilisateur en tant que dialogues à deux étapes distinctes. Consultez la rubrique sur l’[implémentation des flux de conversation séquentiels][sequential-flow].
 - Utilisez `DialogSet.CreateContextAsync` pour créer un contexte de dialogue pour le tour actuel.
 - Au sein d’un dialogue, utilisez la propriété `DialogContext.Context` pour obtenir le contexte de tour actuel.
 - Les étapes en cascade ont un paramètre `WaterfallStepContext`, qui dérive de `DialogContext`.
@@ -190,3 +178,19 @@ Dans la v3, Formflow faisait partie du kit SDK C#, mais pas du kit SDK JavaScri
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Migrer un bot du kit SDK .NET v3 vers v4](conversion-framework.md)
+
+<!-- -->
+
+[about-bots]: ../bot-builder-basics.md
+[about-state]: ../bot-builder-concept-state.md
+[about-dialogs]: ../bot-builder-concept-dialog.md
+
+[send-messages]: ../bot-builder-howto-send-messages.md
+[send-media]: ../bot-builder-howto-add-media-attachments.md
+
+[sequential-flow]: ../bot-builder-dialog-manage-conversation-flow.md
+[complex-flow]: ../bot-builder-dialog-manage-complex-conversation-flow.md
+[reuse-dialogs]: ../bot-builder-compositcontrol.md
+[interruptions]: ../bot-builder-howto-handle-user-interrupt.md
+
+[Schéma d’activité]: https://aka.ms/botSpecs-activitySchema

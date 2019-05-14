@@ -10,36 +10,41 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75e12ab44915783c33c3b2ee10775cc6f00487bb
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 414417e3722e2d9063e1d177b534b6caa814c0db
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59905032"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032445"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Ajouter des données de télémétrie à votre bot
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Dans la version 4.2 du SDK Bot Framework, la journalisation des données de télémétrie a été ajoutée au produit.  Elle permet aux applications bot d’envoyer des données d’événement à des services comme Application Insights.
+Dans la version 4.2 du SDK Bot Framework, la journalisation des données de télémétrie a été ajoutée au produit.  Elle permet aux applications bot d’envoyer des données d’événement à des services comme Application Insights. La première section couvre ces deux méthodes et est suivie de fonctionnalités de télémétrie plus étendues.
 
-Ce document explique comment intégrer votre bot aux nouvelles fonctionnalités de télémétrie.  
+Ce document explique comment intégrer votre bot aux nouvelles fonctionnalités de télémétrie.
 
-## <a name="using-bot-configuration-option-1-of-2"></a>Utilisation de la configuration du bot (Option 1 sur 2)
+## <a name="basic-telemetry-options"></a>Options élémentaires de télémétrie
+
+### <a name="basic-application-insights"></a>Fonctionnalités Application Insights de base
 Il existe deux méthodes pour configurer votre bot.  La première part du principe que vous effectuez une intégration à Application Insights.
 
-Le fichier de configuration du bot contient des métadonnées sur les services externes que le bot utilise quand il est en cours d’exécution.  Par exemple, CosmosDB, Application Insights ainsi que la connexion de service et les métadonnées de Language Understanding (LUIS) y sont stockés.   
+Le fichier de paramètres contient des métadonnées sur les services externes que le bot utilise quand il s’exécute.  Par exemple, CosmosDB, Application Insights ainsi que la connexion de service et les métadonnées de Language Understanding (LUIS) y sont stockés.   
 
-Si vous voulez « stocker » Application Insights, sans qu’aucune configuration supplémentaire spécifique à Application Insights ne soit nécessaire (par exemple, des initialiseurs de télémétrie), transmettez l’objet de configuration du bot pendant l’initialisation.   Il s’agit de la méthode la plus simple pour initialiser et configurer Application Insights en vue de commencer le suivi des requêtes et des appels externes à d’autres services, ainsi que la corrélation des événements entre les services.
+Si vous voulez « stocker » Application Insights, sans qu’aucune configuration supplémentaire spécifique à Application Insights ne soit nécessaire (par exemple, des initialiseurs de télémétrie), transmettez l’objet de configuration (habituellement `IConfiguration`) pendant l’initialisation.   Il s’agit de la méthode la plus simple pour initialiser et configurer Application Insights en vue de commencer le suivi des requêtes et des appels externes à d’autres services, ainsi que la corrélation des événements entre les services.
 
+Vous devrez ajouter le package NuGet **Microsoft.Bot.Builder.Integration.ApplicationInsights.Core**.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs**
 ```csharp
-// ASP.Net Core - Startup.cs
-
 public void ConfigureServices(IServiceCollection services)
 {
      ...
      // Add Application Insights - pass in the bot configuration
-     services.AddBotApplicationInsights(botConfig);
+     services.AddBotApplicationInsights(<your IConfiguration variable name - likely "config">);
      ...
 }
 
@@ -54,32 +59,17 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-```JavaScript
-const appInsightsClient = new ApplicationInsightsTelemetryClient(botConfig);
-```
-
-**Application Insights ne figure pas dans la configuration du bot** Que se passe-t-il si la configuration de votre bot ne contient pas Application Insights ?  Pas de problème. Un client null qui n’agit pas sur les appels de méthode est utilisé par défaut.
-
-**Plusieurs sections Application Insights** Vous avez plusieurs sections Application Insight dans la configuration de votre bot ?  Vous pouvez désigner quelle instance du service Application Insights vous voulez utiliser dans la configuration de votre bot.
-
-```csharp
-// ASP.Net Core - Startup.cs
-
-public void ConfigureServices(IServiceCollection services)
-{
-     // Add Application Insights
-     services.AddBotApplicationInsights(botConfig, "myAppInsights");
-     ...
-}
-```
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```JavaScript
-const appInsightsClient = new ApplicationInsightsTelemetryClient(botConfig);
+const appInsightsClient = new ApplicationInsightsTelemetryClient(<your configuration variable name - likely "config">);
 ```
 
-## <a name="overriding-the-telemetry-client-option-2-of-2"></a>Remplacement du client de télémétrie (Option 2 sur 2)
+---
 
-Si vous voulez personnaliser votre client Application Insights ou vous connecter à un service totalement distinct, vous devez configurer le système différemment.
+### <a name="overriding-the-telemetry-client"></a>Remplacement du client de télémétrie
+
+Si vous voulez personnaliser votre client Application Insights ou vous connecter à un service totalement distinct, vous devez configurer le système différemment. Téléchargez le package `Microsoft.Bot.Builder.ApplicationInsights` via nuget, ou utilisez npm pour installer `botbuilder-applicationinsights`. Vous trouverez la clé d’instrumentation dans le portail Azure.
 
 **Modifier la configuration d’Application Insights**
 
@@ -96,10 +86,6 @@ public void ConfigureServices(IServiceCollection services)
      services.AddBotApplicationInsights(new BotTelemetryClient(telemetryClient), "InstrumentationKey");
 ```
 
-```JavaScript
-const appInsightsClient = new ApplicationInsightsTelemetryClient(botConfig);
-```
-
 **Utiliser une télémétrie personnalisée** Si vous voulez journaliser les événements de télémétrie générés par Bot Framework dans un système totalement distinct, créez une classe dérivée de l’interface de base et effectuez la configuration.  
 
 ```csharp
@@ -110,22 +96,18 @@ public void ConfigureServices(IServiceCollection services)
      var myTelemetryClient = MyTelemetryLogger();
      
      // Add Application Insights
-     services.AddBotApplicationInsights(myTelemetryClient);
+     services.AddSingleton(myTelemetryClient);
      ...
 }
 ```
 
-```JavaScript
-const appInsightsClient = new ApplicationInsightsTelemetryClient(botConfig);
-```
-
-## <a name="add-custom-logging-to-your-bot"></a>Ajouter une journalisation personnalisée à votre bot
+### <a name="add-custom-logging-to-your-bot"></a>Ajouter une journalisation personnalisée à votre bot
 
 Une fois la nouvelle prise en charge de la journalisation des données de télémétrie configurée pour le bot, vous pouvez commencer à ajouter des données de télémétrie à votre bot.  `BotTelemetryClient` (en C#, `IBotTelemetryClient`) dispose de plusieurs méthodes pour journaliser différents types d’événements.  Si vous choisissez le type d’événement approprié, vous pouvez tirer parti des rapports Application Insights existants (si vous utilisez Application Insights).  Pour les scénarios généraux, `TraceEvent` est habituellement utilisé.  Les données journalisées à l’aide de `TraceEvent` arrivent dans la table `CustomEvent` dans Kusto.
 
 Si vous utilisez un dialogue dans votre bot, chaque objet basé sur un dialogue (notamment les invites) contient une nouvelle propriété `TelemetryClient`.  C’est `BotTelemetryClient` qui vous permet d’effectuer la journalisation.  Ce n’est pas uniquement pour des raisons pratiques. Nous verrons plus loin dans cet article que si cette propriété est définie, `WaterfallDialogs` génère des événements.
 
-### <a name="identifiers-and-custom-events"></a>Identificateurs et événements personnalisés
+#### <a name="identifiers-and-custom-events"></a>Identificateurs et événements personnalisés
 
 Lors de la journalisation d’événements dans Application Insights, les événements générés contiennent des propriétés par défaut que vous n’avez pas besoin de renseigner.  Par exemple, les propriétés `user_id` et `session_id` sont contenues dans chaque événement personnalisé (généré avec l’API `TraceEvent`).  Par ailleurs, `activitiId`, `activityType` et `channelId` sont également ajoutées.
 
@@ -133,15 +115,320 @@ Lors de la journalisation d’événements dans Application Insights, les évén
 
 Propriété |Type | Détails
 --- | --- | ---
-`user_id`| `string` | [ChannelID](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#from)
-`session_id`| `string`|  [ConversationID](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#conversation)
-`customDimensions.activityId`| `string` | [ID d’activité du bot](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#id)
-`customDimensions.activityType` | `string` | [Type d’activité du bot](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#channel-id)
-`customDimensions.channelId` | `string` |  [ID de canal d’activité du bot](https://github.com/Microsoft/botframework-obi/blob/master/botframework-activity/botframework-activity.md#channel-id)
+`user_id`| `string` | [ChannelID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from)
+`session_id`| `string`|  [ConversationID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation)
+`customDimensions.activityId`| `string` | [ID d’activité du bot](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#id)
+`customDimensions.activityType` | `string` | [Type d’activité du bot](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
+`customDimensions.channelId` | `string` |  [ID de canal d’activité du bot](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id)
+
+## <a name="in-depth-telemetry"></a>Télémétrie approfondie
+
+Il existe trois nouveaux composants ajoutés au kit SDK dans la version 4.4.  Tous les composants journalisent des données à l’aide de l’interface `IBotTelemetryClient` (ou de `BotTelemetryClient` dans node.js) qui peut être substituée par une implémentation personnalisée.
+
+- Composant d’intergiciel (middleware) de Bot Framework (*TelemetryLoggerMiddleware*) qui journalise des données lorsque des messages sont reçus, envoyés, mis à jour ou supprimés. Vous pouvez substituer cela par une journalisation personnalisée.
+- Classe *LuisRecognizer*.  Vous pouvez substituer la journalisation personnalisée de deux manières : par appel (ajout/remplacement de propriétés) ou classes dérivées.
+- Classe *QnAMaker*.  Vous pouvez substituer la journalisation personnalisée de deux manières : par appel (ajout/remplacement de propriétés) ou classes dérivées.
+
+### <a name="telemetry-middleware"></a>Mmiddleware de télémétrie
+
+|C#  | JavaScript |
+|:-----|:------------|
+|**Microsoft.Bot.Builder.TelemetryLoggerMiddleware** | **botbuilder-core** |
+
+#### <a name="out-of-box-usage"></a>Composant prêt à l’emploi
+
+TelemetryLoggerMiddleware est un composant de Bot Framework qui peut être ajouté sans modification, et il effectuera une journalisation qui permettra l’élaboration de rapports prêts à l’emploi fournis avec le kit SDK Bot Framework. 
+
+```csharp
+var telemetryClient = sp.GetService<IBotTelemetryClient>();
+var telemetryLogger = new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
+options.Middleware.Add(telemetryLogger);  // Add to the middleware collection
+```
+
+#### <a name="adding-properties"></a>Ajout de propriétés
+Si vous décidez d’ajouter des propriétés supplémentaires, la classe TelemetryLoggerMiddleware peut être dérivée.  Par exemple, si vous souhaitez ajouter la propriété « MyImportantProperty » à l’événement `BotMessageReceived`.  `BotMessageReceived` est journalisé lorsque l’utilisateur envoie un message au bot.  L’ajout de la propriété supplémentaire peut être effectué de la manière suivante :
+
+```csharp
+class MyTelemetryMiddleware : TelemetryLoggerMiddleware
+{
+    ...
+    public Task OnReceiveActivityAsync(
+                  Activity activity,
+                  CancellationToken cancellation)
+    {
+        // Fill in the "standard" properties for BotMessageReceived
+        // and add our own property.
+        var properties = FillReceiveEventProperties(activity, 
+                    new Dictionary<string, string>
+                    { {"MyImportantProperty", "myImportantValue" } } );
+                    
+        // Use TelemetryClient to log event
+        TelemetryClient.TrackEvent(
+                        TelemetryLoggerConstants.BotMsgReceiveEvent,
+                        properties);
+    }
+    ...
+}
+```
+
+De plus, dans Startup, il convient d’ajouter la nouvelle classe :
+
+```csharp
+var telemetryLogger = new TelemetryLuisRecognizer(telemetryClient, logPersonalInformation: true);
+options.Middleware.Add(telemetryLogger);  // Add to the middleware collection
+```
+
+#### <a name="completely-replacing-properties--additional-events"></a>Remplacement complet des propriétés / Événement(s) supplémentaire(s)
+
+Si vous décidez de remplacer complètement les propriétés en cours de journalisation, la classe `TelemetryLoggerMiddleware` peut être dérivée (comme ci-dessus lors de l’extension des propriétés).   La journalisation des nouveaux événements est effectuée de la même façon.
+
+Par exemple, si vous souhaitez remplacer complètement les propriétés `BotMessageSend` et envoyer plusieurs événements, il est possible de procéder comme suit :
+
+```csharp
+class MyTelemetryMiddleware : TelemetryLoggerMiddleware
+{
+    ...
+    public Task<RecognizerResult> OnLuisRecognizeAsync(
+                  Activity activity,
+                  string dialogId = null,
+                  CancellationToken cancellation)
+    {
+        // Override properties for BotMsgSendEvent
+        var botMsgSendProperties = new Dictionary<string, string>();
+        properties.Add("MyImportantProperty", "myImportantValue");
+        // Log event
+        TelemetryClient.TrackEvent(
+                        TelemetryLoggerConstants.BotMsgSendEvent,
+                        botMsgSendProperties);
+                        
+        // Create second event.
+        var secondEventProperties = new Dictionary<string, string>();
+        secondEventProperties.Add("activityId",
+                                   activity.Id);
+        secondEventProperties.Add("MyImportantProperty",
+                                   "myImportantValue");
+        TelemetryClient.TrackEvent(
+                        "MySecondEvent",
+                        secondEventProperties);
+    }
+    ...
+}
+```
+Remarque : Lorsque les propriétés standard ne sont pas journalisées, cela entraîne l’arrêt des rapports prêts à l’emploi fournis avec le produit.
+
+#### <a name="events-logged-from-telemetry-middleware"></a>Événements journalisés à partir du middleware de télémétrie
+[BotMessageSend](#customevent-botmessagesend)
+[BotMessageReceived](#customevent-botmessagereceived)
+[BotMessageUpdate](#customevent-botmessageupdate)
+[BotMessageDelete](#customevent-botmessagedelete)
+
+### <a name="telemetry-support-luis"></a>LUIS de prise en charge de télémétrie 
+
+|C#  | JavaScript |
+|:-----|:------------|
+| **Microsoft.Bot.Builder.AI.Luis** | **botbuilder-ai** |
+
+#### <a name="out-of-box-usage"></a>Composant prêt à l’emploi
+LuisRecognizer est un composant Bot Framework existant et la télémétrie peut être activée en transmettant une interface IBotTelemetryClient via `luisOptions`.  Vous pouvez remplacer les propriétés par défaut en cours de journalisation et journaliser de nouveaux événements en fonction des besoins.
+
+Pendant la construction de `luisOptions`, un objet `IBotTelemetryClient` doit être fourni pour ce faire.
+
+```csharp
+var luisOptions = new LuisPredictionOptions(
+      ...
+      telemetryClient,
+      false); // Log personal information flag. Defaults to false.
+
+var client = new LuisRecognizer(luisApp, luisOptions);
+```
+
+#### <a name="adding-properties"></a>Ajout de propriétés
+Si vous décidez d’ajouter des propriétés supplémentaires, la classe `LuisRecognizer` peut être dérivée.  Par exemple, si vous souhaitez ajouter la propriété « MyImportantProperty » à l’événement `LuisResult`.  `LuisResult` est journalisé quand un appel de prédiction LUIS est effectué.  L’ajout de la propriété supplémentaire peut être effectué de la manière suivante :
+
+```csharp
+class MyLuisRecognizer : LuisRecognizer 
+{
+   ...
+   override protected Task OnRecognizerResultAsync(
+           RecognizerResult recognizerResult,
+           ITurnContext turnContext,
+           Dictionary<string, string> properties = null,
+           CancellationToken cancellationToken = default(CancellationToken))
+   {
+       var luisEventProperties = FillLuisEventProperties(result, 
+               new Dictionary<string, string>
+               { {"MyImportantProperty", "myImportantValue" } } );
+        
+        TelemetryClient.TrackEvent(
+                        LuisTelemetryConstants.LuisResultEvent,
+                        luisEventProperties);
+        ..
+   }    
+   ...
+}
+```
+
+#### <a name="add-properties-per-invocation"></a>Ajouter des propriétés par appel
+Il est parfois nécessaire d’ajouter des propriétés supplémentaires lors de l’appel :
+```csharp
+var additionalProperties = new Dictionary<string, string>
+{
+   { "dialogId", "myDialogId" },
+   { "conversationInfo", "myConversationInfo" },
+};
+
+var result = await recognizer.RecognizeAsync(turnContext,
+     additionalProperties,
+     CancellationToken.None).ConfigureAwait(false);
+```
+
+#### <a name="completely-replacing-properties--additional-events"></a>Remplacement complet des propriétés / Événement(s) supplémentaire(s)
+Si vous décidez de remplacer complètement les propriétés journalisées, la classe `LuisRecognizer` peut être dérivée (comme ci-dessus lors de l’extension des propriétés).   La journalisation des nouveaux événements est effectuée de la même façon.
+
+Par exemple, si vous souhaitez remplacer complètement les propriétés `LuisResult` et envoyer plusieurs événements, il est possible de procéder comme suit :
+
+```csharp
+class MyLuisRecognizer : LuisRecognizer
+{
+    ...
+    override protected Task OnRecognizerResultAsync(
+             RecognizerResult recognizerResult,
+             ITurnContext turnContext,
+             Dictionary<string, string> properties = null,
+             CancellationToken cancellationToken = default(CancellationToken))
+    {
+        // Override properties for LuisResult event
+        var luisProperties = new Dictionary<string, string>();
+        properties.Add("MyImportantProperty", "myImportantValue");
+        
+        // Log event
+        TelemetryClient.TrackEvent(
+                        LuisTelemetryConstants.LuisResult,
+                        luisProperties);
+                        
+        // Create second event.
+        var secondEventProperties = new Dictionary<string, string>();
+        secondEventProperties.Add("MyImportantProperty2",
+                                   "myImportantValue2");
+        TelemetryClient.TrackEvent(
+                        "MySecondEvent",
+                        secondEventProperties);
+        ...
+    }
+    ...
+}
+```
+Remarque : Lorsque les propriétés standard ne sont pas journalisées, cela entraîne l’arrêt des rapports Application Insights prêts à l’emploi fournis avec le produit.
+
+#### <a name="events-logged-from-telemetryluisrecognizer"></a>Événements journalisés à partir de TelemetryLuisRecognizer
+[LuisResult](#customevent-luisevent)
+
+### <a name="telemetry-qna-recognizer"></a>Module de reconnaissance QnA de télémétrie
+
+|C#  | JavaScript |
+|:-----|:------------|
+| **Microsoft.Bot.Builder.AI.QnA** | **botbuilder-ai** |
+
+
+#### <a name="out-of-box-usage"></a>Composant prêt à l’emploi
+La classe QnAMaker est un composant Bot Framework existant qui ajoute deux paramètres de constructeur supplémentaires qui activent la journalisation et permettent d’utiliser les rapports prêts à l’emploi fournis avec le kit SDK Bot Framework. Le nouveau `telemetryClient` fait référence à une interface `IBotTelemetryClient` qui effectue la journalisation.  
+
+```csharp
+var qna = new QnAMaker(endpoint, options, client, 
+                       telemetryClient: telemetryClient,
+                       logPersonalInformation: true);
+```
+#### <a name="adding-properties"></a>Ajout de propriétés 
+Si vous décidez d’ajouter des propriétés supplémentaires, il existe deux méthodes pour cela : quand les propriétés doivent être ajoutées pendant l’appel QnA pour récupérer les réponses ou en dérivant de la classe `QnAMaker`.  
+
+La dérivation de la classe `QnAMaker` est illustrée ci-après.  Cet exemple montre l’ajout de la propriété « MyImportantProperty » à l’événement `QnAMessage`.  L’événement `QnAMessage` est journalisé quand un appel QnA `GetAnswers` est effectué.  De plus, nous journalisons un deuxième événement, « MySecondEvent ».
+
+```csharp
+class MyQnAMaker : QnAMaker 
+{
+   ...
+   protected override Task OnQnaResultsAsync(
+                 QueryResult[] queryResults, 
+                 ITurnContext turnContext, 
+                 Dictionary<string, string> telemetryProperties = null, 
+                 Dictionary<string, double> telemetryMetrics = null, 
+                 CancellationToken cancellationToken = default(CancellationToken))
+   {
+            var eventData = await FillQnAEventAsync(queryResults, turnContext, telemetryProperties, telemetryMetrics, cancellationToken).ConfigureAwait(false);
+
+            // Add my property
+            eventData.Properties.Add("MyImportantProperty", "myImportantValue");
+
+            // Log QnaMessage event
+            TelemetryClient.TrackEvent(
+                            QnATelemetryConstants.QnaMsgEvent,
+                            eventData.Properties,
+                            eventData.Metrics
+                            );
+
+            // Create second event.
+            var secondEventProperties = new Dictionary<string, string>();
+            secondEventProperties.Add("MyImportantProperty2",
+                                       "myImportantValue2");
+            TelemetryClient.TrackEvent(
+                            "MySecondEvent",
+                            secondEventProperties);       }    
+    ...
+}
+```
+
+#### <a name="adding-properties-during-getanswersasync"></a>Ajout de propriétés pendant GetAnswersAsync
+Si vous avez des propriétés qui doivent être ajoutées pendant l’exécution, la méthode `GetAnswersAsync` peut fournir des propriétés et/ou des métriques à ajouter à l’événement.
+
+Par exemple, si vous souhaitez ajouter un `dialogId` à l’événement, il est possible de procéder comme suit :
+```csharp
+var telemetryProperties = new Dictionary<string, string>
+{
+   { "dialogId", myDialogId },
+};
+
+var results = await qna.GetAnswersAsync(context, opts, telemetryProperties);
+```
+La classe `QnaMaker` offre la possibilité de substituer des propriétés, y compris les propriétés PersonalInfomation.
+
+#### <a name="completely-replacing-properties--additional-events"></a>Remplacement complet des propriétés / Événement(s) supplémentaire(s)
+Si vous décidez de remplacer complètement les propriétés en cours de journalisation, la classe `TelemetryQnAMaker` peut être dérivée (comme ci-dessus lors de l’extension des propriétés).   La journalisation des nouveaux événements est effectuée de la même façon.
+
+Par exemple, si vous souhaitez remplacer complètement les propriétés `QnAMessage`, il est possible de procéder comme suit :
+
+```csharp
+class MyLuisRecognizer : TelemetryQnAMaker
+{
+    ...
+    protected override Task OnQnaResultsAsync(
+         QueryResult[] queryResults, 
+         ITurnContext turnContext, 
+         Dictionary<string, string> telemetryProperties = null, 
+         Dictionary<string, double> telemetryMetrics = null, 
+         CancellationToken cancellationToken = default(CancellationToken))
+    {
+        // Add properties from GetAnswersAsync
+        var properties = telemetryProperties ?? new Dictionary<string, string>();
+        // GetAnswerAsync properties overrides - don't add if already present.
+        properties.TryAdd("MyImportantProperty", "myImportantValue");
+
+        // Log event
+        TelemetryClient.TrackEvent(
+                           QnATelemetryConstants.QnaMsgEvent,
+                            properties);
+    }
+    ...
+}
+```
+Remarque : Lorsque les propriétés standard ne sont pas journalisées, cela entraîne l’arrêt des rapports prêts à l’emploi fournis avec le produit.
+
+#### <a name="events-logged-from-telemetryluisrecognizer"></a>Événements journalisés à partir de TelemetryLuisRecognizer
+[QnAMessage](#customevent-qnamessage)
+
 
 ## <a name="waterfalldialog-events"></a>Événements WaterfallDialog
 
-En plus de la génération de vos propres événements, l’objet `WaterfallDialog` du SDK génère maintenant des événements. La section suivante décrit les événements générés à partir de Bot Framework. Si la propriété `TelemetryClient` est définie sur `WaterfallDialog`, ces événements sont stockés.
+En plus de générer vos propres événements, l’objet `WaterfallDialog` du kit SDK génère maintenant des événements. La section suivante décrit les événements générés à partir de Bot Framework. Si la propriété `TelemetryClient` est définie sur `WaterfallDialog`, ces événements sont stockés.
 
 Voici un exemple de la modification d’un échantillon (BasicBot) qui utilise `WaterfallDialog` pour journaliser des événements de télémétrie.  BasicBot utilise un modèle courant utilisé dans lequel un `WaterfallDialog` est placé dans un `ComponentDialog` (`GreetingDialog`).
 
@@ -164,6 +451,18 @@ AddDialog(new WaterfallDialog(ProfileDialog, waterfallSteps) { TelemetryClient =
 ```
 
 Une fois que `WaterfallDialog` a configuré `IBotTelemetryClient`, il commence à journaliser des événements.
+
+## <a name="events-generated-by-the-bot-framework-service"></a>Événements générés par le service Bot Framework
+
+En plus de `WaterfallDialog`, qui génère des événements à partir de votre code de bot, le service Bot Framework Channel journalise également des événements.  Cela vous permet de diagnostiquer les problèmes liés aux canaux ou l’ensemble des défaillances du bot.
+
+### <a name="customevent-activity"></a>CustomEvent : « Activity »
+**Journalisé à partir de :** Service Channel   Journalisé par le service Channel quand un message est reçu.
+
+### <a name="exception-bot-errors"></a>Exception : « Bot Errors »
+**Journalisé à partir de :** Service Channel   Journalisé par le canal quand un appel au bot retourne une réponse HTTP non 2XX.
+
+## <a name="all-events-generated"></a>Tous les événements générés
 
 ### <a name="customevent-waterfallstart"></a>CustomEvent : « WaterfallStart » 
 
@@ -215,99 +514,160 @@ Journalise quand un dialogue en cascade est annulé.
 - `customDimensions.StepName` (un nom de méthode ou `StepXofY` en cas d’expression lambda)
 - `customDimensions.InstanceID` (unique pour chaque instance de dialogue)
 
-
-## <a name="events-generated-by-the-bot-framework-service"></a>Événements générés par le service Bot Framework
-
-En plus de `WaterfallDialog`, qui génère des événements à partir de votre code de bot, le service Bot Framework Channel journalise également des événements.  Cela vous permet de diagnostiquer les problèmes liés aux canaux ou l’ensemble des défaillances du bot.
-
-### <a name="customevent-activity"></a>CustomEvent : « Activity »
-**Journalisé à partir de :** Service Channel   Journalisé par le service Channel quand un message est reçu.
-
-### <a name="exception-bot-errors"></a>Exception : « Bot Errors »
-**Journalisé à partir de :** Service Channel   Journalisé par le canal quand un appel au bot retourne une réponse HTTP non 2XX.
-
-## <a name="additional-events"></a>Événements supplémentaires
-
-Le [Modèle d’entreprise](https://github.com/Microsoft/AI/tree/master/templates/Enterprise-Template) est le code open source qui peut être copié librement.  Il contient plusieurs composants qui peuvent être réutilisés et modifiés pour répondre à vos besoins en terme de rapport.
-
 ### <a name="customevent-botmessagereceived"></a>CustomEvent : BotMessageReceived 
-**Journalisé à partir de :** TelemetryLoggerMiddleware (**Exemple Entreprise**)
+Journalisé quand le bot reçoit un nouveau message d’un utilisateur.
 
-Journalisé quand le bot reçoit un nouveau message.
+Lorsqu’il n’est pas remplacé, cet événement est journalisé à partir de `Microsoft.Bot.Builder.TelemetryLoggerMiddleware` à l’aide de la méthode `Microsoft.Bot.Builder.IBotTelemetry.TrackEvent()`.
 
-- UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ConversationID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- Text (facultatif pour PII)
+- Identificateur de session  
+  - Lorsque vous utilisez Application Insights, cela est journalisé à partir de `TelemetryBotIdInitializer` en tant qu’identificateur de **session** (*Temeletry.Context.Session.Id*) utilisé dans Application Insights.  
+  - Correspond à l’[ID de conversation](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation) tel que défini par le protocole Bot Framework.
+  - Le nom de propriété journalisé est `session_id`.
+
+- Identificateur d’utilisateur
+  - Lorsque vous utilisez Application Insights, cela est journalisé à partir de `TelemetryBotIdInitializer` en tant qu’identificateur d’**utilisateur** (*Telemetry.Context.User.Id*) utilisé dans Application Insights.  
+  - La valeur de cette propriété est une combinaison des propriétés [Identificateur de canal](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) et [ID utilisateur](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (concaténées ensemble) telles que définies par le protocole Bot Framework.
+  - Le nom de propriété journalisé est `user_id`.
+
+- ActivityID 
+  - Lorsque vous utilisez Application Insights, cela est journalisé à partir de `TelemetryBotIdInitializer` en tant que propriété de l’événement.
+  - Correspond à l’[ID d’activité](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#Id) tel que défini par le protocole Bot Framework.
+  - Le nom de la propriété est `activityId`.
+
+- Identificateur de canal
+  - Lorsque vous utilisez Application Insights, cela est journalisé à partir de `TelemetryBotIdInitializer` en tant que propriété de l’événement.  
+  - Correspond au champ [Channel Identifier](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#id) (Identificateur de canal) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `channelId`.
+
+- ActivityType 
+  - Lorsque vous utilisez Application Insights, cela est journalisé à partir de `TelemetryBotIdInitializer` en tant que propriété de l’événement.  
+  - Correspond au champ [Activity Type](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#type) (Type d’activité) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `activityType`.
+
+- Texte
+  - **Éventuellement** journalisé lorsque la propriété `logPersonalInformation` a pour valeur `true`.
+  - Correspond au champ [Activity Text](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#text) (Texte de l’activité) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `text`.
+
+- Speak
+
+  - **Éventuellement** journalisé lorsque la propriété `logPersonalInformation` a pour valeur `true`.
+  - Correspond au champ [Activity Speak](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#speak) (Discours d’activité) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `speak`.
+
+  - 
+
 - FromId
+  - Correspond au champ [From Identifier](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant de l’identificateur) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromId`.
+
 - FromName
+  - **Éventuellement** journalisé lorsque la propriété `logPersonalInformation` a pour valeur `true`.
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
+
 - RecipientId
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
+
 - RecipientName
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
+
 - ConversationId
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
+
 - ConversationName
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
+
 - Paramètres régionaux
+  - Correspond au champ [From Name](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from) (Provenant du nom) du protocole Bot Framework.
+  - Le nom de propriété journalisé est `fromName`.
 
 ### <a name="customevent-botmessagesend"></a>CustomEvent : BotMessageSend 
-**Journalisé à partir de :** TelemetryLoggerMiddleware (**Exemple Entreprise**)
+**Journalisé à partir de :** TelemetryLoggerMiddleware 
 
 Journalisé quand le bot envoie un message.
 
 - UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ConversationID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- SessionID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ReplyToID
-- Channel (Canal source ; par exemple, Skype, Cortana, Teams)
 - RecipientId
 - ConversationName
 - Paramètres régionaux
-- Text (facultatif pour PII)
 - RecipientName (facultatif pour PII)
+- Text (facultatif pour PII)
+- Speak (facultatif pour PII)
+
 
 ### <a name="customevent-botmessageupdate"></a>CustomEvent : BotMessageUpdate
 **Journalisé à partir de :** TelemetryLoggerMiddleware   Journalisé quand un message est mis à jour par le bot (cas rare)
+- UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- SessionID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- RecipientId
+- ConversationId
+- ConversationName
+- Paramètres régionaux
+- Text (facultatif pour PII)
+
 
 ### <a name="customevent-botmessagedelete"></a>CustomEvent : BotMessageDelete
 **Journalisé à partir de :** TelemetryLoggerMiddleware   Journalisé quand un message est supprimé par le bot (cas rare)
+- UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- SessionID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- RecipientId
+- ConversationId
+- ConversationName
 
-### <a name="customevent-luisintentinentname"></a>CustomEvent : LuisIntent.INENTName 
-**Journalisé à partir de :** TelemetryLuisRecognizer (**Exemple Entreprise**)
+### <a name="customevent-luisevent"></a>CustomEvent : LuisEvent
+**Journalisé à partir de :** LuisRecognizer
 
 Journalise les résultats du service LUIS.
 
 - UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ConversationID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- SessionID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- ApplicationId
 - Intention
 - IntentScore
-- Question
-- ConversationId
+- Intent2 
+- IntentScore2 
+- FromId
 - SentimentLabel
 - SentimentScore
-- *Entités LUIS*
-- **NOUVEAU** DialogId
+- Entities (en tant que json)
+- Question (facultatif pour PII)
 
-### <a name="customevent-qnamessage"></a>CustomEvent : QnAMessage
-**Journalisé à partir de :** TelemetryQnaMaker (**Exemple Entreprise**)
+## <a name="customevent-qnamessage"></a>CustomEvent : QnAMessage
+**Journalisé à partir de :** QnAMaker
 
 Journalise les résultats du service QnA Maker.
 
 - UserID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- ConversationID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
+- SessionID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityID ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
-- Nom d’utilisateur
-- ConversationId
-- OriginalQuestion
-- Question
+- Username (facultatif pour PII)
+- Question (facultatif pour PII)
+- MatchedQuestion
+- QuestionId
 - Réponse
-- Score (*Facultatif* : si nous avons trouvé des connaissances)
+- Score
+- ArticleFound
 
 ## <a name="querying-the-data"></a>Interrogation des données
 Quand vous utilisez Application Insights, toutes les données sont corrélées (même entre les services).  Nous pouvons le constater en interrogeant une requête réussie et voir tous les événements associés pour cette requête.  

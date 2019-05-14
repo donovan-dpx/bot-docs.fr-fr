@@ -7,19 +7,19 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/18/2019
-ms.openlocfilehash: 86a75fb315ec303cb8a519bfa02063c4e6780307
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.date: 05/05/2019
+ms.openlocfilehash: 569438e43a64a96239f7d9e490563498e7f6f279
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904812"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65039776"
 ---
 # <a name="about-azure-bot-service"></a>À propos d’Azure Bot Service
 
 [!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
-Azure Bot Service fournit des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. L’infrastructure modulable et extensible fournie par le Kit de développement logiciel (SDK), les outils, les modèles et les services d’intelligence artificielle permettent aux développeurs de créer des bots en mesure d’offrir des fonctionnalités vocales, de comprendre le langage naturel, de traiter les questions-réponses, et bien davantage.
+Azure Bot Service et Bot Framework fournissent des outils pour créer, tester, déployer et gérer des bots intelligents, le tout en un même endroit. L’infrastructure modulable et extensible fournie par le Kit de développement logiciel (SDK), les outils, les modèles et les services d’intelligence artificielle permettent aux développeurs de créer des bots en mesure d’offrir des fonctionnalités vocales, de comprendre le langage naturel, de traiter les questions-réponses, et bien davantage.
 
 ## <a name="what-is-a-bot"></a>Qu’est-ce qu’un bot ?
 Les bots offrent une expérience qui donne l’impression aux utilisateurs d’avoir moins à faire à un ordinateur, et plus à une personne, ou du moins à un robot intelligent. Les bots peuvent être utilisés pour faire passer des tâches répétitives et simples, comme la réservation de table ou le recueil d’informations de profil, vers des systèmes automatisés qui ne nécessitent plus d’intervention humaine directe. Les utilisateurs conversent avec le bot à l’aide de texte, de cartes interactives et avec la voix. Une interaction avec un bot peut se composer d’une question-réponse rapide, ou il peut s’agir d’une conversation plus sophistiquée fournissant un accès à des services de manière plus intelligente.
@@ -28,7 +28,7 @@ Les bots sont comparables à des applications web modernes. Ils résident sur In
 
 Les bots peuvent effectuer les mêmes opérations que d’autres types de logiciels : lire et écrire des fichiers, utiliser des bases de données et des API, et réaliser des tâches de calcul classiques. Ce qui rend les bots uniques, c’est leur utilisation de mécanismes généralement réservés à la communication entre humains. 
 
-Azure Bot Service offre les fonctionnalités suivantes :
+Azure Bot Service et Bot Framework offrent :
 - Kit SDK Bot Framework pour le développement de bots
 - Bot Framework Tools pour couvrir l’ensemble du workflow de développement de bot
 - Bot Framework Service (BFS) pour l’envoi et la réception de messages et d’événements entre bots et canaux
@@ -40,7 +40,7 @@ Par ailleurs, les bots peuvent utiliser d’autres services Azure comme :
 
 ## <a name="building-a-bot"></a>Création d’un bot 
 
-Azure Bot Service propose un ensemble intégré d’outils et de services permettant de faciliter ce processus. Choisissez votre environnement de développement ou vos outils de ligne de commande favoris pour créer votre bot. Des kits de développement logiciel (SDK) existent pour C#, JavaScript et Typescript. (Les kits de développement logiciel pour Java et Python sont en cours de développement.) Nous proposons des outils pour différents stades de développement de bot, afin de vous aider à concevoir et créer des bots.
+Azure Bot Service et Bot Framework proposent un ensemble intégré d’outils et de services permettant de faciliter ce processus. Choisissez votre environnement de développement ou vos outils de ligne de commande favoris pour créer votre bot. Des kits de développement logiciel (SDK) existent pour C#, JavaScript et Typescript. (Les kits de développement logiciel pour Java et Python sont en cours de développement.) Nous proposons des outils pour différents stades de développement de bot, afin de vous aider à concevoir et créer des bots.
 
 ![Présentation des bots](media/bot-service-overview.png) 
 
@@ -48,9 +48,9 @@ Azure Bot Service propose un ensemble intégré d’outils et de services permet
 Comme avec n’importe quel type de logiciel, il est important pour le processus de création d’un bot réussi de disposer d’une compréhension approfondie des objectifs, des processus et des besoins des utilisateurs. Avant d’écrire votre code, consultez les [instructions relatives à la conception](bot-service-design-principles.md)  des bots, pour connaître les bonnes pratiques et déterminer les besoins de votre bot. Vous pouvez créer un bot simple ou inclure des fonctionnalités plus élaborées, telles que des fonctions vocales, la compréhension du langage naturel ou la capacité de répondre aux questions.
 
 ### <a name="build"></a>Créer
-Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Bot Framework Service est l’un des composants d’Azure Bot Service. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez commencer le développement de votre bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser des modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] pour un développement local.
+Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Bot Framework Service est l’un des composants d’Azure Bot Service et de Bot Framework. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez commencer le développement de votre bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser des modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] pour un développement local.
 
-Dans le cadre d’Azure Bot Service, nous proposons des composants supplémentaires que vous pouvez utiliser pour étendre les fonctionnalités de votre bot
+Dans le cadre d’Azure Bot Service et de Bot Framework, nous proposons des composants supplémentaires que vous pouvez utiliser pour étendre les fonctionnalités de votre bot
 
 | Fonctionnalité | Description | Lien |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ Dans le cadre d’Azure Bot Service, nous proposons des composants supplémentai
 > [!NOTE]
 > Le tableau ci-dessus n’est pas exhaustif. Pour plus d’informations sur les fonctionnalités des bots, explorez les articles sur la gauche, en commençant par [Envoi de messages](~/v4sdk/bot-builder-howto-send-messages.md).
 
-En outre, nous fournissons des outils en ligne de commande pour vous aider à créer, gérer et tester les ressources de bot. Ces outils peuvent gérer un fichier de configuration de bot, configurer des applications LUIS, créer une base de connaissances QnA, simuler une conversation, et bien davantage. Vous trouverez plus d’informations dans le fichier [readme](https://aka.ms/botbuilder-tools-readme) des outils en ligne de commande.
+En outre, nous fournissons des outils en ligne de commande pour vous aider à créer, gérer et tester les ressources de bot. Ces outils peuvent configurer des applications LUIS, créer une base de connaissances QnA, créer des modèles à répartir entre les composants, simuler une conversation, etc. Vous trouverez plus d’informations dans le fichier [readme](https://aka.ms/botbuilder-tools-readme) des outils en ligne de commande.
 
 Vous avez également accès à un large éventail d’[exemples](https://github.com/microsoft/botbuilder-samples) qui présentent un bon nombre de fonctionnalités disponibles avec le Kit de développement logiciel (SDK). Ils sont intéressants pour les développeurs qui souhaitent démarrer avec un plus grand ensemble de fonctionnalités.
 

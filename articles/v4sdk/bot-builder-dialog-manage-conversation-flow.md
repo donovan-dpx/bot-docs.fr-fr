@@ -1,6 +1,6 @@
 ---
 title: Implémenter des flux de conversation séquentiels | Microsoft Docs
-description: Découvrez comment gérer un flux de conversation simple avec des dialogues dans le kit SDK Bot Framework pour Node.js.
+description: Découvrez comment gérer un flux de conversation simple avec des dialogues dans le kit SDK Bot Framework.
 keywords: flux de conversation simple, flux de conversation séquentiel, dialogues, invites, cascades, ensemble de dialogues
 author: JonathanFingold
 ms.author: v-jofing
@@ -8,537 +8,235 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/18/2019
+ms.date: 04/24/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5361b2e411e12b296b60a0f27b560dee5f1f769f
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: ad1209481691e1c1ed4e00b42086b8996aeea6a5
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904862"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032697"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues. Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine. Dans cet article, nous utilisons un _dialogue en cascade_, quelques _invites_ et un _ensemble de dialogues_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
+Pour interagir avec les utilisateurs, un bot collecte généralement des informations en posant des questions. La bibliothèque de dialogues vous permet de poser des questions facilement et de valider la réponse pour vous assurer qu’elle correspond à un type de données spécifique ou répond aux règles de validation personnalisées.
+
+Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues. Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine. En règle générale, un dialogue est utile quand le bot doit recueillir des informations auprès de l’utilisateur. Cette rubrique explique comment implémenter un flux de conversation simple en créant des invites et en les appelant à partir d’un dialogue en cascade. 
 
 ## <a name="prerequisites"></a>Prérequis
-- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
-- Le code dans cet article est basé sur l’exemple d’**invite à plusieurs tours**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://aka.ms/cs-multi-prompts-sample) ou en [JS](https://aka.ms/js-multi-prompts-sample).
-- Connaissances des [concepts de base des bots](bot-builder-basics.md), de la [bibliothèque de boîtes de dialogue](bot-builder-concept-dialog.md), de [l’état de boîte de dialogue](bot-builder-dialog-state.md), et du fichier [.bot](bot-file-basics.md).
 
+- Connaissances des [concepts de base des bots][concept-basics], de la [gestion des états][concept-state] et de la [bibliothèque de dialogues][concept-dialogs].
+- Une copie de l’exemple d’**invite multitour** en [**CSharp**][cs-sample] ou [**JavaScript**][js-sample].
 
-Les sections suivantes reflètent les étapes que vous devez suivre pour implémenter des dialogues simples pour la plupart des bots :
+## <a name="about-this-sample"></a>À propos de cet exemple
 
-## <a name="configure-your-bot"></a>Configurer votre bot
+Dans l’exemple d’invite multitour, nous utilisons un dialogue en cascade, quelques invites et un dialogue de composant pour créer une interaction simple qui pose à l’utilisateur une série de questions. Le code utilise un dialogue pour suivre ces étapes :
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+| Étapes        | Type d’invite  |
+|:-------------|:-------------| 
+| Demander à l’utilisateur son mode de transport | Invite de choix |
+| Demander son nom à l’utilisateur | Invite de texte |
+| Demander à l’utilisateur s’il souhaite indiquer son âge | Invite de confirmation |
+| S’il a répondu « oui », demander son âge  | Invite de nombre avec validation pour accepter uniquement des âges compris entre 0 et 150. |
+| Demander si les informations collectées sont correctes | Invite de réutilisation de la confirmation |
 
-Nous allons initialiser l’accesseur de propriété d’état pour l’état du dialogue du bot dans le code de configuration dans le fichier **Startup.cs**.
+Enfin, si l’utilisateur a répondu « oui », afficher les informations collectées ; sinon, lui indiquer que ses informations ne seront pas conservées.
 
-Nous définissons une classe `MultiTurnPromptsBotAccessors` pour héberger les objets de gestion d’états et les accesseurs de propriété d’état pour le bot.
-Ici, nous appelons uniquement des parties du code.
-
-```csharp
-public class MultiTurnPromptsBotAccessors
-{
-    // Initializes a new instance of the class.
-    public MultiTurnPromptsBotAccessors(ConversationState conversationState, UserState userState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
-    }
-
-    public IStatePropertyAccessor<DialogState> ConversationDialogState { get; set; }
-    public IStatePropertyAccessor<UserProfile> UserProfile { get; set; }
-
-    public ConversationState ConversationState { get; }
-    public UserState UserState { get; }
-}
-```
-
-Nous inscrivons la classe d’accesseurs dans la méthode `ConfigureServices` de la classe `Startup`.
-Une fois encore, nous appelons uniquement des parties du code.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // ...
-
-    // Create and register state accessors.
-    // Accessors created here are passed into the IBot-derived class on every turn.
-    services.AddSingleton<MultiTurnPromptsBotAccessors>(sp =>
-    {
-        // We need to grab the conversationState we added on the options in the previous step
-        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-        var userState = options.State.OfType<UserState>().FirstOrDefault();
-
-        // Create the custom state accessor.
-        // State accessors enable other components to read and write individual properties of state.
-        var accessors = new MultiTurnPromptsBotAccessors(conversationState, userState)
-        {
-            ConversationDialogState = conversationState.CreateProperty<DialogState>("DialogState"),
-            UserProfile = userState.CreateProperty<UserProfile>("UserProfile"),
-        };
-
-        return accessors;
-    });
-}
-```
-
-Via l’injection de dépendances, les accesseurs sont disponibles pour le code de constructeur du bot.
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le fichier **index.js**, nous définissons les objets de gestion d’état.
-Ici, nous appelons uniquement des parties du code.
-
-```javascript
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different part of a bot.
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
-
-// Define the state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state storage system to persist the dialog and user state between messages.
-const memoryStorage = new MemoryStorage();
-
-// Create conversation state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const userState = new UserState(memoryStorage);
-
-// Create the main dialog, which serves as the bot's main handler.
-const bot = new MultiTurnBot(conversationState, userState);
-```
-
-Le constructeur du bot va créer les accesseurs de propriété d’état pour le bot : `this.dialogState` et `this.userProfile`.
-
----
-
-## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Mettre à jour le gestionnaire de tours du bot pour qu’il appelle le dialogue
-
-Pour exécuter le dialogue, le gestionnaire de tours du bot doit créer un contexte de dialogue pour l’ensemble de dialogues qui contient les dialogues du bot. Un bot peut définir plusieurs ensembles de boîtes de dialogue, mais en règle générale, vous devez simplement en définir un pour votre bot. 
+## <a name="create-the-main-dialog"></a>Créer le dialogue principal
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Le dialogue est exécuté depuis le gestionnaire de tours du bot. Le gestionnaire commence par créer un élément `DialogContext` et continue le dialogue actif ou débute un nouveau dialogue selon ce qui est nécessaire. Le gestionnaire enregistre ensuite la conversation et l’état de l’utilisateur à la fin du tour.
+Pour utiliser les dialogues, installez le package NuGet **Microsoft.Bot.Builder.Dialogs**.
 
-Dans la classe `MultiTurnPromptsBot`, nous avons défini une propriété `_dialogs` qui contient l’ensemble de dialogues à partir duquel nous générons un contexte de dialogue. Ici encore, nous affichons uniquement une partie du code du gestionnaire de tours.
+Le bot interagit avec l’utilisateur par le biais du `UserProfileDialog`. Quand nous créons la classe `DialogBot` du bot, nous définissons le `UserProfileDialog` en tant que dialogue principal. Le bot utilise ensuite une méthode d’assistance `Run` pour accéder au dialogue.
 
-```csharp
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    // ...
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-        // Run the DialogSet - let the framework identify the current state of the dialog from
-        // the dialog stack and figure out what (if any) is the active dialog.
-        var dialogContext = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
-        var results = await dialogContext.ContinueDialogAsync(cancellationToken);
+![Dialogue de profil utilisateur](media/user-profile-dialog.png)
 
-        // If the DialogTurnStatus is Empty we should start a new dialog.
-        if (results.Status == DialogTurnStatus.Empty)
-        {
-            await dialogContext.BeginDialogAsync("details", null, cancellationToken);
-        }
-    }
+**Dialogs\UserProfileDialog.cs**
 
-    // ...
-    // Save the dialog state into the conversation state.
-    await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
+Nous commençons par créer le `UserProfileDialog` qui dérive de la classe `ComponentDialog`, et qui a 6 étapes.
 
-    // Save the user profile updates into the user state.
-    await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-}
-```
+Dans le constructeur `UserProfileDialog`, créez les étapes en cascade, les invites et le dialogue en cascade, puis ajoutez-les au jeu de dialogues. Les invites doivent se trouver dans le jeu de dialogues où elles sont utilisées.
+
+[!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
+
+Ensuite, nous implémentons les étapes qu’utilise le dialogue. Pour utiliser une invite, appelez-la à partir d’une étape dans votre dialogue et récupérez le résultat de l’invite à l’étape suivante avec `stepContext.Result`. Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite jusqu’à ce qu’elle reçoive une entrée valide.
+
+Vous devez toujours retourner une valeur `DialogTurnResult` non Null à partir d’une étape en cascade. Si vous ne le faites pas, votre dialogue risque de ne pas fonctionner comme prévu. Vous pouvez voir ici l’implémentation pour `NameStepAsync` dans le dialogue en cascade.
+
+[!code-csharp[Name step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=56-61)]
+
+Dans `AgeStepAsync`, nous spécifions une nouvelle invite au cas où la validation de l’entrée de l’utilisateur échouerait, soit parce que son format ne peut pas être analysé par l’invite, soit parce que l’entrée ne remplit pas un critère de validation. Dans ce cas, si aucune nouvelle invite n’a été fournie, l’invite utilise le texte d’invite initial pour redemander une saisie à l’utilisateur.
+
+[!code-csharp[Age step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=74-93&highlight=10)]
+
+**UserProfile.cs**
+
+Le mode de transport, le nom et l’âge de l’utilisateur sont enregistrés dans une instance de la classe `UserProfile`.
+
+[!code-csharp[UserProfile class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/UserProfile.cs?range=9-16)]
+
+**Dialogs\UserProfileDialog.cs**
+
+Au cours de la dernière étape, nous vérifions le `stepContext.Result` retourné par le dialogue appelé à l’étape précédente en cascade. Si la valeur retournée est true, nous utilisons l’accesseur de profil utilisateur pour obtenir et mettre à jour le profil utilisateur. Pour obtenir le profil utilisateur, nous appelons la méthode `GetAsync`, puis nous définissons les valeurs des propriétés `userProfile.Transport`, `userProfile.Name` et `userProfile.Age`. Enfin, nous récapitulons les informations à l’attention de l’utilisateur avant d’appeler `EndDialogAsync`, qui met fin au dialogue. La fin du dialogue se traduit par son retrait de la pile des dialogues et le retour d’un résultat facultatif à son parent. Le parent est le dialogue ou la méthode ayant démarré le dialogue qui vient de prendre fin.
+
+[!code-csharp[SummaryStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=108-134&highlight=5-10,25-26)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Le code du bot utilise quelques-unes des classes dans la bibliothèque des dialogues.
+Pour utiliser des dialogues, votre projet doit installer le package npm **botbuilder-dialogs**.
 
-```javascript
-const { ChoicePrompt, DialogSet, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
-```
+Le bot interagit avec l’utilisateur par le biais du `UserProfileDialog`. Quand nous créons le `DialogBot` du bot, nous définissons le `UserProfileDialog` en tant que dialogue principal. Le bot utilise ensuite une méthode d’assistance `run` pour accéder au dialogue.
 
-Le dialogue est exécuté depuis le gestionnaire de tours du bot. Le gestionnaire commence par créer un élément `DialogContext` (`dc`) et continue le dialogue actif ou débute un nouveau dialogue selon ce qui est nécessaire. Le gestionnaire enregistre ensuite la conversation et l’état de l’utilisateur à la fin du tour.
+![Dialogue de profil utilisateur](media/user-profile-dialog-js.png)
 
-La classe `MultiTurnBot` est définie dans le fichier **bot.js**. Le constructeur de cette classe ajoute une propriété `dialogs` pour l’ensemble de dialogues à partir duquel nous générons un contexte de dialogue. Ce bot collecte les données utilisateur une seule fois, à l’aide du dialogue `WHO_ARE_YOU`. Une fois que le profil utilisateur est rempli, le bot utilise le dialogue `HELLO_USER` pour répondre. Ici encore, nous affichons uniquement une partie du code du gestionnaire de tours.
+**dialogs\userProfileDialog.js**
 
-```javascript
-async onTurn(turnContext) {
-    if (turnContext.activity.type === ActivityTypes.Message) {
-        // Create a dialog context object.
-        const dc = await this.dialogs.createContext(turnContext);
+Nous commençons par créer le `UserProfileDialog` qui dérive de la classe `ComponentDialog`, et qui a 6 étapes.
 
-        const utterance = (turnContext.activity.text || '').trim().toLowerCase();
+Dans le constructeur `UserProfileDialog`, créez les étapes en cascade, les invites et le dialogue en cascade, puis ajoutez-les au jeu de dialogues. Les invites doivent se trouver dans le jeu de dialogues où elles sont utilisées.
 
-        // ...
-        // If the bot has not yet responded, continue processing the current dialog.
-        await dc.continueDialog();
+[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
 
-        // Start the sample dialog in response to any other input.
-        if (!turnContext.responded) {
-            const user = await this.userProfile.get(dc.context, {});
-            if (user.name) {
-                await dc.beginDialog(HELLO_USER);
-            } else {
-                await dc.beginDialog(WHO_ARE_YOU);
-            }
-        }
-    }
+Ensuite, nous implémentons les étapes qu’utilise le dialogue. Pour utiliser une invite, appelez-la à partir d’une étape dans votre dialogue et récupérez le résultat de l’invite à l’étape suivante à partir du contexte de l’étape, en l’occurrence avec `step.result`. Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite jusqu’à ce qu’elle reçoive une entrée valide.
 
-    // ...
-    // Save changes to the user state.
-    await this.userState.saveChanges(turnContext);
+Vous devez toujours retourner une valeur `DialogTurnResult` non Null à partir d’une étape en cascade. Si vous ne le faites pas, votre dialogue risque de ne pas fonctionner comme prévu. Vous pouvez voir ici l’implémentation pour `nameStep` dans le dialogue en cascade.
 
-    // End this turn by saving changes to the conversation state.
-    await this.conversationState.saveChanges(turnContext);
-}
-```
+[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=75-78)]
+
+Dans `ageStep`, nous spécifions une nouvelle invite au cas où la validation de l’entrée de l’utilisateur échouerait, soit parce que son format ne peut pas être analysé par l’invite ou parce que l’entrée ne remplit pas un critère de validation, spécifié dans le constructeur ci-dessus. Dans ce cas, si aucune nouvelle invite n’a été fournie, l’invite utilise le texte d’invite initial pour redemander une saisie à l’utilisateur.
+
+[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=90-101&highlight=5)]
+
+**userProfile.js**
+
+Le mode de transport, le nom et l’âge de l’utilisateur sont enregistrés dans une instance de la classe `UserProfile`.
+
+[!code-javascript[user profile](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/userProfile.js?range=4-10)]
+
+**Dialogs\UserProfileDialog.cs**
+
+Au cours de la dernière étape, nous vérifions le `step.result` retourné par le dialogue appelé à l’étape précédente en cascade. Si la valeur retournée est true, nous utilisons l’accesseur de profil utilisateur pour obtenir et mettre à jour le profil utilisateur. Pour obtenir le profil utilisateur, nous appelons la méthode `get`, puis nous définissons les valeurs des propriétés `userProfile.transport`, `userProfile.name` et `userProfile.age`. Enfin, nous récapitulons les informations à l’attention de l’utilisateur avant d’appeler `endDialog`, qui met fin au dialogue. La fin du dialogue se traduit par son retrait de la pile des dialogues et le retour d’un résultat facultatif à son parent. Le parent est le dialogue ou la méthode ayant démarré le dialogue qui vient de prendre fin.
+
+[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
 
 ---
 
-Dans le gestionnaire de tours du bot, nous créons un contexte de dialogue pour l’ensemble de dialogues. Le contexte de dialogue accède au cache d’état du bot, qui se rappelle de l’endroit de la conversation où le dernier tour a été laissé.
+## <a name="create-the-extension-method-to-run-the-waterfall-dialog"></a>Créer la méthode d’extension pour exécuter le dialogue en cascade
 
-S’il existe un dialogue actif, la méthode _continuer le dialogue_ du contexte de dialogue le fait avancer en utilisant l’entrée de l’utilisateur qui a déclenché ce tour ; sinon, le bot appelle la méthode _commencer le dialogue_ du contexte de dialogue pour initier un dialogue.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Enfin, nous appelons la méthode _enregistrer les modifications_ sur les objets de gestion d’états pour conserver les modifications apportées lors de ce tour.
+Nous avons défini une extension `Run` que nous allons utiliser pour créer le contexte du dialogue et y accéder. Ici, `accessor` est l’accesseur de la propriété d’état du dialogue, et `dialog` est le dialogue composant du profil utilisateur. Comme les dialogues composant définissent un jeu de dialogues interne, nous devons créer un jeu de dialogues externe qui est visible par le code du gestionnaire de messages et utiliser cela pour créer un contexte de dialogue.
+
+Vous créez le contexte du dialogue en appelant la méthode `CreateContext` et l’utilisez pour interagir avec le jeu de dialogues à partir du gestionnaire de tours du bot. Le contexte du dialogue inclut le contexte du tour actuel, le dialogue parent et l’état du dialogue, ce qui offre une méthode permettant de conserver les informations au sein du dialogue.
+
+Le contexte du dialogue vous permet de démarrer un dialogue avec l’ID de chaîne ou de continuer le dialogue actuel (par exemple, un dialogue en cascade qui comporte plusieurs étapes). Le contexte du dialogue est transmis à la totalité des dialogues et des étapes en cascade du bot.
+
+**DialogExtensions.cs**
+
+[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Nous avons défini une méthode d’assistance `run` dans `userProfileDialog` que nous allons utiliser pour créer le contexte du dialogue et y accéder. Ici, `accessor` est l’accesseur de la propriété d’état du dialogue, et `this` est le dialogue composant du profil utilisateur. Comme les dialogues composant définissent un jeu de dialogues interne, nous devons créer un jeu de dialogues externe qui est visible par le code du gestionnaire de messages et utiliser cela pour créer un contexte de dialogue.
+
+Vous créez le contexte du dialogue en appelant la méthode `createContext` et l’utilisez pour interagir avec le jeu de dialogues à partir du gestionnaire de tours du bot. Le contexte du dialogue inclut le contexte du tour actuel, le dialogue parent et l’état du dialogue, ce qui offre une méthode permettant de conserver les informations au sein du dialogue.
+
+Le contexte du dialogue vous permet de démarrer un dialogue avec l’ID de chaîne ou de continuer le dialogue actuel (par exemple, un dialogue en cascade qui comporte plusieurs étapes). Le contexte du dialogue est transmis à la totalité des dialogues et des étapes en cascade du bot.
+
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+
+---
+
+## <a name="run-the-dialog"></a>Exécuter le dialogue
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Bots\DialogBot.cs**
+
+Le gestionnaire `OnMessageActivityAsync` utilise la méthode d’extension pour démarrer ou continuer le dialogue. Dans `OnTurnAsync`, nous utilisons des objets de gestion d’état du bot pour conserver les changements d’état dans le stockage. (La méthode `ActivityHandler.OnTurnAsync` appelle les différentes méthodes de gestionnaire d’activité, telles que `OnMessageActivityAsync`. De cette façon, nous enregistrons l’état une fois que le gestionnaire de messages se termine, mais avant que le tour lui-même ne prenne fin.)
+
+[!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Le gestionnaire `onMessage` utilise la méthode d’assistance pour démarrer ou continuer le dialogue. Dans `onDialog`, nous utilisons des objets de gestion d’état du bot pour conserver les changements d’état dans le stockage. (La méthode `onDialog` est appelée en dernier après l’exécution des autres gestionnaires définis, tels que `onMessage`. De cette façon, nous enregistrons l’état une fois que le gestionnaire de messages se termine, mais avant que le tour lui-même ne prenne fin.)
+
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-44)]
+
+---
+
+## <a name="register-services-for-the-bot"></a>Inscrire les services pour le bot
+
+Ce bot utilise les _services_ suivants.
+
+- Les services de base pour un bot sont : un fournisseur d’informations d’identification, un adaptateur et l’implémentation de bot.
+- Les services pour gérer l’état sont : le stockage, l’état de l’utilisateur et l’état de la conversation.
+- Le dialogue que le bot utilisera.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+**Startup.cs**
+
+Nous inscrivons les services pour le bot dans `Startup`. Ces services sont disponibles dans d’autres parties du code par le biais de l’injection de dépendances.
+
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-41)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+**index.js**
+
+Nous inscrivons les services pour le bot dans `index.js`. 
+
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-49)]
+
+---
+
+> [!NOTE]
+> Le stockage mémoire est utilisé uniquement à des fins de test et n’est pas destiné à une utilisation en production.
+> Veillez à utiliser un type de stockage permanent pour un bot de production.
+
+## <a name="to-test-the-bot"></a>Pour tester le bot
+
+1. Si ce n’est déjà fait, installez [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+1. Exécutez l’exemple en local sur votre machine.
+1. Démarrez l’émulateur, connectez-vous à votre bot et envoyez des messages, comme indiqué ci-dessous.
+
+![Exemple d’exécution du dialogue d’invites multitours](../media/emulator-v4/multi-turn-prompt.png)
+
+## <a name="additional-information"></a>Informations supplémentaires
 
 ### <a name="about-dialog-and-bot-state"></a>Au sujet du dialogue et de l’état du bot
 
 Dans ce bot, nous avons défini deux accesseurs de propriété d’état :
 
-* Un créé dans l’état de conversation pour la propriété d’état de dialogue. L’état de dialogue suit l’endroit où se trouve l’utilisateur dans les dialogues d’un ensemble de dialogues, et il est mis à jour par le contexte de dialogue, de la même façon que nous appelons les méthodes de début de dialogue ou de suite de dialogue.
-* Un créé dans l’état de l’utilisateur de la propriété de profil utilisateur. Le bot utilise cet élément pour suivre les informations qu’il possède sur l’utilisateur, et nous gérons explicitement cet état dans le code de notre bot.
+- Un créé dans l’état de conversation pour la propriété d’état de dialogue. L’état de dialogue suit l’endroit où se trouve l’utilisateur dans les dialogues d’un ensemble de dialogues, et il est mis à jour par le contexte de dialogue, de la même façon que nous appelons les méthodes de début de dialogue ou de suite de dialogue.
+- Un créé dans l’état de l’utilisateur de la propriété de profil utilisateur. Le bot utilise cet élément pour suivre les informations qu’il détient sur l’utilisateur, et nous gérons explicitement cet état dans le code de notre dialogue.
 
 Les méthodes _obtenir_ et _définir_ d’un accesseur de propriété d’état obtiennent et définissent la valeur de la propriété dans le cache de l’objet de gestion d’états. Le cache est rempli la première fois que la valeur d’une propriété d’état est demandée dans un tour, mais il doit être conservé explicitement. Afin de conserver les modifications apportées à ces propriétés d’état, nous appelons la méthode _enregistrer les modifications_ de l’objet de gestion d’états correspondant.
-
-## <a name="initialize-your-bot-and-define-your-dialog"></a>Initialiser votre bot et définir votre dialogue
-
-Notre conversation simple est modélisée sous la forme d’une série de questions posées à l’utilisateur. Les versions C# et JavaScript ont des étapes légèrement différentes :
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-1. Demandez-lui comment il s’appelle.
-1. Demandez-lui s’il souhaite communiquer son âge.
-1. Si c’est le cas, demandez-lui son âge. Sinon, ignorez cette étape.
-1. Demandez si les informations collectées sont correctes.
-1. Envoyez un message d’état et terminez.
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Pour le dialogue `who_are_you` :
-
-1. Demandez-lui comment il s’appelle.
-1. Demandez-lui s’il souhaite communiquer son âge.
-1. Si c’est le cas, demandez-lui son âge. Sinon, ignorez cette étape.
-1. Envoyez un message d’état et terminez.
-
-Pour le dialogue `hello_user` :
-
-1. Affichez les informations utilisateur que le bot a collectées.
-
----
-
-Voici quelques points à retenir quand vous définissez vos propres étapes en cascade.
-
-* Chaque tour de bot reflète une entrée de l’utilisateur suivie d’une réponse du bot. Par conséquent, vous demandez une entrée à l’utilisateur à la fin d’une étape en cascade et vous demandez sa réponse dans l’étape en cascade suivante.
-* Chaque invite est effectivement un dialogue en deux étapes qui présente son invite et effectue une boucle jusqu’à ce qu’il reçoive une entrée « valide ». 
-
-Dans cet exemple, le dialogue est défini dans le fichier de bot et initialisé dans le constructeur du bot.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Définissez une propriété d’instance pour l’ensemble de dialogues.
-
-```csharp
-// The DialogSet that contains all the Dialogs that can be used at runtime.
-private DialogSet _dialogs;
-```
-
-Créez l’ensemble de dialogues au sein du constructeur du bot en ajoutant les invites et le dialogue en cascade à l’ensemble.
-
-```csharp
-public MultiTurnPromptsBot(MultiTurnPromptsBotAccessors accessors)
-{
-    _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
-
-    // The DialogSet needs a DialogState accessor, it will call it when it has a turn context.
-    _dialogs = new DialogSet(accessors.ConversationDialogState);
-
-    // This array defines how the Waterfall will execute.
-    var waterfallSteps = new WaterfallStep[]
-    {
-        NameStepAsync,
-        NameConfirmStepAsync,
-        AgeStepAsync,
-        ConfirmStepAsync,
-        SummaryStepAsync,
-    };
-
-    // Add named dialogs to the DialogSet. These names are saved in the dialog state.
-    _dialogs.Add(new WaterfallDialog("details", waterfallSteps));
-    _dialogs.Add(new TextPrompt("name"));
-    _dialogs.Add(new NumberPrompt<int>("age"));
-    _dialogs.Add(new ConfirmPrompt("confirm"));
-}
-```
-
-Dans cet exemple, nous définissons chacune des étapes en tant que méthode distincte. Vous pouvez également définir les étapes en ligne dans le constructeur via des expressions lambda.
-
-```csharp
-private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // WaterfallStep always finishes with the end of the Waterfall or with another dialog; here it is a Prompt Dialog.
-    // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-    return await stepContext.PromptAsync("name", new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") }, cancellationToken);
-}
-
-private async Task<DialogTurnResult> NameConfirmStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Get the current profile object from user state.
-    var userProfile = await _accessors.UserProfile.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-
-    // Update the profile.
-    userProfile.Name = (string)stepContext.Result;
-
-    // We can send messages to the user at any point in the WaterfallStep.
-    await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Thanks {stepContext.Result}."), cancellationToken);
-
-    // WaterfallStep always finishes with the end of the Waterfall or with another dialog; here it is a Prompt Dialog.
-    return await stepContext.PromptAsync("confirm", new PromptOptions { Prompt = MessageFactory.Text("Would you like to give your age?") }, cancellationToken);
-}
-
-private async Task<DialogTurnResult> AgeStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    if ((bool)stepContext.Result)
-    {
-        // User said "yes" so we will be prompting for the age.
-
-        // Get the current profile object from user state.
-        var userProfile = await _accessors.UserProfile.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-
-        // WaterfallStep always finishes with the end of the Waterfall or with another dialog, here it is a Prompt Dialog.
-        return await stepContext.PromptAsync("age", new PromptOptions { Prompt = MessageFactory.Text("Please enter your age.") }, cancellationToken);
-    }
-    else
-    {
-        // User said "no" so we will skip the next step. Give -1 as the age.
-        return await stepContext.NextAsync(-1, cancellationToken);
-    }
-}
-
-
-private async Task<DialogTurnResult> ConfirmStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    // Get the current profile object from user state.
-    var userProfile = await _accessors.UserProfile.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-
-    // Update the profile.
-    userProfile.Age = (int)stepContext.Result;
-
-    // We can send messages to the user at any point in the WaterfallStep.
-    if (userProfile.Age == -1)
-    {
-        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"No age given."), cancellationToken);
-    }
-    else
-    {
-        // We can send messages to the user at any point in the WaterfallStep.
-        await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I have your age as {userProfile.Age}."), cancellationToken);
-    }
-
-    // WaterfallStep always finishes with the end of the Waterfall or with another dialog, here it is a Prompt Dialog.
-    return await stepContext.PromptAsync("confirm", new PromptOptions { Prompt = MessageFactory.Text("Is this ok?") }, cancellationToken);
-}
-
-private async Task<DialogTurnResult> SummaryStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-{
-    if ((bool)stepContext.Result)
-    {
-        // Get the current profile object from user state.
-        var userProfile = await _accessors.UserProfile.GetAsync(stepContext.Context, () => new UserProfile(), cancellationToken);
-
-        // We can send messages to the user at any point in the WaterfallStep.
-        if (userProfile.Age == -1)
-        {
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I have your name as {userProfile.Name}."), cancellationToken);
-        }
-        else
-        {
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"I have your name as {userProfile.Name} and age as {userProfile.Age}."), cancellationToken);
-        }
-    }
-    else
-    {
-        // We can send messages to the user at any point in the WaterfallStep.
-        await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thanks. Your profile will not be kept."), cancellationToken);
-    }
-
-    // WaterfallStep always finishes with the end of the Waterfall or with another dialog, here it is the end.
-    return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans cet exemple, le dialogue en cascade est défini au sein du fichier **bot.js**.
-
-Définissez les identificateurs à utiliser pour les accesseurs de propriété d’état, les invites et les dialogues.
-
-```javascript
-const DIALOG_STATE_PROPERTY = 'dialogState';
-const USER_PROFILE_PROPERTY = 'user';
-
-const WHO_ARE_YOU = 'who_are_you';
-const HELLO_USER = 'hello_user';
-
-const NAME_PROMPT = 'name_prompt';
-const CONFIRM_PROMPT = 'confirm_prompt';
-const AGE_PROMPT = 'age_prompt';
-```
-
-Définissez et créez l’ensemble de dialogues au sein du constructeur du bot en ajoutant les invites et les dialogues en cascade à l’ensemble.
-L’élément `NumberPrompt` inclut une validation personnalisée pour vérifier que l’utilisateur entre un âge supérieur à 0.
-
-```javascript
-constructor(conversationState, userState) {
-    // Create a new state accessor property. See https://aka.ms/about-bot-state-accessors to learn more about bot state and state accessors.
-    this.conversationState = conversationState;
-    this.userState = userState;
-
-    this.dialogState = this.conversationState.createProperty(DIALOG_STATE_PROPERTY);
-
-    this.userProfile = this.userState.createProperty(USER_PROFILE_PROPERTY);
-
-    this.dialogs = new DialogSet(this.dialogState);
-
-    // Add prompts that will be used by the main dialogs.
-    this.dialogs.add(new TextPrompt(NAME_PROMPT));
-    this.dialogs.add(new ChoicePrompt(CONFIRM_PROMPT));
-    this.dialogs.add(new NumberPrompt(AGE_PROMPT, async (prompt) => {
-        if (prompt.recognized.succeeded) {
-            if (prompt.recognized.value <= 0) {
-                await prompt.context.sendActivity(`Your age can't be less than zero.`);
-                return false;
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }));
-
-    // Create a dialog that asks the user for their name.
-    this.dialogs.add(new WaterfallDialog(WHO_ARE_YOU, [
-        this.promptForName.bind(this),
-        this.confirmAgePrompt.bind(this),
-        this.promptForAge.bind(this),
-        this.captureAge.bind(this)
-    ]));
-
-    // Create a dialog that displays a user name after it has been collected.
-    this.dialogs.add(new WaterfallDialog(HELLO_USER, [
-        this.displayProfile.bind(this)
-    ]));
-}
-```
-
-Puisque nos méthodes d’étape de dialogue font référence aux propriétés d’instance, nous devons utiliser la méthode `bind` de façon que l’objet `this` se résolve correctement dans chaque méthode d’étape.
-
-Dans cet exemple, nous définissons chacune des étapes en tant que méthode distincte. Vous pouvez également définir les étapes en ligne dans le constructeur via des expressions lambda.
-
-```javascript
-// This step in the dialog prompts the user for their name.
-async promptForName(step) {
-    return await step.prompt(NAME_PROMPT, `What is your name, human?`);
-}
-
-// This step captures the user's name, then prompts whether or not to collect an age.
-async confirmAgePrompt(step) {
-    const user = await this.userProfile.get(step.context, {});
-    user.name = step.result;
-    await this.userProfile.set(step.context, user);
-    await step.prompt(CONFIRM_PROMPT, 'Do you want to give your age?', ['yes', 'no']);
-}
-
-// This step checks the user's response - if yes, the bot will proceed to prompt for age.
-// Otherwise, the bot will skip the age step.
-async promptForAge(step) {
-    if (step.result && step.result.value === 'yes') {
-        return await step.prompt(AGE_PROMPT, `What is your age?`,
-            {
-                retryPrompt: 'Sorry, please specify your age as a positive number or say cancel.'
-            }
-        );
-    } else {
-        return await step.next(-1);
-    }
-}
-
-// This step captures the user's age.
-async captureAge(step) {
-    const user = await this.userProfile.get(step.context, {});
-    if (step.result !== -1) {
-        user.age = step.result;
-        await this.userProfile.set(step.context, user);
-        await step.context.sendActivity(`I will remember that you are ${ step.result } years old.`);
-    } else {
-        await step.context.sendActivity(`No age given.`);
-    }
-    return await step.endDialog();
-}
-
-// This step displays the captured information back to the user.
-async displayProfile(step) {
-    const user = await this.userProfile.get(step.context, {});
-    if (user.age) {
-        await step.context.sendActivity(`Your name is ${ user.name } and you are ${ user.age } years old.`);
-    } else {
-        await step.context.sendActivity(`Your name is ${ user.name } and you did not share your age.`);
-    }
-    return await step.endDialog();
-}
-```
-
----
 
 Cet exemple met à jour l’état du profil utilisateur dans le dialogue. Cette pratique peut fonctionner pour un bot simple, mais elle ne fonctionnera pas si vous souhaitez réutiliser un dialogue pour des bots.
 
 Il existe différentes options pour séparer les étapes de dialogue de l’état du bot. Par exemple, une fois que votre dialogue a collecté des informations complètes, vous pouvez effectuer les actions suivantes :
 
-* Utiliser la méthode _terminer un dialogue_ pour fournir les données collectées en tant que valeurs renvoyées au contexte parent. Il peut s’agir du gestionnaire de tours du bot ou d’un dialogue précédemment actif sur la pile du dialogue. C’est de cette façon que les classes d’invite sont conçues.
-* Générer une demande vers un service approprié. Cela peut fonctionner correctement si votre bot agit en tant que serveur frontal vers un service plus volumineux.
-
-## <a name="test-your-dialog"></a>Tester votre dialogue
-
-Générez et exécutez votre bot en local, puis interagissez avec votre bot à l’aide de l’émulateur.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-1. Le bot envoie un message d’accueil initial en réponse à l’activité de mise à jour de conversation lors de laquelle l’utilisateur est ajouté à la conversation.
-1. Entrez `hi` ou autre chose. Dans la mesure où il n’y a pas encore de dialogue actif dans ce tour, le bot commence le dialogue `details`.
-   * Le bot envoie la première invite du dialogue et attend d’autres entrées.
-1. Répondez aux questions à mesure que le bot les pose, en avançant tout au long du dialogue.
-1. La dernière étape du dialogue envoie un message `Thanks` en fonction de vos entrées.
-   * Lorsque le dialogue se termine, il est supprimé de la pile du dialogue, et le bot n’a plus de dialogue actif.
-1. Entrez `hi` ou autre chose pour débuter une nouvelle fois le dialogue.
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-1. Le bot envoie un message d’accueil initial en réponse à l’activité de mise à jour de conversation lors de laquelle l’utilisateur est ajouté à la conversation.
-1. Entrez `hi` ou autre chose. Dans la mesure où il n’y a pas encore de dialogue actif dans ce tour, ni de profil utilisateur, le bot commence le dialogue `who_are_you`.
-   * Le bot envoie la première invite du dialogue et attend d’autres entrées.
-1. Répondez aux questions à mesure que le bot les pose, en avançant tout au long du dialogue.
-1. La dernière étape du dialogue envoie un bref message de confirmation.
-1. Entrez `hi` ou autre chose.
-   * Le bot démarre le dialogue `hello_user` en une seule étape, qui affiche des informations à partir des données collectées et se termine immédiatement.
-
----
-
-## <a name="additional-resources"></a>Ressources supplémentaires
-Vous pouvez compter sur la validation intégrée de chaque type d’invite de commandes comme indiqué ici, ou vous pouvez ajouter votre validation personnalisée à l’invite. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue](bot-builder-prompts.md).
+- Utiliser la méthode permettant de terminer un dialogue pour fournir les données collectées en tant que valeurs retournées au contexte parent. Il peut s’agir du gestionnaire de tours du bot ou d’un dialogue précédemment actif sur la pile du dialogue. C’est de cette façon que les classes d’invite sont conçues.
+- Générer une demande vers un service approprié. Cela peut fonctionner correctement si votre bot agit en tant que serveur frontal vers un service plus volumineux.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 > [!div class="nextstepaction"]
-> [Créer des flux de conversation avancés à l’aide des branches et boucles](bot-builder-dialog-manage-complex-conversation-flow.md)
+> [Ajouter la compréhension du langage naturel à votre bot](bot-builder-howto-v4-luis.md)
+
+<!-- Footnote-style links -->
+
+[concept-basics]: bot-builder-basics.md
+[concept-state]: bot-builder-concept-state.md
+[concept-dialogs]: bot-builder-concept-dialog.md
+
+[prompting]: bot-builder-prompts.md
+[component-dialogs]: bot-builder-compositcontrol.md
+
+[cs-sample]: https://aka.ms/cs-multi-prompts-sample
+[js-sample]: https://aka.ms/js-multi-prompts-sample

@@ -8,19 +8,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.date: 4/30/2019
+ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711973"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033084"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Résoudre les erreurs HTTP 500
 
 La première étape de résolution des erreurs 500 active Application Insights.
 
-Les exemples luis-with-appinsights ([C#](https://aka.ms/cs-luis-with-appinsights-sample) / [JS](https://aka.ms/js-luis-with-appinsights-sample)) et qna-with-appinsights ([C#](https://aka.ms/qna-with-appinsights) / [JS](https://aka.ms/js-qna-with-appinsights-sample)) montrent des bots qui prennent en charge Azure Application Insights. Pour des informations sur la façon d’ajouter Application Insights à un bot existant, consultez [conversation analytics tememetry](https://aka.ms/botPowerBiTemplate).
+<!-- TODO: Add links back in once there's a fresh AppInsights sample.
+The luis-with-appinsights ([C# sample](https://aka.ms/cs-luis-with-appinsights-sample) / [JS sample](https://aka.ms/js-luis-with-appinsights-sample)) and qna-with-appinsights ([C# sample](https://aka.ms/qna-with-appinsights) / [JS sample](https://aka.ms/js-qna-with-appinsights-sample)) samples demonstrate bots that support Azure Application Insights.
+-->
+Consultez [Télémétrie d’analyse de conversation](https://aka.ms/botframeworkanalytics) pour obtenir des informations sur la façon d’ajouter Application Insights à un bot existant.
 
 ## <a name="enable-application-insights-on-aspnet"></a>Activer Application Insights sur ASP.Net
 
@@ -71,7 +74,7 @@ Vérifiez que votre bot s’exécute d’abord localement avec l’émulateur.
 
 ### <a name="ensure-configuration-files-are-being-copied-net-only"></a>Assurez-vous que les fichiers de configuration sont en cours de copie (.NET uniquement)
 
-Assurez-vous que votre fichier de configuration `.bot` et que votre fichier `appsettings.json` sont correctement empaquetés pendant le processus de déploiement.
+Vérifiez que le fichier `appsettings.json` et tous les autres fichiers de configuration sont correctement empaquetés pendant le processus de déploiement.
 
 #### <a name="application-assemblies"></a>Assemblys d’application
 
@@ -86,7 +89,7 @@ Vérifiez que les assemblys Application Insights sont correctement empaquetés p
 - Microsoft.AI.DependencyCollector
 - Microsoft.AI.Agent.Intercept
 
-Assurez-vous que votre fichier de configuration `.bot` et que votre fichier `appsettings.json` sont correctement empaquetés pendant le processus de déploiement.
+Vérifiez que le fichier `appsettings.json` et tous les autres fichiers de configuration sont correctement empaquetés pendant le processus de déploiement.
 
 #### <a name="appsettingsjson"></a>appsettings.json
 
@@ -114,8 +117,6 @@ Dans votre fichier `appsettings.json`, vérifiez que la clé d'instrumentation e
 
 ```json
 {
-    "botFilePath": "mybot.bot",
-    "botFileSecret": "<my secret>",
     "ApplicationInsights": {
         "InstrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
@@ -124,12 +125,13 @@ Dans votre fichier `appsettings.json`, vérifiez que la clé d'instrumentation e
 
 ---
 
-### <a name="verify-bot-config-file"></a>Vérifier le fichier de configuration .bot
+### <a name="verify-config-file"></a>Vérifier le fichier de configuration
 
-Vérifiez qu’une clé Application Insights se trouve dans votre fichier .bot.
+Vérifiez qu’une clé Application Insights se trouve dans votre fichier de configuration.
 
 ```json
-    {
+{
+    "ApplicationInsights": {
         "type": "appInsights",
         "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -140,7 +142,8 @@ Vérifiez qu’une clé Application Insights se trouve dans votre fichier .bot.
         "applicationId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "apiKeys": {},
         "id": ""
-    },
+    }
+},
 ```
 
 ### <a name="check-logs"></a>Inspecter les journaux d’activité

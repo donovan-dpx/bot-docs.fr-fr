@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/26/2019
-ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aa16bc839a96a49615ed127aaf56f686f50a5397
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224837"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032999"
 ---
 # <a name="debug-a-bot"></a>Déboguer un bot
 
-Cet article explique comment déboguer votre bot à l’aide d’un environnement de développement intégré (IDE) tels que Visual Studio ou Visual Studio Code et l’émulateur Bot Framework. Même si vous pouvez utiliser ces méthodes pour déboguer des bots localement, cet article utilise un bot [C# ](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) et [JS](~/javascript/bot-builder-javascript-quickstart.md) créé dans le démarrage rapide.
+Cet article explique comment déboguer votre bot à l’aide d’un environnement de développement intégré (IDE) tels que Visual Studio ou Visual Studio Code et l’émulateur Bot Framework. Vous pouvez utiliser ces méthodes pour déboguer n’importe quel bot localement, mais cet article utilise un [bot C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) ou un [bot Javascript](~/javascript/bot-builder-javascript-quickstart.md) créé dans le démarrage rapide.
 
 ## <a name="prerequisites"></a>Prérequis 
 - Téléchargez et installez l’[émulateur Bot Framework](https://aka.ms/Emulator-wiki-getting-started).
@@ -29,7 +29,7 @@ Cet article explique comment déboguer votre bot à l’aide d’un environnemen
 Pour exécuter un bot JavaScript en utilisant la ligne de commande et en le testant avec l’émulateur, procédez comme suit :
 1. Depuis la ligne de commande, remplacez le répertoire par défaut par le répertoire de votre projet de bot.
 1. Démarrez le bot en exécutant la commande **node app.js**.
-1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple : **http://localhost:3978/api/messages**). Si vous exécutez le bot pour la première fois, cliquez sur **Fichier > Nouveau bot** et suivez les instructions à l’écran. Sinon, cliquez sur **Fichier > Ouvrir un bot** pour ouvrir un bot existant. Dans la mesure où ce bot est exécuté localement sur votre ordinateur, vous pouvez laisser vides les champs **ID d’application MSA** et **Mot de passe d’application MSA**. Pour plus d’informations, consultez [Déboguer avec l’émulateur](bot-service-debug-emulator.md).
+1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple : **http://localhost:3978/api/messages**). Si vous exécutez le bot pour la première fois, cliquez sur **Fichier > Nouveau bot** et suivez les instructions à l’écran. Sinon, cliquez sur **Fichier > Ouvrir un bot** pour ouvrir un bot existant. Dans la mesure où ce bot est exécuté localement sur votre ordinateur, vous pouvez laisser vides les champs **MicrosoftAppId** et **MicrosoftAppPassword**. Pour plus d’informations, consultez [Déboguer avec l’émulateur](bot-service-debug-emulator.md).
 1. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). 
 1. Utilisez les panneaux **Inspector** et **Log** à droite de la fenêtre de l’émulateur pour déboguer votre bot. Par exemple, cliquer sur une bulle de messages (par exemple, la bulle du message « Hi » dans la capture d’écran ci-dessous) affiche les détails de ce message dans le panneau **Inspector**. Vous pouvez l’utiliser pour afficher les demandes et réponses à mesure que des messages sont échangés entre l’émulateur et le bot. Vous pouvez également cliquer sur le texte lié dans le panneau **Log** pour afficher les détails dans le panneau **Inspecteur**.
 
@@ -132,7 +132,7 @@ En outre, vous pouvez afficher les détails du journal dans la fenêtre de conso
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - Consultez [Résoudre les problèmes généraux](bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
-- Consultez le billet de blog [Debug any Channel locally using ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/).
+- Consultez le guide pratique pour [déboguer avec l’émulateur](bot-service-debug-emulator.md).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

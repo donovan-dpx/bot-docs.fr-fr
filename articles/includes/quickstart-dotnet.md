@@ -1,13 +1,21 @@
+---
+ms.openlocfilehash: 04f9101d0cf29618fb7d50e126c008190064a831
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199004"
+---
 ## <a name="prerequisites"></a>Prérequis
-- Visual Studio [2017](https://www.visualstudio.com/downloads)
-- Modèle du kit SDK Bot Framework v4 pour [C#](https://aka.ms/bot-vsix)
-- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
-- Connaissances d’[ASP.Net Core](https://docs.microsoft.com/aspnet/core/) et de la programmation asynchrone en [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
+- Visual Studio [2017 ou ultérieur](https://www.visualstudio.com/downloads)
+- Modèle du kit SDK Bot Framework v4[ pour C#](https://aka.ms/bot-vsix)
+- [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
+- Connaissances d’[ASP.Net Core](https://docs.microsoft.com/aspnet/core/) et de la [programmation asynchrone en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
 
 ## <a name="create-a-bot"></a>Créer un bot
 Installez le modèle BotBuilderVSIX.vsix que vous avez téléchargé à la section des prérequis.
 
-Dans Visual Studio, créez un projet de bot en utilisant le modèle **Bot Framework Echo Bot** V4.
+Dans Visual Studio, créez un projet de bot en utilisant le modèle **Echo Bot (Bot Framework v4)**.
 
 ![Projet Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
@@ -24,8 +32,8 @@ Lorsque vous cliquez sur le bouton d’exécution, Visual Studio génère l’ap
 
 Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
 
-1. Cliquez sur le lien **Ouvrir le bot** de l’onglet de bienvenue de l’émulateur. 
-2. Sélectionnez le fichier .bot situé dans le répertoire où vous avez créé le projet Visual Studio.
+1. Cliquez sur le lien **Create a new bot configuration** (Créer une configuration de bot) sous l’onglet « Welcome » de l’émulateur. 
+2. Renseignez les champs pour votre bot, puis cliquez sur **Enregistrer et se connecter**.
 
 ## <a name="interact-with-your-bot"></a>Interagir avec votre bot
 

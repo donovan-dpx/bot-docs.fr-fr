@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36ccbb796c2cd014118d4ae1f426acd44aabed76
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: d896584b2048c8d2b330a1e6e63bc47122102532
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904892"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033403"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -33,7 +33,7 @@ La bibliothèque de dialogues comporte quelques autres éléments pour rendre le
 
 Les *jeux de dialogues* sont, en termes simples, une collection de dialogues. Il peut s’agir d’invites, de dialogues en cascade ou de [dialogues composants](#component-dialog). Tous ces éléments sont les implémentations d’un dialogue, et tous sont ajoutés au jeu de dialogues avec un ID de chaîne spécifique. Quand votre bot souhaite démarrer un certain dialogue ou une certaine invite au sein du jeu de dialogues, il utilise cet ID de chaîne pour spécifier quel dialogue utiliser.
 
-Le *contexte du dialogue* contient des informations sur le dialogue. Il sert à interagir avec un jeu de dialogues depuis le gestionnaire de tour de votre bot. Le contexte du dialogue inclut le contexte du tour actuel, le dialogue parent et l’[état du dialogue](#dialog-state), ce qui offre une méthode permettant de conserver les informations au sein du dialogue. Le contexte du dialogue vous permet de démarrer un dialogue avec son ID de chaîne ou de continuer le dialogue actuel (par exemple, un dialogue en cascade qui comporte plusieurs étapes).
+Le *contexte du dialogue* contient des informations sur le dialogue. Il sert à interagir avec un jeu de dialogues depuis le gestionnaire de tour de votre bot. Le contexte du dialogue inclut le contexte du tour actuel, le dialogue parent et l’[état du dialogue](#dialog-state), ce qui offre une méthode permettant de conserver les informations au sein du dialogue. Le contexte du dialogue vous permet de démarrer un dialogue avec son ID de chaîne, ou de continuer le dialogue actuel (par exemple, un dialogue en cascade qui comporte plusieurs étapes).
 
 Quand un dialogue se termine, il peut retourner un *résultat du dialogue* avec certaines informations obtenues à partir du dialogue. Ce résultat est retourné pour permettre à la méthode d’appel de voir ce qui s’est passé au cours du dialogue et d’enregistrer les informations à un emplacement persistant, si vous le souhaitez.
 
@@ -121,7 +121,8 @@ Vous pouvez utiliser le contexte du dialogue pour démarrer, continuer, remplace
 
 Les dialogues peuvent être considérés comme une pile programmatique, que nous appelons *pile de dialogues*, avec le gestionnaire de tour comme dirigeant et comme élément de secours si la pile est vide. L’élément le plus haut dans cette pile est considéré comme le *dialogue actif*. Le contexte du dialogue dirige toutes les entrées vers ce dialogue actif.
 
-Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Quand ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Ainsi, il est possible de créer des branches et des boucles, comme décrit ci-dessous.
+Dès qu’un dialogue commence, il est placé sur le dessus de la pile et devient le dialogue actif. Il reste dialogue actif jusqu’à ce qu’il se termine, qu’il soit supprimé par la méthode [replace dialog](#repeating-a-dialog) ou qu’un autre dialogue soit placé sur le dessus de la pile (par le gestionnaire de tour ou le dialogue lui-même) et devienne dialogue actif. Quand ce nouveau dialogue se termine, il est sorti de la pile (dépilé) et le dialogue situé juste en dessous redevient dialogue actif. Il est ainsi possible de [répéter un dialogue](#repeating-a-dialog) ou de [créer une branche de conversation](#branch-a-conversation), comme décrit ci-dessous.
+
 
 ### <a name="create-the-dialog-context"></a>Créer le contexte du dialogue
 

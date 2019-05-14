@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783358"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032927"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -28,18 +28,17 @@ Vous pouvez ajouter [Recherche Azure](https://azure.microsoft.com/en-us/services
 
 Recherche Azure est un service Azure qui offre des fonctionnalités, telles que la recherche par mot clé, une linguistique intégrée, la notation personnalisée, une navigation par facettes, et bien plus encore. Recherche Azure peut également indexer le contenu à partir de diverses sources, y compris Azure SQL DB, DocumentDB, Stockage Blob et Stockage Table. La solution prend en charge l’indexation par « push » pour d’autres sources de données, et peut ouvrir des fichiers PDF, des documents Office ainsi que d’autres formats contenant des données non structurées. Une fois collecté, le contenu est placé dans un index Recherche Azure, que le robot peut ensuite interroger.
 
-
 ## <a name="prerequisites"></a>Prérequis
 
-Installez le package Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) dans votre projet de bot. 
+Installez le package Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) dans votre projet de bot.
 
-Les trois projets C# suivants sont indispensables à votre solution de bot. Ces projets fournissent des fonctionnalités supplémentaires pour les bots et la Recherche Azure. Dupliquez (fork) les projets à partir de [GitHub](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search) ou téléchargez le code source directement.
+Les trois projets C# suivants sont indispensables à votre solution de bot. Ces projets fournissent des fonctionnalités supplémentaires pour les bots et la Recherche Azure. Dupliquez (fork) les projets à partir de [GitHub](https://aka.ms/v3-cs-search-demo) ou téléchargez le code source directement.
 
-* [Search.Azure](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Azure) définit l’appel du service Azure. 
-* [Search.Contracts](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Contracts) définit les interfaces génériques et les modèles de données pour traiter les données.
-* [Search.Dialogs](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search/Search.Dialogs) inclut les différents dialogues Bot Builder génériques, utilisés pour interroger la Recherche Azure.
+- Le projet **Search.Azure** définit l’appel du service Azure.
+- Le projet **Search.Contracts** définit les interfaces génériques et les modèles de données pour traiter les données.
+- Le projet **Search.Dialogs** inclut les différents dialogues Bot Builder génériques utilisés pour interroger la Recherche Azure.
 
-## <a name="configure-azure-search-settings"></a>Configurer les paramètres de Recherche Azure 
+## <a name="configure-azure-search-settings"></a>Configurer les paramètres de Recherche Azure
 
 Configurez les paramètres de Recherche Azure dans le fichier **Web.config** du projet avec vos propres informations d’identification de Recherche Azure dans les champs de valeur. Le constructeur dans la classe `AzureSearchClient` utilise ces paramètres pour inscrire et lier le bot au service Azure.
 
@@ -176,7 +175,8 @@ Les résultats de la recherche sont affichés pour l’utilisateur, et vous vene
 Pour obtenir deux exemples complets qui montrent comment prendre en charge Recherche Azure avec des bots à l’aide du kit SDK Bot Framework pour .NET, consultez l’[exemple de bot Real Estate](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot) ou l’[exemple de bot Job Listing](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot) dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-* [Recherche Azure][search]
-* [Vue d’ensemble des dialogues](bot-builder-dotnet-dialogs.md)
+
+- [Recherche Azure][search]
+- [Vue d’ensemble des dialogues](bot-builder-dotnet-dialogs.md)
 
 [search]: /azure/search/search-what-is-azure-search

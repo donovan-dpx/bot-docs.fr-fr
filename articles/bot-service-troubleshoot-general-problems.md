@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/26/2019
-ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 04/30/2019
+ms.openlocfilehash: 1e0678d869b02d536eb5c3ce39461da94dbd9a57
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224947"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033088"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
@@ -21,7 +21,7 @@ Les forums aux questions permettent de résoudre les problèmes les plus courant
 
 1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
 1. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
-1. Déployez votre robot sur une plate-forme d’hébergement cloud comme Azure, puis testez la connectivité de votre robot à l’aide du contrôle intégré de la discussion en ligne sur le tableau de bord de votre robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
+1. Déployez votre bot sur une plateforme d’hébergement cloud comme Azure, puis testez la connexion à votre bot en utilisant le contrôle Web Chat intégré sur le tableau de bord de votre bot dans le <a href="https://portal.azure.com" target="_blank">portail Azure</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
 1. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
 1. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
 1. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
@@ -104,7 +104,7 @@ Les SMS et les messages électroniques fournissent l’identifiant utilisateur b
 
 ## <a name="why-are-my-facebook-user-names-not-showing-anymore"></a>Pourquoi mes noms d’utilisateur Facebook ne s’affichent-ils plus ?
 
-Avez-vous modifié votre mot de passe Facebook ? Le jeton d’accès sera alors invalidé, et vous devrez mettre à jour les paramètres de configuration de votre robot pour le canal Facebook Messenger dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework </a>.
+Avez-vous modifié votre mot de passe Facebook ? Le jeton d’accès sera alors invalidé, et vous devrez mettre à jour les paramètres de configuration de votre bot pour le canal Facebook Messenger dans le <a href="https://portal.azure.com" target="_blank">portail Azure</a>.
 
 ## <a name="why-is-my-kik-bot-replying-im-sorry-i-cant-talk-right-now"></a>Pourquoi mon robot Kik répond-il « Désolé, je ne peux pas parler maintenant » ?
 
@@ -130,7 +130,7 @@ Si votre conversation Direct Line semble recommencer après chaque message, la p
 Pour corriger cela, définissez la propriété `from` dans chaque message envoyé par le client Direct Line à une valeur constante qui identifie de façon unique l’utilisateur qui envoie le message. Par exemple, si un utilisateur est déjà connecté à une page web ou à une application, vous pouvez utiliser cet identifiant utilisateur existant comme valeur de la propriété `from` dans les messages qu’il envoie. Sinon, vous pouvez choisir de créer un identifiant utilisateur aléatoire sur la page de chargement ou sur l’application, de le stocker dans un témoin ou un état de l’appareil et de l’utiliser comme valeur de la propriété `from` dans les messages envoyés par l’utilisateur.
 
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>Pourquoi le service Direct Line 3.0 retourne le code d’état HTTP 502 « Passerelle incorrecte » ?
-Direct Line 3.0 retourne le code d’état HTTP 502 lorsqu’il essaie de communiquer avec votre robot, mais que la requête n’aboutit pas. Cette erreur indique que le robot a renvoyé une erreur ou que la requête a expiré. Pour plus d’informations sur les erreurs générées par votre robot, accédez au tableau de bord du robot dans le <a href="https://dev.botframework.com" target="_blank">portail Bot Framework</a>, puis cliquez sur le lien « Problèmes » correspondant au canal concerné. Si vous avez configuré Application Insights pour votre robot, vous pouvez également y trouver des informations détaillées concernant les erreurs. 
+Direct Line 3.0 retourne le code d’état HTTP 502 lorsqu’il essaie de communiquer avec votre robot, mais que la requête n’aboutit pas. Cette erreur indique que le robot a renvoyé une erreur ou que la requête a expiré. Pour plus d’informations sur les erreurs générées par votre bot, accédez au tableau de bord du bot dans le <a href="https://portal.azure.com" target="_blank">portail Azure</a>, puis cliquez sur le lien « Problèmes » correspondant au canal concerné. Si vous avez configuré Application Insights pour votre robot, vous pouvez également y trouver des informations détaillées concernant les erreurs. 
 
 ::: moniker range="azure-bot-service-3.0"
 
@@ -216,13 +216,6 @@ builder
     .InstancePerLifetimeScope();
 builder.Update(Conversation.Container);
 ```
-::: moniker-end
-
-## <a name="is-there-a-limit-on-the-amount-of-data-i-can-store-using-the-state-api"></a>Existe-t-il une limite concernant la quantité de données que je peux stocker à l’aide de l’API d’état ?
-
-Oui, chaque magasin d’états (conteneurs de données d’utilisateur, de conversation et de robot privé) peut contenir jusqu’à 64 Ko de données. Pour plus d’informations, consultez [Gérer les données d’état][StateAPI].
-
-::: moniker range="azure-bot-service-3.0"
 
 ## <a name="how-do-i-version-the-bot-data-stored-through-the-state-api"></a>Comment faire pour adapter la version des données de robot stockées par le biais de l’API d’état ?
 

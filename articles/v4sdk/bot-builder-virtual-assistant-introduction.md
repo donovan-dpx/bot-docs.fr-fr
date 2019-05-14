@@ -8,29 +8,34 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1d231672284e20e3f215cbba16d881ae0ecab7ec
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 99c37812a5c13fe2409a68cbb8614cf8144d0711
+ms.sourcegitcommit: b94c4286f6f64955fd51ccf4a68109c43db0e47d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59540985"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65083686"
 ---
-# <a name="virtual-assistant-solution-overview"></a>Présentation de la solution d’assistant virtuel
+# <a name="virtual-assistant-overview"></a>Présentation de l’assistant virtuel
 
 ## <a name="overview"></a>Vue d’ensemble
-Nous avons constaté que nos clients et partenaires souhaitaient ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs clients, et disponible sur un large éventail de canevas et d’appareils conversationnels. Dans la continuité de l’approche open source de Microsoft vis-à-vis du Kit de développement logiciel (SDK) Bot Framework, la solution d’assistant personnel personnalisé open source offre un contrôle total sur l’expérience de l’utilisateur final et repose sur un ensemble de fonctionnalités de base. En outre, l’expérience peut être enrichie d’informations sur l’utilisateur final et sur les appareils/écosystèmes pour une expérience véritablement intégrée et intelligente.
+
+Les clients et partenaires souhaitent ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs utilisateurs, et disponible sur un large éventail de canevas et d’appareils. <br/><br/> Dans la continuité de l’approche open source de Microsoft vis-à-vis du kit SDK Bot Framework, la solution d’assistant virtuel open source vous offre un ensemble de fonctionnalités de base et un contrôle total sur l’expérience de l’utilisateur final. <br/><br/> Ce modèle intègre le modèle d’entreprise précédent et réunit toutes les bonnes pratiques et composants de prise en charge identifiés lors de la création d’expériences conversationnelles et simplifie considérablement la création d’un projet de bot, grâce notamment à des intentions conversationnelles de base, à l’intégration de Dispatch, à QnA Maker, à Application Insights et à un déploiement automatisé.
 
 Nous avons la conviction que nos clients doivent entretenir et enrichir leurs relations et leurs insights clients. Par conséquent, tout assistant virtuel offre à nos clients et partenaires un contrôle complet sur l’expérience utilisateur via le code en open source sur GitHub. Le nom, la voix et la personnalité peuvent être modifiés pour répondre aux besoins de l’organisation. Notre solution d’assistant virtuel simplifie la création de votre assistant et vous permet de démarrer en quelques minutes. Vous pouvez par la suite continuer à le développer complètement grâce à nos outils spécifiques.
 
 La portée de l’assistant virtuel est vaste et celui-ci offre généralement aux utilisateurs finals une large gamme de fonctionnalités. Pour accroître la productivité des développeurs et créer un écosystème dynamique d’expériences conversationnelles réutilisables, nous fournissons aux développeurs des exemples initiaux de compétences conversationnelles réutilisables. Ces compétences peuvent être ajoutées à l’application conversationnelle pour éclairer une expérience de conversation spécifique, comme la recherche d’un point d’intérêt, l’interaction avec le calendrier, les tâches, les e-mails et de nombreux autres scénarios. Les compétences sont entièrement personnalisables et se composent de différents modèles de langage, de dialogues et de code.
 
-Nous travaillons actuellement en étroite collaboration avec des clients et partenaires initiaux au sein d’un dépôt open source pour donner vie aux premières expériences.
-
 ![Schéma d’assistant virtuel](./media/enterprise-template/customassistantdiagram.jpg)
+
+## <a name="get-started"></a>Prise en main
+
+Pour plus d’informations, consultez la documentation sur [l’assistant virtuel et les compétences](https://github.com/Microsoft/AI).
 
 ## <a name="whats-in-the-box"></a>Fonctionnalités présentes 
 
-L’Assistant virtuel repose sur les fonctionnalités du [modèle d’entreprise](./bot-builder-enterprise-template-overview.md), qui propose des fonctions basiques pour les expériences conversationnelles, y compris des intentions conversationnelles de base dans plusieurs langages, l’outil Dispatch, QnA et des insights conversationnelles. Les fonctionnalités suivantes de l’assistant sont proposées actuellement. Nous prévoyons d’en développer d’autres et allons travailler en étroite collaboration avec les clients et les partenaires pour établir la feuille de route.
+Le modèle d’assistant virtuel permet de rassembler un certain nombre de bonnes pratiques que nous avons identifiées lors de la création d’expériences conversationnelles. Il automatise aussi l’intégration des composants, ce qui est particulièrement avantageux pour les développeurs Bot Framework. Dans cette section, vous découvrirez dans quel contexte les décisions clés ont été prises afin de mieux comprendre le fonctionnement du modèle.
+
+Le modèle d’assistant virtuel incorpore maintenant les fonctionnalités du modèle d’entreprise précédent, notamment les intentions conversationnelles de base dans plusieurs langages, l’outil Dispatch, QnA et des insights conversationnelles. Les fonctionnalités suivantes de l’assistant sont proposées actuellement. Nous prévoyons d’en développer d’autres et allons travailler en étroite collaboration avec les clients et les partenaires pour établir la feuille de route.
 
 Fonctionnalité | Description |
 ------------ | -------------
@@ -97,5 +102,4 @@ Tous les aspects de chaque compétence (modèle de langage, dialogues, code d’
 
 ## <a name="getting-started"></a>Mise en route
 
-La solution d’assistant virtuel est disponible dans [ce dépôt GitHub](https://github.com/Microsoft/AI/tree/master/solutions/Virtual-Assistant) qui est régulièrement mis à jour par l’équipe en charge de la solution. Ce dépôt contient également une documentation plus détaillée. Pour nous faire part de vos problèmes ou de votre avis, utilisez directement les mécanismes de formulation de commentaires de GitHub. Si vous souhaitez discuter avec nous d’un scénario clé, remplissez [ce formulaire](https://aka.ms/customassistantpreviewform) pour que nous puissions vous contacter.
-
+La solution d’assistant virtuel est disponible dans [ce dépôt GitHub](https://github.com/Microsoft/AI/) qui est régulièrement mis à jour par l’équipe en charge de la solution. Ce dépôt contient également une documentation plus détaillée. Pour nous faire part de vos problèmes ou de votre avis, utilisez directement les mécanismes de formulation de commentaires de GitHub.

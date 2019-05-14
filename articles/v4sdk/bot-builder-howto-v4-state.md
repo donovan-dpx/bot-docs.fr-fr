@@ -10,372 +10,119 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 4/16/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a79fd768f7c132301ba28bace03b5b86599fb4dd
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 38a8034687ef1a0b8b3bcf3e01d3b33b91bdfd18
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904756"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033233"
 ---
 # <a name="save-user-and-conversation-data"></a>Enregistrer les données d’utilisateur et de conversation
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Un bot est par nature sans état. Une fois que votre bot est déployé, il ne peut pas s’exécuter dans le même processus ni sur le même ordinateur d’un tour à l’autre. Votre bot peut toutefois suivre le contexte d’une conversation pour pouvoir gérer son comportement et se rappeler des réponses aux questions précédentes. Les fonctionnalités d’état et de stockage du SDK permettent d’ajouter un état à votre bot.
+Un bot est par nature sans état. Une fois que votre bot est déployé, il ne peut pas s’exécuter dans le même processus ni sur le même ordinateur d’un tour à l’autre. Votre bot peut toutefois peut avoir besoin de suivre le contexte d’une conversation pour pouvoir gérer son comportement et se rappeler les réponses aux questions précédentes. Les fonctionnalités d’état et de stockage du SDK Bot Framework permettent d’ajouter un état à votre bot. Les bots utilisent la gestion de l’état et les objets de stockage pour gérer et conserver l’état. Le gestionnaire d’état fournit une couche d’abstraction qui vous permet d’accéder aux propriétés d’état à l’aide d’accesseurs de propriété, indépendamment du type de stockage sous-jacent.
 
 ## <a name="prerequisites"></a>Prérequis
-
 - Connaissances des [concepts de base des bots](bot-builder-basics.md) et de la façon dont ils [gèrent l’état](bot-builder-concept-state.md).
-- Le code de cet article est basé sur l’exemple **StateBot**. Vous aurez besoin d’une copie de l’exemple en [C# ](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/StateBot) ou en [JS]().
-- [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started) pour tester le bot localement.
+- Le code présenté dans cet article est basé sur l’**exemple de bot de gestion d’état**. Vous aurez besoin d’une copie de l’exemple en [CSharp](https://aka.ms/statebot-sample-cs) ou en [JavaScript](https://aka.ms/statebot-sample-js).
 
-## <a name="about-the-sample-code"></a>Au sujet de l’exemple de code
+## <a name="about-this-sample"></a>À propos de cet exemple
+Quand il reçoit l’entrée utilisateur, cet exemple vérifie l’état de conversation stocké pour voir si cet utilisateur a précédemment été invité à fournir son nom. Si ce n’est pas le cas, le nom de l’utilisateur est demandé et cette entrée est stockée dans l’état utilisateur. Dans l’affirmative, le nom stocké dans l’état utilisateur sert à communiquer avec l’utilisateur. Par ailleurs, ses données d’entrée ainsi que l’heure de réception et l’ID du canal d’entrée sont retournés à l’utilisateur. Les valeurs d’heure et d’ID de canal sont récupérées à partir des données de conversation utilisateur, puis enregistrées dans l’état de conversation. Le diagramme suivant montre la relation entre le bot, le profil utilisateur et les classes de données de conversation.
 
-Cet article décrit comment configurer la gestion de l’état d’un bot. Pour ajouter un état, nous devons configurer des propriétés d’état, la gestion de l’état et le stockage, puis les utiliser dans le bot.
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+![exemple de bot avec état](media/StateBotSample-Overview.png)
 
-- Chaque _propriété d’état_ contient des informations d’état sur le bot.
-- Chaque accesseur de propriété d’état vous permet d’obtenir ou de définir la valeur de la propriété d’état associée.
-- Chaque objet de gestion d’état automatise la lecture et l’écriture des informations d’état associées dans le stockage.
-- La couche de stockage se connecte au stockage de sauvegarde de l’état, notamment le stockage en mémoire (pour les tests) ou Azure Cosmos DB (pour la production).
-
-Nous devons configurer le bot avec des accesseurs de propriété d’état à l’aide desquels il peut obtenir et définir l’état au moment de l’exécution quand il traite une activité. Un accesseur de propriété d’état est créé à l’aide d’un objet de gestion d’état, lequel est créé à l’aide d’une couche de stockage. Nous allons donc débuter par la couche de stockage.
-
-## <a name="configure-storage"></a>Configurer le stockage
-
-Étant donné que nous ne prévoyons pas de déployer ce bot, nous allons utiliser le _stockage mémoire_ pour configurer un état d’utilisateur et un état de conversation à l’étape suivante.
-
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Dans **Startup.cs**, configurez la couche de stockage.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // ...
-    IStorage storage = new MemoryStorage();
-    // ...
-}
-```
-
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans votre fichier **index.js**, configurez la couche de stockage.
-
-```javascript
-// Define state store for your bot.
-const memoryStorage = new MemoryStorage();
-```
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+![exemple de bot avec état](media/StateBotSample-JS-Overview.png)
 
 ---
 
-## <a name="create-state-management-objects"></a>Créer des objets de gestion d’état
+## <a name="define-classes"></a>Définir les classes
 
-Nous suivons à la fois l’état d’_utilisateur_ et l’état de _conversation_ que nous utilisons pour créer les _accesseurs de propriété d’état_ à l’étape suivante.
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+La première étape de la configuration de la gestion d’état consiste à définir les classes qui contiendront toutes les informations que nous voulons gérer dans l’état utilisateur et de conversation. Pour cet exemple, nous avons défini les éléments suivants :
 
-Dans **Startup.cs**, référencez la couche de stockage quand vous créez vos objets de gestion d’état.
+- Dans **UserProfile.cs**, nous définissons une classe `UserProfile` pour les informations utilisateur qui seront collectées par le bot. 
+- Dans **ConversationData.cs**, nous définissons une classe `ConversationData` pour contrôler l’état de notre conversation pendant la collecte des informations utilisateur.
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // ...
-    ConversationState conversationState = new ConversationState(storage);
-    UserState userState = new UserState(storage);
-    // ...
-}
-```
+L’exemple de code suivant illustre la création de la définition de la classe UserProfile.
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**UserProfile.cs** [!code-csharp[UserProfile](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/UserProfile.cs?range=7-11)]
 
-Dans votre fichier **index.js**, ajoutez `UserState` à votre instruction require.
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-```javascript
-const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState } = require('botbuilder');
-```
+La première étape nécessite le service de Bot Builder qui inclut des définitions pour `UserState` et `ConversationState`.
 
-Ensuite, référencez la couche de stockage quand vous créez vos objets de gestion d’état de conversation et d’utilisateur.
-
-```javascript
-// Create conversation and user state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const userState = new UserState(memoryStorage);
-```
+**index.js** [!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=7-9)]
 
 ---
 
-## <a name="create-state-property-accessors"></a>Créer des accesseurs de propriété d’état
+## <a name="create-conversation-and-user-state-objects"></a>Créer des objets d’état utilisateur et de conversation
 
-Pour _déclarer_ une propriété d’état, commencez par créer un accesseur de propriété d’état à l’aide de l’un de nos objets de gestion d’état. Nous configurons le bot pour suivre les informations suivantes :
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-- Le nom de l’utilisateur, que nous allons définir dans l’état d’utilisateur.
-- si, oui ou non, nous avons demandé à l’utilisateur son nom ainsi que des informations supplémentaires sur le message qu’il vient d’envoyer.
+Ensuite, nous inscrivons `MemoryStorage` qui est utilisé pour créer les objets `UserState` et `ConversationState`. Les objets d’état utilisateur et de conversation sont créés lors de `Startup` et la dépendance est injectée dans le constructeur de bot. Les autres services inscrits qui disponibles pour un bot sont les suivants : un fournisseur d’informations d’identification, un adaptateur et l’implémentation de bot.
 
-Le bot utilise l’accesseur pour obtenir la propriété d’état à partir du contexte de dialogue.
+**Startup.cs** [!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=16-38)]
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**StateManagementBot.cs** [!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=15-22)]
 
-Nous commençons par définir des classes pour héberger toutes les informations à gérer dans chaque type d’état.
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-- Une classe `UserProfile` pour les informations utilisateur qui seront collectées par le bot.
-- Une classe `ConversationData` pour suivre les informations sur l’arrivée d’un message et son expéditeur.
+Ensuite, nous inscrivons `MemoryStorage` qui est alors utilisé pour créer les objets `UserState` et `ConversationState`.
 
-```csharp
-// Defines a state property used to track information about the user.
-public class UserProfile
-{
-    public string Name { get; set; }
-}
-```
-
-```csharp
-// Defines a state property used to track conversation data.
-public class ConversationData
-{
-    // The time-stamp of the most recent incoming message.
-    public string Timestamp { get; set; }
-
-    // The ID of the user's channel.
-    public string ChannelId { get; set; }
-
-    // Track whether we have already asked the user's name
-    public bool PromptedUserForName { get; set; } = false;
-}
-```
-
-Ensuite, nous définissons une classe qui contient les informations de gestion d’état dont nous aurons besoin pour configurer notre instance de bot.
-
-```csharp
-public class StateBotAccessors
-{
-    public StateBotAccessors(ConversationState conversationState, UserState userState)
-    {
-        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
-        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
-    }
-  
-    public static string UserProfileName { get; } = "UserProfile";
-
-    public static string ConversationDataName { get; } = "ConversationData";
-
-    public IStatePropertyAccessor<UserProfile> UserProfileAccessor { get; set; }
-
-    public IStatePropertyAccessor<ConversationData> ConversationDataAccessor { get; set; }
-  
-    public ConversationState ConversationState { get; }
-  
-    public UserState UserState { get; }
-}
-```
-
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Nous passons les objets de gestion d’état directement au constructeur du bot et laissons le bot créer lui-même les accesseurs de propriété d’état.
-
-Dans **index.js**, indiquez les objets de gestion d’état quand vous créez le bot.
-
-```javascript
-// Create the bot.
-const myBot = new MyBot(conversationState, userState);
-```
-
-Dans **bot.js**, définissez les identificateurs dont vous aurez besoin pour gérer et suivre l’état.
-
-```javascript
-// The accessor names for the conversation data and user profile state property accessors.
-const CONVERSATION_DATA_PROPERTY = 'conversationData';
-const USER_PROFILE_PROPERTY = 'userProfile';
-```
+**index.js** [!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=32-38)]
 
 ---
 
-## <a name="configure-your-bot"></a>Configurer votre bot
+## <a name="add-state-property-accessors"></a>Ajouter des accesseurs de propriété d’état
 
-Nous sommes maintenant prêts à définir les accesseurs de propriété d’état et à configurer notre bot.
-Nous utilisons l’objet de gestion d’état de conversation pour l’accesseur de propriété d’état du flux conversationnel.
-Quant à l’objet de gestion d’état de conversation, nous l’utilisons pour l’accesseur de propriété d’état du profil utilisateur.
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Maintenant, nous créons des accesseurs de propriété à l’aide de la méthode `CreateProperty` qui fournit un handle à l’objet `BotState`. Chaque accesseur de propriété d’état vous permet d’obtenir ou de définir la valeur de la propriété d’état associée. Avant d’utiliser nos propriétés d’état, nous devons utiliser chaque accesseur pour charger la propriété à partir du stockage et la récupérer dans le cache d’état. Pour obtenir la clé incluse dans l’étendue appropriée et associée à la propriété d’état, nous appelons la méthode `GetAsync`.
 
-Dans **Startup.cs**, nous configurons ASP.NET pour fournir les objets de gestion et de propriété d’état groupés. Ils sont récupérés auprès du constructeur du bot au moyen du framework d’injection de dépendance dans ASP.NET Core.
+**StateManagementBot.cs** [!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-46)]
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // ...
-    services.AddSingleton<StateBotAccessors>(sp =>
-    {
-        // Create the custom state accessor.
-        return new StateBotAccessors(conversationState, userState)
-        {
-            ConversationDataAccessor = conversationState.CreateProperty<ConversationData>(StateBotAccessors.ConversationDataName),
-            UserProfileAccessor = userState.CreateProperty<UserProfile>(StateBotAccessors.UserProfileName),
-        };
-    });
-}
-```
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Dans le constructeur du bot, l’objet `StateBotAccessors` est fourni quand ASP.NET crée le bot.
+Nous créons maintenant des accesseurs de propriété pour `UserState` et `ConversationState`. Chaque accesseur de propriété d’état vous permet d’obtenir ou de définir la valeur de la propriété d’état associée. Nous utilisons chaque accesseur pour charger la propriété associée à partir du stockage et récupérer son état actuel à partir du cache.
 
-```csharp
-// Defines a bot for filling a user profile.
-public class StateBot : IBot
-{
-    private readonly StateBotAccessors _accessors;
-
-    public StateBot(StateBotAccessors accessors, ILoggerFactory loggerFactory)
-    {
-        // ...
-        _accessors = accessors ?? throw new System.ArgumentNullException(nameof(accessors));
-    }
-
-    // The bot's turn handler and other supporting code...
-}
-```
-
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Dans le constructeur du bot (dans le fichier **bot.js**), nous créons les accesseurs de propriété d’état et les ajoutons au bot. Nous ajoutons également des références aux objets de gestion d’état, car nous en avons besoin pour enregistrer tout changement d’état.
-
-```javascript
-constructor(conversationState, userState) {
-    // Create the state property accessors for the conversation data and user profile.
-    this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
-    this.userProfile = userState.createProperty(USER_PROFILE_PROPERTY);
-
-    // The state management objects for the conversation and user state.
-    this.conversationState = conversationState;
-    this.userState = userState;
-}
-```
+**StateManagementBot.js**.
+[!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=6-19)]
 
 ---
 
 ## <a name="access-state-from-your-bot"></a>Accéder à l’état à partir du bot
+La section précédente présente les étapes nécessaires au moment de l’initialisation pour ajouter des accesseurs de propriété d’état à notre bot. Nous pouvons à présent utiliser ces accesseurs au moment de l’exécution pour lire et écrire des informations d’état. L’exemple de code ci-dessous utilise le flux logique suivant :
+- Si userProfile.Name est vide et que conversationData.PromptedUserForName a la valeur _true_, nous récupérons le nom d’utilisateur fourni et nous le stockons dans l’état utilisateur.
+- Si userProfile.Name est vide et que conversationData.PromptedUserForName a la valeur _false_, nous demandons le nom de l’utilisateur.
+- Si userProfile.Name a été préalablement stocké, nous récupérons l’heure et l’ID de canal du message à partir de l’entrée utilisateur, nous renvoyons toutes les données à l’utilisateur, puis nous stockons les données récupérées dans l’état de conversation.
 
-Dans les sections précédentes, nous avons suivi les étapes nécessaires au moment de l’initialisation pour ajouter des accesseurs de propriété d’état à notre bot.
-Nous pouvons à présent utiliser ces accesseurs au moment de l’exécution pour lire et écrire des informations d’état.
+## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-1. Avant d’utiliser nos propriétés d’état, nous devons utiliser chaque accesseur pour charger la propriété à partir du stockage et la récupérer dans le cache d’état.
-   - Chaque fois que vous obtenez une propriété d’état par le biais de son accesseur, vous devez fournir une valeur par défaut. Sinon, vous pouvez obtenir une erreur « Valeur null ».
-1. Avant de quitter le gestionnaire de tour :
-   1. Nous utilisons la méthode _set_ de l’accesseur pour envoyer (push) les changements à l’état du bot.
-   1. Nous utilisons la méthode d’_enregistrement des changements_ des objets de gestion d’état pour écrire ces changements dans le stockage.
+**StateManagementBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Avant de quitter le gestionnaire de tours, nous utilisons la méthode _SaveChangesAsync()_ des objets de gestion d’état pour écrire tous les changements d’état dans le stockage.
 
-```csharp
-// The bot's turn handler.
-public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-{
-    if (turnContext.Activity.Type == ActivityTypes.Message)
-    {
-        // Get the state properties from the turn context.
-        UserProfile userProfile =
-            await _accessors.UserProfileAccessor.GetAsync(turnContext, () => new UserProfile());
-        ConversationData conversationData =
-            await _accessors.ConversationDataAccessor.GetAsync(turnContext, () => new ConversationData());
+**StateManagementBot.cs** [!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
 
-        if (string.IsNullOrEmpty(userProfile.Name))
-        {
-            // First time around this is set to false, so we will prompt user for name.
-            if (conversationData.PromptedUserForName)
-            {
-                // Set the name to what the user provided
-                userProfile.Name = turnContext.Activity.Text?.Trim();
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-                // Acknowledge that we got their name.
-                await turnContext.SendActivityAsync($"Thanks {userProfile.Name}.");
+**StateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-54)]
 
-                // Reset the flag to allow the bot to go though the cycle again.
-                conversationData.PromptedUserForName = false;
-            }
-            else
-            {
-                // Prompt the user for their name.
-                await turnContext.SendActivityAsync($"What is your name?");
+Avant de quitter chaque tour de dialogue, nous utilisons la méthode _saveChanges()_ des objets de gestion d’état pour conserver tous les changements en récrivant l’état dans le stockage.
 
-                // Set the flag to true, so we don't prompt in the next turn.
-                conversationData.PromptedUserForName = true;
-            }
-
-            // Save user state and save changes.
-            await _accessors.UserProfileAccessor.SetAsync(turnContext, userProfile);
-            await _accessors.UserState.SaveChangesAsync(turnContext);
-        }
-        else
-        {
-            // Add message details to the conversation data.
-            conversationData.Timestamp = turnContext.Activity.Timestamp.ToString();
-            conversationData.ChannelId = turnContext.Activity.ChannelId.ToString();
-
-            // Display state data
-            await turnContext.SendActivityAsync($"{userProfile.Name} sent: {turnContext.Activity.Text}");
-            await turnContext.SendActivityAsync($"Message received at: {conversationData.Timestamp}");
-            await turnContext.SendActivityAsync($"Message received from: {conversationData.ChannelId}");
-        }
-
-        // Update conversation state and save changes.
-        await _accessors.ConversationDataAccessor.SetAsync(turnContext, conversationData);
-        await _accessors.ConversationState.SaveChangesAsync(turnContext);
-    }
-}
-```
-
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-```javascript
-// The bot's turn handler.
-async onTurn(turnContext) {
-    if (turnContext.activity.type === ActivityTypes.Message) {
-        // Get the state properties from the turn context.
-        const userProfile = await this.userProfile.get(turnContext, {});
-        const conversationData = await this.conversationData.get(
-            turnContext, { promptedForUserName: false });
-
-        if (!userProfile.name) {
-            // First time around this is undefined, so we will prompt user for name.
-            if (conversationData.promptedForUserName) {
-                // Set the name to what the user provided.
-                userProfile.name = turnContext.activity.text;
-
-                // Acknowledge that we got their name.
-                await turnContext.sendActivity(`Thanks ${userProfile.name}.`);
-
-                // Reset the flag to allow the bot to go though the cycle again.
-                conversationData.promptedForUserName = false;
-            } else {
-                // Prompt the user for their name.
-                await turnContext.sendActivity('What is your name?');
-
-                // Set the flag to true, so we don't prompt in the next turn.
-                conversationData.promptedForUserName = true;
-            }
-            // Save user state and save changes.
-            await this.userProfile.set(turnContext, userProfile);
-            await this.userState.saveChanges(turnContext);
-        } else {
-            // Add message details to the conversation data.
-            conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
-            conversationData.channelId = turnContext.activity.channelId;
-
-            // Display state data.
-            await turnContext.sendActivity(`${userProfile.name} sent: ${turnContext.activity.text}`);
-            await turnContext.sendActivity(`Message received at: ${conversationData.timestamp}`);
-            await turnContext.sendActivity(`Message received from: ${conversationData.channelId}`);
-        }
-        // Update conversation state and save changes.
-        await this.conversationData.set(turnContext, conversationData);
-        await this.conversationState.saveChanges(turnContext);
-    }
-}
-```
+**StateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
 
 ---
 
 ## <a name="test-the-bot"></a>Tester le bot
 
-1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour l’exemple en [C# ](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/dotnet_core/StateBot) ou en [JS](https://github.com/Microsoft/BotFramework-Samples/tree/master/SDKV4-Samples/js/stateBot).
+Téléchargez et installez la dernière version de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+
+1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier LISEZ-MOI pour l’[exemple C#](https://aka.ms/statebot-sample-cs) ou l’[exemple JS](https://aka.ms/statebot-sample-js).
 1. Utilisez l’émulateur pour tester le bot comme indiqué ci-dessous.
 
 ![exemple de bot avec état à des fins de test](media/state-bot-testing-emulator.png)
@@ -390,7 +137,7 @@ async onTurn(turnContext) {
 
 **Recognizers-Text :** L’exemple utilise les bibliothèques Microsoft/Recognizers-Text pour analyser et valider les entrées utilisateur. Pour plus d’informations, consultez la page de [présentation](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview).
 
-## <a name="next-step"></a>Étape suivante
+## <a name="next-steps"></a>Étapes suivantes
 
 Maintenant que vous savez comment configurer l’état pour vous aider à lire et à écrire les données d’un bot dans le stockage, examinons comment poser une série de questions à l’utilisateur, valider ses réponses et enregistrer ses entrées.
 

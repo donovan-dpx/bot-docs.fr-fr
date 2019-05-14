@@ -8,15 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/13/2017
-ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.date: 4/13/2019
+ms.openlocfilehash: 17d80fe4d4730ed294b770fd05bc5d7ea3d114af
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591160"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033040"
 ---
 # <a name="manage-a-bot"></a>Gérer un robot
+
+[!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
 Cette rubrique explique comment gérer un robot à l’aide du portail Azure.
 
@@ -46,17 +48,11 @@ Le panneau **Vue d’ensemble** présente des informations de haut niveau sur vo
 
 ![Paramètres d’App Service](~/media/azure-manage-a-bot/app-service-settings.png)
 
-Le panneau **Paramètres de l’application** contient des informations détaillées sur votre bot, comme l’environnement du bot, les paramètres de débogage et les clés des paramètres de l’application, comme botFilePath et botFileSecret.
+Le panneau **Paramètres de l’application** contient des informations détaillées sur votre bot, comme l’environnement du bot, les paramètres de débogage et les clés des paramètres de l’application.
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID et MicrosoftAppPassword
 
-**MicrosoftAppID** et **MicrosoftAppPassword** sont conservés dans le fichier `.bot` du bot. Pour les récupérer, téléchargez le fichier du bot et déchiffrez-le, ce qui peut être nécessaire pour le tester localement avec l’ID et le mot de passe.
-
-### <a name="bot-file-path-and-secret"></a>Chemin et secret du fichier du bot
-
-Vous trouverez **botFilePath** et **botFileSecret** pour votre bot dans le panneau **Paramètres d’application**.
-
-![Chemin et secret du fichier du bot Microsoft](~/media/azure-manage-a-bot/app-settings.png)
+**MicrosoftAppID** et **MicrosoftAppPassword** sont conservés dans le fichier de configuration du bot ou dans Azure Key Vault. Pour les récupérer, téléchargez le fichier de paramètres ou de configuration de votre bot, ou accédez à Azure Key Vault. Vous pouvez être amené à effectuer des tests locaux avec l’ID et le mot de passe.
 
 > [!NOTE]
 > Le Service Bot **Enregistrement de canaux de robot** est fourni avec un *MicrosoftAppID* mais, aucun service d’application n’étant associé à ce type de service, il n’existe pas de panneau **Paramètres de l’application** dans lequel rechercher le *MicrosoftAppPassword*. Pour obtenir le mot de passe, vous devez en générer un. Pour générer le mot de passe pour une **Inscription de canaux de bot**, voir [Mot de passe d’inscription de canaux de robot](bot-service-quickstart-registration.md#bot-channels-registration-password).

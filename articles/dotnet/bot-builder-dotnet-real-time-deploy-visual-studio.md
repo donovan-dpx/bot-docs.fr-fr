@@ -1,21 +1,18 @@
 ---
-title: Déployer un bot multimédia en temps réel Skype dans Azure | Microsoft Docs
-description: Découvrez comment déployer un bot audio-vidéo en temps réel Skype dans Azure à l’aide de la fonctionnalité de publication intégrée de Visual Studio.
-author: MalarGit
-ms.author: malarch
-manager: ssulzer
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 22cce8ad5bef3c1c6f08a8efc28118e0209dd3af
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 1df0192632cdb9b35259b8ce1ec5c8b3be46c750
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999436"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032943"
 ---
+<a name="--"></a><!--
+---
+titre : Déployer un bot multimédia en temps réel Skype dans Azure | Microsoft Docs Description : Découvrez comment déployer un bot audio-vidéo en temps réel Skype dans Azure à l’aide de la fonctionnalité de publication intégrée de Visual Studio.
+author: MalarGit ms.author: malarch manager: ssulzer ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="deploy-a-real-time-media-bot-from-visual-studio-to-azure"></a>Déployer un bot multimédia en temps réel de Visual Studio vers Azure
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -37,7 +34,7 @@ Pour que votre bot fonctionne correctement dans le cloud, vous devez vous assure
 > Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la rubrique [MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword).
 
 ## <a name="create-worker-role-in-the-azure-portal"></a>Créer un rôle de travail dans le portail Azure
-### <a name="step-1-create-cloud-serviceclassic"></a>Étape 1 : Créer un service cloud (classique)
+### <a name="step-1-create-cloud-serviceclassic"></a>Étape 1 : Créer un service cloud (classique)
 Connectez-vous au <a href="https://portal.azure.com">portail Azure</a>. Cliquez sur **+** dans la partie gauche de l’écran, puis choisissez **Services cloud (classiques)**. Fournissez les informations requises dans le formulaire, puis cliquez sur **Créer**.
 
 ![Créer le service cloud](../media/real-time-media-bot-portal-service-creation.png)
@@ -45,7 +42,7 @@ Connectez-vous au <a href="https://portal.azure.com">portail Azure</a>. Cliquez 
 > [!NOTE]
 > Le nom DNS du bot doit être fourni dans l’URL pour l’inscription du bot.
 
-### <a name="step-2-upload-the-certificate-for-the-bot"></a>Étape 2 : Charger le certificat du bot
+### <a name="step-2-upload-the-certificate-for-the-bot"></a>Étape 2 : Charger le certificat du bot
 Une fois le bot créé, chargez son certificat.
 
 ![Téléchargement d’un certificat](../media/real-time-media-bot-portal-certificates.png)
@@ -67,13 +64,13 @@ Le nom de domaine complet (FQDN) du bot n’est pas disponible via les API RoleE
 >   ```
 
 ## <a name="publish-the-bot-from-visual-studio"></a>Publier le bot à partir de Visual Studio
-### <a name="step-1-launch-the-microsoft-azure-publishing-wizard-in-visual-studio"></a>Étape 1 : Lancer l’Assistant Publication Microsoft Azure dans Visual Studio
+### <a name="step-1-launch-the-microsoft-azure-publishing-wizard-in-visual-studio"></a>Étape 1 : Lancer l’Assistant Publication Microsoft Azure dans Visual Studio
 
 Ouvrez votre projet dans Visual Studio. Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet du service cloud, puis sélectionnez **Publier**. L’Assistant Publication Microsoft Azure démarre. Utilisez vos informations d’identification pour vous connecter à l’abonnement approprié.
 
 ![Cliquez avec le bouton droit sur le projet et choisissez Publier pour démarrer l’Assistant Publication Microsoft Azure](../media/real-time-media-bot-publish-signin.png)
 
-### <a name="step-2-publish-the-bot"></a>Étape 2 : Publier le bot
+### <a name="step-2-publish-the-bot"></a>Étape 2 : Publier le bot
 
 Cliquez sur **Suivant**. L’onglet **Paramètres** s’ouvre. Spécifiez le service cloud, l’environnement, la configuration de build et la configuration du service pour le déploiement du bot.
 
@@ -84,3 +81,4 @@ Vous pouvez éventuellement choisir l’option **Paramètres avancés** et spéc
 ![Cliquez sur l’onglet Paramètres avancés](../media/real-time-media-bot-publish-advanced-settings.png)
 
 Vérifiez la configuration dans l’onglet **Résumé**, puis cliquez sur **Publier** pour déployer le bot sur Microsoft Azure.
+-->

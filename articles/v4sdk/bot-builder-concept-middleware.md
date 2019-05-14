@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fddaced5693242e1debed6135122ace5a3cd316b
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 65e53be38e42d3117bebcc157f7ab23e6990b209
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904992"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033415"
 ---
 # <a name="middleware"></a>Middlewares
 
@@ -66,7 +66,7 @@ Les premiers éléments de votre pipeline de middlewares doivent probablement ê
 Les derniers éléments de votre pipeline de middlewares doivent être des middlewares propres au bot, c’est-à-dire des middlewares que vous implémentez pour traiter tout message envoyé à votre bot. Si vos middlewares utilisent des informations d’état ou d’autres informations définies dans le contexte de bot, ajoutez-les au pipeline de middlewares après les middlewares qui modifient l’état ou le contexte.
 
 ## <a name="short-circuiting"></a>Court-circuitage
-Une idée importante au sujet des intergiciels et des gestionnaires de réponses est le _court-circuitage_. Un intergiciel (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _next_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
+Une idée importante au sujet des intergiciels et des gestionnaires de réponses est le _court-circuitage_. Un middleware (ou un gestionnaire de réponses) doit transmettre l’exécution en appelant son délégué _suivant_ si l’exécution doit se poursuivre à travers les couches qui le suivent.  Si le délégué next n’est pas appelé au sein de cet intergiciel (ou gestionnaire de réponses), le pipeline associé est victime d’un court-circuitage, empêchant l’exécution des couches suivantes. Cela signifie que toute la logique de bot et tous les intergiciels dans le pipeline sont ignorés. Il existe une différence subtile entre le court-circuitage d’un tour par votre intergiciel ou par votre gestionnaire de réponses.
 
 Quand l’intergiciel court-circuite un tour, votre gestionnaire de tours de bot n’est pas appelé, mais l’ensemble du code de l’intergiciel exécuté avant ce point dans le pipeline continue d’être exécuté jusqu’à la fin. 
 
