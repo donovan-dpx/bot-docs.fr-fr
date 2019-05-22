@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/25/2019
+ms.date: 05/08/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 74c3af688a8f35b4583aa7b195348a6b205292a2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3470b1c8f3fbcfb7fecbb060a54b1a356ad41b61
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033157"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733319"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Créer vos propres invites pour collecter des entrées utilisateur
 
@@ -70,9 +70,9 @@ Les objets d’état utilisateur et de conversation sont créés au démarrage e
 
 Dans **index.js**, créez les propriétés d’état et le bot, puis appelez la méthode de bot `run` à partir de `processActivity`.
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
 
 ---
 
@@ -92,11 +92,11 @@ Enfin, nous enregistrons les données à l’aide de la méthode `SaveChangesAsy
 
 Dans le constructeur, nous créons les accesseurs de propriété d’état et nous configurons les objets de gestion des états (créés ci-dessus) pour notre conversation.
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=23-29)]
 
 Nous définissons ensuite un deuxième gestionnaire, `onDialog`, à exécuter après le gestionnaire de messages principal (procédure décrite dans la section suivante). Ce deuxième gestionnaire s’assure que nous enregistrons notre état à chaque tour.
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=41-48)]
 
 ---
 
@@ -112,7 +112,7 @@ Pour gérer les activités de message, nous utilisons la méthode d’assistance
 
 Pour gérer les activités de message, nous configurons notre conversation et nos données utilisateur, puis nous utilisons la méthode d’assistance `fillOutUserProfile()`. Voici le code complet pour le gestionnaire de tours.
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=31-39)]
 ---
 
 ## <a name="filling-out-the-user-profile"></a>Remplissage du profil utilisateur
@@ -131,7 +131,7 @@ Nous allons commencer par la collecte d’informations. Chacune d’elles fourni
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
+**bots/customPromptBot.js** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=52-116)]
 
 ---
 
@@ -157,7 +157,7 @@ Ajoutez les méthodes de validation suivantes à votre bot.
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples//javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
+**bots/customPromptBot.cs** [!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/bots/customPromptBot.js?range=118-189)]
 
 ---
 
