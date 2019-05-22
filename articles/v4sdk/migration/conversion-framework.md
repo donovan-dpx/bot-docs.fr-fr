@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c486970a3880c95ff10e9d4bb59b50a5600c7343
+ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033465"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855877"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migrer un bot du SDK .NET v3 vers v4
 
@@ -1001,9 +1001,3 @@ Rubriques de procédures v4 :
 - [Envoyer et recevoir des SMS](../bot-builder-howto-send-messages.md)
 - [Enregistrer les données d’utilisateur et de conversation](../bot-builder-howto-v4-state.md)
 - [Implémenter des flux de conversation séquentiels](../bot-builder-dialog-manage-conversation-flow.md)
-- [Collecter les entrées utilisateur avec une invite de boîte de dialogue](../bot-builder-prompts.md)
-
-<!-- TODO:
-- The conceptual piece
-- The migration to a .NET Core project
--->
