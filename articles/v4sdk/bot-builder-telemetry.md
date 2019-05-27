@@ -10,94 +10,115 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 414417e3722e2d9063e1d177b534b6caa814c0db
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 95b56ec8e278c3d94430dc3c870803e8672fb053
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032445"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733328"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Ajouter des données de télémétrie à votre bot
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Dans la version 4.2 du SDK Bot Framework, la journalisation des données de télémétrie a été ajoutée au produit.  Elle permet aux applications bot d’envoyer des données d’événement à des services comme Application Insights. La première section couvre ces deux méthodes et est suivie de fonctionnalités de télémétrie plus étendues.
+Dans la version 4.2 du SDK Bot Framework, la journalisation des données de télémétrie a été ajoutée au produit.  Elle permet aux applications bot d’envoyer des données d’événement à des services comme Application Insights. La première section couvre ces méthodes et est suivie de fonctionnalités de télémétrie plus étendues.
 
-Ce document explique comment intégrer votre bot aux nouvelles fonctionnalités de télémétrie.
+Ce document explique comment intégrer votre bot aux nouvelles fonctionnalités de télémétrie. 
 
 ## <a name="basic-telemetry-options"></a>Options élémentaires de télémétrie
 
 ### <a name="basic-application-insights"></a>Fonctionnalités Application Insights de base
-Il existe deux méthodes pour configurer votre bot.  La première part du principe que vous effectuez une intégration à Application Insights.
 
-Le fichier de paramètres contient des métadonnées sur les services externes que le bot utilise quand il s’exécute.  Par exemple, CosmosDB, Application Insights ainsi que la connexion de service et les métadonnées de Language Understanding (LUIS) y sont stockés.   
+Tout d’abord, ajoutons des données de télémétrie de base à votre bot, à l’aide d’Application Insights. Pour plus d’informations sur la configuration, consultez les premières sections du [démarrage avec Application Insights](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started-with-Application-Insights-for-ASP.NET-Core).   
 
-Si vous voulez « stocker » Application Insights, sans qu’aucune configuration supplémentaire spécifique à Application Insights ne soit nécessaire (par exemple, des initialiseurs de télémétrie), transmettez l’objet de configuration (habituellement `IConfiguration`) pendant l’initialisation.   Il s’agit de la méthode la plus simple pour initialiser et configurer Application Insights en vue de commencer le suivi des requêtes et des appels externes à d’autres services, ainsi que la corrélation des événements entre les services.
+Si vous voulez « stocker » Application Insights, sans qu’aucune configuration supplémentaire spécifique à Application Insights ne soit nécessaire (par exemple, des initialiseurs de télémétrie), ajoutez les éléments suivants à votre méthode `ConfigureServices()`.   Il s’agit de la méthode la plus simple pour initialiser et configurer Application Insights en vue de commencer le suivi des requêtes et des appels externes à d’autres services, ainsi que la corrélation des événements entre les services.
 
-Vous devrez ajouter le package NuGet **Microsoft.Bot.Builder.Integration.ApplicationInsights.Core**.
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Vous devez ajouter les packages NuGet inclus dans l’extrait de code ci-dessous.
 
 **Startup.cs**
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Bot.Builder.ApplicationInsights;
+using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core;
+using Microsoft.Bot.Builder.Integration.AspNet.Core;
+ 
+// This method gets called by the runtime. Use this method to add services to the container.
 public void ConfigureServices(IServiceCollection services)
 {
-     ...
-     // Add Application Insights - pass in the bot configuration
-     services.AddBotApplicationInsights(<your IConfiguration variable name - likely "config">);
-     ...
+    ...
+    // Add Application Insights services into service collection
+    services.AddApplicationInsightsTelemetry();
+
+    // Add the standard telemetry client
+    services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
+
+    // Add ASP middleware to store the HTTP body, mapped with bot activity key, in the httpcontext.items
+    // This will be picked by the TelemetryBotIdInitializer
+    services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+
+    // Add telemetry initializer that will set the correlation context for all telemetry items
+    services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
+
+    // Add telemetry initializer that sets the user ID and session ID (in addition to other 
+    // bot-specific properties, such as activity ID)
+    services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
+    ...
 }
 
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-     app.UseBotApplicationInsights()
-                 ...
-                .UseDefaultFiles()
-                .UseStaticFiles()
-                .UseBotFramework();
-                ...
+    ...
+    app.UseBotApplicationInsights();
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+Vous devez ensuite stocker votre clé d’instrumentation Application Insights dans votre fichier `appsettings.json` ou comme variable d’environnement. Le fichier `appsettings.json` contient des métadonnées sur les services externes que le bot utilise quand il s’exécute.  Par exemple, CosmosDB, Application Insights ainsi que la connexion de service et les métadonnées de Language Understanding (LUIS) y sont stockés. Vous trouverez la clé d’instrumentation dans le portail Azure dans la section **Vue d’ensemble** (sous la liste déroulante `Essentials` de votre service dans cette page, si elle est réduite). Vous pouvez trouver plus d’informations sur l’obtention des clés [ici](~/bot-service-resources-app-insights-keys.md).
 
-```JavaScript
-const appInsightsClient = new ApplicationInsightsTelemetryClient(<your configuration variable name - likely "config">);
+Le framework recherche la clé pour vous, si le format est correct. Le format de vos entrées `appsettings.json` doit se présenter comme suit :
+
+```json
+    "ApplicationInsights": {
+        "InstrumentationKey": "putinstrumentationkeyhere"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Warning"
+        }
+    }
 ```
 
----
+Pour plus d’informations sur l’ajout d’Application Insights à une application ASP.NET Core, consultez [cet article](https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
 
-### <a name="overriding-the-telemetry-client"></a>Remplacement du client de télémétrie
+### <a name="customize-your-telemetry-client"></a>Personnaliser votre client de télémétrie
 
-Si vous voulez personnaliser votre client Application Insights ou vous connecter à un service totalement distinct, vous devez configurer le système différemment. Téléchargez le package `Microsoft.Bot.Builder.ApplicationInsights` via nuget, ou utilisez npm pour installer `botbuilder-applicationinsights`. Vous trouverez la clé d’instrumentation dans le portail Azure.
+Si vous voulez personnaliser votre client Application Insights ou vous connecter à un service totalement distinct, vous devez configurer le système différemment. Téléchargez le package `Microsoft.Bot.Builder.ApplicationInsights` via nuget, ou utilisez npm pour installer `botbuilder-applicationinsights`. Vous trouverez plus d’informations sur l’obtention des clés Application Insights [ici](~/bot-service-resources-app-insights-keys.md).
 
 **Modifier la configuration d’Application Insights**
 
-```csharp
+Pour modifier votre configuration, vous devez inclure `options` quand vous ajoutez Application Insights. Sinon, tout est identique à ce qui précède.
 
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-     ...
-     // Create Application Insight Telemetry Client
-     // with custom configuration.
-     var telemetryClient = TelemetryClient(myCustomConfiguration)
-     
-     // Add Application Insights
-     services.AddBotApplicationInsights(new BotTelemetryClient(telemetryClient), "InstrumentationKey");
+    ...
+    // Add Application Insights services into service collection
+    services.AddApplicationInsightsTelemetry(options);
+    ...
+}
 ```
 
-**Utiliser une télémétrie personnalisée** Si vous voulez journaliser les événements de télémétrie générés par Bot Framework dans un système totalement distinct, créez une classe dérivée de l’interface de base et effectuez la configuration.  
+L’objet `options` est du type `ApplicationInsightsServiceOptions`. Vous trouverez plus d’informations sur ces options [ici]().
+
+**Utiliser une télémétrie personnalisée** Si vous voulez journaliser les événements de télémétrie générés par Bot Framework dans un système totalement distinct, créez une classe dérivée de l’interface de base `IBotTelemetryClient` et effectuez la configuration. Ensuite, quand vous ajoutez votre client de télémétrie comme indiqué ci-dessus, injectez simplement votre client personnalisé. 
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-     ...
-     // Create my IBotTelemetryClient-based logger
-     var myTelemetryClient = MyTelemetryLogger();
-     
-     // Add Application Insights
-     services.AddSingleton(myTelemetryClient);
-     ...
+    ...
+    // Add the telemetry client.
+    services.AddSingleton<IBotTelemetryClient, CustomTelemetryClient>();
+    ...
 }
 ```
 
@@ -140,9 +161,11 @@ Il existe trois nouveaux composants ajoutés au kit SDK dans la version 4.4.  T
 TelemetryLoggerMiddleware est un composant de Bot Framework qui peut être ajouté sans modification, et il effectuera une journalisation qui permettra l’élaboration de rapports prêts à l’emploi fournis avec le kit SDK Bot Framework. 
 
 ```csharp
-var telemetryClient = sp.GetService<IBotTelemetryClient>();
-var telemetryLogger = new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
-options.Middleware.Add(telemetryLogger);  // Add to the middleware collection
+// Create the telemetry middleware to track conversation events
+services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
+
+// Create the Bot Framework Adapter with error handling enabled.
+services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 ```
 
 #### <a name="adding-properties"></a>Ajout de propriétés
@@ -174,8 +197,8 @@ class MyTelemetryMiddleware : TelemetryLoggerMiddleware
 De plus, dans Startup, il convient d’ajouter la nouvelle classe :
 
 ```csharp
-var telemetryLogger = new TelemetryLuisRecognizer(telemetryClient, logPersonalInformation: true);
-options.Middleware.Add(telemetryLogger);  // Add to the middleware collection
+// Create the telemetry middleware to track conversation events
+services.AddSingleton<IMiddleware, MyTelemetryMiddleware>();
 ```
 
 #### <a name="completely-replacing-properties--additional-events"></a>Remplacement complet des propriétés / Événement(s) supplémentaire(s)
@@ -283,7 +306,7 @@ var result = await recognizer.RecognizeAsync(turnContext,
 ```
 
 #### <a name="completely-replacing-properties--additional-events"></a>Remplacement complet des propriétés / Événement(s) supplémentaire(s)
-Si vous décidez de remplacer complètement les propriétés journalisées, la classe `LuisRecognizer` peut être dérivée (comme ci-dessus lors de l’extension des propriétés).   La journalisation des nouveaux événements est effectuée de la même façon.
+Si vous décidez de remplacer complètement les propriétés en cours de journalisation, la classe `LuisRecognizer` peut être dérivée (comme ci-dessus lors de l’extension des propriétés).   La journalisation des nouveaux événements est effectuée de la même façon.
 
 Par exemple, si vous souhaitez remplacer complètement les propriétés `LuisResult` et envoyer plusieurs événements, il est possible de procéder comme suit :
 
@@ -430,11 +453,11 @@ Remarque : Lorsque les propriétés standard ne sont pas journalisées, cela en
 
 En plus de générer vos propres événements, l’objet `WaterfallDialog` du kit SDK génère maintenant des événements. La section suivante décrit les événements générés à partir de Bot Framework. Si la propriété `TelemetryClient` est définie sur `WaterfallDialog`, ces événements sont stockés.
 
-Voici un exemple de la modification d’un échantillon (BasicBot) qui utilise `WaterfallDialog` pour journaliser des événements de télémétrie.  BasicBot utilise un modèle courant utilisé dans lequel un `WaterfallDialog` est placé dans un `ComponentDialog` (`GreetingDialog`).
+Voici un exemple de la modification d’un échantillon (CoreBot) qui utilise `WaterfallDialog` pour journaliser des événements de télémétrie.  CoreBot emploie un modèle courant utilisé dans lequel un `WaterfallDialog` est placé dans un `ComponentDialog` (`GreetingDialog`).
 
 ```csharp
 // IBotTelemetryClient is direct injected into our Bot
-public BasicBot(BotServices services, UserState userState, ConversationState conversationState, IBotTelemetryClient telemetryClient)
+public CoreBot(BotServices services, UserState userState, ConversationState conversationState, IBotTelemetryClient telemetryClient)
 ...
 
 // The IBotTelemetryClient passed to the GreetingDialog

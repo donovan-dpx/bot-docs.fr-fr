@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 04/17/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f24fc4e0aa4ccb9d99275360df693c8465e5a4ad
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 10ae35f51a072a1af6cf7d4bdf2fd2f4cb3d66ee
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039763"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973853"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Utiliser QnA Maker pour répondre aux questions
 
@@ -58,10 +58,10 @@ Ensuite, vous allez créer une base de connaissances à l’aide du fichier `sma
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>Obtenir des valeurs pour connecter votre bot à la base de connaissances
 1. Sur le site [QnA Maker](https://www.qnamaker.ai/), sélectionnez votre base de connaissances.
 1. Ouvrez votre base de connaissances et sélectionnez **Settings** (Paramètres). Enregistrez la valeur indiquée pour _service name_. Cette valeur est utile pour rechercher la base de connaissances qui vous intéresse quand vous utilisez l’interface du portail QnA Maker. Elle n’est pas utilisée pour connecter votre application bot à cette base de connaissances. 
-1. Faites défiler la page jusqu’à la section **Deployment details** et enregistrez les valeurs suivantes :
-   - POST /knowledgebases/<ID_Votre_Base_de_connaissances>/getAnswers
-   - Host: <Votre_Nom_d’hôte>/qnamaker
-   - Autorisation : EndpointKey <Votre_Clé_de_Point de terminaison>
+1. Faites défiler la page jusqu’à la section **Détails du déploiement** et enregistrez les valeurs suivantes à partir de la requête HTTP de l’exemple Postman :
+   - POST /knowledgebases/\<ID-base-connaissances>/generateAnswer
+   - Hôte : \<votre-nom-hôte> // URL complète se terminant par /qnamaker
+   - Autorisation : EndpointKey \<votre_clé_de_point de terminaison>
    
 La chaîne d’URL complète du nom d’hôte doit ressembler à « https://< >.azure.net/qnamaker ». Ces trois valeurs fournissent les informations nécessaires pour que votre application se connecte à votre base de connaissances QnA Maker par le biais de votre service Azure QnA.  
 

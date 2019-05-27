@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Documentation d’Azure Bot Service
+metadata:
+  document_id: 1d934240-28c7-635f-d41b-3e43ae02970c
+  title: 'Documentation Azure Bot Service - Tutoriels, informations de référence sur les API'
+  meta.description: 'Learn how to create bots. Documentation helps you create, deploy, and manage bots in the cloud.'
+  author: ivorb
+  manager: kamrani
+  ms.service: bot-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/23/2019
+  ms.author: ivorb
+abstract:
+  description: 'Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service optimise le SDK Bot Framework avec une prise en charge de C# et JavaScript. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/video/satya-video.png
+      width: 250
+    title: "Keynote Build\_2019 de Satya Nadella. (1:25:09)"
+    href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
+    width: 250
+sections:
+  - title: "Démarrages en 5\_minutes"
+    items:
+      - type: paragraph
+        text: "Découvrez comment créer votre premier bot\_:"
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/azure_portal.png
+            text: Portail Azure
+            href: 'https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart'
+          - image:
+              src: v4sdk/media/logo_csharp.svg
+            text: 'C#'
+            href: 'https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
+          - image:
+              src: v4sdk/media/logo_js.svg
+            text: JavaScript
+            href: 'https://docs.microsoft.com/en-us/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+  - title: Didacticiels pas à pas
+    items:
+      - type: paragraph
+        text: Découvrez comment créer et déployer des bots sur Azure.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/bot-framework/bot-builder-tutorial-basic-deploy">Créer et déployer un bot simple</a>
+          - html: <a href="/bot-framework/bot-builder-tutorial-add-qna">Ajouter QnA Maker et redéployer un bot</a>
+  - title: Informations de référence
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Languages
+            html: '<p><a href="/dotnet/api/?view=botbuilder-dotnet-stable">.NET</a></p><p><a href="https://docs.microsoft.com/en-us/javascript/api/botbuilder/index?view=botbuilder-ts-latest">JavaScript</a></p>'

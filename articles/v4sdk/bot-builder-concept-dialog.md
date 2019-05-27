@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d896584b2048c8d2b330a1e6e63bc47122102532
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: caa1938abd6ca2b79f9b42f28f3965413d24d81b
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033403"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733384"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -164,7 +164,7 @@ Si vous souhaitez dépiler tous les dialogues, vous pouvez effacer la pile de di
 
 ### <a name="repeating-a-dialog"></a>Répéter un dialogue
 
-Vous pouvez remplacer un dialogue par lui-même, ce qui crée une boucle.
+Vous pouvez remplacer un dialogue par lui-même, ce qui crée une boucle, à l’aide de la méthode *replace dialog*.
 Il s’agit là d’un excellent moyen de traiter des [interactions complexes](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) et de gérer les menus.
 
 > [!NOTE]

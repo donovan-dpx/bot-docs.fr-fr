@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7f2c31ab0a7f97917be83334c39bdc4750547614
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: bb6346d8364e0323c1e5f12329e8cdea97bad0ac
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033188"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733375"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
 
@@ -117,7 +117,7 @@ Ici, nous utilisons un plan App Service existant, mais nous créons une applicat
 _Remarque : Le paramètre botId, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable._
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation=<location>"
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
 **Option 2 : Nouveau plan App Service** 
@@ -168,6 +168,8 @@ Par conséquent, il est important d’inclure votre code généré et toutes les
 > Avant de compresser vos fichiers projet, vérifiez que vous êtes bien _dans_ le dossier approprié. 
 > - Pour les bots C#, il s’agit du dossier contenant le fichier .csproj. 
 > - Pour les bots JS, il s’agit du dossier contenant le fichier app.js ou index.js. 
+>
+> Sélectionnez tous les fichiers et compressez-les dans ce dossier, puis exécutez la commande toujours dans ce dossier.
 >
 > Si l’emplacement de votre dossier racine est incorrect, l’**exécution du bot échouera dans le portail Azure**.
 

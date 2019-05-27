@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/15/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e488615f318529935d35dbebbed2dd3b734f62
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: c81e463c221c64250684827a4e0ed059e7f98a02
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039745"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973880"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -90,9 +90,25 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 
 ### <a name="create-qna-maker-kb"></a>Créer une base de connaissances QnA Maker
 
-La première étape pour configurer une base de connaissances QnA Maker consiste à configurer un service QnA Maker dans Azure. Pour ce faire, suivez les instructions étape par étape [ici](https://aka.ms/create-qna-maker). Connectez-vous maintenant au [portail web de QnAMaker](https://qnamaker.ai). Descendez à l’étape 2
+La première étape pour configurer une base de connaissances QnA Maker consiste à configurer un service QnA Maker dans Azure. Pour ce faire, suivez les instructions détaillées [ici](https://aka.ms/create-qna-maker).
 
-![Créer QnA - Étape 2](./media/tutorial-dispatch/create-qna-step-2.png)
+Une fois votre service QnA Maker créé dans Azure, vous devez enregistrer la clé _Clé 1_ Cognitive Services fournie pour celui-ci. Elle sera utilisée comme \<clé1-service-qna-azure> lors de l’ajout du service QnA à votre application de répartition. Les étapes suivantes vous fournissent cette clé :
+    
+![Sélectionner Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
+
+1. À partir du portail Azure, sélectionnez votre service cognitif QnA Maker.
+
+![Sélectionner des clés Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-keys.png)
+
+2. Sélectionnez l’icône de clés qui figure sous la section _Gestion des ressources_ dans le menu de gauche.
+
+![Sélectionner la clé Clé 1 Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-key1.png)
+
+3. Copiez la valeur de _Clé 1_ dans le Presse-papiers et enregistrez-la en local. Elle sera utilisée ultérieurement pour la valeur de clé (-k) \<clé1-service-qna-azure> lors de l’ajout du service QnA à votre application de répartition.
+
+Connectez-vous maintenant au [portail web de QnAMaker](https://qnamaker.ai). Descendez à l’étape 2
+
+![Créer QnA - Étape 2](./media/tutorial-dispatch/create-qna-step-2.png) 
 
 et sélectionnez
 1. Votre compte Azure AD.
@@ -124,7 +140,7 @@ Une fois que votre application QnA Maker est publiée, sélectionnez l’onglet 
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
 Host: <your-hostname>  // NOTE - this is a URL.
-Authorization: EndpointKey <your-endpoint-key>
+Authorization: EndpointKey <qna-maker-resource-key>
 ```
 
 La chaîne d’URL complète du nom d’hôte doit ressembler à « https://< >.azure.net/qnamaker ».
@@ -156,7 +172,7 @@ L’interface CLI de l’outil Dispatch crée le modèle de dispatch au service 
     ```cmd
     dispatch add -t luis -i "<app-id-for-weather-app>" -n "<name-of-weather-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_Weather
     dispatch add -t luis -i "<app-id-for-home-automation-app>" -n "<name-of-home-automation-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_HomeAutomation
-    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<your-cognitive-services-subscription-id>" --intentName q_sample-qna
+    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<azure-qna-service-key1>" --intentName q_sample-qna
     ```
 
 1. Utilisez `dispatch create` pour générer un modèle de dispatch à partir du fichier .dispatch.
@@ -206,7 +222,7 @@ Pour chacune des entités indiquées ci-dessous, ajoutez les valeurs que vous av
 "MicrosoftAppPassword": "",
   
 "QnAKnowledgebaseId": "<knowledge-base-id>",
-"QnAAuthKey": "<your-endpoint-key>",
+"QnAAuthKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
 
 "LuisAppId": "<app-id-for-dispatch-app>",
@@ -245,7 +261,7 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 
 QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<your-endpoint-key>"
+QnAAuthKey="<qna-maker-resource-key>"
 QnAEndpointHostName="<your-hostname>"
 
 LuisAppId=<app-id-for-dispatch-app>
