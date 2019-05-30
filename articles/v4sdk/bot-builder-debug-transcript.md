@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
-ms.date: 4/18/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6660026cddd0543266a33603685a7d30cabfe706
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c10e6cda084f22cd4d97fd4ddce942941015733b
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032738"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215443"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Déboguer votre bot à l’aide de fichiers de transcription
 
@@ -35,7 +35,7 @@ Pour commencer ce processus, assurez-vous que le code du bot à tester s’exéc
 
 Après avoir connecté l’émulateur à votre code en cours d’exécution, testez votre code en envoyant des interactions utilisateur simulées au bot. Dans cet exemple, nous avons passé le mode de transport, le nom et l’âge de l’utilisateur. Après avoir entré toutes les interactions d’utilisateur à conserver, utilisez Bot Framework Emulator pour créer et enregistrer un fichier de transcription contenant cette conversation. 
 
-Dans l’onglet _Live Chat (Conversation en direct)_ (affiché ci-dessous), sélectionnez le bouton _Save Transcript (Enregistrer la transcription)_. 
+Dans l’onglet _Live Chat (Conversation en direct)_ (affiché ci-dessous), sélectionnez le bouton _Save Transcript (Enregistrer la transcription)_ . 
 
 ![sélectionner Save Transcript (Enregistrer la transcription)](./media/emulator_transcript_save.png)
 
@@ -48,7 +48,7 @@ Toutes les interactions utilisateur et réponses de bot que vous avez entrées p
 ## <a name="retrieving-a-bot-transcript-file"></a>Récupération d’un fichier de transcription de bot
 Pour récupérer un fichier de transcription de bot à l’aide de Framework Bot Emulator, sélectionnez le _File_ (Fichier), puis _Open Transcript..._ (Ouvrir la transcription...) dans le coin supérieur gauche de l’émulateur, comme indiqué ci-dessous. Ensuite, sélectionnez le fichier de transcription que vous souhaitez récupérer. (Les transcriptions sont également accessibles depuis le contrôle de liste _TRANSCRIPTS_ dans la section _RESOURCES_ de l’émulateur.) 
 
-Dans cet exemple, nous récupérons le fichier de transcription nommé « ursula_user.transcript ». La sélection d’un fichier de transcription charge automatiquement l’intégralité de la conservation conservée, dans un nouvel onglet intitulé _Transcript (Transcription)_.
+Dans cet exemple, nous récupérons le fichier de transcription nommé « ursula_user.transcript ». La sélection d’un fichier de transcription charge automatiquement l’intégralité de la conservation conservée, dans un nouvel onglet intitulé _Transcript (Transcription)_ .
 
 ![récupérer la transcription enregistrée](./media/emulator_transcript_retrieve.png)
 

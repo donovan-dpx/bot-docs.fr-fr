@@ -6,21 +6,21 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7ce7556b58c047e20f1b32597c896baa802968aa
-ms.sourcegitcommit: b94c4286f6f64955fd51ccf4a68109c43db0e47d
+ms.openlocfilehash: 8ed5841f9bfe874de26f1aecbb0e4460e541668b
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65083766"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215288"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Assistant virtuel : vue d’ensemble des compétences
 
 > [!NOTE]
 > Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Les développeurs peuvent composer des expériences conversationnelles en combinant des fonctionnalités conversationnelles réutilisables, appelées compétences.
 

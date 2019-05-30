@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20b434c4fe5106ffe953c1a9ba9a282254511c9c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032318"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214138"
 ---
 # <a name="manage-bot-resources"></a>Gérer les ressources du bot
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032318"
 Généralement, les bots utilisent différents services tels que [LUIS.ai](https://luis.ai) ou [QnaMaker.ai](https://qnamaker.ai). Quand vous développez un bot, vous devez être en mesure de les suivre tous. Vous pouvez utiliser différentes méthodes comme appsettings.json, web.config ou .env. 
 
 > [!IMPORTANT]
-> Avant la version 4.3 du kit SDK Bot Framework, nous proposions le fichier .bot comme mécanisme pour gérer les ressources. Toutefois, nous vous recommandons à l’avenir d’utiliser le fichier appsettings.json ou .env pour gérer ces ressources. Les bots qui utilisent le fichier .bot continuent de fonctionner pour l’instant, même si le fichier .bot a été **_déprécié_**. Si vous utilisez un fichier .bot pour gérer les ressources, suivez les étapes qui s’appliquent pour migrer les paramètres. 
+> Avant la version 4.3 du kit SDK Bot Framework, nous proposions le fichier .bot comme mécanisme pour gérer les ressources. Toutefois, nous vous recommandons à l’avenir d’utiliser le fichier appsettings.json ou .env pour gérer ces ressources. Les bots qui utilisent le fichier .bot continuent de fonctionner pour l’instant, même si le fichier .bot a été **_déprécié_** . Si vous utilisez un fichier .bot pour gérer les ressources, suivez les étapes qui s’appliquent pour migrer les paramètres. 
 
 ## <a name="migrating-settings-from-bot-file"></a>Migration des paramètres à partir du fichier .bot
 Les sections suivantes expliquent comment migrer les paramètres à partir du fichier .bot. Suivez le scénario qui vous convient.

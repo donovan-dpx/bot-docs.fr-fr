@@ -6,18 +6,18 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 13/12/2018
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 99c37812a5c13fe2409a68cbb8614cf8144d0711
-ms.sourcegitcommit: b94c4286f6f64955fd51ccf4a68109c43db0e47d
+ms.openlocfilehash: 9bab3e3df6bb32607773da261698d785b1f261f7
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65083686"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214232"
 ---
 # <a name="virtual-assistant-overview"></a>Présentation de l’assistant virtuel
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Les clients et partenaires souhaitent ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs utilisateurs, et disponible sur un large éventail de canevas et d’appareils. <br/><br/> Dans la continuité de l’approche open source de Microsoft vis-à-vis du kit SDK Bot Framework, la solution d’assistant virtuel open source vous offre un ensemble de fonctionnalités de base et un contrôle total sur l’expérience de l’utilisateur final. <br/><br/> Ce modèle intègre le modèle d’entreprise précédent et réunit toutes les bonnes pratiques et composants de prise en charge identifiés lors de la création d’expériences conversationnelles et simplifie considérablement la création d’un projet de bot, grâce notamment à des intentions conversationnelles de base, à l’intégration de Dispatch, à QnA Maker, à Application Insights et à un déploiement automatisé.
 

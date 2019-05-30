@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 4/18/19
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 58d1e83b67d0601a9783e175318a50f8c0646bb2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033577"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215350"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -25,7 +25,7 @@ La capacité à comprendre ce que veut dire votre utilisateur du point de vue de
 
 ## <a name="prerequisites"></a>Prérequis
 - Compte [LUIS](https://www.luis.ai)
-- Le code de cet article est basé sur l’exemple **Bot de base**. Vous avez besoin d’une copie de l’exemple, au choix en **[CSharp](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)**. 
+- Le code de cet article est basé sur l’exemple **Bot de base**. Vous avez besoin d’une copie de l’exemple, au choix en **[CSharp](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)** . 
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) et de la [gestion des ressources de bot](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple

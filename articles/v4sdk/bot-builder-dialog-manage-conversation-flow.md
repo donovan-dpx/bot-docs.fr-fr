@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/24/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ad1209481691e1c1ed4e00b42086b8996aeea6a5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 680d9148b463bbb5d10f4a6a06cc7b32b824b66e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032697"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215419"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
@@ -39,7 +39,7 @@ Dans l’exemple d’invite multitour, nous utilisons un dialogue en cascade, qu
 | Demander à l’utilisateur son mode de transport | Invite de choix |
 | Demander son nom à l’utilisateur | Invite de texte |
 | Demander à l’utilisateur s’il souhaite indiquer son âge | Invite de confirmation |
-| S’il a répondu « oui », demander son âge  | Invite de nombre avec validation pour accepter uniquement des âges compris entre 0 et 150. |
+| S’il a répondu « oui », demander son âge  | Invite de nombre avec validation pour accepter uniquement des âges compris entre 0 et 150. |
 | Demander si les informations collectées sont correctes | Invite de réutilisation de la confirmation |
 
 Enfin, si l’utilisateur a répondu « oui », afficher les informations collectées ; sinon, lui indiquer que ses informations ne seront pas conservées.
@@ -173,14 +173,14 @@ Le gestionnaire `onMessage` utilise la méthode d’assistance pour démarrer ou
 Ce bot utilise les _services_ suivants.
 
 - Les services de base pour un bot sont : un fournisseur d’informations d’identification, un adaptateur et l’implémentation de bot.
-- Les services pour gérer l’état sont : le stockage, l’état de l’utilisateur et l’état de la conversation.
+- Services pour gérer l’état : le stockage, l’état utilisateur et l’état de conversation.
 - Le dialogue que le bot utilisera.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 **Startup.cs**
 
-Nous inscrivons les services pour le bot dans `Startup`. Ces services sont disponibles dans d’autres parties du code par le biais de l’injection de dépendances.
+Nous enregistrons des services pour le bot dans `Startup`. Ces services sont disponibles dans d’autres parties du code par le biais de l’injection de dépendances.
 
 [!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-41)]
 
