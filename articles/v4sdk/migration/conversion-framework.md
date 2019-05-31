@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/11/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c486970a3880c95ff10e9d4bb59b50a5600c7343
-ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.openlocfilehash: aca21d9af94f274936900f1d73c1b340272cd089
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65855877"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215612"
 ---
-# <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migrer un bot du SDK .NET v3 vers v4
+# <a name="migrate-a-net-v3-bot-to-a-framework-v4-bot"></a>Effectuer la migration d’un bot .NET v3 vers un bot Framework v4
 
-Dans cet article, nous allons convertir [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) v3 en bot v4 _sans convertir le type de projet_. Il restera un projet .NET Framework.
+Dans cet article, nous allons convertir le bot [ContosoHelpdeskChatBot v3](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3) en un bot v4, _sans convertir le type de projet_. Il restera un projet .NET Framework.
 Cette conversion est décomposée en plusieurs étapes :
 
 1. Mettre à jour et installer les packages NuGet
@@ -27,7 +27,7 @@ Cette conversion est décomposée en plusieurs étapes :
 1. Mettre à jour votre classe MessagesController
 1. Convertir vos dialogues
 
-<!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->
+Le résultat de cette conversion est le bot [ContosoHelpdeskChatBot .NET Framework v4](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework).
 
 Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants :
 
@@ -40,7 +40,7 @@ Pour plus d’informations sur des changements spécifiques, consultez [Différe
 
 ## <a name="update-and-install-nuget-packages"></a>Mettre à jour et installer les packages NuGet
 
-1. Effectuez la mise à jour de **Microsoft.Bot.Builder.Azure** vers la dernière version stable.
+1. Mettez à jour **Microsoft.Bot.Builder.Azure** et **Microsoft.Bot.Builder.Integration.AspNet.WebApi** vers la dernière version stable.
 
     Vous mettez ainsi également à jour les packages **Microsoft.Bot.Builder** et **Microsoft.Bot.Connector**, dans la mesure où ce sont des dépendances.
 
@@ -55,60 +55,6 @@ Pour plus d’informations sur des changements spécifiques, consultez [Différe
 
 Si vous procédez à la génération à ce stade, vous obtenez des erreurs du compilateur. Vous pouvez les ignorer. Une fois la conversion terminée, nous obtenons un code fonctionnel.
 
-<!--
-## Add a BotDataBag class
-
-This file will contain wrappers to add a v3-style **IBotDataBag** to make dialog conversion simpler.
-
-```csharp
-using System.Collections.Generic;
-
-namespace ContosoHelpdeskChatBot
-{
-    public class BotDataBag : Dictionary<string, object>, IBotDataBag
-    {
-        public bool RemoveValue(string key)
-        {
-            return base.Remove(key);
-        }
-
-        public void SetValue<T>(string key, T value)
-        {
-            this[key] = value;
-        }
-
-        public bool TryGetValue<T>(string key, out T value)
-        {
-            if (!ContainsKey(key))
-            {
-                value = default(T);
-                return false;
-            }
-
-            value = (T)this[key];
-
-            return true;
-        }
-    }
-
-    public interface IBotDataBag
-    {
-        int Count { get; }
-
-        void Clear();
-
-        bool ContainsKey(string key);
-
-        bool RemoveValue(string key);
-
-        void SetValue<T>(string key, T value);
-
-        bool TryGetValue<T>(string key, out T value);
-    }
-}
-```
--->
-
 ## <a name="update-your-globalasaxcs-file"></a>Mettre à jour votre fichier Global.asax.cs
 
 Une partie de la génération de modèles automatique a changé et nous devons configurer des composants de l’infrastructure de [gestion d’état](../bot-builder-concept-state.md) nous-mêmes dans v4. Par exemple, v4 utilise un adaptateur de bot pour gérer l’authentification et transférer des activités au code de votre bot, et nous devons déclarer les propriétés d’état en amont.
@@ -117,195 +63,59 @@ Nous allons créer une propriété d’état pour `DialogState`, dont nous avons
 
 Dans **Global.asax.cs** :
 
-1. Mettez à jour les instructions `using` :
-    ```csharp
-    using System.Configuration;
-    using System.Reflection;
-    using System.Web.Http;
-    using Autofac;
-    using Autofac.Integration.WebApi;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Dialogs;
-    using Microsoft.Bot.Connector.Authentication;
-    ```
-1. Supprimez ces lignes de la méthode **Application_Start**
-    ```csharp
-    BotConfig.UpdateConversationContainer();
-    this.RegisterBotModules();
-    ```
-    Insérez ensuite cette ligne.
-    ```csharp
-    GlobalConfiguration.Configure(BotConfig.Register);
-    ```
+1. Mettez à jour les instructions `using` : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Global.asax.cs?range=4-13)]
+
+1. Supprimez ces lignes de la méthode **Application_Start** : [!code-csharp[Removed lines](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V3/ContosoHelpdeskChatBot/Global.asax.cs?range=23-24)]
+
+    Ensuite, insérez cette ligne : [!code-csharp[Reference BotConfig.Register](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Global.asax.cs?range=22)]
+
 1. Supprimez la méthode **RegisterBotModules** qui n’est plus référencée.
-1. Remplacez la méthode **BotConfig.UpdateConversationContainer** par cette méthode **BotConfig.Register**, où nous allons inscrire les objets nécessaires pour prendre en charge l’injection de dépendances.
-    > [!NOTE]
-    > Ce bot n’utilise pas l’état _utilisateur_ ni des _conversations privées_. Les lignes pour les inclure sont commentées ici.
-    ```csharp
-    public static void Register(HttpConfiguration config)
-    {
-        ContainerBuilder builder = new ContainerBuilder();
-        builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-        SimpleCredentialProvider credentialProvider = new SimpleCredentialProvider(
-            ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppIdKey],
-            ConfigurationManager.AppSettings[MicrosoftAppCredentials.MicrosoftAppPasswordKey]);
-
-        builder.RegisterInstance(credentialProvider).As<ICredentialProvider>();
-
-        // The Memory Storage used here is for local bot debugging only. When the bot
-        // is restarted, everything stored in memory will be gone.
-        IStorage dataStore = new MemoryStorage();
-
-        // Create Conversation State object.
-        // The Conversation State object is where we persist anything at the conversation-scope.
-        ConversationState conversationState = new ConversationState(dataStore);
-        builder.RegisterInstance(conversationState).As<ConversationState>();
-
-        //var userState = new UserState(dataStore);
-        //var privateConversationState = new PrivateConversationState(dataStore);
-
-        // Create the dialog state property acccessor.
-        IStatePropertyAccessor<DialogState> dialogStateAccessor
-            = conversationState.CreateProperty<DialogState>(nameof(DialogState));
-        builder.RegisterInstance(dialogStateAccessor).As<IStatePropertyAccessor<DialogState>>();
-
-        IContainer container = builder.Build();
-        AutofacWebApiDependencyResolver resolver = new AutofacWebApiDependencyResolver(container);
-        config.DependencyResolver = resolver;
-    }
-    ```
+1. Remplacez la méthode **BotConfig.UpdateConversationContainer** par cette méthode **BotConfig.Register**, où nous allons inscrire les objets nécessaires pour prendre en charge l’injection de dépendances. Ce bot n’utilise ni l’état _user_ ni l’état _private conversation_.Ainsi, nous créons uniquement l’objet de gestion de l’état de la conversation.
+    [!code-csharp[Define BotConfig.Register](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Global.asax.cs?range=31-61)]
 
 ## <a name="update-your-messagescontroller-class"></a>Mettre à jour votre classe MessagesController
 
-C’est là où le gestionnaire de tour intervient dans v4 et les changements sont donc nombreux. Sauf pour le gestionnaire de tour proprement dit, la majeure partie peut être considérée comme réutilisable. Dans votre fichier **Controllers\MessagesController.cs** :
+C’est là que le bot démarre un tour dans la version v4, le changement est donc important. À l’exception du gestionnaire de tours du bot, la majeure partie du code peut être considérée comme réutilisable. Dans votre fichier **Controllers\MessagesController.cs** :
 
-1. Mettez à jour les instructions `using` :
-    ```csharp
-    using System;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Web.Http;
-    using Bot.Builder.Community.Dialogs.FormFlow;
-    using ContosoHelpdeskChatBot.Dialogs;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Dialogs;
-    using Microsoft.Bot.Connector.Authentication;
-    using Microsoft.Bot.Schema;
-    ```
+1. Mettez à jour les instructions `using` : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Controllers/MessagesController.cs?range=4-8)]
+
 1. Supprimez l’attribut `[BotAuthentication]` de la classe. Dans v4, l’adaptateur du bot gère l’authentification.
-1. Ajoutez ces champs. **ConversationState** gère l’état limité à la conversation et **IStatePropertyAccessor\<DialogState>** est nécessaire pour prendre en charge les dialogues dans v4.
-    ```csharp
-    private readonly ConversationState _conversationState;
-    private readonly ICredentialProvider _credentialProvider;
-    private readonly IStatePropertyAccessor<DialogState> _dialogData;
 
-    private readonly DialogSet _dialogs;
-    ```
-1. Ajoutez un constructeur pour :
-    - Initialiser les champs d’instance.
-    - Utiliser l’injection de dépendances dans ASP.NET pour obtenir les valeurs de paramètres. (Nous avons inscrit des instances de ces classes dans **Global.asax.cs** pour assurer cette prise en charge.)
-    - Créer et initialiser un jeu de dialogues, à partir duquel nous pouvons créer un contexte de dialogue. (Nous devons le faire explicitement dans v4.)
-    ```csharp
-    public MessagesController(
-        ConversationState conversationState,
-        ICredentialProvider credentialProvider,
-        IStatePropertyAccessor<DialogState> dialogData)
-    {
-        _conversationState = conversationState;
-        _dialogData = dialogData;
-        _credentialProvider = credentialProvider;
+1. Ajoutez ces champs et un constructeur pour les initialiser. ASP.NET et Autofac utilisent l’injection de dépendances pour obtenir les valeurs de paramètres (pour prendre en charge cela, nous avons inscrit des objets adapter et bot dans **Global.asax.cs**). [!code-csharp[Fields and constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Controllers/MessagesController.cs?range=14-21)]
 
-        _dialogs = new DialogSet(dialogData);
-        _dialogs.Add(new RootDialog(nameof(RootDialog)));
-    }
-    ```
-1. Remplacez le corps de la méthode **Post**. Il s’agit de l’endroit où nous allons créer l’adaptateur et l’utiliser pour appeler notre boucle de messages (gestionnaire de tour). Nous utilisons `SaveChangesAsync` à la fin de chaque tour pour enregistrer les changements que le bot a apportés à l’état.
-
-    ```csharp
-    public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
-    {
-
-        var botFrameworkAdapter = new BotFrameworkAdapter(_credentialProvider);
-
-        var invokeResponse = await botFrameworkAdapter.ProcessActivityAsync(
-            Request.Headers.Authorization?.ToString(),
-            activity,
-            OnTurnAsync,
-            default(CancellationToken));
-
-        if (invokeResponse == null)
-        {
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-        else
-        {
-            return Request.CreateResponse(invokeResponse.Status);
-        }
-    }
-    ```
-1. Ajoutez une méthode **OnTurnAsync** qui contient le code de [gestionnaire de tour](../bot-builder-basics.md#the-activity-processing-stack) du bot.
-    > [!NOTE]
-    > Les dialogues scorables n’existent pas en tant que tels dans v4. Nous recherchons un message `cancel` de l’utilisateur dans le gestionnaire de tour du bot avant de poursuivre tout dialogue actif.
-    ```csharp
-    protected async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken)
-    {
-        // We're only handling message activities in this bot.
-        if (turnContext.Activity.Type == ActivityTypes.Message)
-        {
-            // Create the dialog context for our dialog set.
-            DialogContext dc = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
-
-            // Globally interrupt the dialog stack if the user sent 'cancel'.
-            if (turnContext.Activity.Text.Equals("cancel", StringComparison.InvariantCultureIgnoreCase))
-            {
-                Activity reply = turnContext.Activity.CreateReply($"Ok restarting conversation.");
-                await turnContext.SendActivityAsync(reply);
-                await dc.CancelAllDialogsAsync();
-            }
-
-            try
-            {
-                // Continue the active dialog, if any. If we just cancelled all dialog, the
-                // dialog stack will be empty, and this will return DialogTurnResult.Empty.
-                DialogTurnResult dialogResult = await dc.ContinueDialogAsync();
-                switch (dialogResult.Status)
-                {
-                    case DialogTurnStatus.Empty:
-                        // There was no active dialog in the dialog stack; start the root dialog.
-                        await dc.BeginDialogAsync(nameof(RootDialog));
-                        break;
-
-                    case DialogTurnStatus.Complete:
-                        // The last dialog on the stack completed and the stack is empty.
-                        await dc.EndDialogAsync();
-                        break;
-
-                    case DialogTurnStatus.Waiting:
-                    case DialogTurnStatus.Cancelled:
-                        // The active dialog is waiting for a response from the user, or all
-                        // dialogs were cancelled and the stack is empty. In either case, we
-                        // don't need to do anything here.
-                        break;
-                }
-            }
-            catch (FormCanceledException)
-            {
-                // One of the dialogs threw an exception to clear the dialog stack.
-                await turnContext.SendActivityAsync("Cancelled.");
-                await dc.CancelAllDialogsAsync();
-                await dc.BeginDialogAsync(nameof(RootDialog));
-            }
-        }
-    }
-    ```
-1. Comme nous gérons uniquement les activités de _message_, nous pouvons supprimer la méthode **HandleSystemMessage**.
+1. Remplacez le corps de la méthode **Post**. Nous utilisons l’adaptateur pour appeler la boucle de messages de notre bot (gestionnaire de tours).
+    [!code-csharp[Post method](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Controllers/MessagesController.cs?range=23-31)]
 
 ### <a name="delete-the-cancelscorable-and-globalmessagehandlersbotmodule-classes"></a>Supprimer les classes CancelScorable et GlobalMessageHandlersBotModule
 
 Comme les dialogues scorables n’existent pas dans v4 et que nous avons mis à jour le gestionnaire de tour pour réagir à un message `cancel`, nous pouvons supprimer les classes **CancelScorable** (dans **Dialogs\CancelScorable.cs**) et **GlobalMessageHandlersBotModule**.
+
+## <a name="create-your-bot-class"></a>Créer votre classe de bot
+
+Dans la version v4, la logique du gestionnaire de tours ou de la boucle de messages se trouve principalement dans un fichier de bot. Nous dérivons de `ActivityHandler`, qui définit des gestionnaires pour les types d’activités les plus courants.
+
+1. Créez un fichier **Bots\DialogBots.cs**.
+
+1. Mettez à jour les instructions `using` : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
+
+1. Dérivez `DialogBot` de `ActivityHandler`, puis ajoutez un paramètre générique pour le dialogue.
+    [!code-csharp[Class definition](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=19)]
+
+1. Ajoutez ces champs et un constructeur pour les initialiser. ASP.NET et Autofac utilisent l’injection de dépendances pour obtenir les valeurs de paramètres.
+    [!code-csharp[Fields and constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=21-28)]
+
+1. Substituez `OnMessageActivityAsync` pour appeler le dialogue principal (nous allons bientôt définir la méthode d’extension `Run`) [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=38-47)]
+
+1. Substituez `OnTurnAsync` pour enregistrer l’état de la conversation à la fin du tour. Dans la version v4, nous devons effectuer cette opération explicitement pour écrire l’état dans la couche de persistance. La méthode `ActivityHandler.OnTurnAsync` appelle des méthodes de gestionnaire d’activités spécifiques, selon le type d’activité reçu. Nous enregistrons donc l’état après l’appel à la méthode de base.
+    [!code-csharp[OnTurnAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=30-36)]
+
+### <a name="create-the-run-extension-method"></a>Créer la méthode d’extension Run
+
+Nous allons créer une méthode d’extension pour centraliser le code nécessaire à l’exécution d’un dialogue de composant système à partir de notre bot.
+
+Créez un fichier **DialogExtensions.cs** et implémentez une méthode d’extension `Run`.
+[!code-csharp[The extension](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/DialogExtensions.cs?range=4-41)]
 
 ## <a name="convert-your-dialogs"></a>Convertir vos dialogues
 
@@ -344,7 +154,7 @@ Le flux de contrôle et la messagerie au sein des dialogues n’étant plus gér
 
 Remarques concernant le code v4 :
 
-- Utilisez la propriété `DialogContext.Context` pour obtenir le contexte de tour actuel.
+- Dans le code d’un dialogue, utilisez la propriété `DialogContext.Context` pour obtenir le contexte de tour actuel.
 - Les étapes en cascade ont un paramètre `WaterfallStepContext`, qui dérive de `DialogContext`.
 - Toutes les classes de dialogue et d’invite concrètes dérivent de la classe `Dialog` abstraite.
 - Vous affectez un ID quand vous créez un dialogue composant. Chaque dialogue d’un jeu de dialogues doit recevoir un ID unique dans ce jeu.
@@ -358,153 +168,39 @@ Dans ce bot, le dialogue racine invite l’utilisateur à choisir parmi un ensem
 
 Dans le fichier **Dialogs/RootDialog.cs** :
 
-1. Mettez à jour les instructions `using` :
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Dialogs;
-    using Microsoft.Bot.Builder.Dialogs.Choices;
-    ```
+1. Mettez à jour les instructions `using` : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
+
 1. Nous devons convertir les options `HelpdeskOptions` à partir d’une liste de chaînes vers une liste de choix. Celle-ci sera utilisée avec une invite de choix, qui accepte le numéro du choix (dans la liste), la valeur du choix ou l’un des synonymes du choix en tant qu’entrée valide.
-    ```csharp
-    private static List<Choice> HelpdeskOptions = new List<Choice>()
-    {
-        new Choice(InstallAppOption) { Synonyms = new List<string>(){ "install" } },
-        new Choice(ResetPasswordOption) { Synonyms = new List<string>(){ "password" } },
-        new Choice(LocalAdminOption)  { Synonyms = new List<string>(){ "admin" } }
-    };
-    ```
+    [!code-csharp[HelpDeskOptions](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=28-33)]
+
 1. Ajoutez un constructeur. Ce code effectue les actions suivantes :
-   - Un ID est affecté à chaque instance d’un dialogue lors de sa création. L’ID de dialogue fait partie du jeu de dialogues auquel le dialogue est ajouté. Rappelez-vous que le bot possède un jeu de dialogues qui a été initialisé dans la classe **MessageController**. Chaque `ComponentDialog` a son propre jeu de dialogues interne, avec son propre ensemble d’ID de dialogue.
+   - Un ID est affecté à chaque instance d’un dialogue lors de sa création. L’ID de dialogue fait partie du jeu de dialogues auquel le dialogue est ajouté. Rappelez-vous que le bot a été initialisé avec un objet de dialogue dans la classe **MessageController**. Chaque `ComponentDialog` a son propre jeu de dialogues interne, avec son propre ensemble d’ID de dialogue.
    - Il ajoute les autres dialogues, dont l’invite de choix, comme dialogues enfants. Ici, nous utilisons simplement le nom de classe pour chaque ID de dialogue.
    - Il définit un dialogue en cascade en trois étapes. Nous allons les implémenter dans un instant.
      - Le dialogue invite tout d’abord l’utilisateur à choisir une tâche à effectuer.
      - Il démarre ensuite le dialogue enfant associé à ce choix.
      - Pour finir, il redémarre.
    - Chaque étape de la cascade est un délégué et nous allons les implémenter ensuite, en prenant le code existant du dialogue d’origine là où nous pouvons.
-   - Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_. Par défaut, il s’agit du premier dialogue enfant ajouté à un dialogue composant. Pour affecter un autre enfant en tant que dialogue initial, vous devez définir manuellement la propriété `InitialDialogId` du composant.
-    ```csharp
-    public RootDialog(string id)
-        : base(id)
-    {
-        AddDialog(new WaterfallDialog("choiceswaterfall", new WaterfallStep[]
-            {
-                PromptForOptionsAsync,
-                ShowChildDialogAsync,
-                ResumeAfterAsync,
-            }));
-        AddDialog(new InstallAppDialog(nameof(InstallAppDialog)));
-        AddDialog(new LocalAdminDialog(nameof(LocalAdminDialog)));
-        AddDialog(new ResetPasswordDialog(nameof(ResetPasswordDialog)));
-        AddDialog(new ChoicePrompt("options"));
-    }
-    ```
+   - Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_. Par défaut, il s’agit du premier dialogue enfant ajouté à un dialogue composant. Nous définissons explicitement la propriété `InitialDialogId`, ce qui signifie que le dialogue en cascade principal n’a pas à être le premier que vous ajoutez au jeu. Par exemple, si vous préférez ajouter d’abord les invites, cela vous permet de le faire sans provoquer un problème d’exécution.
+    [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=35-49)]
+
 1. Nous pouvons supprimer la méthode **StartAsync**. Quand un dialogue composant commence, il démarre automatiquement son dialogue _initial_. Dans ce cas, il s’agit du dialogue en cascade que nous avons défini dans le constructeur. Il démarre aussi automatiquement à sa première étape.
+
 1. Nous allons supprimer les méthodes **MessageReceivedAsync** et **ShowOptions**, puis les remplacer par la première étape de notre dialogue en cascade. Ces deux méthodes accueillent l’utilisateur et lui demandent de choisir l’une des options disponibles.
    - Vous pouvez voir ici que la liste de choix ainsi que les messages d’accueil et d’erreur sont fournis en tant qu’options dans l’appel à l’invite de nos choix.
    - Nous n’avons pas à spécifier la méthode suivante à appeler dans le dialogue, car la cascade passe à l’étape suivante à l’issue de l’invite de choix.
    - L’invite de choix effectue une boucle jusqu’à ce qu’elle reçoive une entrée valide ou que toute la pile de dialogues soit annulée.
-    ```csharp
-    private async Task<DialogTurnResult> PromptForOptionsAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Prompt the user for a response using our choice prompt.
-        return await stepContext.PromptAsync(
-            "options",
-            new PromptOptions()
-            {
-                Choices = HelpdeskOptions,
-                Prompt = MessageFactory.Text(GreetMessage),
-                RetryPrompt = MessageFactory.Text(ErrorMessage)
-            },
-            cancellationToken);
-    }
-    ```
+    [!code-csharp[PromptForOptionsAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=51-65)]
+
 1. Nous pouvons remplacer **OnOptionSelected** par la deuxième étape de notre cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
    - L’invite de choix retourne une valeur `FoundChoice`. Cela s’affiche dans la propriété `Result` du contexte d’étape. La pile de dialogues traite toutes les valeurs de retour comme des objets. Si la valeur de retour provient d’un de vos dialogues, vous connaissez le type de valeur de l’objet. Consultez [Types d’invites](../bot-builder-concept-dialog.md#prompt-types) pour obtenir une liste ce que chaque type d’invite retourne.
    - Étant donné que l’invite de choix ne va pas lever d’exception, le bloc try-catch peut être supprimé.
    - Nous devons ajouter un passage afin que cette méthode retourne toujours une valeur appropriée. Ce code ne doit jamais être atteint mais, si c’est le cas, il permettra au dialogue d’« échouer de manière appropriée ».
-    ```csharp
-    private async Task<DialogTurnResult> ShowChildDialogAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // string optionSelected = await userReply;
-        string optionSelected = (stepContext.Result as FoundChoice).Value;
+    [!code-csharp[ShowChildDialogAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=67-102)]
 
-        switch (optionSelected)
-        {
-            case InstallAppOption:
-                //context.Call(new InstallAppDialog(), this.ResumeAfterOptionDialog);
-                //break;
-                return await stepContext.BeginDialogAsync(
-                    nameof(InstallAppDialog),
-                    cancellationToken);
-            case ResetPasswordOption:
-                //context.Call(new ResetPasswordDialog(), this.ResumeAfterOptionDialog);
-                //break;
-                return await stepContext.BeginDialogAsync(
-                    nameof(ResetPasswordDialog),
-                    cancellationToken);
-            case LocalAdminOption:
-                //context.Call(new LocalAdminDialog(), this.ResumeAfterOptionDialog);
-                //break;
-                return await stepContext.BeginDialogAsync(
-                    nameof(LocalAdminDialog),
-                    cancellationToken);
-        }
-
-        // We shouldn't get here, but fail gracefully if we do.
-        await stepContext.Context.SendActivityAsync(
-            "I don't recognize that option.",
-            cancellationToken: cancellationToken);
-        // Continue through to the next step without starting a child dialog.
-        return await stepContext.NextAsync(cancellationToken: cancellationToken);
-    }
-    ```
 1. Enfin, remplacez l’ancienne méthode **ResumeAfterOptionDialog** par la dernière étape de notre cascade.
     - Au lieu de mettre fin au dialogue et de retourner le numéro de ticket comme nous l’avons fait dans le dialogue d’origine, nous redémarrons la cascade en remplaçant l’instance d’origine sur la pile par une nouvelle instance de lui-même. Cette opération est possible, car l’application d’origine a toujours ignoré la valeur de retour (le numéro de ticket) et redémarré le dialogue racine.
-    ```csharp
-    private async Task<DialogTurnResult> ResumeAfterAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        try
-        {
-            //var message = await userReply;
-            var message = stepContext.Context.Activity;
-
-            int ticketNumber = new Random().Next(0, 20000);
-            //await context.PostAsync($"Thank you for using the Helpdesk Bot. Your ticket number is {ticketNumber}.");
-            await stepContext.Context.SendActivityAsync(
-                $"Thank you for using the Helpdesk Bot. Your ticket number is {ticketNumber}.",
-                cancellationToken: cancellationToken);
-
-            //context.Done(ticketNumber);
-        }
-        catch (Exception ex)
-        {
-            // await context.PostAsync($"Failed with message: {ex.Message}");
-            await stepContext.Context.SendActivityAsync(
-                $"Failed with message: {ex.Message}",
-                cancellationToken: cancellationToken);
-
-            // In general resume from task after calling a child dialog is a good place to handle exceptions
-            // try catch will capture exceptions from the bot framework awaitable object which is essentially "userReply"
-            logger.Error(ex);
-        }
-
-        // Replace on the stack the current instance of the waterfall with a new instance,
-        // and start from the top.
-        return await stepContext.ReplaceDialogAsync(
-            "choiceswaterfall",
-            cancellationToken: cancellationToken);
-    }
-    ```
+    [!code-csharp[ResumeAfterAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=104-138)]
 
 ### <a name="update-the-install-app-dialog"></a>Mettre à jour le dialogue d’installation d’une application
 
@@ -520,459 +216,90 @@ Le dialogue d’installation d’une application effectue quelques tâches logiq
 
 Dans le fichier **Dialogs/InstallAppDialog.cs** :
 
-1. Mettez à jour les instructions `using` :
-    ```csharp
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using ContosoHelpdeskChatBot.Models;
-    using Microsoft.Bot.Builder;
-    using Microsoft.Bot.Builder.Dialogs;
-    using Microsoft.Bot.Builder.Dialogs.Choices;
-    ```
-1. Définissez des constantes pour les ID que nous allons utiliser pour les invites et les dialogues. Cela facilite la gestion du code de dialogue, car la chaîne à utiliser est définie à un seul emplacement.
-    ```csharp
-    // Set up our dialog and prompt IDs as constants.
-    private const string MainId = "mainDialog";
-    private const string TextId = "textPrompt";
-    private const string ChoiceId = "choicePrompt";
-    ```
-1. Définissez des constantes pour les clés que nous allons utiliser pour suivre l’état du dialogue.
-    ```csharp
-    // Set up keys for managing collected information.
-    private const string InstallInfo = "installInfo";
-    ```
-1. Ajoutez un constructeur et initialisez le jeu de dialogues du composant. Nous définissons explicitement la propriété `InitialDialogId` cette fois, ce qui signifie que le dialogue en cascade principal n’a pas à être le premier que vous ajoutez au jeu. Par exemple, si vous préférez ajouter d’abord les invites, cela vous permet de le faire sans provoquer un problème d’exécution.
-    ```csharp
-    public InstallAppDialog(string id)
-        : base(id)
-    {
-        // Initialize our dialogs and prompts.
-        InitialDialogId = MainId;
-        AddDialog(new WaterfallDialog(MainId, new WaterfallStep[] {
-            GetSearchTermAsync,
-            ResolveAppNameAsync,
-            GetMachineNameAsync,
-            SubmitRequestAsync,
-        }));
-        AddDialog(new TextPrompt(TextId));
-        AddDialog(new ChoicePrompt(ChoiceId));
-    }
-    ```
+1. Mettez à jour les instructions `using` : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
+
+1. Définissez une constante pour la clé que nous allons utiliser en vue d’effectuer le suivi des informations collectées.
+    [!code-csharp[Key ID](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=17-18)]
+
+1. Ajoutez un constructeur et initialisez le jeu de dialogues du composant.
+    [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=20-34)]
+
 1. Nous pouvons remplacer **StartAsync** par la première étape de notre dialogue en cascade.
     - Comme nous devons gérer l’état nous-mêmes, nous allons suivre l’objet d’installation d’une application dans l’état du dialogue.
     - Le message demandant à l’utilisateur de fournir une entrée devient une option dans l’appel à l’invite.
-    ```csharp
-    private async Task<DialogTurnResult> GetSearchTermAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Create an object in dialog state in which to track our collected information.
-        stepContext.Values[InstallInfo] = new InstallApp();
+    [!code-csharp[GetSearchTermAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=35-50)]
 
-        // Ask for the search term.
-        return await stepContext.PromptAsync(
-            TextId,
-            new PromptOptions
-            {
-                Prompt = MessageFactory.Text("Ok let's get started. What is the name of the application? "),
-            },
-            cancellationToken);
-    }
-    ```
 1. Nous pouvons remplacer **appNameAsync** et **multipleAppsAsync** par la deuxième étape de notre cascade.
     - Nous obtenons le résultat de l’invite maintenant, au lieu de regarder simplement le dernier message de l’utilisateur.
     - La requête de base de données et les instructions if sont organisées de la même façon que dans **appNameAsync**. Le code dans chaque bloc de l’instruction if a été mis à jour pour fonctionner avec les dialogues v4.
         - S’il existe une correspondance, nous allons mettre à jour l’état du dialogue et passer à l’étape suivante.
         - S’il existe plusieurs correspondances, nous allons utiliser l’invite de nos choix pour demander à l’utilisateur de choisir parmi la liste des options. Cela signifie que nous pouvons simplement supprimer **multipleAppsAsync**.
         - S’il n’existe aucune correspondance, nous allons mettre fin à ce dialogue et retourner la valeur null au dialogue racine.
-    ```csharp
-    private async Task<DialogTurnResult> ResolveAppNameAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Get the result from the text prompt.
-        var appname = stepContext.Result as string;
+    [!code-csharp[ResolveAppNameAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=52-91)]
 
-        // Query the database for matches.
-        var names = await this.getAppsAsync(appname);
-
-        if (names.Count == 1)
-        {
-            // Get our tracking information from dialog state and add the app name.
-            var install = stepContext.Values[InstallInfo] as InstallApp;
-            install.AppName = names.First();
-
-            return await stepContext.NextAsync();
-        }
-        else if (names.Count > 1)
-        {
-            // Ask the user to choose from the list of matches.
-            return await stepContext.PromptAsync(
-                ChoiceId,
-                new PromptOptions
-                {
-                    Prompt = MessageFactory.Text("I found the following applications. Please choose one:"),
-                    Choices = ChoiceFactory.ToChoices(names),
-                },
-                cancellationToken);
-        }
-        else
-        {
-            // If no matches, exit this dialog.
-            await stepContext.Context.SendActivityAsync(
-                $"Sorry, I did not find any application with the name '{appname}'.",
-                cancellationToken: cancellationToken);
-
-            return await stepContext.EndDialogAsync(null, cancellationToken);
-        }
-    }
-    ```
 1. **appNameAsync** demande également à l’utilisateur le nom de son ordinateur une fois la requête résolue. Nous allons capturer cette partie de la logique à l’étape suivante de la cascade.
     - Là encore, dans v4, nous devons gérer l’état nous-mêmes. La seule difficulté ici est que nous pouvons parvenir à cette étape via deux branches logiques différentes de l’étape précédente.
     - Nous allons demander à l’utilisateur un nom d’ordinateur à l’aide de la même invite de texte que précédemment, en fournissant simplement différentes options cette fois.
-    ```csharp
-    private async Task<DialogTurnResult> GetMachineNameAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Get the tracking info. If we don't already have an app name,
-        // Then we used the choice prompt to get it in the previous step.
-        var install = stepContext.Values[InstallInfo] as InstallApp;
-        if (install.AppName is null)
-        {
-            install.AppName = (stepContext.Result as FoundChoice).Value;
-        }
+    [!code-csharp[GetMachineNameAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=93-114)]
 
-        // We now need the machine name, so prompt for it.
-        return await stepContext.PromptAsync(
-            TextId,
-            new PromptOptions
-            {
-                Prompt = MessageFactory.Text(
-                    $"Found {install.AppName}. What is the name of the machine to install application?"),
-            },
-            cancellationToken);
-    }
-    ```
 1. La logique de **machineNameAsync** est encapsulée dans la dernière étape de notre cascade.
     - Nous récupérons le nom de l’ordinateur à partir du résultat de l’invite de texte et mettons à jour l’état du dialogue.
     - Nous supprimons l’appel pour mettre à jour la base de données, comme le code de prise en charge est dans un autre projet.
     - Nous envoyons ensuite le message de réussite à l’utilisateur et mettons fin au dialogue.
-    ```csharp
-    private async Task<DialogTurnResult> SubmitRequestAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        if (stepContext.Reason != DialogReason.CancelCalled)
-        {
-            // Get the tracking info and add the machine name.
-            var install = stepContext.Values[InstallInfo] as InstallApp;
-            install.MachineName = stepContext.Context.Activity.Text;
+    [!code-csharp[SubmitRequestAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=116-135)]
 
-            //TODO: Save to this information to the database.
-        }
-
-        await stepContext.Context.SendActivityAsync(
-            $"Great, your request to install {install.AppName} on {install.MachineName} has been scheduled.",
-            cancellationToken: cancellationToken);
-
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-    ```
-1. Pour simuler la base de données, j’ai mis à jour **getAppsAsync** pour interroger une liste statique au lieu de la base de données.
-    ```csharp
-    private async Task<List<string>> getAppsAsync(string Name)
-    {
-        List<string> names = new List<string>();
-
-        // Simulate querying the database for applications that match.
-        return (from app in AppMsis
-            where app.ToLower().Contains(Name.ToLower())
-            select app).ToList();
-    }
-
-    // Example list of app names in the database.
-    private static readonly List<string> AppMsis = new List<string>
-    {
-        "µTorrent 3.5.0.44178",
-        "7-Zip 17.1",
-        "Ad-Aware 9.0",
-        "Adobe AIR 2.5.1.17730",
-        "Adobe Flash Player (IE) 28.0.0.105",
-        "Adobe Flash Player (Non-IE) 27.0.0.130",
-        "Adobe Reader 11.0.14",
-        "Adobe Shockwave Player 12.3.1.201",
-        "Advanced SystemCare Personal 11.0.3",
-        "Auslogics Disk Defrag 3.6",
-        "avast! 4 Home Edition 4.8.1351",
-        "AVG Anti-Virus Free Edition 9.0.0.698",
-        "Bonjour 3.1.0.1",
-        "CCleaner 5.24.5839",
-        "Chmod Calculator 20132.4",
-        "CyberLink PowerDVD 17.0.2101.62",
-        "DAEMON Tools Lite 4.46.1.328",
-        "FileZilla Client 3.5",
-        "Firefox 57.0",
-        "Foxit Reader 4.1.1.805",
-        "Google Chrome 66.143.49260",
-        "Google Earth 7.3.0.3832",
-        "Google Toolbar (IE) 7.5.8231.2252",
-        "GSpot 2701.0",
-        "Internet Explorer 903235.0",
-        "iTunes 12.7.0.166",
-        "Java Runtime Environment 6 Update 17",
-        "K-Lite Codec Pack 12.1",
-        "Malwarebytes Anti-Malware 2.2.1.1043",
-        "Media Player Classic 6.4.9.0",
-        "Microsoft Silverlight 5.1.50907",
-        "Mozilla Thunderbird 57.0",
-        "Nero Burning ROM 19.1.1005",
-        "OpenOffice.org 3.1.1 Build 9420",
-        "Opera 12.18.1873",
-        "Paint.NET 4.0.19",
-        "Picasa 3.9.141.259",
-        "QuickTime 7.79.80.95",
-        "RealPlayer SP 12.0.0.319",
-        "Revo Uninstaller 1.95",
-        "Skype 7.40.151",
-        "Spybot - Search & Destroy 1.6.2.46",
-        "SpywareBlaster 4.6",
-        "TuneUp Utilities 2009 14.0.1000.353",
-        "Unlocker 1.9.2",
-        "VLC media player 1.1.6",
-        "Winamp 5.56 Build 2512",
-        "Windows Live Messenger 2009 16.4.3528.331",
-        "WinPatrol 2010 31.0.2014",
-        "WinRAR 5.0",
-    };
-    ```
+1. Pour simuler l’appel de la base de données, nous simulons un **getAppsAsync** pour interroger une liste statique au lieu de la base de données.
+    [!code-csharp[GetAppsAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=137-200)]
 
 ### <a name="update-the-local-admin-dialog"></a>Mettre à jour le dialogue d’administrateur local
 
 Dans v3, ce dialogue accueille l’utilisateur, démarre le dialogue Formflow, puis enregistre le résultat dans une base de données. Cela se traduit facilement en une cascade en deux étapes.
 
 1. Mettez à jour les instructions `using`. Notez que ce dialogue inclut un dialogue Formflow v3. Dans v4, nous pouvons utiliser la bibliothèque Formflow de communauté.
-    ```csharp
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Bot.Builder.Community.Dialogs.FormFlow;
-    using ContosoHelpdeskChatBot.Models;
-    using Microsoft.Bot.Builder.Dialogs;
-    ```
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=4-8)]
+
 1. Nous pouvons supprimer la propriété d’instance pour `LocalAdmin`, comme le résultat sera disponible dans l’état du dialogue.
-1. Définissez des constantes pour les ID que nous allons utiliser pour les dialogues. Dans la bibliothèque de communauté, l’ID de dialogue construit est toujours défini sur le nom de la classe produite par le dialogue.
-    ```csharp
-    // Set up our dialog and prompt IDs as constants.
-    private const string MainDialog = "mainDialog";
-    private static string AdminDialog { get; } = nameof(LocalAdminPrompt);
-    ```
+
 1. Ajoutez un constructeur et initialisez le jeu de dialogues du composant. Le dialogue Formflow est créé de la même façon. Nous allons simplement l’ajouter au jeu de dialogues de notre composant dans le constructeur.
-    ```csharp
-    public LocalAdminDialog(string dialogId) : base(dialogId)
-    {
-        InitialDialogId = MainDialog;
+    [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=14-23)]
 
-        AddDialog(new WaterfallDialog(MainDialog, new WaterfallStep[]
-        {
-            BeginFormflowAsync,
-            SaveResultAsync,
-        }));
-        AddDialog(FormDialog.FromForm(BuildLocalAdminForm, FormOptions.PromptInStart));
-    }
-    ```
-1. Nous pouvons remplacer **StartAsync** par la première étape de notre dialogue en cascade. Nous avons déjà créé le Formflow dans le constructeur et les deux autres instructions sont traduites comme suit.
-    ```csharp
-    private async Task<DialogTurnResult> BeginFormflowAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        await stepContext.Context.SendActivityAsync("Great I will help you request local machine admin.");
+1. Nous pouvons remplacer **StartAsync** par la première étape de notre dialogue en cascade. Nous avons déjà créé le Formflow dans le constructeur et les deux autres instructions sont traduites comme suit. Notez que `FormBuilder` attribue le nom de type du modèle comme l’ID du dialogue généré, qui est `LocalAdminPrompt` pour ce modèle.
+    [!code-csharp[BeginFormflowAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=25-35)]
 
-        // Begin the Formflow dialog.
-        return await stepContext.BeginDialogAsync(AdminDialog, cancellationToken: cancellationToken);
-    }
-    ```
 1. Nous pouvons remplacer **ResumeAfterLocalAdminFormDialog** par la deuxième étape de notre cascade. Nous devons obtenir la valeur de retour à partir du contexte d’étape et non à partir d’une propriété d’instance.
-    ```csharp
-    private async Task<DialogTurnResult> SaveResultAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Get the result from the Formflow dialog when it ends.
-        if (stepContext.Reason != DialogReason.CancelCalled)
-        {
-            var admin = stepContext.Result as LocalAdminPrompt;
+    [!code-csharp[SaveResultAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=37-50)]
 
-            //TODO: Save to this information to the database.
-        }
-
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-    ```
 1. **BuildLocalAdminForm** reste en grande partie identique, à ceci près que Formflow ne met pas à jour la propriété d’instance.
-    ```csharp
-    // Nearly the same as before.
-    private IForm<LocalAdminPrompt> BuildLocalAdminForm()
-    {
-        //here's an example of how validation can be used in form builder
-        return new FormBuilder<LocalAdminPrompt>()
-            .Field(nameof(LocalAdminPrompt.MachineName),
-            validate: async (state, value) =>
-            {
-                ValidateResult result = new ValidateResult { IsValid = true, Value = value };
-                //add validation here
-
-                //this.admin.MachineName = (string)value;
-                return result;
-            })
-            .Field(nameof(LocalAdminPrompt.AdminDuration),
-            validate: async (state, value) =>
-            {
-                ValidateResult result = new ValidateResult { IsValid = true, Value = value };
-                //add validation here
-
-                //this.admin.AdminDuration = Convert.ToInt32((long)value) as int?;
-                return result;
-            })
-            .Build();
-    }
-    ```
+    [!code-csharp[BuildLocalAdminForm](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/LocalAdminDialog.cs?range=52-76)]
 
 ### <a name="update-the-reset-password-dialog"></a>Mettre à jour le dialogue de réinitialisation du mot de passe
 
 Dans v3, ce dialogue accueille l’utilisateur, autorise l’utilisateur avec un code d’accès, échoue ou démarre le dialogue Formflow, puis réinitialise le mot de passe. Cela se traduit néanmoins bien en une cascade.
 
 1. Mettez à jour les instructions `using`. Notez que ce dialogue inclut un dialogue Formflow v3. Dans v4, nous pouvons utiliser la bibliothèque Formflow de communauté.
-    ```csharp
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Bot.Builder.Community.Dialogs.FormFlow;
-    using ContosoHelpdeskChatBot.Models;
-    using Microsoft.Bot.Builder.Dialogs;
-    ```
-1. Définissez des constantes pour les ID que nous allons utiliser pour les dialogues. Dans la bibliothèque de communauté, l’ID de dialogue construit est toujours défini sur le nom de la classe produite par le dialogue.
-    ```csharp
-    // Set up our dialog and prompt IDs as constants.
-    private const string MainDialog = "mainDialog";
-    private static string ResetDialog { get; } = nameof(ResetPasswordPrompt);
-    ```
+    [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/ResetPasswordDialog.cs?range=4-9)]
+
 1. Ajoutez un constructeur et initialisez le jeu de dialogues du composant. Le dialogue Formflow est créé de la même façon. Nous allons simplement l’ajouter au jeu de dialogues de notre composant dans le constructeur.
-    ```csharp
-    public ResetPasswordDialog(string dialogId) : base(dialogId)
-    {
-        InitialDialogId = MainDialog;
+    [!code-csharp[Constructor](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/ResetPasswordDialog.cs?range=15-25)]
 
-        AddDialog(new WaterfallDialog(MainDialog, new WaterfallStep[]
-        {
-            BeginFormflowAsync,
-            ProcessRequestAsync,
-        }));
-        AddDialog(FormDialog.FromForm(BuildResetPasswordForm, FormOptions.PromptInStart));
-    }
-    ```
 1. Nous pouvons remplacer **StartAsync** par la première étape de notre dialogue en cascade. Nous avons déjà créé le Formflow dans le constructeur. Sinon, nous conservons la même logique, en traduisant uniquement les appels v3 en leurs équivalents v4.
-    ```csharp
-    private async Task<DialogTurnResult> BeginFormflowAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        await stepContext.Context.SendActivityAsync("Alright I will help you create a temp password.");
+    [!code-csharp[BeginFormflowAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/ResetPasswordDialog.cs?range=27-45)]
 
-        // Check the passcode and fail out or begin the Formflow dialog.
-        if (sendPassCode(stepContext))
-        {
-            return await stepContext.BeginDialogAsync(ResetDialog, cancellationToken: cancellationToken);
-        }
-        else
-        {
-            //here we can simply fail the current dialog because we have root dialog handling all exceptions
-            throw new Exception("Failed to send SMS. Make sure email & phone number has been added to database.");
-        }
-    }
-    ```
 1. **sendPassCode** est considéré principalement comme un exercice. Le code d’origine est commenté et la méthode retourne simplement la valeur true. En outre, nous pouvons là encore supprimer l’adresse e-mail, car elle n’a pas été utilisée dans le bot d’origine.
-    ```csharp
-    private bool sendPassCode(DialogContext context)
-    {
-        //bool result = false;
+    [!code-csharp[SendPassCode](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/ResetPasswordDialog.cs?range=47-81)]
 
-        //Recipient Id varies depending on channel
-        //refer ChannelAccount class https://docs.botframework.com/en-us/csharp/builder/sdkreference/dd/def/class_microsoft_1_1_bot_1_1_connector_1_1_channel_account.html#a0b89cf01fdd73cbc00a524dce9e2ad1a
-        //as well as Activity class https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html
-        //int passcode = new Random().Next(1000, 9999);
-        //Int64? smsNumber = 0;
-        //string smsMessage = "Your Contoso Pass Code is ";
-        //string countryDialPrefix = "+1";
-
-        // TODO: save PassCode to database
-        //using (var db = new ContosoHelpdeskContext())
-        //{
-        //    var reset = db.ResetPasswords.Where(r => r.EmailAddress == email).ToList();
-        //    if (reset.Count >= 1)
-        //    {
-        //        reset.First().PassCode = passcode;
-        //        smsNumber = reset.First().MobileNumber;
-        //        result = true;
-        //    }
-
-        //    db.SaveChanges();
-        //}
-
-        // TODO: send passcode to user via SMS.
-        //if (result)
-        //{
-        //    result = Helper.SendSms($"{countryDialPrefix}{smsNumber.ToString()}", $"{smsMessage} {passcode}");
-        //}
-
-        //return result;
-        return true;
-    }
-    ```
 1. **BuildResetPasswordForm** ne contient aucun changement.
+
 1. Nous pouvons remplacer **ResumeAfterLocalAdminFormDialog** par la deuxième étape de notre cascade et nous allons obtenir la valeur de retour à partir du contexte d’étape. Nous avons supprimé l’adresse e-mail que le dialogue d’origine n’a pas utilisée et nous avons fourni un résultat factice au lieu d’interroger la base de données. Nous conservons la même logique, en traduisant uniquement les appels v3 en leurs équivalents v4.
-    ```csharp
-    private async Task<DialogTurnResult> ProcessRequestAsync(
-        WaterfallStepContext stepContext,
-        CancellationToken cancellationToken = default(CancellationToken))
-    {
-        // Get the result from the Formflow dialog when it ends.
-        if (stepContext.Reason != DialogReason.CancelCalled)
-        {
-            var prompt = stepContext.Result as ResetPasswordPrompt;
-            int? passcode;
-
-            // TODO: Retrieve the passcode from the database.
-            passcode = 1111;
-
-            if (prompt.PassCode == passcode)
-            {
-                string temppwd = "TempPwd" + new Random().Next(0, 5000);
-                await stepContext.Context.SendActivityAsync(
-                    $"Your temp password is {temppwd}",
-                    cancellationToken: cancellationToken);
-            }
-        }
-
-        return await stepContext.EndDialogAsync(null, cancellationToken);
-    }
-    ```
+    [!code-csharp[ProcessRequestAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/ResetPasswordDialog.cs?range=90-113)]
 
 ### <a name="update-models-as-necessary"></a>Mettre à jour les modèles en fonction des besoins
 
 Nous devons mettre à jour les instructions `using` dans certains des modèles qui font référence à la bibliothèque Formflow.
 
-1. Dans `LocalAdminPrompt`, remplacez-les par ceci :
-    ```csharp
-    using Bot.Builder.Community.Dialogs.FormFlow;
-    ```
-1. Dans `ResetPasswordPrompt`, remplacez-les par ceci :
-    ```csharp
-    using Bot.Builder.Community.Dialogs.FormFlow;
-    using System;
-    ```
+1. Dans `LocalAdminPrompt`, remplacez-les par ceci : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Models/LocalAdminPrompt.cs?range=4)]
+
+1. Dans `ResetPasswordPrompt`, remplacez-les par ceci : [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Models/ResetPasswordPrompt.cs?range=4-5)]
 
 ## <a name="update-webconfig"></a>Mettre à jour Web.config
 
@@ -983,7 +310,7 @@ Commentez les clés de configuration pour **MicrosoftAppId** et **MicrosoftAppPa
 À ce stade, nous devrions être en mesure d’exécuter le bot localement dans IIS et de s’y attacher avec l’émulateur.
 
 1. Exécutez le bot dans IIS.
-1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple, **http://localhost:3978/api/messages**).
+1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple, **http://localhost:3978/api/messages** ).
     - Si vous exécutez le bot pour la première fois, cliquez sur **Fichier > Nouveau bot** et suivez les instructions à l’écran. Sinon, cliquez sur **Fichier > Ouvrir un bot** pour ouvrir un bot existant.
     - Vérifiez bien vos paramètres de port dans la configuration. Par exemple, si le bot est ouvert dans votre navigateur sur `http://localhost:3979/`, définissez dans l’émulateur le point de terminaison du bot sur `http://localhost:3979/api/messages`.
 1. Les quatre dialogues doivent tous fonctionner et vous pouvez définir des points d’arrêt dans les étapes en cascade pour vérifier le contexte et l’état des dialogues à ces points.

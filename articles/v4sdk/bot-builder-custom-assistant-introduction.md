@@ -6,18 +6,18 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 13/12/2018
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dcef01d8ba07d44aebaeeeecb5637af691caccb9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997076"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215466"
 ---
 ## <a name="custom-assistant-overview"></a>Présentation de l’assistant personnalisé
 
-## <a name="overview"></a>Vue d’ensemble
+## <a name="overview"></a>Vue d'ensemble
 
 Nous avons constaté que nos clients et partenaires souhaitaient ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs clients, et disponible sur un large éventail de canevas et d’appareils conversationnels. Dans la continuité de l’approche open source de Microsoft vis-à-vis du SDK Bot Framework, l’assistant personnel personnalisé open source offre un contrôle total sur l’expérience de l’utilisateur final et repose sur un ensemble de fonctionnalités de base. En outre, l’expérience peut être enrichie d’informations sur l’utilisateur final et sur les appareils/écosystèmes pour une expérience véritablement intégrée et intelligente.
 
@@ -78,11 +78,11 @@ Tous les aspects de chaque compétence (modèle de langage, dialogues, code d’
 
 L’assistant personnalisé couvre un grand nombre de scénarios industriels, dont certains sont présentés ci-dessous pour référence.
 
-- Industrie automobile : l’assistant personnel activé par la voix intégré à la voiture offre aux utilisateurs finaux la possibilité d’effectuer des opérations classiques au sein d’un véhicule (p. ex. navigation, radio), ainsi que des scénarios orientés productivité comme par exemple décaler des réunions quand vous êtes en retard, ajouter des éléments à votre liste de tâches et des expériences proactives où la voiture peut suggérer d’accomplir des tâches en fonction d’événements comme le démarrage du moteur, le retour à la maison ou l’activation du régulateur de vitesse. Des cartes adaptatives sont affichées dans l’intégration de l’unité principale et vocale effectuée via les interactions de type Wake Word (mot déclencheur) ou Push-To-Talk (Appuyer pour parler).
+- Industrie automobile : L’assistant personnel avec fonction Voix qui est intégré à la voiture offre aux utilisateurs finaux la possibilité d’effectuer des opérations classiques au sein d’un véhicule (navigation, radio, etc.). Il est également adapté aux scénarios orientés productivité, comme par exemple pour décaler des réunions quand vous êtes en retard ou ajouter des éléments à votre liste de tâches. Il propose des expériences proactives où la voiture peut suggérer d’accomplir des tâches en fonction d’événements comme le démarrage du moteur, le trajet du retour à la maison ou l’activation du régulateur de vitesse. Des cartes adaptatives sont affichées dans l’intégration de l’unité principale et de reconnaissance vocale effectuée via les interactions de type Wake Word (mot déclencheur) ou Push-To-Talk (appuyer pour parler).
 
-- Hôtellerie : assistant personnel activée par la voix intégré à un appareil dans une chambre d’hôtel, fournissant un large éventail de scénarios orientés hôtellerie (p. ex. prolongation du séjour, demander un checkout tardif, service en chambre), y compris conciergerie et la possibilité de rechercher des restaurants et des lieux à visiter. Des liens facultatifs vers vos comptes de productivité offrent des expériences encore plus personnalisées, comme les appels d’alarme suggérés, les avertissements en lien avec la météo et l’apprentissage des modèles entre les séjours. Une évolution de la personnalisation TV actuelle présente dans les chambres d’hôtel actuellement.
+- Hôtellerie : L’assistant personnel vocal intégré à un appareil de chambre d’hôtel peut être utilisé dans de nombreux scénarios d’hôtellerie (prolonger le séjour, demander à libérer la chambre plus tard, room service, etc.), y compris un service de conciergerie et la capacité à rechercher des restaurants et des lieux à visiter. Des liens facultatifs vers vos comptes de productivité offrent des expériences encore plus personnalisées, comme les appels d’alarme suggérés, les avertissements en lien avec la météo et l’apprentissage des modèles entre les séjours. Une évolution de la personnalisation TV actuelle présente dans les chambres d’hôtel actuellement.
 
-- Enterprise : expériences d’assistant d’employé de la société activé par la voix et le texte intégrées aux appareils de l’entreprise et aux canevas de conversation existants (p. ex équipes, chat web, Slack) permettant aux employés de gérer leurs calendriers, de rechercher des salles de réunion disponibles, de rechercher des personnes avec des compétences particulières ou d’effectuer des opérations RH. 
+- Entreprise : L’assistant Employé avec fonction Voix et texte qui est intégré aux appareils d’entreprise et aux canevas de conversation existants (Teams, WebChat, Slack, etc.) permet aux employés de gérer leurs calendriers, de rechercher des salles de réunion disponibles, de rechercher des personnes avec des compétences particulières ou d’effectuer des opérations RH. 
 
 ## <a name="getting-started"></a>Mise en route
 

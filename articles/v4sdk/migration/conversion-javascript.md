@@ -1,21 +1,21 @@
 ---
 title: Migrer un bot JavaScript v3 existant vers un nouveau projet v4 | Microsoft Docs
 description: Nous prenons un bot JavaScript v3 existant que nous migrons vers le SDK v4 en utilisant un nouveau projet.
-keywords: JavaScript, migration de bot, formflow, dialogues, bot v3
+keywords: JavaScript, migration de bot, dialogues, bot v3
 author: JonathanFingold
 ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/13/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3692c723bf2ac4d2275176bb0f7c5f8103225808
-ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65856658"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215602"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Migrer un bot du kit SDK JavaScript v3 vers v4
 
