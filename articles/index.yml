@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/23/2019
+  ms.date: 05/31/2019
   ms.author: ivorb
 abstract:
   description: 'Azure Bot Service fournit un environnement intégré sur mesure pour le développement de bots, vous permettant de créer, connecter, tester, déployer et gérer des bots intelligents, tout cela depuis un seul et même endroit. Azure Bot Service optimise le SDK Bot Framework avec une prise en charge de C# et JavaScript. Découvrez comment utiliser Bot Service avec nos démarrages rapides, nos didacticiels et nos exemples.'
@@ -25,6 +25,22 @@ abstract:
     href: 'https://mybuild.techcommunity.microsoft.com/sessions/77571?source=%7B%7B%20ctrl.source#top-anchor'
     width: 250
 sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction'
+            html: <p>Découvrez Azure Bot Service.</p>
+            image:
+              src: media/index/i_overview.png
+            title: "Qu’est-ce qu’Azure Bot Service\_?"
+          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics'
+            html: <p>Comprenez comment fonctionnent les bots.</p>
+            image:
+              src: media/index/i_guidelines.png
+            title: Fonctionnement des bots
   - title: "Démarrages en 5\_minutes"
     items:
       - type: paragraph
@@ -33,17 +49,17 @@ sections:
         style: icon48
         items:
           - image:
-              src: media/index/azure_portal.png
-            text: Portail Azure
-            href: 'https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart'
-          - image:
               src: v4sdk/media/logo_csharp.svg
             text: 'C#'
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart'
           - image:
               src: v4sdk/media/logo_js.svg
             text: JavaScript
-            href: 'https://docs.microsoft.com/en-us/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+            href: 'https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart'
+          - image:
+              src: media/index/azure_portal.png
+            text: Portail Azure
+            href: 'https://docs.microsoft.com/azure/bot-service/bot-service-quickstart'
   - title: Didacticiels pas à pas
     items:
       - type: paragraph
