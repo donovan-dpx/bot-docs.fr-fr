@@ -8,31 +8,29 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 02/07/2019
-ms.openlocfilehash: 882dc15bd900667d76eac41049ee88b51ec5c120
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 05/31/2019
+ms.openlocfilehash: 721a64fab578f6c49b1dbebe5fee28045a198153
+ms.sourcegitcommit: 0eb7ac64c4eb28944a9957a0cd2f65b046232244
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033135"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455454"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Créer un bot avec Azure Bot Service
 
 ::: moniker range="azure-bot-service-3.0"
 
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+> [!NOTE]
+> **À compter du 10 juin 2019, vous ne pourrez plus créer de bots SDK V3 dans le portail Azure. Les clients sont encouragés à créer des bots [SDK V4](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) à partir de maintenant. Vous trouverez plus d’informations sur la prise en charge à long terme du SDK V3 [ici](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-3.0#bot-framework-sdk-version-3-lifetime-support)** . 
 
 Bot Service fournit les principaux composants permettant de créer des bots, notamment le kit SDK Bot Framework pour le développement de bots et Bot Framework pour la connexion des bots aux canaux. Pour la création de vos robots, Service Bot vous offre un choix de cinq modèles prenant en charge .NET et Node.js. Dans cette rubrique, découvrez comment utiliser Bot Service pour créer un bot qui utilise le kit SDK Bot Framework.
 
 ## <a name="log-in-to-azure"></a>Connexion à Azure
 Connectez-vous au [portail Azure](http://portal.azure.com).
 
-> [!TIP]
-> Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/en-us/free/" target="_blank">compte gratuit</a>.
-
 ## <a name="create-a-new-bot-service"></a>Créer un service de robot
 
-1. Cliquez sur le lien **Créer une ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning > Web App bot (Web App Bot)**. 
+1. Cliquez sur le lien **Créer une ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning > Web App bot (Web App Bot)** . 
 
 2. Cette opération affiche un nouveau panneau fournissant des informations sur l’offre **Web App Bot**.  
 

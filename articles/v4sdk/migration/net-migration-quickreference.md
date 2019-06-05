@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 93f660820407d6caf4c29efb3c128851059f3b02
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: b4226e842384caf1315170354c763a44c15b0c70
+ms.sourcegitcommit: 18ff5705d15b8edc85fb43001969b173625eb387
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215574"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453209"
 ---
 # <a name="net-migration-quick-reference"></a>Aide-mémoire sur la migration .NET
 
@@ -454,3 +454,112 @@ protected override Task OnEventActivityAsync(ITurnContext<IEventActivity> turnCo
     // Handle event activities in general here.
 }
 ```
+
+## <a name="to-log-all-activities"></a>Pour journaliser toutes les activités
+
+### <a name="v3"></a>v3
+
+[IActivityLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.history.iactivitylogger) était utilisé.
+
+```csharp
+builder.RegisterType<ActivityLoggerImplementation>().AsImplementedInterfaces().InstancePerDependency(); 
+
+public class ActivityLoggerImplementation : IActivityLogger
+{
+    async Task IActivityLogger.LogAsync(IActivity activity)
+    {
+        // Store the activity.
+    }
+}
+```
+
+### <a name="v4"></a>v4
+
+Utilisez [ITranscriptLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.itranscriptlogger).
+
+```csharp
+var transcriptMiddleware = new TranscriptLoggerMiddleware(new TranscriptLoggerImplementation(Configuration.GetSection("StorageConnectionString").Value));
+adapter.Use(transcriptMiddleware);
+
+public class TranscriptLoggerImplementation : ITranscriptLogger
+{
+    async Task ITranscriptLogger.LogActivityAsync(IActivity activity)
+    {
+        // Store the activity.
+    }
+}
+```
+
+## <a name="to-add-bot-state-storage"></a>Pour ajouter du stockage d’état de bot
+
+L’interface pour le stockage des _données utilisateur_, des _données de conversation_ et des _données de conversation privée_ a changé.
+
+### <a name="v3"></a>v3
+
+L’état était rendu persistant en utilisant une implémentation `IBotDataStore` et en l’injectant dans le système d’état de dialogue du SDK à l’aide d’Autofac.  Microsoft fournissait des classes `MemoryStorage`, `DocumentDbBotDataStore`, `TableBotDataStore` et `SqlBotDataStore` dans [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/).
+
+[IBotDataStore<BotData> ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) était utilisé pour rendre les données persistantes.
+
+```csharp
+Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);
+Task<T> LoadAsync(IAddress key, BotStoreType botStoreType, CancellationToken cancellationToken);
+Task SaveAsync(IAddress key, BotStoreType botStoreType, T data, CancellationToken cancellationToken);
+```
+
+```csharp
+var dbPath = ConfigurationManager.AppSettings["DocDbPath"];
+var dbKey = ConfigurationManager.AppSettings["DocDbKey"];
+var docDbUri = new Uri(dbPath);
+var storage = new DocumentDbBotDataStore(docDbUri, dbKey);
+builder.Register(c => storage)
+                .Keyed<IBotDataStore<BotData>>(AzureModule.Key_DataStore)
+                .AsSelf()
+                .SingleInstance();
+```
+
+### <a name="v4"></a>v4
+
+La couche de stockage utilise l’interface `IStorage`, spécifiez l’objet de la couche de stockage lors de la création de chaque objet de gestion d’état pour votre bot, comme `UserState`, `ConversationState` ou `PrivateConversationState`. L’objet de gestion d’état fournit des clés à la couche de stockage sous-jacente et fait également office de gestionnaire de propriétés. Par exemple, utilisez `IPropertyManager.CreateProperty<T>(string name)` pour créer un accesseur de propriété d’état.  Ces accesseurs de propriété sont utilisés pour récupérer et stocker les valeurs qui sont à l’intérieur et à l’extérieur du stockage sous-jacent du bot.
+
+Utilisez [IStorage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) pour rendre les données persistantes.
+
+```csharp
+Task DeleteAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
+Task<IDictionary<string, object>> ReadAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
+Task WriteAsync(IDictionary<string, object> changes, CancellationToken cancellationToken = default(CancellationToken));
+```
+
+```csharp
+var storageOptions = new CosmosDbStorageOptions()
+{
+    AuthKey = configuration["cosmosKey"],
+    CollectionId = configuration["cosmosCollection"],
+    CosmosDBEndpoint = new Uri(configuration["cosmosPath"]),
+    DatabaseId = configuration["cosmosDatabase"]
+};
+
+IStorage dataStore = new CosmosDbStorage(storageOptions);
+var conversationState = new ConversationState(dataStore);
+services.AddSingleton(conversationState);
+
+```
+
+## <a name="to-use-form-flow"></a>Pour utiliser Form Flow
+
+### <a name="v3"></a>v3
+
+[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
+
+### <a name="v4"></a>v4
+
+[Bot.Builder.Community.Dialogs.FormFlow](https://www.nuget.org/packages/Bot.Builder.Community.Dialogs.FormFlow/) est maintenant une bibliothèque Bot Builder Community.  La source est disponible dans le [dépôt](https://github.com/BotBuilderCommunity/botbuilder-community-dotnet/tree/develop/libraries/Bot.Builder.Community.Dialogs.FormFlow) de la communauté.
+
+## <a name="to-use-luisdialog"></a>Pour utiliser LuisDialog
+
+### <a name="v3"></a>v3
+
+[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
+
+### <a name="v4"></a>v4
+
+[Bot.Builder.Community.Dialogs.Luis](https://www.nuget.org/packages/Bot.Builder.Community.Dialogs.Luis/) est maintenant une bibliothèque Bot Builder Community.  La source est disponible dans le [dépôt](https://github.com/BotBuilderCommunity/botbuilder-community-dotnet/tree/develop/libraries/Bot.Builder.Community.Dialogs.Luis) de la communauté.
