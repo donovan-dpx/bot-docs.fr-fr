@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f7709d6273739be6d2b3e9e3174f24ea2734f22d
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 1a502e949ce1f4f9851facae39c4aa030b4ae4a8
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215310"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693659"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
@@ -59,14 +59,17 @@ Chaque fois qu’un nouvel utilisateur est connecté, le bot lui fournit un `wel
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 L’objet d’état utilisateur est créé au démarrage et la dépendance est injectée dans le constructeur de bot.
 
-**Startup.cs** [!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
+**Startup.cs**  
+[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
 
-**WelcomeUserBot.cs** [!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
+**WelcomeUserBot.cs**  
+[!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Au démarrage, l’état utilisateur et le stockage mémoire sont tous les deux définis dans index.js.
 
-**Index.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
+**Index.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
 
 ---
 
@@ -75,12 +78,14 @@ Au démarrage, l’état utilisateur et le stockage mémoire sont tous les deux 
 Nous créons maintenant un accesseur de propriété qui nous fournit un handle vers WelcomeUserState dans la méthode OnMessageActivityAsync.
 Appelons ensuite la méthode GetAsync pour obtenir la clé incluse dans l’étendue appropriée. Nous enregistrons alors les données d’état utilisateur après chaque itération d’entrée utilisateur à l’aide de la méthode `SaveChangesAsync`.
 
-**WelcomeUserBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71, 102-105)]
+**WelcomeUserBot.cs**  
+[!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71, 102-105)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Nous créons maintenant un accesseur de propriété qui nous fournit un handle vers WelcomedUserProperty, lequel est conservé dans UserState.
 
-**WelcomeBot.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
+**WelcomeBot.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
 
 ---
 
@@ -89,12 +94,14 @@ Nous créons maintenant un accesseur de propriété qui nous fournit un handle v
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Dans **WelcomeUserBot**, nous recherchons une mise à jour de l’activité à l’aide de `OnMembersAddedAsync()` pour voir si un nouvel utilisateur a été ajouté à la conversation, puis nous lui envoyons un ensemble de trois premiers messages de bienvenue `WelcomeMessage`, `InfoMessage` et `PatternMessage`. Le code complet de cette interaction est affiché ci-dessous.
 
-**WelcomeUserBot.cs** [!code-csharp[WelcomeMessages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-40, 55-66)]
+**WelcomeUserBot.cs**  
+[!code-csharp[WelcomeMessages](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=20-40, 55-66)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Ce code JavaScript envoie les premiers messages de bienvenue quand un utilisateur est ajouté. Pour effectuer cette opération, consultez l’activité de conversation et vérifiez qu’un nouveau membre a été ajouté à la conversation.
 
-**WelcomeBot.js** [!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
+**WelcomeBot.js**  
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
 
 ---
 
@@ -103,12 +110,14 @@ Ce code JavaScript envoie les premiers messages de bienvenue quand un utilisateu
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Il est également important de déterminer si l’entrée de votre utilisateur contient des informations utiles, ce qui peut varier en fonction des canaux. Pour vérifier que votre utilisateur bénéficie d’une bonne expérience sur tous les canaux possibles, nous examinons l’indicateur d’état _didBotWelcomeUser_. Si la valeur est « false », nous ne traitons pas l’entrée utilisateur initiale. Au lieu de cela, nous fournissons à l’utilisateur un premier message de bienvenue. La valeur booléenne _welcomedUserProperty_ est ensuite définie sur « true » et stockée dans UserState. Notre code traitera désormais l’entrée de cet utilisateur à partir de toutes les activités de message supplémentaires.
 
-**WelcomeUserBot.cs** [!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-82)]
+**WelcomeUserBot.cs**  
+[!code-csharp[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-82)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Il est également important de déterminer si l’entrée de votre utilisateur contient des informations utiles, ce qui peut varier en fonction des canaux. Pour vérifier que votre utilisateur bénéficie d’une bonne expérience sur tous les canaux possibles, nous examinons la propriété didBotWelcomedUser. Si elle n’existe pas, nous la définissons sur « false » et nous ne traitons pas l’entrée utilisateur initiale. Au lieu de cela, nous fournissons à l’utilisateur un premier message de bienvenue. La valeur booléenne _didBotWelcomeUser_ est ensuite définie sur « true » et notre code traite l’entrée utilisateur à partir de toutes les activités de message supplémentaires.
 
-**WelcomeBot.js** [!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
+**WelcomeBot.js**  
+[!code-javascript[DidBotWelcomeUser](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=24-38,57-59,63)]
 
 ---
 
@@ -119,12 +128,14 @@ Une fois qu’un nouvel utilisateur a été accueilli, les informations d’entr
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Une entrée 'intro' ou 'help' appelle la fonction `SendIntroCardAsync` pour présenter à l’utilisateur une bannière d’informations. Ce code est examiné dans la section suivante de cet article.
 
-**WelcomeUserBot.cs** [!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
+**WelcomeUserBot.cs**  
+[!code-csharp[SwitchOnUtterance](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=85-100)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Une entrée 'intro' ou 'help' utilise CardFactory pour présenter à l’utilisateur une carte adaptative d’introduction. Ce code est examiné dans la section suivante de cet article.
 
-**WelcomeBot.js** [!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
+**WelcomeBot.js**  
+[!code-javascript[SwitchOnUtterance](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=40-56)]
 
 ---
 
@@ -134,11 +145,13 @@ Comme indiqué ci-dessus, certaines entrées utilisateur génèrent une _banniè
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**WelcomeUserBot.cs** [!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-127)]
+**WelcomeUserBot.cs**  
+[!code-csharp[SendHeroCardGreeting](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=107-127)]
 
 ### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**WelcomeBot.js** [!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
+**WelcomeBot.js**  
+[!code-javascript[SendIntroCard](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=91-116)]
 
 ---
 

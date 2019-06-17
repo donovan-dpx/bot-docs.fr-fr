@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 7d7416940ccad4e62c98f4a386dac43189301b56
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998302"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693620"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Connecter un bot à Twilio
 
@@ -66,3 +66,7 @@ Dans une fenêtre distincte, revenez sur le site du Bot Framework à l’adresse
 ![Envoyer les informations d’identification](~/media/channels/twi-StepSubmit.png)
 
 Une fois ces étapes effectuées, votre bot est correctement configuré pour communiquer avec les utilisateurs de Twilio.
+
+## <a name="also-available-as-an-adapter"></a>Également disponible en tant qu’adaptateur
+
+Ce canal est également [disponible en tant qu’adaptateur](https://botkit.ai/docs/v4/platforms/twilio-sms.html). Pour vous aider à choisir entre un adaptateur et un canal, consultez [Adaptateurs disponibles actuellement](bot-service-channel-additional-channels.md#currently-available-adapters).

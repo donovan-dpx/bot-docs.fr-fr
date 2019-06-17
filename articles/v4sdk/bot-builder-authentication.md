@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/23/2019
+ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f41409b534b997d486a94dc206ecc85bf6f0ca9e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 89df62255c9ea6fbf55b2c7aed2d6f334d69c571
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215553"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693693"
 ---
 <!-- Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -54,6 +54,8 @@ Cette API offre les fonctionnalités suivantes :
 - Des mises à jour des SDK Bot Framework C# et Node.js permettant de récupérer des jetons, de créer des cartes OAuthCards et de gérer les événements TokenResponse.
 - Des exemples montrant comment créer un bot qui s’authentifie auprès d’Azure AD.
 
+Pour plus d’informations sur la façon dont Azure Bot Service gère l’authentification, consultez [Authentification des utilisateurs au sein d’une conversation](bot-builder-concept-authentication.md).
+
 Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter des fonctionnalités à un bot existant. Ces exemples de bots illustrent les nouvelles fonctionnalités d’authentification.
 
 > [!NOTE]
@@ -61,11 +63,13 @@ Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter
 
 ### <a name="about-this-sample"></a>À propos de cet exemple
 
-Vous devez créer une ressource de bot Azure, puis vous devez créer une application Azure AD (v1 ou v2) pour autoriser votre bot à accéder à Office 365. La ressource de bot inscrit les informations d’identification de votre bot. Vous avez besoin de ces dernières pour tester les fonctionnalités d’authentification, même lors de l’exécution de votre code de bot localement.
+Vous devez créer une ressource de bot Azure et vous avez besoin des éléments suivants :
+
+1. Une inscription d’application Azure AD pour autoriser votre bot à accéder à une ressource externe, telle qu’Office 365.
+1. Une ressource de bot distincte. La ressource de bot inscrit les informations d’identification de votre bot. De plus, vous avez besoin de ces dernières pour tester les fonctionnalités d’authentification, même lors de l’exécution de votre code de bot localement.
 
 > [!IMPORTANT]
-> Chaque fois que vous inscrivez un bot dans Azure, une application Azure AD lui est affectée. Toutefois, cette application sécurise l’accès du canal vers le bot.
-Vous avez besoin d’une application AAD supplémentaire pour chaque application que le bot doit être en mesure d’authentifier au nom de l’utilisateur.
+> Chaque fois que vous inscrivez un bot dans Azure, une application Azure AD lui est affectée. Toutefois, cette application sécurise l’accès du canal vers le bot. Vous avez besoin d’une application AAD supplémentaire pour chaque application que le bot doit être en mesure d’authentifier au nom de l’utilisateur.
 
 Cet article décrit un exemple de bot qui se connecte à Microsoft Graph à l’aide d’un jeton Azure AD v1 ou v2. Il explique également comment créer et inscrire l’application Azure AD associée. Dans le cadre de ce processus, vous allez utiliser du code issu du dépôt GitHub [Microsoft/BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples). Cet article aborde ces processus.
 
@@ -94,7 +98,7 @@ Plusieurs problèmes de sécurité importants sont à prendre en compte quand vo
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs], de la façon dont [implémenter les flux de conversation séquentiels][simple-dialog], [collecter les entrées utilisateur au moyen d’une invite de dialogue][dialog-prompts] et [réutiliser les dialogues][component-dialogs].
+- Connaissance des [fondamentaux sur les bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter un flux de conversation séquentiel][simple-dialog] et de [réutiliser les dialogues][component-dialogs].
 - Connaissances du développement Azure et OAuth 2.0.
 - Visual Studio version 2017 ou ultérieure, Node.js, npm et git.
 - Un de ces exemples.
@@ -107,6 +111,8 @@ Plusieurs problèmes de sécurité importants sont à prendre en compte quand vo
 ## <a name="create-your-bot-resource-on-azure"></a>Créer votre ressource de bot sur Azure
 
 Créez une inscription **Bot Channels Registration** à l’aide du [portail Azure](https://portal.azure.com/).
+
+Enregistrez l’ID et le mot de passe d’application de votre bot. Pour collecter ces informations, consultez [Gérer un bot](../bot-service-manage-overview.md).
 
 ## <a name="create-and-register-an-azure-ad-application"></a>Créer et inscrire une application Azure AD
 
@@ -122,86 +128,54 @@ Suivez ces étapes pour créer une application Azure AD. Vous pouvez utiliser l
 > [!TIP]
 > Vous devez créer et inscrire l’application Azure AD dans un locataire sur lequel vous disposez de droits d’administrateur.
 
-# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
-
 1. Ouvrez le panneau [Azure Active Directory][azure-aad-blade] dans le portail Azure.
     Si vous n’êtes pas dans le locataire approprié, cliquez sur **Changer de répertoire** pour basculer vers le bon locataire. (Pour obtenir des instructions sur la création d’un locataire, consultez [Accéder au portail et créer un locataire](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).)
 1. Ouvrez le panneau **Inscriptions d’applications**.
-1. Dans le panneau **Inscriptions des applications**, cliquez sur **Nouvelle inscription d’application**.
+1. Dans le panneau **Inscriptions des applications**, cliquez sur **Nouvelle inscription**.
 1. Renseignez les champs obligatoires et créez l’inscription d’application.
 
    1. Donnez un nom à votre application.
-   1. Définissez **Type d’application** sur **Application web/API**.
-   1. Définissez **l’URL de connexion** sur `https://token.botframework.com/.auth/web/redirect`.
-   1. Cliquez sur **Créer**.
+   1. Sélectionnez les **Types de comptes pris en charge** par votre application. (Toutes ces options fonctionnent avec cet exemple.)
+   1. Pour **URI de redirection**
+       1. Sélectionnez **Web**.
+       1. Définissez l’URL sur `https://token.botframework.com/.auth/web/redirect`.
+   1. Cliquez sur **S'inscrire**.
 
-      - Une fois l’application créée, elle apparaît dans un volet **Application inscrite**.
-      - Récupérez la valeur **ID de l’application**. Vous utiliserez cette valeur ultérieurement en tant qu’_ID client_ quand vous inscrirez votre application Azure AD auprès de votre bot.
+      - Une fois que sa création est effectuée, Azure affiche la page **Présentation** de l’application.
+      - Enregistrez la valeur **ID d’application (client)** . Vous utiliserez cette valeur ultérieurement en tant qu’_ID client_ quand vous inscrirez votre application Azure AD auprès de votre bot.
+      - Enregistrez également la valeur **ID de l’annuaire (locataire)** . Vous utiliserez également ces valeurs pour inscrire cette application avec votre bot.
 
-1. Cliquez sur **Paramètres** pour configurer votre application.
-1. Cliquez sur **Clés** pour ouvrir le panneau **Clés**.
+1. Dans le volet de navigation, cliquez sur **Certificats et secrets** pour créer un secret pour votre application.
 
-   1. Sous **Mots de passe**, créez une clé `BotLogin`.
-   1. Définissez sa **Durée** sur **N’expire jamais**.
-   1. Cliquez sur **Enregistrer** et récupérez la valeur de la clé. Vous utiliserez cette valeur ultérieurement en tant que _Secret du client_ quand vous inscrirez votre application Azure AD auprès de votre bot.
-   1. Fermez le panneau **Clés**.
-
-1. Cliquez sur **Autorisations requises** pour ouvrir le panneau **Autorisations requises**.
-
+   1. Sous **Secrets client**, cliquez **+ Nouveau secret client**.
+   1. Ajoutez une description pour différencier ce secret des autres secrets que vous allez peut-être créer pour cette application, par exemple `bot login`.
+   1. Définissez **Expire** sur **Jamais**.
    1. Cliquez sur **Add**.
-   1. Cliquez sur **Sélectionner une API**, puis sélectionnez **Microsoft Graph** et cliquez sur **Sélectionner**.
-   1. Cliquez sur **Sélectionner les autorisations**. Choisissez les autorisations déléguées que votre application utilisera.
+   1. Avant de quitter cette page, enregistrez le secret. Vous utiliserez cette valeur ultérieurement en tant que _Secret du client_ quand vous inscrirez votre application Azure AD auprès de votre bot.
+
+1. Dans le volet de navigation, cliquez sur **API autorisées** pour ouvrir le panneau **API autorisées**. Il est recommandé de définir explicitement les autorisations d’API pour l’application.
+
+   1. Cliquez sur **Ajouter une autorisation** pour afficher le volet **Demander des autorisations d’API**.
+   1. Pour cet exemple, sélectionnez **API Microsoft** et **Microsoft Graph**.
+   1. Choisissez **Autorisations déléguées** et vérifiez que les autorisations nécessaires sont sélectionnées. Cet exemple nécessite ces autorisations.
 
       > [!NOTE]
-      > Pour votre bot, évitez les autorisations qui sont marquées comme **Exige un administrateur**, car elles nécessitent la connexion d’un utilisateur et d’un administrateur de locataires.
+      > Pour votre bot, évitez les autorisations qui sont marquées comme **Consentement administrateur requis**, car elles nécessitent la connexion d’un utilisateur et d’un administrateur de locataires.
 
-      Sélectionnez les autorisations déléguées pour Microsoft Graph suivantes :
-      - Accéder en lecture aux profils de base de tous les utilisateurs
-      - Accéder en lecture aux e-mails utilisateur
-      - Envoi de messages en tant qu’utilisateur
-      - Connecter et lire le profil utilisateur
-      - Afficher le profil de base des utilisateurs
-      - Afficher l’adresse e-mail des utilisateurs
+      - **openid**
+      - **profile**
+      - **Mail.Read**
+      - **Mail.Send**
+      - **User.Read**
+      - **User.ReadBasic.All**
 
-   1. Cliquez sur **Sélectionner**, puis sur **Terminé**.
-   1. Fermez le panneau **Autorisations requises**.
+   1. Cliquez sur **Ajouter des autorisations**. (La première fois qu’un utilisateur accède à cette application par le biais du bot, il doit donner son consentement.)
 
-Vous disposez maintenant d’une application Azure AD v1 configurée.
-
-# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
-
-1. Accédez au [portail d’inscription des applications de Microsoft](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
-1. Cliquez sur **Ajouter une application**.
-1. Donnez un nom à votre application Azure AD, puis cliquez sur **Créer**.
-
-    Récupérez le GUID **ID de l’application**. Vous le fournirez plus tard en guise d’ID client pour votre paramètre de connexion.
-
-1. Sous **Secrets de l’application**, cliquez sur **Générer un nouveau mot de passe**.
-
-    Récupérez le mot de passe à partir de la fenêtre contextuelle. Vous le fournirez plus tard en guise de secret client pour votre paramètre de connexion.
-
-1. Sous **Plateformes**, cliquez sur **Ajouter une plateforme**.
-1. Dans la fenêtre contextuelle **Ajouter une plateforme**, cliquez sur **Web**.
-
-    1. Laissez la case **Autoriser un flux implicite** cochée.
-    1. Pour **URL de redirection**, entrez `https://token.botframework.com/.auth/web/redirect`.
-    1. Laissez **URL de déconnexion** vide.
-
-1. Sous **Autorisations pour Microsoft Graph**, vous pouvez ajouter des autorisations déléguées.
-
-    - Pour cet article, vous devez ajouter les autorisations **Mail.Read**, **Mail.Send**, **openid**, **profile**, **User.Read** et **User.ReadBasic.All**.
-      L’étendue du paramètre de connexion doit avoir **openid** et une ressource dans le graphe Azure AD, telle que **Mail.Read**.
-    - Récupérez les autorisations que vous choisissez. Vous les fournirez plus tard en guise d’étendues pour votre paramètre de connexion.
-
-1. Cliquez sur **Enregistrer** au bas de la page.
-
-Vous disposez maintenant d’une application Azure AD v2 configurée.
-
----
+Vous disposez maintenant d’une application Azure AD configurée.
 
 ### <a name="register-your-azure-ad-application-with-your-bot"></a>Inscrire votre application Azure AD auprès de votre bot
 
-L’étape suivante consiste à inscrire auprès de votre bot l’application Azure AD que vous avez créé.
+L’étape suivante consiste à inscrire auprès de votre bot l’application Azure AD que vous venez de créer.
 
 # <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
 
@@ -212,13 +186,13 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 
     1. Pour **Nom**, entrez un nom pour votre connexion. Vous utiliserez ce nom dans le code de votre bot.
     1. Sous **Fournisseur de services**, sélectionnez **Azure Active Directory**. Une fois que vous avez sélectionné cette option, les champs propres à Azure AD sont affichés.
-    1. Pour **Id client**, entrez l’ID d’application que vous avez récupéré pour votre application Azure AD v1.
-    1. Pour **Secret du client**, entrez la clé que vous avez récupérée pour la clé `BotLogin` de votre application.
+    1. Pour **ID client**, entrez l’ID d’application (client) que vous avez enregistré pour votre application Azure AD v1.
+    1. Pour **Secret du client**, entrez le secret que vous avez créé pour accorder au bot l’accès à l’application Azure AD.
     1. Pour **Type d’autorisation**, entrez `authorization_code`.
     1. Pour **URL de connexion**, entrez `https://login.microsoftonline.com`.
-    1. Pour **ID de locataire**, entrez l’ID de locataire pour Azure Active Directory, par exemple `microsoft.com` ou `common`.
+    1. Pour **ID de locataire**, entrez l’ID d’annuaire (locataire) que vous avez enregistré précédemment pour votre application Azure AD.
 
-       Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés. Pour autoriser tout le monde à s’authentifier par le biais du bot, utilisez le locataire `common`.
+       Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés.
 
     1. Pour **URL de la ressource**, entrez `https://graph.microsoft.com/`.
     1. Laissez **Étendues** vide.
@@ -237,11 +211,11 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 
     1. Pour **Nom**, entrez un nom pour votre connexion. Vous l’utiliserez dans le code de votre bot.
     1. Sous **Fournisseur de services**, sélectionnez **Azure Active Directory v2**. Une fois que vous avez sélectionné cette option, les champs propres à Azure AD sont affichés.
-    1. Pour **Id client**, entrez l’ID d’application Azure AD v2 que vous avez récupéré au moment de l’inscription de l’application.
-    1. Pour **Secret du client**, entrez le mot de passe d’application Azure AD v2 que vous avez récupéré au moment de l’inscription de l’application.
-    1. Pour **ID de locataire**, entrez l’ID de locataire pour Azure Active Directory, par exemple `microsoft.com` ou `common`.
+    1. Pour **ID client**, entrez l’ID d’application (client) que vous avez enregistré pour votre application Azure AD v1.
+    1. Pour **Secret du client**, entrez le secret que vous avez créé pour accorder au bot l’accès à l’application Azure AD.
+    1. Pour **ID de locataire**, entrez l’ID d’annuaire (locataire) que vous avez enregistré précédemment pour votre application Azure AD.
 
-        Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés. Pour autoriser tout le monde à s’authentifier par le biais du bot, utilisez le locataire `common`.
+       Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés.
 
     1. Pour **Étendues**, entrez les noms des autorisations que vous avez choisies au moment de l’inscription de l’application : `Mail.Read Mail.Send openid profile User.Read User.ReadBasic.All`.
 
@@ -267,18 +241,13 @@ Vous pouvez maintenant utiliser ce nom de connexion dans le code de votre bot po
 
 ## <a name="prepare-the-bot-code"></a>Préparer le code du bot
 
-Vous avez besoin de l’ID d’application de votre bot et du mot de passe associé pour effectuer cette procédure. Pour récupérer l’ID et le mot de passe d’application de votre bot :
-
-1. Dans le [portail Azure][], accédez au groupe de ressources dans lequel vous avez créé votre bot d’inscription aux canaux.
-1. Ouvrez le volet **Déploiements**, puis ouvrez le déploiement du bot.
-1. Ouvrez le volet **Entrées**, puis copiez les valeurs pour **appId** et **appSecret** de votre bot.
+Vous avez besoin de l’ID d’application de votre bot et du mot de passe associé pour effectuer cette procédure.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. Clonez à partir du dépôt github ce que vous souhaitez utiliser : [**Authentification du bot**][cs-auth-sample] ou [**Authentification du bot avec MSGraph**][cs-msgraph-sample].
-1. Suivez les instructions de la page readme de GitHub pour savoir comment exécuter ce bot particulier. <!--TODO: Can we remove this step and still have the instructions make sense? What is the minimum we need to say in its place? -->
+1. Clonez à partir du dépôt GitHub l’exemple que vous souhaitez utiliser : [**Authentification du bot**][cs-auth-sample] ou [**Authentification du bot avec MSGraph**][cs-msgraph-sample].
 1. Mettez à jour **appsettings.json** :
 
     - Définissez `ConnectionName` sur le nom du paramètre de connexion OAuth que vous avez ajouté à votre bot.
@@ -286,12 +255,11 @@ Vous avez besoin de l’ID d’application de votre bot et du mot de passe assoc
 
       En fonction des caractères contenus dans le secret de votre bot, vous pouvez être amené à placer le mot de passe dans une séquence d’échappement XML. Par exemple, les esperluettes (&) doivent être encodées sous la forme `&amp;`.
 
-[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/appsettings.json)]
+    [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/appsettings.json)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 1. Clonez à partir du dépôt github ce que vous souhaitez utiliser : [**Authentification du bot**][js-auth-sample] ou [**Authentification du bot avec MSGraph**][js-msgraph-sample].
-1. Suivez les instructions de la page readme de GitHub pour savoir comment exécuter ce bot particulier. <!--TODO: Can we remove this step and still have the instructions make sense? What is the minimum we need to say in its place? -->
 1. Mettez à jour **.env** :
 
     - Définissez `connectionName` sur le nom du paramètre de connexion OAuth que vous avez ajouté à votre bot.
@@ -303,10 +271,7 @@ Vous avez besoin de l’ID d’application de votre bot et du mot de passe assoc
 
 ---
 
-Si vous ne savez pas comment récupérer les valeurs de votre **ID d’application Microsoft** et de votre **mot de passe d’application Microsoft**, vous pouvez au choix :
-
-- Créer un nouveau mot de passe [, comme décrit ici](../bot-service-quickstart-registration.md#bot-channels-registration-password)
-- Récupérer l’**ID d’application Microsoft** et le **mot de passe d’application Microsoft** provisionnés avec **Bot Channels Registration** à partir du déploiement, [comme décrit ici](https://blog.botframework.com/2018/07/03/find-your-azure-bots-appid-and-appsecret)
+Si vous ne savez pas comment récupérer votre **ID d’application Microsoft** et votre **mot de passe d’application Microsoft**, vous pouvez créer un nouveau mot de passe [comme décrit ici](../bot-service-quickstart-registration.md#bot-channels-registration-password).
 
 > [!NOTE]
 > Vous pourriez dès à présent publier ce code de bot sur votre abonnement Azure (cliquer avec le bouton droit sur le projet et choisir **Publier**), mais cela n’est pas nécessaire pour cet article. Vous devriez définir une configuration de publication qui utilise l’application et le plan d’hébergement que vous avez utilisés quand vous avez configuré le bot dans le portail Azure.
@@ -318,6 +283,9 @@ Si vous ne savez pas comment récupérer les valeurs de votre **ID d’applicati
 1. Démarrez l’émulateur, connectez-vous à votre bot et envoyez des messages.
 
     - Vous devez fournir l’ID et le mot de passe d’application de votre bot lorsque vous vous connectez à celui-ci.
+
+        - Si vous deviez ajouter une séquence d’échappement XML à votre mot de passe dans le code de votre bot, vous devez également le faire ici.
+
     - Tapez `help` pour afficher la liste des commandes disponibles pour le bot, puis testez les fonctionnalités d’authentification.
     - Une fois connecté, vous n’avez pas besoin de refournir vos informations d’identification jusqu’à ce que vous vous déconnectiez.
     - Pour vous déconnecter et annuler votre authentification, tapez `logout`.
@@ -445,9 +413,9 @@ Donner la possibilité aux utilisateurs de se déconnecter explicitement plutôt
 
 <!-- Footnote-style links -->
 
-[Portail Azure]: https://ms.portal.azure.com
+[Azure portal]: https://ms.portal.azure.com
 [azure-aad-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview
-[aad-registration-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps
+[aad-registration-blade]: https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview
 
 [concept-basics]: bot-builder-basics.md
 [concept-state]: bot-builder-concept-state.md

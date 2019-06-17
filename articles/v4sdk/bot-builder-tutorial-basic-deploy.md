@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7c9bdbbf0ad41bc678476237ef6b6d1d0f872426
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 305e89f5bef4b50e99b24780b0e31580e3b38fb9
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214243"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693702"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
 
@@ -169,7 +169,7 @@ Par conséquent, il est important d’inclure votre code généré et toutes les
 > - Pour les bots C#, il s’agit du dossier contenant le fichier .csproj. 
 > - Pour les bots JS, il s’agit du dossier contenant le fichier app.js ou index.js. 
 >
-> Sélectionnez tous les fichiers et compressez-les dans ce dossier, puis exécutez la commande toujours dans ce dossier.
+> Sélectionnez tous les fichiers et **compressez-les dans ce dossier**, puis exécutez la commande, toujours dans ce dossier.
 >
 > Si l’emplacement de votre dossier racine est incorrect, l’**exécution du bot échouera dans le portail Azure**.
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 844e3d65794e814dc8a1d16e2b7cf0e7a0e75fab
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: fd74dedcb048a7872a518618f8a9382e0585dbb5
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215404"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693678"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -39,19 +39,23 @@ Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes]
 
 Pour créer le message de réponse, définissez le texte, puis configurez les pièces jointes. L’affectation des pièces jointes à la réponse est identique pour chaque type de pièce jointe, cependant les pièces jointes diverses sont configurées et définies différemment, comme illustré dans les extraits de code suivants. Le code ci-dessous configure la réponse pour une pièce jointe insérée :
 
-**Bots/AttachmentsBot.cs** [!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=108-109)]
 
 Il nous faut ensuite regarder les types de pièces jointes. Tout d’abord, la pièce jointe insérée :
 
-**Bots/AttachmentsBot.cs** [!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[inline attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=165-176)]
 
-Ensuite, la pièce jointe chargée :
+Ensuite, en pièce jointe chargée :
 
-**Bots/AttachmentsBot.cs** [!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[uploaded attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=179-215)]
 
 Enfin, la pièce jointe internet :
 
-**Bots/AttachmentsBot.cs** [!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[online attachment](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=218-227)]
 
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -60,23 +64,28 @@ Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes�
 
 Pour utiliser des pièces jointes, incluez les bibliothèques suivantes dans votre bot :
 
-**bots/attachmentsBot.js** [!code-javascript[attachments libraries](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=4)]
+**bots/attachmentsBot.js**  
+[!code-javascript[attachments libraries](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=4)]
 
 Pour créer le message de réponse, définissez le texte, puis configurez les pièces jointes. L’affectation des pièces jointes à la réponse est identique pour chaque type de pièce jointe, cependant les pièces jointes diverses sont configurées et définies différemment, comme illustré dans les extraits de code suivants. Le code ci-dessous configure la réponse pour une pièce jointe insérée :
 
-**bots/attachmentsBot.js** [!code-javascript[attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=119,128-129)]
+**bots/attachmentsBot.js**  
+[!code-javascript[attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=119,128-129)]
 
 Pour envoyer à l’utilisateur un seul élément de contenu, comme une image ou une vidéo, vous pouvez envoyer des actifs multimédias de différentes façons. Tout d’abord, en pièce jointe insérée :
 
-**bots/attachmentsBot.js** [!code-javascript[inline attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=170-179)]
+**bots/attachmentsBot.js**  
+[!code-javascript[inline attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=170-179)]
 
 Ensuite, en pièce jointe chargée :
 
-**bots/attachmentsBot.js** [!code-javascript[uploaded attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=197-215)]
+**bots/attachmentsBot.js**  
+[!code-javascript[uploaded attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=197-215)]
 
 Enfin, en pièce jointe internet contenue dans une URL :
 
-**bots/attachmentsBot.js** [!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
+**bots/attachmentsBot.js**  
+[!code-javascript[internet attachments](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=184-191)]
 
 ---
 
@@ -92,7 +101,8 @@ Pour composer un message avec un bouton et une carte de héros, vous pouvez join
 
 Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes](https://aka.ms/bot-attachments-sample-code).
 
-**Bots/AttachmentsBot.cs** [!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
+**Bots/AttachmentsBot.cs**  
+[!code-csharp[Hero card](~/../botbuilder-samples/samples/csharp_dotnetcore/15.handling-attachments/Bots/AttachmentsBot.cs?range=39-62)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -100,7 +110,8 @@ Pour composer un message avec un bouton et une carte de héros, vous pouvez join
 
 Le code source affiché ici repose sur l’exemple [Gestion des pièces jointes JS](https://aka.ms/bot-attachments-sample-code-js).
 
-**bots/attachmentsBot.js** [!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=148-164)]
+**bots/attachmentsBot.js**  
+[!code-javascript[hero card](~/../botbuilder-samples/samples/javascript_nodejs/15.handling-attachments/bots/attachmentsBot.js?range=148-164)]
 
 ---
 
@@ -130,17 +141,21 @@ Le code suivant montre des exemples d’utilisation de différents événements 
 
 Pour obtenir des exemples de toutes les cartes disponibles, consultez l’[ exemple de cartes en C#](https://aka.ms/bot-cards-sample-code).
 
-**Cards.cs** [!code-csharp[hero cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=27-40)]
+**Cards.cs**  
+[!code-csharp[hero cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=27-40)]
 
-**Cards.cs** [!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
+**Cards.cs**  
+[!code-csharp[cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=91-100)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Pour obtenir des exemples de toutes les cartes disponibles, consultez l’[exemple de cartes en JS](https://aka.ms/bot-cards-js-sample-code).
 
-**dialogs/mainDialog.js** [!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=213-225)]
+**dialogs/mainDialog.js**  
+[!code-javascript[hero cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=213-225)]
 
-**dialogs/mainDialog.js** [!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=266-272)]
+**dialogs/mainDialog.js**  
+[!code-javascript[sign in cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=266-272)]
 
 ---
 
@@ -162,7 +177,8 @@ Pour utiliser des cartes adaptatives, veillez à ajouter le package NuGet `Adapt
 
 Le code source affiché ici repose sur l’exemple [Utilisation des cartes](https://aka.ms/bot-cards-sample-code) :
 
-**Cards.cs** [!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
+**Cards.cs**  
+[!code-csharp[adaptive cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Cards.cs?range=13-25)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -172,11 +188,13 @@ Le code source affiché ici repose sur l’exemple [Utilisation de cartes en JS]
 
 Ici, la carte adaptative est stockée dans son propre fichier et incluse dans notre bot :
 
-**resources/adaptiveCard.json** [!code-json[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/resources/adaptiveCard.json)]
+**resources/adaptiveCard.json**  
+[!code-json[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/resources/adaptiveCard.json)]
 
 Ensuite, elle est créée avec CardFactory :
 
-**dialogs/mainDialog.js** [!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=177-179)]
+**dialogs/mainDialog.js**  
+[!code-javascript[adaptive cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=177-179)]
 
 ---
 
@@ -190,15 +208,18 @@ Le code source affiché ici repose sur l’[Exemple de cartes](https://aka.ms/bo
 
 En premier lieu, créez la réponse et définissez les pièces jointes sous forme de liste.
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=61-66)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=61-66)]
 
 Ensuite, ajoutez les pièces jointes. Nous les ajoutons une à une ici, mais n’hésitez pas à arranger la liste pour ajouter les cartes à votre convenance.
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=105-113)]
 
 Une fois les pièces jointes ajoutées, vous pouvez envoyer la réponse comme n’importe quelle autre réponse.
 
-**Dialogs/MainDialog.cs** [!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
+**Dialogs/MainDialog.cs**  
+[!code-csharp[carousel of cards](~/../botbuilder-samples/samples/csharp_dotnetcore/06.using-cards/Dialogs/MainDialog.cs?range=117-118)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -206,7 +227,8 @@ Le code source affiché ici repose sur l’[Exemple de cartes en JS](https://aka
 
 Pour envoyer un carrousel de cartes, envoyez une réponse avec les pièces jointes sous forme de tableau, et le type de disposition défini en tant que `Carousel`:
 
-**dialogs/mainDialog.js** [!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=104-116)]
+**dialogs/mainDialog.js**  
+[!code-javascript[carousel of cards](~/../botbuilder-samples/samples/javascript_nodejs/06.using-cards/dialogs/mainDialog.js?range=104-116)]
 
 ---
 

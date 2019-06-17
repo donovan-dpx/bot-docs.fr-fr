@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c17e830c61036a6551fa7f3dbab79f83bda38123
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214305"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693521"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -158,6 +158,8 @@ Par conséquent, il est important d’inclure votre code généré et toutes les
 > Avant de compresser vos fichiers projet, vérifiez que vous êtes bien _dans_ le dossier approprié. 
 > - Pour les bots C#, il s’agit du dossier contenant le fichier .csproj. 
 > - Pour les bots JS, il s’agit du dossier contenant le fichier app.js ou index.js. 
+>
+> Sélectionnez tous les fichiers et **compressez-les dans ce dossier**, puis exécutez la commande, toujours dans ce dossier.
 >
 > Si l’emplacement de votre dossier racine est incorrect, l’**exécution du bot échouera dans le portail Azure**.
 

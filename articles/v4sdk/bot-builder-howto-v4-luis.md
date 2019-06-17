@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215350"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693673"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -76,6 +76,8 @@ Connectez-vous au portail LUIS pour créer votre propre version de l’exemple d
 ### <a name="why-use-entities"></a>Pourquoi utiliser des entités
 Les entités LUIS permettent à votre bot de comprendre intelligemment certains éléments ou événements qui diffèrent des intentions standard. Vous pouvez ainsi collecter des informations supplémentaires auprès de l’utilisateur, ce qui permet à votre bot de répondre plus intelligemment ou même d’ignorer certaines questions visant à obtenir ces mêmes informations. En plus des définitions des trois intentions LUIS « Réserver le vol », « Annuler » et « Aucune », le fichier FlightBooking.json contient un ensemble d’entités, telles que « From.Airport » et « To.Airport ». Ces entités permettent à LUIS de détecter et de retourner des informations supplémentaires contenues dans l’entrée d’origine de l’utilisateur, lorsque celui-ci fait une nouvelle demande de réservation de voyage.
 
+Pour plus d’informations sur la façon dont les informations de l’entité apparaissent dans un résultat LUIS, consultez [Extraire des données de texte énoncé avec des intentions et entités](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction).
+
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>Obtenir les valeurs de connexion à votre application LUIS
 Une fois votre application LUIS publiée, vous pouvez y accéder à partir de votre bot. Vous devrez enregistrer plusieurs valeurs pour accéder à votre application LUIS à partir de votre bot. Vous pouvez récupérer ces informations à l’aide du portail LUIS.
 
@@ -91,9 +93,10 @@ Le fichier de paramètres (`appsettings.json` et `.env`) agit comme lieu de rass
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Ajoutez les informations demandées pour accéder à votre application LUIS, y compris l’ID d’application, la clé de création et la région dans le fichier `appsettings.json`. Il s’agit des valeurs que vous avez enregistrées précédemment à partir de votre application LUIS publiée. Notez que le nom d’hôte API doit être au format `<your region>.api.cognitive.microsoft.com`.
+Ajoutez les informations demandées pour accéder à votre application LUIS, y compris l’ID d’application, la clé de création et la région dans le fichier `appsettings.json`. Il s’agit des valeurs que vous avez enregistrées précédemment à partir de votre application LUIS publiée. Notez que le nom d’hôte d’API doit être au format `<your region>.api.cognitive.microsoft.com`.
 
-**appsetting.json** [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
+**appsetting.json**  
+[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -112,7 +115,8 @@ Vérifiez que le package NuGet **Microsoft.Bot.Builder.AI.Luis** est installé p
 
 Pour vous connecter au service LUIS, le bot tire (pull) du fichier appsetting.json les informations que vous avez ajoutées précédemment. La classe `LuisHelper` contient le code qui importe vos paramètres à partir du fichier appsetting.json et interroge le service LUIS en appelant la méthode `RecognizeAsync`. Si la meilleure intention retournée est « Book_Flight », il recherche ensuite des entités contenant les informations de réservation, À, De et DateVoyage.
 
-**LuisHelper.cs** [!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
+**LuisHelper.cs**  
+[!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 

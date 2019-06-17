@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/09/2019
-ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.openlocfilehash: 58416147a057bce8947943521a1226e1d9acbdf1
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202558"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693598"
 ---
 # <a name="connect-a-bot-to-slack"></a>Connecter un bot à Slack
 
@@ -134,3 +134,7 @@ Suivez ces étapes pour obtenir l’URL de remplacement.
 3. Collez cette URL à partir de votre Presse-papiers dans le code HTML fourni pour le bouton Slack. Cette URL remplace la valeur href fournie par Slack pour ce bot.
 
 Les utilisateurs autorisés peuvent cliquer sur le bouton **Add to Slack** (Ajouter à Slack) fourni par ce code HTML pour trouver votre bot sur Slack.
+
+## <a name="also-available-as-an-adapter"></a>Également disponible en tant qu’adaptateur
+
+Ce canal est également [disponible en tant qu’adaptateur](https://botkit.ai/docs/v4/platforms/slack.html). Pour vous aider à choisir entre un adaptateur et un canal, consultez [Adaptateurs disponibles actuellement](bot-service-channel-additional-channels.md#currently-available-adapters).

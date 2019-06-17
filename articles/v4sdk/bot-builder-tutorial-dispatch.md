@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 942ab2d5b3a43ca071c877b5cc18e8141838d604
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 290b06b28e590b01335694a621cc71c189ff6296
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214257"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693636"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -212,7 +212,8 @@ Avant d’exécuter cette application pour la première fois, vérifiez que plus
 
 Une fois que toutes vos applications de service sont créées, les informations de chacune d’elles doivent être ajoutées dans votre fichier « appsettings.json ». Le code de l’[exemple C#][cs-sample] initial contient un fichier appsettings.json vide :
 
-**appsettings.json** [!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
+**appsettings.json**  
+[!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
 
 Pour chacune des entités indiquées ci-dessous, ajoutez les valeurs que vous avez enregistrées précédemment dans ces instructions :
 
@@ -251,7 +252,8 @@ npm install --save dotenv
 
 Une fois que toutes vos applications de service sont créées, les informations de chacune d’elles doivent être ajoutées dans votre fichier « .env ». Le code de l’[exemple JavaScript][js-sample] initial contient un fichier .env vide. 
 
-**.env** [!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
+**.env**  
+[!code-file[EmptyEnv](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/.env?range=1-10)]
 
 Ajoutez les valeurs de connexion de votre service comme indiqué ci-dessous :
 
@@ -281,13 +283,15 @@ Pour vous connecter aux services Dispatch, LUIS et QnA Maker, votre bot extrait 
 
 Dans **BotServices.cs**, les informations contenues dans le fichier de configuration _appsettings.json_ permettent de connecter votre bot de dispatch aux services `Dispatch` et `SampleQnA`. Les constructeurs utilisent les valeurs que vous avez fournies pour se connecter à ces services.
 
-**BotServices.cs** [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
+**BotServices.cs**  
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 Dans **dispatchBot.js**, les informations contenues dans le fichier de configuration _.env_ permettent de connecter votre bot de dispatch aux services _LuisRecognizer(dispatch)_ et _QnAMaker_. Les constructeurs utilisent les valeurs que vous avez fournies pour se connecter à ces services.
 
-**dispatchBot.js** [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
+**dispatchBot.js**  
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
 
 ---
 
@@ -299,13 +303,14 @@ Pour chaque entrée utilisateur, la logique du bot effectue une vérification pa
 
 Dans le fichier **DispatchBot.cs**, chaque fois que la méthode `OnMessageActivityAsync` est appelée, nous vérifions le message utilisateur entrant par rapport au modèle Dispatch. Nous passons ensuite les éléments `topIntent` et `recognizerResult` du modèle Dispatch à la méthode appropriée pour appeler le service et retourner le résultat.
 
-**DispatchBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
+**DispatchBot.cs**  
+[!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 Dans la méthode `onMessage` **dispatchBot.js**, nous vérifions le message d’entrée utilisateur par rapport au modèle Dispatch, nous recherchons _topIntent_, puis nous passons le résultat en appelant  _dispatchToTopIntentAsync_.
 
-**dispatchBot.js**
+**dispatchBot.js**  
 
 [!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=37-50)]
 
@@ -317,7 +322,8 @@ Dans la méthode `onMessage` **dispatchBot.js**, nous vérifions le message d’
 
 Lorsque le modèle renvoie un résultat, il indique quel service est le mieux à même de gérer l’énoncé. Le code de ce bot achemine la demande vers le service correspondant, puis il résume la réponse du service appelé. Selon l’_intention_ retournée par Dispatch, ce code utilise l’intention retournée pour router vers le modèle LUIS ou service QnA approprié.
 
-**DispatchBot.cs** [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
+**DispatchBot.cs**  
+[!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 Si la méthode `ProcessHomeAutomationAsync` ou `ProcessWeatherAsync` est appelée, les résultats lui sont passés à partir du modèle de dispatch au sein de _luisResult.ConnectedServiceResult_. La méthode spécifiée fournit alors des commentaires utilisateur indiquant la première intention du modèle de dispatch, ainsi que la liste ordonnée de tous les intentions et entités détectées.
 
@@ -327,7 +333,8 @@ Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur
 
 Lorsque le modèle renvoie un résultat, il indique quel service est le mieux à même de gérer l’énoncé. Le code de cet exemple utilise le _topIntent_ reconnu pour montrer comment router la demande vers le service correspondant.
 
-**DispatchBot.cs** [!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
+**DispatchBot.cs**  
+[!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
 
 Si la méthode `processHomeAutomation` ou `processWeather` est appelée, les résultats lui sont passés à partir du modèle de dispatch au sein de _recognizerResult.luisResult_. La méthode spécifiée fournit alors des commentaires utilisateur indiquant la première intention du modèle de dispatch, ainsi que la liste ordonnée de tous les intentions et entités détectées.
 
@@ -340,11 +347,11 @@ Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur
 
 ## <a name="test-your-bot"></a>Tester votre robot
 
-À l’aide de votre environnement de développement, démarrez l’exemple de code. Notez l’adresse localhost indiquée dans la barre d’adresses de la fenêtre de navigateur ouverte par votre application : « https://localhost:<Port_Number> » Après avoir ouvert Bot Framework Emulator, sélectionnez le test bleu décrit ci-dessous `create new bot configuration`.
+À l’aide de votre environnement de développement, démarrez l’exemple de code. Notez l’adresse localhost indiquée dans la barre d’adresses de la fenêtre de navigateur ouverte par votre application : « https://localhost:<Port_Number>  » Après avoir ouvert Bot Framework Emulator, sélectionnez le test bleu décrit ci-dessous `create new bot configuration`.
 
 ![Créer une configuration](./media/tutorial-dispatch/emulator-create-new-configuration.png)
 
-Entrez l’adresse localhost que vous avez enregistrée, en ajoutant « / api/messages » à la fin : « https://localhost:<Port_Number>/api/messages »
+Entrez l’adresse localhost que vous avez enregistrée, en ajoutant « / api/messages » à la fin : « https://localhost:<Port_Number>/api/messages  »
 
 ![Connecter l’émulateur](./media/tutorial-dispatch/emulator-create-and-connect.png)
 

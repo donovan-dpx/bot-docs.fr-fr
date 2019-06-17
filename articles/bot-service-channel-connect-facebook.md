@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/12/2018
-ms.openlocfilehash: 57a3efd36ddae5c52a2d791b87ed4fa6a96d5e8a
-ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
+ms.openlocfilehash: 36d98c6eeb368399ee11ef9a048bb42922103f16
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58655519"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693613"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Connecter un bot à Facebook
 
@@ -160,3 +160,7 @@ Si vous recevez une notification de Facebook sur la dépréciation d’une certa
 ## <a name="sample-code"></a>Exemple de code
 
 Pour référence ultérieure, l’exemple de bot <a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> peut être utilisé pour explorer la communication du bot avec Facebook Messenger.
+
+## <a name="also-available-as-an-adapter"></a>Également disponible en tant qu’adaptateur
+
+Ce canal est également [disponible en tant qu’adaptateur](https://botkit.ai/docs/v4/platforms/facebook.html). Pour vous aider à choisir entre un adaptateur et un canal, consultez [Adaptateurs disponibles actuellement](bot-service-channel-additional-channels.md#currently-available-adapters).
