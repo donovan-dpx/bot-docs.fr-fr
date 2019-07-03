@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e1ebc07c73dcd7033a6b9a22c94379593c5890e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7b3380a409641bd7d406c877ebcbf83ddf15431c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215263"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404447"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Recommandations en matière de test et de débogage
 
@@ -65,7 +65,7 @@ Il existe de nombreuses façons de procéder, de l’utilisation séparée de di
 
 ### <a name="other-testing"></a>Autres tests
 
-Il est possible d’effectuer différents types de tests avec les niveaux ci-dessus ou selon différentes approches, par exemple les tests de stress, les tests de performance ou le profilage de l’activité du robot. Visual Studio fournit des méthodes permettant de les effectuer localement ainsi qu’une [suite d’outils](https://azure.microsoft.com/en-us/solutions/dev-test/) pour tester votre application. Le [portail Azure](https://portal.azure.com) fournit des informations sur le fonctionnement de votre robot.
+Il est possible d’effectuer différents types de tests avec les niveaux ci-dessus ou selon différentes approches, par exemple les tests de stress, les tests de performance ou le profilage de l’activité du robot. Visual Studio fournit des méthodes permettant de les effectuer localement ainsi qu’une [suite d’outils](https://azure.microsoft.com/solutions/dev-test/) pour tester votre application. Le [portail Azure](https://portal.azure.com) fournit des informations sur le fonctionnement de votre robot.
 
 ## <a name="debugging"></a>Débogage
 
@@ -105,7 +105,7 @@ For example [QnA maker](bot-builder-howto-qna.md) is designed to handle certain 
 
 La conservation de la trace de l’état est une partie importante de votre robot, en particulier pour les tâches complexes. En règle générale, la bonne pratique consiste à traiter les activités le plus rapidement possible et à laisser le traitement se terminer afin de conserver l’état. Les activités peuvent être envoyées à votre robot presque en même temps, ce qui peut provoquer des bogues très déroutants en raison de l’architecture asynchrone.
 
-Plus important encore, assurez-vous que la conservation de l’état correspond à vos attentes. Selon l’endroit où se trouve votre état conservé, les émulateurs de stockage pour [Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)et [Azure Table Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) vous permettent de le vérifier avant d’utiliser le stockage en production.
+Plus important encore, assurez-vous que la conservation de l’état correspond à vos attentes. Selon l’endroit où se trouve votre état conservé, les émulateurs de stockage pour [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator)et [Azure Table Storage](https://docs.microsoft.com/azure/storage/common/storage-use-emulator) vous permettent de le vérifier avant d’utiliser le stockage en production.
 
 ### <a name="how-to-use-activity-handlers"></a>Comment utiliser les gestionnaires d’activités
 
@@ -117,9 +117,9 @@ La méthode _send activity_ et ses gestionnaires posent un problème unique. Le 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Débogage dans Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
-* [Débogage, traçage et profilage](https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/) de l’infrastructure du robot
-* Utilisez l’attribut [ConditionalAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) pour les méthodes que vous ne souhaitez pas inclure dans le code de production
+* [Débogage dans Visual Studio](https://docs.microsoft.com/visualstudio/debugger/index)
+* [Débogage, traçage et profilage](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/) de l’infrastructure du robot
+* Utilisez l’attribut [ConditionalAttribute](https://docs.microsoft.com/dotnet/api/system.diagnostics.conditionalattribute?view=netcore-2.0) pour les méthodes que vous ne souhaitez pas inclure dans le code de production
 * Utilisez des outils comme [Fiddler](https://www.telerik.com/fiddler) pour afficher le trafic réseau
 * [Référentiel d’outils de robots](https://github.com/Microsoft/botbuilder-tools)
 * Les infrastructures peuvent faciliter les tests, par exemple [Moq](https://github.com/moq/moq4)

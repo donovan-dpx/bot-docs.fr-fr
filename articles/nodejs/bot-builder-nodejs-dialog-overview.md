@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dfa52914b3f0a2e81f4ff3a2f90c7404bfe53d4a
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f0b933a5bdcea5090ede1b2f589cd69f9e681757
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225994"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405012"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Dialogues dans le kit SDK Bot Framework pour Node.js
 
@@ -53,7 +53,7 @@ Lorsqu’une conversation de robot se lance en premier ou qu’une conversation 
 Dans les versions de Bot Framework antérieures à la version 3.5, un dialogue *racine* est défini en ajoutant le dialogue `/` avec des conventions d’affectation de noms similaires à celles des URL. Cette convention n’est pas adaptée à l’affectation de noms des dialogues. 
 
 > [!NOTE]
-> Depuis la version 3.5 du Bot Framework, le dialogue *par défaut* est enregistré comme second paramètre dans le constructeur de [`UniversalBot`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor).  
+> Depuis la version 3.5 du Bot Framework, le dialogue *par défaut* est enregistré comme second paramètre dans le constructeur de [`UniversalBot`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html#constructor).  
 
 L’extrait de code suivant montre comment définir le dialogue par défaut lors de la création de l’objet `UniversalBot`.
 
@@ -71,7 +71,7 @@ Le gestionnaire de dialogues gère le déroulement des conversations. Pour avanc
 
 ## <a name="starting-and-ending-dialogs"></a>Ouverture et fermeture des dialogues
 
-Pour ouvrir un nouveau dialogue (et le pousser dans la pile), utilisez [`session.beginDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog). Pour fermer un dialogue (et le supprimer de la pile en renvoyant le contrôle au dialogue en appel), utilisez [`session.endDialog()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog) ou [`session.endDialogWithResult()`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult). 
+Pour ouvrir un nouveau dialogue (et le pousser dans la pile), utilisez [`session.beginDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#begindialog). Pour fermer un dialogue (et le supprimer de la pile en renvoyant le contrôle au dialogue en appel), utilisez [`session.endDialog()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialog) ou [`session.endDialogWithResult()`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#enddialogwithresult). 
 
 ## <a name="using-waterfalls-and-prompts"></a>Utilisation des cascades et des invites
 

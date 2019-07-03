@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: a550de06be6584c5d9ba5eca4ffffffd49a518d2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214138"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404300"
 ---
 # <a name="manage-bot-resources"></a>Gérer les ressources du bot
 
@@ -137,4 +137,4 @@ Si nécessaire, provisionnez des ressources et connectez-les à votre bot à l�
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 - Pour savoir comment déployer le bot, consultez la rubrique sur le [déploiement](../bot-builder-deploy-az-cli.md).
-- Apprenez à utiliser [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-overview) pour protéger et gérer les clés de chiffrement et les secrets utilisés par les services et les applications cloud.
+- Apprenez à utiliser [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) pour protéger et gérer les clés de chiffrement et les secrets utilisés par les services et les applications cloud.

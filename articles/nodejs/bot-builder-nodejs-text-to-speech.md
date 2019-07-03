@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ae3acded991411156d3e69f4ed9360df9bdccb1
-ms.sourcegitcommit: 4c5c08e7c7eaa5f74c6ac35d8478954b998625f9
+ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64906300"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404695"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 
@@ -46,7 +46,7 @@ Comme alternative à l’utilisation de `session.send()`, vous pouvez appeler la
 | Paramètre | Description |
 |----|----|
 | `displayText` | Texte à afficher. |
-| `speechText` | Texte (en texte brut ou au format <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>) à prononcer. |
+| `speechText` | Texte (en texte brut ou au format <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML</a>) à prononcer. |
 | `options` | Un `IMessage`objet qui peut contenir une pièce jointe ou un [indicateur d’entrée](bot-builder-nodejs-send-input-hints.md). |
 
 L’exemple de code suivant envoie un message qui spécifie le texte à afficher et le texte à énoncer et indique que le bot [ignore l’entrée utilisateur](bot-builder-nodejs-send-input-hints.md).
@@ -61,7 +61,7 @@ En utilisant l’une des invites intégrées, vous pouvez définir les options `
 
 ## <a id="ssml"></a> Speech Synthesis Markup Language (SSML)
 
-Pour spécifier le texte à énoncer par votre bot, vous pouvez utiliser une chaîne de texte brut ou une chaîne mise en forme selon Speech Synthesis Markup Language (SSML), un langage de balisage basé sur XML qui vous permet de contrôler diverses caractéristiques du discours de votre bot telles que la voix, le débit, le volume, la prononciation, la hauteur et bien plus encore. Pour plus d’informations sur SSML, consultez <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference</a> (Références sur Speech Synthesis Markup Language).
+Pour spécifier le texte à énoncer par votre bot, vous pouvez utiliser une chaîne de texte brut ou une chaîne mise en forme selon Speech Synthesis Markup Language (SSML), un langage de balisage basé sur XML qui vous permet de contrôler diverses caractéristiques du discours de votre bot telles que la voix, le débit, le volume, la prononciation, la hauteur et bien plus encore. Pour plus d’informations sur SSML, consultez <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language Reference</a> (Références sur Speech Synthesis Markup Language).
 
 > [!TIP]
 > Utilisez une <a href="https://www.npmjs.com/search?q=ssml" target="_blank">bibliothèque SSML</a> pour créer des fichiers SSML correctement mis en forme.
@@ -76,5 +76,5 @@ Pour un exemple complet qui montre comment créer un bot à reconnaissance vocal
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language (SSML)</a>
+- <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Exemple Roller (GitHub)</a>

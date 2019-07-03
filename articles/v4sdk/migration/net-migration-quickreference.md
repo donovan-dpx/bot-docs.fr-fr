@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b4226e842384caf1315170354c763a44c15b0c70
-ms.sourcegitcommit: 18ff5705d15b8edc85fb43001969b173625eb387
+ms.openlocfilehash: 1bbc598ac8cd43b17d2ddaaf0803318ed6121abc
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453209"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405993"
 ---
 # <a name="net-migration-quick-reference"></a>Aide-mémoire sur la migration .NET
 
@@ -459,7 +459,7 @@ protected override Task OnEventActivityAsync(ITurnContext<IEventActivity> turnCo
 
 ### <a name="v3"></a>v3
 
-[IActivityLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.history.iactivitylogger) était utilisé.
+[IActivityLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.history.iactivitylogger) était utilisé.
 
 ```csharp
 builder.RegisterType<ActivityLoggerImplementation>().AsImplementedInterfaces().InstancePerDependency(); 
@@ -475,7 +475,7 @@ public class ActivityLoggerImplementation : IActivityLogger
 
 ### <a name="v4"></a>v4
 
-Utilisez [ITranscriptLogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.itranscriptlogger).
+Utilisez [ITranscriptLogger](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.itranscriptlogger).
 
 ```csharp
 var transcriptMiddleware = new TranscriptLoggerMiddleware(new TranscriptLoggerImplementation(Configuration.GetSection("StorageConnectionString").Value));
@@ -498,7 +498,7 @@ L’interface pour le stockage des _données utilisateur_, des _données de conv
 
 L’état était rendu persistant en utilisant une implémentation `IBotDataStore` et en l’injectant dans le système d’état de dialogue du SDK à l’aide d’Autofac.  Microsoft fournissait des classes `MemoryStorage`, `DocumentDbBotDataStore`, `TableBotDataStore` et `SqlBotDataStore` dans [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/).
 
-[IBotDataStore<BotData> ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) était utilisé pour rendre les données persistantes.
+[IBotDataStore<BotData> ](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) était utilisé pour rendre les données persistantes.
 
 ```csharp
 Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);
@@ -521,7 +521,7 @@ builder.Register(c => storage)
 
 La couche de stockage utilise l’interface `IStorage`, spécifiez l’objet de la couche de stockage lors de la création de chaque objet de gestion d’état pour votre bot, comme `UserState`, `ConversationState` ou `PrivateConversationState`. L’objet de gestion d’état fournit des clés à la couche de stockage sous-jacente et fait également office de gestionnaire de propriétés. Par exemple, utilisez `IPropertyManager.CreateProperty<T>(string name)` pour créer un accesseur de propriété d’état.  Ces accesseurs de propriété sont utilisés pour récupérer et stocker les valeurs qui sont à l’intérieur et à l’extérieur du stockage sous-jacent du bot.
 
-Utilisez [IStorage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) pour rendre les données persistantes.
+Utilisez [IStorage](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.istorage?view=botbuilder-dotnet-stable) pour rendre les données persistantes.
 
 ```csharp
 Task DeleteAsync(string[] keys, CancellationToken cancellationToken = default(CancellationToken));
@@ -548,7 +548,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>v3
 
-[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
+[Microsoft.Bot.Builder.FormFlow](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.formflow?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
 
 ### <a name="v4"></a>v4
 
@@ -558,7 +558,7 @@ services.AddSingleton(conversationState);
 
 ### <a name="v3"></a>v3
 
-[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
+[Microsoft.Bot.Builder.Dialogs.LuisDialog](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.luisdialog-1?view=botbuilder-dotnet-3.0) était inclus dans le SDK Bot Builder principal.
 
 ### <a name="v4"></a>v4
 

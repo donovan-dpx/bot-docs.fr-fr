@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 69ce362f35054c5ee42035d8bffefb17c6fa7f71
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215507"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404316"
 ---
 # <a name="activity-processing"></a>Traitement des activités
 
@@ -23,7 +23,7 @@ ms.locfileid: "66215507"
 
 Le bot et l’utilisateur interagissent et échangent des informations par le biais des activités. Chaque activité reçue par votre application de bot est passée à un adaptateur de bot, qui transmet les informations de l’activité à la logique de votre bot, avant d’envoyer les réponses à l’utilisateur. La réception d’une activité, puis son traitement par l’intermédiaire de votre bot, s’appelle un tour. Il s’agit d’un cycle complet du bot. Un tour s’achève lorsque l’exécution est effectuée dans son intégralité, l’activité entièrement traitée et toutes les couches du bot terminées.
 
-Les activités, en particulier celles qui sont [envoyées à partir d’un bot](#generating-responses) pendant un tour de bot, sont traitées de façon asynchrone. C’est une partie nécessaire de la génération d’un bot ; si vous souhaitez rafraîchir vos connaissances sur la façon dont tout cela fonctionne, consultez [Programmation asynchrone pour .NET](https://docs.microsoft.com/en-us/dotnet/csharp/async) ou [Programmation asynchrone pour JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) selon le langage de votre choix.
+Les activités, en particulier celles qui sont [envoyées à partir d’un bot](#generating-responses) pendant un tour de bot, sont traitées de façon asynchrone. C’est une partie nécessaire de la génération d’un bot ; si vous souhaitez rafraîchir vos connaissances sur la façon dont tout cela fonctionne, consultez [Programmation asynchrone pour .NET](https://docs.microsoft.com/dotnet/csharp/async) ou [Programmation asynchrone pour JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) selon le langage de votre choix.
 
 ## <a name="the-bot-adapter"></a>Adaptateur de bot
 

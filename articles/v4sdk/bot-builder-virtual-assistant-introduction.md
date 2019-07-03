@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bab3e3df6bb32607773da261698d785b1f261f7
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: b2cc303cdedbc3a9d44ce725bfc78dd308974763
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214232"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464672"
 ---
 # <a name="virtual-assistant-overview"></a>Présentation de l’assistant virtuel
 
@@ -67,17 +67,17 @@ L’assistant virtuel peut être utilisé dans de nombreux secteurs et scénario
 ### <a name="your-data-your-brand-and-your-experience"></a>Vos données, votre marque et votre expérience
 Vous détenez et contrôlez tous les aspects de l’expérience de l’utilisateur final. Cela inclut la personnalisation en fonction de la marque, le nom, la voix, la personnalité, les réponses et l’avatar. Le code source de l’assistant virtuel et les compétences de prise en charge sont fournis en intégralité pour vous permettre d’effectuer les ajustements nécessaires.
 
-Votre assistant virtuel est déployé dans votre abonnement Azure. Par conséquent, toutes les données générées par votre assistant (questions posées, comportement de l’utilisateur, etc.) se trouvent dans votre abonnement Azure. Consultez [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) (Cloud approuvé Azure Cognitive Services) et la section [Azure du Centre de confidentialité](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure) plus spécifiquement, pour plus d’informations.
+Votre assistant virtuel est déployé dans votre abonnement Azure. Par conséquent, toutes les données générées par votre assistant (questions posées, comportement de l’utilisateur, etc.) se trouvent dans votre abonnement Azure. Consultez [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) (Cloud approuvé Azure Cognitive Services) et la section [Azure du Centre de confidentialité](https://www.microsoft.com/TrustCenter/CloudServices/Azure) plus spécifiquement, pour plus d’informations.
 
 ### <a name="write-it-once-embed-it-anywhere"></a>Écrivez-le une fois, intégrez-le partout
-L’assistant virtuel s’appuie sur la plateforme d’intelligence artificielle conversationnelle Microsoft et par conséquent, peut être exposé via n’importe quel [canal](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, par exemple Web Chat, Facebook Messenger, Skype, etc. 
+L’assistant virtuel s’appuie sur la plateforme d’intelligence artificielle conversationnelle Microsoft et par conséquent, peut être exposé via n’importe quel [canal](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, par exemple Web Chat, Facebook Messenger, Skype, etc. 
 
-En outre, via le canal [Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0), nous pouvons incorporer des expériences dans des applications bureau et mobiles, y compris des appareils tels que des voitures, des haut-parleurs, des réveils, etc.
+En outre, via le canal [Direct Line](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0), nous pouvons incorporer des expériences dans des applications bureau et mobiles, y compris des appareils tels que des voitures, des haut-parleurs, des réveils, etc.
 
 ### <a name="enterprise-grade-solutions"></a>Solutions professionnelles
-La solution d’assistant virtuel repose sur Azure Bot Service, Language Understanding Cognitive Service, Unified Speech, ainsi qu’un vaste ensemble de composants Azure de prise en charge, ce qui signifie que vous bénéficiez de [l’infrastructure globale Azure](https://azure.microsoft.com/en-gb/global-infrastructure/), notamment ISO 27018, HIPPA, PCI DSS et des certifications SOC 1, 2 et 3.
+La solution d’assistant virtuel repose sur Azure Bot Service, Language Understanding Cognitive Service, Unified Speech, ainsi qu’un vaste ensemble de composants Azure de prise en charge, ce qui signifie que vous bénéficiez de [l’infrastructure globale Azure](https://azure.microsoft.com/global-infrastructure/), notamment ISO 27018, HIPPA, PCI DSS et des certifications SOC 1, 2 et 3.
 
-En outre, la prise en charge de Language Understanding est fournie par LUIS Cognitive Service qui prend en charge un large ensemble de langages [répertoriés ici](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) propose des fonctionnalités de traduction machine pour étendre encore davantage la portée de votre assistant virtuel.
+En outre, la prise en charge de Language Understanding est fournie par LUIS Cognitive Service qui prend en charge un large ensemble de langages [répertoriés ici](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) propose des fonctionnalités de traduction machine pour étendre encore davantage la portée de votre assistant virtuel.
 
 ### <a name="integrated-and-context-aware"></a>Intégré et prenant en compte le contexte
 Votre assistant virtuel peut être intégré à votre appareil et écosystème pour une expérience véritablement intégrée et intelligente. Cette prise en compte du contexte permet de développer des expériences plus intelligentes et d’offrir davantage de personnalisation.
@@ -89,7 +89,7 @@ L’assistant virtuel vous permet de proposer votre propre expérience unique, m
 Notre architecture d’assistant virtuel est flexible et peut être intégrée aux investissements existants que vous avez effectués dans des fonctionnalités de traitement en langage naturel ou de reconnaissance vocale basé sur des appareils, et bien sûr de l’intégrer à vos API et systèmes principaux existants.
 
 ### <a name="adaptive-cards"></a>Cartes adaptatives
-Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant virtuel de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant une expérience utilisateur de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started).
+Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant virtuel de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant une expérience utilisateur de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started).
 
 ### <a name="skills"></a>Compétences
 En plus de l’assistant de base, il existe un large éventail de fonctionnalités courantes que chaque développeur doit configurer. La productivité est un excellent exemple dans lequel chaque organisation doit créer des modèles de langage (LUIS), des dialogues (code), l’intégration (code) et la génération de langage (réponses) pour activer les expériences populaires de calendrier, de tâche ou d’e-mail.

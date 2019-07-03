@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservices: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c10e6cda084f22cd4d97fd4ddce942941015733b
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 8aff8c550541304d63db951e8ab6b4c014fc72ac
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215443"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404592"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Déboguer votre bot à l’aide de fichiers de transcription
 
@@ -74,4 +74,4 @@ Pour des informations complémentaires sur le test et le débogage, consultez :
 * [Recommandations en matière de test et de débogage](./bot-builder-testing-debugging.md)
 * [Déboguer avec l’émulateur](../bot-service-debug-emulator.md)
 * [Résoudre les problèmes généraux](../bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
-* [Débogage dans Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/index)
+* [Débogage dans Visual Studio](https://docs.microsoft.com/visualstudio/debugger/index)

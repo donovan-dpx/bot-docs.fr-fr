@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 5/2/2019
-ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d1fed33682349948d1b33d9b4fecdf718a20a248
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033053"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405844"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversations de transition de robot à humain
 
@@ -42,7 +42,7 @@ Le robot peut décider de transférer ou non le contrôle de la conversation sel
 
 La compréhension du langage naturel et l’analyse des sentiments aident le robot à décider quand il doit transférer le contrôle de la conversation à un agent humain. Cela est particulièrement précieux pour déterminer si l’utilisateur est frustré ou souhaite parler à un agent humain. 
  
-Le robot analyse le contenu des messages de l’utilisateur en utilisant l’<a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API Analyse de texte</a> pour déduire des sentiments, ou en utilisant l’<a href="https://www.luis.ai" target="_blank">API LUIS</a>. 
+Le robot analyse le contenu des messages de l’utilisateur en utilisant l’<a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API Analyse de texte</a> pour déduire des sentiments, ou en utilisant l’<a href="https://www.luis.ai" target="_blank">API LUIS</a>. 
 
 
 > [!TIP]
@@ -77,7 +77,7 @@ Une fois que l’agent connecté au robot, celui-ci commence à router les messa
 ::: moniker range="azure-bot-service-4.0"
 
 - [Dialogues](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API Analyse de texte</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API Analyse de texte</a>
 
 ::: moniker-end
 
@@ -85,7 +85,7 @@ Une fois que l’agent connecté au robot, celui-ci commence à router les messa
 
 - [Gérer un flux de conversation avec des dialogues (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Gérer un flux de conversation avec des dialogues (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">API Analyse de texte</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">API Analyse de texte</a>
 
 
 ::: moniker-end

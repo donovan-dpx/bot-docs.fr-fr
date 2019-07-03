@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 67e86455aefd000c8a6956a71adcfdb821266196
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224514"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404332"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour Node.js
 
@@ -36,13 +36,13 @@ Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et 
 - Vous devez avoir un bot Node.js. Si vous n’en avez pas, accédez à [Créer un bot](bot-builder-nodejs-quickstart.md). 
 
 ## <a name="create-azure-account"></a>Créer un compte Azure
-Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/en-us/free/) pour vous inscrire et bénéficier d’un compte gratuit.
+Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Configurer la base de données Azure Cosmos DB
 1. Une fois connecté au portail Azure, créez une base de données *Azure Cosmos DB* en cliquant sur **Nouveau**. 
 2. Cliquez sur **Bases de données**. 
 3. Localisez **Azure Cosmos DB** et cliquez sur **Créer**.
-4. Renseignez les champs. Pour le champ **API**, sélectionnez **SQL (DocumentDB)**. Lorsque vous avez renseigné tous les champs, cliquez sur le bouton **Créer** en bas de l’écran pour déployer la nouvelle base de données. 
+4. Renseignez les champs. Pour le champ **API**, sélectionnez **SQL (DocumentDB)** . Lorsque vous avez renseigné tous les champs, cliquez sur le bouton **Créer** en bas de l’écran pour déployer la nouvelle base de données. 
 5. Accédez à votre nouvelle base de données dès que son déploiement est terminé. Cliquez sur **Clés d’accès** pour trouver les clés et les chaînes de connexion. Votre bot utilise ces informations pour appeler le service de stockage et enregistrer les données d’état.
 
 ## <a name="install-botbuilder-azure-module"></a>Installer le module botbuilder-azure
@@ -74,14 +74,14 @@ Pour utiliser votre base de données **Azure Cosmos DB**, ajoutez les lignes de 
    ```
    Les valeurs `host` et `masterKey` figurent dans le menu **Clés** de votre base de données. Si les entrées `database` et `collection` n’existent pas dans la base de données Azure, elles sont créées pour vous.
 
-3. À l’aide du module `botbuilder-azure`, créez deux nouveaux objets à connecter à la base de données Azure. Tout d’abord, créez une instance de `DocumentDBClient` transmettant les paramètres de configuration de la connexion (définie comme `documentDbOptions` ci-dessus). Ensuite, créez une instance de `AzureBotStorage` transmettant l’objet `DocumentDBClient`. Par exemple : 
+3. À l’aide du module `botbuilder-azure`, créez deux nouveaux objets à connecter à la base de données Azure. Tout d’abord, créez une instance de `DocumentDBClient` transmettant les paramètres de configuration de la connexion (définie comme `documentDbOptions` ci-dessus). Ensuite, créez une instance de `AzureBotStorage` transmettant l’objet `DocumentDBClient`. Par exemple :
    ```javascript
    var docDbClient = new azure.DocumentDbClient(documentDbOptions);
 
    var cosmosStorage = new azure.AzureBotStorage({ gzipData: false }, docDbClient);
    ```
 
-4. Indiquez que vous souhaitez utiliser votre base de données personnalisée au lieu du stockage en mémoire. Par exemple : 
+4. Indiquez que vous souhaitez utiliser votre base de données personnalisée au lieu du stockage en mémoire. Par exemple :
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {

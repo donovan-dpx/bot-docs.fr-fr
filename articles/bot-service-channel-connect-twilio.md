@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 4de93d821c6b652021a9f695536350610776f5b4
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693620"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405904"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Connecter un bot à Twilio
 
@@ -26,7 +26,7 @@ Si vous n’avez pas de compte Twilio, <a href="https://www.twilio.com/try-twili
 
 ## <a name="create-a-twiml-application"></a>Créer une application TwiML
 
-<a href="https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Créer une application TwiML</a> en suivant les instructions fournies.
+<a href="https://support.twilio.com/hc/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Créer une application TwiML</a> en suivant les instructions fournies.
 
 ![Créer une application](~/media/channels/twi-StepTwiml.png)
 
@@ -34,7 +34,7 @@ Sous **Properties** (Propriétés), entrez un **NOM CONVIVIAL**. Dans ce didacti
 
 ## <a name="select-or-add-a-phone-number"></a>Sélectionner ou ajouter un numéro de téléphone
 
-Suivez les instructions indiquées <a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">ici</a> pour ajouter un ID d’appelant vérifié via le site de la console. Une fois que vous avez terminé, vous verrez votre numéro vérifié dans **Active Numbers** (Numéros actifs) sous **Manage Numbers** (Gestion des numéros).
+Suivez les instructions indiquées <a href = "https://support.twilio.com/hc/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">ici</a> pour ajouter un ID d’appelant vérifié via le site de la console. Une fois que vous avez terminé, vous verrez votre numéro vérifié dans **Active Numbers** (Numéros actifs) sous **Manage Numbers** (Gestion des numéros).
 
 ![Définir un numéro de téléphone](~/media/channels/twi-StepPhone.png)
 

@@ -1,9 +1,17 @@
+---
+ms.openlocfilehash: bbdad5f0cb51d99cf886070dd8400acae0ed24bb
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464575"
+---
 # <a name="bot-review-guidelines"></a>Instructions d’évaluation des bots
 
 Nous vous souhaitons la bienvenue et vous remercions d’investir vos talents et votre temps dans la création de robots, de botlets, d’applications web, de compléments ou de compétences (« intégrations d’applications ») pour les canaux Microsoft. Vous trouverez ci-dessous les conditions minimales requises pour que votre intégration d’application puisse être publiée sur un canal Microsoft tel que Skype ou Microsoft Teams. Chaque canal peut imposer des conditions spécifiques en plus de celles détaillées ci-dessous. Le cas échéant, vous trouverez les conditions spécifiques de chaque canal sur la page de configuration de celui-ci, et devrez peut-être vous inscrire au service d’un canal avant de pouvoir publier un robot sur celui-ci.
 
 ## <a name="app-integration-policies"></a>Stratégies d’intégration d’applications
-###  <a name="1-value-representation-security-and-usability"></a>1. Valeur, représentation, sécurité et convivialité.
+### <a name="1-value-representation-security-and-usability"></a>1. Valeur, représentation, sécurité et convivialité.
 
 L’intégration de votre application et les métadonnées qui y sont associées doivent présenter les caractéristiques suivantes :
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 621be0d3fe785cfdd51e9bd5c864b9bc4f60d8ad
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563922"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464437"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Passer des appels audio avec Skype
 
@@ -55,7 +55,7 @@ public class CallingController : ApiController
 > [!NOTE]
 > Outre la classe `CallingController` qui prend en charge les appels audio, un bot peut également contenir `MessagesController` pour prendre en charge les messages. En fournissant les deux options, les utilisateurs peuvent interagir avec le bot de la façon qu’ils préfèrent. <!-- docs on MessagesController are where? -->
 
-##  <a name="answer-the-call"></a>Répondre à l’appel
+## <a name="answer-the-call"></a>Répondre à l’appel
 
 La tâche `ProcessIncomingCallAsync` s’exécute chaque fois qu’un utilisateur lance un appel à ce bot de Skype.
 Le constructeur enregistre la classe `IVRBot`, qui comprend un gestionnaire prédéfini pour l’évènement `incomingCallEvent`.

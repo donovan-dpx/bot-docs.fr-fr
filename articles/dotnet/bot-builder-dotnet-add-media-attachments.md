@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6dcfe6595f1c5961151a90783dd8ceee9c7684dd
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a719ae4b3aa3fbf61503b4a6f055ec5cc3f5104a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224334"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464594"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 
@@ -25,7 +25,9 @@ ms.locfileid: "54224334"
 > - [Node.JS](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-Un échange de messages entre l’utilisateur et le bot peut contenir des pièces jointes multimédias (par exemple, des images, des vidéos, des données audio et des fichiers). La propriété `Attachments` de l’objet <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> contient un tableau d’objets <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> qui représentent les pièces jointes multimédias et les cartes enrichies au sein du message. 
+Un échange de messages entre l’utilisateur et le bot peut contenir des pièces jointes multimédias (par exemple, des images, des vidéos, des données audio et des fichiers). 
+
+La propriété `Attachments` de l’objet <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> contient un tableau d’objets <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> qui représentent les pièces jointes multimédias et les cartes enrichies au sein du message. 
 
 > [!NOTE]
 > [Ajoutez des cartes enrichies aux messages](bot-builder-dotnet-add-rich-card-attachments.md).
@@ -40,12 +42,12 @@ Si la pièce jointe est une image, un contenu audio ou une vidéo, le service Co
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités du bot avec l’inspecteur de canaux][inspector]
+- [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
 - [Ajouter des cartes enrichies aux messages](bot-builder-dotnet-add-rich-card-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activity</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activity</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
 
 [inspector]: ../bot-service-channel-inspector.md
 

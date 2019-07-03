@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 8e0d2939078e1e27162c7056373e95790a03eb88
-ms.sourcegitcommit: 5042e31bc6b2762d7a6636e98c8f496b90ea33c1
+ms.openlocfilehash: 114274a66492d421a7b3d6294d77ee83d336d3ca
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65240433"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405920"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>Connecter un bot à Direct Line Speech (préversion)
 
@@ -84,10 +84,10 @@ Le canal Direct Line Speech étant connecté et la prise en charge pour les exte
 
 Notez que le service est en préversion et susceptible d’être modifié, ce qui peut affecter le développement de votre bot et les performances globales. Voici la liste des problèmes connus : 
 
-1. Le service est actuellement déployé dans la [région Azure](https://azure.microsoft.com/en-us/global-infrastructure/regions/) USA Ouest 2. Nous effectuerons bientôt le déploiement dans d’autres régions, de sorte que tous les clients bénéficieront des interactions vocales à faible latence avec leurs bots.
+1. Le service est actuellement déployé dans la [région Azure](https://azure.microsoft.com/global-infrastructure/regions/) USA Ouest 2. Nous effectuerons bientôt le déploiement dans d’autres régions, de sorte que tous les clients bénéficieront des interactions vocales à faible latence avec leurs bots.
 
 1. Des modifications mineures pour contrôler les champs, telles que [serviceUrl](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#service-url), seront disponibles
 
 1. Les activités [conversationUpdate](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation-update-activity) et [endOfCoversation](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#end-of-conversation-activity) utilisées pour signaler le début et la fin des conversations, couramment utilisées pour générer des messages de bienvenue, seront actualisées par souci de cohérence avec d’autres canaux
 
-1. [SigninCard](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0) n’est pas encore pris en charge par le canal 
+1. [SigninCard](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-add-rich-cards?view=azure-bot-service-4.0) n’est pas encore pris en charge par le canal 

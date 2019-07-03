@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: ee1e8c660eae27efae5c18b1392ff68d716f73da
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032927"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405643"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032927"
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-search-azure.md)
 
-Vous pouvez ajouter [Recherche Azure](https://azure.microsoft.com/en-us/services/search/) à un bot pour permettre aux utilisateurs de faire naviguer de grandes quantités de contenu, et pour créer une expérience d’exploration pilotée par les données.
+Vous pouvez ajouter [Recherche Azure](https://azure.microsoft.com/services/search/) à un bot pour permettre aux utilisateurs de faire naviguer de grandes quantités de contenu, et pour créer une expérience d’exploration pilotée par les données.
 
 Recherche Azure est un service Azure qui offre des fonctionnalités, telles que la recherche par mot clé, une linguistique intégrée, la notation personnalisée, une navigation par facettes, et bien plus encore. Recherche Azure peut également indexer le contenu à partir de diverses sources, y compris Azure SQL DB, DocumentDB, Stockage Blob et Stockage Table. La solution prend en charge l’indexation par « push » pour d’autres sources de données, et peut ouvrir des fichiers PDF, des documents Office ainsi que d’autres formats contenant des données non structurées. Une fois collecté, le contenu est placé dans un index Recherche Azure, que le robot peut ensuite interroger.
 
@@ -176,7 +176,7 @@ Pour obtenir deux exemples complets qui montrent comment prendre en charge Reche
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Recherche Azure][search]
+- [Azure Search][search]
 - [Vue d’ensemble des dialogues](bot-builder-dotnet-dialogs.md)
 
 [search]: /azure/search/search-what-is-azure-search

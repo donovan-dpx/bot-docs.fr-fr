@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96c28101c3ea72c70c6ad53b06306f4ea00b2929
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 497a00dd9327d3b4c26c1468bba04f18e2244ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225604"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405037"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 
@@ -343,7 +343,7 @@ Une fois que l’utilisateur a démarré une conversation et sélectionné `Dinn
 
 Dans les exemples ci-dessus, les dialogues sont fermés à l’aide des éléments `session.endDialog` ou `session.endDialogWithResult`, qui mettent fin au dialogue, suppriment ce dernier de la pile, puis rendent le contrôle au dialogue appelant. Dans les cas où l’utilisateur est arrivé à la fin de la conversation, vous devez utiliser `session.endConversation` pour indiquer que la conversation est terminée.
 
-La méthode [`session.endConversation`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) met fin à une conversation et envoie éventuellement un message à l’utilisateur. Par exemple, le dialogue `orderDinner` de l’exemple précédent pourrait mettre fin à la conversation à l’aide de la méthode `session.endConversation`, comme indiqué dans l’exemple de code suivant.
+La méthode [`session.endConversation`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation) met fin à une conversation et envoie éventuellement un message à l’utilisateur. Par exemple, le dialogue `orderDinner` de l’exemple précédent pourrait mettre fin à la conversation à l’aide de la méthode `session.endConversation`, comme indiqué dans l’exemple de code suivant.
 
 ```javascript
 bot.dialog('orderDinner', [
@@ -359,7 +359,7 @@ bot.dialog('orderDinner', [
 ]);
 ```
 
-L’appel de `session.endConversation` met fin à la conversation en effaçant la pile de dialogues et en réinitialisant le stockage [`session.conversationData`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#conversationdata). Pour plus d’informations sur le stockage des données, consultez l’article [Gérer les données d’état](bot-builder-nodejs-state.md).
+L’appel de `session.endConversation` met fin à la conversation en effaçant la pile de dialogues et en réinitialisant le stockage [`session.conversationData`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#conversationdata). Pour plus d’informations sur le stockage des données, consultez l’article [Gérer les données d’état](bot-builder-nodejs-state.md).
 
 Il est logique d’appeler la méthode `session.endConversation` lorsque l’utilisateur achève le flux de conversation pour lequel le bot a été conçu. Vous pouvez également utiliser `session.endConversation` pour mettre fin à la conversation dans les cas où l’utilisateur entre les termes « cancel » (annuler) ou « goodbye » (au revoir) au milieu d’une conversation. Pour effectuer cette opération, il vous suffit d’attacher un déclencheur `endConversationAction` au dialogue et de faire en sorte que ce déclencheur écoute les entrées « cancel » (annuler) ou « goodbye » (au revoir).
 

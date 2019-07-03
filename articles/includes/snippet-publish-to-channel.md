@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 88fe2e3dca0559c101c55edb4353f3b57096a8d4
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 8484df6b140447d175805b396a81832c059c3b76
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563734"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405204"
 ---
 ### <a name="cortana"></a>Cortana
 Les bots sont publiés dans Cortana à partir du [tableau de bord](https://aka.ms/cortana-publish) et sont utilisés pour améliorer les compétences de Cortana. La publication d’un bot l’envoie en révision. Les compétences de Cortana peuvent être déployées pour votre usage personnel, sur un petit groupe ou dans le monde entier.
@@ -13,8 +13,8 @@ Les bots sont publiés dans Cortana à partir du [tableau de bord](https://aka.m
 Les bots sont publiés sur Skype à partir de la [page de configuration](~/bot-service-channel-connect-skype.md). La publication d’un bot l’envoie en révision. Avant la révision, le bot est limité à 100 contacts. Les bots approuvés ne limitent pas le nombre de contacts et vous pouvez choisir d’inclure le bot dans le répertoire de bots de Skype.
 
 ### <a name="skype-for-business"></a>Skype Entreprise
-Les bots Skype Entreprise sont enregistrés avec un [client Skype Entreprise Online](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview) par un administrateur de clients.
+Les bots Skype Entreprise sont enregistrés avec un [client Skype Entreprise Online](https://msdn.microsoft.com/skype/Skype-For-Business-Bot-Framework/docs/overview) par un administrateur de clients.
 
 > [!TIP]
-> Pour afficher l’état d’une révision, ouvrez le bot dans le [portail Bot Framework (Infrastructure de bot)](https://dev.botframework.com/) et cliquez sur **Channels (Canaux)**.
+> Pour afficher l’état d’une révision, ouvrez le bot dans le [portail Bot Framework (Infrastructure de bot)](https://dev.botframework.com/) et cliquez sur **Channels (Canaux)** .
 > Si le bot n’est pas approuvé, le résultat inclut un lien expliquant le motif. Après avoir apporté les modifications requises, renvoyez le bot en révision.

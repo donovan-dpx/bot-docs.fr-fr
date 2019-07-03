@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 4b5181babf728861107a0c7bc28f844491761a7a
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 117f95799df0abbe957000d4979b10f05baf262c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033883"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405535"
 ---
-Avant de commencer le déploiement, assurez-vous d’avoir la dernière version d’[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) et de [.NET CLI](https://dotnet.microsoft.com/download). Si vous n’avez pas .NET CLI, installez-le à l’aide de l’option Runtime .NET Core en suivant le lien fourni ci-dessus. 
+Avant de commencer le déploiement, assurez-vous d’avoir la dernière version d’[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) et de [.NET CLI](https://dotnet.microsoft.com/download). Si vous n’avez pas .NET CLI, installez-le à l’aide de l’option Runtime .NET Core en suivant le lien fourni ci-dessus. 
 
 ### <a name="login-to-azure-cli-and-set-your-subscription"></a>Se connecter à Azure CLI et définir votre abonnement
 Vous avez déjà créé et testé un bot localement et vous souhaitez maintenant le déployer sur Azure. Ouvrez une invite de commandes pour vous connecter au portail Azure.
@@ -92,7 +92,7 @@ Une fois que le bot a été créé, vous devez voir les informations suivantes, 
 }
 ```
 
-Vous devez copier les valeurs `appId` et `appPassword`, et les coller dans le fichier appsettings.json ou .env. Par exemple : 
+Vous devez copier les valeurs `appId` et `appPassword`, et les coller dans le fichier appsettings.json ou .env. Par exemple :
 
 ```JSON
 {

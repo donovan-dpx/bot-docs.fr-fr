@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a5cb6431988e65a4fa4a889f3095404622d51626
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0d13a27ef81660c6702f5a09487b731bc891c750
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224444"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405800"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Inscrire un bot auprès de Bot Service
 
@@ -29,7 +29,7 @@ Si votre bot est hébergé ailleurs et que vous souhaitez utiliser Bot Service p
 Connectez-vous au [portail Azure](http://portal.azure.com).
 
 > [!TIP]
-> Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/en-us/free/" target="_blank">compte gratuit</a>.
+> Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/free/" target="_blank">compte gratuit</a>.
 
 ## <a name="create-a-bot-channels-registration"></a>Créer une inscription Bot Channels Registration
 Le service de bot **Bot Channels Registration** est nécessaire pour pouvoir utiliser la fonctionnalité Bot Service. Un bot d’inscription permet de connecter le bot à des canaux.
@@ -49,8 +49,8 @@ Pour créer une inscription **Bot Channels Registration**, effectuez les actions
    |           <strong>Nom du bot</strong>            |     Nom d’affichage du bot     |                                                  Nom complet du bot qui s’affiche dans les canaux et les répertoires. Ce nom est modifiable à tout moment.                                                  |
    |         <strong>Abonnement</strong>          |        Votre abonnement        |                                                                                Sélectionnez l’abonnement Azure à utiliser.                                                                                 |
    |        <strong>Groupe de ressources</strong>         |         myResourceGroup         |                                 Vous pouvez créer un [groupe de ressources](/azure/azure-resource-manager/resource-group-overview#resource-groups) ou en choisir un.                                  |
-   |                    Lieu                    |             USA Ouest             |                                                        Choisissez un emplacement proche de celui où est déployé votre bot ou proche d’autres services auxquels il accédera.                                                         |
-   |         <strong>Niveau tarifaire</strong>          |               F0                |             Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, voir [Prix de Bot Service](https://azure.microsoft.com/en-us/pricing/details/bot-service/).              |
+   |                    Location                    |             USA Ouest             |                                                        Choisissez un emplacement proche de celui où est déployé votre bot ou proche d’autres services auxquels il accédera.                                                         |
+   |         <strong>Niveau tarifaire</strong>          |               F0                |             Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, voir [Prix de Bot Service](https://azure.microsoft.com/pricing/details/bot-service/).              |
    |      <strong>Point de terminaison de messagerie</strong>       |               URL               |                                                                               Entrez l’URL du point de terminaison de messagerie de votre bot.                                                                                |
    |     <strong>Application Insights</strong>      |               Il en va                | <strong>Activez</strong> ou <strong>désactivez</strong> [Application Insights](bot-service-manage-analytics.md). Si vous sélectionnez <strong>Activé</strong>, spécifiez également un emplacement régional. |
    | <strong>ID d'application et mot de passe Microsoft</strong> | Création automatique de l’ID d’application et du mot de passe |              Utilisez cette option si vous voulez entrer manuellement un ID d’application et un mot de passe Microsoft. Sinon, ils seront créés automatiquement au cours du processus de création du bot.               |

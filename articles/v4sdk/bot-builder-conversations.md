@@ -10,17 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 167e496fa510cdf755be13f71cf3a596b0183ec1
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215477"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404146"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Quand vous concevez le flux de conversation d’un bot, vous devez déterminer la façon dont celui-ci doit répondre à ce que lui dit l’utilisateur. Tout d’abord, un bot reconnaît la tâche ou le sujet de la conversation en fonction d’un message de l’utilisateur. Pour déterminer la tâche ou le sujet (connu sous le nom *d’intention*) associé au message d’un utilisateur, le bot peut rechercher des mots ou des modèles dans le texte du message ou il peut tirer parti de services tels que [Language Understanding](bot-builder-concept-luis.md) et [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
+Quand vous concevez le flux de conversation d’un bot, vous devez déterminer la façon dont celui-ci doit répondre à ce que lui dit l’utilisateur. Tout d’abord, un bot reconnaît la tâche ou le sujet de la conversation en fonction d’un message de l’utilisateur. Pour déterminer la tâche ou le sujet (connu sous le nom *d’intention*) associé au message d’un utilisateur, le bot peut rechercher des mots ou des modèles dans le texte du message ou il peut tirer parti de services tels que [Language Understanding](bot-builder-concept-luis.md) et [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview).
 
 Une fois que le bot a reconnu l’intention de l’utilisateur, suivant le scénario, il peut répondre à la demande de l’utilisateur avec une réponse unique, effectuant la conversation en un seul tour, ou nécessiter une série de tours. Pour les flux de conversation à plusieurs tours, le kit SDK Bot Framework propose la [gestion d’état](./bot-builder-howto-v4-state.md) pour assurer le suivi d’une conversation, des [invites](bot-builder-prompts.md) pour demander des informations et des [dialogues](bot-builder-dialog-manage-conversation-flow.md) pour encapsuler des flux de conversation.
 

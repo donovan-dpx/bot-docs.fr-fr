@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 85ef0fde39980bab1b891518e338fddbd56b275a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563881"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405808"
 ---
 # <a name="how-bot-service-works"></a>Fonctionnement de Service Bot
 
 Bot Service fournit les principaux composants permettant de créer des bots, notamment le kit SDK Bot Framework pour le développement de bots et Bot Framework pour la connexion des bots aux canaux. Pour la création de vos robots, Service Bot vous offre un choix de cinq modèles prenant en charge .NET et Node.js.
 
 > [!IMPORTANT]
-> Pour pouvoir utiliser Service Bot, vous devez avoir un abonnement Microsoft Azure. Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/en-us/free/" target="_blank">compte gratuit</a>.
+> Pour pouvoir utiliser Service Bot, vous devez avoir un abonnement Microsoft Azure. Si vous n’avez pas encore d’abonnement, vous pouvez vous inscrire pour un <a href="https://azure.microsoft.com/free/" target="_blank">compte gratuit</a>.
 
 ## <a name="hosting-plans"></a>Plans d’hébergement
 Service Bot fournit deux plans d’hébergement pour vos robots. Vous pouvez choisir un plan d’hébergement adapté à vos besoins.

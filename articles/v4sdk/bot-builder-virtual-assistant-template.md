@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ce3ab86d5716250e24a44268f5e5fc39fbdd3398
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214170"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464663"
 ---
 # <a name="virtual-assistant---template-outline"></a>Assistant virtuel  : structure du modèle
 
@@ -30,11 +30,11 @@ Modèle LUIS de base  | Prise en charge des intentions courantes comme **Annuler
 Dialogues de base | Flux de dialogues pour capturer les informations utilisateur de base ainsi que la logique d’interruption pour les intentions Annuler et Aide
 Réponses de base  | Réponses par reconnaissance et synthèse vocales pour les intentions et dialogues de base
 Forum Aux Questions | Intégration à [QnA Maker](https://www.qnamaker.ai) pour répondre aux questions générales à partir d’une base de connaissances 
-Échange de conversation (chit-chat) | Modèle d’échange de conversation professionnel pour fournir des réponses standard aux demandes courantes ([en savoir plus](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
-Répartiteur | Modèle [Dispatch](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS ou QnA Maker
+Échange de conversation (chit-chat) | Modèle d’échange de conversation professionnel pour fournir des réponses standard aux demandes courantes ([en savoir plus](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
+Répartiteur | Modèle [Dispatch](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS ou QnA Maker
 Support multilingue | Disponible en anglais, français, italien, allemand, espagnol et chinois
 Transcriptions | Transcriptions de toutes les conversations enregistrées dans Stockage Azure
-Télémétrie  | Intégration à [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) pour collecter des données de télémétrie sur toutes les conversations
+Télémétrie  | Intégration à [Application Insights](https://azure.microsoft.com/services/application-insights/) pour collecter des données de télémétrie sur toutes les conversations
 Analytics | Exemple de tableau de bord Power BI pour vous aider à démarrer avec les insights dans vos expériences de conversation
 Déploiement automatisé | Déploiement facile de tous les services mentionnés ci-dessus à l’aide des modèles Azure ARM
 
@@ -95,7 +95,7 @@ Ce schéma fonctionne bien. Toutefois, il rencontre des problèmes dans deux sc�
 - Parfois, les énoncés du modèle LUIS et de QnA Maker se recoupent légèrement, ce qui peut donner un comportement étrange où LUIS essaie de traiter une question qui aurait dû être dirigée vers QnA Maker.
 - Lorsque deux modèles LUIS ou plus coexistent, le bot doit appeler chacun d’eux et effectuer une comparaison pour évaluer les intentions afin de déterminer où envoyer tel ou tel énoncé. Comme il n’existe aucune comparaison commune des scores de base entre les modèles, ce schéma ne fonctionne pas efficacement et offre une expérience utilisateur de qualité médiocre.
 
-Le [répartiteur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) remédie efficacement à ce problème en extrayant des énoncés de chaque modèle LUIS configuré et des questions de QnA Maker, puis en créant un modèle LUIS de répartition centrale.
+Le [répartiteur](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) remédie efficacement à ce problème en extrayant des énoncés de chaque modèle LUIS configuré et des questions de QnA Maker, puis en créant un modèle LUIS de répartition centrale.
 
 Ainsi, le bot peut rapidement identifier le modèle LUIS ou le composant qui doit gérer un énoncé spécifique et garantit que les données QnA Maker sont placées au plus haut niveau d’intention, pas seulement une intention neutre (None) comme avant.
 

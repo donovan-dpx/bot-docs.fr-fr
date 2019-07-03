@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 34f2cb79d4dcef9ddb68c6de0333a94b4128b301
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225714"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404704"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour Node.js
 
@@ -24,7 +24,7 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 
 - Débit d’API d’état plus élevé (meilleur contrôle des performances)
 - Latence inférieure pour la distribution géographique
-- Contrôle de l’emplacement de stockage des données (ex. : USA Ouest OU USA Est)
+- Contrôle de l’emplacement de stockage des données (ex. : USA Ouest ou USA Est)
 - Accès aux données d’état réelles
 - Base de données d’état non partagée avec d’autres robots
 - Stockage de plus de 32 Ko
@@ -37,7 +37,7 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 - [Explorateur Stockage](http://storageexplorer.com/).
 
 ## <a name="create-azure-account"></a>Créer un compte Azure
-Si vous n’avez pas encore de compte Azure, cliquez [ici](https://azure.microsoft.com/en-us/free/) pour vous inscrire et bénéficier d’un compte gratuit.
+Si vous n’avez pas encore de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Configurer le service de stockage de table Azure
 1. Une fois connecté au portail Azure, créez un service de stockage de table Azure en cliquant sur **Nouveau**. 
@@ -73,7 +73,7 @@ Pour utiliser votre stockage **Table azure** , ajoutez les lignes de code suivan
    ```
    Les valeurs `storageName` et `storageKay` figurent dans le menu **Clés d’accès** de votre Table Azure. Si le `tableName` n’existe pas dans la Table Azure, il est créé pour vous.
 
-3. À l’aide du module `botbuilder-azure`, créez deux nouveaux objets à connecter à la Table Azure. Tout d’abord, créez une instance de `AzureTableClient` transmettant les paramètres de configuration de la connexion. Ensuite, créez une instance de `AzureBotStorage` transmettant l’objet `AzureTableClient`. Par exemple : 
+3. À l’aide du module `botbuilder-azure`, créez deux nouveaux objets à connecter à la Table Azure. Tout d’abord, créez une instance de `AzureTableClient` transmettant les paramètres de configuration de la connexion. Ensuite, créez une instance de `AzureBotStorage` transmettant l’objet `AzureTableClient`. Par exemple :
 
    ```javascript
    var azureTableClient = new azure.AzureTableClient(tableName, storageName, storageKey);
@@ -81,7 +81,7 @@ Pour utiliser votre stockage **Table azure** , ajoutez les lignes de code suivan
    var tableStorage = new azure.AzureBotStorage({gzipData: false}, azureTableClient);
    ```
 
-4. Indiquez que vous souhaitez utiliser votre base de données personnalisée au lieu du stockage en mémoire et ajouter des informations de session à la base de données. Par exemple : 
+4. Indiquez que vous souhaitez utiliser votre base de données personnalisée au lieu du stockage en mémoire et ajouter des informations de session à la base de données. Par exemple :
 
    ```javascript
    var bot = new builder.UniversalBot(connector, function (session) {

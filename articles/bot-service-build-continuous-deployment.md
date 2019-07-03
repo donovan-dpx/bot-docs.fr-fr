@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc4b524659df3fb0b91b54fca65b4b7dd36378cd
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 8d324138db60c2b34f9bebd3ff53c30a12c3cefa
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214265"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405957"
 ---
 # <a name="set-up-continuous-deployment"></a>Configurer un déploiement continu
 
@@ -69,6 +69,6 @@ Pour désactiver le déploiement continu, procédez comme suit :
 1. Cliquez sur **Déconnecter** pour désactiver le déploiement continu. Pour réactiver le déploiement continu, répétez les étapes décrites dans les sections correspondantes ci-dessus.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-- Pour activer le déploiement continu à partir de BitBucket et d’Azure DevOps Services, consultez [Déploiement continu à l’aide d’Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment).
+- Pour activer le déploiement continu à partir de BitBucket et d’Azure DevOps Services, consultez [Déploiement continu à l’aide d’Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment).
 
 

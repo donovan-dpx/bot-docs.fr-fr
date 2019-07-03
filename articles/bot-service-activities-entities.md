@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: 9fa9a23f4d14667aeb97d304498b415f2c8041d1
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: e38d9887e50455e66ac7fdcd5c4e7bb309a3e3e9
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033060"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405941"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -165,5 +165,5 @@ Les activités peuvent être de différents types, au-delà du **message** le pl
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
 ::: moniker-end

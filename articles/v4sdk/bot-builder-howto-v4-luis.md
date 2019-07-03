@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e019d2d04d843cc0efd5a39135d65fe4cfc022f3
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693673"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404504"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
@@ -26,7 +26,7 @@ La capacité à comprendre ce que veut dire votre utilisateur du point de vue de
 ## <a name="prerequisites"></a>Prérequis
 - Compte [LUIS](https://www.luis.ai)
 - Le code de cet article est basé sur l’exemple **Bot de base**. Vous avez besoin d’une copie de l’exemple, au choix en **[CSharp](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)** . 
-- Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) et de la [gestion des ressources de bot](bot-file-basics.md).
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) et de la [gestion des ressources de bot](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -70,8 +70,8 @@ Connectez-vous au portail LUIS pour créer votre propre version de l’exemple d
 1. Sélectionnez **Importer une nouvelle application**. 
 1. Cliquez sur **Choisir un fichier d’application (format JSON)...** 
 1. Sélectionnez le fichier `FlightBooking.json` situé dans le dossier `CognitiveModels` de l’exemple. Dans **Nom facultatif**, entrez **FlightBooking**. Ce fichier contient trois intentions : « Réserver le vol », « Annuler » et « Aucune ». Nous allons utiliser ces intentions pour comprendre ce que l’utilisateur voulait dire lorsqu’il envoie un message au bot.
-1. Effectuez l’[apprentissage](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) de l’application.
-1. [Publiez](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) l’application dans un environnement de *production*.
+1. Effectuez l’[apprentissage](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train) de l’application.
+1. [Publiez](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp) l’application dans un environnement de *production*.
 
 ### <a name="why-use-entities"></a>Pourquoi utiliser des entités
 Les entités LUIS permettent à votre bot de comprendre intelligemment certains éléments ou événements qui diffèrent des intentions standard. Vous pouvez ainsi collecter des informations supplémentaires auprès de l’utilisateur, ce qui permet à votre bot de répondre plus intelligemment ou même d’ignorer certaines questions visant à obtenir ces mêmes informations. En plus des définitions des trois intentions LUIS « Réserver le vol », « Annuler » et « Aucune », le fichier FlightBooking.json contient un ensemble d’entités, telles que « From.Airport » et « To.Airport ». Ces entités permettent à LUIS de détecter et de retourner des informations supplémentaires contenues dans l’entrée d’origine de l’utilisateur, lorsque celui-ci fait une nouvelle demande de réservation de voyage.
@@ -102,7 +102,7 @@ Ajoutez les informations demandées pour accéder à votre application LUIS, y c
 
 Ajoutez les informations demandées pour accéder à votre application LUIS, y compris l’ID d’application, la clé de création et la région dans le fichier `.env`. Il s’agit des valeurs que vous avez enregistrées précédemment à partir de votre application LUIS publiée. Notez que le nom d’hôte d’API doit être au format `<your region>.api.cognitive.microsoft.com`.
 
-**.env**
+**.env**  
 [!code[env](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 ---

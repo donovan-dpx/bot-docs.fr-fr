@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: eba4ad9ba2fae85fbc2488e5fef8d5a7dac593ee
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215466"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464762"
 ---
 ## <a name="custom-assistant-overview"></a>Présentation de l’assistant personnalisé
 
@@ -35,17 +35,17 @@ Vous détenez et contrôlez tous les aspects de l’expérience de l’utilisate
 
 ## <a name="complete-ownership-and-control-of-data"></a>Propriété et contrôle complets sur les données
 
-Votre assistant personnalisé est déployé dans votre abonnement Azure. Par conséquent, toutes les données générées par votre assistant (questions posées, comportement de l’utilisateur, etc.) se trouvent dans votre abonnement Azure. Pour en savoir plus, consultez la page [Cloud approuvé Azure Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) et plus particulièrement la section [Azure du Centre de confidentialité](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure).
+Votre assistant personnalisé est déployé dans votre abonnement Azure. Par conséquent, toutes les données générées par votre assistant (questions posées, comportement de l’utilisateur, etc.) se trouvent dans votre abonnement Azure. Pour en savoir plus, consultez la page [Cloud approuvé Azure Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) et plus particulièrement la section [Azure du Centre de confidentialité](https://www.microsoft.com/TrustCenter/CloudServices/Azure).
 
 ## <a name="your-assistant-anywhere"></a>Votre assistant, n’importe où...
 
-L’assistant personnalisé s’appuie sur la plateforme d’intelligence artificielle conversationnelle Microsoft et par conséquent, peut être exposé via n’importe quel [canal](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, par exemple un chat web, Facebook Messenger, Skype, etc. En outre, via le canal de [ligne directe](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0), nous pouvons incorporer des expériences dans des applications bureau et mobiles, y compris des appareils tels que des voitures, des haut-parleurs, des réveils, etc.
+L’assistant personnalisé s’appuie sur la plateforme d’intelligence artificielle conversationnelle Microsoft et par conséquent, peut être exposé via n’importe quel [canal](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) Bot Framework, par exemple un chat web, Facebook Messenger, Skype, etc. En outre, via le canal de [ligne directe](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0), nous pouvons incorporer des expériences dans des applications bureau et mobiles, y compris des appareils tels que des voitures, des haut-parleurs, des réveils, etc.
 
 ## <a name="built-on-enterprise-grade-technology"></a>Piloté par une technologie professionnelle
 
-La solution d’assistant personnalisé repose sur Azure Bot Service, Language Understanding Cognitive Service, Unified Speech, ainsi qu’un vaste ensemble de composants Azure de prise en charge, ce qui signifie que vous bénéficiez de [l’infrastructure globale Azure](https://azure.microsoft.com/en-gb/global-infrastructure/).
+La solution d’assistant personnalisé repose sur Azure Bot Service, Language Understanding Cognitive Service, Unified Speech, ainsi qu’un vaste ensemble de composants Azure de prise en charge, ce qui signifie que vous bénéficiez de [l’infrastructure globale Azure](https://azure.microsoft.com/global-infrastructure/).
 
-En outre, la prise en charge de Language Understanding est fournie par LUIS Cognitive Service qui prend en charge un large ensemble de langages [répertoriés ici](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) propose des fonctionnalités de traduction machine pour étendre encore davantage la portée de votre assistant personnalisé.
+En outre, la prise en charge de Language Understanding est fournie par LUIS Cognitive Service qui prend en charge un large ensemble de langages [répertoriés ici](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) propose des fonctionnalités de traduction machine pour étendre encore davantage la portée de votre assistant personnalisé.
 
 ## <a name="integrated-and-context-aware"></a>Intégré et prenant en charge le contexte
 
@@ -61,7 +61,7 @@ Notre architecture d’assistant personnalisé est flexible et peut être intég
 
 ## <a name="adaptive-cards"></a>Cartes adaptatives
 
-Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant personnalisé de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant l’expérience de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started).
+Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant personnalisé de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant l’expérience de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started).
 
 
 ## <a name="skills"></a>Compétences

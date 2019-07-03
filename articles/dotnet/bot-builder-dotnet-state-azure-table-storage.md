@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d5d6dc4e635b41424dfee0e260a769f9ed5f595d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 05ab8f9148cd520be266d9340cd65a9903bf6e23
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225784"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405622"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour .NET
 
@@ -28,7 +28,7 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 
 ## <a name="prerequisites"></a>Prérequis
 Vous devez disposer des éléments suivants :
- - [Compte Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+ - [Compte Microsoft Azure](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 ou ultérieur](https://www.visualstudio.com/)
  - [Package NuGet Bot Builder Azure](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
  - [Package NuGet Autofac Web Api2](https://www.nuget.org/packages/Autofac.WebApi2/)
@@ -36,7 +36,7 @@ Vous devez disposer des éléments suivants :
  - [Azure Storage Explorer](http://storageexplorer.com/)
  
 ## <a name="create-azure-account"></a>Créer un compte Azure
-Si vous n’avez pas encore de compte Azure, cliquez [ici](https://azure.microsoft.com/en-us/free/) pour vous inscrire et bénéficier d’un compte gratuit.
+Si vous n’avez pas encore de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Configurer le service de stockage de table Azure
 1. Une fois connecté au portail Azure, créez un service de stockage de table Azure en cliquant sur **Nouveau**. 

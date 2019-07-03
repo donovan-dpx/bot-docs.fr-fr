@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19b44fbb09af69bde803b9b884d58108c248ebe5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7c00c17eaa8d4e84ffbeff1e318cbc403de2038a
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224827"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405633"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour .NET
 
@@ -28,20 +28,20 @@ Dans cet article, vous implémentez Azure Cosmos DB pour stocker et gérer les d
  
 ## <a name="prerequisites"></a>Prérequis
 Vous devez disposer des éléments suivants :
- - [Compte Microsoft Azure](https://azure.microsoft.com/en-us/free/)
+ - [Compte Microsoft Azure](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 ou ultérieur](https://www.visualstudio.com/)
  - [Package NuGet Bot Builder Azure](https://www.nuget.org/packages/Microsoft.Bot.Builder.Azure/)
  - [Package NuGet Autofac Web Api2](https://www.nuget.org/packages/Autofac.WebApi2/)
  - [Bot Framework Emulator](~/bot-service-debug-emulator.md)
  
 ## <a name="create-azure-account"></a>Créer un compte Azure
-Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/en-us/free/) pour vous inscrire et bénéficier d’un compte gratuit.
+Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
 
 ## <a name="set-up-the-azure-cosmos-db-database"></a>Configurer la base de données Azure Cosmos DB
 1. Une fois connecté au portail Azure, créez une base de données *Azure Cosmos DB* en cliquant sur **Nouveau**. 
 2. Cliquez sur **Bases de données**. 
 3. Localisez **Azure Cosmos DB** et cliquez sur **Créer**.
-4. Renseignez les champs. Pour le champ **API**, sélectionnez **SQL (DocumentDB)**. Lorsque vous avez renseigné tous les champs, cliquez sur le bouton **Créer** en bas de l’écran pour déployer la nouvelle base de données. 
+4. Renseignez les champs. Pour le champ **API**, sélectionnez **SQL (DocumentDB)** . Lorsque vous avez renseigné tous les champs, cliquez sur le bouton **Créer** en bas de l’écran pour déployer la nouvelle base de données. 
 5. Accédez à votre nouvelle base de données dès que son déploiement est terminé. Cliquez sur **Clés d’accès** pour trouver les clés et les chaînes de connexion. Votre bot utilise ces informations pour appeler le service de stockage et enregistrer les données d’état.
 
 ## <a name="install-nuget-packages"></a>Installer les packages NuGet
@@ -59,7 +59,7 @@ Ajoutez les entrées suivantes dans le fichier Web.config :
 Vous allez remplacer les valeurs par votre URI et votre Clé primaire qui se trouvent dans votre Azure Cosmos DB. Enregistrez le fichier Web.config.
 
 ## <a name="modify-your-bot-code"></a>Modifier le code de votre bot
-Pour utiliser le stockage **Azure Cosmos DB**, ajoutez les lignes de code suivantes au fichier **Global.asax.cs** de votre bot, dans la méthode **Application_Start()**.
+Pour utiliser le stockage **Azure Cosmos DB**, ajoutez les lignes de code suivantes au fichier **Global.asax.cs** de votre bot, dans la méthode **Application_Start()** .
 
 ```cs
 using System;
