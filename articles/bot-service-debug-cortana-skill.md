@@ -6,14 +6,14 @@ author: v-ducvo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/01/18
+ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acf4f73ea83646878e08d14e036d0d2d66686756
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7d07317afb6d89c2d22d6f4983f7b21c3a1a053c
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224954"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496676"
 ---
 # <a name="test-a-cortana-skill"></a>Tester une compétence Cortana
 
@@ -62,7 +62,7 @@ Vous pouvez appeler votre compétence Cortana en appelant Cortana à l’aide de
 1. Ouvrez Cortana.
 2. Ouvrez l’application Notebook dans Cortana, puis cliquez sur **À propos de moi** pour voir le compte que vous utilisez pour Cortana. Vérifiez que vous êtes connecté avec le même compte Microsoft que celui que vous avez utilisé pour inscrire votre bot. 
    ![Connexion à l’application Notebook de Cortana](~/media/cortana/cortana-notebook.png)
-2. Cliquez sur le bouton du microphone dans l’application Cortana ou dans la zone de recherche « Entrez une question » dans Windows, et prononcez la [phrase de commande][InvocationNameGuidelines] de votre bot. La phrase de commande inclut un *nom d’appel*, qui identifie de manière unique la compétence à appeler. Par exemple, si le nom d’appel d’une compétence est « Northwind Photo », une phrase de commande appropriée pourrait inclure « Demander à Northwind Photo de... » ou « Dire à Northwind Photo que... ».
+2. Cliquez sur le bouton du microphone dans l’application Cortana ou dans la zone de recherche « Entrez une question » dans Windows, et prononcez la [phrase de commande][InvocationNameGuidelines] de votre bot. La phrase de commande inclut un *nom d’appel*, qui identifie de manière unique la compétence à appeler. Par exemple, si le nom d’appel d’une compétence est « Northwind Photo », une phrase de commande appropriée pourrait inclure « Demander à Northwind Photo de... » ou « Dire à Northwind Photo que... ».
 
    Vous spécifiez le *Invocation Name* (Nom d’appel) de votre bot lorsque vous configurez ce dernier pour Cortana.
    ![Entrée du nom d’appel lors de la configuration du canal Cortana](~/media/cortana/cortana-invocation-name-callout.png)
@@ -90,7 +90,7 @@ Une fois que vous avez testé votre compétence Cortana et vérifié qu’elle f
 [CortanaGetStarted]: /cortana/getstarted
 
 [BFPortal]: https://dev.botframework.com/
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

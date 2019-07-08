@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693521"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405974"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -26,7 +26,8 @@ Dans cet article, nous allons vous montrer comment déployer votre bot dans Azur
 ## <a name="prerequisites"></a>Prérequis
 - Si vous n’avez pas d’abonnement Azure, créez un [compte](https://azure.microsoft.com/free/) avant de commencer.
 - Un bot CSharp, JavaScript ou TypeScript que vous avez développé sur votre ordinateur local.
-- Version la plus récente d’[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+- Version la plus récente d’[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- Vous êtes familiarisé avec [Azure CLI et les modèles ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="1-prepare-for-deployment"></a>1. Préparation du déploiement
 Quand vous créez un bot à l’aide de modèles Visual Studio ou Yeoman, le code source généré contient un dossier `deploymentTemplates` avec des modèles ARM. Le processus de déploiement documenté ici utilise le modèle ARM pour provisionner les ressources requises pour le bot dans Azure à l’aide d’Azure CLI. 
@@ -182,7 +183,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 - Attendez quelques secondes après un déploiement réussi et redémarrez éventuellement votre application Web App pour effacer tous les caches. Revenez à votre panneau Web App Bot et testez le bot à l’aide du Web Chat fourni dans le portail Azure.
 
 ## <a name="additional-information"></a>Informations supplémentaires
-Le déploiement de votre bot sur Azure implique de payer les services que vous utilisez. L’article sur la [gestion de la facturation et des coûts](https://docs.microsoft.com/en-us/azure/billing/) vous aide à comprendre la facturation Azure, à superviser votre utilisation et vos coûts, ainsi qu’à gérer votre compte et vos abonnements.
+Le déploiement de votre bot sur Azure implique de payer les services que vous utilisez. L’article sur la [gestion de la facturation et des coûts](https://docs.microsoft.com/azure/billing/) vous aide à comprendre la facturation Azure, à superviser votre utilisation et vos coûts, ainsi qu’à gérer votre compte et vos abonnements.
 
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]

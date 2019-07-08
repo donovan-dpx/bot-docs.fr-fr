@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b6b4d30aea493180fddaee4a7f74bef72c1992ae
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7225387933630eb7343a57aa849581ff1cbfbb0c
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215273"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464702"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Ajouter des données de télémétrie à votre bot
 
@@ -88,7 +88,7 @@ Le framework recherche la clé pour vous, si le format est correct. Le format de
     }
 ```
 
-Pour plus d’informations sur l’ajout d’Application Insights à une application ASP.NET Core, consultez [cet article](https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
+Pour plus d’informations sur l’ajout d’Application Insights à une application ASP.NET Core, consultez [cet article](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
 
 ### <a name="customize-your-telemetry-client"></a>Personnaliser votre client de télémétrie
 

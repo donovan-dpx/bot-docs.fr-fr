@@ -10,25 +10,29 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 680d9148b463bbb5d10f4a6a06cc7b32b824b66e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0f29520b993d12ce01c65cd29517b3a4b2aada84
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215419"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404555"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Pour interagir avec les utilisateurs, un bot collecte généralement des informations en posant des questions. La bibliothèque de dialogues vous permet de poser des questions facilement et de valider la réponse pour vous assurer qu’elle correspond à un type de données spécifique ou répond aux règles de validation personnalisées.
+Pour interagir avec les utilisateurs, un bot collecte généralement des informations en posant des questions. La bibliothèque de dialogues fournit des fonctionnalités intégrées telles que les classes d’*invite* qui vous permettent de poser des questions facilement et de valider la réponse pour vous assurer qu’elle correspond à un type de données spécifique ou répond aux règles de validation personnalisées. 
 
 Vous pouvez gérer des flux de conversation simples et complexes avec la bibliothèque de dialogues. Dans une interaction simple, le bot s’exécute via une séquence fixe d’étapes, et la conversation se termine. En règle générale, un dialogue est utile quand le bot doit recueillir des informations auprès de l’utilisateur. Cette rubrique explique comment implémenter un flux de conversation simple en créant des invites et en les appelant à partir d’un dialogue en cascade. 
 
+> [!TIP]
+> Pour obtenir des exemples montrant comment écrire vos propres invites sans utiliser la bibliothèque de dialogues, consultez l’article [Créer vos propres invites pour collecter des entrées utilisateur](bot-builder-primitive-prompts.md). 
+
+
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], de la [gestion des états][concept-state] et de la [bibliothèque de dialogues][concept-dialogs].
-- Une copie de l’exemple d’**invite multitour** en [**CSharp**][cs-sample] ou [**JavaScript**][js-sample].
+- Connaissances des [concepts de base des bots][concept-basics], [managing state][concept-state] et de la [bibliothèque de dialogues][concept-dialogs].
+- Une copie de l’exemple d’**invite multitour** en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -63,6 +67,8 @@ Dans le constructeur `UserProfileDialog`, créez les étapes en cascade, les inv
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 Ensuite, nous implémentons les étapes qu’utilise le dialogue. Pour utiliser une invite, appelez-la à partir d’une étape dans votre dialogue et récupérez le résultat de l’invite à l’étape suivante avec `stepContext.Result`. Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite jusqu’à ce qu’elle reçoive une entrée valide.
+
+
 
 Vous devez toujours retourner une valeur `DialogTurnResult` non Null à partir d’une étape en cascade. Si vous ne le faites pas, votre dialogue risque de ne pas fonctionner comme prévu. Vous pouvez voir ici l’implémentation pour `NameStepAsync` dans le dialogue en cascade.
 

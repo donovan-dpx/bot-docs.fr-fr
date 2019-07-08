@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ff2d55ccdd6312e95bdb1acb223d8e1d5f60b0b3
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 1b62ca7e98313fb0247d45cb66fcae8be32e6492
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032633"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405053"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -58,7 +58,7 @@ La propriété **inputHint** permet d’indiquer à Cortana si votre bot attend 
 |------|------|
 | **acceptingInput** | Votre bot est passivement prêt pour l’entrée, mais il n’est pas en attente d’une réponse. Cortana accepte une entrée de l’utilisateur si celui-ci maintient le bouton du microphone appuyé.|
 | **expectingInput** | Indique que le bot attend activement une réponse de l’utilisateur. Cortana est à l’écoute de l’utilisateur qui doit parler dans le microphone.  |
-||REMARQUE :  _N’utilisez pas_ **expectingInput** sur les appareils sans interface utilisateur (sans écran). Consultez les [Questions fréquentes (FAQ) sur le kit de compétences Cortana](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
+||REMARQUE :  _N’utilisez pas_ **expectingInput** sur les appareils sans interface utilisateur (sans écran). Consultez les [Questions fréquentes (FAQ) sur le kit de compétences Cortana](https://review.docs.microsoft.com/cortana/skills/faq).|
 | **ignoringInput** | Cortana ignore l’entrée. Votre bot peut envoyer cet indicateur s’il traite activement une requête. Il ignorera les entrées des utilisateurs jusqu’à ce que cette requête soit traitée.  |
 
 L’exemple suivant montre comment Cortana lit le texte brut ou code SSML :
@@ -87,7 +87,7 @@ session.say('Hi there', 'Hi, what’s your name?', {
 
 ### <a name="prompts"></a>Invites
 
-Outre la méthode **session.say()**, vous pouvez également passer le texte ou code SSML à des invites intégrées à l’aide des options **speak** et **retrySpeak**.  
+Outre la méthode **session.say()** , vous pouvez également passer le texte ou code SSML à des invites intégrées à l’aide des options **speak** et **retrySpeak**.  
 
 ```javascript
 
@@ -156,9 +156,9 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Afficher les cartes dans Cortana
 
 En plus des réponses oralisées, Cortana peut également afficher les cartes jointes. Cortana prend en charge les cartes enrichies suivantes :
-* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
-* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
-* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
+* [HeroCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
+* [ReceiptCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
+* [ThumbnailCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
 Consultez les [Bonnes pratiques de conception de cartes][CardDesign] et voyez à quoi ressemblent ces cartes dans Cortana. Pour obtenir un exemple montrant comment ajouter une carte riche à un bot, consultez [Envoyer des cartes riches](bot-builder-nodejs-send-rich-cards.md). 
 
@@ -195,7 +195,7 @@ module.exports.speak = function (template, params, options) {
 ## <a name="sample-rollerskill"></a>Exemple : RollerSkill
 Le code des sections suivantes provient d’un exemple de compétence Cortana pour le lancement de dés. Téléchargez le code complet du bot à partir du [dépôt BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-Vous appelez la compétence en disant son [nom d’appel][InvocationNameGuidelines] à Cortana. Pour la compétence de lancement de dés, après avoir [ajouté le bot au canal Cortana][CortanaChannel] et l’avoir inscrit en tant que compétence Cortana, vous pouvez l’appeler en disant à Cortana : « Demande Roller » ou « Demande à Roller de lancer les dés ».
+Vous appelez la compétence en indiquant son [nom d’appel][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] et vous l’inscrivez en tant que compétence Cortana. Vous pouvez l’appeler en disant à Cortana « Demande Roller » ou « Demande à Roller de lancer les dés ».
 
 ### <a name="explore-the-code"></a>Explorer le code
 
@@ -421,7 +421,7 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 * [Référence SSML][SSMLRef]
 * [Bonnes pratiques de conception vocale pour Cortana][VoiceDesign]
 * [Bonnes pratiques de conception de cartes pour Cortana][CardDesign]
-* [Centre de développement Java][CortanaDevCenter]
+* [Centre de développement Cortana][CortanaDevCenter]
 * [Bonnes pratiques de test et de débogage pour Cortana][Cortana-TestBestPractice]
 
 
@@ -430,9 +430,9 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[IMessage]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
-[Send]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[IMessage]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
+[Send]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

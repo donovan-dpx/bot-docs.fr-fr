@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 51bdc5e52bd147747e9d068fc4721ca4b782ef27
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317674"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464509"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 
@@ -25,7 +25,9 @@ ms.locfileid: "54317674"
 > - [Node.JS](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-Un échange de messages entre l’utilisateur et le robot peut contenir une ou plusieurs cartes enrichies présentées sous forme de liste ou de carrousel. La propriété `Attachments` de l’objet <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activité</a> contient un tableau d’objets <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Pièces jointes</a> qui représentent les cartes enrichies et les pièces jointes du message. 
+Un échange de messages entre l’utilisateur et le robot peut contenir une ou plusieurs cartes enrichies présentées sous forme de liste ou de carrousel. 
+
+La propriété `Attachments` de l’objet <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activité</a> contient un tableau d’objets <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Pièces jointes</a> qui représentent les cartes enrichies et les pièces jointes du message. 
 
 > [!NOTE]
 > Pour en savoir plus sur la façon d’ajouter des pièces jointes aux messages, consultez [Ajouter des pièces jointes aux messages](bot-builder-dotnet-add-media-attachments.md).
@@ -39,10 +41,10 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 | <a href="/adaptive-cards/get-started/bots">Carte adaptative</a> | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status).  |
 | [Carte d’animation][animationCard] | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | [Carte audio][audioCard] | Carte pouvant lire un fichier audio. |
-| [Carte de bannière][heroCard] | Carte contenant généralement une image de grande taille, un ou plusieurs boutons, ainsi que du texte. |
-| [Carte de miniature][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons, ainsi que du texte. |
+| [Carte de bannière][heroCard] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
+| [Carte de miniature][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte. |
 | [Carte de reçu][receiptCard] | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
-| [Carte de connexion][signinCard] | Carte permettant à un robot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
+| [Carte de connexion][signinCard] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 | [Carte vidéo][videoCard] | Carte pouvant lire des vidéos. |
 
 > [!TIP]
@@ -52,12 +54,12 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 
 Pour traiter les événements dans les cartes enrichies, définissez les objets `CardAction` pour spécifier ce qui doit se produire quand l’utilisateur clique sur un bouton ou appuie sur une section de la carte. Chaque objet `CardAction` contient les propriétés suivantes :
 
-| Propriété | type | Description | 
+| Propriété | Type | Description | 
 |----|----|----|
-| type | chaîne | type d’action (une des valeurs indiquées dans le tableau ci-dessous) |
-| Intitulé | chaîne | titre du bouton |
-| Image | chaîne | URL d’image du bouton |
-| Valeur | chaîne | valeur nécessaire pour effectuer le type d’action spécifié |
+| Type | string | type d’action (une des valeurs indiquées dans le tableau ci-dessous) |
+| Intitulé | string | titre du bouton |
+| Image | string | URL d’image du bouton |
+| Valeur | string | valeur nécessaire pour effectuer le type d’action spécifié |
 
 > [!NOTE]
 > Les boutons dans les cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les <a href="http://adaptivecards.io" target="_blank">cartes adaptatives</a>. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez [Ajouter une carte adaptative à un message](#adaptive-card).
@@ -124,13 +126,13 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités du bot avec l’inspecteur de canaux][inspector]
+- [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
 - <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
 - [Ajouter des pièces jointes multimédia aux messages](bot-builder-dotnet-add-media-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe d’activité</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe d’activité</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
 

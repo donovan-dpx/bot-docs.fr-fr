@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: fd98b1bc8c3aa3b2c9fd716289dfd3ce75bec75b
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971539"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464792"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -126,14 +126,17 @@ Utilisez ces opérations pour créer des conversations, envoyer des messages (ac
 
 | Opération | Description |
 |----|----|
-| [Créer une conversation](#create-conversation) | Crée une conversation. | 
-| [Envoyer vers la conversation](#send-to-conversation) | Envoie une activité (message) à la fin de la conversation spécifiée. | 
-| [Répondre à l’activité](#reply-to-activity) | Envoie une activité (message) à la conversation spécifiée, en réponse à l’activité spécifiée. | 
+| [Créer une conversation](#create-conversation) | Crée une conversation. |
+| [Envoyer vers la conversation](#send-to-conversation) | Envoie une activité (message) à la fin de la conversation spécifiée. |
+| [Répondre à l’activité](#reply-to-activity) | Envoie une activité (message) à la conversation spécifiée, en réponse à l’activité spécifiée. |
+| [Obtenir des conversations](#get-conversations) | Obtient la liste des conversations auxquelles un robot a participé. |
 | [Obtenir les membres de la conversation](#get-conversation-members) | Obtient les membres de la conversation spécifiée. |
 | [Obtenir les membres paginés de la conversation](#get-conversation-paged-members) | Obtient les membres de la conversation spécifiée, une page à la fois. |
-| [Obtenir les membres de l’activité](#get-activity-members) | Obtient les membres de l’activité spécifiée dans la conversation spécifiée. | 
-| [Mettre à jour l’activité](#update-activity) | Met à jour une activité existante. | 
-| [Supprimer l’activité](#delete-activity) | Supprime une activité existante. | 
+| [Obtenir les membres de l’activité](#get-activity-members) | Obtient les membres de l’activité spécifiée dans la conversation spécifiée. |
+| [Mettre à jour l’activité](#update-activity) | Met à jour une activité existante. |
+| [Supprimer l’activité](#delete-activity) | Supprime une activité existante. |
+| [Supprimer un membre de conversation](#delete-conversation-member) | Supprime un membre d’une conversation. |
+| [Envoyer l’historique des conversations](#send-conversation-history) | Charge une transcription des activités passées de la conversation. |
 | [Charger la pièce jointe vers le canal](#upload-attachment-to-channel) | Charge une pièce jointe directement dans le stockage d’objets blob d’un canal. |
 
 ### <a name="create-conversation"></a>Créer une conversation
@@ -145,7 +148,7 @@ POST /v3/conversations
 | | |
 |----|----|
 | **Corps de la demande** | Objet [Conversation](#conversation-object) |
-| **Retourne** | Objet [ResourceResponse](#resourceresponse-object) | 
+| **Retourne** | Objet [ConversationResourceResponse](#conversationresourceresponse-object) | 
 
 ### <a name="send-to-conversation"></a>Envoyer vers la conversation
 Envoie une activité (message) vers la conversation spécifiée. L’activité est ajoutée à la fin de la conversation, selon l’horodatage ou la sémantique du canal. Pour répondre à un message de la conversation, utilisez plutôt [Répondre à l’activité](#reply-to-activity).
@@ -169,6 +172,17 @@ POST /v3/conversations/{conversationId}/activities/{activityId}
 | **Corps de la demande** | Objet [Activity](#activity-object) |
 | **Retourne** | Objet [Identification](#identification-object) | 
 
+### <a name="get-conversations"></a>Obtenir des conversations
+Obtient la liste des conversations auxquelles un robot a participé.
+```http
+GET /v3/conversations?continuationToken={continuationToken}
+```
+
+| | |
+|----|----|
+| **Corps de la demande** | n/a |
+| **Retourne** | Objet [ConversationResult](#conversationsresult-object) | 
+
 ### <a name="get-conversation-members"></a>Obtenir les membres de la conversation
 Obtient les membres de la conversation spécifiée.
 ```http
@@ -183,13 +197,13 @@ GET /v3/conversations/{conversationId}/members
 ### <a name="get-conversation-paged-members"></a>Obtenir les membres paginés de la conversation
 Obtient les membres de la conversation spécifiée, une page à la fois.
 ```http
-GET /v3/conversations/{conversationId}/pagedmembers
+GET /v3/conversations/{conversationId}/pagedmembers?pageSize={pageSize}&continuationToken={continuationToken}
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | n/a |
-| **Retourne** | Un tableau d’objets [ChannelAccount](#channelaccount-object) et un jeton de liaison qui peut être utilisé pour obtenir plus de valeurs|
+| **Retourne** | Un tableau d’objets [ChannelAccount](#channelaccount-object) et un jeton de liaison qui peut être utilisé pour obtenir plus de valeurs |
 
 ### <a name="get-activity-members"></a>Obtenir les membres de l’activité
 Obtient les membres de l’activité spécifiée dans la conversation spécifiée.
@@ -224,8 +238,30 @@ DELETE /v3/conversations/{conversationId}/activities/{activityId}
 | **Corps de la demande** | n/a |
 | **Retourne** | Code d’état HTTP indiquant le résultat de l’opération. Rien n’est spécifié dans le corps de la réponse. | 
 
+### <a name="delete-conversation-member"></a>Supprimer un membre de conversation
+Supprime un membre d’une conversation. Si ce membre a été le dernier membre de la conversation, la conversation est également supprimée.
+```http
+DELETE /v3/conversations/{conversationId}/members/{memberId}
+```
+
+| | |
+|----|----|
+| **Corps de la demande** | n/a |
+| **Retourne** | Code d’état HTTP indiquant le résultat de l’opération. Rien n’est spécifié dans le corps de la réponse. | 
+
+### <a name="send-conversation-history"></a>Envoyer l’historique des conversations
+Charge une transcription des activités passées de la conversation pour permettre au client de les afficher.
+```http
+POST /v3/conversations/{conversationId}/activities/history
+```
+
+| | |
+|----|----|
+| **Corps de la demande** | Objet [Transcript](#transcript-object). |
+| **Retourne** | Objet [ResourceResponse](#resourceresponse-object). | 
+
 ### <a name="upload-attachment-to-channel"></a>Charger la pièce jointe vers le canal
-Charge une pièce jointe pour la conversation spécifiée, directement dans le stockage d’objets blob d’un canal. Cela permet de stocker des données dans un magasin conforme. 
+Charge une pièce jointe pour la conversation spécifiée, directement dans le stockage d’objets blob d’un canal. Cela permet de stocker des données dans un magasin conforme.
 ```http 
 POST /v3/conversations/{conversationId}/attachments
 ```
@@ -364,7 +400,7 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet Activity](#activity-object) | Définit un message qui est échangé entre le bot et l’utilisateur. |
 | [Objet AnimationCard](#animationcard-object) | Définit une carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | [Objet Attachment](#attachment-object) | Définit des informations supplémentaires à inclure dans le message. Une pièce jointe peut être un fichier multimédia (audio, vidéo, image, fichier, etc.) ou une carte enrichie. |
-| [Objet AttachmentData](#attachmentdata-object) |Décrit les données d’une pièce jointe. |
+| [Objet AttachmentData](#attachmentdata-object) | Décrit les données d’une pièce jointe. |
 | [Objet AttachmentInfo](#attachmentinfo-object) | Décrit une pièce jointe. |
 | [Objet AttachmentView](#attachmentview-object) | Définit l’affichage d’une pièce jointe. |
 | [Objet AttachmentUpload](#attachmentupload-object) | Définit la pièce jointe à charger. |
@@ -375,9 +411,11 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet ChannelAccount](#channelaccount-object) | Définit le bot ou le compte d’utilisateur sur le canal. |
 | [Objet Conversation](#conversation-object) | Définit une conversation, y compris le bot et les utilisateurs qui sont inclus dans la conversation. |
 | [Objet ConversationAccount](#conversationaccount-object) | Définit une conversation sur un canal. |
+| [Objet ConversationMembers](#conversationmembers-object) | Définit les membres d’une conversation. |
 | [Objet ConversationParameters](#conversationparameters-object) | Définit des paramètres pour la création d’une conversation. |
 | [Objet ConversationReference](#conversationreference-object) | Définit un endroit particulier d’une conversation. |
-| [Objet ConversationResourceResponse](#conversationresourceresponse-object) | Réponse contenant une ressource |
+| [Objet ConversationResourceResponse](#conversationresourceresponse-object) | Définit une réponse à [Créer une conversation](#create-conversation). |
+| [Objet ConversationResult](#conversationsresult-object) | Définit le résultat d’un appel de [Obtenir des conversations](#get-conversations). |
 | [Objet Entity](#entity-object) | Définit un objet d’entité. |
 | [Objet Error](#error-object) | Définit une erreur. |
 | [Objet ErrorResponse](#errorresponse-object) | Définit une réponse d’API HTTP. |
@@ -385,7 +423,7 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet GeoCoordinates](#geocoordinates-object) | Définit un emplacement géographique à l’aide des coordonnées World Geodetic System (WSG84). |
 | [Objet HeroCard](#herocard-object) | Définit une carte avec une grande image, un titre, du texte et des boutons d’action. |
 | [Objet Identification](#identification-object) | Identifie une ressource. |
-| [Objet MediaEventValue](#mediaeventvalue-object) |Paramètre supplémentaire des événements multimédias.|
+| [Objet MediaEventValue](#mediaeventvalue-object) | Paramètre supplémentaire des événements multimédias. |
 | [Objet MediaUrl](#mediaurl-object) | Définit l’URL de la source d’un fichier multimédia. |
 | [Objet Mention](#mention-object) | Définit un utilisateur ou un bot mentionné dans la conversation. |
 | [Objet MessageReaction](#messagereaction-object) | Définit une réaction à un message. |
@@ -393,47 +431,48 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet ReceiptCard](#receiptcard-object) | Définit une carte qui contient un reçu pour un achat. |
 | [Objet ReceiptItem](#receiptitem-object) | Définit une ligne dans un reçu. |
 | [Objet ResourceResponse](#resourceresponse-object) | Définit une ressource. |
+| [Objet SemanticAction](#semanticaction-object) | Définit une référence à une action de programmation. |
 | [Objet SignInCard](#signincard-object) | Définit une carte qui permet à un utilisateur de se connecter à un service. |
 | [Objet SuggestedActions](#suggestedactions-object) | Définit les options qu’un utilisateur peut choisir. |
 | [Objet ThumbnailCard](#thumbnailcard-object) | Définit une carte avec une miniature, un titre, du texte et des boutons d’action. |
 | [Objet ThumbnailUrl](#thumbnailurl-object) | Définit l’URL de la source d’une image. |
+| [Objet Transcript](#transcript-object) | Collection d’activités à charger à l’aide de [Envoyer l’historique des conversations](#send-conversation-history). |
 | [Objet VideoCard](#videocard-object) | Définit une carte pouvant lire des vidéos. |
-| [Objet SemanticAction](#semanticaction-object) | Définit une référence à une action de programmation. |
 
 ### <a name="activity-object"></a>Objet Activity
 Définit un message qui est échangé entre le bot et l’utilisateur.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **action** | chaîne | Action à appliquer ou qui a été appliquée. Utilisez la propriété **type** pour déterminer le contexte de l’action. Par exemple, si **type** a la valeur **contactRelationUpdate**, la valeur de la propriété **action** sera **add** si l’utilisateur ajoute votre bot à sa liste de contacts, ou **remove** s’il supprime votre bot de sa liste de contacts. |
+| **action** | string | Action à appliquer ou qui a été appliquée. Utilisez la propriété **type** pour déterminer le contexte de l’action. Par exemple, si **type** a la valeur **contactRelationUpdate**, la valeur de la propriété **action** sera **add** si l’utilisateur ajoute votre bot à sa liste de contacts, ou **remove** s’il supprime votre bot de sa liste de contacts. |
 | **attachments** | [Attachment](#attachment-object)[] | Tableau d’objets **Attachment** qui définit des informations supplémentaires à inclure dans le message. Chaque pièce jointe peut être soit un fichier multimédia (audio, vidéo, image, fichier, etc.), soit une carte enrichie. |
-| **attachmentLayout** | chaîne | Disposition des **pièces jointes** de la carte enrichie incluses dans le message. Peut avoir l’une des valeurs suivantes : **carousel**, **list**. Pour plus d’informations sur les pièces jointes de carte enrichie, consultez [Ajouter des pièces jointes de cartes enrichies aux messages](bot-framework-rest-connector-add-rich-cards.md). |
+| **attachmentLayout** | string | Disposition des **pièces jointes** de la carte enrichie incluses dans le message. Peut avoir l’une des valeurs suivantes : **carousel**, **list**. Pour plus d’informations sur les pièces jointes de carte enrichie, consultez [Ajouter des pièces jointes de cartes enrichies aux messages](bot-framework-rest-connector-add-rich-cards.md). |
 | **channelData** | objet | Objet contenant le contenu propre au canal. Certains canaux fournissent des fonctionnalités qui nécessitent des informations supplémentaires impossibles à représenter à l’aide du schéma de pièce jointe. Dans ce type de cas, définissez cette propriété sur le contenu propre au canal, tel que défini dans la documentation du canal. Pour plus d’informations, consultez [Implémenter des fonctionnalités spécifiques au canal](bot-framework-rest-connector-channeldata.md). |
-| **channelId** | chaîne | ID qui identifie de façon unique le canal. Défini par le canal. | 
+| **channelId** | string | ID qui identifie de façon unique le canal. Défini par le canal. | 
 | **conversation** | [ConversationAccount](#conversationaccount-object) | Objet **ConversationAccount** qui définit la conversation à laquelle appartient l’activité. |
-| **code** | chaîne | Code indiquant pourquoi la conversation s’est terminée. |
+| **code** | string | Code indiquant pourquoi la conversation s’est terminée. |
 | **entities** | object[] | Tableau d’objets qui représente les entités mentionnées dans le message. Les objets de ce tableau peuvent correspondre à n’importe quel objet <a href="http://schema.org/" target="_blank">Schema.org</a>. Par exemple, le tableau peut inclure des objets [Mention](#mention-object) qui identifient une personne mentionnée dans la conversation, ainsi que des objets [Place](#place-object) qui identifient un lieu mentionné dans la conversation. |
 | **from** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui spécifie l’expéditeur du message. |
-| **historyDisclosed** | booléenne | Indicateur qui indique si l’historique est divulgué ou non. La valeur par défaut est **false**. |
-| **id** | chaîne | ID qui identifie de façon unique l’activité sur le canal. | 
-| **inputHint** | chaîne | Valeur qui indique si votre bot accepte, attend ou ignore l’entrée utilisateur, une fois le message remis au client. Peut avoir l’une des valeurs suivantes : **acceptingInput**, **expectingInput**, **ignoringInput**. |
-| **locale** | chaîne | Paramètres régionaux de la langue qui doit être utilisée pour afficher du texte dans le message, au format `<language>-<country>`. Le canal utilise cette propriété pour indiquer la langue de l’utilisateur, pour que le bot puisse spécifier des chaînes d’affichage dans cette langue. La valeur par défaut est **en-US**. |
-| **localTimestamp** | chaîne | Date et heure auxquelles le message a été envoyé dans le fuseau horaire local, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
+| **historyDisclosed** | boolean | Indicateur qui indique si l’historique est divulgué ou non. La valeur par défaut est **false**. |
+| **id** | string | ID qui identifie de façon unique l’activité sur le canal. | 
+| **inputHint** | string | Valeur qui indique si votre bot accepte, attend ou ignore l’entrée utilisateur, une fois le message remis au client. Peut avoir l’une des valeurs suivantes : **acceptingInput**, **expectingInput**, **ignoringInput**. |
+| **locale** | string | Paramètres régionaux de la langue qui doit être utilisée pour afficher du texte dans le message, au format `<language>-<country>`. Le canal utilise cette propriété pour indiquer la langue de l’utilisateur, pour que le bot puisse spécifier des chaînes d’affichage dans cette langue. La valeur par défaut est **en-US**. |
+| **localTimestamp** | string | Date et heure auxquelles le message a été envoyé dans le fuseau horaire local, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
 | **membersAdded** | [ChannelAccount](#channelaccount-object)[] | Tableau d’objets **ChannelAccount** qui représente la liste des utilisateurs qui ont rejoint la conversation. Présent uniquement si le **type** d’activité est « conversationUpdate » et si les utilisateurs ont rejoint la conversation. | 
 | **membersRemoved** | [ChannelAccount](#channelaccount-object)[] | Tableau d’objets **ChannelAccount** qui représente la liste des utilisateurs qui ont quitté la conversation. Présent uniquement si le **type** d’activité est « conversationUpdate » et si les utilisateurs ont quitté la conversation. | 
-| **name** | chaîne | Nom de l’opération à appeler ou nom de l’événement. |
+| **name** | string | Nom de l’opération à appeler ou nom de l’événement. |
 | **recipient** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui spécifie le destinataire du message. |
 | **relatesTo** | [ConversationReference](#conversationreference-object) | Objet **ConversationReference** qui définit un endroit particulier de la conversation. |
-| **replyToId** | chaîne | ID du message auquel ce message répond. Pour répondre à un message envoyé par l’utilisateur, définissez cette propriété sur l’ID du message de l’utilisateur. Certains canaux ne prennent pas en charge les réponses à thread. Dans ce cas, le canal ignore cette propriété et utilise une sémantique chronologique (horodatage) pour ajouter le message à la conversation. | 
-| **serviceUrl** | chaîne | URL qui spécifie le point de terminaison de service du canal. Défini par le canal. | 
-| **speak** | chaîne | Texte que doit prononcer votre bot sur un canal où les fonctionnalités vocales sont activées. Pour contrôler les différentes caractéristiques vocales de votre bot, telles que la voix, le débit, le volume, la prononciation et la hauteur, spécifiez cette propriété au format <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">SSML (Speech Synthesis Markup Language)</a>. |
+| **replyToId** | string | ID du message auquel ce message répond. Pour répondre à un message envoyé par l’utilisateur, définissez cette propriété sur l’ID du message de l’utilisateur. Certains canaux ne prennent pas en charge les réponses à thread. Dans ce cas, le canal ignore cette propriété et utilise une sémantique chronologique (horodatage) pour ajouter le message à la conversation. | 
+| **serviceUrl** | string | URL qui spécifie le point de terminaison de service du canal. Défini par le canal. | 
+| **speak** | string | Texte que doit prononcer votre bot sur un canal où les fonctionnalités vocales sont activées. Pour contrôler les différentes caractéristiques vocales de votre bot, telles que la voix, le débit, le volume, la prononciation et la hauteur, spécifiez cette propriété au format <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">SSML (Speech Synthesis Markup Language)</a>. |
 | **suggestedActions** | [SuggestedActions](#suggestedactions-object) | Objet **SuggestedActions** qui définit les options qu’un utilisateur peut choisir. |
-| **summary** | chaîne | Résumé des informations que contient le message. Par exemple, pour un message envoyé sur un canal d’e-mail, cette propriété peut spécifier les 50 premiers caractères de l’e-mail. |
-| **text** | chaîne | Texte du message envoyé par l’utilisateur au bot ou par le bot à l’utilisateur. Consultez la documentation du canal pour connaître les limites qui sont imposées au contenu de cette propriété. |
-| **textFormat** | chaîne | Format du **texte** du message. Peut avoir l’une des valeurs suivantes : **markdown**, **plain**, **xml**. Pour plus d’informations sur le format du texte, consultez [Créer des messages](bot-framework-rest-connector-create-messages.md). |
-| **timestamp** | chaîne | Date et heure auxquelles le message a été envoyé dans le fuseau horaire UTC, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
-| **topicName** | chaîne | Sujet de la conversation à laquelle appartient l’activité. |
-| **type** | chaîne | Type de l’activité. Peut prendre l’une des valeurs suivantes : **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **event** et **endOfConversation**. Pour plus d’informations sur les types d’activités, consultez [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md). |
+| **summary** | string | Résumé des informations que contient le message. Par exemple, pour un message envoyé sur un canal d’e-mail, cette propriété peut spécifier les 50 premiers caractères de l’e-mail. |
+| **text** | string | Texte du message envoyé par l’utilisateur au bot ou par le bot à l’utilisateur. Consultez la documentation du canal pour connaître les limites qui sont imposées au contenu de cette propriété. |
+| **textFormat** | string | Format du **texte** du message. Peut avoir l’une des valeurs suivantes : **markdown**, **plain**, **xml**. Pour plus d’informations sur le format du texte, consultez [Créer des messages](bot-framework-rest-connector-create-messages.md). |
+| **timestamp** | string | Date et heure auxquelles le message a été envoyé dans le fuseau horaire UTC, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. |
+| **topicName** | string | Sujet de la conversation à laquelle appartient l’activité. |
+| **type** | string | Type de l’activité. Peut prendre l’une des valeurs suivantes : **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **event** et **endOfConversation**. Pour plus d’informations sur les types d’activités, consultez [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md). |
 | **value** | objet | Valeur à durée indéterminée. |
 | **semanticAction** |[SemanticAction](#semanticaction-object) | Un objet **SemanticAction** qui représente une référence à une action de programmation. |
 
@@ -444,16 +483,16 @@ Définit une carte pouvant lire des images GIF animées ou de courtes vidéos.<b
 
 | Propriété | Type | Description |
 |----|----|----|
-| **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des images GIF animées lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autoloop** | boolean | Indicateur qui indique s’il faut relire la liste des images GIF animées lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement l’animation lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
-| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
+| **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des images GIF animées à lire. |
 | **shareable** | booléenne | Indicateur qui indique si l’animation peut être partagée avec d’autres utilisateurs. Définissez cette propriété sur **true** si l’animation peut être partagée ; sinon, sur **false**. La valeur par défaut est **true**. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la carte. |
-| **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
-| **title** | chaîne | Titre de la carte. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
+| **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
+| **title** | string | Titre de la carte. |
 | **value** | objet | Paramètre supplémentaire de cette carte |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -463,31 +502,33 @@ Définit des informations supplémentaires à inclure dans le message. Une pièc
 
 | Propriété | Type | Description |
 |----|----|----|
-| **contentType** | chaîne | Type de média du contenu de la pièce jointe. Pour les fichiers multimédias, définissez cette propriété sur les types de médias connus comme **image/png**, **audio/wav** ou **video/mp4**. Pour les cartes enrichies, définissez cette propriété sur l’un de ces types spécifiques au fabricant :<ul><li>**application/vnd.microsoft.card.adaptive** : carte enrichie pouvant inclure toute combinaison de texte, données vocales, images, boutons et champs d’entrée. Définissez la propriété **content** sur un objet <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a>.</li><li>**application/vnd.microsoft.card.animation** : carte enrichie qui lit l’animation. Définissez la propriété **content** sur un objet [AnimationCard](#animationcard-object).</li><li>**application/vnd.microsoft.card.audio** : carte enrichie qui lit les fichiers audio. Définissez la propriété **content** sur un objet [AudioCard](#audiocard-object).</li><li>**application/vnd.microsoft.card.video** : carte enrichie qui lit les vidéos. Définissez la propriété **content** sur un objet [VideoCard](#videocard-object).</li><li>**application/vnd.microsoft.card.hero** : carte Hero. Définissez la propriété **content** sur un objet [HeroCard](#herocard-object).</li><li>**application/vnd.microsoft.card.thumbnail** : carte de miniature. Définissez la propriété **content** sur un objet [ThumbnailCard](#thumbnailcard-object).</li><li>**application/vnd.microsoft.com.card.receipt** : carte de reçu. Définissez la propriété **content** sur un objet [ReceiptCard](#receiptcard-object).</li><li>**application/vnd.microsoft.com.card.signin** : carte de connexion utilisateur. Définissez la propriété **content** sur un objet [SignInCard](#signincard-object).</li></ul> |
-| **contentUrl** | chaîne | URL du contenu de la pièce jointe. Par exemple, si la pièce jointe est une image, définissez **contentUrl** sur l’URL qui représente l’emplacement de l’image. Protocoles pris en charge : HTTP, HTTPS, File et Data. |
+| **contentType** | string | Type de média du contenu de la pièce jointe. Pour les fichiers multimédias, définissez cette propriété sur les types de médias connus comme **image/png**, **audio/wav** ou **video/mp4**. Pour les cartes enrichies, définissez cette propriété sur l’un de ces types spécifiques au fabricant :<ul><li>**application/vnd.microsoft.card.adaptive** : carte enrichie pouvant inclure toute combinaison de texte, données vocales, images, boutons et champs d’entrée. Définissez la propriété **content** sur un objet <a href="http://adaptivecards.io/documentation/#create-cardschema" target="_blank">AdaptiveCard</a>.</li><li>**application/vnd.microsoft.card.animation** : carte enrichie qui lit l’animation. Définissez la propriété **content** sur un objet [AnimationCard](#animationcard-object).</li><li>**application/vnd.microsoft.card.audio** : carte enrichie qui lit les fichiers audio. Définissez la propriété **content** sur un objet [AudioCard](#audiocard-object).</li><li>**application/vnd.microsoft.card.video** : carte enrichie qui lit les vidéos. Définissez la propriété **content** sur un objet [VideoCard](#videocard-object).</li><li>**application/vnd.microsoft.card.hero** : carte Hero. Définissez la propriété **content** sur un objet [HeroCard](#herocard-object).</li><li>**application/vnd.microsoft.card.thumbnail** : carte de miniature. Définissez la propriété **content** sur un objet [ThumbnailCard](#thumbnailcard-object).</li><li>**application/vnd.microsoft.com.card.receipt** : carte de reçu. Définissez la propriété **content** sur un objet [ReceiptCard](#receiptcard-object).</li><li>**application/vnd.microsoft.com.card.signin** : carte de connexion utilisateur. Définissez la propriété **content** sur un objet [SignInCard](#signincard-object).</li></ul> |
+| **contentUrl** | string | URL du contenu de la pièce jointe. Par exemple, si la pièce jointe est une image, définissez **contentUrl** sur l’URL qui représente l’emplacement de l’image. Protocoles pris en charge : HTTP, HTTPS, File et Data. |
 | **content** | objet | Contenu de la pièce jointe. Si la pièce jointe est une carte enrichie, définissez cette propriété sur l’objet de carte enrichie. Cette propriété et la propriété **contentUrl** s’excluent mutuellement. |
-| **name** | chaîne | Nom de la pièce jointe. |
-| **thumbnailUrl** | chaîne | URL d’une image miniature que le canal peut utiliser s’il prend en charge l’utilisation d’une forme plus petite de **content** ou de **contentUrl**. Par exemple, si vous définissez **contentType** sur **application/word** et définissez **contentUrl** sur l’emplacement du document Word, vous pouvez inclure une image miniature qui représente le document. Le canal peut alors afficher l’image miniature au lieu du document. Lorsque l’utilisateur clique sur l’image, le canal ouvre le document. |
+| **name** | string | Nom de la pièce jointe. |
+| **thumbnailUrl** | string | URL d’une image miniature que le canal peut utiliser s’il prend en charge l’utilisation d’une forme plus petite de **content** ou de **contentUrl**. Par exemple, si vous définissez **contentType** sur **application/word** et définissez **contentUrl** sur l’emplacement du document Word, vous pouvez inclure une image miniature qui représente le document. Le canal peut alors afficher l’image miniature au lieu du document. Lorsque l’utilisateur clique sur l’image, le canal ouvre le document. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="attachmentdata-object"></a>Objet AttachmentData 
-Décrit les données d’une pièce jointe.
+Décrit les données d’une pièce jointe.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **name** | chaîne | Nom de la pièce jointe. |
-| **originalBase64** | chaîne | Contenu de la pièce jointe. |
-| **thumbnailBase64** | chaîne | Contenu de la miniature de la pièce jointe. |
-| **type** | chaîne | Type de contenu de la pièce jointe. |
+| **name** | string | Nom de la pièce jointe. |
+| **originalBase64** | string | Contenu de la pièce jointe. |
+| **thumbnailBase64** | string | Contenu de la miniature de la pièce jointe. |
+| **type** | string | Type de contenu de la pièce jointe. |
+
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="attachmentinfo-object"></a>Objet AttachmentInfo
 Décrit une pièce jointe.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **name** | chaîne | Nom de la pièce jointe. |
-| **type** | chaîne | Type de contenu de la pièce jointe. |
+| **name** | string | Nom de la pièce jointe. |
+| **type** | string | Type de contenu de la pièce jointe. |
 | **vues** | [AttachmentView](#attachmentview-object)[] | Tableau d’objets **AttachmentView** qui représentent les affichages disponibles pour la pièce jointe. |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -497,7 +538,7 @@ Définit l’affichage d’une pièce jointe.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **viewId** | chaîne | ID de l’affichage. |
+| **viewId** | string | ID de l’affichage. |
 | **taille** | number | Taille du fichier. |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -508,10 +549,10 @@ Définit la pièce jointe à charger.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **type** | chaîne | Type de contenu de la pièce jointe. | 
-| **name** | chaîne | Nom de la pièce jointe. | 
-| **originalBase64** | chaîne | Données binaires qui représentent le contenu de la version d’origine du fichier. |
-| **thumbnailBase64** | chaîne | Données binaires qui représentent le contenu de la version miniature du fichier. |
+| **type** | string | Type de contenu de la pièce jointe. | 
+| **name** | string | Nom de la pièce jointe. | 
+| **originalBase64** | string | Données binaires qui représentent le contenu de la version d’origine du fichier. |
+| **thumbnailBase64** | string | Données binaires qui représentent le contenu de la version miniature du fichier. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -520,17 +561,17 @@ Définit une carte qui peut lire un fichier audio.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **aspect** | chaîne | Proportions de la miniature qui est spécifiée dans la propriété **image**. Les valeurs valides sont **16:9** et **9:16**. |
+| **aspect** | string | Proportions de la miniature qui est spécifiée dans la propriété **image**. Les valeurs valides sont **16:9** et **9:16**. |
 | **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des fichiers audio lorsque le dernier est terminé. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement le fichier audio lorsque la carte s’affiche. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
-| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
+| **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des fichiers audio à lire. |
 | **shareable** | booléenne | Indicateur qui indique si les fichiers audio peuvent être partagés avec d’autres utilisateurs. Définissez cette propriété sur **true** si les fichiers audio peuvent être partagés ; sinon, sur **false**. La valeur par défaut est **true**. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la carte. |
-| **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
-| **title** | chaîne | Titre de la carte. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
+| **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
+| **title** | string | Titre de la carte. |
 | **value** | objet | Paramètre supplémentaire de cette carte |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -542,7 +583,7 @@ Définit les données d’état pour un utilisateur, pour une conversation, ou p
 | Propriété | Type | Description |
 |----|----|----|
 | **data** | objet | Dans une requête, objet JSON qui spécifie les propriétés et les valeurs à stocker à l’aide du service Bot State. Dans une réponse, objet JSON qui spécifie les propriétés et les valeurs qui ont été stockées à l’aide du service Bot State. | 
-| **eTag** | chaîne | Valeur de l’étiquette d’entité que vous pouvez utiliser pour contrôler l’accès concurrentiel aux données, pour les données que vous stockez à l’aide du service Bot State. Pour plus d’informations, consultez [Gérer les données d’état](bot-framework-rest-state.md). | 
+| **eTag** | string | Valeur de l’étiquette d’entité que vous pouvez utiliser pour contrôler l’accès concurrentiel aux données, pour les données que vous stockez à l’aide du service Bot State. Pour plus d’informations, consultez [Gérer les données d’état](bot-framework-rest-state.md). | 
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -551,11 +592,11 @@ Définit une action à effectuer.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **image** | chaîne | URL de l’image à afficher | 
-| **text** | chaîne | Texte de l’action |
-| **title** | chaîne | Texte du bouton. Applicable uniquement à l’action d’un bouton. |
+| **image** | string | URL de l’image à afficher | 
+| **text** | string | Texte de l’action |
+| **title** | string | Texte du bouton. Applicable uniquement à l’action d’un bouton. |
 . Applicable uniquement à l’action d’un bouton. |
-| **type** | chaîne | Type d’action à effectuer. Pour obtenir la liste des valeurs valides, consultez [Ajouter des pièces jointes de cartes riches aux messages](bot-framework-rest-connector-add-rich-cards.md). |
+| **type** | string | Type d’action à effectuer. Pour obtenir la liste des valeurs valides, consultez [Ajouter des pièces jointes de cartes riches aux messages](bot-framework-rest-connector-add-rich-cards.md). |
 | **value** | objet | Paramètre supplémentaire de l’action. La valeur de cette propriété varie en fonction du **type** de l’action. Pour plus d’informations, consultez [Ajouter des pièces jointes de cartes enrichies aux messages](bot-framework-rest-connector-add-rich-cards.md). |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -565,9 +606,9 @@ Définit l’image à afficher sur une carte.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **alt** | chaîne | Description de l’image. Vous devez inclure la description pour des raisons d’accessibilité. |
+| **alt** | string | Description de l’image. Vous devez inclure la description pour des raisons d’accessibilité. |
 | **tap** | [CardAction](#cardaction-object) | Objet **CardAction** qui spécifie l’action à effectuer si l’utilisateur appuie ou clique sur l’image. |
-| **url** | chaîne | URL de la source de l’image ou du fichier binaire en base64 de l’image (par exemple, `data:image/png;base64,iVBORw0KGgo...`). |
+| **url** | string | URL de la source de l’image ou du fichier binaire en base64 de l’image (par exemple, `data:image/png;base64,iVBORw0KGgo...`). |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -576,8 +617,8 @@ Définit le bot ou le compte d’utilisateur sur le canal.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **id** | chaîne | ID qui identifie de façon unique le bot ou l’utilisateur sur le canal. |
-| **name** | chaîne | Nom du bot ou de l’utilisateur. |
+| **id** | string | ID qui identifie de façon unique le bot ou l’utilisateur sur le canal. |
+| **name** | string | Nom du bot ou de l’utilisateur. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -590,7 +631,7 @@ Définit une conversation, y compris le bot et les utilisateurs qui sont inclus 
 | **bot** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui identifie le bot. |
 | **isGroup** | booléenne | Indicateur qui indique s’il s’agit ou non d’une conversation de groupe. Définissez la valeur **true** s’il s’agit d’une conversation de groupe ; sinon, **false**. La valeur par défaut est **false**. Pour que vous puissiez démarrer une conversation de groupe, le canal doit prendre en charge les conversations de groupe. |
 | **members** | [ChannelAccount](#channelaccount-object)[] | Tableau d’objets **ChannelAccount** qui identifient les membres de la conversation. Cette liste doit contenir un seul utilisateur, sauf si **isGroup** a la valeur **true**. Cette liste peut inclure d’autres bots. |
-| **topicName** | chaîne | Titre de la conversation. |
+| **topicName** | string | Titre de la conversation. |
 | **activity** | [Activité](#activity-object) | Dans une requête [Créer une conversation](#create-conversation), objet **Activity** qui définit le premier message qui doit être publié dans la nouvelle conversation. |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -600,65 +641,90 @@ Définit une conversation sur un canal.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **id** | chaîne | ID qui identifie la conversation. L’ID est unique sur chaque canal. Si le canal lance la conversion, il définit cet ID. Sinon, le bot définit cette propriété sur l’ID qu’il reçoit dans la réponse lorsqu’il démarre la conversation (voir Démarrage d’une conversation). |
+| **id** | string | ID qui identifie la conversation. L’ID est unique sur chaque canal. Si le canal lance la conversion, il définit cet ID. Sinon, le bot définit cette propriété sur l’ID qu’il reçoit dans la réponse lorsqu’il démarre la conversation (voir Démarrage d’une conversation). |
 | **isGroup** | booléenne | Indicateur qui indique si la conversation contient plus de deux participants au moment où l’activité est générée. Définissez la valeur **true** s’il s’agit d’une conversation de groupe ; sinon, **false**. La valeur par défaut est **false**. |
-| **name** | chaîne | Nom convivial qui peut être utilisé pour identifier la conversation. |
-| **conversationType** | chaîne | Indique le type de la conversation sur les canaux qui distinguent les différents types de conversations (par exemple : personnelle, de groupe). |
+| **name** | string | Nom convivial qui peut être utilisé pour identifier la conversation. |
+| **conversationType** | string | Indique le type de la conversation sur les canaux qui distinguent les différents types de conversations (par exemple : personnelle, de groupe). |
+
+<a href="#objects">Retour au tableau Schéma</a>
+
+### <a name="conversationmembers-object"></a>Objet ConversationMembers
+Définit les membres d’une conversation.<br/><br/>
+
+| Propriété | Type | Description |
+|----|----|----|
+| **id** | string | ID de conversation. |
+| **members** | array | Tableau d’objets [ChannelAccount](#channelaccount-object). |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="conversationparameters-object"></a>Objet ConversationParameters
-Définit des paramètres pour la création d’une conversation.
+Définit des paramètres pour la création d’une conversation.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
 | **isGroup** | booléenne | Indique s’il s’agit d’une conversation de groupe. |
 | **bot** | [ChannelAccount](#channelaccount-object) | Adresse du bot de la conversation. |
 | **members** | array | Liste des membres à ajouter à la conversation. |
-| **topicName** | chaîne | Titre du thème d’une conversation. Cette propriété est uniquement utilisée si le canal la prend en charge. |
+| **topicName** | string | Titre du thème d’une conversation. Cette propriété est uniquement utilisée si le canal la prend en charge. |
 | **activity** | [Activité](#activity-object) | (facultatif) Utilisez cette activité comme premier message de la conversation lors de la création d’une conversation. |
 | **channelData** | objet | Charge utile spécifique au canal pour la création de la conversation. |
+
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="conversationreference-object"></a>Objet ConversationReference
 Définit un endroit particulier d’une conversation.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **activityId** | chaîne | ID qui identifie de façon unique l’activité que cet objet référence. | 
+| **activityId** | string | ID qui identifie de façon unique l’activité que cet objet référence. | 
 | **bot** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui identifie le bot dans la conversation référencée par cet objet. |
-| **channelId** | chaîne | ID qui identifie de façon unique le canal dans la conversation référencée par cet objet. | 
+| **channelId** | string | ID qui identifie de façon unique le canal dans la conversation référencée par cet objet. | 
 | **conversation** | [ConversationAccount](#conversationaccount-object) | Objet **ConversationAccount** qui définit la conversation référencée par cet objet. |
-| **serviceUrl** | chaîne | URL qui spécifie le point de terminaison de service du canal dans la conversation référencée par cet objet. | 
+| **serviceUrl** | string | URL qui spécifie le point de terminaison de service du canal dans la conversation référencée par cet objet. | 
 | **user** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui identifie l’utilisateur dans la conversation référencée par cet objet. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="conversationresourceresponse-object"></a>Objet ConversationResourceResponse
-Définit une réponse qui contient une ressource.
+Définit une réponse à [Créer une conversation](#create-conversation).<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **activityId** | chaîne | ID de l’activité. |
-| **id** | chaîne | ID de la ressource. |
-| **serviceUrl** | chaîne | Point de terminaison de service. |
+| **activityId** | string | ID de l’activité. |
+| **id** | string | ID de la ressource. |
+| **serviceUrl** | string | Point de terminaison de service. |
+
+<a href="#objects">Retour au tableau Schéma</a>
+
+### <a name="conversationsresult-object"></a>Objet ConversationResult
+Définit le résultat de [Obtenir des conversations](#get-conversations).<br/><br/> 
+
+| Propriété | Type | Description |
+|----|----|----|
+| **continuationToken** | string | Jeton de continuation qui peut être utilisé dans les appels postérieurs à l’appel de [Obtenir des conversations](#get-conversations). |
+| **conversations** | array | Tableau d’objets [ConversationMembers](#conversationmembers-object) |
+
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="error-object"></a>Objet Error
-Définit une erreur.<br/><br/>
+Définit une erreur.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **code** | chaîne | Code d’erreur. |
-| **message** | chaîne | Description de l’erreur. |
+| **code** | string | Code d’erreur. |
+| **message** | string | Description de l’erreur. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="entity-object"></a>Objet Entity
-Définit un objet d’entité.
+Définit un objet d’entité.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **type** | chaîne | Type d’entité. En général, contient des types de schema.org. |
+| **type** | string | Type d’entité. En général, contient des types de schema.org. |
 
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="errorresponse-object"></a>Objet ErrorResponse
 Définit une réponse d’API HTTP.<br/><br/> 
@@ -674,8 +740,8 @@ Définit une paire clé-valeur contenant un fait.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **key** | chaîne | Nom du fait. Par exemple : **Archivage**. La clé est utilisée comme étiquette quand vous affichez la valeur du fait. |
-| **value** | chaîne | Valeur du fait. Par exemple, **10 octobre 2016**. |
+| **key** | string | Nom du fait. Par exemple : **Archivage**. La clé est utilisée comme étiquette quand vous affichez la valeur du fait. |
+| **value** | string | Valeur du fait. Par exemple, **10 octobre 2016**. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -685,10 +751,10 @@ Définit un emplacement géographique à l’aide des coordonnées World Geodeti
 | Propriété | Type | Description |
 |----|----|----|
 | **elevation** | number | Élévation de l’emplacement. |
-| **name** | chaîne | Nom de l’emplacement. |
+| **name** | string | Nom de l’emplacement. |
 | **latitude** | number | Latitude de l’emplacement. |
 | **longitude** | number | Longitude de l’emplacement. |
-| **type** | chaîne | Type de cet objet. Toujours définir sur **GeoCoordinates**. |
+| **type** | string | Type de cet objet. Toujours définir sur **GeoCoordinates**. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -699,10 +765,10 @@ Définit une carte avec une grande image, un titre, du texte et des boutons d’
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **images** | [CardImage](#cardimage-object)[] | Tableau d’objets **CardImage** qui spécifie l’image à afficher sur la carte. Une carte Héros contient une seule image. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la carte. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **tap** | [CardAction](#cardaction-object) | Objet **CardAction** qui spécifie l’action à effectuer si l’utilisateur appuie ou clique sur la carte. Il peut s’agir de la même action que celle d’un bouton, ou d’une action différente. |
-| **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
-| **title** | chaîne | Titre de la carte. |
+| **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
+| **title** | string | Titre de la carte. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -712,24 +778,26 @@ Identifie une ressource.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **id** | chaîne | ID qui identifie de façon unique la ressource. |
+| **id** | string | ID qui identifie de façon unique la ressource. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="mediaeventvalue-object"></a>Objet MediaEventValue 
-Paramètre supplémentaire des événements multimédias.
+Paramètre supplémentaire des événements multimédias.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
 | **cardValue** | objet | Paramètre de rappel spécifié dans le champ **Valeur** de la carte média qui a déclenché cet événement. |
+
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="mediaurl-object"></a>Objet MediaUrl
 Définit l’URL de la source d’un fichier multimédia.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **profile** | chaîne | Indicateur qui décrit le contenu du fichier multimédia. |
-| **url** | chaîne | URL de la source du fichier multimédia. |
+| **profile** | string | Indicateur qui décrit le contenu du fichier multimédia. |
+| **url** | string | URL de la source du fichier multimédia. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -741,17 +809,19 @@ Définit un utilisateur ou un bot mentionné dans la conversation.<br/><br/>
 |          Propriété          |                   Type                   |                                                                                                                                                                                                                           Description                                                                                                                                                                                                                            |
 |----------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <strong>mentioned</strong> | [ChannelAccount](#channelaccount-object) | Objet <strong>ChannelAccount</strong> qui spécifie l’utilisateur ou le bot mentionné. Notez que certains canaux, tels que Slack, attribuent des noms pour chaque conversation. Il est donc possible que le nom mentionné de votre bot (dans la propriété <strong>recipient</strong> du message) soit différent du handle que vous avez spécifié lorsque vous avez [inscrit](../bot-service-quickstart-registration.md) votre bot. Toutefois, l’ID de compte des deux noms reste le même. |
-|   <strong>text</strong>    |                  chaîne                  |                                                                                                                         Utilisateur ou bot mentionné dans la conversation. Par exemple, si le message est « @ColorBot, choisis une nouvelle couleur », cette propriété est définie sur <strong>@ColorBot</strong>. Certains canaux ne définissent pas cette propriété.                                                                                                                          |
-|   <strong>type</strong>    |                  chaîne                  |                                                                                                                                                                                                   Type de cet objet. Toujours définir sur <strong>Mention</strong>.                                                                                                                                                                                                    |
+|   <strong>text</strong>    |                  string                  |                                                                                                                         Utilisateur ou bot mentionné dans la conversation. Par exemple, si le message est « @ColorBot, choisis une nouvelle couleur », cette propriété est définie sur <strong>@ColorBot</strong>. Certains canaux ne définissent pas cette propriété.                                                                                                                          |
+|   <strong>type</strong>    |                  string                  |                                                                                                                                                                                                   Type de cet objet. Toujours définir sur <strong>Mention</strong>.                                                                                                                                                                                                    |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="messagereaction-object"></a>Objet MessageReaction
-Définit une réaction à un message.
+Définit une réaction à un message.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **type** | chaîne | Type de réaction. |
+| **type** | string | Type de réaction. |
+
+<a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="place-object"></a>Objet Place
 Définit un lieu mentionné dans la conversation.<br/><br/> 
@@ -761,8 +831,8 @@ Définit un lieu mentionné dans la conversation.<br/><br/>
 | **address** | objet |  Adresse d’un lieu. Cette propriété peut être un `string` ou un objet complexe de type `PostalAddress`. |
 | **geo** | [GeoCoordinates](#geocoordinates-object) | Objet **GeoCoordinates** qui spécifie les coordonnées géographiques du lieu. |
 | **hasMap** | objet | Carte du lieu. Cette propriété peut être un `string` (URL) ou un objet complexe de type `Map`. |
-| **name** | chaîne | Nom du lieu. |
-| **type** | chaîne | Type de cet objet. Toujours définir sur **Place**. |
+| **name** | string | Nom du lieu. |
+| **type** | string | Type de cet objet. Toujours définir sur **Place**. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -775,10 +845,10 @@ Définit une carte qui contient un reçu pour un achat.<br/><br/>
 | **facts** | [Fact](#fact-object)[] | Tableau d’objets **Fact** qui spécifient des informations sur l’achat. Par exemple, la liste de faits du reçu d’un séjour à l’hôtel peut inclure les dates d’arrivée et de départ. Le canal détermine le nombre de faits que vous pouvez spécifier. |
 | **items** | [ReceiptItem](#receiptitem-object)[] | Tableau d’objets **ReceiptItem** qui spécifient les articles achetés |
 | **tap** | [CardAction](#cardaction-object) | Objet **CardAction** qui spécifie l’action à effectuer si l’utilisateur appuie ou clique sur la carte. Il peut s’agir de la même action que celle d’un bouton, ou d’une action différente. |
-| **tax** | chaîne | Chaîne au format devise qui spécifie la somme de la taxe appliquée à l’achat. |
-| **title** | chaîne | Titre affiché en haut du reçu. |
-| **total** | chaîne | Chaîne au format devise qui spécifie le prix total d’un achat, y compris toutes les taxes applicables. |
-| **vat** | chaîne | Chaîne au format devise qui spécifie la somme de la TVA appliquée au prix de l’achat. |
+| **tax** | string | Chaîne au format devise qui spécifie la somme de la taxe appliquée à l’achat. |
+| **title** | string | Titre affiché en haut du reçu. |
+| **total** | string | Chaîne au format devise qui spécifie le prix total d’un achat, y compris toutes les taxes applicables. |
+| **vat** | string | Chaîne au format devise qui spécifie la somme de la TVA appliquée au prix de l’achat. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -788,22 +858,31 @@ Définit une ligne dans un reçu.<br/><br/>
 | Propriété | Type | Description |
 |----|----|----|
 | **image** | [CardImage](#cardimage-object) | Objet **CardImage** qui spécifie l’image miniature à afficher à côté de la ligne.  |
-| **price** | chaîne | Chaîne au format devise qui spécifie le prix total de toutes les unités achetées. |
-| **quantity** | chaîne | Chaîne numérique qui spécifie le nombre d’unités achetées. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la ligne. |
+| **price** | string | Chaîne au format devise qui spécifie le prix total de toutes les unités achetées. |
+| **quantity** | string | Chaîne numérique qui spécifie le nombre d’unités achetées. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la ligne. |
 | **tap** | [CardAction](#cardaction-object) | Objet **CardAction** qui spécifie l’action à effectuer si l’utilisateur appuie ou clique sur la ligne. |
-| **text** | chaîne | Description de la ligne. |
-| **title** | chaîne | Titre de la ligne. |
+| **text** | string | Description de la ligne. |
+| **title** | string | Titre de la ligne. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="resourceresponse-object"></a>Objet ResourceResponse
 Définit une réponse qui contient un ID de ressource.<br/><br/>
 
-
 |      Propriété       |  Type  |                Description                |
 |---------------------|--------|-------------------------------------------|
-| <strong>id</strong> | chaîne | ID qui identifie de façon unique la ressource. |
+| <strong>id</strong> | string | ID qui identifie de façon unique la ressource. |
+
+<a href="#objects">Retour au tableau Schéma</a>
+
+### <a name="semanticaction-object"></a>Objet SemanticAction
+Définit une référence à une action de programmation.<br/><br/>
+
+| Propriété | Type | Description |
+|----|----|----|
+| **id** | string | ID de cette action |
+| **entities** | [Entité](#entity-object) | Entités associées à cette action |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -813,7 +892,7 @@ Définit une carte qui permet à un utilisateur de se connecter à un service.<b
 | Propriété | Type | Description |
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur de se connecter à un service. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
-| **text** | chaîne | Description ou invitation à inclure dans la carte de connexion. |
+| **text** | string | Description ou invitation à inclure dans la carte de connexion. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -834,10 +913,10 @@ Définit une carte avec une miniature, un titre, du texte et des boutons d’act
 |----|----|----|
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **images** | [CardImage](#cardimage-object)[] | Tableau d’objets **CardImage** qui spécifie les images miniatures à afficher sur la carte. Le canal détermine le nombre d’images miniatures que vous pouvez spécifier. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la carte. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **tap** | [CardAction](#cardaction-object) | Objet **CardAction** qui spécifie l’action à effectuer si l’utilisateur appuie ou clique sur la carte. Il peut s’agir de la même action que celle d’un bouton, ou d’une action différente. |
-| **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
-| **title** | chaîne | Titre de la carte. |
+| **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
+| **title** | string | Titre de la carte. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -846,8 +925,17 @@ Définit l’URL de la source d’une image.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **alt** | chaîne | Description de l’image. Vous devez inclure la description pour des raisons d’accessibilité. |
-| **url** | chaîne | URL de la source de l’image ou du fichier binaire en base64 de l’image (par exemple, `data:image/png;base64,iVBORw0KGgo...`). |
+| **alt** | string | Description de l’image. Vous devez inclure la description pour des raisons d’accessibilité. |
+| **url** | string | URL de la source de l’image ou du fichier binaire en base64 de l’image (par exemple, `data:image/png;base64,iVBORw0KGgo...`). |
+
+<a href="#objects">Retour au tableau Schéma</a>
+
+### <a name="transcript-object"></a>Objet Transcript
+Collection d’activités à charger à l’aide de [Envoyer l’historique des conversations](#send-conversation-history).<br/><br/> 
+
+| Propriété | Type | Description |
+|----|----|----|
+| **activités** | array | Tableau d’objets [Activity](#activity-object). Ils doivent posséder chacun un ID unique et un horodatage. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -856,27 +944,17 @@ Définit une carte pouvant lire des vidéos.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **aspect** | chaîne | Proportions d’une vidéo (par exemple, 16:9, 4:3).|
+| **aspect** | string | Proportions d’une vidéo (par exemple, 16:9, 4:3).|
 | **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des vidéos lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement les vidéos lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
-| **duration** | chaîne | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
+| **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des vidéos à lire. |
 | **shareable** | booléenne | Indicateur qui indique si les vidéos peuvent être partagées avec d’autres utilisateurs. Définissez cette propriété sur **true** si les vidéos peuvent être partagées ; sinon, sur **false**. La valeur par défaut est **true**. |
-| **subtitle** | chaîne | Sous-titre à afficher sous le titre de la carte. |
-| **text** | chaîne | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
-| **title** | chaîne | Titre de la carte. |
+| **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
+| **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
+| **title** | string | Titre de la carte. |
 | **value** | objet | Paramètre supplémentaire de cette carte|
-
-<a href="#objects">Retour au tableau Schéma</a>
-
-### <a name="semanticaction-object"></a>Objet SemanticAction
-Définit une référence à une action de programmation.<br/><br/>
-
-| Propriété | Type | Description |
-|----|----|----|
-| **id** | chaîne | ID de cette action |
-| **entities** | [Entité](#entity-object) | Entités associées à cette action |
 
 <a href="#objects">Retour au tableau Schéma</a>

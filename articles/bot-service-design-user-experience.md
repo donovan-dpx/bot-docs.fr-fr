@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/20/2018
-ms.openlocfilehash: 0b5bc1e82b6ef2dc5550fcaa5db176d06a7d2ea7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ecccbcadab93417dd52f72512a0046e70a83e85e
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999696"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405825"
 ---
 # <a name="design-the-user-experience"></a>Concevoir l’expérience utilisateur
 
@@ -47,7 +47,7 @@ Les cartes du service Microsoft Bot sont des objets programmables contenant des 
 
 Les cartes vous permettent de concevoir votre robot, puis de le faire fonctionner sur différents canaux. Cependant, certains types de cartes ne sont pas totalement pris en charge sur tous les canaux disponibles. 
 
-Vous trouverez des instructions détaillées sur l’ajout de cartes à votre robot dans les sections [Ajouter des pièces jointes de média de carte riches](v4sdk/bot-builder-howto-add-media-attachments.md) et [Ajouter des actions suggérées aux messages](v4sdk/bot-builder-howto-add-suggested-actions.md). Vous pouvez également trouver des exemples de code pour les cartes ([C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js)), pour les cartes adaptatives ([C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code)), les pièces jointes ([C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code)) et les actions suggérées ([C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code)).
+Vous trouverez des instructions détaillées sur l’ajout de cartes à votre robot dans les sections [Ajouter des pièces jointes de média de carte riches](v4sdk/bot-builder-howto-add-media-attachments.md) et [Ajouter des actions suggérées aux messages](v4sdk/bot-builder-howto-add-suggested-actions.md). Un exemple de code est également disponible ici pour les cartes : [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js), cartes adaptatives : [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), pièces jointes : [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code) et actions suggérées : [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
 
 
 
@@ -77,7 +77,7 @@ Dans d’autres cas, un utilisateur peut **taper une commande spécifique**. Par
 > Concevoir un robot de façon à ce qu’il exige des commandes spécifiques de l’utilisateur permet souvent d’offrir une bonne expérience utilisateur, tout en éliminant la nécessité pour le robot d’être capable de comprendre le langage naturel.
 
   
-Dans le cas d’un robot de *base de connaissances* ou de *questions et réponses*, l’utilisateur peut **poser des questions générales**. Par exemple, imaginez un robot capable de répondre à des questions basées sur le contenu de milliers de documents. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> et <a href="https://azure.microsoft.com/en-us/services/search/" target="_blank">Recherche Azure</a> sont deux technologies spécifiquement conçues pour ce type de scénario. Pour plus d’informations, voir [concevoir des robots de base de connaissances](bot-service-design-pattern-knowledge-base.md).
+Dans le cas d’un robot de *base de connaissances* ou de *questions et réponses*, l’utilisateur peut **poser des questions générales**. Par exemple, imaginez un robot capable de répondre à des questions basées sur le contenu de milliers de documents. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> et <a href="https://azure.microsoft.com/services/search/" target="_blank">Recherche Azure</a> sont deux technologies spécifiquement conçues pour ce type de scénario. Pour plus d’informations, voir [concevoir des robots de base de connaissances](bot-service-design-pattern-knowledge-base.md).
 
 > [!TIP]
 > Si vous concevez un robot destiné à répondre à des questions sur la base de données, structurées ou non, extraites de bases de données, de pages web ou de documents, songez à utiliser des technologies spécifiquement conçues pour ce type de scénario au lieu d’essayer de résoudre le problème avec la fonctionnalité de compréhension du langage naturel.

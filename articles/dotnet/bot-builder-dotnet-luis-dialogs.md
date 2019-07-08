@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225374"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405662"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
@@ -34,7 +34,7 @@ Cet article prend l’exemple d’un robot servant à prendre des notes pour mon
 
 3. Dans le panneau **Bot Service**, indiquez les informations requises, puis cliquez sur **Créer**. Le service de bot et l’application LUIS sont alors déployés vers Azure. 
    * Dans **Nom de l’application**, entrez le nom de votre bot. Il sera utilisé comme sous-domaine lors du déploiement de votre bot sur le cloud (par exemple, mynotesbot.azurewebsites.net). Ce nom sert également de nom pour l’application LUIS associée à votre robot. Copiez-le pour l’utiliser ultérieurement afin de retrouver l’application LUIS associée au robot.
-   * Sélectionnez l’abonnement, le [groupe de ressources](/azure/azure-resource-manager/resource-group-overview), le plan App Service et [l’emplacement](https://azure.microsoft.com/en-us/regions/).
+   * Sélectionnez l’abonnement, le [groupe de ressources](/azure/azure-resource-manager/resource-group-overview), le plan App Service et [l’emplacement](https://azure.microsoft.com/regions/).
    * Sélectionnez le modèle **Language Understanding (C#)** pour le champ **Modèle de bot**.
 
      ![Panneau Bot Service](../media/bot-builder-dotnet-use-luis/bot-service-setting-callout-template.png)

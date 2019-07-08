@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fd7d20b71c8f6c3013e7af5c7c80623089f0dce0
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 9dd84e9e5e39e1e1b801e08fbee101dbfa8b0c49
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032905"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405679"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -85,7 +85,7 @@ En plus des réponses oralisées, Cortana peut également afficher les cartes jo
 |----|----|
 | [HeroCard][heroCard] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
 | [ThumbnailCard][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte. |
-| [ReceiptCard][receiptCard] | Carte permettant à un bot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
+| [ReceiptCard][receiptCard] | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
 | [SignInCard][signinCard] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 
 
@@ -99,7 +99,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 ## <a name="sample-rollerskill"></a>Exemple : RollerSkill
 Le code des sections suivantes provient d’un exemple de compétence Cortana pour le lancement de dés. Téléchargez le code complet du bot à partir du [dépôt BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/).
 
-Vous appelez la compétence en disant son [nom d’appel][InvocationNameGuidelines] à Cortana. Pour la compétence de lancement de dés, après avoir [ajouté le bot au canal Cortana][CortanaChannel] et l’avoir inscrit en tant que compétence Cortana, vous pouvez l’appeler en disant à Cortana : « Demande Roller » ou « Demande à Roller de lancer les dés ».
+Vous appelez la compétence en indiquant son [nom d’appel][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] et vous l’inscrivez en tant que compétence Cortana. Vous pouvez l’appeler en disant à Cortana « Demande Roller » ou « Demande à Roller de lancer les dés ».
 
 ### <a name="explore-the-code"></a>Explorer le code
 
@@ -333,7 +333,7 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 * [Référence SSML][SSMLRef]
 * [Bonnes pratiques de conception vocale pour Cortana][VoiceDesign]
 * [Bonnes pratiques de conception de cartes pour Cortana][CardDesign]
-* [Centre de développement Java][CortanaDevCenter]
+* [Centre de développement Cortana][CortanaDevCenter]
 * [Bonnes pratiques de test et de débogage pour Cortana][Cortana-TestBestPractice]
 * <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
 
@@ -341,7 +341,7 @@ Si votre bot s’exécute localement ou qu’il est déployé dans le cloud, vou
 [BFPortal]: https://dev.botframework.com/
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 307a6bf697e274391336a0d216c64da85232616d
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 0e548700e81fff5029031fd1e349cc75d9d0bc7a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033268"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464640"
 ---
 # <a name="debug-with-the-emulator"></a>Déboguer avec l’émulateur
 
@@ -26,9 +26,13 @@ L’émulateur Bot Framework est une application de bureau qui permet aux dével
 
 ![Interface utilisateur de l’émulateur](media/emulator-v4/emulator-welcome.png)
 
-Pour vous connecter à un bot qui s’exécute localement, cliquez sur **Open bot** ou sélectionnez votre fichier de configuration préconfiguré (fichier .bot). Vous n’avez pas besoin d’un fichier de configuration pour vous connecter à votre bot, mais l’émulateur en utilise quand même un si votre bot en a un. Si votre bot s’exécute avec les informations d’identification de compte Microsoft (MSA), entrez également ces informations d’identification.
+Pour vous connecter à un bot qui s’exécute localement, cliquez sur **Open bot** ou sélectionnez votre fichier de configuration préconfiguré (fichier .bot). Vous n’avez pas besoin d’un fichier de configuration pour vous connecter à votre bot, mais l’émulateur en utilise quand même un si votre bot en a un. Si votre bot s’exécute avec les [informations d’identification de compte Microsoft (MSA)](#use-bot-credentials), entrez également ces informations d’identification.
 
 ![Interface utilisateur de l’émulateur](media/emulator-v4/emulator-open-bot.png)
+
+### <a name="use-bot-credentials"></a>Utiliser les informations d’identification du bot
+
+Lorsque vous ouvrez le bot, définissez l’**ID d’application Microsoft** et le **mot de passe d’application Microsoft** si votre bot s’exécute avec des informations d’identification. Si vous avez créé votre bot avec Azure Bot Service, les informations d’identification sont disponibles sur l’App Service du bot, sous la section **Paramètres -> Configuration**. Si vous ne connaissez pas les valeurs, vous pouvez les supprimer du fichier de configuration du bot exécuté localement, puis exécuter le bot dans l’émulateur. Si le bot n’est pas en cours d’exécution avec ces paramètres, vous n’avez pas besoin d’exécuter l’émulateur avec les paramètres. 
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>Afficher l’activité de message détaillée avec l’inspecteur
 
@@ -118,7 +122,7 @@ Si vous changez d’avis, vous pouvez toujours l’activer en cochant de nouveau
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-L’émulateur Bot Framework est open source. Vous pouvez [contribuer][EmulatorGithubContribute] au développement en [envoyant des bogues et suggestions][EmulatorGithubBugs].
+L’émulateur Bot Framework est open source. Vous pouvez [contribuer][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs].
 
 Pour des informations de dépannage, consultez [Résoudre les problèmes généraux](bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
 

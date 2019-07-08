@@ -7,21 +7,21 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 1e0678d869b02d536eb5c3ce39461da94dbd9a57
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7a018855b11aa638cbad1b70b53505395ae7f5f9
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033088"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464581"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
 
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>Comment puis-je résoudre les problèmes de mon robot ?
 
-1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
+1. Déboguez le code source de votre bot avec [Visual Studio Code](debug-bots-locally-vscode.md) ou [Visual Studio](https://docs.microsoft.com/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
 1. Testez votre robot à l’aide de l’[émulateur](bot-service-debug-emulator.md) avant de le déployer sur le cloud.
-1. Déployez votre bot sur une plateforme d’hébergement cloud comme Azure, puis testez la connexion à votre bot en utilisant le contrôle Web Chat intégré sur le tableau de bord de votre bot dans le <a href="https://portal.azure.com" target="_blank">portail Azure</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/).
+1. Déployez votre bot sur une plateforme d’hébergement cloud comme Azure, puis testez la connexion à votre bot en utilisant le contrôle Web Chat intégré sur le tableau de bord de votre bot dans le <a href="https://portal.azure.com" target="_blank">portail Azure</a>. Si vous rencontrez des problèmes avec votre bot après l’avoir déployé dans Azure, consultez cet article de blog : [Understanding Azure troubleshooting and support](https://azure.microsoft.com/blog/understanding-azure-troubleshooting-and-support/).
 1. Écartez l’[authentification][TroubleshootingAuth] comme problème possible.
 1. Testez votre robot sur Skype. Vous pourrez ainsi valider l’expérience utilisateur de bout en bout.
 1. Pensez à tester votre robot sur des canaux ayant des exigences d’authentification supplémentaires, par exemple Direct Line ou Web Chat.
@@ -37,7 +37,7 @@ Pour en savoir plus sur la résolution des problèmes d’authentification de vo
 Dans Visual Studio 2017, accédez à **Débogage** > **Windows** > **Paramètres d’exception**. Dans la fenêtre **Paramètres des exceptions**, cochez la case **Pause au lancement** en regard de **Exceptions Common Language Runtime**. Vous pouvez également afficher le résultat du diagnostic dans votre fenêtre de sortie lorsque des exceptions sont lancées ou non prises en charge.
 
 **Vérifier la pile d’appels.**  
-Dans Visual Studio, vous pouvez choisir de déboguer [Uniquement mon code](https://msdn.microsoft.com/en-us/library/dn457346.aspx) ou non. L’examen de toute la pile d’appels peut fournir des renseignements supplémentaires sur les problèmes.
+Dans Visual Studio, vous pouvez choisir de déboguer [Uniquement mon code](https://msdn.microsoft.com/library/dn457346.aspx) ou non. L’examen de toute la pile d’appels peut fournir des renseignements supplémentaires sur les problèmes.
 
 **Assurez-vous que toutes les méthodes de dialogue se terminent par un programme de traitement du message suivant.**  
 Toutes les étapes du dialogue doivent alimenter l’étape suivante de la cascade ou mettre fin au dialogue actuel pour sortir de la pile. Si une étape n’est pas gérée correctement, la conversation ne continuera pas comme prévu. Consultez l’article de présentation de concept sur les [dialogues](v4sdk/bot-builder-concept-dialog.md) pour en savoir plus à ce sujet.
@@ -63,7 +63,7 @@ Si vous examinez les traces ou les journaux d’audit, vous pouvez vérifier que
 
 ## <a name="how-can-i-run-background-tasks-in-aspnet"></a>Comment puis-je exécuter des tâches en arrière-plan dans ASP.NET ? 
 
-Dans certains cas, il peut arriver que vous souhaitiez lancer une tâche asynchrone qui attende quelques secondes avant d’exécuter un code afin d’effacer le profil de l’utilisateur ou de réinitialiser l’état de la conversation ou du dialogue. Pour en savoir plus sur la façon de procéder, consultez [Comment exécuter des tâches en arrière-plan dans ASP.NET ?](https://www.hanselman.com/blog/HowToRunBackgroundTasksInASPNET.aspx). Pensez notamment à utiliser [HostingEnvironment.QueueBackgroundWorkItem](https://msdn.microsoft.com/en-us/library/dn636893(v=vs.110).aspx). 
+Dans certains cas, il peut arriver que vous souhaitiez lancer une tâche asynchrone qui attende quelques secondes avant d’exécuter un code afin d’effacer le profil de l’utilisateur ou de réinitialiser l’état de la conversation ou du dialogue. Pour en savoir plus sur la façon de procéder, consultez [Comment exécuter des tâches en arrière-plan dans ASP.NET ?](https://www.hanselman.com/blog/HowToRunBackgroundTasksInASPNET.aspx). Pensez notamment à utiliser [HostingEnvironment.QueueBackgroundWorkItem](https://msdn.microsoft.com/library/dn636893(v=vs.110).aspx). 
 
 
 ## <a name="how-do-user-messages-relate-to-https-method-calls"></a>Comment les messages utilisateur sont-ils liés aux appels de la méthode HTTPS ?
@@ -108,11 +108,11 @@ Avez-vous modifié votre mot de passe Facebook ? Le jeton d’accès sera alors 
 
 ## <a name="why-is-my-kik-bot-replying-im-sorry-i-cant-talk-right-now"></a>Pourquoi mon robot Kik répond-il « Désolé, je ne peux pas parler maintenant » ?
 
-Les robots en développement sur Kik ne peuvent compter qu’un maximum de 50 abonnés. Une fois que 50 utilisateurs différents sont connectés à votre robot, tout nouvel utilisateur qui essaie de discuter en ligne avec lui reçoit le message « Désolé, je ne peux pas parler maintenant ». Pour plus d’informations, consultez la [documentation de Kik](https://botsupport.kik.com/hc/en-us/articles/225764648-How-can-I-share-my-bot-with-Kik-users-while-in-development-).
+Les robots en développement sur Kik ne peuvent compter qu’un maximum de 50 abonnés. Une fois que 50 utilisateurs différents sont connectés à votre robot, tout nouvel utilisateur qui essaie de discuter en ligne avec lui reçoit le message « Désolé, je ne peux pas parler maintenant ». Pour plus d’informations, consultez la [documentation de Kik](https://botsupport.kik.com/hc/articles/225764648-How-can-I-share-my-bot-with-Kik-users-while-in-development-).
 
 ## <a name="how-can-i-use-authenticated-services-from-my-bot"></a>Comment puis-je utiliser les services authentifiés de mon robot ?
 
-Pour l’authentification Azure Active Directory, consultez l’ajout d’authentification [V3](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp). 
+Pour l’authentification Azure Active Directory, consultez l’ajout d’authentification [V3](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=csharp) | [V4](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-4.0&tabs=csharp). 
 
 > [!NOTE] 
 > Si vous ajoutez des fonctionnalités d’authentification et de sécurité à votre robot, vous devez vous assurer que les modèles que vous implémentez dans votre code respectent les normes de sécurité appropriées à votre application.
@@ -157,7 +157,7 @@ Pour voir comment envoyer des messages proactifs, consultez les exemples [C# V4]
 Il existe de multiples options :
 
 * Résoudre la dépendance par le biais de `Autofac` et `FiberModule.Key_DoNotSerialize`. C’est la solution la plus propre.
-* Utiliser les attributs [NonSerialized](https://msdn.microsoft.com/en-us/library/system.nonserializedattribute(v=vs.110).aspx) et [OnDeserialized](https://msdn.microsoft.com/en-us/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) afin de restaurer la dépendance à la désérialisation. C’est la solution la plus simple.
+* Utiliser les attributs [NonSerialized](https://msdn.microsoft.com/library/system.nonserializedattribute(v=vs.110).aspx) et [OnDeserialized](https://msdn.microsoft.com/library/system.runtime.serialization.ondeserializedattribute(v=vs.110).aspx) afin de restaurer la dépendance à la désérialisation. C’est la solution la plus simple.
 * Ne stockez pas cette dépendance de telle sorte qu’elle ne soit pas sérialisée. Cette solution n’est pas recommandée, bien qu’elle soit techniquement réalisable.
 * Utiliser le substitut de sérialisation par réflexion. Cette solution peut ne pas être réalisable dans certains cas et risque une sérialisation excessive.
 
@@ -224,7 +224,7 @@ builder.Update(Conversation.Container);
 
 Le service d’état permet d’avancer dans les dialogues d’une conversation de sorte qu’un utilisateur peut revenir ultérieurement dans la conversation avec un robot sans perdre sa position. À cette fin, les conteneurs de propriétés des données de robot qui sont stockés via l’API d’état ne sont pas automatiquement effacés lorsque vous modifiez le code du robot. Vous devez déterminer si les données du robot doivent être effacées ou non selon que votre code modifié est compatible ou non avec les versions antérieures de vos données. 
 
-* Si vous voulez réinitialiser manuellement la pile de dialogues et l’état de la conversation pendant le développement de votre robot, vous pouvez utiliser la commande ` /deleteprofile` afin de supprimer les données d’état. Assurez-vous d’inclure l’espace initial dans cette commande pour éviter que le canal ne l’interprète.
+* Si vous voulez réinitialiser manuellement la pile de dialogues et l’état de la conversation pendant le développement de votre robot, vous pouvez utiliser la commande `/deleteprofile` afin de supprimer les données d’état. Assurez-vous d’inclure l’espace initial dans cette commande pour éviter que le canal ne l’interprète.
 * Une fois que votre robot est déployé en production, vous pouvez adapter la version de vos données de robot de façon à ce que les données d’état associées soient effacées si vous changez de version. Avec le kit SDK Bot Framework pour Node.js, vous pouvez le faire en utilisant un middleware. Avec le kit SDK Bot Framework pour.NET, cette opération est possible en utilisant une implémentation `IPostToBot`.
 
 > [!NOTE]
@@ -253,7 +253,7 @@ Le kit SDK Bot Framework pour Node.js et le kit SDK Bot Framework pour.NET peuve
 * [Présentation du module Language Understanding (LUIS) - Microsoft Cognitive Services](https://www.youtube.com/watch?v=jWeLajon9M8) (vidéo)
 * [Session d’apprentissage avancé du module Language Understanding (LUIS) ](https://www.youtube.com/watch?v=39L0Gv2EcSk) (vidéo)
 * [Documentation LUIS](/azure/cognitive-services/LUIS/Home)
-* [Forum sur le module Language Understanding](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=LUIS) 
+* [Forum sur le module Language Understanding](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 
 ## <a name="what-are-some-community-authored-dialogs"></a>Avez-vous des exemples de dialogues créés par la communauté ?

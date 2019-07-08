@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e3bf4a6868702f24af08e69d5f07c036082ec3b6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cba67dc4da5a0b505b4f91f9cbf7fbc0a47b8974
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225234"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404804"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 
@@ -36,8 +36,8 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 | <a href="/adaptive-cards/get-started/bots">Carte adaptative</a> | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée.  Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status). |
 | [Carte d’animation][animationCard] | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | [Carte audio][audioCard] | Carte pouvant lire un fichier audio. |
-| [Carte de bannière][heroCard] | Carte contenant généralement une image de grande taille, un ou plusieurs boutons, ainsi que du texte. |
-| [Carte de miniature][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons, ainsi que du texte.|
+| [Carte de bannière][heroCard] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
+| [Carte de miniature][thumbnailCard] | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte.|
 | [Carte de reçu][receiptCard] | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
 | [Carte de connexion][signinCard] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 | [Carte vidéo][videoCard] | Carte pouvant lire des vidéos. |
@@ -149,7 +149,7 @@ Certains canaux tentent de télécharger les images avant d’afficher un messag
 To learn more about sending a typing indicator, see [How to send a typing indicator](bot-builder-nodejs-send-typing-indicator.md).
 -->
 
-Bot Framework implémente une traitement par lot pour tenter d’empêcher que les différents messages émanant du bot ne s’affichent dans le désordre. <!-- Unfortunately, not all channels can guarantee this. --> Lorsque votre bot envoie plusieurs réponses à l’utilisateur, ces différents messages sont automatiquement regroupés dans un lot et remis à l’utilisateur sous forme groupée dans le but de conserver l’ordre d’origine des messages. Ce traitement par lot automatique marque une pause de 250 ms par défaut après chaque appel de la méthode **session.send()** avant de procéder à l’appel suivant de la méthode **send()**.
+Bot Framework implémente une traitement par lot pour tenter d’empêcher que les différents messages émanant du bot ne s’affichent dans le désordre. <!-- Unfortunately, not all channels can guarantee this. --> Lorsque votre bot envoie plusieurs réponses à l’utilisateur, ces différents messages sont automatiquement regroupés dans un lot et remis à l’utilisateur sous forme groupée dans le but de conserver l’ordre d’origine des messages. Ce traitement par lot automatique marque une pause de 250 ms par défaut après chaque appel de la méthode **session.send()** avant de procéder à l’appel suivant de la méthode **send()** .
 
 Le délai du traitement par lot des messages est configurable. Pour désactiver la logique de traitement par lot automatique du Kit de développement logiciel (SDK), définissez le délai par défaut sur une valeur élevée, puis appelez manuellement la méthode **sendBatch()** avec un rappel à appeler une fois que le lot a été remis.
 
@@ -169,34 +169,34 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Aperçu des fonctionnalités du bot avec l’inspecteur de canaux][inspector]
-* <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives)
+* [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
+* <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 * [AnimationCard][animationCard]
 * [AudioCard][audioCard]
 * [HeroCard][heroCard]
 * [ThumbnailCard][thumbnailCard]
 * [ReceiptCard][receiptCard]
-* [SigninCard][signinCard]
+* [SignInCard][signinCard]
 * [VideoCard][videoCard]
 * [Message][Message]
 * [Envoyer et recevoir des pièces jointes](bot-builder-nodejs-send-receive-attachments.md)
 
 [MessageOrder]: bot-builder-nodejs-manage-conversation-flow.md#message-ordering
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[Message]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
-[animationCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
+[animationCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
 
-[audioCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
+[audioCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
 
-[heroCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
+[heroCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
 
-[thumbnailCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
+[thumbnailCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
 
-[receiptCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
+[receiptCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
 
-[signinCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
+[signinCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
 
-[videoCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
+[videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
 [inspector]: ../bot-service-channel-inspector.md

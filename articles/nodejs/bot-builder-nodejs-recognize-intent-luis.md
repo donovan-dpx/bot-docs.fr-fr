@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: acdc6053f7d666c2f086dca554efafc93c8af769
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225284"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464804"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre robot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales ou textuelles, ou **énoncés**. L’intention établit la correspondance entre les énoncés et les actions prises par le bot, par exemple l’appel à un dialogue. Un robot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Il arrive que les entités doivent respecter une intention. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
+Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre bot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales ou textuelles, ou **énoncés**. L’intention établit la correspondance entre les énoncés et les actions prises par le bot, par exemple l’appel à un dialogue. Un robot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Il arrive que les entités doivent respecter une intention. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Créer un bot Language Understanding avec Bot Service
 
@@ -34,7 +34,7 @@ Cet article prend l’exemple d’un robot servant à prendre des notes pour mon
 
 3. Dans le panneau **Bot Service**, indiquez les informations requises, puis cliquez sur **Créer**. Le service de bot et l’application LUIS sont alors déployés vers Azure. 
    * Dans **Nom de l’application**, entrez le nom de votre bot. Il sera utilisé comme sous-domaine lors du déploiement de votre bot sur le cloud (par exemple, mynotesbot.azurewebsites.net). Ce nom sert également de nom pour l’application LUIS associée à votre robot. Copiez-le pour l’utiliser ultérieurement afin de retrouver l’application LUIS associée au robot.
-   * Sélectionnez l’abonnement, le [groupe de ressources](/azure/azure-resource-manager/resource-group-overview), le plan App Service et [l’emplacement](https://azure.microsoft.com/en-us/regions/).
+   * Sélectionnez l’abonnement, le [groupe de ressources](/azure/azure-resource-manager/resource-group-overview), le plan App Service et [l’emplacement](https://azure.microsoft.com/regions/).
    * Sélectionnez le modèle **Language Understanding (Node.js)** pour le champ **Modèle de bot**.
 
      ![Panneau Bot Service](../media/bot-builder-nodejs-use-luis/bot-service-setting-callout-template.png)
@@ -86,7 +86,7 @@ Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.Re
 
 
 3.  Cliquez sur le bouton **Former** en haut à droite pour effectuer l’apprentissage de votre application.
-4.  Cliquez sur **PUBLIER** dans la barre de navigation supérieure pour ouvrir la page **Publier**. Cliquez sur le bouton **Publier à l’emplacement de production**. Après avoir effectué une publication, une application LUIS se déploie sur l’URL affichée dans la colonne **Point de terminaison** de la page **Publier l’application** et la ligne qui commence par le nom de la ressource Starter_Key. Le format de l’URL est similaire à l’exemple suivant : `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`. L’identifiant d’application et la clé d’abonnement dans cette URL sont les mêmes que LuisAppId et LuisAPIKey dans ** Paramètres Azure App Service > Paramètres de l’application > Paramètres d’application > Paramètres d’application**
+4.  Cliquez sur **PUBLIER** dans la barre de navigation supérieure pour ouvrir la page **Publier**. Cliquez sur le bouton **Publier à l’emplacement de production**. Après avoir effectué une publication, une application LUIS se déploie sur l’URL affichée dans la colonne **Point de terminaison** de la page **Publier l’application** et la ligne qui commence par le nom de la ressource Starter_Key. Le format de l’URL est similaire à l’exemple suivant : `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?subscription-key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&timezoneOffset=0&verbose=true&q=`. L’identifiant d’application et la clé d’abonnement dans cette URL sont les mêmes que LuisAppId et LuisAPIKey dans **Paramètres Azure App Service > Paramètres de l’application > Paramètres d’application > Paramètres d’application**
 
 
 ## <a name="modify-the-bot-code"></a>Modifier le code du bot
@@ -149,7 +149,7 @@ var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 bot.recognizer(recognizer);
 
 // Add a dialog for each intent that the LUIS app recognizes.
-// See https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
+// See https://docs.microsoft.com/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
 bot.dialog('GreetingDialog',
     (session) => {
         session.send('You reached the Greeting intent. You said \'%s\'.', session.message.text);
@@ -181,7 +181,7 @@ bot.dialog('CancelDialog',
 
 
 > [!TIP] 
-> Vous pouvez également trouver le code exemple décrit dans cet article dans [l’exemple de robot de prise de notes][NotesSample].
+> Vous pouvez également trouver le code exemple décrit dans cet article dans [l’exemple de bot de prise de notes][NotesSample].
 
 
 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-Toutes les entités de l’énoncé sont transmises au dialogue à l’aide du paramètre `args`. La première étape de la [cascade][waterfall] appelle [EntityRecognizer.findEntity][EntityRecognizer_findEntity] pour obtenir le titre de la note de toutes les entités `Note.Title` dans la réponse LUIS. Si l’application LUIS ne détecte pas d’entité `Note.Title`, le robot demande à l’utilisateur le nom de la note. La deuxième étape de la cascade lance une invite pour demander le texte à inclure dans la note. Une fois que le robot dispose du texte de la note, la troisième étape se sert de [session.userData][session_userData] pour enregistrer la note dans un objet `notes` en utilisant le titre comme clé. Pour plus d’informations sur `session.UserData`, consultez [Gérer les données d’état](./bot-builder-nodejs-state.md). 
+Toutes les entités de l’énoncé sont transmises au dialogue à l’aide du paramètre `args`. Première étape de la [cascade][waterfall] calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData] permettant d’enregistrer la note dans un objet `notes` en utilisant le titre comme clé. Pour plus d’informations sur `session.UserData`, consultez [Gérer les données d’état](./bot-builder-nodejs-state.md). 
 
 
 
@@ -572,40 +572,40 @@ Le test du robot permet de vérifier que la reconnaissance est capable de décle
 
 [LUIS]: https://www.luis.ai/
 
-[intentDialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
+[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
 
-[intentDialog_matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
+[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
 
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
 
-[triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
+[triggerAction]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
 
-[confirmPrompt]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
+[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
 
 [waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
 
-[session_userData]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
+[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
 
-[EntityRecognizer_findEntity]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
+[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
-[matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
+[matches]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
 [LUISAzureDocs]: /azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
+[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
 
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
 
-[LuisRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 
-[LUISConcepts]: https://docs.botframework.com/en-us/node/builder/guides/understanding-natural-language/
+[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
 
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
 
-[IDisambiguateRouteHandler]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
+[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
 
-[RegExpRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
+[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
 
 [AlarmBot]: https://aka.ms/v3-js-luisSample
 
-[UniversalBot]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
+[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html

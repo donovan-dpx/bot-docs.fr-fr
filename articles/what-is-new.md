@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c8284bf1a78c4f8dd9fb5cc3dcb346ac99ad936
-ms.sourcegitcommit: 710d279898db587abb1e81d13628177a4e182293
+ms.openlocfilehash: 2894ed29aa6d17089b9287ba4c4819571d18befd
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66751299"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405985"
 ---
 # <a name="whats-new-in-bot-framework"></a>Nouveautés dans Bot Framework
 
@@ -29,7 +29,7 @@ Cet article résume les nouvelles fonctionnalités et les améliorations clés d
 |---|:---:|:---:|:------:|:-----:|
 |Kit SDK |[4.4.3][1] | [4.4.0][2] | [4.4.0b1 (préversion)][3] | [4.0.0a6 (préversion)][3a]|
 |Docs | [docs][5] |[docs][5] |  | |
-|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+|Exemples |[.Net Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
 
 [1a]:https://github.com/microsoft/botframework-sdk/#readme
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
@@ -37,7 +37,7 @@ Cet article résume les nouvelles fonctionnalités et les améliorations clés d
 [3]:https://github.com/Microsoft/botbuilder-python#packages
 [3a]:https://github.com/Microsoft/botbuilder-java#packages
 [4]:https://github.com/Microsoft/botbuilder-java#packages
-[5]:https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0
+[5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
 [6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
 [7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
 [8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_typescript
@@ -48,11 +48,11 @@ Cet article résume les nouvelles fonctionnalités et les améliorations clés d
 <a name="V4-whats-new"></a>
 ## <a name="bot-framework-sdk-new-in-preview"></a>Kit SDK Bot Framework (Nouveau ! En préversion)
 
-- [Dialogue adaptatif][47] | [docs][48] | [Exemples C#][49] : Les dialogues adaptatifs permettent aux développeurs de générer des conversations qui peuvent être modifiées dynamiquement au fur et à mesure que la conversation progresse.  Traditionnellement, les développeurs ont mappé le flux entier d’une conversation en amont, ce qui limite la flexibilité de la conversation.  Les dialogues adaptatifs leur permettent d’être plus flexibles, pour répondre aux changements de contexte et insérer de nouvelles étapes ou des dialogues secondaires complets dans la conversation au fur et à mesure qu’elle progresse. 
+- [Boîte de dialogue adaptive][47] | [docs][48] | [Exemples C#][49] : Les dialogues adaptatifs permettent aux développeurs de générer des conversations qui peuvent être modifiées dynamiquement au fur et à mesure que la conversation progresse.  Traditionnellement, les développeurs ont mappé le flux entier d’une conversation en amont, ce qui limite la flexibilité de la conversation.  Les dialogues adaptatifs leur permettent d’être plus flexibles, pour répondre aux changements de contexte et insérer de nouvelles étapes ou des dialogues secondaires complets dans la conversation au fur et à mesure qu’elle progresse. 
 
-- [Génération de langage][43] | [docs][44] | [Exemples C#][45] : La génération de langage permet au développeur d’extraire les chaînes incorporées à partir de leurs fichiers de code et de ressources, et de les gérer via un runtime de génération de langage et un format de fichier.  La génération de langage permet aux clients de définir plusieurs variantes d’une expression, d’exécuter des expressions simples en fonction du contexte, de faire référence à la mémoire conversationnelle et, au fil du temps, nous permettra d’apporter des capacités supplémentaires favorisant toutes une expérience de conversation plus naturelle.
+- [Génération de langage][43] | [docs][44] | [Exemples C#][45] : La génération de langage permet au développeur d’extraire les chaînes incorporées à partir de leurs fichiers de code et de ressources, et de les gérer via un runtime de génération de langage et un format de fichier.  La génération de langage permet aux clients de définir plusieurs variantes d’une expression, d’exécuter des expressions simples en fonction du contexte, de faire référence à la mémoire conversationnelle et, au fil du temps, nous permettra d’apporter des capacités supplémentaires favorisant toutes une expérience de conversation plus naturelle.
 
-- [Langage d’expression commun][40] | [api][41] : Les dialogues adaptatifs et la génération de langage s’appuient sur un langage d’expression commun pour dynamiser les conversations de bot.
+- [Langage d’expression commun][40] | [api][41] : Les dialogues adaptatifs et la génération de langage s’appuient sur un langage d’expression commun pour dynamiser les conversations de bot.
 
 [40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
 [41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
@@ -92,24 +92,24 @@ Le [dépôt Bot Framework Solutions](https://github.com/Microsoft/AI#readme) pro
 |[**Analytics**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| Obtenez des informations clés sur la santé de votre bot et son comportement avec les solutions AI Analytics conversationnelles. Passez en revue les données de télémétrie disponibles, les exemples de requêtes Application Insights et les tableaux de bord Power BI pour comprendre tout l’éventail de conversations de votre bot avec les utilisateurs. |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
-Azure Bot Service vous permet d’héberger des bots intelligents de classe Entreprise avec la propriété et le contrôle complets de vos données. Les développeurs peuvent s’inscrire et connecter leurs bots aux utilisateurs Skype, Microsoft Teams, Cortana, Web Chat, etc. [Azure][27]  |  [docs][28] | [se connecter aux canaux][29] 
+Azure Bot Service vous permet d’héberger des bots intelligents de classe Entreprise avec la propriété et le contrôle complets de vos données. Les développeurs peuvent s’inscrire et connecter leurs bots aux utilisateurs Skype, Microsoft Teams, Cortana, Web Chat, etc. [Azure][27]  |  [docs][28] | [Se connecter aux canaux][29] 
 
 * **Client Direct Line JS** : Si vous souhaitez utiliser le canal Direct Line dans Azure Bot Service et que vous n’utilisez pas le client WebChat, le client Direct Line JS peut être utilisé dans votre application personnalisée. Accédez à [GitHub][30] pour plus d’informations.
 
 <a name="ABS-whats-new"></a>
 
-* **Nouveau ! Canal Direct Line Speech** : Nous avons rassemblé Bot Framework et les services Microsoft Speech pour fournir un canal permettant le streaming bidirectionnel de la parole et du texte, du client vers l’application de bot.  Pour plus d’informations, consultez la façon d’ajouter un [canal vocal à votre bot](https://docs.microsoft.com/en-us/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0).
+* **Nouveau ! Canal Direct Line Speech** : Nous avons rassemblé Bot Framework et les services Microsoft Speech pour fournir un canal permettant le streaming bidirectionnel de la parole et du texte, du client vers l’application de bot.  Pour plus d’informations, consultez la façon d’ajouter un [canal vocal à votre bot](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0).
 
-[27]:https://azure.microsoft.com/en-us/services/bot-service/
-[28]:https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0
-[29]:https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0
+[27]:https://azure.microsoft.com/services/bot-service/
+[28]:https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0
+[29]:https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0
 [30]:https://github.com/Microsoft/BotFramework-DirectLineJS/blob/master/README.md
 
 
 ## <a name="bot-framework-emulator"></a>Émulateur de Bot Framework
 [Bot Framework Emulator][60] est une application de bureau multiplateforme qui permet aux développeurs de bots de tester et de déboguer les bots créés à l’aide du kit SDK Bot Framework. Vous pouvez utiliser Bot Framework Emulator pour tester des bots qui s’exécutent localement sur votre machine ou pour vous connecter à des bots qui s’exécutent à distance.
 
-- [Télécharger le dernier][61] | [Docs][62]
+- [Télécharger le plus récent][61] | [Docs][62]
 
 <a name="Emulator-whats-new"></a>
 ### <a name="bot-inspector-new-in-preview"></a>Bot Inspector (Nouveau ! En préversion)
@@ -118,7 +118,7 @@ Bot Framework Emulator a publié une version bêta de la nouvelle fonctionnalit�
 
 [60]:https://github.com/Microsoft/BotFramework-Emulator#readme
 [61]:https://github.com/Microsoft/BotFramework-Emulator/releases/latest
-[62]:https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0
+[62]:https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0
 
 
 ## <a name="related-services"></a>Services connexes
@@ -132,13 +132,13 @@ Service basé sur le machine learning permettant de générer des expériences d
 
 - **Nouveau ! Tableau de bord d’analyse** : Le service LUIS publie un tableau de bord d’analyse plus détaillé, complet et visuellement riche. Sa conception conviviale met en évidence les problèmes courants auxquels la plupart des utilisateurs sont confrontés lors de la conception d’applications, en fournissant des explications simples sur la façon de les résoudre pour aider les utilisateurs à obtenir plus d’informations sur la qualité de leurs modèles, les problèmes potentiels liés aux données et des conseils pour adopter de bonnes pratiques.
 
-[Docs][31] | [Ajouter la compréhension du langage naturel à votre bot][32] 
+[Docs][31] | [Add language understanding to your bot][32] 
 
 [18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
 [19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
 [30]:https://www.luis.ai
-[31]:https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/Home
-[32]:https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=csharp
+[31]:https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
+[32]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=csharp
 
 ### <a name="qna-maker"></a>QnA Maker
 [QnA Maker][33] est un service d’API cloud qui crée une couche conversationnelle de questions-réponses sur vos données. Avec QnA Maker, vous pouvez générer, entraîner et publier en quelques minutes un bot de questions-réponses simple reposant sur des URL de FAQ, des documents structurés, des manuels de produit ou des contenus éditoriaux.
@@ -149,14 +149,14 @@ Service basé sur le machine learning permettant de générer des expériences d
 - **Nouveau ! Intelligence** : Modèles de classement contextuel, suggestions d’apprentissage actif
 - **Nouveau ! Conversation** : Conversations multitours dans QnA Maker.
 
-[Docs][34]  | [ajouter qnamaker à votre bot][35] 
+[Docs][34]  | [add qnamaker to your bot][35] 
 
 [33]:https://www.qnamaker.ai/
 [34]:https://aka.ms/qnamaker-docs-home
-[35]:https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
+[35]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
 
 ### <a name="speech-services"></a>Services Speech
-Les [services Speech](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/) convertissent du contenu audio en texte, effectuent une traduction vocale et convertissent du texte en parole avec les services vocaux unifiés. Vous pouvez utiliser les services vocaux pour intégrer la parole dans votre bot, créer des mots déclencheurs personnalisés et créer du contenu dans plusieurs langues.
+Les [services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) convertissent du contenu audio en texte, effectuent une traduction vocale et convertissent du texte en parole avec les services vocaux unifiés. Vous pouvez utiliser les services vocaux pour intégrer la parole dans votre bot, créer des mots déclencheurs personnalisés et créer du contenu dans plusieurs langues.
 
 ### <a name="adaptive-cards"></a>Cartes adaptatives
 Les [cartes adaptatives](https://adaptivecards.io) sont un standard ouvert qui permet aux développeurs d’échanger le contenu de la carte de manière commune et cohérente. Elles sont utilisées par les développeurs de Bot Framework pour créer des expériences conversationnelles exceptionnelles via plusieurs canaux.

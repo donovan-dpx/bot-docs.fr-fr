@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: d41c2c24ed38fffe76cd73a6bb8a685d3861ac55
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fee70da7288b3214ff7f384998a69b40f91b3226
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000426"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464518"
 ---
 # <a name="configure-adaptive-cards"></a>Configurer des cartes adaptatives
 > [!IMPORTANT]
@@ -41,19 +41,19 @@ Des cartes adaptatives peuvent contenir des formulaires d’entrée. Dans Conver
 
 L’extrait de code ci-dessous montre comment l’entité **myName** est définie dans le code :
 
-``javascript
+```javascript
 {
    "type": "Input.Text",
    "id": "myName",
    "placeholder": "Last, First"
 }
-``
+```
 
 De plus, si un champ a un id `@task`, la valeur du champ est utilisée comme nom de tâche. Lorsque ce champ est déclenché (par exemple sur un clic de bouton), la tâche nommée est exécutée. 
 
 Prenons, par exemple, cet extrait de code :
 
-``javascript
+```javascript
 {
   'type': 'Action.Submit',
   'title': 'Search',
@@ -62,7 +62,7 @@ Prenons, par exemple, cet extrait de code :
     '@task': 'Hotel Search'
   }
 }
-``
+```
 
 Quand l’utilisateur clique sur ce bouton, une action d’envoi est déclenchée et le `context.sticky` est défini sur `Hotel Search`. Cela entraîne l’exécution de la tâche **Recherche d’hôtel**. Pour utiliser cette fonctionnalité, assurez-vous que le `@task` correspond à un nom de tâche que vous avez défini dans Conversation Designer.
 
@@ -72,7 +72,7 @@ Les cartes adaptatives prennent en charge la résolution de génération de lang
 * `entityName` utilise des entités à l’intérieur de la carte.
 * `responseTemplateName` utilise des modèles de réponses simples ou conditionnelles à l’intérieur de la carte.
 
-Vous en apprendrez davantage sur les cartes adaptatives à l’emplacement suivant TODO : insérer un lien d’accès à la documentation relative au schéma des cartes adaptatives -->
+Vous en apprendrez davantage sur les cartes adaptatives à l’emplacement suivant TODO : insérer un lien d’accès à la documentation relative au schéma des cartes adaptatives -->
 
 ## <a name="sample-adaptive-card-payload"></a>Exemple de charge utile de carte adaptative
 

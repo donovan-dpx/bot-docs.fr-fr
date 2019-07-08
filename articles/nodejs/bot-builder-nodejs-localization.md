@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224394"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404904"
 ---
 # <a name="support-localization"></a>Localisation de la prise en charge
 
@@ -119,7 +119,7 @@ La capture d’écran suivante montre la structure de répertoire d’un bot qui
 
 La structure du fichier est un simple mappage JSON d’ID de message à des chaînes de texte localisé. Si la valeur est un tableau plutôt qu’une chaîne, une invite à partir du tableau est choisi au hasard lorsque cette valeur est récupérée au moyen de [session.localizer.gettext()][GetText]. 
 
-Le bot récupère automatiquement la version localisée d’un message si vous transmettez l’ID de message dans un appel à [session.send()](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send) au lieu du texte propre à la langue :
+Le bot récupère automatiquement la version localisée d’un message si vous transmettez l’ID de message dans un appel à [session.send()](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send) au lieu du texte propre à la langue :
 
 ```javascript
 var bot = new builder.UniversalBot(connector, [
@@ -134,7 +134,7 @@ var bot = new builder.UniversalBot(connector, [
 ]);
 ```
 
-En interne, le kit SDK appelle [`session.preferredLocale()`][preferredLocale] pour obtenir les paramètres régionaux par défaut de l’utilisateur, afin de les utiliser ensuite dans un appel à [`session.localizer.gettext()`][GetText] pour mapper l’ID de message à sa chaîne de texte localisé.  Parfois, vous pouvez être amené à appeler manuellement le localisateur. Par exemple, les valeurs enum transmises à [`Prompts.choice()`][promptsChoice] ne sont jamais automatiquement localisées, vous pouvez donc avoir besoin de récupérer manuellement une liste localisée avant l’appel à l’invite :
+En interne, le kit SDK appelle [`session.preferredLocale()`][preferredLocale] to get the user's preferred locale and then uses that in a call to [`session.localizer.gettext()`][GetText] pour mapper l’ID de message à sa chaîne de texte localisé.  Parfois, vous pouvez être amené à appeler manuellement le localisateur. Par exemple, les valeurs enum transmises à [`Prompts.choice()`][promptsChoice] ne sont jamais automatiquement localisées, vous pouvez donc avoir besoin de récupérer manuellement une liste localisée avant l’appel à l’invite :
 
 ```javascript
 var options = session.localizer.gettext(session.preferredLocale(), "choice_options");
@@ -159,14 +159,14 @@ Pour savoir comment localiser un module de reconnaissance, consultez [Reconnaiss
 
 
 [LUIS]: https://www.luis.ai/
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
-[IntentRecognizerSetOptions]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-[LUISRecognizer]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
+[LUISRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
 [LUISSample]: https://aka.ms/v3-js-luisSample
 [DisambiguationSample]: https://aka.ms/v3-js-onDisambiguateRoute
-[preferredLocal]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[preferredLocale]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
-[promptsChoice]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
-[GetText]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
+[preferredLocal]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[preferredLocale]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#preferredlocale
+[promptsChoice]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.__global.iprompts.html#choice
+[GetText]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ilocalizer.html#gettext
 [IEFT]: https://en.wikipedia.org/wiki/IETF_language_tag
 

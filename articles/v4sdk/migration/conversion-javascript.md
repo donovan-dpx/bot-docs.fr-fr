@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
+ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215602"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67344589"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Migrer un bot du kit SDK JavaScript v3 vers v4
 
@@ -489,7 +489,7 @@ Dans v4, les bots peuvent réagir aux activités en dehors du système de dialog
 
 Renommez **./bot.js** en **./bots/reservationBot.js**, puis modifiez-le.
 
-1. Le fichier importe déjà **ActivityHandler**, qui fournit une implémentation de base d’un bot.
+1. Le fichier importe déjà `ActivityHandler`, qui fournit une implémentation de base d’un bot.
 
     ```javascript
     const { ActivityHandler } = require('botbuilder');
@@ -634,3 +634,5 @@ Rubriques de procédures v4 :
 - [Envoyer et recevoir des SMS](../bot-builder-howto-send-messages.md)
 - [Enregistrer les données d’utilisateur et de conversation](../bot-builder-howto-v4-state.md)
 - [Implémenter des flux de conversation séquentiels](../bot-builder-dialog-manage-conversation-flow.md)
+- [Déboguer avec l’émulateur](../../bot-service-debug-emulator.md)
+- [Ajouter la télémétrie à votre bot](../bot-builder-telemetry.md)
