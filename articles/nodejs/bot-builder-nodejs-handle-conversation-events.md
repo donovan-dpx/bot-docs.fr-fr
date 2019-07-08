@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 91fd349173dfe469c7b71bc84b8adf9c19e07277
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64564060"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404909"
 ---
 # <a name="handle-user-and-conversation-events"></a>Gérer les événements utilisateur et de conversation
 
@@ -44,21 +44,21 @@ Dans l’exemple suivant, nous avons ajouté une fonction qui déclenche l’aff
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-Vous pouvez également personnaliser ce que fait une action après son déclenchement en fournissant un descripteur [onSelectAction][onSelectAction]. Pour les actions de déclencheur, vous pouvez fournir un descripteur [onInterrupted][onInterrupted] pour intercepter une interruption avant qu’elle ne se produise. Pour plus d’informations, consultez l’article [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).
+Vous pouvez également personnaliser ce que fait une action après son déclenchement en fournissant un descripteur [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted]. Pour plus d’informations, consultez l’article [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [conversationUpdate][conversationUpdate]
 * [contactRelationUpdate][contactRelationUpdate]
 
-[conversationUpdate]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iconversationupdate.html
-[contactRelationUpdate]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.icontactrelationupdate.html
+[conversationUpdate]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iconversationupdate.html
+[contactRelationUpdate]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.icontactrelationupdate.html
 
-[onFindAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#onfindaction
-[onSelectAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#onselectaction
-[onInterrupted]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#oninterrupted
+[onFindAction]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#onfindaction
+[onSelectAction]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#onselectaction
+[onInterrupted]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions#oninterrupted
 
-[SendTyping]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#sendtyping
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
-[ChatConnector]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
-[session_userData]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
+[SendTyping]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#sendtyping
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
+[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata

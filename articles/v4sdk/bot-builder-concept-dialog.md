@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f726587c02315a1d2c0d7910fafabbd4577c73d
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 049d0d39d6e1d64e44f743ea7558bbc23ad0f2f5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215515"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464770"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -59,7 +59,7 @@ Les invites, au sein de la bibliothèque de dialogues, offrent un moyen simple d
 
 Dans les coulisses, les invites constituent une boîte de dialogue en deux étapes. Tout d’abord, l’invite demande une entrée. Ensuite, elle retourne la valeur valide ou redémarre depuis le début avec une nouvelle invite.
 
-Les invites comportent des *options* qui sont proposées lorsqu’elles sont appelées. Ces options vous permettent de spécifier le texte des invites, les invites de nouvelle tentative en cas d’échec de validation et les possibilités de réponse.
+Les invites comportent des *options* qui sont proposées lorsqu’elles sont appelées. Ces options vous permettent de spécifier le texte des invites, les invites de nouvelle tentative en cas d’échec de validation et les possibilités de réponse. En règle générale, les propriétés prompt et retry prompt sont des activités, bien qu’il existe des variantes sur la façon dont cela est géré par les différents langages de programmation.
 
 De plus, vous pouvez choisir d’ajouter une validation personnalisée pour votre invite au moment où vous la créez. Par exemple, supposons que nous voulions obtenir une taille, à l’aide d’une invite numérique, devant être supérieure à 2 mais inférieure à 12. L’invite commence par vérifier si elle a reçu un nombre valide, puis elle exécute la validation personnalisée si elle existe. Si la validation personnalisée échoue, l’utilisateur reçoit une nouvelle invite comme ci-dessus.
 
@@ -108,6 +108,40 @@ Le contexte d’étape en cascade contient les éléments suivants :
 * *Résultat* : contient le résultat de l’étape précédente.
 
 De plus, la méthode *next* passe à l’étape suivante du dialogue en cascade au sein du même tour, ce qui permet à votre bot d’ignorer une certaine étape si nécessaire.
+
+#### <a name="prompt-options"></a>Options d’invite
+
+Le deuxième paramètre de la méthode _prompt_ du contexte pas à pas prend un objet _prompt options_ qui possède les propriétés suivantes.
+
+| Propriété | Description |
+| :--- | :--- |
+| _Prompt_ | L’activité initiale à envoyer à l’utilisateur, pour demander son entrée. |
+| _Invite de nouvelle tentative_ | L’activité à envoyer à l’utilisateur si sa première entrée n’a pas été validée. |
+| _Choices_ | Une liste des choix que l’utilisateur peut sélectionner, pour une utilisation avec une invite de choix. |
+| _Validations_ | Paramètres supplémentaires à utiliser avec un validateur personnalisé. |
+| _Style_ | Définit la façon dont les choix d’une invite de choix ou de confirmation seront présentés à un utilisateur. | 
+
+Vous devez toujours spécifier l’activité d’invite initiale à envoyer à l’utilisateur, ainsi qu’une invite de nouvelle tentative pour les cas où l’entrée de l'utilisateur n’est pas valide. 
+
+Si l’entrée de l’utilisateur n’est pas valide, l’invite de nouvelle tentative est envoyée à l’utilisateur ; s’il n'y a pas eu de nouvelle tentative spécifiée, alors l’invite initiale est renvoyée. Toutefois, si une activité est renvoyée à l’utilisateur à partir du validateur, aucune demande de nouvelle tentative n’est envoyée. 
+
+##### <a name="prompt-validation"></a>Validation de l’invite 
+
+Vous pouvez valider la réponse à une invite avant de retourner la valeur à l’étape suivante de la cascade. Une fonction du validateur possède un paramètre de _contexte de validateur d’invite_ et retourne une valeur booléenne indiquant si l’entrée passe la validation.
+Le contexte de validateur d’invite inclut les propriétés suivantes :
+
+| Propriété | Description |
+| :--- | :--- |
+| _Contexte_ | Le contexte de tour actuel pour le bot. |
+| _Reconnu_ | Un _résultat du module de reconnaissance de l’invite_ qui contient des informations sur l’entrée de l’utilisateur, comme traitées par le module de reconnaissance. |
+| _Options_ | Contient les _options de l’invite_ qui ont été fournies dans l’appel pour démarrer l’invite. |
+
+Le résultat du module de reconnaissance de l’invite a les propriétés suivantes :
+
+| Propriété | Description |
+| :--- | :--- |
+| _Réussi_ | Indique si le module de reconnaissance a été en mesure d’analyser l’entrée. |
+| _Valeur_ | La valeur renvoyée du module de reconnaissance. Si nécessaire, le code de validation peut modifier cette valeur. |
 
 ### <a name="component-dialog"></a>Dialogue composant
 

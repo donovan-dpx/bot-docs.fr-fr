@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 138f3c943fc6c4a7882e808c3f280d4ebe04f62f
+ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693729"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153080"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Implémenter un stockage personnalisé pour votre bot
 
@@ -114,7 +114,8 @@ Une fois la clé appropriée créée, nous tenterons de charger l’état corres
 
 L’implémentation de OnTurn qui en résulte ressemble à ceci :
 
-**ScaleoutBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
+**ScaleoutBot.cs**  
+[!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
 
 Notez que nous avons modélisé l’exécution de la boîte de dialogue en un appel de fonction. Une implémentation plus sophistiquée aurait défini une interface et aurait permis l’injection de dépendances, mais dans notre cas, le fait d’avoir la boîte de dialogue derrière une fonction statique met l’accent sur la nature fonctionnelle de notre approche. En tant qu’instruction générale, l’organisation de notre implémentation de sorte que les parties cruciales deviennent fonctionnelles nous place très bien lorsqu’il s’agit de le faire fonctionner correctement sur les réseaux.
 
@@ -124,7 +125,8 @@ Notez que nous avons modélisé l’exécution de la boîte de dialogue en un ap
 La condition suivante est que nous mettions en mémoire tampon les activités sortantes jusqu’à obtenir un enregistrement terminé avec succès. Cela nécessite l’implémentation personnalisée de BotAdapter. Dans ce code, nous implémenterons la fonction SendActivity abstraite pour ajouter l’activité à une liste au lieu de l’envoyer. La boîte de dialogue que nous allons héberger sera non-the-wiser.
 Dans ce scénario particulier, les opérations UpdateActivity et DeleteActivity ne sont pas prises en charge et elles lèveront donc la valeur Pas implémenté à partir de ces méthodes. En outre, nous ne nous soucions pas de la valeur renvoyée à partir de SendActivity. Elle est utilisée par certains canaux dans des scénarios où les mises à jour des activités doivent être envoyées, par exemple, pour désactiver les boutons sur les cartes affichées dans le canal. Ces échanges de message peuvent devenir complexes, en particulier lorsque l’état est obligatoire, ce qui est hors de portée de cet article. L’implémentation complète du BotAdapter personnalisé ressemble à ceci :
 
-**DialogHostAdapter.cs** [!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
+**DialogHostAdapter.cs**  
+[!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
 
 ## <a name="integration"></a>Intégration
 
@@ -136,11 +138,13 @@ Nous sommes très prudents dans l’organisation en couches, nous plaçons le Js
 
 Voici le code du pilote :
 
-**DialogHost.cs** [!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
+**DialogHost.cs**  
+[!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
 
 Et enfin, l’accesseur personnalisé, il nous suffit d’implémenter Get, car l’état est par référence :
 
-**RefAccessor.cs** [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
+**RefAccessor.cs**  
+[!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
 ## <a name="additional-information"></a>Informations supplémentaires
 L’[exemple de code C#](http://aka.ms/scale-out) utilisé dans cet article est disponible sur GitHub.

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1911a5b0f8e8f8b53de6f661c0a939767df1efbb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ac74fff5fa7635bf0ef585423b0f8663a1df41c4
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224694"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404835"
 ---
 # <a name="send-and-receive-attachments"></a>Envoyer et recevoir des pièces jointes
 
@@ -31,7 +31,7 @@ Un échange de messages entre l’utilisateur et le bot peut contenir des pièce
 * **Cartes** : vous pouvez envoyer un ensemble complet de cartes visuelles <!-- and custom keyboards --> en affectant à **contentType** le type de carte souhaité, puis en passant le JSON pour la carte. Si vous utilisez l’une des classes du générateur de cartes enrichies comme **HeroCard**, la pièce jointe est automatiquement renseignée pour vous. Consultez [Envoyer une carte enrichie](bot-builder-nodejs-send-rich-cards.md) pour obtenir un exemple.
 
 ## <a name="add-a-media-attachment"></a>Ajouter une pièce jointe multimédia
-L’objet du message est censé être une instance d’un [IMessage][IMessage] et il est particulièrement utile d’envoyer à l’utilisateur un message en tant qu’objet quand vous souhaitez inclure une pièce jointe comme une image. Utilisez la méthode [session.send()][SessionSend] pour envoyer des messages sous la forme d’un objet JSON. 
+L’objet de message est censé être une instance d’une méthode [IMessage][IMessage] and it's most useful to send the user a message as an object when you’d like to include an attachment like an image. Use the [session.send()][SessionSend] permettant d’envoyer des messages sous la forme d’un objet JSON. 
 
 ## <a name="example"></a>Exemples
 
@@ -62,13 +62,13 @@ var bot = new builder.UniversalBot(connector, function (session) {
 ```
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Aperçu des fonctionnalités du bot avec l’inspecteur de canaux][inspector]
+* [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
 * [IMessage][IMessage]
 * [Envoyer une carte enrichie][SendRichCard]
 * [session.send][SessionSend]
 
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 [SendRichCard]: bot-builder-nodejs-send-rich-cards.md
-[SessionSend]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#send
-[IAttachment]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iattachment.html
+[SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#send
+[IAttachment]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iattachment.html
 [inspector]: ../bot-service-channel-inspector.md
