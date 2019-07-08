@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
-ms.openlocfilehash: 54be82eb263c2189fd6bb7a0dc4018b9ecf5c2f2
-ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
+ms.openlocfilehash: 57efc2f1d137988792d9484d7f1f857bd193ecfa
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56893499"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405783"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -61,6 +61,10 @@ Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par A
 - Si vous avez déjà des bots du SDK V3 du Bot Framework en production, ne vous inquiétez pas, ils continueront de fonctionner de la même façon dans un avenir prévisible.
 - Vous pouvez créer des bots avec le SDK V4 du Bot Framework et avec le SDK V3 plus ancien dans le portail Azure et la ligne de commande Azure. 
 
+### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Comment puis-je migrer Azure Bot Service d’une région à une autre ?
+
+Azure Bot Service ne prend pas en charge le déplacement entre régions. Il s’agit d’un service mondial qui n’est lié à aucune région spécifique.
+
 ## <a name="channels"></a>Canaux
 ### <a name="when-will-you-add-more-conversation-experiences-to-the-bot-framework"></a>Quand allez-vous ajouter des expériences de conversation au Bot Framework ?
 
@@ -69,13 +73,39 @@ Si vous souhaitez que nous ajoutions un canal spécifique à l’infrastructure,
 
 ### <a name="i-have-a-communication-channel-id-like-to-be-configurable-with-bot-framework-can-i-work-with-microsoft-to-do-that"></a>J’aimerais pouvoir configurer un canal de communication spécifique avec le Bot Framework. Puis-je travailler avec Microsoft à cette fin ?
 
-Nous n’avons pas fourni aux développeurs de mécanisme général pour ajouter de nouveaux canaux au Bot Framework. Cependant, vous pouvez connecter votre bot à votre application par le biais de [l’API Direct Line][DirectLineAPI]. Si vous développez un canal de communication et que vous souhaitez travailler avec nous pour activer votre canal dans le Bot Framework, [n’hésitez pas à nous contacter][Support].
+Nous n’avons pas fourni aux développeurs de mécanisme général pour ajouter de nouveaux canaux au Bot Framework. Cependant, vous pouvez connecter votre bot à votre application par le biais de [l’API Direct Line][DirectLineAPI]. If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you][Support].
 
-### <a name="if-i-want-to-create-a-bot-for-skype-what-tools-and-services-should-i-use"></a>Quels outils et services dois-je utiliser pour créer un bot pour Skype ?
+### <a name="if-i-want-to-create-a-bot-for-microsoft-teams-what-tools-and-services-should-i-use"></a>Quels outils et services dois-je utiliser pour créer un bot pour Microsoft Teams ?
 
-Le Bot Framework est conçu pour générer, connecter et déployer des bots réactifs, performants et évolutifs de haute qualité pour Skype et de nombreux autres canaux. Vous pouvez utiliser le Kit de développement logiciel (SDK) pour créer des bots prenant en charge le texte, les sms, les images, les boutons et les cartes (utilisés aujourd’hui pour la majorité des interactions de bot dans le cadre d’expériences conversationnelles), ainsi que des interactions de bot spécifiques à Skype, comme des expériences audio et vidéo enrichies.
+Le Bot Framework est conçu pour générer, connecter et déployer des bots réactifs, performants et évolutifs de haute qualité pour Teams et de nombreux autres canaux. Vous pouvez utiliser le Kit de développement logiciel (SDK) pour créer des bots prenant en charge le texte, les sms, les images, les boutons et les cartes (utilisés aujourd’hui pour la majorité des interactions de bot dans le cadre d’expériences conversationnelles), ainsi que des interactions de bot spécifiques à Teams, comme des expériences audio et vidéo enrichies.
 
-Si vous disposez déjà d’un excellent bot et que vous souhaitez toucher les utilisateurs de Skype, vous pouvez le connecter facilement à Skype (ou à tout autre canal pris en charge) par le biais de l’API REST Bot Framework (dans la mesure où il dispose d’un point de terminaison REST accessible par Internet).
+Si vous disposez déjà d’un excellent bot et que vous souhaitez toucher les utilisateurs de Teams, vous pouvez le connecter facilement à Teams (ou à tout autre canal pris en charge) par le biais de l’API REST Bot Framework (dans la mesure où il dispose d’un point de terminaison REST accessible par Internet).
+
+### <a name="how-do-i-create-a-bot-that-uses-the-us-government-data-center"></a>Comment créer un bot qui utilise le centre de données US Government ?
+
+La création d’un bot utilisant un centre de données US Government doit comporter deux étapes principales.
+1. Ajouter un paramètre « channel provider » dans votre fichier appsettings.json (ou les paramètres App Service). Cette opération doit être définie pour cette constante nom/valeur : ChannelService = "https://botframework.azure.us ". Vous trouverez ci-dessous un exemple d’utilisation du fichier appsetting.json.
+
+```json
+{
+  "MicrosoftAppId": "", 
+  "MicrosoftAppPassword": "",
+  "ChannelService": "https://botframework.azure.us"
+}
+```
+2. Si vous utilisez .NET Core, vous devez ajouter un ConfigurationChannelProvider dans votre fichier startup.cs. La procédure à suivre dépend de la version du Kit de développement que vous utilisez.
+
+- Pour les versions 4.3 et ultérieures, vous devez créer une instance ConfigurationChannelProvider dans votre méthode ConfigureServices. Lorsque vous utilisez la classe BotFrameworkHttpAdapter, vous injectez ces informations en tant que singleton dans la collection de services comme suit :
+
+```csharp  
+services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>();
+```
+- Pour les versions antérieures à la version 4.3, dans votre méthode ConfigureServices, recherchez la méthode AddBot. Lorsque vous définissez les options, assurez-vous d’ajouter ce qui suit :
+
+```csharp
+options.ChannelProvider = new ConfigurationChannelProvider();
+```
+Pour plus d’informations sur les services du secteur public, [cliquez ici](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-aiandcognitiveservices#azure-bot-service)
 
 ## <a name="security-and-privacy"></a>Sécurité et confidentialité
 ### <a name="do-the-bots-registered-with-the-bot-framework-collect-personal-information-if-yes-how-can-i-be-sure-the-data-is-safe-and-secure-what-about-privacy"></a>Les bots inscrits auprès du Bot Framework collectent-ils des informations personnelles ? Si c’est le cas, comment puis-je m’assurer qu’elles sont protégées et sécurisées ? Qu’en est-il de la confidentialité ?
@@ -102,10 +132,10 @@ Si vous disposez d’un pare-feu pour le trafic sortant qui bloque le trafic ver
 - *.botframework.com (canaux)
 
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Puis-je bloquer la totalité du trafic en direction de mon bot, à l’exception du trafic émanant du service Bot Connector ?
- Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
+Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
  
 ### <a name="what-keeps-my-bot-secure-from-clients-impersonating-the-bot-framework-connector-service"></a>De quelle manière mon bot est-il protégé contre les clients qui empruntent l’identité du service Bot Framework Connector ?
-1. L’URL du service (ServiceUrl) est encodée dans le jeton de sécurité qui accompagne chaque requête adressée à votre bot ; autrement dit, même si un attaquant parvient à accéder au jeton, ils ne peut pas rediriger la conversation vers une nouvelle URL ServiceUrl. Cette approche est appliquée par toutes les implémentations du Kit de développement logiciel (SDK) et documentée dans nos articles de [référence](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) concernant l’authentification.
+1. L’URL du service (ServiceUrl) est encodée dans le jeton de sécurité qui accompagne chaque requête adressée à votre bot ; autrement dit, même si un attaquant parvient à accéder au jeton, ils ne peut pas rediriger la conversation vers une nouvelle URL ServiceUrl. Cette approche est appliquée par toutes les implémentations du Kit de développement logiciel (SDK) et documentée dans nos articles de [référence](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-connector-authentication?view=azure-bot-service-3.0#bot-to-connector) concernant l’authentification.
 
 2. Si le jeton entrant est manquant ou incorrect, le Kit de développement logiciel (SDK) Bot Framework ne génère aucun jeton en réponse. Cela limite les dommages potentiels en cas de configuration incorrecte du bot.
 3. À l’intérieur du bot, vous pouvez vérifier manuellement l’URL ServiceUrl fournie dans le jeton. Cette opération fragilise le bot en cas d’apport de modifications à la topologie du service ; elle est donc possible, mais déconseillée.
@@ -149,16 +179,64 @@ Avec Cortana Intelligence, notre ambition est d’aider nos clients d’entrepri
 
 Direct Line est une API REST qui vous permet d’ajouter votre bot dans votre service, votre application mobile ou votre page web.
 
-Vous pouvez écrire un client pour l’API Direct Line à l’aide de n’importe quel langage. Il vous suffit de coder vers le [protocole Direct Line][DirectLineAPI], de générer un secret dans la page de configuration Direct Line et de communiquer avec votre bot depuis n’importe quel emplacement où se trouve votre code.
+Vous pouvez écrire un client pour l’API Direct Line à l’aide de n’importe quel langage. Il suffit de coder conformément au protocole [Direct Line][DirectLineAPI], de générer une clé secrète dans la page de configuration Direct Line et de communiquer avec votre bot depuis l’emplacement d’exécution du code.
 
 Direct Line est adapté aux éléments suivants :
 
 * Applications mobiles sur iOS, Android, Windows Phone et d’autres systèmes d’exploitation
 * Applications de bureau sur Windows, OSX et d’autres systèmes d’exploitation
-* Pages web requérant plus de capacités de personnalisation que celles offertes par le [canal Discussion Web incorporable][WebChat]
+* Pages web requérant plus de capacités de personnalisation que celles offertes par le [canal Web Chat incorporable][WebChat]
 * Applications de service à service
 
-[DirectLineAPI]: https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts
+
+## <a name="app-registration"></a>Inscription d’application
+
+### <a name="i-need-to-manually-create-my-app-registration-how-do-i-create-my-own-app-registration"></a>Je dois créer l’inscription de mon application. Comment créer l’inscription de mon application ?
+
+La création de l’inscription de votre application sera nécessaire pour des situations similaires :
+
+- Vous avez créé votre robot dans le portail Bot Framework (https://dev.botframework.com/bots/new) ) 
+- Vous ne parvenez pas à effectuer d’inscriptions d’application dans votre organisation et avez besoin d’un tiers afin de créer l’ID d’application pour le bot que vous générez
+- Vous devez créer manuellement votre ID d’application (et le mot de passe)
+
+Pour créer votre ID d’application, procédez comme suit.
+
+1. Connectez-vous à votre [compte Azure](https://portal.azure.com). Si vous ne possédez pas encore un compte Azure, vous pouvez [vous inscrire pour en obtenir un gratuitement](https://azure.microsoft.com/free/).
+2. Accédez au [panneau Inscriptions des applications](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) et cliquez sur **Nouvelle inscription** dans la barre d’action en haut.
+
+    ![nouvelle inscription](media/app-registration/new-registration.png)
+
+3. Entrez un nom d’affichage pour l’inscription de l’application dans le champ *Nom*, puis sélectionnez les types de comptes pris en charge. Le nom ne doit pas nécessairement correspondre à l’ID du bot.
+
+    > [!IMPORTANT]
+    > Dans la section *Types de comptes pris en charge*, sélectionnez le bouton d’option *Comptes dans un annuaire organisationnel et comptes personnels Microsoft (par exemple, Skype, Xbox, Outlook.com)* . Si les autres options sont sélectionnées, **la création du bot échouera**.
+
+    ![détails de l’inscription](media/app-registration/registration-details.png)
+
+4. Cliquez sur **S’inscrire**
+
+    Après quelques instants, l’inscription de l’application nouvellement créée doit ouvrir un panneau. Copie l’*ID d’Application (client)* dans le panneau Vue d’ensemble et collez-le dans le champ ID d’application.
+
+    ![id d’application](media/app-registration/app-id.png)
+
+Si vous créez votre bot via le portail Bot Framework, vous avez terminé la définition de votre inscription d’application ; la clé secrète est générée automatiquement. 
+
+Si vous créez votre bot dans le Portail Azure, vous devez générer une clé secrète pour l’inscription de votre application. 
+
+1. Cliquez sur **Certificats et clés secrètes** dans la colonne de navigation de gauche du panneau d’inscription de votre application.
+2. Dans ce panneau, cliquez sur le bouton **Nouvelle clé secrète du client**. Dans la boîte de dialogue qui s’ouvre, entrez la description de la clé secrète si vous le souhaitez, puis sélectionnez **Jamais** dans le groupe de boutons d’option Expire. 
+
+    ![nouvelle clé secrète](media/app-registration/new-secret.png)
+
+3. Copiez la valeur de votre clé secrète figurant dans le tableau sous *Clés secrètes du client* et collez-la dans le champ *Mot de passe* pour votre application, puis cliquez sur **OK** en bas de ce panneau. Ensuite, passez à la création du bot. 
+
+    > [!NOTE]
+    > La clé secrète n’est visible que dans ce panneau et ne peut pas être récupéré une fois que vous avez quitté cette page. Veillez à la conserver dans un endroit sûr.
+
+    ![nouvel id d’application](media/app-registration/create-app-id.png)
+
+
+[DirectLineAPI]: https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts
 [Support]: bot-service-resources-links-help.md
 [WebChat]: bot-service-channel-connect-webchat.md
 
