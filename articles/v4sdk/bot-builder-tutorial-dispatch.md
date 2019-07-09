@@ -2,20 +2,20 @@
 title: Utiliser plusieurs modèles LUIS et QnA | Microsoft Docs
 description: Découvrez comment utiliser LUIS et QnA Maker dans votre bot.
 keywords: LUIS, QnA, outil Dispatch, services multiples, intentions de route
-author: DeniseMak
-ms.author: v-demak
+author: diberry
+ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 290b06b28e590b01335694a621cc71c189ff6296
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: c72f978e927f05f430ec94cf747016f4ebc15c5d
+ms.sourcegitcommit: 0e6c49964b96c1ac8485ba7afe0daae04b671138
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693636"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67492011"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -24,9 +24,9 @@ ms.locfileid: "66693636"
 Si un bot utilise plusieurs modèles LUIS et bases de connaissances QnA Maker, vous pouvez utiliser l’outil Disptach pour déterminer quel modèle LUIS ou quelle base de connaissances QnA Maker correspond le mieux à l’entrée utilisateur. L’outil Dispatch peut le déterminer en créant une application LUIS unique pour router l’entrée utilisateur vers le modèle correct. Pour plus d’informations sur l’outil Disptach, notamment les commandes CLI, reportez-vous au fichier [LISEZMOI][dispatch-readme].
 
 ## <a name="prerequisites"></a>Prérequis
-- Connaissances des [concepts de base des bots](bot-builder-basics.md), de [LUIS][howto-luis] et de [QnA Maker][howto-qna]. 
+- Connaissances des [concepts de base des bots](bot-builder-basics.md), [LUIS][howto-luis], and [QnA Maker][howto-qna]. 
 - [Outil Répartition](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-- Une copie du **NLP avec Dispatch** issue du dépôt de code de l’[exemple C#][cs-sample] ou de l’[exemple JS][js-sample].
+- Une copie du **NLP avec Dispatch** issue du dépôt de code de l’[exemple C#][cs-sample] or [JS Sample][js-sample].
 - Un compte [luis.ai](https://www.luis.ai/) pour publier des applications LUIS.
 - Un compte [QnA Maker](https://www.qnamaker.ai/) pour publier la base de connaissances QnA Maker.
 
@@ -58,7 +58,7 @@ Cet exemple est basé sur un ensemble prédéfini d’applications LUIS et QnA M
 
 Le gestionnaire appelle le service LUIS ou QnA Maker, puis retourne le résultat généré à l’utilisateur.
 
-## <a name="create-luis-apps-and-qna-kb"></a>Créer des applications LUIS et une base de connaissances QnA
+## <a name="create-luis-apps-and-qna-knowledge-base"></a>Créer des applications LUIS et une base de connaissances QnA
 Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publier vos applications LUIS et bases de connaissances QnA. Dans cet article, nous allons publier les modèles suivants inclus dans l’exemple _NLP avec Dispatch_ dans le dossier `\CognitiveModels` : 
 
 | Nom | Description |
@@ -70,7 +70,7 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 ### <a name="create-luis-apps"></a>Créer des applications LUIS
 1. Connectez-vous au [portail web de LUIS](https://www.luis.ai/). Dans la section _My apps_, sélectionnez l’onglet _Import new app_. La boîte de dialogue suivante s’affiche :
 
-![Importer un fichier json LUIS](./media/tutorial-dispatch/import-new-luis-app.png)
+    ![Importer un fichier json LUIS](./media/tutorial-dispatch/import-new-luis-app.png)
 
 2. Sélectionnez le bouton _Choisir un fichier d’application_, accédez au dossier CognitiveModel de votre exemple de code et sélectionnez le fichier « HomeAutomation.json ». Laissez le champ de nom facultatif vide. 
 
@@ -80,7 +80,7 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 
 5. Une fois l’entraînement terminé, sélectionnez le bouton _Publish_. La boîte de dialogue suivante s’affiche :
 
-![Publier l’application LUIS](./media/tutorial-dispatch/publish-luis-app.png)
+    ![Publier l’application LUIS](./media/tutorial-dispatch/publish-luis-app.png)
 
 6. Choisissez l’environnement « production » et sélectionnez le bouton _Publish_.
 
@@ -88,70 +88,69 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 
 8. Une fois que vous avez terminé, _entraînez_ et _publiez_ votre application de météo LUIS et votre application de dispatch LUIS en répétant ces mêmes étapes pour le fichier Weather.json.
 
-### <a name="create-qna-maker-kb"></a>Créer une base de connaissances QnA Maker
+### <a name="create-qna-maker-knowledge-base"></a>Créer une base de connaissances QnA Maker
 
-La première étape pour configurer une base de connaissances QnA Maker consiste à configurer un service QnA Maker dans Azure. Pour ce faire, suivez les instructions détaillées [ici](https://aka.ms/create-qna-maker).
+La première étape pour configurer une base de connaissances QnA Maker est de configurer un service QnA Maker dans Azure. Pour ce faire, suivez les instructions détaillées [ici](https://aka.ms/create-qna-maker).
 
-Une fois votre service QnA Maker créé dans Azure, vous devez enregistrer la clé _Clé 1_ Cognitive Services fournie pour celui-ci. Elle sera utilisée comme \<clé1-service-qna-azure> lors de l’ajout du service QnA à votre application de répartition. Les étapes suivantes vous fournissent cette clé :
+Une fois votre service QnA Maker créé dans Azure, vous devez enregistrer la clé _Clé 1_ Cognitive Services fournie pour celui-ci. Elle sera utilisée comme \<clé1-service-qna-azure> lors de l’ajout de l’application QnA Maker à votre application de dispatch. Les étapes suivantes vous fournissent cette clé :
     
 ![Sélectionner Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
 1. À partir du portail Azure, sélectionnez votre service cognitif QnA Maker.
 
-![Sélectionner des clés Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-keys.png)
+    ![Sélectionner des clés Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-keys.png)
 
-2. Sélectionnez l’icône de clés qui figure sous la section _Gestion des ressources_ dans le menu de gauche.
+1. Sélectionnez l’icône de clés qui figure sous la section _Gestion des ressources_ dans le menu de gauche.
 
-![Sélectionner la clé Clé 1 Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-key1.png)
+    ![Sélectionner la clé Clé 1 Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-key1.png)
 
-3. Copiez la valeur de _Clé 1_ dans le Presse-papiers et enregistrez-la en local. Elle sera utilisée ultérieurement pour la valeur de clé (-k) \<clé1-service-qna-azure> lors de l’ajout du service QnA à votre application de répartition.
+1. Copiez la valeur de _Clé 1_ dans le Presse-papiers et enregistrez-la en local. Elle sera utilisée ultérieurement pour la valeur de clé (-k) \<clé1-service-qna-azure> lors de l’ajout de l’application QnA Maker à votre application de dispatch.
 
-Connectez-vous maintenant au [portail web de QnAMaker](https://qnamaker.ai). Descendez à l’étape 2
+1. Connectez-vous maintenant au [portail web de QnAMaker](https://qnamaker.ai). 
 
-![Créer QnA - Étape 2](./media/tutorial-dispatch/create-qna-step-2.png) 
+1. À l’étape 2, sélectionnez les éléments suivants :
 
-et sélectionnez
-1. Votre compte Azure AD.
-1. Le nom de votre abonnement Azure.
-1. Le nom que vous avez créé pour votre service QnA Maker. (Si votre service Azure QnA n’apparaît pas dans cette liste déroulante, essayez d’actualiser la page.) 
+    * Votre compte Azure AD.
+    * Le nom de votre abonnement Azure.
+    * Le nom que vous avez créé pour votre service QnA Maker. (Si votre service Azure QnA n’apparaît pas dans cette liste déroulante, essayez d’actualiser la page.)
 
-Passer à l’étape 3
+    ![Créer QnA - Étape 2](./media/tutorial-dispatch/create-qna-step-2.png) 
+     
 
-![Créer QnA - Étape 3](./media/tutorial-dispatch/create-qna-step-3.png)
+1. À l’étape 3, fournissez un nom pour votre base de connaissances QnA Maker. Pour cet exemple, utilisez le nom sample-qna.
 
-Fournissez un nom pour votre base de connaissances QnA Maker. Pour cet exemple, nous allons utiliser le nom « sample-qna ».
+    ![Créer QnA - Étape 3](./media/tutorial-dispatch/create-qna-step-3.png)
 
-Passer à l’étape 4
+1. À l’étape 4, sélectionnez l’option _+ Ajouter un fichier_, accédez au dossier CognitiveModel de votre exemple de code et sélectionnez le fichier « QnAMaker.tsv ». Il existe une sélection supplémentaire pour ajouter une personnalité _Chit-chat_ à votre base de connaissances, mais notre exemple n’inclut pas cette option.
 
-![Créer QnA - Étape 4](./media/tutorial-dispatch/create-qna-step-4.png)
+    ![Créer QnA - Étape 4](./media/tutorial-dispatch/create-qna-step-4.png)
 
-Sélectionnez l’option _+ Ajouter un fichier_, accédez au dossier CognitiveModel de votre exemple de code et sélectionnez le fichier « QnAMaker.tsv ».
+1. À l’étape 5, _créez votre base de connaissances_.
 
-Il existe une sélection supplémentaire pour ajouter une personnalité _Chit-chat_ à votre base de connaissances, mais notre exemple n’inclut pas cette option.
+1. Une fois qu’une base de connaissances a été créée à partir de votre fichier chargé, sélectionnez _Save and train_ (Enregistrer et entraîner) et quand vous avez terminé, sélectionnez l’onglet _PUBLISH_ et publiez votre application.
 
-Passer à l’étape 5
+1. Une fois que votre application QnA Maker est publiée, sélectionnez l’onglet _SETTINGS_ et faites défiler jusqu’à « Deployment details ». Enregistrez les valeurs suivantes à partir de la requête HTTP de l’exemple _Postman_.
 
-Sélectionnez _Create your KB_ (Créer votre base de connaissances).
+    ```text
+    POST /knowledge bases/<knowledge-base-id>/generateAnswer
+    Host: <your-hostname>  // NOTE - this is a URL.
+    Authorization: EndpointKey <qna-maker-resource-key>
+    ```
+    
+    La chaîne d’URL complète du nom d’hôte doit ressembler à « https://< >.azure.net/qnamaker ». Ces valeurs seront utilisées ultérieurement dans votre fichier `appsettings.json` ou `.env`.
 
-Une fois qu’une base de connaissances a été créée à partir de votre fichier chargé, sélectionnez _Save and train_ (Enregistrer et entraîner) et quand vous avez terminé, sélectionnez l’onglet _PUBLISH_ et publiez votre application.
+## <a name="dispatch-app-needs-read-access-to-existing-apps"></a>L’application de dispatch a besoin d’un accès en lecture aux applications existantes
 
-Une fois que votre application QnA Maker est publiée, sélectionnez l’onglet _SETTINGS_ et faites défiler jusqu’à « Deployment details ». Enregistrez les valeurs suivantes à partir de la requête HTTP de l’exemple _Postman_.
+L’outil de dispatch a besoin d’un accès en création pour lire les applications LUIS et QnA Maker existantes afin de créer une nouvelle application parente LUIS qui effectue le dispatch aux applications LUIS et QnA Maker. Cet accès est fourni avec les ID d’application et les clés de création. Vous avez besoin d’un ID et d’une clé pour chacune des applications LUIS et QnA Maker.
 
-```text
-POST /knowledgebases/<knowledge-base-id>/generateAnswer
-Host: <your-hostname>  // NOTE - this is a URL.
-Authorization: EndpointKey <qna-maker-resource-key>
-```
-
-La chaîne d’URL complète du nom d’hôte doit ressembler à « https://< >.azure.net/qnamaker ».
-
-Ces valeurs seront utilisées ultérieurement dans votre fichier `appsettings.json` ou `.env`.
-
-Notez les noms et ID de l’application LUIS et de la base de connaissances QnA Maker. Notez également votre clé de création LUIS et votre clé d’abonnement Cognitive Services. Vous aurez besoin de toutes ces informations pour effectuer ce processus.
+|Application|Emplacement des informations|
+|--|--|
+|LUIS|ID d’application : disponible dans le [portal LUIS](https://www.luis.ai) pour chaque application, Manage (Gérer) -> Application Information (Informations sur l’application)<br>Clé de création : disponible dans le portail LUIS : dans le coin supérieur droit, sélectionnez votre propre utilisateur, puis Paramètres.|
+|QnA Maker| ID d’application : disponible dans le [portail QnA Maker](https://http://qnamaker.ai) dans la page Paramètres une fois que vous publiez l’application. Il s’agit de l’ID figurant dans la première partie de la commande POST après la base de connaissances. `POST /knowledgebases/{APP-ID}/generateAnswer` est un exemple d’emplacement où trouver l’ID d’application.<br>Clé de création : disponible dans le portail Azure, pour la ressource QnA Maker, sous **Clés**. Vous avez seulement besoin d’une des clés.|
 
 ## <a name="create-the-dispatch-model"></a>Créer le modèle de dispatch
 
-L’interface CLI de l’outil Dispatch crée le modèle de dispatch au service approprié.
+L’interface CLI de l’outil Dispatch crée le modèle de dispatch à l’application LUIS ou QnA Maker appropriée.
 
 1. Ouvrez une invite de commandes ou une fenêtre de terminal, puis remplacez les répertoires par le répertoire **CognitiveModels**.
 1. Vérifiez que la version actuelle de npm et l’outil Dispatch sont installés.
@@ -161,13 +160,13 @@ L’interface CLI de l’outil Dispatch crée le modèle de dispatch au service 
     npm i -g botdispatch
     ```
 
-1. Utilisez `dispatch init` pour initialiser la création d’un fichier .dispatch pour votre modèle de dispatch. Créez-le en utilisant un nom de fichier facile à reconnaître.
+1. Utilisez `dispatch init` pour initialiser la création d’un fichier `.dispatch` pour votre modèle de dispatch. Créez-le en utilisant un nom de fichier facile à reconnaître.
 
     ```cmd
     dispatch init -n <filename-to-create> --luisAuthoringKey "<your-luis-authoring-key>" --luisAuthoringRegion <your-region>
     ```
 
-1. Utilisez `dispatch add` pour ajouter vos applications LUIS et bases de connaissances QnA Maker au fichier .dispatch.
+1. Utilisez `dispatch add` pour ajouter vos applications LUIS et bases de connaissances QnA Maker au fichier `.dispatch`.
 
     ```cmd
     dispatch add -t luis -i "<app-id-for-weather-app>" -n "<name-of-weather-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_Weather
@@ -175,26 +174,33 @@ L’interface CLI de l’outil Dispatch crée le modèle de dispatch au service 
     dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<azure-qna-service-key1>" --intentName q_sample-qna
     ```
 
-1. Utilisez `dispatch create` pour générer un modèle de dispatch à partir du fichier .dispatch.
+1. Utilisez `dispatch create` pour générer un modèle de dispatch à partir du fichier `.dispatch`.
 
     ```cmd
     dispatch create
     ```
 
-1. Publiez l’application LUIS de dispatch à l’aide du fichier JSON du modèle de dispatch généré.
+1. Publiez l’application de dispatch LUIS que vous venez de créer.
 
-## <a name="use-the-dispatch-model"></a>Utiliser le modèle de dispatch
+## <a name="use-the-dispatch-luis-app"></a>Utiliser l’application de dispatch LUIS
 
-Le modèle généré définit les intentions de chacune des applications et bases de connaissances, ainsi qu’une intention _aucune_ pour les cas où l’énoncé ne correspond à rien.
+L’application LUIS générée définit les intentions de chacune des applications enfants et des bases de connaissances, ainsi qu’une intention _aucune_ pour les cas où l’énoncé ne correspond à rien.
 
 - `l_HomeAutomation`
 - `l_Weather`
 - `None`
 - `q_sample-qna`
 
-Notez que ces services ont besoin d’être publiés sous les noms corrects pour que le bot s’exécute correctement.
+Ces services ont besoin d’être publiés sous les noms corrects pour que le bot s’exécute correctement. Le bot a besoin d’informations sur les services publiés pour pouvoir accéder à ces services.
 
-Le bot a besoin d’informations sur les services publiés pour pouvoir accéder à ces services.
+Le bot a besoin de points de terminaison de prédiction de requête pour les trois applications LUIS (dispatch, météo et domotique) et la base de connaissances QnA Maker unique. Aidez-vous du tableau suivant pour trouver les clés de points de terminaison :
+
+|Application|Emplacement de la clé de point de terminaison de requête|
+|--|--|
+|LUIS|Dans le portail LUIS, pour chaque application LUIS, dans la section Manager (Gérer), sélectionnez **Paramètres des clés et points de terminaison** pour trouver les clés associées à chaque application. Si vous suivez ce tutoriel, la clé de point de terminaison est la même clé que `<your-luis-authoring-key>`. La clé de création est valide pour 1 000 points de terminaison, puis elle expire.|
+|QnA Maker|Dans le portail QnA Maker, pour la base de connaissances, dans les paramètres Gérer, utilisez la valeur de clé qui s’affiche dans les paramètres Postman pour l’en-tête **Authorization**, sans le texte de `EndpointKey `.|
+
+Ces valeurs sont utilisées dans le fichier **appsettings.json** pour C# et le fichier **.env** pour javascript.
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -223,11 +229,11 @@ Pour chacune des entités indiquées ci-dessous, ajoutez les valeurs que vous av
 "MicrosoftAppPassword": "",
   
 "QnAKnowledgebaseId": "<knowledge-base-id>",
-"QnAAuthKey": "<qna-maker-resource-key>",
+"QnAEndpointKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
 
 "LuisAppId": "<app-id-for-dispatch-app>",
-"LuisAPIKey": "<your-luis-authoring-key>",
+"LuisAPIKey": "<your-luis-endpoint-key>",
 "LuisAPIHostName": "<your-dispatch-app-region>",
 ```
 Quand tous les changements sont en place, enregistrez ce fichier.
@@ -263,11 +269,11 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 
 QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<qna-maker-resource-key>"
+QnAEndpointKey="<qna-maker-resource-key>"
 QnAEndpointHostName="<your-hostname>"
 
 LuisAppId=<app-id-for-dispatch-app>
-LuisAPIKey=<your-luis-authoring-key>
+LuisAPIKey=<your-luis-endpoint-key>
 LuisAPIHostName=<your-dispatch-app-region>
 
 ```
@@ -277,7 +283,7 @@ Quand tous les changements sont en place, enregistrez ce fichier.
 
 ### <a name="connect-to-the-services-from-your-bot"></a>Vous connecter aux services à partir de votre bot
 
-Pour vous connecter aux services Dispatch, LUIS et QnA Maker, votre bot extrait des informations des paramètres que vous avez auparavant fournis.
+Pour vous connecter aux services Dispatch, LUIS et QnA Maker, votre bot extrait des informations du fichier de paramètres (`appsettings.json` ou `.env`).
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -347,34 +353,93 @@ Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur
 
 ## <a name="test-your-bot"></a>Tester votre robot
 
-À l’aide de votre environnement de développement, démarrez l’exemple de code. Notez l’adresse localhost indiquée dans la barre d’adresses de la fenêtre de navigateur ouverte par votre application : « https://localhost:<Port_Number>  » Après avoir ouvert Bot Framework Emulator, sélectionnez le test bleu décrit ci-dessous `create new bot configuration`.
+1. À l’aide de votre environnement de développement, démarrez l’exemple de code. Notez l’adresse _localhost_ indiquée dans la barre d’adresses de la fenêtre de navigateur ouverte par votre application : « https://localhost:<Port_Number>  ». 
+1. Ouvrez votre émulateur Bot Framework Emulator, puis sélectionnez `Create a new bot configuration`. Un fichier `.bot` vous permet d’utiliser l’_inspecteur_ dans l’émulateur de bot pour voir le code JSON retourné à partir de LUIS et de QnA Maker.
+1. Dans la boîte de dialogue **New bot configuration (Nouvelle configuration de bot)** , entrez le nom de votre bot et votre URL de point de terminaison, telle que `http://localhost:3978/api/messages`. Enregistrez le fichier à la racine de votre projet d’exemples de code de bot.
+1. Ouvrez le fichier du bot et ajoutez des sections pour vos applications LUIS et QnA Maker. Utilisez [cet exemple de fichier](https://github.com/microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json) en tant que modèle pour les paramètres. Enregistrez les modifications.
+1. Sélectionnez le nom de bot dans la liste **Mes bots** pour accéder à votre bot actif. À titre de référence, voici quelques-unes des questions et commandes couvertes par les services générés pour votre bot :
 
-![Créer une configuration](./media/tutorial-dispatch/emulator-create-new-configuration.png)
+    - QnA Maker
+      - `hi`, `good morning`
+      - `what are you`, `what do you do`
+    - LUIS (domotique)
+      - `turn on bedroom light`
+      - `turn off bedroom light`
+      - `make some coffee`
+    - LUIS (météo)
+      - `whats the weather in redmond washington`
+      - `what's the forecast for london`
+      - `show me the forecast for nebraska`
 
-Entrez l’adresse localhost que vous avez enregistrée, en ajoutant « / api/messages » à la fin : « https://localhost:<Port_Number>/api/messages  »
+## <a name="dispatch-for-user-utterance-to-qna-maker"></a>Dispatch pour énoncé utilisateur à QnA Maker
 
-![Connecter l’émulateur](./media/tutorial-dispatch/emulator-create-and-connect.png)
+1. Dans l’émulateur de bot, entrez le texte `hi` et soumettez l’énoncé. Le bot soumet cette requête à l’application de dispatch LUIS et reçoit en retour une réponse indiquant quelle application enfant doit obtenir cet énoncé pour un traitement ultérieur. 
 
-Cliquez maintenant sur le bouton `Save and connect` pour accéder à votre bot en cours d’exécution. À titre de référence, voici quelques-unes des questions et commandes couvertes par les services générés pour votre bot :
+1. En sélectionnant la ligne `LUIS Trace` dans le journal, vous pouvez voir la réponse de LUIS dans l’émulateur de bot. Le résultat LUIS de l’application de dispatch LUIS s’affiche dans l’inspecteur. 
 
-- QnA Maker
-  - `hi`, `good morning`
-  - `what are you`, `what do you do`
-- LUIS (domotique)
-  - `turn on bedroom light`
-  - `turn off bedroom light`
-  - `make some coffee`
-- LUIS (météo)
-  - `whats the weather in redmond washington`
-  - `what's the forecast for london`
-  - `show me the forecast for nebraska`
+    ```json
+    {
+      "luisResponse": {
+        "entities": [],
+        "intents": [
+          {
+            "intent": "q_sample-qna",
+            "score": 0.9489713
+          },
+          {
+            "intent": "l_HomeAutomation",
+            "score": 0.0612499453
+          },
+          {
+            "intent": "None",
+            "score": 0.008567564
+          },
+          {
+            "intent": "l_Weather",
+            "score": 0.0025761195
+          }
+        ],
+        "query": "Hi",
+        "topScoringIntent": {
+          "intent": "q_sample-qna",
+          "score": 0.9489713
+        }
+      }
+    }
+    ```
+    
+    Étant donné que l’énoncé `hi` fait partie de l’intention **q_sample-qna** de l’application de dispatch LUIS et qu’il est sélectionné en tant que `topScoringIntent`, le bot effectue une deuxième requête, cette fois à l’application QnA Maker, avec le même énoncé. 
 
-## <a name="additional-information"></a>Informations supplémentaires
+1. Sélectionnez la ligne `QnAMaker Trace` dans le journal de l’émulateur de bot. Le résultat QnA Maker s’affiche dans l’inspecteur. 
 
-Une fois que votre bot est en cours d’exécution, il est possible d’améliorer les performances du bot en supprimant les énoncés similaires ou qui se recoupent. Par exemple, supposons que dans l’application LUIS `Home Automation`, des demandes comme « allumer la lumière » correspondent à une intention « TurnOnLights » (Allumer la lumière), mais que des demandes comme « Pourquoi la lumière ne s’allume-t-elle pas ? » correspondent à une intention « None » (Aucune) afin qu’elles puissent être transmises à QnA Maker. Quand vous combinez l’application LUIS et le service QnA Maker à l’aide de l’outil Dispatch, vous devez effectuer l’une des opérations suivantes :
+```json
+{
+    "questions": [
+        "hi",
+        "greetings",
+        "good morning",
+        "good evening"
+    ],
+    "answer": "Hello!",
+    "score": 1,
+    "id": 96,
+    "source": "QnAMaker.tsv",
+    "metadata": [],
+    "context": {
+        "isContextOnly": false,
+        "prompts": []
+    }
+}
+```
 
-- Supprimez l’intention « None » de l’application LUIS `Home Automation` d’origine et ajoutez plutôt les énoncés de cette intention dans l’intention « None » de l’application de distribution.
-- Si vous ne supprimez pas l’intention « None » de l’application LUIS d’origine, vous devrez ajouter la logique dans votre bot visant à transmettre les messages qui correspondent à votre intention « None » au service QnA Maker.
+## <a name="resolving-incorrect-top-intent-from-dispatch"></a>Résolution d’une intention supérieure incorrecte à partir de Dispatch
+
+Une fois que votre bot est en cours d’exécution, il est possible d’améliorer les performances du bot en supprimant les énoncés similaires ou qui se recoupent entre les applications dispatchées. Par exemple, supposons que dans l’application LUIS `Home Automation`, des demandes comme « allumer la lumière » correspondent à une intention « TurnOnLights » (Allumer la lumière), mais que des demandes comme « Pourquoi la lumière ne s’allume-t-elle pas ? » correspondent à une intention « None » (Aucune) afin qu’elles puissent être transmises à QnA Maker. Ces deux énoncés sont trop proches pour que l’application de dispatch LUIS puisse déterminer si l’application enfant correcte est l’application LUIS ou l’application QnA Maker.
+
+Quand vous combinez l’application LUIS et l’application QnA Maker à l’aide de l’outil Dispatch, vous devez effectuer l’_une_ des opérations suivantes :
+
+* Supprimez l’intention « None » de l’application LUIS `Home Automation` enfant et ajoutez plutôt les énoncés de cette intention dans l’intention « None » de l’application de dispatch.
+* Ajoutez de la logique à votre bot pour transmettre les messages qui correspondent à l’intention « None » de l’application de dispatch LUIS au service QnA Maker. Comparez le score de l’application de dispatch LUIS et le score de l’application QnA Maker. Utilisez le score le plus élevé. Ceci a pour effet de supprimer QnA Maker du cycle de dispatch. 
 
 Les deux actions ci-dessus réduisent le nombre de fois où votre bot répond à vos utilisateurs avec le message « Réponse introuvable ».
 
@@ -404,7 +469,7 @@ Pour supprimer des ressources QnA Maker :
 
 ### <a name="best-practice"></a>Bonne pratique
 
-Pour améliorer les services utilisés dans cet exemple, reportez-vous aux bonnes pratiques pour [LUIS](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-best-practices) et [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/concepts/best-practices).
+Pour améliorer les services utilisés dans cet exemple, reportez-vous aux bonnes pratiques pour [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices) et [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices).
 
 
 [howto-luis]: bot-builder-howto-v4-luis.md
