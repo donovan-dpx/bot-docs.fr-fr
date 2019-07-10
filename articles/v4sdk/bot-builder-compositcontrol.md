@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1f9070b0fd3b4e88eb7d752f5a73c4374bfe8415
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215522"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587489"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
 
@@ -25,8 +25,8 @@ Avec les dialogues composants, vous pouvez créer des dialogues indépendants po
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], de la [bibliothèque de dialogues][concept-dialogs] et de la façon dont [gérer les conversations][simple-flow].
-- Une copie de l’exemple d’invite à plusieurs tours, au choix en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].
+- Connaissances des [concepts de base des bots][concept-basics], the [dialogs library][concept-dialogs] et de la façon dont [gérer les conversations][simple-flow].
+- Une copie de l’exemple d’invite multitour en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-the-sample"></a>À propos de l’exemple
 
@@ -106,15 +106,9 @@ Pour utiliser un dialogue composant, ajoutez une instance de celui-ci au jeu de 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+**Bots\DialoBot.cs**
 
-Dans l’exemple, cette opération s’effectue avec la méthode d’extension `Run`, comme indiqué ci-dessous.
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
-
-**Bots\DialogBot.cs**
-
-La méthode `Run` est appelée depuis la méthode `OnMessageActivityAsync` du bot.
+Dans l’exemple, c’est fait en utilisant la méthode `RunAsync` qui est appelée à partir de la méthode `OnMessageActivityAsync` du bot.
 
 [!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48)]
 

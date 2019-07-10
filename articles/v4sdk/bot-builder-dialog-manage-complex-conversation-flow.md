@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bc11e5a4a5dec1a9588254b3a9d28d56ad163fb4
-ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
+ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153059"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587475"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
@@ -27,8 +27,8 @@ Nous vous montrerons également comment passer des arguments entre différentes 
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon dont [implémenter les flux de conversation séquentiels][simple-dialog].
-- Une copie de l’exemple de dialogue complexe, au choix en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].
+- Connaissances des [concepts de base des bots][concept-basics], [managing state][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter un flux de conversation séquentiel][simple-dialog].
+- Une copie de l’exemple de dialogue complexe en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -186,19 +186,21 @@ Quand nous recevons un message de l’utilisateur :
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**DialogExtensions.cs**
+<!-- **DialogExtensions.cs**
 
-Dans cet exemple, nous avons défini une méthode d’assistance `Run` que nous allons utiliser pour créer un contexte du dialogue et y accéder.
-Comme le dialogue composant définit un jeu de dialogues interne, nous devons créer un jeu de dialogues externe qui est visible par le code du gestionnaire de messages, et nous en servir pour créer un contexte de dialogue.
+In this sample, we've defined a `Run` helper method that we will use to create and access the dialog context.
+Since component dialog defines an inner dialog set, we have to create an outer dialog set that's visible to the message handler code, and use that to create a dialog context.
 
-- `dialog` est le dialogue composant principal pour le bot.
-- `turnContext` est le contexte de tour actuel pour le bot.
+- `dialog` is the main component dialog for the bot.
+- `turnContext` is the current turn context for the bot.
 
 [!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/DialogExtensions.cs?range=13-24)]
 
+-->
+
 **Bots\DialogBot.cs**
 
-Le gestionnaire de messages appelle la méthode d’assistance `Run` pour gérer le dialogue, et nous avons remplacé le gestionnaire de tours pour enregistrer dans l’état de conversation et celui d’utilisateur les modifications pouvant se produire durant le tour. `OnTurnAsync` de base appellera la méthode `OnMessageActivityAsync`, garantissant ainsi que les appels d’enregistrement se produisent à la fin de ce tour.
+Le gestionnaire de messages appelle la méthode `RunAsync` pour gérer le dialogue, et nous avons remplacé le gestionnaire de tours pour enregistrer dans l’état de conversation et celui d’utilisateur les modifications pouvant se produire durant le tour. `OnTurnAsync` de base appellera la méthode `OnMessageActivityAsync`, garantissant ainsi que les appels d’enregistrement se produisent à la fin de ce tour.
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
@@ -276,7 +278,7 @@ Voici un exemple de logique de boucle à partir d’une étape dans le dialogue 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour obtenir une introduction à la façon d’implémenter un dialogue, consultez [Implémenter des flux de conversation séquentiels][simple-dialog]. Cet article utilise un dialogue unique en cascade, et quelques invites pour créer une interaction simple qui pose à l’utilisateur une série de questions.
+Pour obtenir une introduction sur la façon d’implémenter un dialogue, consultez [Implémenter un flux de conversation séquentiel][simple-dialog]. Cet article utilise un dialogue unique en cascade et quelques invites pour créer une interaction simple qui pose à l’utilisateur une série de questions.
 
 La bibliothèque de dialogues inclut la validation de base des invites. Vous pouvez également ajouter une validation personnalisée. Pour plus d’informations, consultez [Collecter les entrées utilisateur avec une invite de dialogue][dialog-prompts].
 
