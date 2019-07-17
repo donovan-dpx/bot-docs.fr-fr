@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c19287b38a2c807e6675af2c3f7e1824eb7eab8e
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230768"
+---
 Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implémentées uniquement à l’aide de SMS et de pièces jointes. Pour implémenter une fonctionnalité spécifique à un canal, vous pouvez transmettre des métadonnées natives à un canal dans la propriété des _données du canal_ de l’objet d’activité. Par exemple, votre bot peut utiliser la propriété des données du canal pour indiquer à Telegram d’envoyer un autocollant, ou pour demander à Office 365 d’envoyer un e-mail.
 
 Cet article explique comment utiliser une propriété des données du canal de l’activité de message pour implémenter cette fonctionnalité propre au canal :
@@ -343,7 +351,7 @@ Pour créer un message Kik natif, définissez la propriété des données du can
 
 | Propriété | Description |
 |----|----|
-|  Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
+| Cloud vers appareil | Un tableau de messages Kik. Pour obtenir des informations détaillées sur le format des messages Kik, consultez <a href="https://dev.kik.com/#/docs/messaging#message-formats" target="_blank">Formats des messages Kik</a>. |
 
 Cet extrait de code montre un exemple de la propriété `channelData` pour un message Kik natif.
 
@@ -392,7 +400,7 @@ Ces actions LINE peuvent être spécifiées dans le champ Action de l’objet JS
 * Datetimerpicker 
 * Caméra 
 * Pellicule 
-* Lieu 
+* Location 
 
 Pour plus d’informations sur ces méthodes LINE et leurs paramètres, consultez la [documentation de l’API Bot LINE](https://developers.line.biz/en/docs/messaging-api/). 
 
