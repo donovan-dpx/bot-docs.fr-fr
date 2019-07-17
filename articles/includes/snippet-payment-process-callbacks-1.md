@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: f09d0a7b81e3cfa69fd42356faf27f79e3bc038c
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563677"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230709"
 ---
 Lors de la réception d’un rappel de mise à jour de l’adresse de livraison ou de mise à jour de l’option de livraison, votre bot reçoit l’état actuel des détails de paiement du client dans la propriété `Activity.Value`.
 En tant que vendeur, vous devez considérer ces rappels comme statiques ; avec des détails de paiement d’entrée, vous allez calculer des détails de paiement de sortie et échouer si l’état de l’entrée fourni par le client n’est pas valide pour une raison quelconque. 
