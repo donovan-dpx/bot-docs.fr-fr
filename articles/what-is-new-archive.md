@@ -5,17 +5,17 @@ keywords: Bot Framework, Azure Bot Service
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b7342274e37ff33afb8695e8f25fbf0fa707178
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: 4553335cbca5b5eb720c7cffd11c8e14c8aa19c1
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336750"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671530"
 ---
 # <a name="whats-new-in-bot-framework-may-2019"></a>Nouveautés de Bot Framework (mai 2019)
 
@@ -23,7 +23,7 @@ ms.locfileid: "68336750"
 |---|:---:|:---:|:------:|:-----:|
 |Kit SDK |[4.4.3][1] | [4.4.0][2] | [4.4.0b1 (préversion)][3] | [4.0.0a6 (préversion)][3a]|
 |Docs | [docs][5] |[docs][5] |  | |
-|Exemples |[.Net Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
 
 [1a]:https://github.com/microsoft/botframework-sdk/#readme
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
@@ -42,11 +42,11 @@ ms.locfileid: "68336750"
 <a name="V4-whats-new"></a>
 ## <a name="bot-framework-sdk-new-in-preview"></a>Kit SDK Bot Framework (Nouveau ! En préversion)
 
-- [Boîte de dialogue adaptive][47] | [docs][48] | [Exemples C#][49] : Les dialogues adaptatifs permettent aux développeurs de générer des conversations qui peuvent être modifiées dynamiquement au fur et à mesure que la conversation progresse.  Traditionnellement, les développeurs ont mappé le flux entier d’une conversation en amont, ce qui limite la flexibilité de la conversation.  Les dialogues adaptatifs leur permettent d’être plus flexibles, pour répondre aux changements de contexte et insérer de nouvelles étapes ou des dialogues secondaires complets dans la conversation au fur et à mesure qu’elle progresse. 
+- [Boîte de dialogue adaptive][47] | [docs][48] | [exemples C#][49] : Les dialogues adaptatifs permettent aux développeurs de générer des conversations qui peuvent être modifiées dynamiquement au fur et à mesure que la conversation progresse.  Traditionnellement, les développeurs ont mappé le flux entier d’une conversation en amont, ce qui limite la flexibilité de la conversation.  Les dialogues adaptatifs leur permettent d’être plus flexibles, pour répondre aux changements de contexte et insérer de nouvelles étapes ou des dialogues secondaires complets dans la conversation au fur et à mesure qu’elle progresse. 
 
-- [Génération de langage][43] | [docs][44] | [Exemples C#][45] : La génération de langage permet au développeur d’extraire les chaînes incorporées à partir de leurs fichiers de code et de ressources, et de les gérer via un runtime de génération de langage et un format de fichier.  La génération de langage permet aux clients de définir plusieurs variantes d’une expression, d’exécuter des expressions simples en fonction du contexte, de faire référence à la mémoire conversationnelle et, au fil du temps, nous permettra d’apporter des capacités supplémentaires favorisant toutes une expérience de conversation plus naturelle.
+- [Génération de langage][43] | [docs][44] | [Exemples C#][45] : La génération de langage permet au développeur d’extraire les chaînes incorporées à partir de leurs fichiers de code et de ressources, et de les gérer via un runtime de génération de langage et un format de fichier.  La génération de langage permet aux clients de définir plusieurs variantes d’une expression, d’exécuter des expressions simples en fonction du contexte, de faire référence à la mémoire conversationnelle et, au fil du temps, nous permettra d’apporter des capacités supplémentaires favorisant toutes une expérience de conversation plus naturelle.
 
-- [Langage d’expression commun][40] | [api][41] : Les dialogues adaptatifs et la génération de langage s’appuient sur un langage d’expression commun pour dynamiser les conversations de bot.
+- [Langage d’expression commun][40] | [api][41] : Les dialogues adaptatifs et la génération de langage s’appuient sur un langage d’expression commun pour dynamiser les conversations de bot.
 
 [40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
 [41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
@@ -62,7 +62,7 @@ ms.locfileid: "68336750"
 ## <a name="botkit"></a>Botkit
 [Botkit][100] est un outil de développeur et un kit SDK permettant de créer des chatbots, des applications et des intégrations personnalisées pour les principales plateformes de messagerie. Les bots Botkit sont à l’écoute (`hear()`) des déclencheurs, posent (`ask()`) des questions et donnent (`say()`) des réponses. Les développeurs peuvent utiliser cette syntaxe pour créer des dialogues : désormais compatible avec la dernière version du kit SDK Bot Framework. 
 
-De plus, Botkit est accompagné de 6 adaptateurs de plateforme, autorisant les applications bot Javascript à communiquer directement avec les plateformes de messagerie : [Slack][102], [Webex Teams][103], [Google Hangouts][104], [Facebook Messenger][105], [Twilio][106] et [Web Chat][107].
+De plus, Botkit est accompagné de 6 adaptateurs de plateforme, autorisant les applications bot Javascript à communiquer directement avec les plateformes de messagerie : [Slack][102], [Webex Teams][103], [Google Hangouts][104], [Facebook Messenger][105], [Twilio][106] et [Discussion Web][107].
 
 Botkit fait partie de Microsoft Bot Framework et est publié sous la [licence MIT open source][101]
 
@@ -86,7 +86,7 @@ Le [dépôt Bot Framework Solutions](https://github.com/Microsoft/AI#readme) pro
 |[**Analytics**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| Obtenez des informations clés sur la santé de votre bot et son comportement avec les solutions AI Analytics conversationnelles. Passez en revue les données de télémétrie disponibles, les exemples de requêtes Application Insights et les tableaux de bord Power BI pour comprendre tout l’éventail de conversations de votre bot avec les utilisateurs. |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
-Azure Bot Service vous permet d’héberger des bots intelligents de classe Entreprise avec la propriété et le contrôle complets de vos données. Les développeurs peuvent s’inscrire et connecter leurs bots aux utilisateurs Skype, Microsoft Teams, Cortana, Web Chat, etc. [Azure][27]  |  [docs][28] | [Se connecter aux canaux][29] 
+Azure Bot Service vous permet d’héberger des bots intelligents de classe Entreprise avec la propriété et le contrôle complets de vos données. Les développeurs peuvent s’inscrire et connecter leurs bots aux utilisateurs Skype, Microsoft Teams, Cortana, Web Chat, etc. [Azure][27]  |  [docs][28] | [se connecter aux canaux][29] 
 
 * **Client Direct Line JS** : Si vous souhaitez utiliser le canal Direct Line dans Azure Bot Service et que vous n’utilisez pas le client WebChat, le client Direct Line JS peut être utilisé dans votre application personnalisée. Accédez à [GitHub][30] pour plus d’informations.
 
@@ -103,7 +103,7 @@ Azure Bot Service vous permet d’héberger des bots intelligents de classe Entr
 ## <a name="bot-framework-emulator"></a>Émulateur de Bot Framework
 [Bot Framework Emulator][60] est une application de bureau multiplateforme qui permet aux développeurs de bots de tester et de déboguer les bots créés à l’aide du kit SDK Bot Framework. Vous pouvez utiliser Bot Framework Emulator pour tester des bots qui s’exécutent localement sur votre machine ou pour vous connecter à des bots qui s’exécutent à distance.
 
-- [Télécharger le plus récent][61] | [Docs][62]
+- [Télécharger les derniers][61] | [Docs][62]
 
 <a name="Emulator-whats-new"></a>
 ### <a name="bot-inspector-new-in-preview"></a>Bot Inspector (Nouveau ! En préversion)
@@ -126,7 +126,7 @@ Service basé sur le machine learning permettant de générer des expériences d
 
 - **Nouveau ! Tableau de bord d’analyse** : Le service LUIS publie un tableau de bord d’analyse plus détaillé, complet et visuellement riche. Sa conception conviviale met en évidence les problèmes courants auxquels la plupart des utilisateurs sont confrontés lors de la conception d’applications, en fournissant des explications simples sur la façon de les résoudre pour aider les utilisateurs à obtenir plus d’informations sur la qualité de leurs modèles, les problèmes potentiels liés aux données et des conseils pour adopter de bonnes pratiques.
 
-[Docs][31] | [Add language understanding to your bot][32] 
+[Docs][31] | [Ajouter Language Understanding à votre robot][32] 
 
 [18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
 [19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
@@ -143,7 +143,7 @@ Service basé sur le machine learning permettant de générer des expériences d
 - **Nouveau ! Intelligence** : Modèles de classement contextuel, suggestions d’apprentissage actif
 - **Nouveau ! Conversation** : Conversations multitours dans QnA Maker.
 
-[Docs][34]  | [add qnamaker to your bot][35] 
+[Docs][34]  | [ajouter qnamaker à votre robot][35] 
 
 [33]:https://www.qnamaker.ai/
 [34]:https://aka.ms/qnamaker-docs-home

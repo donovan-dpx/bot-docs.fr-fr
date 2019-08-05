@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 2600b69fff24f6d952853c7b1ed764577b4cb270
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464792"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671493"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -140,15 +140,15 @@ Utilisez ces opérations pour créer des conversations, envoyer des messages (ac
 | [Charger la pièce jointe vers le canal](#upload-attachment-to-channel) | Charge une pièce jointe directement dans le stockage d’objets blob d’un canal. |
 
 ### <a name="create-conversation"></a>Créer une conversation
-Crée une conversation. 
+Crée une conversation.
 ```http 
 POST /v3/conversations
 ```
 
 | | |
 |----|----|
-| **Corps de la demande** | Objet [Conversation](#conversation-object) |
-| **Retourne** | Objet [ConversationResourceResponse](#conversationresourceresponse-object) | 
+| **Corps de la demande** | Un objet [ConversationParameters](#conversationparameters-object) |
+| **Retourne** | Objet [ConversationResourceResponse](#conversationresourceresponse-object) |
 
 ### <a name="send-to-conversation"></a>Envoyer vers la conversation
 Envoie une activité (message) vers la conversation spécifiée. L’activité est ajoutée à la fin de la conversation, selon l’horodatage ou la sémantique du canal. Pour répondre à un message de la conversation, utilisez plutôt [Répondre à l’activité](#reply-to-activity).
@@ -409,7 +409,6 @@ Le schéma définit l’objet (et ses propriétés) que votre bot peut utiliser 
 | [Objet CardAction](#cardaction-object) | Définit une action à effectuer. |
 | [Objet CardImage](#cardimage-object) | Définit l’image à afficher sur une carte. |
 | [Objet ChannelAccount](#channelaccount-object) | Définit le bot ou le compte d’utilisateur sur le canal. |
-| [Objet Conversation](#conversation-object) | Définit une conversation, y compris le bot et les utilisateurs qui sont inclus dans la conversation. |
 | [Objet ConversationAccount](#conversationaccount-object) | Définit une conversation sur un canal. |
 | [Objet ConversationMembers](#conversationmembers-object) | Définit les membres d’une conversation. |
 | [Objet ConversationParameters](#conversationparameters-object) | Définit des paramètres pour la création d’une conversation. |
@@ -484,12 +483,12 @@ Définit une carte pouvant lire des images GIF animées ou de courtes vidéos.<b
 | Propriété | Type | Description |
 |----|----|----|
 | **autoloop** | boolean | Indicateur qui indique s’il faut relire la liste des images GIF animées lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
-| **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement l’animation lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autostart** | boolean | Indicateur qui indique s’il faut lire automatiquement l’animation lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement l’animation ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des images GIF animées à lire. |
-| **shareable** | booléenne | Indicateur qui indique si l’animation peut être partagée avec d’autres utilisateurs. Définissez cette propriété sur **true** si l’animation peut être partagée ; sinon, sur **false**. La valeur par défaut est **true**. |
+| **shareable** | boolean | Indicateur qui indique si l’animation peut être partagée avec d’autres utilisateurs. Définissez cette propriété sur **true** si l’animation peut être partagée ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
 | **title** | string | Titre de la carte. |
@@ -562,13 +561,13 @@ Définit une carte qui peut lire un fichier audio.<br/><br/>
 | Propriété | Type | Description |
 |----|----|----|
 | **aspect** | string | Proportions de la miniature qui est spécifiée dans la propriété **image**. Les valeurs valides sont **16:9** et **9:16**. |
-| **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des fichiers audio lorsque le dernier est terminé. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
-| **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement le fichier audio lorsque la carte s’affiche. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autoloop** | boolean | Indicateur qui indique s’il faut relire la liste des fichiers audio lorsque le dernier est terminé. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autostart** | boolean | Indicateur qui indique s’il faut lire automatiquement le fichier audio lorsque la carte s’affiche. Définissez cette propriété sur **true** pour relire automatiquement les fichiers audio ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des fichiers audio à lire. |
-| **shareable** | booléenne | Indicateur qui indique si les fichiers audio peuvent être partagés avec d’autres utilisateurs. Définissez cette propriété sur **true** si les fichiers audio peuvent être partagés ; sinon, sur **false**. La valeur par défaut est **true**. |
+| **shareable** | boolean | Indicateur qui indique si les fichiers audio peuvent être partagés avec d’autres utilisateurs. Définissez cette propriété sur **true** si les fichiers audio peuvent être partagés ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
 | **title** | string | Titre de la carte. |
@@ -617,22 +616,10 @@ Définit le bot ou le compte d’utilisateur sur le canal.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **id** | string | ID qui identifie de façon unique le bot ou l’utilisateur sur le canal. |
-| **name** | string | Nom du bot ou de l’utilisateur. |
-
-<a href="#objects">Retour au tableau Schéma</a>
-
-<!--TODO can't find-->
-### <a name="conversation-object"></a>Objet Conversation
-Définit une conversation, y compris le bot et les utilisateurs qui sont inclus dans la conversation.<br/><br/> 
-
-| Propriété | Type | Description |
-|----|----|----|
-| **bot** | [ChannelAccount](#channelaccount-object) | Objet **ChannelAccount** qui identifie le bot. |
-| **isGroup** | booléenne | Indicateur qui indique s’il s’agit ou non d’une conversation de groupe. Définissez la valeur **true** s’il s’agit d’une conversation de groupe ; sinon, **false**. La valeur par défaut est **false**. Pour que vous puissiez démarrer une conversation de groupe, le canal doit prendre en charge les conversations de groupe. |
-| **members** | [ChannelAccount](#channelaccount-object)[] | Tableau d’objets **ChannelAccount** qui identifient les membres de la conversation. Cette liste doit contenir un seul utilisateur, sauf si **isGroup** a la valeur **true**. Cette liste peut inclure d’autres bots. |
-| **topicName** | string | Titre de la conversation. |
-| **activity** | [Activité](#activity-object) | Dans une requête [Créer une conversation](#create-conversation), objet **Activity** qui définit le premier message qui doit être publié dans la nouvelle conversation. |
+| **id** | string | ID unique de l’utilisateur ou du robot sur ce canal. |
+| **name** | string | Nom convivial du robot ou de l’utilisateur. |
+| **aadObjectId** | string | L’ID d’objet de ce compte dans Azure Active Directory. |
+| **role** | énumération de chaînes | Rôle de l’entité derrière le compte. `user` ou `bot`. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -642,7 +629,7 @@ Définit une conversation sur un canal.<br/><br/>
 | Propriété | Type | Description |
 |----|----|----|
 | **id** | string | ID qui identifie la conversation. L’ID est unique sur chaque canal. Si le canal lance la conversion, il définit cet ID. Sinon, le bot définit cette propriété sur l’ID qu’il reçoit dans la réponse lorsqu’il démarre la conversation (voir Démarrage d’une conversation). |
-| **isGroup** | booléenne | Indicateur qui indique si la conversation contient plus de deux participants au moment où l’activité est générée. Définissez la valeur **true** s’il s’agit d’une conversation de groupe ; sinon, **false**. La valeur par défaut est **false**. |
+| **isGroup** | boolean | Indicateur qui indique si la conversation contient plus de deux participants au moment où l’activité est générée. Définissez la valeur **true** s’il s’agit d’une conversation de groupe ; sinon, **false**. La valeur par défaut est **false**. |
 | **name** | string | Nom convivial qui peut être utilisé pour identifier la conversation. |
 | **conversationType** | string | Indique le type de la conversation sur les canaux qui distinguent les différents types de conversations (par exemple : personnelle, de groupe). |
 
@@ -659,15 +646,16 @@ Définit les membres d’une conversation.<br/><br/>
 <a href="#objects">Retour au tableau Schéma</a>
 
 ### <a name="conversationparameters-object"></a>Objet ConversationParameters
-Définit des paramètres pour la création d’une conversation.<br/><br/> 
+Définit des paramètres pour la création d’une conversation.<br/><br/>
 
 | Propriété | Type | Description |
 |----|----|----|
-| **isGroup** | booléenne | Indique s’il s’agit d’une conversation de groupe. |
-| **bot** | [ChannelAccount](#channelaccount-object) | Adresse du bot de la conversation. |
-| **members** | array | Liste des membres à ajouter à la conversation. |
-| **topicName** | string | Titre du thème d’une conversation. Cette propriété est uniquement utilisée si le canal la prend en charge. |
-| **activity** | [Activité](#activity-object) | (facultatif) Utilisez cette activité comme premier message de la conversation lors de la création d’une conversation. |
+| **isGroup** | boolean | Indique s’il s’agit d’une conversation de groupe. |
+| **bot** | [ChannelAccount](#channelaccount-object) | Informations de compte de canal nécessaires à l’acheminement d’un message vers le robot. |
+| **members** | Tableau [ChannelAccount](#channelaccount-object) | Informations de compte de canal nécessaires à l’acheminement d’un message vers chaque utilisateur. |
+| **topicName** | string | Facultatif, rubrique de la conversation. Cette propriété est uniquement utilisée si le canal la prend en charge. |
+| **tennantId** | string | Facultatif, l’ID de l’abonné dans lequel la conversation doit être créée. |
+| **activity** | [Activité](#activity-object) | Facultatif, le message initial à envoyer vers la conversation lorsqu’elle est créée. |
 | **channelData** | objet | Charge utile spécifique au canal pour la création de la conversation. |
 
 <a href="#objects">Retour au tableau Schéma</a>
@@ -691,9 +679,9 @@ Définit une réponse à [Créer une conversation](#create-conversation).<br/><b
 
 | Propriété | Type | Description |
 |----|----|----|
-| **activityId** | string | ID de l’activité. |
+| **activityId** | string | ID de l’activité, si elle est envoyée. |
 | **id** | string | ID de la ressource. |
-| **serviceUrl** | string | Point de terminaison de service. |
+| **serviceUrl** | string | Point de terminaison de service dans lequel les opérations relatives à la conversation peuvent être effectuées. |
 
 <a href="#objects">Retour au tableau Schéma</a>
 
@@ -945,13 +933,13 @@ Définit une carte pouvant lire des vidéos.<br/><br/>
 | Propriété | Type | Description |
 |----|----|----|
 | **aspect** | string | Proportions d’une vidéo (par exemple, 16:9, 4:3).|
-| **autoloop** | booléenne | Indicateur qui indique s’il faut relire la liste des vidéos lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
-| **autostart** | booléenne | Indicateur qui indique s’il faut lire automatiquement les vidéos lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autoloop** | boolean | Indicateur qui indique s’il faut relire la liste des vidéos lorsque la dernière est terminée. Définissez cette propriété sur **true** pour relire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
+| **autostart** | boolean | Indicateur qui indique s’il faut lire automatiquement les vidéos lorsque la carte s’affiche. Définissez cette propriété sur **true** pour lire automatiquement les vidéos ; sinon, définissez-la sur **false**. La valeur par défaut est **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des vidéos à lire. |
-| **shareable** | booléenne | Indicateur qui indique si les vidéos peuvent être partagées avec d’autres utilisateurs. Définissez cette propriété sur **true** si les vidéos peuvent être partagées ; sinon, sur **false**. La valeur par défaut est **true**. |
+| **shareable** | boolean | Indicateur qui indique si les vidéos peuvent être partagées avec d’autres utilisateurs. Définissez cette propriété sur **true** si les vidéos peuvent être partagées ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
 | **title** | string | Titre de la carte. |

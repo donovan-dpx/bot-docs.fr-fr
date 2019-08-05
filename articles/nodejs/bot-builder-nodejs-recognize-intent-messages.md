@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: e308445a43507db94fe54735432790dabdb88731
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67404853"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Reconnaître l’intention de l’utilisateur à partir du contenu d’un message
@@ -36,7 +36,7 @@ Le code suivant crée un module de reconnaissance d’expressions régulières n
 
 [!code-js[Add a regular expression recognizer (JavaScript)](../includes/code/node-regex-recognizer.js#addRegexRecognizer)]
 
-Une fois que le module de reconnaissance est ajouté à votre bot, attachez un option [triggerAction][triggerAction] to the dialog that you want the bot to invoke when the recognizer detects the intent. Use the [matches][matches]pour spécifier le nom de l’intention, comme indiqué dans le code suivant :
+Une fois le module de reconnaissance ajouté à votre robot, joignez un [triggerAction][triggerAction] à la boîte de dialogue que vous souhaitez que le robot appelle quand le module de reconnaissance détecte l’intention. Utilisez l’option [correspondances][matches] pour spécifier le nom de l’intention, comme indiqué dans le code suivant :
 
 [!code-js[Map the CancelIntent recognizer to a cancel dialog (JavaScript)](../includes/code/node-regex-recognizer.js#bindCancelDialogToRegexRecognizer)]
 
@@ -61,7 +61,7 @@ Votre bot peut inscrire plusieurs modules de reconnaissance. Notez que l’exemp
 
 Par défaut, les modules de reconnaissance s’exécutent en parallèle, mais vous pouvez définir recognizeOrder dans [IIntentRecognizerSetOptions][IntentRecognizerSetOptions] pour que le processus s’arrête dès que votre bot en trouve une avec un score de 1,0.
 
-Le SDK Bot Framework inclut un [exemple][DisambiguationSample] that demonstrates how to provide custom disambiguation logic in your bot by implementing [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
+Le Kit de développement logiciel (SDK) de Bot Framework inclut un [exemple][DisambiguationSample] qui montre comment fournir une logique de levée d’ambiguïté personnalisée dans votre robot en implémentant [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
 
 ## <a name="next-steps"></a>Étapes suivantes
 La logique de l’utilisation d’expressions régulières et de l’inspection du contenu d’un message peut devenir complexe, en particulier si le flux de conversation de votre bot est très ouvert. Pour aider votre bot à gérer une plus grande variété d’entrées textuelles et parlées des utilisateurs, vous pouvez utiliser un service de reconnaissance des intentions comme [LUIS][LUIS] pour ajouter la compréhension du langage naturel à votre bot.

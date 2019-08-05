@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e708f6b556c832ed7f8858a893cc5fb0a8406ab2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
+ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404322"
+ms.lasthandoff: 07/27/2019
+ms.locfileid: "68591050"
 ---
 <!-- Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -98,21 +98,21 @@ Plusieurs problèmes de sécurité importants sont à prendre en compte quand vo
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], [managing state][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter un flux de conversation séquentiel][simple-dialog], and how to [reuse dialogs][component-dialogs].
+- Connaissance des [fonctions de base des robots][concept-basics], de la [gestion de l’état][concept-state], des [bibliothèques des boîtes de dialogue][concept-dialogs], de la façon d’[implémenter un flux de conversation séquentiel][simple-dialog] et de la façon de [réutiliser des boîtes de dialogues][component-dialogs].
 - Connaissances du développement Azure et OAuth 2.0.
 - Visual Studio version 2017 ou ultérieure, Node.js, npm et git.
 - Un de ces exemples.
 
 | Exemple | Version de Bot Builder | Illustre le |
 |:---|:---:|:---|
-| **Authentification de bot** dans [**CSharp**][cs-auth-sample] or [**JavaScript**][js-auth-sample] | v4 | Prise en charge d’OAuthCard |
-| **Authentification de bot MSGraph** dans [**CSharp**][cs-msgraph-sample] or [**JavaScript**][js-msgraph-sample] | v4 |  Prise en charge de l’API Microsoft Graph avec OAuth 2 |
+| **Authentification de robots** dans [**CSharp**][cs-auth-sample]ou [**JavaScript**][js-auth-sample] | v4 | Prise en charge d’OAuthCard |
+| **Authentification de robots MSGraph** dans [**CSharp**][cs-msgraph-sample]ou [**JavaScript**][js-msgraph-sample] | v4 |  Prise en charge de l’API Microsoft Graph avec OAuth 2 |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Créer votre ressource de bot sur Azure
 
-Créez une inscription **Bot Channels Registration** à l’aide du [portail Azure](https://portal.azure.com/).
+Créer une **ressource de robot** en utilisant le [Portail Azure](https://portal.azure.com/).
 
-Enregistrez l’ID et le mot de passe d’application de votre bot. Pour collecter ces informations, consultez [Gérer un bot](../bot-service-manage-overview.md).
+Pour plus d’informations, consultez [Créer un robot avec Azure Bot Service](./abs-quickstart.md).
 
 ## <a name="create-and-register-an-azure-ad-application"></a>Créer et inscrire une application Azure AD
 
@@ -247,7 +247,7 @@ Vous avez besoin de l’ID d’application de votre bot et du mot de passe assoc
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. Clonez à partir du dépôt GitHub l’exemple que vous souhaitez utiliser : [**Authentification du bot**][cs-auth-sample] or [**Bot authentication MSGraph**][cs-msgraph-sample].
+1. Clonez à partir du dépôt GitHub l’exemple que vous souhaitez utiliser : [**Authentification de robots**][cs-auth-sample] ou [**Authentification de robots avec MSGraph**][cs-msgraph-sample].
 1. Mettez à jour **appsettings.json** :
 
     - Définissez `ConnectionName` sur le nom du paramètre de connexion OAuth que vous avez ajouté à votre bot.
@@ -259,7 +259,7 @@ Vous avez besoin de l’ID d’application de votre bot et du mot de passe assoc
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. Clonez à partir du dépôt github ce que vous souhaitez utiliser : [**Authentification du bot**][js-auth-sample] or [**Bot authentication MSGraph**][js-msgraph-sample].
+1. Clonez à partir du dépôt github ce que vous souhaitez utiliser : [**Authentification de robots**][js-auth-sample] ou [**Authentification de robots avec MSGraph**][js-msgraph-sample].
 1. Mettez à jour **.env** :
 
     - Définissez `connectionName` sur le nom du paramètre de connexion OAuth que vous avez ajouté à votre bot.

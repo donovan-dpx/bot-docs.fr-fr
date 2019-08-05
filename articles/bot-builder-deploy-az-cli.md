@@ -5,17 +5,17 @@ keywords: déployer bot, déployer bot azure, publier bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405974"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671388"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -178,9 +178,19 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | src  | Chemin du fichier compressé que vous avez créé. |
 
 ## <a name="3-test-in-web-chat"></a>3. Tester dans la Discussion Web
-- Dans le portail Azure, accédez au panneau de votre bot d’application web.
-- Dans la section **Gestion du bot**, cliquez sur **Tester dans la Discussion Web**. Azure Bot Service charge le contrôle Discussion Web et se connecte à votre bot.
-- Attendez quelques secondes après un déploiement réussi et redémarrez éventuellement votre application Web App pour effacer tous les caches. Revenez à votre panneau Web App Bot et testez le bot à l’aide du Web Chat fourni dans le portail Azure.
+
+1. Dans votre navigateur, accédez au [Portail Azure](https://ms.portal.azure.com).
+2. Dans le panneau de gauche, cliquez sur **Groupes de ressources**.
+3. Dans le panneau de droite, recherchez votre groupe.
+4. Cliquez sur le nom de votre groupe.
+5. Cliquez sur le lien de l’inscription du canal de votre robot.
+6. Dans le *panneau d’inscription du canal de robot*, cliquez sur **Tester dans la discussion Web**.
+Sinon, dans le panneau de droite, cliquez sur la zone de test.
+
+Pour plus d’informations sur l’inscription du canal, consultez [Inscrire un robot avec Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+
+> [!NOTE]
+> Un panneau est la surface sur laquelle s’affichent les fonctions de service ou les éléments de navigation lorsqu’ils sont sélectionnés.
 
 ## <a name="additional-information"></a>Informations supplémentaires
 Le déploiement de votre bot sur Azure implique de payer les services que vous utilisez. L’article sur la [gestion de la facturation et des coûts](https://docs.microsoft.com/azure/billing/) vous aide à comprendre la facturation Azure, à superviser votre utilisation et vos coûts, ainsi qu’à gérer votre compte et vos abonnements.

@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 1cb9143e5ab2d5eb7e92e263b838cdd9217492ef
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cbe2a6e449ecc2920e3a2d1ecb04a63dcb489b66
+ms.sourcegitcommit: 8336a06941d09e1107b38f494d048dd785a13069
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225354"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68631565"
 ---
-# <a name="authentication"></a>Authentification
+# <a name="authentication"></a>Authentication
 
 Votre robot communique avec le service Bot Connector en utilisant le protocole HTTP sur un canal sécurisé (SSL/TLS). Lorsque votre robot envoie une requête au service du connecteur, il doit inclure des informations lui permettant de vérifier son identité. De même, lorsque le service du connecteur envoie une requête à votre robot, il doit inclure des informations lui permettant vérifier son identité. Cet article décrit les technologies d’authentification et les exigences en matière d’authentification au niveau du service entre un robot et le service Bot Connector. Si vous créez votre propre code d’authentification, vous devez appliquer les procédures de sécurité décrites dans cet article pour que votre robot puisse échanger des messages avec le service Bot Connector.
 
@@ -173,7 +173,7 @@ L’exemple suivant montre un document de métadonnées OpenID qui est renvoyé 
 
 ### <a id="connector-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
 
-Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple : 
+Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple :
 
 ```http
 GET https://login.botframework.com/v1/.well-known/keys
@@ -181,10 +181,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 Le corps de la réponse indique le document au format [JWK](https://tools.ietf.org/html/rfc7517). Il inclut également une propriété supplémentaire pour chaque clé : `endorsements`. La liste des clés est relativement stable et peut être mise en cache sur de longues périodes (par défaut, 5 jours dans le kit SDK Bot Framework).
 
-La propriété `endorsements` de chaque clé contient une ou plusieurs chaînes d’approbation que vous pouvez utiliser pour vérifier l’authenticité de l’identifiant de canal indiqué dans la propriété `channelId` dans l’objet [Activité][Activity] de la requête entrante. La liste des identifiants de canal nécessitant une approbation est configurable dans chaque robot. Par défaut, la liste contient tous les identifiants des canaux publiés. Les développeurs de robots peuvent néanmoins remplacer les valeurs des identifiants des canaux sélectionnés. Si l’identifiant du canal nécessite une approbation :
-
-- Vous devez exiger que tous les objets [Activité][Activity] envoyés à votre robot avec cet identifiant de canal soient accompagnés d’un jeton JWT signé avec une approbation du canal. 
-- S’il manque l’approbation, votre robot doit rejeter la requête en renvoyant un code d’état **HTTP 403 (interdit)**.
+La propriété `endorsements` de chaque clé contient une ou plusieurs chaînes d’approbation que vous pouvez utiliser pour vérifier l’authenticité de l’identifiant de canal indiqué dans la propriété `channelId` dans l’objet [Activité][Activity] de la requête entrante. La liste des identifiants de canal nécessitant une approbation est configurable dans chaque robot. Par défaut, la liste contient tous les identifiants des canaux publiés. Les développeurs de robots peuvent néanmoins remplacer les valeurs des identifiants des canaux sélectionnés. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Étape 4 : Vérifier le jeton JWT
 
@@ -198,9 +195,12 @@ Les bibliothèques d’analyse JWT sont disponibles pour de nombreuses plates-fo
 4. Le jeton contient une revendication « public » ayant une valeur égale à l’identifiant de l’application Microsoft du robot.
 5. Le jeton se trouve dans sa période de validité. La durée standard dans le secteur est de 5 minutes.
 6. La signature chiffrée du jeton est valide et la clé est répertoriée dans le document des clés OpenID récupéré à l’[étape 3](#connector-to-bot-step-3) à l’aide de l’algorithme de signature indiqué dans la propriété `id_token_signing_alg_values_supported` du document Open ID Metadata récupéré à l’[étape 2](#openid-metadata-document).
-7. Le jeton contient une revendication « serviceUrl » dont la valeur correspond à la propriété `servieUrl` à la racine de l’objet [Activité][Activity] de la requête entrante. 
+7. Le jeton contient une revendication « serviceUrl » dont la valeur correspond à la propriété `servieUrl` à la racine de l’objet [Activité][Activity] de la requête entrante. 
 
-Si le jeton ne respecte pas toutes ces exigences, votre robot doit rejeter la requête en renvoyant un code d’état **HTTP 403 (interdit)**.
+Si l’identifiant du canal nécessite une approbation :
+
+- Vous devez exiger que tous les objets [Activité][Activity] envoyés à votre robot avec cet identifiant de canal soient accompagnés d’un jeton JWT signé avec une approbation de ce canal. 
+- S’il manque l’approbation, votre robot doit rejeter la requête en renvoyant un code d’état **HTTP 403 (interdit)** .
 
 > [!IMPORTANT]
 > Toutes ces exigences sont importantes, notamment les exigences 4 et 6. Si vous n’appliquez pas TOUTES ces exigences de vérification, le robot sera exposé à des attaques susceptibles d’entraîner la divulgation de son jeton JWT.
@@ -266,7 +266,7 @@ L’exemple suivant montre un document de métadonnées OpenID qui est renvoyé 
 
 ### <a id="emulator-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
 
-Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple : 
+Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple :
 
 ```http
 GET https://login.microsoftonline.com/common/discovery/v2.0/keys 
@@ -292,7 +292,7 @@ Les bibliothèques d’analyse JWT sont disponibles pour de nombreuses plates-fo
 > [!NOTE]
 > L’exigence 5 est spécifique au chemin de vérification de l’émulateur. 
 
-Si le jeton ne respecte pas toutes ces exigences, votre robot doit mettre fin à la requête en renvoyant un code d’état **HTTP 403 (interdit)**.
+Si le jeton ne respecte pas toutes ces exigences, votre robot doit mettre fin à la requête en renvoyant un code d’état **HTTP 403 (interdit)** .
 
 > [!IMPORTANT]
 > Toutes ces exigences sont importantes, notamment les exigences 4 et 7. Si vous n’appliquez pas TOUTES ces exigences de vérification, le robot sera exposé à des attaques susceptibles d’entraîner la divulgation de son jeton JWT.
@@ -325,7 +325,7 @@ payload:
 > [!WARNING]
 > La version 3.0 du protocole de sécurité n’est plus prise en charge depuis le **31 juillet 2017**. Si vous avez créé votre propre code d’authentification (c’est-à-dire que vous n’avez pas utilisé le kit SDK Bot Framework pour créer votre bot), vous devez effectuer une mise à niveau vers la version 3.1 du protocole de sécurité en mettant à jour votre application pour qu’elle utilise les valeurs de la version 3.1 listées ci-dessous. 
 
-### <a name="bot-to-connector-authenticationbot-to-connector"></a>[Authentification du bot vers le connecteur](#bot-to-connector)
+### <a name="bot-to-connector-authenticationbot-to-connector"></a>[Authentification du robot vers le connecteur](#bot-to-connector)
 
 #### <a name="oauth-login-url"></a>URL de connexion OAuth
 
@@ -339,7 +339,7 @@ payload:
 |----|----|
 | v3.1 et v3.2 |  `https://api.botframework.com/.default` |
 
-### <a name="connector-to-bot-authenticationconnector-to-bot"></a>[Authentification du connecteur vers le bot](#connector-to-bot)
+### <a name="connector-to-bot-authenticationconnector-to-bot"></a>[Authentification du connecteur vers le robot](#connector-to-bot)
 
 #### <a name="openid-metadata-document"></a>Document de métadonnées OpenID
 
@@ -353,7 +353,7 @@ payload:
 |----|----|
 | v3.1 et v3.2 | `https://api.botframework.com` |
 
-### <a name="emulator-to-bot-authenticationemulator-to-bot"></a>[Authentification de l’émulateur vers le bot](#emulator-to-bot)
+### <a name="emulator-to-bot-authenticationemulator-to-bot"></a>[Authentification de l’émulateur vers le robot](#emulator-to-bot)
 
 #### <a name="oauth-login-url"></a>URL de connexion OAuth
 
@@ -365,13 +365,13 @@ payload:
 
 | Version du protocole | Valeur valide |
 |----|----|
-| v3.1 et v3.2 |  Identificateur de l’application Microsoft de votre bot + `/.default` |
+| v3.1 et v3.2 |  Identificateur de l’application Microsoft de votre robot + `/.default` |
 
 #### <a name="jwt-audience"></a>Public JWT
 
 | Version du protocole | Valeur valide |
 |----|----|
-| v3.1 et v3.2 | Identificateur de l’application Microsoft de votre bot |
+| v3.1 et v3.2 | Identificateur de l’application Microsoft de votre robot |
 
 #### <a name="jwt-issuer"></a>Émetteur JWT
 

@@ -9,75 +9,70 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/26/2019
-ms.openlocfilehash: aa16bc839a96a49615ed127aaf56f686f50a5397
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 18b5caf4c5bb4277704d6f01f86b299fc78d725b
+ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032999"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68508127"
 ---
 # <a name="debug-a-bot"></a>Déboguer un bot
 
 Cet article explique comment déboguer votre bot à l’aide d’un environnement de développement intégré (IDE) tels que Visual Studio ou Visual Studio Code et l’émulateur Bot Framework. Vous pouvez utiliser ces méthodes pour déboguer n’importe quel bot localement, mais cet article utilise un [bot C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) ou un [bot Javascript](~/javascript/bot-builder-javascript-quickstart.md) créé dans le démarrage rapide.
 
+> [!NOTE]
+> Dans cet article, nous utilisons Bot Framework Emulator pour envoyer et recevoir des messages à partir du robot durant le débogage. Si vous recherchez d’autres façons de déboguer votre robot à l’aide de Bot Framework Emulator, veuillez lire l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
+
 ## <a name="prerequisites"></a>Prérequis 
 - Téléchargez et installez l’[émulateur Bot Framework](https://aka.ms/Emulator-wiki-getting-started).
 - Téléchargez et installez [Visual Studio Code](https://code.visualstudio.com) ou [Visual Studio](https://www.visualstudio.com/downloads) (Community Edition ou version ultérieure).
 
-### <a name="debug-a-javascript-bot-using-command-line-and-emulator"></a>Déboguer un bot JavaScript à l’aide de la ligne de commande et de l’émulateur
+<!-- ### Debug a JavaScript bot using command-line and emulator
 
-Pour exécuter un bot JavaScript en utilisant la ligne de commande et en le testant avec l’émulateur, procédez comme suit :
-1. Depuis la ligne de commande, remplacez le répertoire par défaut par le répertoire de votre projet de bot.
-1. Démarrez le bot en exécutant la commande **node app.js**.
-1. Démarrez l’émulateur et connectez-vous au point de terminaison du bot (par exemple : **http://localhost:3978/api/messages**). Si vous exécutez le bot pour la première fois, cliquez sur **Fichier > Nouveau bot** et suivez les instructions à l’écran. Sinon, cliquez sur **Fichier > Ouvrir un bot** pour ouvrir un bot existant. Dans la mesure où ce bot est exécuté localement sur votre ordinateur, vous pouvez laisser vides les champs **MicrosoftAppId** et **MicrosoftAppPassword**. Pour plus d’informations, consultez [Déboguer avec l’émulateur](bot-service-debug-emulator.md).
-1. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). 
-1. Utilisez les panneaux **Inspector** et **Log** à droite de la fenêtre de l’émulateur pour déboguer votre bot. Par exemple, cliquer sur une bulle de messages (par exemple, la bulle du message « Hi » dans la capture d’écran ci-dessous) affiche les détails de ce message dans le panneau **Inspector**. Vous pouvez l’utiliser pour afficher les demandes et réponses à mesure que des messages sont échangés entre l’émulateur et le bot. Vous pouvez également cliquer sur le texte lié dans le panneau **Log** pour afficher les détails dans le panneau **Inspecteur**.
+To run a JavaScript bot using the command line and testing the bot with the emulator, do the following:
+1. From the command line, change directory to your bot project directory.
+1. Start the bot by running the command **node app.js**.
+1. Start the emulator and connect to the bot's endpoint (e.g.: **http://localhost:3978/api/messages**). If this is the first time you are running 
+the bot then click **File > New Bot** and follow the instructions on screen. Otherwise, click **File > Open Bot** to open an existing bot. 
+Since this bot is running locally on your computer, you can leave the **MicrosoftAppId** and **MicrosoftAppPassword** fields blank. 
+For more information, see [Debug with the Emulator](bot-service-debug-emulator.md).
+1. From the emulator, send your bot a message (e.g.: send the message "Hi"). 
+1. Use the **Inspector** and **Log** panels on the right side of the emulator window to debug your bot. For example, clicking on any of the messages bubble (e.g.: the "Hi" message bubble in the screenshot below) will show you the detail of that message in the **Inspector** panel. You can use it to view requests and responses as messages are exchanged between the emulator and the bot. Alternatively, you can click on any of the linked text in the **Log** panel to view the details in the **Inspector** panel.
 
 
-   ![Panneau Inspector sur l’émulateur](~/media/bot-service-debug-bot/emulator_inspector.png)
+   ![Inspector panel on the Emulator](~/media/bot-service-debug-bot/emulator_inspector.png) -->
 
-### <a name="debug-a-javascript-bot-using-breakpoints-in-visual-studio-code"></a>Déboguer un bot JavaScript à l’aide de points d’arrêt dans Visual Studio Code
+## <a name="debug-a-javascript-bot-using-breakpoints-in-visual-studio-code"></a>Déboguer un bot JavaScript à l’aide de points d’arrêt dans Visual Studio Code
 
 Dans Visual Studio Code, vous pouvez définir des points d’arrêt et exécuter le bot en mode débogage pour parcourir votre code. Pour définir des points d’arrêt dans VS Code, procédez comme suit :
 
 1. Lancez VS Code et ouvrez le dossier de votre projet de bot.
 2. Dans la barre de menus, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**. Si vous êtes invité à sélectionner un moteur d’exécution pour exécuter votre code, sélectionnez **Node.js**. À ce stade, le bot s’exécute localement. 
-<!--
-   > [!NOTE]
-   > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
-   > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
--->
-3. Définissez le point d’arrêt en fonction des besoins. Dans VS Code, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur ce point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
-
+3. Cliquez sur le fichier **.js** et définissez les points d’arrêt selon vos besoins. Dans VS Code, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur ce point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
    ![Définir un point d’arrêt dans VS Code](~/media/bot-service-debug-bot/breakpoint-set.png)
-
-4. Démarrez l’émulateur Bot Framework et connectez-vous à votre bot, comme décrit dans la section ci-dessus. 
-5. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
-
+4. Démarrez Bot Framework Emulator et connectez-vous à votre robot, comme décrit dans l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
+5. À partir de l’émulateur, envoyez un message à votre robot (par exemple, envoyer le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
    ![Déboguer dans VS Code](~/media/bot-service-debug-bot/breakpoint-caught.png)
 
-### <a name="debug-a-c-bot-using-breakpoints-in-visual-studio"></a>Déboguer un bot C# à l’aide de points d’arrêt dans Visual Studio
+## <a name="debug-a-c-bot-using-breakpoints-in-visual-studio"></a>Déboguer un bot C# à l’aide de points d’arrêt dans Visual Studio
 
 Dans Visual Studio (VS), vous pouvez définir des points d’arrêt et exécuter le bot en mode débogage pour parcourir votre code. Pour définir des points d’arrêt dans VS, procédez comme suit :
 
 1. Accédez au dossier de votre bot et ouvrez le fichier **.sln**. Cela permet d’ouvrir la solution dans Visual Studio.
 2. Dans la barre de menus, cliquez sur **Générer** puis sur **Générer la solution**.
-3. Dans l’**Explorateur de solutions**, cliquez sur **EchoWithCounterBot.cs**. Ce fichier définit le point d’arrêt logic.Set de votre bot principal comme nécessaire. Dans VS, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur ce point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
-5. Dans la barre de menus, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**. À ce stade, le bot s’exécute localement. 
+3. Dans l’**Explorateur de solutions**, cliquez sur le fichier **.cs** et définissez les points d’arrêt selon vos besoins. Ce fichier définit la logique principale de votre bot. Dans VS, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur le point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
+4. Dans le menu, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**. À ce stade, le bot s’exécute localement. 
 
 <!--
    > [!NOTE]
    > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
    > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
 -->
-
    ![Définir le point d’arrêt dans Visual Studio](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
 
-7. Démarrez l’émulateur Bot Framework et connectez-vous à votre bot, comme décrit dans la section ci-dessus. 
-8. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
-
-   ![Débogage dans Visual Studio](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
-
+5. Démarrez l’émulateur Bot Framework et connectez-vous à votre bot, comme décrit dans la section ci-dessus. 
+6. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
+   ![Déboguer dans VS](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
 ::: moniker range="azure-bot-service-3.0" 
 
 ## <a id="debug-csharp-serverless"></a> Déboguer un bot Plan consommation C\# Functions

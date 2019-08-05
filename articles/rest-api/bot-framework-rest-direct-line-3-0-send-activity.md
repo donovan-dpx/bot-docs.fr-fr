@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a9a98419a8ac65c7e1093e1281e03917fa4eca11
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000036"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671502"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envoyer une activité au bot
 
@@ -46,7 +46,12 @@ Content-Type: application/json
 
 ### <a name="response"></a>response
 
-Lorsque l’activité est fournie au robot, le service répond avec un code d’état HTTP qui correspond au code d’état du robot. Si le robot génère une erreur, une réponse HTTP 502 (« passerelle incorrecte ») est renvoyée au client en réponse à sa requête d’activité d’envoi. Si la PUBLICATION est réussie, la réponse contient une charge utile JSON qui spécifie l’identifiant de I’activité envoyée au robot.
+Lorsque l’activité est fournie au robot, le service répond avec un code d’état HTTP qui correspond au code d’état du robot. Si le robot génère une erreur, une réponse HTTP 502 (« passerelle incorrecte ») est renvoyée au client en réponse à sa requête d’activité d’envoi.
+
+> [!NOTE]
+> Cela peut être dû au fait qu’un jeton correct n’a pas été utilisé. Seul le jeton reçu pour *démarrer la conversation* peut être utilisé pour envoyer une activité.
+
+Si la PUBLICATION est réussie, la réponse contient une charge utile JSON qui spécifie l’identifiant de I’activité envoyée au robot.
 
 ```http
 HTTP/1.1 200 OK

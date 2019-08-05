@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 4dab0a8f3dab2a87184a03fe25b2a9abeaff67a2
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 1d787d375fcd1ddade544724bb28dea9aaeb1dd6
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464655"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671419"
 ---
 # <a name="web-chat-overview"></a>Vue d’ensemble de Web Chat
 
@@ -152,7 +152,7 @@ Veuillez suivre l’implémentation de l’exemple [`01.c.getting-started-migrat
 
 ### <a name="my-website-is-integrated-with-a-fork-of-web-chat-v3-i-have-implemented-a-lot-of-customization-in-my-version-of-web-chat-and-i-am-concerned-v4-is-not-compatible-with-my-needs"></a>Mon site Web est intégré à une duplication de Web Chat v3. J’ai implémenté un grand nombre d’éléments de personnalisation dans ma version de Web Chat, et je crains à présent que la v4 ne soit pas compatible avec mes besoins.
 
-Notre équipe a conçu la version 4 pour que la personnalisation soit possible **sans duplication de Web Chat**. Bien que cela crée une charge de travail pour les utilisateurs de la v3 qui ont déjà dupliqué Web Chat, nous ferons de notre mieux pour les aider à passer de la v3 à la v4. Implémentez les suggestions suivantes :
+Notre équipe a conçu la version 4 pour que la personnalisation soit possible **sans duplication de Web Chat**. Bien que cela crée une surcharge supplémentaire pour les utilisateurs de la v3 qui ont déjà dupliqué la discussion Web, nous ferons de notre mieux pour les aider à passer à la version supérieure. Implémentez les suggestions suivantes :
 
 -  Examinez l’implémentation de l’exemple [`01.c.getting-started-migration`](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/01.c.getting-started-migration). Il s’agit d’un point de départ idéal en vue d’exécuter Web Chat.
 -  Ensuite, passez en revue la [liste d’exemples](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples) pour comparer vos besoins de personnalisation aux besoins que Web Chat couvre déjà. Ces exemples comportent des fonctionnalités couramment demandées pour Web Chat.

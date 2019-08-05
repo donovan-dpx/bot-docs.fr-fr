@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d0b7b3250a62a995113bc9c7e087e2e62af0f413
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 15ad5855fef9bc20f351e196941fe81822db5451
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997066"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671513"
 ---
 # <a name="send-and-receive-messages"></a>Envoyer et recevoir des messages
 
@@ -23,7 +23,7 @@ Le service Bot Connector permet à un bot de communiquer sur plusieurs canaux te
 
 ### <a name="create-a-reply"></a>Créer une réponse 
 
-Lorsque l’utilisateur envoie un message à votre bot, ce dernier reçoit le message comme un objet [Activity][Activity]de type **message**. Pour créer une réponse au message d’un utilisateur, créez un nouvel objet [Activity][Activity], puis définissez les propriétés suivantes :
+Lorsque l’utilisateur envoie un message à votre robot, ce dernier reçoit le message comme un objet [Activity][Activity] de type **message**. Pour créer une réponse au message d’un utilisateur, créez un nouvel objet [Activity][Activity], puis démarrez en définissant les propriétés suivantes :
 
 | Propriété | Valeur |
 |----|----|
@@ -88,7 +88,7 @@ POST /v3/conversations/{conversationId}/activities
 
 Dans cet URI de requête, remplacez **{conversationId}** par l’ID de la conversation. 
     
-Définissez le corps de la requête sur l’objet [Activity][Activity] que vous avez créé pour représenter votre réponse.
+Définissez le corps de la requête sur un objet [Activity][Activity] que vous avez créé pour représenter votre réponse.
 
 > [!NOTE]
 > Bot Framework n’impose aucune restriction concernant le nombre de messages qu’un bot peut envoyer. Toutefois, la plupart des canaux appliquent des limitations de requêtes pour empêcher les bots d’envoyer un grand nombre de messages dans un court laps de temps. En outre, si le bot envoie plusieurs messages successifs rapidement, le canal risque de ne pas toujours afficher les messages dans le bon ordre.
@@ -106,7 +106,7 @@ Pour démarrer une conversation, exécutez la requête suivante :
 POST /v3/conversations
 ```
 
-Définissez le corps de la requête sur un objet [Conversation][Conversation] qui spécifie les informations de compte du bot et les informations de compte des utilisateurs que vous souhaitez inclure dans la conversation.
+Définissez le corps de la requête sur un objet [ConversationParameters][] qui spécifie les informations de compte de votre robot et les informations de compte du ou des utilisateurs que vous souhaitez inclure dans la conversation.
 
 > [!NOTE]
 > Tous les canaux ne prennent pas en charge les conversations de groupe. Consultez la documentation du canal pour déterminer si un canal prend en charge les conversations de groupe, et pour connaître le nombre maximal de participants autorisés par un canal dans une conversation.
@@ -153,5 +153,5 @@ Votre bot peut ensuite utiliser cet ID de conversation pour [envoyer un message]
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [ConversationAccount]: bot-framework-rest-connector-api-reference.md#conversationaccount-object
-[Conversation]: bot-framework-rest-connector-api-reference.md#conversation-object
+[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object
 

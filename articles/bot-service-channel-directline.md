@@ -10,12 +10,12 @@ ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-ivorb
-ms.openlocfilehash: 0b108d90d18261cd22214db9a7926bdac1bfee40
-ms.sourcegitcommit: a4181f35dbe6a8b107eea28122372f524e19880a
+ms.openlocfilehash: 08765793611a0c2543fea481479ea4cfa2c8b74c
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030192"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671421"
 ---
 ## <a name="about-direct-line"></a>À propos de Direct Line
 
@@ -27,18 +27,18 @@ Direct Line est disponible sous trois formes :
 
 Vous pouvez choisir le produit Direct Line qui vous convient le mieux en évaluant les fonctionnalités offertes par chacun et les besoins de votre solution. Au fil du temps, ces produits seront simplifiés.
 
-|                            | Direct Line | Extension App Service Direct Line | Direct Line Speech |
+|                            | Ligne directe | Extension App Service Direct Line | Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
-| Disponibilité générale et contrat SLA    | Disponibilité générale | Préversion privée, sans contrat SLA  | Préversion privée, sans contrat SLA |
+| Disponibilité et licences    | Disponibilité générale | Préversion privée, sans contrat SLA  | Préversion privée, sans contrat SLA |
 | Performances de reconnaissance vocale et de synthèse vocale | standard | standard | Hautes performances |
-| OAuth intégrée           | OUI | OUI | Non  |
-| Télémétrie intégrée       | OUI | OUI | Non  |
-| Prise en charge des navigateurs web hérités | OUI | Non  | Non  |
+| OAuth intégrée           | OUI | OUI | Non |
+| Télémétrie intégrée       | OUI | OUI | Non |
+| Prise en charge des navigateurs web hérités | OUI | Non | Non |
 | Prise en charge du kit SDK Bot Framework | Toutes les versions v3 et v4 | v4.5+ obligatoire | v4.5+ obligatoire |
 | Prise en charge du kit SDK client    | JS, C# | JS, C# | C++, C#, Unity |
-| Fonctionne avec Web Chat  | OUI | OUI | Non |
-| API d’historique des conversations | OUI | OUI| Non |
-| Réseau virtuel | Non  | Préversion* | Non  |
+| Fonctionne avec Web Chat  | OUI | OUI | Non|
+| API d’historique des conversations | OUI | OUI| Non|
+| Réseau virtuel | Non | Préversion* | Non |
 
 _* Les extensions App Service Direct Line peuvent être utilisées sur les réseaux virtuels, mais ne permettent pas encore de limiter les appels sortants._
 

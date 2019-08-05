@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b2cc303cdedbc3a9d44ce725bfc78dd308974763
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 51ab0fa6844bd0c72212e496b3bc096dc3fa11b2
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464672"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671460"
 ---
 # <a name="virtual-assistant-overview"></a>Présentation de l’assistant virtuel
 
@@ -56,7 +56,7 @@ Modèle de langage automobile | Un modèle de langage automobile couvrant des do
 
 L’assistant virtuel peut être utilisé dans de nombreux secteurs et scénarios. Des exemples de scénarios sont présentés ci-dessous à titre de référence.
 
-- Industrie automobile : L’assistant personnel avec fonction Voix qui est intégré à la voiture offre aux utilisateurs finaux la possibilité d’effectuer des opérations classiques au sein d’un véhicule (navigation, radio, etc.). Il est également adapté aux scénarios orientés productivité, comme par exemple pour décaler des réunions quand vous êtes en retard ou ajouter des éléments à votre liste de tâches. Il propose des expériences proactives où la voiture peut suggérer d’accomplir des tâches en fonction d’événements comme le démarrage du moteur, le trajet du retour à la maison ou l’activation du régulateur de vitesse. Des cartes adaptatives sont affichées dans l’intégration de l’unité principale et de reconnaissance vocale effectuée via les interactions de type Wake Word (mot déclencheur) ou Push-To-Talk (appuyer pour parler).
+- Industrie automobile : L’assistant personnel activé par la voix intégré à la voiture offre aux utilisateurs finaux la possibilité d’effectuer des opérations classiques au sein d’un véhicule (navigation, radio, etc.). Il se focalise également sur des scénarios orientés productivité, comme par exemple décaler des réunions quand vous êtes en retard ou ajouter des éléments à votre liste de tâches. Il propose des expériences proactives où la voiture peut suggérer d’accomplir des tâches en fonction d’événements comme le démarrage du moteur, le trajet du retour à la maison ou l’activation du régulateur de vitesse. Des cartes adaptatives sont affichées dans l’intégration de l’unité principale et de reconnaissance vocale effectuée via les interactions de type Wake Word (mot déclencheur) ou Push-To-Talk (appuyer pour parler).
 
 - Hôtellerie : L’assistant personnel avec fonction Voix qui est intégré aux appareils d’une chambre d’hôtel peut être utilisé dans un large éventail de scénarios d’hôtellerie (prolongation du séjour, demander à libérer la chambre plus tard, service en chambre, etc.), y compris un service de conciergerie et la fonctionnalité de recherche de restaurants et de lieux à visiter. Les liens facultatifs vers vos comptes de productivité offrent des expériences encore plus personnalisées, comme des suggestions de rappels, des avertissements en lien avec la météo ou l’apprentissage des modèles de réservation de séjours. Une évolution de la personnalisation TV actuelle présente dans les chambres d’hôtel actuellement.
 
