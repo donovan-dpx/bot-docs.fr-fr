@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67464804"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-Toutes les entités de l’énoncé sont transmises au dialogue à l’aide du paramètre `args`. Première étape de la [cascade][waterfall] calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData] permettant d’enregistrer la note dans un objet `notes` en utilisant le titre comme clé. Pour plus d’informations sur `session.UserData`, consultez [Gérer les données d’état](./bot-builder-nodejs-state.md). 
+Toutes les entités de l’énoncé sont transmises au dialogue à l’aide du paramètre `args`. La première étape la [cascade][waterfall] appelle [EntityRecognizer.findEntity][EntityRecognizer_findEntity] pour obtenir le titre de la note de toutes les entités `Note.Title` dans la réponse LUIS. Si l’application LUIS ne détecte pas d’entité `Note.Title`, le robot demande à l’utilisateur le nom de la note. La deuxième étape de la cascade lance une invite pour demander le texte à inclure dans la note. Une fois que le robot dispose du texte de la note, la troisième étape utilise [session.userData][session_userData] pour enregistrer la note dans un objet `notes` en utilisant le titre comme clé. Pour plus d’informations sur `session.UserData`, consultez [Gérer les données d’état](./bot-builder-nodejs-state.md). 
 
 
 
