@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/21/2019
 ms.openlocfilehash: 57efc2f1d137988792d9484d7f1f857bd193ecfa
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67405783"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
@@ -73,7 +73,7 @@ Si vous souhaitez que nous ajoutions un canal spécifique à l’infrastructure,
 
 ### <a name="i-have-a-communication-channel-id-like-to-be-configurable-with-bot-framework-can-i-work-with-microsoft-to-do-that"></a>J’aimerais pouvoir configurer un canal de communication spécifique avec le Bot Framework. Puis-je travailler avec Microsoft à cette fin ?
 
-Nous n’avons pas fourni aux développeurs de mécanisme général pour ajouter de nouveaux canaux au Bot Framework. Cependant, vous pouvez connecter votre bot à votre application par le biais de [l’API Direct Line][DirectLineAPI]. If you are a developer of a communication channel and would like to work with us to enable your channel in the Bot Framework [we’d love to hear from you][Support].
+Nous n’avons pas fourni de mécanisme général aux développeurs pour ajouter de nouveaux canaux au Bot Framework. Cependant, vous pouvez connecter votre robot à votre application par le biais de [Direct Line API][DirectLineAPI]. Si vous êtes un développeur d’un canal de communication et que vous souhaitez travailler avec nous pour activer votre canal dans le Bot Framework, [n’hésitez pas à nous contacter][Support].
 
 ### <a name="if-i-want-to-create-a-bot-for-microsoft-teams-what-tools-and-services-should-i-use"></a>Quels outils et services dois-je utiliser pour créer un bot pour Microsoft Teams ?
 
