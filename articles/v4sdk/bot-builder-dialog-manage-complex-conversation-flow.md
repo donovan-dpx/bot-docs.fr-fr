@@ -11,10 +11,10 @@ ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 08/05/2019
 ms.locfileid: "67587475"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
@@ -27,8 +27,8 @@ Nous vous montrerons également comment passer des arguments entre différentes 
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], [managing state][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter un flux de conversation séquentiel][simple-dialog].
-- Une copie de l’exemple de dialogue complexe en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
+- Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter les flux de conversation séquentiels][simple-dialog].
+- Une copie de l’exemple de dialogue complexe, au choix en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -45,7 +45,7 @@ Les dialogues sont divisés en dialogues composants `MainDialog`, `TopLevelDialo
   - Si l’utilisateur est trop jeune, ils ne lui demandent pas d’évaluer une entreprise.
   - Si l’utilisateur a l’âge requis, ils commencent à collecter les préférences d’évaluation de l’utilisateur.
     - Ils permettent à l’utilisateur de sélectionner une entreprise à évaluer.
-    - Si l’utilisateur choisit une entreprise, ils s’_exécutent en boucle_ pour permettre à une deuxième entreprise d’être sélectionnée.
+    - Si l’utilisateur choisit une entreprise, ils s’ _ pour permettre à une deuxième entreprise d’être sélectionnée.
 - Enfin, ils remercient l’utilisateur pour sa participation.
 
 Ils utilisent deux dialogues en cascade, et quelques invites pour gérer une conversation complexe.
