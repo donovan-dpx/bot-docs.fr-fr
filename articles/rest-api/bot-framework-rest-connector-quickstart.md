@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997937"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757151"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Créer un bot avec le service Bot Connector
 > [!div class="op_single_selector"]
@@ -71,7 +70,7 @@ Une conversation est une série de messages échangés entre un utilisateur et v
 
 ### <a name="receive-a-message-from-the-user"></a>Recevoir un message de l’utilisateur
 
-Lorsque l’utilisateur envoie un message, le service Bot Framework Connector publie une requête destinée au point de terminaison que vous avez spécifié lorsque vous avez [inscrit](../bot-service-quickstart-registration.md) votre bot. Le corps de la requête est un objet [Activity][Activity]. L’exemple ci-après présente le corps de la requête qu’un bot reçoit lorsque l’utilisateur lui envoie un message simple. 
+Lorsque l’utilisateur envoie un message, le service Bot Framework Connector publie une requête destinée au point de terminaison que vous avez spécifié lorsque vous avez [inscrit](../bot-service-quickstart-registration.md) votre bot. Le corps de la requête est un objet `Activity`. L’exemple ci-après présente le corps de la requête qu’un bot reçoit lorsque l’utilisateur lui envoie un message simple. 
 
 ```json
 {
@@ -98,7 +97,7 @@ Lorsque l’utilisateur envoie un message, le service Bot Framework Connector pu
 
 ### <a name="reply-to-the-users-message"></a>Répondre au message de l’utilisateur
 
-Lorsque le point de terminaison de votre bot reçoit une requête `POST` qui représente un message émanant de l’utilisateur (par exemple, `type` = **message**), utilisez les informations de cette requête pour créer l’objet [Activity][Activity] de votre réponse.
+Lorsque le point de terminaison de votre bot reçoit une requête `POST` qui représente un message émanant de l’utilisateur (par exemple, `type` = **message**), utilisez les informations de cette requête pour créer l’objet `Activity` de votre réponse.
 
 1. Définissez la propriété **conversation** sur le contenu de la propriété **conversation** dans le message de l’utilisateur.
 2. Définissez la propriété **from** sur le contenu de la propriété **recipient** dans le message de l’utilisateur.
@@ -107,7 +106,7 @@ Lorsque le point de terminaison de votre bot reçoit une requête `POST` qui rep
 
 Utilisez la propriété `serviceUrl` dans la requête entrante pour [identifier l’URI de base](bot-framework-rest-connector-api-reference.md#base-uri) que votre bot doit utiliser pour émettre sa réponse. 
 
-Pour envoyer la réponse, utilisez la requête `POST` pour publier votre objet [Activity][Activity] sur `/v3/conversations/{conversationId}/activities/{activityId}`, comme indiqué dans l’exemple suivant. Le corps de cette requête est un objet [Activity][Activity] qui invite l’utilisateur à sélectionner une heure de rendez-vous disponible.
+Pour envoyer la réponse, utilisez la requête `POST` pour publier votre objet `Activity` sur `/v3/conversations/{conversationId}/activities/{activityId}`, comme indiqué dans l’exemple suivant. Le corps de cette requête est un objet `Activity` qui invite l’utilisateur à sélectionner une heure de rendez-vous disponible.
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/bf3cc9a2f5de... 
@@ -135,7 +134,7 @@ Content-Type: application/json
 }
 ```
 
-Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri). 
+Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri). 
 
 > [!IMPORTANT]
 > Comme indiqué dans cet exemple, l’en-tête `Authorization` de chaque requête d’API que vous envoyez doit contenir le mot **Bearer** suivi du jeton d’accès que vous avez [obtenu auprès de Bot Framework](#get-token).
@@ -195,6 +194,3 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Étapes suivantes
 
 Ce didacticiel vous a appris à obtenir un jeton d’accès à partir de Bot Framework et à utiliser le service Bot Connecteur pour échanger des messages avec l’utilisateur. Vous pouvez utiliser l’application [Bot Framework Emulator](../bot-service-debug-emulator.md) pour tester et déboguer votre bot. Si vous souhaitez partager votre bot avec d’autres, vous devrez le [configurer](../bot-service-manage-channels.md) pour qu’il s’exécute sur un ou plusieurs canaux.
-
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

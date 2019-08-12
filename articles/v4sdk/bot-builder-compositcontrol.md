@@ -11,10 +11,10 @@ ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
 ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
-ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67587489"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
@@ -25,8 +25,8 @@ Avec les dialogues composants, vous pouvez créer des dialogues indépendants po
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Connaissances des [concepts de base des bots][concept-basics], the [dialogs library][concept-dialogs] et de la façon dont [gérer les conversations][simple-flow].
-- Une copie de l’exemple d’invite multitour en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
+- Connaissances des [concepts de base des bots][concept-basics], de la [bibliothèque de dialogues][concept-dialogs] et de la façon de [gérer les conversations][simple-flow].
+- Une copie de l’exemple d’invite multitour en [**CSharp**][cs-sample] ou [**JavaScript**][js-sample].
 
 ## <a name="about-the-sample"></a>À propos de l’exemple
 
@@ -44,7 +44,7 @@ Enfin, si l’utilisateur a répondu « oui », afficher les informations coll
 
 ## <a name="implement-the-component-dialog"></a>Implémenter le dialogue composant
 
-Dans l’exemple d’invite à plusieurs tours, nous utilisons un _dialogue en cascade_, quelques _invites_ et un _dialogue composant_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
+Dans l’exemple d’invite à plusieurs tours, nous utilisons un _dialogue en cascade_ , quelques _invites_ et un _dialogue composant_ pour créer une interaction simple qui pose à l’utilisateur une série de questions.
 
 Un dialogue composant encapsule un ou plusieurs dialogues. Le dialogue composant possède un jeu de dialogues interne défini ; les dialogues et les invites que vous ajoutez à ce jeu de dialogues interne possèdent leurs propres ID, visibles uniquement à partir du dialogue composant.
 
@@ -58,7 +58,7 @@ Ici, la classe `UserProfileDialog` dérive de la classe `ComponentDialog`.
 
 [!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=13)]
 
-Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
+Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_ .
 
 [!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17-42)]
 
@@ -78,7 +78,7 @@ Ici la classe `UserProfileDialog` étend `ComponentDialog`.
 
 [!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=24)]
 
-Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
+Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_ .
 
 [!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
 

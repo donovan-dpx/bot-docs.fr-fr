@@ -3,22 +3,21 @@ title: Vue d’ensemble de Web Chat | Microsoft Docs
 description: Découvrez comment configurer Bot Framework Web Chat.
 keywords: bot framework, conversation web, conversation, exemples, react, référence
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 1d787d375fcd1ddade544724bb28dea9aaeb1dd6
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671419"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757103"
 ---
 # <a name="web-chat-overview"></a>Vue d’ensemble de Web Chat
 
-Cet article décrit en détail le composant [Bot Framework Web Chat](https://github.com/microsoft/BotFramework-WebChat). Le composant Bot Framework Web Chat est un client web hautement personnalisable pour le Kit de développement Bot Framework V4. Le kit SDK Bot Framework v4 permet aux développeurs de modéliser une conversation et de créer des applications de bot évoluées.
+Cet article décrit en détail le composant [Bot Framework Web Chat](https://github.com/microsoft/BotFramework-WebChat). Le composant Bot Framework Web Chat est un client web hautement personnalisable pour le kit SDK Bot Framework v4. Le kit SDK Bot Framework v4 permet aux développeurs de modéliser une conversation et de créer des applications de bot évoluées.
 
 Si vous avez besoin de migrer de la version 3 vers la version 4 de Web Chat, passez directement à la [section consacrée à la migration](#migrating-from-web-chat-v3-to-v4).
 
@@ -30,7 +29,7 @@ Si vous avez besoin de migrer de la version 3 vers la version 4 de Web Chat, p
 Tout d’abord, créez un bot à l’aide d’[Azure Bot Service](https://azure.microsoft.com/services/bot-service/).
 Une fois le bot créé, vous devez [obtenir la clé secrète Web Chat du bot](../bot-service-channel-connect-webchat.md#step-1) dans le Portail Azure. Utilisez ensuite la clé secrète pour [générer un jeton](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) et transmettez celui-ci à votre Web Chat.
 
-Voici la façon dont vous pouvez ajouter le contrôle Web Chat à votre site web :
+Voici la façon dont vous pouvez ajouter un contrôle Web Chat à votre site web :
 
 ```html
 <!DOCTYPE html>
@@ -57,12 +56,12 @@ Voici la façon dont vous pouvez ajouter le contrôle Web Chat à votre site web
 </html>
 ```
 
-> `userID`, `username`, `locale`, `botAvatarInitials` et `userAvatarInitials` sont tous des paramètres facultatifs à transmettre à la méthode `renderWebChat`. Pour en savoir plus sur les propriétés Web Chat, consultez la section [Référence de l’API Web Chat](#web-chat-api-reference) dans ce fichier `README`.
+> `userID`, `username`, `locale`, `botAvatarInitials` et `userAvatarInitials` sont tous des paramètres facultatifs à transmettre à la méthode `renderWebChat`. Pour en savoir plus sur les propriétés Web Chat, consultez la section [Référence de l’API Web Chat](#web-chat-api-reference) de cet article.
 > ![Capture d’écran de Web Chat](https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/weatherquery.png.jpg)
 
 ### <a name="integrate-with-javascript"></a>Intégration JavaScript
 
-Web Chat est conçu pour s’intégrer à votre site web existant à l’aide de JavaScript ou React. L’intégration JavaScript vous donnera des possibilités de personnalisation et de mise en forme modérées.
+Web Chat est conçu pour s’intégrer à votre site web existant à l’aide de JavaScript ou React. L’intégration à JavaScript vous donnera des styles et possibilités de personnalisation. Pour plus d’informations, consultez l’article [Intégrer Web Chat à votre site web](https://aka.ms/integrate-webchat-into-site).
 
 Vous pouvez utiliser la version complète, le package webchat classique qui contient les fonctionnalités les plus utilisées.
 
@@ -91,9 +90,9 @@ Consultez l’exemple fonctionnel de [l’offre groupée complète Web Chat](htt
 
 ### <a name="integrate-with-react"></a>Intégration React
 
-Pour une personnalisation complète, vous pouvez modifier les composants Web Chat à l’aide de React.
+Pour une personnalisation complète, vous pouvez modifier les composants Web Chat à l’aide de [React](https://reactjs.org/).
 
-Pour installer la version de production à partir de NPM, exécutez `npm install botframework-webchat`.
+Pour installer la build de production à partir de npm, exécutez `npm install botframework-webchat`.
 
 ```jsx
 import { DirectLine } from 'botframework-directlinejs';
@@ -120,6 +119,10 @@ export default class extends React.Component {
 
 Reportez-vous à un exemple fonctionnel d’[affichage de Web Chat via React](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/03.a.host-with-react/).
 
+> [!TIP]
+> Si vous êtes un nouvel utilisateur de React et jsx, vous pouvez trouver un entraînement dans la page [Prise en main](https://reactjs.org/docs/getting-started.html) de React.
+
+
 ## <a name="customize-web-chat-ui"></a>Personnaliser l’interface utilisateur de Discussion Web
 
 Web Chat est conçu pour être personnalisable sans duplication de code source. Le tableau ci-dessous décrit les différentes personnalisations vous pouvez obtenir selon les façons dont vous importez Web Chat. Cette liste n’est pas exhaustive.
@@ -137,6 +140,9 @@ Web Chat est conçu pour être personnalisable sans duplication de code source. 
 | Recomposer l’interface utilisateur entière        |                    | :heavy_check_mark: |
 
 Reportez-vous à la [personnalisation de Web Chat](https://github.com/Microsoft/BotFramework-WebChat/blob/master/SAMPLES.md) pour en savoir plus sur la personnalisation.
+
+> [!NOTE] 
+> Pour plus d’informations sur les réseaux de distribution de contenu (CDN), consultez [Réseaux de distribution de contenu (CDN)](https://aka.ms/CDN-best-practices)
 
 ## <a name="migrating-from-web-chat-v3-to-v4"></a>Migration de Web Chat v3 vers v4
 
