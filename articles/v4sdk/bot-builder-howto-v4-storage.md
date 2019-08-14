@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1213e7d0c03fd6faa3768fac85a59bf4c7b5b28a
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3743f798377de5bb1279e2af1b0124682a5575f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756983"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970696"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
@@ -390,8 +390,8 @@ Décommentez Memory Storage, remplacez-le par une référence à Cosmos DB.
 **bot.js**
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 
 // Create local Memory Storage - commented out.
 // var storage = new MemoryStorage();
@@ -523,8 +523,8 @@ Si vous n’avez pas ajouté de code pour charger votre fichier `.env` afin de m
 
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 ```
 À présent, mettez à jour votre code afin de pointer « _storage_ » sur votre compte de stockage d’objets blob existant, en mettant en commentaires les définitions de stockage précédentes et en ajoutant le code suivant.
 

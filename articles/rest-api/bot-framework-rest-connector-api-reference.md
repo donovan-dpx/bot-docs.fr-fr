@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/25/2018
-ms.openlocfilehash: f8f04c8b0cbd2b43f29676f0315739f4cc7716b3
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.date: 08/02/2019
+ms.openlocfilehash: 5a520c2fc5b9e94976e9a2618286aa184045bdeb
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757170"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866641"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -309,83 +309,6 @@ Le service Microsoft Bot Framework State a été mis hors service le 30 mars 2
 | `Get Conversation Data` | Récupère les données d’état précédemment stockées pour une conversation d’un canal. |
 | `Get Private Conversation Data` | Récupère les données d’état précédemment stockées pour un utilisateur dans le contexte d’une conversation d’un canal. |
 | `Delete State For User` | Supprime les données d’état qui ont été précédemment stockées pour un utilisateur. |
-
-### <a name="set-user-data"></a>Définir les données utilisateur
-Stocke les données d’état pour l’utilisateur spécifié sur le canal spécifié.
-```http
-POST /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | Objet `BotData` |
-| **Retourne** | Objet `BotData` | 
-
-### <a name="set-conversation-data"></a>Définir les données de conversation
-Stocke les données d’état pour la conversation spécifiée sur le canal spécifié.
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | Objet `BotData` |
-| **Retourne** | Objet `BotData` | 
-
-### <a name="set-private-conversation-data"></a>Définir les données des conversations privées
-Stocke les données d’état pour l’utilisateur spécifié dans le contexte de la conversation spécifiée sur le canal spécifié.
-```http
-POST /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | Objet `BotData` |
-| **Retourne** | Objet `BotData` | 
-
-### <a name="get-user-data"></a>Obtenir les données utilisateur
-Récupère les données d’état précédemment stockées pour l’utilisateur spécifié dans toutes les conversations du canal spécifié.
-```http
-GET /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Objet `BotData` | 
-
-### <a name="get-conversation-data"></a>Obtenir les données de conversation
-Récupère les données d’état précédemment stockées pour la conversation spécifiée sur le canal spécifié.
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Objet `BotData` | 
-
-### <a name="get-private-conversation-data"></a>Obtenir les données des conversations privées
-Récupère les données d’état précédemment stockées pour l’utilisateur spécifié dans le contexte de la conversation spécifiée sur le canal spécifié.
-```http
-GET /v3/botstate/{channelId}/conversations/{conversationId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Objet [`BotData` | 
-
-### <a name="delete-state-for-user"></a>Supprimer l’état de l’utilisateur
-Supprime les données d’état précédemment stockées pour l’utilisateur spécifié sur le canal spécifié, par le biais de l’opération [Définir les données utilisateur](#set-user-data) ou de l’opération [Définir les données des conversations privées](#set-private-conversation-data).
-```http
-DELETE /v3/botstate/{channelId}/users/{userId} 
-```
-
-| | |
-|----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Tableau de chaînes (ID) | 
 
 ## <a name="bot-framework-activity-schema"></a>Schéma d’activité Bot Framework
 
