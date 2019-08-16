@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8ed5841f9bfe874de26f1aecbb0e4460e541668b
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 59b5e340ee9f2eeb89eaf420a0cca031fcc7f2b1
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215288"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991931"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Assistant virtuel : vue d’ensemble des compétences
 
@@ -40,13 +40,13 @@ Un objectif fondamental de la conception des compétences consistait à mainteni
 
 | Nom | Description |
 | ---- | ----------- |
-|[Compétence Calendrier](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-calendar.md)|Ajoutez des fonctionnalités de calendrier à votre assistant. Technologie Microsoft Graph et Google.|
-|[Compétence E-mail](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-email.md)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|
-|[Compétence ToDo](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-todo.md)|Ajoutez des fonctionnalités de gestion des tâches à votre assistant. Technologie Microsoft Graph.|
-|[Compétence Point d’intérêt](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/productivity-pointofinterest.md)|Trouvez des points d’intérêt et des directions. Technologie Azure Maps et FourSquare.|
-|[Compétence Secteur automobile](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/automotive.md)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
-|[Compétences expérimentales](https://github.com/Microsoft/AI/blob/master/docs/reference/skills/experimental.md)|Actualités, réservation de restaurant et météo.|
+|[Compétence Calendrier](https://aka.ms/bfcalendarskill)|Ajoutez des fonctionnalités de calendrier à votre assistant. Technologie Microsoft Graph et Google.|
+|[Compétence E-mail](https://aka.ms/bfemailskill)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|
+|[Compétence ToDo](https://aka.ms/bftodoskill)|Ajoutez des fonctionnalités de gestion des tâches à votre assistant. Technologie Microsoft Graph.|
+|[Compétence Point d’intérêt](https://aka.ms/bfpoiskill)|Trouvez des points d’intérêt et des directions. Technologie Azure Maps et FourSquare.|
+|[Compétence Secteur automobile](https://aka.ms/bfautoskill)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
+|[Compétences expérimentales](https://aka.ms/bfexperimentalskills)|Actualités, réservation de restaurant et météo.|
 
 ## <a name="getting-started"></a>Mise en route
 
-Reportez-vous aux [informations de prise en main](https://github.com/Microsoft/AI/tree/master/docs#tutorials) pour apprendre à tirer parti des compétences existantes et à créer les vôtres.
+Reportez-vous aux [tutoriels](https://aka.ms/bfstutorials) pour apprendre à tirer parti des compétences existantes et à créer les vôtres.

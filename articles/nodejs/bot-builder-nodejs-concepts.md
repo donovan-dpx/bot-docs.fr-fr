@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a3cff9a77de098ee524334183ba891068f176b6e
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67464786"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Concepts clés du kit SDK Bot Framework pour Node.js
@@ -31,7 +31,7 @@ Le connecteur de Bot Framework est un service qui connecte votre robot à plusie
 
 Le connecteur facilite la communication entre le robot et l’utilisateur en transmettant les messages du robot au canal, et inversement. La logique de votre robot est hébergée comme un service web qui reçoit les messages des utilisateurs par le biais du service de connecteur. Les réponses de votre robot sont envoyées au connecteur à l’aide d’une PUBLICATION HTTPS. 
 
-Le kit SDK Bot Framework pour Node.js propose les classes [UniversalBot][UniversalBot] and [ChatConnector][ChatConnector] pour configurer le bot de façon à envoyer et recevoir des messages via Bot Framework Connector. La classe `UniversalBot` constitue le cerveau de votre robot. Elle est chargée de gérer toutes les conversations de votre robot avec les utilisateurs. La classe `ChatConnector` connecte votre bot au service du connecteur de Bot Framework.
+Le kit SDK Bot Framework pour Node.js propose les classes [UniversalBot][UniversalBot] et [ChatConnector][ChatConnector] pour configurer le bot de façon à envoyer et recevoir des messages par le biais de Bot Framework Connector. La classe `UniversalBot` constitue le cerveau de votre robot. Elle est chargée de gérer toutes les conversations de votre robot avec les utilisateurs. La classe `ChatConnector` connecte votre bot au service du connecteur de Bot Framework.
 Pour obtenir un exemple qui montre l’utilisation de ces classes, consultez [Créer un bot avec le kit SDK Bot Framework pour Node.js](bot-builder-nodejs-quickstart.md).
 
 Le connecteur normalise également les messages que le robot envoie sur les canaux afin que vous puissiez développer votre robot indépendamment de la plate-forme. La normalisation d’un message implique sa conversion depuis le schéma Bot Framework vers le schéma du canal. Lorsque le canal ne prend pas en charge tous les aspects du schéma du cadre, le connecteur tente de convertir le message dans un format pris en charge par le canal. Par exemple, si le robot envoie au canal SMS un message contenant une carte avec des boutons d’action, le connecteur peut présenter la carte sous forme d’image et inclure les actions sous forme de liens dans le texte du message. Le [Channel Inspector][ChannelInspector] est un outil web qui vous montre comment le connecteur présente les messages sur les différents canaux.

@@ -3,19 +3,18 @@ title: Tutoriel pour créer et déployer un bot de base | Microsoft Docs
 description: Apprenez à créer un bot de base et à le déployer dans Azure.
 keywords: bot echo, déployer, azure, tutoriel
 author: Ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9f8b4ec1442d7647a69bd691ddca98f02e086850
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 45acff9701e7a99a6ed550091745d7323a730092
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671537"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970685"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
 
@@ -87,8 +86,10 @@ La commande ci-dessus génère du code JSON avec la clé `appId` et enregistre l
 
 Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux.
 
-# <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Déployer par le biais du modèle ARM (avec un **nouveau** groupe de ressources)](#tab/newrg)
-
+## <a name="deploy-via-arm-template-with-new-resource-group"></a>Déployer par le biais du modèle ARM (avec un **nouveau** groupe de ressources)
+<!--
+## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
+-->
 #### <a name="create-azure-resources"></a>Créer des ressources Azure
 
 Vous allez créer un groupe de ressources dans Azure, puis utiliser le modèle ARM pour créer les ressources qui y sont spécifiées. Ici, nous spécifions le plan App Service, l’application web et une inscription Bot Channels Registration.
@@ -104,7 +105,10 @@ az deployment create --name "name-of-deployment" --template-file "template-with-
 | location |Lieu. Valeurs provenant de : `az account list-locations`. Vous pouvez configurer le lieu par défaut en utilisant `az configure --defaults location=<location>`. |
 | parameters | Spécifiez les valeurs des paramètres du déploiement. Valeur `appId` que vous avez obtenue en exécutant la commande `az ad app create`. `appSecret` est le mot de passe que vous avez fourni à l’étape précédente. Le paramètre `botId`, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable. `botSku` est le niveau tarifaire ; il peut s’agir de F0 (gratuit) ou S1 (Standard). `newAppServicePlanName` est le nom du plan App Service. `newWebAppName` est le nom de l’application web que vous créez. `groupName` est le nom du groupe de ressources Azure que vous créez. `groupLocation` est l’emplacement du groupe de ressources Azure. `newAppServicePlanLocation` est l’emplacement du plan App Service. |
 
-# <a name="deploy-via-arm-template-with-existing--resource-grouptaberg"></a>[Déployer par le biais du modèle ARM (avec un groupe de ressources **existant**)](#tab/erg)
+## <a name="deploy-via-arm-template-with-existing-resource-group"></a>Déployer par le biais du modèle ARM (avec un groupe de ressources **existant**)
+<!--
+## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
+-->
 
 #### <a name="create-azure-resources"></a>Créer des ressources Azure
 
@@ -117,7 +121,7 @@ Ici, nous utilisons un plan App Service existant, mais nous créons une applicat
 _Remarque : Le paramètre botId, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable._
 
 ```cmd
-az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" newappServicePlanLocation="location"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 **Option 2 : Nouveau plan App Service** 
@@ -141,7 +145,9 @@ az group deployment create --name "name-of-deployment" --resource-group "name-of
 #### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Récupérer ou créer les fichiers IIS/Kudu nécessaires
 
 **Pour les bots C#**
-
+<!--
+### [C# bots](#tab/csharp)
+-->
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
 ```
@@ -149,7 +155,9 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 Vous devez fournir le chemin du fichier .csproj par rapport à --code-dir. Vous pouvez, pour cela, utiliser l’argument --proj-file-path. La commande résoudrait --code-dir et --proj-file-path en « ./MyBot.csproj ».
 
 **Pour les bots JavaScript**
-
+<!--
+### [Javascript bots](#tab/javascript)
+-->
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
 ```

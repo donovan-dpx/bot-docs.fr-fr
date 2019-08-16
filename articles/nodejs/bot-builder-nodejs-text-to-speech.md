@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14b8bf7aa4e99e3ca97442c2ba57dc8c57138d99
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404695"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866648"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 
@@ -72,9 +71,9 @@ Lorsque vous envoyez un message sur le canal de reconnaissance vocale, vous pouv
 
 ## <a name="sample-code"></a>Exemple de code 
 
-Pour un exemple complet qui montre comment créer un bot à reconnaissance vocale à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">exemple Roller</a> dans GitHub.
+Pour obtenir un exemple complet qui montre comment créer un bot à reconnaissance vocale à l’aide du kit SDK Bot Framework pour Node.js, consultez l’<a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">exemple Roller</a> dans GitHub.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">Speech Synthesis Markup Language (SSML)</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Exemple Roller (GitHub)</a>
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/Node/demo-RollerSkill" target="_blank">Exemple Roller (GitHub)</a>

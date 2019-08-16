@@ -3,19 +3,18 @@ title: Envoyer des notifications proactives aux utilisateurs | Microsoft Docs
 description: Comprendre comment envoyer des messages de notification
 keywords: message proactif, message de notification, notification de bot,
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9389f97cbba2e8766bf29b2502d36e9ec03077cf
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0c5268a16f7dcff8e46d3a14f32409517eb98489
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215384"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970709"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envoyer des notifications proactives aux utilisateurs
 
@@ -123,7 +122,7 @@ MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
 
 Pour la messagerie proactive, `serviceUrl` est l’URL du canal que le destinataire du message proactif utilise ; elle se trouve dans `Activity.ServiceUrl`. 
 
-Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Cet exemple le montre vers la fin de `CreateCallback()` dans `ProactiveBot.cs`, mais il est commenté, car il ne peut pas fonctionner pas dans l’émulateur sans `appId` et `appPassword`.
+Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Dans l’[exemple de messages proactifs](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages), vous devez le placer dans `NotifyController.cs` juste avant `await turnContext.SendActivityAsync("proactive hello");`.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -133,7 +132,7 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 Pour la messagerie proactive, `serviceUrl` est l’URL du canal que le destinataire du message proactif utilise ; elle se trouve dans `activity.serviceUrl`.
 
-Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Cet exemple le montre vers la fin de `completeJob()` dans `bot.js`, mais il est commenté, car il ne peut pas fonctionner pas dans l’émulateur sans `appId` et `appPassword`.
+Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Dans l’[exemple de messages proactifs](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages), vous devez le placer dans `index.js` juste avant `await turnContext.sendActivity('proactive hello');`.
 
 ---
 

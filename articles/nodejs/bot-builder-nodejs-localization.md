@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ce1b3f073c932cd4042b91ae9afc1e332a7443f2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404904"
 ---
 # <a name="support-localization"></a>Localisation de la prise en charge
@@ -134,7 +134,7 @@ var bot = new builder.UniversalBot(connector, [
 ]);
 ```
 
-En interne, le kit SDK appelle [`session.preferredLocale()`][preferredLocale] to get the user's preferred locale and then uses that in a call to [`session.localizer.gettext()`][GetText] pour mapper l’ID de message à sa chaîne de texte localisé.  Parfois, vous pouvez être amené à appeler manuellement le localisateur. Par exemple, les valeurs enum transmises à [`Prompts.choice()`][promptsChoice] ne sont jamais automatiquement localisées, vous pouvez donc avoir besoin de récupérer manuellement une liste localisée avant l’appel à l’invite :
+En interne, le kit SDK appelle [`session.preferredLocale()`][preferredLocale] pour obtenir les paramètres régionaux par défaut de l’utilisateur, afin de les utiliser ensuite dans un appel à [`session.localizer.gettext()`][GetText] pour mapper l’ID de message à sa chaîne de texte localisé.  Parfois, vous pouvez être amené à appeler manuellement le localisateur. Par exemple, les valeurs enum transmises à [`Prompts.choice()`][promptsChoice] ne sont jamais automatiquement localisées, vous pouvez donc avoir besoin de récupérer manuellement une liste localisée avant l’appel à l’invite :
 
 ```javascript
 var options = session.localizer.gettext(session.preferredLocale(), "choice_options");

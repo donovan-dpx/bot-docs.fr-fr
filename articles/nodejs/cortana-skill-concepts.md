@@ -4,17 +4,17 @@ description: Découvrez les concepts de base liés à la création d’une comp�
 keywords: Bot Framework, compétence Cortana, voix, Node.js, Bot Builder, Kit de développement logiciel (SDK), concepts clés, concepts fodamentaux
 author: DeniseMak
 manager: kamrani
+ms.author: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5de773f6f8f4d46c0c1fe880588f2530c3c68f56
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 6aca29556fe877866d4beee8487ce0f1537334e6
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59746063"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866746"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Concepts clés pour la création d’un robot pour Compétence Cortana à l’aide de Node.js
  

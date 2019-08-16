@@ -3,17 +3,17 @@ title: Créer un bot à fonctionnalité vocale avec des compétences Cortana | M
 description: Découvrez comment créer un bot à reconnaissance vocale avec des compétences Cortana et le kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 manager: kamrani
+ms.author: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1b62ca7e98313fb0247d45cb66fcae8be32e6492
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c37cf7e68a73c58331cefcc1326879ae09235b68
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405053"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68866665"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -195,7 +195,7 @@ module.exports.speak = function (template, params, options) {
 ## <a name="sample-rollerskill"></a>Exemple : RollerSkill
 Le code des sections suivantes provient d’un exemple de compétence Cortana pour le lancement de dés. Téléchargez le code complet du bot à partir du [dépôt BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-Vous appelez la compétence en indiquant son [nom d’appel][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] et vous l’inscrivez en tant que compétence Cortana. Vous pouvez l’appeler en disant à Cortana « Demande Roller » ou « Demande à Roller de lancer les dés ».
+Vous appelez la compétence en disant son [nom d’appel][InvocationNameGuidelines] à Cortana. Pour la compétence de lancement de dés, après avoir [ajouté le bot au canal Cortana][CortanaChannel] et l’avoir inscrit en tant que compétence Cortana, vous pouvez l’appeler en disant à Cortana : « Demande Roller » ou « Demande à Roller de lancer les dés ».
 
 ### <a name="explore-the-code"></a>Explorer le code
 

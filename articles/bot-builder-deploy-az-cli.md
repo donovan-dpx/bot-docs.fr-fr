@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a5ef32f16ae8424093cebd77ed137fb31ed53a22
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e8ad6d3f365fefef3e2a6978802bfb02688d317c
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756794"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970573"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -57,6 +57,7 @@ az account set --subscription "<azure-subscription>"
 Si vous ne savez pas quel abonnement utiliser pour déployer le bot, vous pouvez consulter la liste des abonnements pour votre compte à l’aide de la commande `az account list`. Accédez au dossier bot.
 
 ### <a name="create-an-app-registration"></a>Créer une inscription d’application
+
 Inscrire l’application signifie que vous pouvez utiliser Azure AD pour authentifier les utilisateurs et demander l’accès aux ressources utilisateur. Votre bot a besoin d’une application inscrite dans Azure qui permet au bot d’accéder à Bot Framework Service pour l’envoi et la réception de messages authentifiés. Pour créer et inscrire une application par le biais de l’interface Azure CLI, exécutez la commande suivante :
 
 ```cmd
@@ -71,10 +72,15 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 
 La commande ci-dessus génère du code JSON avec la clé `appId` et enregistre la valeur de cette clé pour le déploiement ARM, où elle sera utilisée pour le paramètre `appId`. Le mot de passe fourni sera utilisé pour le paramètre `appSecret`.
 
+> [!NOTE] 
+> Si vous souhaitez utiliser une inscription d’application existante, vous pouvez utiliser la commande : az bot create --kind webapp --resource-group "name-of-resource-group" --name "name-of-web-app" --appid "existing-app-id" --password "existing-app-password" --lang "Javascript | Csharp"_
+
 Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux.
 
-# <a name="deploy-via-arm-template-with-new-resource-grouptabnewrg"></a>[Déployer par le biais du modèle ARM (avec un **nouveau** groupe de ressources)](#tab/newrg)
-
+## <a name="deploy-via-arm-template-with-new-resource-group"></a>Déployer par le biais du modèle ARM (avec un **nouveau** groupe de ressources)
+<!--
+## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
+-->
 ### <a name="create-azure-resources"></a>Créer des ressources Azure
 
 Vous allez créer un groupe de ressources dans Azure, puis utiliser le modèle ARM pour créer les ressources qui y sont spécifiées. Ici, nous spécifions le plan App Service, l’application web et une inscription Bot Channels Registration.
@@ -90,7 +96,10 @@ az deployment create --name "<name-of-deployment>" --template-file "template-wit
 | location |Lieu. Valeurs provenant de : `az account list-locations`. Vous pouvez configurer le lieu par défaut en utilisant `az configure --defaults location=<location>`. |
 | parameters | Spécifiez les valeurs des paramètres du déploiement. Valeur `appId` que vous avez obtenue en exécutant la commande `az ad app create`. `appSecret` est le mot de passe que vous avez fourni à l’étape précédente. Le paramètre `botId`, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable. `botSku` est le niveau tarifaire ; il peut s’agir de F0 (gratuit) ou S1 (Standard). `newAppServicePlanName` est le nom du plan App Service. `newWebAppName` est le nom de l’application web que vous créez. `groupName` est le nom du groupe de ressources Azure que vous créez. `groupLocation` est l’emplacement du groupe de ressources Azure. `newAppServicePlanLocation` est l’emplacement du plan App Service. |
 
-# <a name="deploy-via-arm-template-with-existing--resource-grouptaberg"></a>[Déployer par le biais du modèle ARM (avec un groupe de ressources **existant**)](#tab/erg)
+## <a name="deploy-via-arm-template-with-existing--resource-group"></a>Déployer par le biais du modèle ARM (avec un groupe de ressources **existant**)
+<!--
+## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
+-->
 
 ### <a name="create-azure-resources"></a>Créer des ressources Azure
 
@@ -100,7 +109,8 @@ Quand vous utilisez un groupe de ressources existant, vous pouvez utiliser un pl
 
 Ici, nous utilisons un plan App Service existant, mais nous créons une application web et une inscription Bot Channels Registration. 
 
-_Remarque : Le paramètre botId, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable._
+> [!NOTE]
+> Le paramètre botId, qui est utilisé comme ID de bot immuable, doit être globalement unique. Il sert aussi à configurer le nom d’affichage du bot, qui est mutable.
 
 ```cmd
 az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
@@ -126,7 +136,10 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 ### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Récupérer ou créer les fichiers IIS/Kudu nécessaires
 
-### <a name="c-botstabcsharp"></a>[Bots C#](#tab/csharp)
+### <a name="c-bots"></a>Bots C#
+<!--
+### [C# bots](#tab/csharp)
+-->
 
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
@@ -134,7 +147,11 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 
 Vous devez fournir le chemin du fichier .csproj par rapport à --code-dir. Vous pouvez, pour cela, utiliser l’argument --proj-file-path. La commande résoudrait --code-dir et --proj-file-path en « ./MyBot.csproj ».
 
-### <a name="javascript-botstabjavascript"></a>[Bots JavaScript](#tab/javascript)
+
+### <a name="javascript-bots"></a>Bots JavaScript
+<!--
+### [Javascript bots](#tab/javascript)
+-->
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
@@ -142,7 +159,10 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 Cette commande récupère un fichier web.config qui est nécessaire au fonctionnement des applications Node.js avec IIS sur Azure App Services. Vérifiez que le fichier web.config est enregistré à la racine de votre bot.
 
-### <a name="typescript-botstabtypescript"></a>[Bots TypeScript](#tab/typescript)
+### <a name="typescript-bots"></a>Bots TypeScript
+<!--
+### [Typescript bots](#tab/typescript)
+-->
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
@@ -192,7 +212,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 6. Dans le *panneau d’inscription du canal de robot*, cliquez sur **Tester dans la discussion Web**.
 Sinon, dans le panneau de droite, cliquez sur la zone de test.
 
-Pour plus d’informations sur l’inscription du canal, consultez [Inscrire un robot avec Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+Pour plus d’informations sur l’inscription du canal, consultez [Inscrire un robot avec Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
 
 > [!NOTE]
 > Un panneau est la surface sur laquelle s’affichent les fonctions de service ou les éléments de navigation lorsqu’ils sont sélectionnés.
@@ -202,4 +222,4 @@ Le déploiement de votre bot sur Azure implique de payer les services que vous u
 
 ## <a name="next-steps"></a>Étapes suivantes
 > [!div class="nextstepaction"]
-> [Configurer le déploiement continu](bot-service-build-continuous-deployment.md)
+> [Configurer un déploiement continu](bot-service-build-continuous-deployment.md)

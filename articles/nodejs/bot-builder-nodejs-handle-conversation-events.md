@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404909"
 ---
 # <a name="handle-user-and-conversation-events"></a>Gérer les événements utilisateur et de conversation
@@ -44,7 +44,7 @@ Dans l’exemple suivant, nous avons ajouté une fonction qui déclenche l’aff
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-Vous pouvez également personnaliser ce que fait une action après son déclenchement en fournissant un descripteur [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted]. Pour plus d’informations, consultez l’article [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).
+Vous pouvez également personnaliser ce que fait une action après son déclenchement en fournissant un descripteur [onSelectAction][onSelectAction]. Pour les actions de déclencheur, vous pouvez fournir un descripteur [onInterrupted][onInterrupted] pour intercepter une interruption avant qu’elle ne se produise. Pour plus d’informations, consultez l’article [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
 ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68484037"
 ---
 # <a name="debug-with-the-emulator"></a>Déboguer avec l’émulateur
@@ -163,7 +163,7 @@ Si vous changez d’avis, vous pouvez toujours l’activer en cochant de nouveau
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-L’émulateur Bot Framework est open source. Vous pouvez [contribuer][EmulatorGithubContribute] to the development and [submit bugs and suggestions][EmulatorGithubBugs].
+L’émulateur Bot Framework est open source. Vous pouvez [contribuer][EmulatorGithubContribute] au développement en [envoyant des bogues et des suggestions][EmulatorGithubBugs].
 
 Pour des informations de dépannage, consultez [Résoudre les problèmes généraux](bot-service-troubleshoot-bot-configuration.md) ainsi que les autres articles de résolution des problèmes de cette section.
 
