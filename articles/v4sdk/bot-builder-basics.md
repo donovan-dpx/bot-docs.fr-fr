@@ -7,15 +7,14 @@ ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 187a8427fd8627b0ce6b812ce8ee857e62b0394d
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c728962141c1beec89f2830fa15d5985922ddfa5
+ms.sourcegitcommit: 3eaf06dd9691a27a1cd4a7f6434e922cd530795a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252691"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565397"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 
@@ -142,13 +141,16 @@ Les gestionnaires définis dans `ActivityHandler` sont :
 | Événement | Handler | Description |
 | :-- | :-- | :-- |
 | Tout type d’activité reçu | `OnTurnAsync` | Appelle l’un des autres gestionnaires, selon le type d’activité reçu. |
-| Activité de message reçue | `OnMessageActivityAsync` | Remplacer celui-ci pour gérer une activité `Message`. |
-| Activité de mise à jour de conversation reçue | `OnConversationUpdateActivityAsync` | Sur une activité `ConversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
+| Activité de message reçue | `OnMessageActivityAsync` | Remplacer celui-ci pour gérer une activité `message`. |
+| Activité de mise à jour de conversation reçue | `OnConversationUpdateActivityAsync` | Sur une activité `conversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
 | Des membres autres que le bot ont rejoint la conversation | `OnMembersAddedAsync` | Substituer celui-ci pour gérer les membres se joignant à une conversation. |
 | Des membres autres que le bot ont quitté la conversation | `OnMembersRemovedAsync` | Substituer celui-ci pour gérer les membres quittant une conversation. |
-| Activité d’événement reçue | `OnEventActivityAsync` | Sur une activité `Event`, appelle un gestionnaire spécifique au type d’événement. |
+| Activité d’événement reçue | `OnEventActivityAsync` | Sur une activité `event`, appelle un gestionnaire spécifique au type d’événement. |
 | Activité reçue d’événement de réponse de jeton | `OnTokenResponseEventAsync` | Substituer celui-ci pour gérer les événements de réponse de jeton. |
 | Activité reçue d’événement de réponse autre que celle du jeton | `OnEventAsync` | Substituer celui-ci pour gérer d’autres types d’événements. |
+| Activité de réaction à un message reçue | `OnMessageReactionActivityAsync` | Sur une activité `messageReaction`, appelle un gestionnaire si une ou plusieurs réactions ont été ajoutées ou supprimées d’un message. |
+| Réactions de message ajoutées à un message | `OnReactionsAddedAsync` | Remplacez ceci pour gérer les réactions ajoutées à un message. |
+| Réactions de message supprimées d’un message | `OnReactionsRemovedAsync` | Remplacez ceci pour gérer les réactions supprimées d’un message. |
 | Autre type d’activité reçu | `OnUnrecognizedActivityTypeAsync` | Substituer celui-ci pour gérer tout type d’activité non géré autrement. |
 
 Ces différents gestionnaires disposent de `turnContext` qui fournit des informations sur l’activité entrante ; celle-ci correspond à la requête HTTP entrante. Les activités pouvant être de différents types, chaque gestionnaire fournit donc une activité fortement typée dans son paramètre de contexte de tour ; dans la plupart des cas, `OnMessageActivityAsync` est toujours géré, et il est généralement le plus courant.
@@ -184,17 +186,22 @@ La logique principale du bot est définie dans le code du bot, appelé ici `bots
 
 Les gestionnaires définis dans `ActivityHandler` sont :
 
-| Événement | Handler | Description |
+| Événement | Gestionnaire | Description |
 | :-- | :-- | :-- |
-| Tout type d’activité reçu | `onTurn` | Appelle l’un des autres gestionnaires, selon le type d’activité reçu. |
-| Activité de message reçue | `onMessage` | Fournir une fonction pour permettre à celui-ci de gérer une activité `Message`. |
-| Activité reçue de mise à jour de conversation | `onConversationUpdate` | Sur une activité `ConversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
-| Des membres autres que le bot ont rejoint la conversation | `onMembersAdded` | Fournir une fonction pour permettre à celui-ci de gérer les membres se joignant à une conversation. |
-| Des membres autres que le bot ont quitté la conversation | `onMembersRemoved` | Fournir une fonction pour permettre à celui-ci de gérer les membres quittant une conversation. |
-| Activité d’événement reçue | `onEvent` | Sur une activité `Event`, appelle un gestionnaire spécifique au type d’événement. |
-| Activité reçue d’événement de réponse de jeton | `onTokenResponseEvent` | Fournir une fonction pour permettre à celui-ci de gérer les événements de réponse de jeton. |
-| Autre type d’activité reçu | `onUnrecognizedActivityType` | Fournir une fonction pour permettre à celui-ci de gérer tout type d’activité non prise en charge autrement. |
-| Les gestionnaires d’activités ont terminé | `onDialog` | Fournir une fonction pour permettre à celui-ci de gérer tout traitement devant être effectué à la fin d’un tour, une fois que vos gestionnaires d’activités restants ont terminé leurs tâches. |
+| Tout type d’activité reçu | `onTurn` | Appelé lorsqu’une activité est reçue. |
+| Activité de message reçue | `onMessage` | Appelé lorsqu’une activité `message` est reçue. |
+| Activité reçue de mise à jour de conversation | `onConversationUpdate` | Appelé lorsqu’une activité `conversationUpdate` est reçue. |
+| Des membres ont rejoint la conversation | `onMembersAdded` | Appelé lorsque des membres ont rejoint la conversation, y compris le bot. |
+| Des membres ont quitté la conversation | `onMembersRemoved` | Appelé lorsque des membres ont quitté la conversation, y compris le bot. |
+| Activité de réaction à un message reçue | `onMessageReaction` | Appelé lorsqu’une activité `messageReaction` est reçue. |
+| Réactions de message ajoutées à un message | `onReactionsAdded` | Appelé lorsque des réactions sont ajoutées à un message. |
+| Réactions de message supprimées d’un message | `onReactionsRemoved` | Appelé lorsque des réactions sont supprimées d’un message. |
+| Activité d’événement reçue | `onEvent` | Appelé lorsqu’une activité `event` est reçue. |
+| Activité reçue d’événement de réponse de jeton | `onTokenResponseEvent` | Appelé lorsqu’un événement `tokens/response` est reçu. |
+| Autre type d’activité reçu | `onUnrecognizedActivityType` | Appelé lorsqu’un gestionnaire pour le type d’activité spécifique n’est pas défini. |
+| Les gestionnaires d’activités ont terminé | `onDialog` | Appelé après que les gestionnaires applicables ont terminé. |
+
+Appelez le paramètre de fonction `next` de chaque gestionnaire pour permettre au traitement de continuer. Si `next` n’est pas appelé, le traitement de l’activité se termine.
 
 À chaque tour, nous commençons par vérifier si le bot a reçu un message. Lorsque nous recevons un message de l’utilisateur, nous renvoyons le message qu’il a envoyé.
 

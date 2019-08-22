@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e8ad6d3f365fefef3e2a6978802bfb02688d317c
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 4578cfcb497825c8928c066178ca3b28bb4540bf
+ms.sourcegitcommit: c2fbd002315759af9853ecaf0ec9dca7923f438f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970573"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69520966"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -73,7 +73,10 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 La commande ci-dessus génère du code JSON avec la clé `appId` et enregistre la valeur de cette clé pour le déploiement ARM, où elle sera utilisée pour le paramètre `appId`. Le mot de passe fourni sera utilisé pour le paramètre `appSecret`.
 
 > [!NOTE] 
-> Si vous souhaitez utiliser une inscription d’application existante, vous pouvez utiliser la commande : az bot create --kind webapp --resource-group "name-of-resource-group" --name "name-of-web-app" --appid "existing-app-id" --password "existing-app-password" --lang "Javascript | Csharp"_
+> Si vous souhaitez utiliser une inscription d’application existante, vous pouvez utiliser la commande :
+> ``` cmd
+> az bot create --kind webapp --resource-group "<name-of-resource-group>" --name "<name-of-web-app>" --appid "<existing-app-id>" --password "<existing-app-password>" --lang <Javascript|Csharp>
+> ```
 
 Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux.
 
