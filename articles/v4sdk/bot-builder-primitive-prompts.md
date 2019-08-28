@@ -3,19 +3,18 @@ title: Créer vos propres invites pour collecter des entrées utilisateur | Micr
 description: Découvrez comment gérer un flux de conversation avec des invites primitives dans le kit SDK Bot Framework.
 keywords: flux de conversation, invites, état de conversation, état utilisateur, invites personnalisées
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9b1ffd73b4b68e6ff6349110e1485eb7cbda9e25
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 589c9d07bf0cf7b0be10ff8a9a56f7c9be19dd61
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693708"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890599"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Créer vos propres invites pour collecter des entrées utilisateur
 
@@ -63,7 +62,7 @@ Nous utilisons le gestionnaire de tour de messages du bot ainsi que les proprié
 Les objets d’état utilisateur et de conversation sont créés au démarrage et la dépendance est injectée dans le constructeur de bot. 
 
 **Startup.cs**  
-[!code-csharp[Startup](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=27-34)]
+[!code-csharp[Startup](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Startup.cs?range=28-35)]
 
 **Bots/CustomPromptBot.cs**  
 [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=21-28)]
@@ -72,9 +71,9 @@ Les objets d’état utilisateur et de conversation sont créés au démarrage e
 
 Dans **index.js**, créez les propriétés d’état et le bot, puis appelez la méthode de bot `run` à partir de `processActivity`.
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-35)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=32-38)]
 
-[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-58)]
+[!code-javascript[custom prompt bot](~/../botbuilder-samples/samples/javascript_nodejs/44.prompt-for-user-input/index.js?range=55-60)]
 
 ---
 

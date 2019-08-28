@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0c5268a16f7dcff8e46d3a14f32409517eb98489
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: bb243e1530155819afb4ab4061da1e29908f58e4
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970709"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026349"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envoyer des notifications proactives aux utilisateurs
 
@@ -81,7 +81,7 @@ Le deuxième contrôleur, le contrôleur _notify_, est chargé d’envoyer le me
 Chaque fois que la page de notification du bot est demandée, le contrôleur de notification récupère les références de conversation à partir du dictionnaire.
 Le contrôleur utilise ensuite les méthodes `ContinueConversationAsync` et `BotCallback` pour envoyer le message proactif.
 
-[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-59&highlight=28,40-43)]
+[!code-csharp[Notify logic](~/../botbuilder-samples/samples/csharp_dotnetcore/16.proactive-messages/Controllers/NotifyController.cs?range=17-60&highlight=28,40-43)]
 
 Pour envoyer un message proactif, l’adaptateur a besoin d’un ID d’application pour le bot. Dans un environnement de production, vous pouvez utiliser l’ID d’application du bot. Dans un environnement de test local, vous pouvez utiliser un GUID. Si aucun ID d’application n’est à ce moment-là affecté au bot, le contrôleur de notification génère automatiquement un ID d’espace réservé à utiliser pour l’appel.
 
@@ -93,7 +93,7 @@ Chaque fois que la page `/api/notify` du serveur est demandée, le serveur récu
 Le serveur utilise ensuite la méthode `continueConversation` pour envoyer le message proactif.
 Le paramètre pour `continueConversation` est une fonction qui sert de gestionnaire de tours au bot pour ce tour.
 
-[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=56-62&highlight=4-5)]
+[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=56-68&highlight=4-5)]
 
 ---
 

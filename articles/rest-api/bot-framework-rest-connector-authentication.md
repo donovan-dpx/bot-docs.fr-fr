@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757048"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037538"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -180,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 Le corps de la réponse indique le document au format [JWK](https://tools.ietf.org/html/rfc7517). Il inclut également une propriété supplémentaire pour chaque clé : `endorsements`. La liste des clés est relativement stable et peut être mise en cache sur de longues périodes (par défaut, 5 jours dans le kit SDK Bot Framework).
 
-La propriété `endorsements` de chaque clé contient une ou plusieurs chaînes d’approbation que vous pouvez utiliser pour vérifier l’authenticité de l’identifiant de canal indiqué dans la propriété `channelId` dans l’objet `Activity` de la requête entrante. La liste des identifiants de canal nécessitant une approbation est configurable dans chaque robot. Par défaut, la liste contient tous les identifiants des canaux publiés. Les développeurs de robots peuvent néanmoins remplacer les valeurs des identifiants des canaux sélectionnés. 
+La propriété `endorsements` de chaque clé contient une ou plusieurs chaînes d’approbation que vous pouvez utiliser pour vérifier l’authenticité de l’identifiant de canal indiqué dans la propriété `channelId` dans l’objet [Activité][] de la requête entrante. La liste des identifiants de canal nécessitant une approbation est configurable dans chaque robot. Par défaut, la liste contient tous les identifiants des canaux publiés. Les développeurs de robots peuvent néanmoins remplacer les valeurs des identifiants des canaux sélectionnés. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Étape 4 : Vérifier le jeton JWT
 
@@ -194,7 +194,7 @@ Les bibliothèques d’analyse JWT sont disponibles pour de nombreuses plates-fo
 4. Le jeton contient une revendication « public » ayant une valeur égale à l’identifiant de l’application Microsoft du robot.
 5. Le jeton se trouve dans sa période de validité. La durée standard dans le secteur est de 5 minutes.
 6. La signature chiffrée du jeton est valide et la clé est répertoriée dans le document des clés OpenID récupéré à l’[étape 3](#connector-to-bot-step-3) à l’aide de l’algorithme de signature indiqué dans la propriété `id_token_signing_alg_values_supported` du document Open ID Metadata récupéré à l’[étape 2](#openid-metadata-document).
-7. Le jeton contient une revendication « serviceUrl » dont la valeur correspond à la propriété `servieUrl` à la racine de l’objet `Activity` de la requête entrante. 
+7. Le jeton contient une revendication « serviceUrl » dont la valeur correspond à la propriété `servieUrl` à la racine de l’objet [Activité][] de la requête entrante. 
 
 Si l’identifiant du canal nécessite une approbation :
 
@@ -392,3 +392,5 @@ payload:
 - [JSON Web Token (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [JSON Web Signature (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [JSON Web Key (JWK) RFC 7517](https://tools.ietf.org/html/rfc7517)
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object

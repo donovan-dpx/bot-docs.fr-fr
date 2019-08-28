@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8ffb3d0572eafccc89bcc2cf6487aeef475bd6b1
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: d694f20985b6bf2875fe28f599ff603512b87757
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757141"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037347"
 ---
 # <a name="send-and-receive-messages"></a>Envoyer et recevoir des messages
 
@@ -22,7 +22,7 @@ Le service Bot Connector permet à un bot de communiquer sur plusieurs canaux te
 
 ### <a name="create-a-reply"></a>Créer une réponse 
 
-Lorsque l’utilisateur envoie un message à votre bot, ce dernier reçoit le message comme un objet `Activity` de type **message**. Pour créer une réponse au message d’un utilisateur, créez un nouvel objet `Activity`, puis démarrez en définissant les propriétés suivantes :
+Lorsque l’utilisateur envoie un message à votre robot, ce dernier reçoit le message comme un objet [Activité][] de type **message**. Pour créer une réponse au message d’un utilisateur, créez un nouvel objet `Activity`, puis démarrez en définissant les propriétés suivantes :
 
 | Propriété | Valeur |
 |----|----|
@@ -45,7 +45,7 @@ Pour envoyer la réponse, envoyez la requête suivante :
 POST /v3/conversations/{conversationId}/activities/{activityId}
 ```
 
-Dans cet URI de requête, remplacez **{conversationId}** par la valeur de la propriété `id` de l’objet `conversation` de votre activité de réponse, et remplacez **{activityId}** par la valeur de la propriété `replyToId` de votre activité de réponse. Définissez le corps de la requête sur l’objet `Activity` que vous avez créé pour représenter votre réponse.
+Dans cet URI de requête, remplacez **{conversationId}** par la valeur de la propriété `id` de l’objet `conversation` de votre activité de réponse, et remplacez **{activityId}** par la valeur de la propriété `replyToId` de votre activité de réponse. Définissez le corps de la requête sur l’objet [Activité][] que vous avez créé pour représenter votre réponse.
 
 L’exemple suivant montre une requête qui envoie une réponse textuelle simple au message d’un utilisateur. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez [API Reference](bot-framework-rest-connector-api-reference.md#base-uri) (Informations de référence sur l’API).
 
@@ -87,7 +87,7 @@ POST /v3/conversations/{conversationId}/activities
 
 Dans cet URI de requête, remplacez **{conversationId}** par l’ID de la conversation. 
     
-Définissez le corps de la requête sur un objet `Activity` que vous créez pour représenter votre réponse.
+Définissez le corps de la requête sur un objet [Activité][] que vous avez créé pour représenter votre réponse.
 
 > [!NOTE]
 > Bot Framework n’impose aucune restriction concernant le nombre de messages qu’un bot peut envoyer. Toutefois, la plupart des canaux appliquent des limitations de requêtes pour empêcher les bots d’envoyer un grand nombre de messages dans un court laps de temps. En outre, si le bot envoie plusieurs messages successifs rapidement, le canal risque de ne pas toujours afficher les messages dans le bon ordre.
@@ -105,7 +105,7 @@ Pour démarrer une conversation, exécutez la requête suivante :
 POST /v3/conversations
 ```
 
-Définissez le corps de la requête sur un objet `ConversationParameters` qui spécifie les informations de compte du bot et les informations de compte des utilisateurs que vous souhaitez inclure dans la conversation.
+Définissez le corps de la requête sur un objet [ConversationParameters][] qui spécifie les informations de compte de votre robot et les informations de compte du ou des utilisateurs que vous souhaitez inclure dans la conversation.
 
 > [!NOTE]
 > Tous les canaux ne prennent pas en charge les conversations de groupe. Consultez la documentation du canal pour déterminer si un canal prend en charge les conversations de groupe, et pour connaître le nombre maximal de participants autorisés par un canal dans une conversation.
@@ -150,3 +150,6 @@ Votre bot peut ensuite utiliser cet ID de conversation pour [envoyer un message]
 - [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md)
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object
+[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object

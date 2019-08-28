@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757103"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037384"
 ---
 # <a name="web-chat-overview"></a>Vue d’ensemble de Web Chat
 
@@ -27,7 +27,7 @@ Si vous avez besoin de migrer de la version 3 vers la version 4 de Web Chat, p
 > Pour les versions précédentes de Web Chat (v3), rendez-vous dans la [branche Web Chat v3](https://github.com/Microsoft/BotFramework-WebChat/tree/v3).
 
 Tout d’abord, créez un bot à l’aide d’[Azure Bot Service](https://azure.microsoft.com/services/bot-service/).
-Une fois le bot créé, vous devez [obtenir la clé secrète Web Chat du bot](../bot-service-channel-connect-webchat.md#step-1) dans le Portail Azure. Utilisez ensuite la clé secrète pour [générer un jeton](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) et transmettez celui-ci à votre Web Chat.
+Une fois le bot créé, vous devez [obtenir la clé secrète Web Chat du bot](../bot-service-channel-connect-webchat.md#get-your-bot-secret-key) dans le Portail Azure. Utilisez ensuite la clé secrète pour [générer un jeton](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) et transmettez celui-ci à votre Web Chat.
 
 Voici la façon dont vous pouvez ajouter un contrôle Web Chat à votre site web :
 

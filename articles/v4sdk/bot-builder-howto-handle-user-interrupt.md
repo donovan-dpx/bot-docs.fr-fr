@@ -8,18 +8,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/18/2019
-ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756999"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026335"
 ---
 # <a name="handle-user-interruptions"></a>Gérer les interruptions par l’utilisateur
-
-<!-- Rebuild to link to published samples in the master branch -->
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
@@ -32,14 +29,14 @@ La gestion des interruptions représente un aspect essentiel d’un bot efficace
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
-L’exemple utilisé dans cet article modélise un bot de réservation de vol d’avion qui utilise des dialogues pour obtenir des informations sur le vol auprès de l’utilisateur. À tout moment pendant la conversation avec le bot, l’utilisateur peut émettre des commandes d’ _ ou d’ _ pour provoquer une interruption. Il existe deux types d’interruptions que nous gérons ici :
+L’exemple utilisé dans cet article modélise un bot de réservation de vol d’avion qui utilise des dialogues pour obtenir des informations sur le vol auprès de l’utilisateur. À tout moment pendant la conversation avec le bot, l’utilisateur peut émettre des commandes d’_aide_ ou d’_annulation_ pour provoquer une interruption. Il existe deux types d’interruptions que nous gérons ici :
 
 - **Niveau du tour** : Contournez le traitement au niveau du tour, mais laissez le dialogue sur la pile avec les informations qui ont été fournies. Au tour suivant, reprenez là où vous vous êtes arrêté. 
 - **Niveau du dialogue** : Annulez complètement le traitement, pour que le bot puisse tout recommencer.
 
 ## <a name="define-and-implement-the-interruption-logic"></a>Définir et implémenter la logique d’interruption
 
-Tout d’abord, nous définissons et implémentons les interruptions d’ _ et d’ _.
+Tout d’abord, nous définissons et implémentons les interruptions d’_aide_ et d’_annulation_.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -49,7 +46,7 @@ Pour utiliser les dialogues, installez le package NuGet **Microsoft.Bot.Builder.
 
 Nous commençons en implémentant la classe `CancelAndHelpDialog` pour gérer les interruptions par l’utilisateur.
 
-[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
 Dans la classe `CancelAndHelpDialog`, la méthode `OnContinueDialogAsync` appelle la méthode `InerruptAsync` pour vérifier si l’utilisateur a interrompu le flux normal ou pas. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `InterruptAsync` est retourné.
 
@@ -93,7 +90,7 @@ Maintenant que nous avons vu comment fonctionne la classe de gestion des interru
 
 Au moment où la nouvelle activité de message arrive, le bot exécute `MainDialog`. `MainDialog` invite l’utilisateur à indiquer ce qu’il veut. Ensuite, `BookingDialog` est démarré dans la méthode `MainDialog.ActStepAsync`, avec un appel à `BeginDialogAsync` comme indiqué ci-dessous.
 
-[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=82-83)]
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=6,26)]
 
 Par la suite, dans la méthode `FinalStepAsync` de la classe `MainDialog`, le dialogue de réservation se termine et la réservation est considérée comme terminée ou annulée.
 
@@ -107,7 +104,7 @@ Le code dans `BookingDialog` n’apparaît pas ici car il n’est pas directemen
 
 Au moment où la nouvelle activité de message arrive, le bot exécute `MainDialog`. `MainDialog` invite l’utilisateur à indiquer ce qu’il veut. Ensuite, `bookingDialog` est démarré dans la méthode `MainDialog.actStep`, avec un appel à `beginDialog` comme indiqué ci-dessous.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=90-97&highlight=96-97)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
 
 Par la suite, dans la méthode `finalStep` de la classe `MainDialog`, le dialogue de réservation se termine et la réservation est considérée comme terminée ou annulée.
 
@@ -147,7 +144,7 @@ Dans notre exemple, le gestionnaire `onTurnError` de l’adaptateur reçoit tout
 
 Enfin, dans `Startup.cs`, le bot est créé en tant que bot passager, et à chaque tour, une nouvelle instance du bot est créée.
 
-[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=47-48)]
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=43-44)]
 
 À titre de référence, voici les définitions de classe utilisées dans l’appel pour créer le bot ci-dessus.
 
@@ -161,7 +158,7 @@ Enfin, dans `Startup.cs`, le bot est créé en tant que bot passager, et à chaq
 
 Enfin, dans `index.js`, le bot est créé.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=69-73)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
 
 À titre de référence, voici les définitions de classe utilisées dans l’appel pour créer le bot ci-dessus.
 

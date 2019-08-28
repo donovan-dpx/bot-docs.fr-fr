@@ -3,19 +3,18 @@ title: Envoyer un message de bienvenue aux utilisateurs | Microsoft Docs
 description: Découvrez comment développer votre bot pour offrir une expérience utilisateur conviviale.
 keywords: vue d’ensemble, développer, expérience utilisateur, Accueil, expérience personnalisée, C#, JS, message de bienvenue, bot, salut, salutations
 author: DanDev33
-ms.author: v-dashel
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 24009289f65d214663693aa9221f9e076ba93bc2
-ms.sourcegitcommit: d29d3d7ccef401aa1e84e19e623db33b5ff13e63
+ms.openlocfilehash: df1d0b7553958664c57147b5a45520b591a965f4
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67160622"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890630"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
@@ -60,7 +59,7 @@ Chaque fois qu’un nouvel utilisateur est connecté, le bot lui fournit un `wel
 L’objet d’état utilisateur est créé au démarrage et la dépendance est injectée dans le constructeur de bot.
 
 **Startup.cs**  
-[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=29-33)]
+[!code-csharp[ConfigureServices](~/../botBuilder-samples/samples/csharp_dotnetcore/03.welcome-user/Startup.cs?range=30-34)]
 
 **WelcomeUserBot.cs**  
 [!code-csharp[Class](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=41-47)]
@@ -69,7 +68,7 @@ L’objet d’état utilisateur est créé au démarrage et la dépendance est i
 Au démarrage, l’état utilisateur et le stockage mémoire sont tous les deux définis dans index.js.
 
 **Index.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,33-41)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/Index.js?range=8-10,32-39)]
 
 ---
 
@@ -85,7 +84,9 @@ Appelons ensuite la méthode GetAsync pour obtenir la clé incluse dans l’éte
 Nous créons maintenant un accesseur de propriété qui nous fournit un handle vers WelcomedUserProperty, lequel est conservé dans UserState.
 
 **WelcomeBot.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-10,16-22)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=7-9)]
+
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=17-22)]
 
 ---
 
@@ -101,7 +102,7 @@ Dans **WelcomeUserBot**, nous recherchons une mise à jour de l’activité à l
 Ce code JavaScript envoie les premiers messages de bienvenue quand un utilisateur est ajouté. Pour effectuer cette opération, consultez l’activité de conversation et vérifiez qu’un nouveau membre a été ajouté à la conversation.
 
 **WelcomeBot.js**  
-[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-87)]
+[!code-javascript[DefineUserState](~/../BotBuilder-Samples/samples/javascript_nodejs/03.welcome-users/bots/welcomebot.js?range=65-88)]
 
 ---
 
