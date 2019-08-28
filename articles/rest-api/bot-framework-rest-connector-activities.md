@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 69c58e1e6bd9da4b07e21f8ca3eb029d2dec9e75
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 706568a5d2fa7ef815d7d169c74a2fa5061b3ab1
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757178"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037555"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 
-Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet `Activity`. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. 
+Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet [Activité][]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. 
 
 ## <a name="activity-types-in-the-bot-connector-service"></a>Types d’activités dans le service Bot Connector
 
@@ -64,4 +64,5 @@ Un bot reçoit une activité **endOfConversation** pour indiquer que l’utilisa
 
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object

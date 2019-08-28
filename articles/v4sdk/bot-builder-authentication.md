@@ -1,19 +1,18 @@
 ---
 title: Ajouter l’authentification à votre bot par le biais d’Azure Bot Service | Microsoft Docs
 description: Découvrez comment utiliser les fonctionnalités d’authentification d’Azure Bot Service pour ajouter l’authentification unique à votre bot.
-author: JonathanFingold
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 06/07/2019
+ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991983"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037520"
 ---
 <!-- 
 
@@ -87,15 +86,8 @@ Une fois que vous aurez terminé, vous aurez un bot s’exécutant localement et
 
 <!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
 
-Plusieurs problèmes de sécurité importants sont à prendre en compte quand vous utilisez l’authentification Azure Bot Service avec Web Chat.
-
-1. Empêchez l’emprunt d’identité, qui présente le risque qu’un attaquant laisse croire au bot qu’il est quelqu’un d’autre. Dans Web Chat, un attaquant peut emprunter l’identité d’un utilisateur, en modifiant l’ID utilisateur de son instance Web Chat.
-
-    Pour éviter cela, rendez l’ID utilisateur impossible à deviner. Quand vous activez les options d’authentification améliorées dans le canal Direct Line, Azure Bot Service peut détecter et rejeter tout changement d’ID utilisateur. L’ID utilisateur sur les messages de Direct Line à votre bot sera toujours identique à celui avec lequel vous avez initialisé Web Chat. Notez que cette fonctionnalité nécessite que l’ID utilisateur commence par `dl_`.
-
-1. Vérifiez que le bon utilisateur est connecté. L’utilisateur a deux identités : son identité dans un canal et son identité avec le fournisseur d’identité. Dans Web Chat, Azure Bot Service peut garantir que le processus de connexion est effectuée dans la même session de navigateur que Web Chat lui-même.
-
-    Pour activer cette protection, démarrez Web Chat avec un jeton Direct Line qui contient une liste de domaines approuvés pouvant héberger le client Web Chat du bot. Ensuite, spécifiez de façon statique la liste (d’origine) des domaines approuvés dans la page de configuration de Direct Line.
+> [!IMPORTANT]
+> Gardez à l’esprit ces importantes [considérations de sécurité](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -178,7 +170,7 @@ Vous disposez maintenant d’une application Azure AD configurée.
 
 L’étape suivante consiste à inscrire auprès de votre bot l’application Azure AD que vous venez de créer.
 
-# <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
+#### <a name="azure-ad-v1"></a>Azure AD v1
 
 1. Accédez à la page de ressources de votre bot sur le [portail Azure](http://portal.azure.com/).
 1. Cliquez sur **Settings**.
@@ -191,7 +183,11 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
     1. Pour **Secret du client**, entrez le secret que vous avez créé pour accorder au bot l’accès à l’application Azure AD.
     1. Pour **Type d’autorisation**, entrez `authorization_code`.
     1. Pour **URL de connexion**, entrez `https://login.microsoftonline.com`.
-    1. Pour **ID de locataire**, entrez l’ID d’annuaire (locataire) que vous avez enregistré précédemment pour votre application Azure AD.
+    1.Pour **ID de locataire**, entrez l’**ID d’annuaire (locataire)** que vous avez enregistré plus tôt pour votre application AAD ou **commun** en fonction des types de compte pris en charge sélectionnés quand vous avez créé l’application ADD. Pour déterminer la valeur à attribuer, suivez ces critères :
+
+        - Lors de la création de l’application AAD si vous avez sélectionné *Comptes dans cet annuaire d’organisation uniquement (Microsoft uniquement - Locataire unique)*  ou *Comptes dans cet annuaire organisationnel uniquement (Annuaire Microsoft AAD - Multilocataire)* , entrez l’**ID de locataire** que vous avez enregistré précédemment pour l’application AAD.
+
+        - Toutefois, si vous avez sélectionné *Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire) et comptes Microsoft personnels (par exemple, Skype, Xbox, Outlook.com)* , entrez le mot **commun** au lieu d’un ID de locataire. Dans le cas contraire, l’application AAD vérifie par le biais du locataire dont l’ID a été sélectionné et exclut les comptes MS personnels.
 
        Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés.
 
@@ -203,7 +199,7 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 > [!NOTE]
 > Ces valeurs permettent à votre application d’accéder aux données Office 365 via l’API Microsoft Graph.
 
-# <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
+#### <a name="azure-ad-v2"></a>Azure AD v2
 
 1. Accédez à la page de l’inscription Bot Channels Registration de votre bot dans le [Portail Azure](http://portal.azure.com/).
 1. Cliquez sur **Settings**.
@@ -214,7 +210,11 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
     1. Sous **Fournisseur de services**, sélectionnez **Azure Active Directory v2**. Une fois que vous avez sélectionné cette option, les champs propres à Azure AD sont affichés.
     1. Pour **ID client**, entrez l’ID d’application (client) que vous avez enregistré pour votre application Azure AD v1.
     1. Pour **Secret du client**, entrez le secret que vous avez créé pour accorder au bot l’accès à l’application Azure AD.
-    1. Pour **ID de locataire**, entrez l’ID d’annuaire (locataire) que vous avez enregistré précédemment pour votre application Azure AD.
+    1. Pour **ID de locataire**, entrez l’**ID d’annuaire (locataire)** que vous avez enregistré plus tôt pour votre application AAD ou **commun** en fonction des types de compte pris en charge sélectionnés quand vous avez créé l’application ADD. Pour déterminer la valeur à attribuer, suivez ces critères :
+
+        - Lors de la création de l’application AAD si vous avez sélectionné *Comptes dans cet annuaire d’organisation uniquement (Microsoft uniquement - Locataire unique)*  ou *Comptes dans cet annuaire organisationnel uniquement (Annuaire Microsoft AAD - Multilocataire)* , entrez l’**ID de locataire** que vous avez enregistré précédemment pour l’application AAD.
+
+        - Toutefois, si vous avez sélectionné *Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire) et comptes Microsoft personnels (par exemple, Skype, Xbox, Outlook.com)* , entrez le mot **commun** au lieu d’un ID de locataire. Dans le cas contraire, l’application AAD vérifie par le biais du locataire dont l’ID a été sélectionné et exclut les comptes MS personnels.
 
        Il s’agit du locataire associé aux utilisateurs qui peuvent être authentifiés.
 
@@ -227,8 +227,6 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 
 > [!NOTE]
 > Ces valeurs permettent à votre application d’accéder aux données Office 365 via l’API Microsoft Graph.
-
----
 
 ### <a name="test-your-connection"></a>Tester votre connexion
 
@@ -272,7 +270,7 @@ Vous avez besoin de l’ID d’application de votre bot et du mot de passe assoc
 
 ---
 
-Si vous ne savez pas comment récupérer votre **ID d’application Microsoft** et votre **mot de passe d’application Microsoft**, vous pouvez créer un nouveau mot de passe [comme décrit ici](../bot-service-quickstart-registration.md#bot-channels-registration-password).
+Si vous ne savez pas comment récupérer votre **ID d’application Microsoft** et votre **mot de passe d’application Microsoft**, vous pouvez créer un nouveau mot de passe [comme décrit ici](../bot-service-quickstart-registration.md#get-registration-password).
 
 > [!NOTE]
 > Vous pourriez dès à présent publier ce code de bot sur votre abonnement Azure (cliquer avec le bouton droit sur le projet et choisir **Publier**), mais cela n’est pas nécessaire pour cet article. Vous devriez définir une configuration de publication qui utilise l’application et le plan d’hébergement que vous avez utilisés quand vous avez configuré le bot dans le portail Azure.
@@ -342,7 +340,7 @@ Dans une étape de dialogue, utilisez `BeginDialogAsync` pour démarrer l’invi
 
 À l’étape de dialogue suivante, vérifiez la présence d’un jeton dans le résultat de l’étape précédente. S’il n’est pas null, l’utilisateur est connecté.
 
-[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-58)]
+[!code-csharp[Get the OAuthPrompt result](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/MainDialog.cs?range=54-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,7 +350,7 @@ Dans une étape de dialogue, utilisez `BeginDialogAsync` pour démarrer l’invi
 
 Ajoutez une invite OAuth à **MainDialog** dans son constructeur. Ici, la valeur du nom de connexion a été récupérée dans le fichier **.env**.
 
-[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=23-28)]
+[!code-javascript[Add OAuthPrompt](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=24-29)]
 
 Dans une étape de dialogue, utilisez `beginDialog` pour démarrer l’invite OAuth qui demande à l’utilisateur de se connecter.
 
@@ -363,7 +361,7 @@ Dans une étape de dialogue, utilisez `beginDialog` pour démarrer l’invite OA
 
 À l’étape de dialogue suivante, vérifiez la présence d’un jeton dans le résultat de l’étape précédente. S’il n’est pas null, l’utilisateur est connecté.
 
-[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=61-64)]
+[!code-javascript[Get OAuthPrompt result](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/mainDialog.js?range=62-63)]
 
 ---
 
@@ -385,7 +383,7 @@ Lorsque vous démarrez une invite OAuth, un événement de réponse de jeton est
 
 **AuthBot** dérive de `ActivityHandler` et gère explicitement les activités d’événement de réponse de jeton. Ici, nous poursuivons le dialogue actif, ce qui permet à l’invite OAuth de traiter l’événement et de récupérer le jeton.
 
-[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=28-33)]
+[!code-javascript[onTokenResponseEvent](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/bots/authBot.js?range=29-31)]
 
 ---
 
@@ -397,13 +395,13 @@ Donner la possibilité aux utilisateurs de se déconnecter explicitement plutôt
 
 **Dialogs\LogoutDialog.cs**
 
-[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=20-61&highlight=35)]
+[!code-csharp[Allow logout](~/../botbuilder-samples/samples/csharp_dotnetcore/18.bot-authentication/Dialogs/LogoutDialog.cs?range=44-61&highlight=11)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **dialogs/logoutDialog.js**
 
-[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=13-42&highlight=25)]
+[!code-javascript[Allow logout](~/../botbuilder-samples/samples/javascript_nodejs/18.bot-authentication/dialogs/logoutDialog.js?range=31-42&highlight=7)]
 
 ---
 
@@ -414,10 +412,10 @@ Les équipes se comportent différemment des autres canaux en ce qui concerne OA
 L’une des différences entre les autres canaux et Teams est que Teams envoie une activité d’appel (*invoke*) et non une activité d’événement (*event*). 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 

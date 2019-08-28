@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: a2fa3f5e1363cb155504cdf903df2f6c25877af3
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 12a54d479f0222497589c2b14e017a4aa8d992fd
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756950"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037544"
 ---
 # <a name="key-concepts"></a>Concepts clés
 
@@ -24,7 +24,7 @@ Le service Bot Connector permet à votre robot d’échanger des messages avec d
 
 ### <a name="activity"></a>Activité
 
-Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet `Activity`. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. Pour plus d’informations sur les activités dans le service Bot Connector, voir [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md).
+Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet [Activité][]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. Pour plus d’informations sur les activités dans le service Bot Connector, voir [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md).
 
 ## <a name="bot-state-service"></a>Service Bot State
 
@@ -49,3 +49,5 @@ En plus de la modélisation du service Bot Connector, chaque kit SDK Bot Framewo
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 Pour en savoir plus sur la création de bots à l’aide du service Bot Connector, lisez les articles de cette section, à commencer par [Authentification](bot-framework-rest-connector-authentication.md). Si vous rencontrez des problèmes ou avez des suggestions concernant le service Bot Connector, consultez la page [Support](../bot-service-resources-links-help.md) pour accéder à la liste des ressources disponibles. 
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object
