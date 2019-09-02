@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 04/10/2019
-ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 08/22/2019
+ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032640"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037445"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -74,10 +73,10 @@ La charge utile de la demande, qui contient les paramètres de jeton, est facult
 }
 ```
 
-| Paramètre | Type | Description |
+| Paramètre | type | Description |
 | :--- | :--- | :--- |
-| `user.id` | chaîne | facultatif. ID spécifique au canal de l’utilisateur à encoder dans le jeton. Pour un utilisateur Direct Line, il doit commencer par `dl_`. Vous pouvez créer un ID utilisateur unique pour chaque conversation et, pour une meilleure sécurité, vous devez faire en sorte que cet ID ne puisse pas être deviné. |
-| `user.name` | chaîne | facultatif. Nom convivial complet de l’utilisateur à encoder dans le jeton. |
+| `user.id` | string | facultatif. ID spécifique au canal de l’utilisateur à encoder dans le jeton. Pour un utilisateur Direct Line, il doit commencer par `dl_`. Vous pouvez créer un ID utilisateur unique pour chaque conversation et, pour une meilleure sécurité, vous devez faire en sorte que cet ID ne puisse pas être deviné. |
+| `user.name` | string | facultatif. Nom convivial complet de l’utilisateur à encoder dans le jeton. |
 | `trustedOrigins` | tableau de chaînes | facultatif. Liste des domaines approuvés à incorporer dans le jeton. Ce sont les domaines qui peuvent héberger le client Web Chat du bot. Elle doit correspondre à la liste figurant dans la page de configuration Direct Line de votre bot. |
 
 ### <a name="response"></a>response
@@ -140,7 +139,132 @@ HTTP/1.1 200 OK
 }
 ```
 
+## <a name="azure-bot-service-authentication"></a>Authentification par Azure Bot Service
+
+Les informations présentées dans cette section sont en lien avec l’article [Ajouter l’authentification à votre bot par le biais d’Azure Bot Service](../v4sdk/bot-builder-authentication.md).
+
+L’**authentification par Azure Bot Service** vous permet d’authentifier les utilisateurs et d’obtenir des **jetons d’accès** de divers fournisseurs d’identité, comme *Azure Active Directory*, *GitHub*, *Uber*, etc. Vous pouvez également configurer l’authentification pour un fournisseur d’identité **OAuth2** personnalisé. Tout cela vous permet d’écrire **une partie de code d’authentification** utilisable dans tous les fournisseurs d’identité et canaux pris en charge. Pour utiliser ces fonctionnalités, vous devez effectuer les étapes suivantes :
+
+1. Configurez `settings` de manière statique sur votre bot qui contient les détails de l’inscription de votre application auprès d’un fournisseur d’identité.
+2. Utilisez un `OAuthCard`, basé sur les informations sur l’application que vous avez fournies à l’étape précédente, pour connecter un utilisateur.
+3. Récupérez les jetons d’accès par le biais de l’**API Azure Bot Service**.
+
+### <a name="security-considerations"></a>Considérations relatives à la sécurité
+
+<!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
+
+Quand vous utilisez l’*authentification Azure Bot Service* avec [Web Chat](../bot-service-channel-connect-webchat.md), gardez à l’esprit certaines considérations importantes en matière de sécurité.
+
+1. **Emprunt d’identité**. Ici, l’emprunt d’identité signifie qu’un attaquant laisse croire au bot qu’il est quelqu’un d’autre. Dans Web Chat, un attaquant peut emprunter l’identité d’un utilisateur, **en changeant l’ID utilisateur** de son instance Web Chat. Pour éviter cela, les développeurs de bots doivent s’efforcer de rendre l’**ID utilisateur impossible à deviner**. Si vous activez les options d’**authentification avancée**, Azure Bot Service peut mieux détecter et rejeter les changements d’ID utilisateur. L’ID utilisateur (`Activity.From.Id`) sur les messages de Direct Line envoyés à votre bot sera donc toujours identique à celui avec lequel vous avez initialisé Web Chat. Notez que cette fonctionnalité nécessite que l’ID utilisateur commence par `dl_`
+1. **Identités utilisateur**. Sachez qu’un utilisateur est associé à deux identités :
+
+    1. Son identité dans un canal.
+    1. Son identité dans un fournisseur d’identité souhaité par le bot.
+  
+    Quand un bot demande à l’utilisateur A dans un canal de se connecter à un fournisseur d’identité P, le processus de connexion doit vérifier que l’utilisateur A est bien celui qui se connecte à P. Si un utilisateur B est autorisé à se connecter, l’utilisateur A aura accès à la ressource de l’utilisateur B par le biais du bot. Web Chat a deux mécanismes qui garantissent que l’utilisateur approprié est connecté comme décrit ci-après.
+
+    1. Auparavant, à la fin de la connexion, l’utilisateur recevait un code à 6 chiffres généré de manière aléatoire (un code magique). L’utilisateur devait taper ce code dans la conversation à l’origine de la connexion pour terminer le processus de connexion. Ce mécanisme avait tendance à dégrader l’expérience utilisateur. De plus, il restait vulnérable aux attaques par hameçonnage. Un utilisateur malveillant pouvait inciter un autre utilisateur à se connecter et à obtenir le code magique par le biais d’un hameçonnage.
+
+    2. En raison des problèmes rencontrés avec l’approche précédente, Azure Bot Service ne requiert plus l’utilisation du code magique. Azure Bot Service garantit que le processus de connexion peut uniquement être effectué dans la **même session de navigateur** que Web Chat lui-même. 
+    Pour activer cette protection, en tant que développeur de bot, vous devez démarrer Web Chat avec un **jeton Direct Line** qui contient une **liste des domaines approuvés pouvant héberger le client Web Chat du bot**. Auparavant, vous pouviez obtenir ce jeton uniquement en passant un paramètre facultatif non documenté à l’API de jeton Direct Line. Maintenant, grâce aux options d’authentification avancée, vous pouvez spécifier de façon statique la liste (d’origine) des domaines approuvés dans la page de configuration de Direct Line.
+
+### <a name="code-examples"></a>Exemples de code
+
+Le contrôleur .NET suivant utilise les options d’authentification avancée activées et retourne un jeton et un ID utilisateur Direct Line.
+
+```csharp
+public class HomeController : Controller
+{
+    public async Task<ActionResult> Index()
+    {
+        var secret = GetSecret();
+
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage request = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"https://directline.botframework.com/v3/directline/tokens/generate");
+
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", secret);
+
+        var userId = $"dl_{Guid.NewGuid()}";
+
+        request.Content = new StringContent(
+            JsonConvert.SerializeObject(
+                new { User = new { Id = userId } }),
+                Encoding.UTF8,
+                "application/json");
+
+        var response = await client.SendAsync(request);
+        string token = String.Empty;
+
+        if (response.IsSuccessStatusCode)
+        {
+            var body = await response.Content.ReadAsStringAsync();
+            token = JsonConvert.DeserializeObject<DirectLineToken>(body).token;
+        }
+
+        var config = new ChatConfig()
+        {
+            Token = token,
+            UserId = userId  
+        };
+
+        return View(config);
+    }
+}
+
+public class DirectLineToken
+{
+    public string conversationId { get; set; }
+    public string token { get; set; }
+    public int expires_in { get; set; }
+}
+public class ChatConfig
+{
+    public string Token { get; set; }
+    public string UserId { get; set; }
+}
+
+```
+
+Le contrôleur JavaScript suivant utilise les options d’authentification avancée activées et retourne un jeton et un ID utilisateur Direct Line.
+
+```javascript
+var router = express.Router(); // get an instance of the express Router
+
+// Get a directline configuration (accessed at GET /api/config)
+const userId = "dl_" + createUniqueId();
+
+router.get('/config', function(req, res) {
+    const options = {
+        method: 'POST',
+        uri: 'https://directline.botframework.com/v3/directline/tokens/generate',
+        headers: {
+            'Authorization': 'Bearer ' + secret
+        },
+        json: {
+            User: { Id: userId }
+        }
+    };
+
+    request.post(options, (error, response, body) => {
+        if (!error && response.statusCode < 300) {
+            res.json({ 
+                    token: body.token,
+                    userId: userId
+                });
+        }
+        else {
+            res.status(500).send('Call to retrieve token from Direct Line failed');
+        } 
+    });
+});
+
+```
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Concepts clés](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Connecter un robot à Direct Line](../bot-service-channel-connect-directline.md)
+- [Ajouter l’authentification à votre bot via Azure Bot Service](../bot-builder-tutorial-authentication.md)

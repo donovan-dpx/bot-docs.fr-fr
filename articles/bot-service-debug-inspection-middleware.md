@@ -7,19 +7,18 @@ keywords: Kit de développement logiciel (SDK) Bot Framework, robot de débogage
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 7/9/2019
-ms.openlocfilehash: bdc88645b6747e5f38497c858c77cd79b21a6dd3
-ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
+ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68508029"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037509"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Déboguer un robot avec un intergiciel d’inspection
-Cet article explique comment déboguer votre robot à l’aide d’un intergiciel d’inspection, une nouvelle fonctionnalité de Bot Framework v4. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation.
+Cet article explique comment déboguer votre bot à l’aide d’un intergiciel d’inspection. Cette fonctionnalité permet à l’émulateur Bot Framework Emulator de déboguer le trafic transitant par le bot, en plus d’inspecter l’état actuel du bot. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation. 
 
-Nous utilisons un robot d’écho de base créé avec [Bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/02.echo-bot) pour déterminer comment ajouter l’intergiciel d’inspection pour déboguer votre robot et vérifier l’état du message du robot. Vous pouvez également [Déboguer un robot à l’aide de l’IDE](./bot-service-debug-bot.md) ou [Déboguer avec Bot Framework Emulator](./bot-service-debug-emulator.md), mais pour déboguer l’état, vous devez ajouter l’intergiciel d’inspection à votre robot. Les exemples de robot d’inspection sont disponibles ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) et [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
+Nous utilisons un EchoBot généré localement à l’aide de Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)) pour montrer comment déboguer et inspecter l’état du message du bot. Vous pouvez aussi [Déboguer un bot à l’aide de l’IDE](./bot-service-debug-bot.md) ou le [Déboguer avec Bot Framework Emulator](./bot-service-debug-emulator.md), mais pour déboguer l’état, vous devez ajouter l’intergiciel d’inspection à votre bot. Les exemples de robot d’inspection sont disponibles ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) et [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
 
 ## <a name="prerequisites"></a>Prérequis
 - Téléchargez et installez [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)
@@ -35,6 +34,16 @@ Pour vérifier la version de votre émulateur, sélectionnez **Aide** -> **À pr
 ![version actuelle](./media/bot-debug-inspection-middleware/bot-debug-check-emulator-version.png) 
 
 ## <a name="update-your-bots-code"></a>Mettre à jour le code de votre robot
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+Configurez l’état d’inspection dans le fichier **Démarrage**. Ajoutez l’intergiciel d’inspection à l’adaptateur. L’état d’inspection est fourni par injection de dépendances. Consultez la mise à jour du code ci-dessous ou reportez-vous à l’exemple d’inspection ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
+
+**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+
+**AdapterWithInspection.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
+
+**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Avant de mettre à jour le code de votre robot, vous devez mettre à jour ses packages vers les versions les plus récentes en exécutant la commande suivante dans votre terminal : 
@@ -55,16 +64,6 @@ Mettez à jour la classe de robot dans le fichier **bot.js**.
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-Configurez l’état d’inspection dans le fichier **Démarrage**. Ajoutez l’intergiciel d’inspection à l’adaptateur. L’état d’inspection est fourni par injection de dépendances. Consultez la mise à jour du code ci-dessous ou reportez-vous à l’exemple d’inspection ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
-
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
-
-**AdapterWithInspection.cs**  
-[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
-
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
-
 ---
 
 ## <a name="test-your-bot-locally"></a>Tester votre bot localement 
@@ -72,17 +71,18 @@ Après la mise à jour du code, vous pouvez exécuter votre robot localement et 
 
 1. Accédez au répertoire de votre bot dans un terminal et exécutez la commande suivante pour exécuter votre robot localement : 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cmd
+dotnet run
+```
+
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```cmd
 npm start 
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-```cmd
-dotnet run
-```
 ---
 
 2. Ouvrez votre émulateur. Cliquez sur **Ouvrir le robot**. Renseignez l’URL du robot avec http://localhost:3978/api/messages et les valeurs **MicrosoftAppId** et **MicrosoftAppPassword**. Si vous avez un robot JavaScript, vous pouvez trouver ces valeurs dans le fichier **.env** de votre robot. Si vous avez un robot C#, vous pouvez trouver ces valeurs dans le fichier **appSettings.json**. Cliquez sur **Connecter**. 
@@ -96,7 +96,7 @@ dotnet run
 
 5. Vous pouvez désormais envoyer des messages dans la zone de discussion de votre premier émulateur et inspecter les messages dans l’émulateur de débogage. Pour inspecter l’état des messages, cliquez sur **Bot State** dans l’émulateur de débogage et dépliez les **valeurs** dans la fenêtre **JSON** appropriée. Vous serez en mesure d’afficher l’état de votre robot comme suit : ![Bot State](./media/bot-debug-inspection-middleware/bot-debug-bot-state.png)
 
-## <a name="inspect-the-state-of-a-bot-configured-in-azure-connected-to-channels"></a>Inspecter l’état d’un robot configuré dans Azure connecté à des canaux 
+## <a name="inspect-the-state-of-a-bot-configured-in-azure"></a>Inspecter l’état d’un bot configuré dans Azure 
 Si vous souhaitez inspecter l’état de votre robot configuré dans Azure et connecté à des canaux (comme Teams), vous devez installer et exécuter[ngrok](https://ngrok.com/).
 
 ### <a name="run-ngrok"></a>Exécuter ngrok

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4eec5b84c05e170a9ed69d22dcabec7c1df055f9
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: ef031d250708d6613a64f5d0cb301cf83b6a26ff
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757075"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037206"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ En spécifiant un conseil de saisie pour un message, vous pouvez indiquer si vot
 
 ## <a name="accepting-input"></a>Acceptation d’entrées
 
-Pour indiquer que votre bot est passivement prêt pour l’entrée sans être en attente d’une réponse de l’utilisateur, définissez la propriété `inputHint` sur **acceptingInput** dans l’objet `Activity` représentant votre message. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que la coupure du microphone, tout en restant accessible à l’utilisateur. Par exemple, Cortana ouvre le microphone afin d’accepter une entrée de l’utilisateur si l’utilisateur maintient le bouton du microphone enfoncé. 
+Pour indiquer que votre bot est passivement prêt à recevoir une entrée sans être en attente d’une réponse de l’utilisateur, définissez la propriété `inputHint` sur **acceptingInput** dans l’objet [Activité][] représentant votre message. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que la coupure du microphone, tout en restant accessible à l’utilisateur. Par exemple, Cortana ouvre le microphone afin d’accepter une entrée de l’utilisateur si l’utilisateur maintient le bouton du microphone enfoncé. 
 
 L’exemple suivant montre une demande qui envoie un message et spécifie que le robot accepte l’entrée. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -57,7 +57,7 @@ Content-Type: application/json
 
 ## <a name="expecting-input"></a>Attente d’entrée
 
-Pour indiquer que votre bot est en attente d’une réponse de l’utilisateur, définissez la propriété `inputHint` sur **expectingInput** dans l’objet `Activity` représentant votre message. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que l’ouverture du microphone. 
+Pour indiquer que votre bot est en attente d’une réponse de l’utilisateur, définissez la propriété `inputHint` sur **expectingInput** dans l’objet [Activité][] représentant votre message. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que l’ouverture du microphone. 
 
 L’exemple suivant montre une demande qui envoie un message et spécifie que le robot attend une entrée. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -90,7 +90,7 @@ Content-Type: application/json
 
 ## <a name="ignoring-input"></a>Ignorer l’entrée
  
-Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’utilisateur, définissez la propriété `inputHint` sur **ignoringInput** dans l’objet `Activity` représentant votre message. Sur de nombreux canaux, cela entraîne la désactivation de la zone de saisie du client ainsi que la coupure du microphone. 
+Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’utilisateur, définissez la propriété `inputHint` sur **ignoringInput** dans l’objet [Activité][] représentant votre message. Sur de nombreux canaux, cela entraîne la désactivation de la zone de saisie du client ainsi que la coupure du microphone. 
 
 L’exemple suivant montre une demande qui envoie un message et spécifie que le robot ignore l’entrée. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -126,3 +126,4 @@ Content-Type: application/json
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object

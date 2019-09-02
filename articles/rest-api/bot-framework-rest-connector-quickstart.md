@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757151"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037472"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Créer un bot avec le service Bot Connector
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ Une conversation est une série de messages échangés entre un utilisateur et v
 
 ### <a name="receive-a-message-from-the-user"></a>Recevoir un message de l’utilisateur
 
-Lorsque l’utilisateur envoie un message, le service Bot Framework Connector publie une requête destinée au point de terminaison que vous avez spécifié lorsque vous avez [inscrit](../bot-service-quickstart-registration.md) votre bot. Le corps de la requête est un objet `Activity`. L’exemple ci-après présente le corps de la requête qu’un bot reçoit lorsque l’utilisateur lui envoie un message simple. 
+Lorsque l’utilisateur envoie un message, le service Bot Framework Connector publie une requête destinée au point de terminaison que vous avez spécifié lorsque vous avez [inscrit](../bot-service-quickstart-registration.md) votre bot. Le corps de la requête est un objet [Activité][]. L’exemple ci-après présente le corps de la requête qu’un bot reçoit lorsque l’utilisateur lui envoie un message simple. 
 
 ```json
 {
@@ -97,7 +97,7 @@ Lorsque l’utilisateur envoie un message, le service Bot Framework Connector pu
 
 ### <a name="reply-to-the-users-message"></a>Répondre au message de l’utilisateur
 
-Lorsque le point de terminaison de votre bot reçoit une requête `POST` qui représente un message émanant de l’utilisateur (par exemple, `type` = **message**), utilisez les informations de cette requête pour créer l’objet `Activity` de votre réponse.
+Quand le point de terminaison de votre bot reçoit une requête `POST` qui représente un message émanant de l’utilisateur (par exemple, `type` = **message**), utilisez les informations de cette requête pour créer l’objet [Activité][] de votre réponse.
 
 1. Définissez la propriété **conversation** sur le contenu de la propriété **conversation** dans le message de l’utilisateur.
 2. Définissez la propriété **from** sur le contenu de la propriété **recipient** dans le message de l’utilisateur.
@@ -194,3 +194,5 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Étapes suivantes
 
 Ce didacticiel vous a appris à obtenir un jeton d’accès à partir de Bot Framework et à utiliser le service Bot Connecteur pour échanger des messages avec l’utilisateur. Vous pouvez utiliser l’application [Bot Framework Emulator](../bot-service-debug-emulator.md) pour tester et déboguer votre bot. Si vous souhaitez partager votre bot avec d’autres, vous devrez le [configurer](../bot-service-manage-channels.md) pour qu’il s’exécute sur un ou plusieurs canaux.
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -3,19 +3,18 @@ title: Créer des flux de conversation avancés à l’aide de branches et de bo
 description: Découvrez comment gérer un flux de conversation complexe avec des dialogues dans le kit SDK Bot Framework.
 keywords: flux de conversation complexe, répétition, boucle, menu, dialogues, invites, cascades, jeu de dialogues
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "67587475"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890635"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
@@ -45,7 +44,7 @@ Les dialogues sont divisés en dialogues composants `MainDialog`, `TopLevelDialo
   - Si l’utilisateur est trop jeune, ils ne lui demandent pas d’évaluer une entreprise.
   - Si l’utilisateur a l’âge requis, ils commencent à collecter les préférences d’évaluation de l’utilisateur.
     - Ils permettent à l’utilisateur de sélectionner une entreprise à évaluer.
-    - Si l’utilisateur choisit une entreprise, ils s’ _ pour permettre à une deuxième entreprise d’être sélectionnée.
+    - Si l’utilisateur choisit une entreprise, ils s’_exécutent en boucle_ pour permettre à une deuxième entreprise d’être sélectionnée.
 - Enfin, ils remercient l’utilisateur pour sa participation.
 
 Ils utilisent deux dialogues en cascade, et quelques invites pour gérer une conversation complexe.
@@ -64,7 +63,7 @@ Nous enregistrons des services pour le bot dans `Startup`. Ces services sont dis
 - Services pour gérer l’état : le stockage, l’état utilisateur et l’état de conversation.
 - Le dialogue que le bot va utiliser.
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-39)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -80,8 +79,7 @@ Nous créons des services pour le bot que d’autres parties du code demandent.
 - Services pour gérer l’état : le stockage, l’état utilisateur et l’état de conversation.
 - Le dialogue que le bot va utiliser.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-38)]
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=43-45)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-55)]
 
 ---
 
@@ -206,7 +204,7 @@ Le gestionnaire de messages appelle la méthode `RunAsync` pour gérer le dialog
 
 **Bots\DialogAndWelcome.cs**
 
-`DialogAndWelcomeBot` étend `DialogBot` ci-dessus pour fournir un message de bienvenue lorsque l’utilisateur rejoint la conversation ; c’est ce qui est appelé par `Startup.cs`.
+`DialogAndWelcomeBot` étend `DialogBot` ci-dessus pour fournir un message de bienvenue quand l’utilisateur rejoint la conversation ; c’est ce qui est créé dans `Startup.cs`.
 
 [!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
 
@@ -226,11 +224,11 @@ Comme le dialogue composant définit un jeu de dialogues interne, nous devons cr
 
 Le gestionnaire de messages appelle la méthode d’assistance `run` pour gérer le dialogue, et nous implémentons un gestionnaire de tours pour enregistrer dans l’état de conversation et celui d’utilisateur les modifications pouvant se produire durant le tour. `next` de base appellera la méthode `onDialog`, garantissant ainsi que les appels d’enregistrement se produisent à la fin de ce tour.
 
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=30-47)]
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
 
 **bots/dialogAndWelcomeBot.js**
 
-`DialogAndWelcomeBot` étend `DialogBot` ci-dessus pour fournir un message de bienvenue lorsque l’utilisateur rejoint la conversation ; c’est ce qui est appelé par `Startup.cs`.
+`DialogAndWelcomeBot` étend `DialogBot` ci-dessus pour fournir un message de bienvenue quand l’utilisateur rejoint la conversation ; c’est ce qui est créé dans `index.js`.
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 

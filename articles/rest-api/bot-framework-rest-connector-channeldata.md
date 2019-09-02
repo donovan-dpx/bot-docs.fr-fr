@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757188"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037334"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
 
-Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implémentées uniquement à l’aide de [SMS et de pièces jointes](bot-framework-rest-connector-create-messages.md). Pour implémenter des fonctionnalités spécifiques à un canal, vous pouvez transmettre des métadonnées natives au canal dans la propriété `channelData` de l’objet `Activity`. Par exemple, votre bot peut utiliser la propriété `channelData` pour indiquer à Telegram d’envoyer un autocollant, ou pour demander à Office 365 d’envoyer un e-mail.
+Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implémentées uniquement à l’aide de [SMS et de pièces jointes](bot-framework-rest-connector-create-messages.md). Pour implémenter une fonctionnalité spécifique d’un canal, vous pouvez passer des métadonnées natives à un canal dans la propriété `channelData` de l’objet [Activity[]]. Par exemple, votre bot peut utiliser la propriété `channelData` pour indiquer à Telegram d’envoyer un autocollant, ou pour demander à Office 365 d’envoyer un e-mail.
 
 Cet article explique comment utiliser une propriété `channelData` d’activité de message pour implémenter cette fonctionnalité propre au canal :
 
@@ -275,3 +275,5 @@ Cet extrait de code montre un exemple de la propriété `channelData` pour un me
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Aperçu des fonctionnalités avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

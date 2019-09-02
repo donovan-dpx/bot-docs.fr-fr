@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
-ms.openlocfilehash: 03facdff733787e95ca3bc68dfee15d747340453
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: be56700664e7626c247bb77899dc89f3cac32469
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757094"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037213"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Les robots et les canaux échangent généralement des chaînes de texte, mais c
 
 ## <a name="add-a-media-attachment"></a>Ajouter une pièce jointe multimédia  
 
-Pour ajouter une pièce jointe multimédia à un message, créez un objet `Attachment`, définissez la propriété `name`, définissez la propriété `contentUrl` sur l’URL du fichier multimédia, puis définissez la propriété `contentType` sur le type de média approprié (par exemple, **image/png**, **audio/wav**, **video/mp4**). Ensuite, dans l’objet `Activity` qui représente votre message, spécifiez votre objet `Attachment` dans le tableau `attachments`. 
+Pour ajouter une pièce jointe multimédia à un message, créez un objet [Attachment][], définissez la propriété `name`, définissez la propriété `contentUrl` sur l’URL du fichier multimédia, puis définissez la propriété `contentType` sur le type de média approprié (par exemple, **image/png**, **audio/wav**, **video/mp4**). Ensuite, dans l’objet [Activité][] qui représente votre message, spécifiez votre objet `Attachment` dans le tableau `attachments`.
 
 L’exemple ci-après présente une demande qui envoie un message contenant du texte et une image en pièce jointe. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -101,7 +101,7 @@ Vous pouvez joindre un fichier vidéo ou audio à un message en procédant comme
 
 ## <a name="add-an-audiocard-attachment"></a>Ajouter une pièce jointe AudioCard
 
-L’ajout d’une pièce jointe `AudioCard` ou `VideoCard` est similaire à l’ajout d’une pièce jointe multimédia. Par exemple, le code JSON suivant montre comment ajouter une carte audio dans la pièce jointe multimédia.
+L’ajout d’une pièce jointe [AudioCard][] ou [VideoCard][] est similaire à l’ajout d’une pièce jointe multimédia. Par exemple, le code JSON suivant montre comment ajouter une carte audio dans la pièce jointe multimédia.
 
 ```json
 {
@@ -177,3 +177,8 @@ Le nom de l’événement multimédia **média/pause** s’affiche dans le champ
 - [Ajouter des cartes détaillées aux messages](bot-framework-rest-connector-add-rich-cards.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema)
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object
+[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
+[AudioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
+[VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object

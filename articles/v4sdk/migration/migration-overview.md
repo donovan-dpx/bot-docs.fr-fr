@@ -7,15 +7,14 @@ ms.author: v-mimiel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b1082e16933da1fb4c20f51d4764ec1774aabdb6
-ms.sourcegitcommit: 4f78e68507fa3594971bfcbb13231c5bfd2ba555
+ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68292189"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026406"
 ---
 # <a name="migration-overview"></a>Vue d’ensemble de la migration
 
@@ -94,10 +93,12 @@ Le kit SDK Bot Framework v4 prend en charge le même service Bot Framework sous-
 
 ### <a name="migration-estimation-worksheet"></a>Feuille de calcul d’estimation de la migration
 
-La feuille de calcul suivante peut vous guider dans l’estimation de votre charge de travail de migration. Dans la colonne **Occurrences**, remplacez *count* par votre valeur numérique réelle. Dans la colonne **T Shirt**, entrez des valeurs telles que : *Petit*, *Moyen*, *Grand* selon votre estimation.
+Les feuilles de calcul suivantes peuvent vous guider dans l’estimation de votre charge de travail de migration. Dans la colonne **Occurrences**, remplacez *count* par votre valeur numérique réelle. Dans la colonne **T Shirt**, entrez des valeurs telles que : *Petit*, *Moyen*, *Grand* selon votre estimation.
 
-Étape | V3 | V4 | Occurrences | Complexité | T Shirt
--- | -- | -- | -- | -- | --
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+| Étape | V3 | V4 | Occurrences | Complexité | T Shirt |
+| -- | -- | -- | -- | -- | -- |
 Pour obtenir l’activité entrante | IDialogContext.Activity | ITurnContext.Activity | count | Petite  
 Pour créer une activité et l’envoyer à l’utilisateur | activity.CreateReply(“text”) IDialogContext.PostAsync | MessageFactory.Text(“text”) ITurnContext.SendActivityAsync | count | Petite |
 Gestion de l'état | UserData, ConversationData et PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState et PrivateConversationState, avec accesseurs de propriété | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
@@ -111,7 +112,26 @@ Remplacer le dialogue actuel par un nouveau dialogue | IDialogContext.Forward | 
 Signaler que le dialogue en cours est terminé | IDialogContext.Done | Utilisez return await avec la méthode EndDialogAsync du contexte d’étape. | count | Moyenne |  
 Échec d’un dialogue. | IDialogContext.Fail | Levez une exception à intercepter à un autre niveau du bot, terminez l’étape avec l’état Annulé ou appelez la méthode CancelAllDialogsAsync du contexte d’étape ou de dialogue. | count | Petite |  
 
-### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+| Étape | V3 | V4 | Occurrences | Complexité | T Shirt |
+| -- | -- | -- | -- | -- | -- |
+Pour obtenir l’activité entrante | IMessage | TurnContext.activity | count | Petite  
+Pour créer une activité et l’envoyer à l’utilisateur | Appeler Session.send('message') | Appeler TurnContext.sendActivity | count | Petite |
+Gestion de l'état | UserState & ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState et ConversationState avec accesseurs de propriété | count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
+Gérer le début de votre dialogue | Appeler session.beginDialog, en passant l’ID du dialogue | Appeler DialogContext.beginDialog | count | Petite |  
+Envoyer une activité | Appeler Session.send | Appeler TurnContext.sendActivity | count | Petite |  
+Attendre la réponse d’un utilisateur | Appelez une invite à partir de l’étape de cascade. Par exemple : builder.Prompts.text(session, 'Entrez votre destination'). Récupérez la réponse à l’étape suivante. | Utilisez return await avec TurnContext.prompt pour commencer un dialogue d’invite. Ensuite, récupérez le résultat à l’étape suivante de la cascade. | count | Moyen (selon le flux) |  
+Gérer la continuation de votre dialogue | Automatique | Ajoutez des étapes supplémentaires à un dialogue en cascade ou implémentez Dialog.continueDialog | count | grand |  
+Signaler la fin du traitement jusqu’au prochain message de l’utilisateur | Session.endDialog | Retourner Dialog.EndOfTurn | count | Moyenne |  
+Commencer un dialogue enfant | Session.beginDialog | Utilisez return await avec la méthode beginDialog du contexte d’étape. Si le dialogue enfant retourne une valeur, celle-ci est disponible à l’étape suivante de la cascade via la propriété Result du contexte d’étape. | count | Moyenne |  
+Remplacer le dialogue actuel par un nouveau dialogue | Session.replaceDialog | ITurnContext.replaceDialog | count | grand |  
+Signaler que le dialogue en cours est terminé | Session.endDialog | Utilisez return await avec la méthode endDialog du contexte d’étape. | count | Moyenne |  
+Échec d’un dialogue. | Session.pruneDialogStack | Levez une exception à intercepter à un autre niveau du bot, terminez l’étape avec l’état Annulé, ou appelez la méthode cancelAllDialogs du contexte d’étape ou de dialogue. | count | Petite |  
+
+---
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, la version v4 est une refactorisation de la version précédente du kit SDK pour offrir davantage de flexibilité et de contrôle sur les bots.
 
@@ -138,7 +158,7 @@ Pour plus d’informations, consultez [Migrer un bot .NET v3 vers un bot .NET F
 
 Pour plus d’informations, consultez [Migrer un bot .NET v3 vers un bot .NET Core v4](conversion-core.md).
 
-### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Le **kit SDK JavaScript Bot Framework v4** présente des changements fondamentaux concernant la façon dont les bots sont créés. Ces changements affectent la syntaxe de développement des bots dans JavaScript, notamment au niveau de la création d’objets bot, de la définition de dialogues et de l’encodage d’une logique de gestion des événements. Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, la version v4 est une refactorisation de la version précédente du kit SDK pour offrir davantage de flexibilité et de contrôle sur les bots, en particulier :
 

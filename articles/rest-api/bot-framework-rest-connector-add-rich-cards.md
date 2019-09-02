@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 739af17f39a8537833aafcc8d03fb63ea2c8c914
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 10246fda94932feb96e5faa0cdd8ca489c98c855
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757060"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037474"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 > [!div class="op_single_selector"]
@@ -33,20 +33,20 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 | Type de carte | Description |
 |----|----|
 | <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status).  |
-| `AnimationCard` | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
-| `AudioCard` | Carte pouvant lire un fichier audio. |
-| `HeroCard` | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
-| `ThumbnailCard` | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte. |
-| `ReceiptCard` | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
-| `SignInCard` | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
-| `VideoCard` | Carte pouvant lire des vidéos. |
+| [AnimationCard][] | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
+| [AudioCard][] | Carte pouvant lire un fichier audio. |
+| [HeroCard][] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
+| [ThumbnailCard][] | Carte contenant généralement une image miniature, un ou plusieurs boutons et du texte. |
+| [ReceiptCard][] | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
+| [SignInCard][] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
+| [VideoCard][] | Carte pouvant lire des vidéos. |
 
 > [!TIP]
 > Pour déterminer le type de cartes enrichies prises en charge par un canal et voir comment le canal affiche les cartes enrichies, consultez l’article concernant l’[Inspecteur de canal][ChannelInspector]. Pour plus d’informations sur les limites applicables au contenu des cartes (par exemple, nombre maximal de boutons ou longueur maximale du titre), consultez la documentation du canal.
 
 ## <a name="process-events-within-rich-cards"></a>Traiter des événements dans les cartes enrichies
 
-Pour traiter les événements dans les cartes enrichies, utilisez des objets `CardAction` pour spécifier ce qui doit se produire quand l’utilisateur clique sur un bouton ou appuie sur une section de la carte. Chaque objet `CardAction` contient les propriétés suivantes :
+Pour traiter les événements dans les cartes enrichies, utilisez les objets [CardAction][] afin de spécifier ce qui doit se produire quand l’utilisateur clique sur un bouton ou appuie sur une section de la carte. Chaque objet `CardAction` contient les propriétés suivantes :
 
 | Propriété | Type | Description | 
 |----|----|----|
@@ -74,7 +74,7 @@ Ce tableau répertorie les valeurs valides pour la propriété `type` d’un obj
 
 ## <a name="add-a-hero-card-to-a-message"></a>Ajouter une carte de bannière à un message
 
-Pour ajouter une pièce jointe de carte enrichie à un message, commencez par créer un objet qui correspond au [type de carte](#types-of-cards) que vous souhaitez ajouter au message. Créez ensuite un objet `Attachment`, puis définissez sa propriété `contentType` sur le type multimédia de la carte et sa propriété `content` sur l’objet que vous avez créé pour représenter la carte. Spécifiez votre objet `Attachment` dans le tableau `attachments` du message.
+Pour ajouter une pièce jointe de carte enrichie à un message, commencez par créer un objet qui correspond au [type de carte](#types-of-cards) que vous souhaitez ajouter au message. Créez ensuite un objet [Attachment][], et définissez sa propriété `contentType` sur le type multimédia de la carte et sa propriété `content` sur l’objet que vous avez créé pour représenter la carte. Spécifiez votre objet `Attachment` dans le tableau `attachments` du message.
 
 > [!TIP]
 > Les messages qui contiennent des pièces jointes de cartes enrichies ne spécifient généralement pas d’éléments `text`.
@@ -82,7 +82,7 @@ Pour ajouter une pièce jointe de carte enrichie à un message, commencez par cr
 Certains canaux vous permettent d’ajouter plusieurs cartes enrichies au tableau `attachments` dans un message. Cette fonctionnalité peut être utile dans les cas où vous souhaitez offrir plusieurs options aux utilisateurs. Par exemple, si votre bot permet aux utilisateurs de réserver des chambres d’hôtel, il peut leur présenter une liste de cartes enrichies affichant les types de chambres disponibles. Chacune de ces cartes peut contenir une photo, accompagnée de la liste des équipements correspondant au type de la chambre ; l’utilisateur peut alors sélectionner un type de chambre en appuyant sur une carte ou en cliquant sur un bouton.
 
 > [!TIP]
-> Pour afficher plusieurs cartes enrichies au format liste, définissez la propriété `attachmentLayout` de l’objet `Activity` sur « list ». Pour afficher plusieurs cartes enrichies au format carrousel, définissez la propriété `attachmentLayout` de l’objet `Activity` sur « carousel ». Si le canal ne prend pas en charge le format carrousel, les cartes riches s’afficheront au format liste, bien que la propriété `attachmentLayout` indique « carrousel ».
+> Pour afficher plusieurs cartes enrichies au format liste, définissez la propriété `attachmentLayout` de l’objet [Activité][] sur « list ». Pour afficher plusieurs cartes enrichies au format carrousel, définissez la propriété `attachmentLayout` de l’objet `Activity` sur « carousel ». Si le canal ne prend pas en charge le format carrousel, les cartes riches s’afficheront au format liste, bien que la propriété `attachmentLayout` indique « carrousel ».
 
 L’exemple ci-après présente une requête qui envoie un message ne contenant qu’une seule pièce jointe de carte de bannière. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -260,3 +260,15 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 - <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
+
+[Activité]: bot-framework-rest-connector-api-reference.md#activity-object
+[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
+[CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
+
+[AnnimationCard]: bot-framework-rest-connector-api-reference.md#annimationcard-object
+[AudioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
+[HeroCard]: bot-framework-rest-connector-api-reference.md#herocard-object
+[ThumbnailCard]: bot-framework-rest-connector-api-reference.md#thumbnailcard-object
+[ReceiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object
+[SignInCard]: bot-framework-rest-connector-api-reference.md#signincard-object
+[VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
