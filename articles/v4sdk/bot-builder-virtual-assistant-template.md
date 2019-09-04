@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991954"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167067"
 ---
 # <a name="virtual-assistant---template-outline"></a>Assistant virtuel  : structure du modèle
 
@@ -80,7 +80,7 @@ Intrinsèquement, le niveau de télémétrie du bot est lié aux données de té
 
 Un composant de middleware associé à une classe wrapper autour des classes SDK QnA Maker et LuisRecognizer offre un bon moyen de collecter un ensemble cohérent d’événements. Ces événements cohérents peuvent ensuite être utilisés par les outils Application Insights et des outils comme Power BI.
 
-Un exemple de tableau de bord Power BI est fourni dans le cadre du dépôt github des solutions Bot Framework et peut être exploité immédiatement avec chaque modèle d’assistant virtuel. Consultez la section [Analytics](https://aka.ms/bfsanalytics) pour plus d’informations.
+Un exemple de tableau de bord Power BI est fourni dans le cadre du dépôt github des solutions Bot Framework et peut être exploité immédiatement avec chaque modèle d’assistant virtuel. Consultez la section [Analytics](https://aka.ms/bfs-analytics) pour plus d’informations.
 
 ![Exemple de données analytiques](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -120,8 +120,8 @@ Content Moderator est un composant facultatif qui permet de détecter l’utilis
 Grâce au composant d’intergiciel fourni, les textes sont filtrés et analysés par le biais de ```TextModeratorResult``` sur l’objet TurnState.
 
 ## <a name="next-steps"></a>Étapes suivantes
-Reportez-vous aux [tutoriels](https://aka.ms/bfstutorials) pour savoir comment créer et déployer votre assistant virtuel. 
+Reportez-vous aux [tutoriels](https://aka.ms/bfs-tutorials) pour savoir comment créer et déployer votre assistant virtuel. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
-Le code source complet du modèle d’assistant virtuel est disponible sur [GitHub](https://aka.ms/bfsolutions).
+Le code source complet du modèle d’assistant virtuel est disponible sur [GitHub](https://aka.ms/bf-solutions).
 

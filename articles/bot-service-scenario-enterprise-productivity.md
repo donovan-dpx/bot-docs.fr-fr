@@ -2,18 +2,18 @@
 title: Scénario de robot de productivité d’entreprise | Microsoft Docs
 description: Explorez le scénario de robot de productivité d’entreprise avec Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1fe68144662be3de349d05ea861a230641ae1efb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3ae87b52864ae1a9a4b7b439529e5093d6d3be8e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996707"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167069"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Scénario de robot de productivité d’entreprise
 
@@ -34,7 +34,7 @@ Voici le flux logique d’un robot de productivité d’entreprise :
 5. Les informations sont retournées à l’employé qui peut filtrer les données sans quitter le robot.
 6. Application Insights collecte la télémétrie d’exécution pour faciliter le développement en fournissant des informations sur les performances et l’utilisation du robot.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/bot/scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
 ## <a name="sample-bot"></a>Exemple de robot
 Étant donné que les robots sont accessibles à partir de divers canaux, vous pouvez les utiliser sur votre bureau à partir d’un portail d’entreprise ou de Skype lors de vos déplacements. Il suffit que vous soyez authentifié. Avec l’intégration d’Azure AD, votre robot de productivité d’entreprise sait que, si vous pouvez y accéder, vous avez été authentifié par Azure AD. À partir de là, vous pouvez demander au robot de vérifier votre prochain rendez-vous avec un client particulier. Le robot obtient ces informations en interrogeant Office 365 via l’API Graph. Ensuite, si un rendez-vous est planifié au cours des sept prochains jours, le robot interroge CRM afin de rechercher des cas récents pour le client. Le Bot répond soit sans aucun cas trouvé, ou avec le nombre de cas ouverts et fermés. A partir de là, vous pouvez demander au robot de répertorier les cas par type et de sonder des cas individuels.

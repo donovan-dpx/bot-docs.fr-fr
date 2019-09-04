@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 59b5e340ee9f2eeb89eaf420a0cca031fcc7f2b1
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991931"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167118"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Assistant virtuel : vue d’ensemble des compétences
 
@@ -40,13 +40,13 @@ Un objectif fondamental de la conception des compétences consistait à mainteni
 
 | Nom | Description |
 | ---- | ----------- |
-|[Compétence Calendrier](https://aka.ms/bfcalendarskill)|Ajoutez des fonctionnalités de calendrier à votre assistant. Technologie Microsoft Graph et Google.|
-|[Compétence E-mail](https://aka.ms/bfemailskill)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|
-|[Compétence ToDo](https://aka.ms/bftodoskill)|Ajoutez des fonctionnalités de gestion des tâches à votre assistant. Technologie Microsoft Graph.|
-|[Compétence Point d’intérêt](https://aka.ms/bfpoiskill)|Trouvez des points d’intérêt et des directions. Technologie Azure Maps et FourSquare.|
-|[Compétence Secteur automobile](https://aka.ms/bfautoskill)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
-|[Compétences expérimentales](https://aka.ms/bfexperimentalskills)|Actualités, réservation de restaurant et météo.|
+|[Compétence Calendrier](https://aka.ms/bf-calendar-skill)|Ajoutez des fonctionnalités de calendrier à votre assistant. Technologie Microsoft Graph et Google.|
+|[Compétence E-mail](https://aka.ms/bf-email-skill)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|
+|[Compétence ToDo](https://aka.ms/bf-todo-skill)|Ajoutez des fonctionnalités de gestion des tâches à votre assistant. Technologie Microsoft Graph.|
+|[Compétence Point d’intérêt](https://aka.ms/bf-poi-skill)|Trouvez des points d’intérêt et des directions. Technologie Azure Maps et FourSquare.|
+|[Compétence Secteur automobile](https://aka.ms/bf-autos-kill)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
+|[Compétences expérimentales](https://aka.ms/bf-experimental-skills)|Actualités, réservation de restaurant et météo.|
 
 ## <a name="getting-started"></a>Mise en route
 
-Reportez-vous aux [tutoriels](https://aka.ms/bfstutorials) pour apprendre à tirer parti des compétences existantes et à créer les vôtres.
+Reportez-vous aux [tutoriels](https://aka.ms/bfs-tutorials) pour apprendre à tirer parti des compétences existantes et à créer les vôtres.

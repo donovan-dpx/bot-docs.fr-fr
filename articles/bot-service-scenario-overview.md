@@ -2,18 +2,18 @@
 title: Vue d’ensemble des scénarios Bot Service | Microsoft Docs
 description: Découvrez les scénarios clés dans lesquels vous pouvez tirer parti de la puissance des bots créés avec Bot Service.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405766"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167353"
 ---
 # <a name="bot-scenarios"></a>Scénarios impliquant des bots
 
@@ -21,7 +21,7 @@ ms.locfileid: "67405766"
 
 Cette rubrique explore les scénarios clés dans lesquels vous pouvez tirer parti de la puissance des bots créés avec Bot Service.
 
-Vous pouvez télécharger ou cloner le code source de tous les exemples de scénarios de bot ici : [Samples for Common Bot Framework Scenarios](https://aka.ms/bot/scenarios).
+Vous pouvez télécharger ou cloner le code source de tous les exemples de scénarios de bot ici : [Samples for Common Bot Framework Scenarios](https://aka.ms/abs-scenarios).
 
 ## <a name="commerce-bot-scenario"></a>Scénario impliquant le bot Commerce
 Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le bot utilise Cognitive Services pour mieux traiter les demandes des clients par le texte et la voix avec un contexte résultant de l’intégration de services backend.

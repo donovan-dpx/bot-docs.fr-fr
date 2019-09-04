@@ -7,15 +7,14 @@ ms.author: rstand
 manager: rstand
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/17/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3f9cd112397a66bffb8efd41cbeab6feca8c7d7f
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 7dbbe8492761360941eca5e724a7339e28968769
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464611"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167012"
 ---
 # <a name="cognitive-services"></a>Cognitive Services
 
@@ -68,9 +67,9 @@ Trois API sont disponibles dans Cognitive Services pour le traitement vocal et l
 Les ressources suivantes fournissent des informations supplémentaires sur l’ajout de la reconnaissance vocale à votre bot.
 
 * [Bot Conversations for Apps video overview](https://channel9.msdn.com/events/Build/2017/P4114)
-* [Microsoft.Bot.Client library for UWP or Xamarin apps](https://aka.ms/BotClient)
-* [Bot Client Library Sample](https://aka.ms/BotClientSample)
-* [Speech-enabled WebChat Client](https://aka.ms/BFWebChat)
+* [Microsoft.Bot.Client library for UWP or Xamarin apps](https://aka.ms/bot-client)
+* [Bot Client Library Sample](https://aka.ms/trivia-bot-speech-sample)
+* [Speech-enabled WebChat Client](https://aka.ms/BotFramework-WebChat)
 
 En savoir plus sur la [reconnaissance vocale et la conversion parole-texte][speech] avec Microsoft Cognitive Services.
 

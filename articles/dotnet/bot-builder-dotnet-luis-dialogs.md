@@ -2,25 +2,24 @@
 title: Reconnaître les intentions et les entités avec LUIS | Microsoft Docs
 description: Découvrez comment permettre à votre bot de comprendre le langage naturel en utilisant des dialogues LUIS dans le kit SDK Bot Framework pour .NET.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 7e7eb36d0cb3cdbf18037f05b4960b240cb70d8d
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405662"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167404"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre robot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales/textuelles, ou **énoncés**. L’intention établit une correspondance entre les énoncés et les actions exécutées par le bot. Par exemple, un bot de prise de notes reconnaît une intention `Notes.Create` en appelant la fonctionnalité de création d’une note. Un bot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
+Cet article prend l’exemple d’un robot servant à prendre des notes pour montrer comment le module Language Understanding ([LUIS][LUIS]) permet à votre bot de répondre de manière appropriée aux saisies en langage naturel. Un robot détecte ce qu’un utilisateur veut faire en identifiant son **intention**. Cette intention est déterminée à partir d’entrées orales/textuelles, ou **énoncés**. L’intention établit une correspondance entre les énoncés et les actions exécutées par le bot. Par exemple, un bot de prise de notes reconnaît une intention `Notes.Create` en appelant la fonctionnalité de création d’une note. Un bot peut également avoir besoin d’extraire des **entités** qui correspondent à des mots importants dans les énoncés. Dans l’exemple d’un robot prenant des notes, l’entité `Notes.Title` identifie le titre de chaque note.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Créer un bot Language Understanding avec Bot Service
 
@@ -104,7 +103,7 @@ using Microsoft.Bot.Builder.Luis.Models;
 
 namespace Microsoft.Bot.Sample.LuisBot
 {
-    // For more information about this template visit http://aka.ms/azurebots-csharp-luis
+    // For more information about this template visit http://aka.ms/basic-luis-dialog
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {

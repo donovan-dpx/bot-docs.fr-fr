@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f38caad2a1b09e8f07e5fe8c7ea7bf7e2b2dfd6f
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: f7f70804ce67adec386d1a6722ba7e87b6cb2a93
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756811"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167022"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>Connecter un bot à Direct Line Speech (préversion)
 
@@ -23,7 +23,7 @@ ms.locfileid: "68756811"
 
 Vous pouvez configurer votre bot pour permettre aux applications clientes de communiquer avec lui via le canal Direct Line Speech.
 
-Une fois que vous avez créé votre bot, son intégration avec Direct Line Speech permet de bénéficier d’une connexion de grande fiabilité et de faible latence avec les applications clientes à l’aide du [kit SDK Speech](https://aka.ms/speech/sdk). Ces connexions sont optimisées pour des expériences de conversation vocales entrantes et sortantes. Pour plus d’informations sur Direct Line Speech et la manière de générer des applications clientes, visitez la page relative à l’[assistant virtuel vocal personnalisé](https://aka.ms/bots/speech/va).  
+Une fois que vous avez créé votre bot, son intégration avec Direct Line Speech permet de bénéficier d’une connexion de grande fiabilité et de faible latence avec les applications clientes à l’aide du [kit SDK Speech](https://aka.ms/speech-services-docs). Ces connexions sont optimisées pour des expériences de conversation vocales entrantes et sortantes. Pour plus d’informations sur Direct Line Speech et la manière de générer des applications clientes, visitez la page relative à l’[assistant virtuel vocal personnalisé](https://aka.ms/voice-first-va).  
 
 ## <a name="sign-up-for-direct-line-speech-preview"></a>S'inscrire à la préversion de Direct Line Speech
 
