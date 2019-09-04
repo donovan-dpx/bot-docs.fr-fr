@@ -1,7 +1,7 @@
 ---
-title: Envoyer et recevoir des SMS | Microsoft Docs
-description: Découvrez comment envoyer et recevoir des SMS dans le kit SDK Bot Framework.
-keywords: envoi de messages, activités de messagerie, SMS simple, message, SMS, recevoir des messages
+title: Envoyer et recevoir des messages | Microsoft Docs
+description: Découvrez comment envoyer et recevoir des messages dans le kit SDK Bot Framework.
+keywords: envoi de messages, activités de messagerie, message simple, message, recevoir des messages
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
@@ -17,11 +17,11 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 07/01/2019
 ms.locfileid: "67496691"
 ---
-# <a name="send-and-receive-text-message"></a>Envoyer et recevoir des SMS
+# <a name="send-and-receive-text-message"></a>Envoyer et recevoir des messages
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de contexte de tour fournit des méthodes pour renvoyer des messages à l’utilisateur. Cet article décrit comment envoyer des SMS simples.
+Pour communiquer avec les utilisateurs ainsi que pour recevoir des communications, votre bot aura pour moyen principal les activités de **message**. Certains messages peuvent simplement se composer de texte brut, tandis que d’autres peuvent contenir un contenu plus riche, comme les cartes ou les pièces jointes. Le gestionnaire de tours de votre robot reçoit des messages de l’utilisateur, et vous pouvez envoyer des réponses à l’utilisateur à ce moment. L’objet de contexte de tour fournit des méthodes pour renvoyer des messages à l’utilisateur. Cet article décrit comment envoyer des messages simples.
 
 Markdown est pris en charge pour la plupart des champs de texte, mais sa prise en charge varie selon le canal.
 
@@ -49,7 +49,7 @@ await context.sendActivity("Welcome!");
 ---
 ## <a name="receive-a-text-message"></a>Recevoir un message texte
 
-Pour recevoir un SMS simple, utilisez la propriété *texte* de l’objet *activité*. 
+Pour recevoir un message simple, utilisez la propriété *texte* de l’objet *activité*. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
