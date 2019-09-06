@@ -3,19 +3,18 @@ title: Utiliser QnA Maker pour répondre aux questions | Microsoft Docs
 description: Découvrez comment utiliser QnA Maker dans votre bot.
 keywords: questions et réponses, QnA, FAQ, QnA Maker
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15581daa570b9e51ff8f7bec93d16deebcd71d45
-ms.sourcegitcommit: 93508adfb79523f610a919b361fc34f5c8dd3eff
+ms.openlocfilehash: dc11191e65d58f4fa038878da71cc0354cad4c64
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67533380"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167165"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Utiliser QnA Maker pour répondre aux questions
 
@@ -27,7 +26,7 @@ Une des exigences de base de la création de votre propre service QnA Maker est 
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Le code de cet article est basé sur l’exemple QnA Maker. Vous aurez besoin d’une copie de ce dernier en **[CSharp](https://aka.ms/cs-qna) ou [JavaScript](https://aka.ms/js-qna-sample)** .
+- Le code de cet article est basé sur l’exemple QnA Maker. Vous aurez besoin d’une copie de ce dernier en **[C#](https://aka.ms/cs-qna) ou [JavaScript](https://aka.ms/js-qna-sample)** .
 - Compte [QnA Maker](https://www.qnamaker.ai/)
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), de [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview) et de la [gestion des ressources de bot](bot-file-basics.md).
 

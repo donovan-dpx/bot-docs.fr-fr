@@ -2,18 +2,18 @@
 title: Scénario impliquant le bot Informations | Microsoft Docs
 description: Découvrez le scénario impliquant le bot Informations avec Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 22902f1f590661c0973d7f0427b13ee45f0d7227
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f62f58de5e15092e34c1e612ef0b54bc2e4b5886
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998986"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167377"
 ---
 # <a name="information-bot-scenario"></a>Scénario impliquant le bot Informations
 
@@ -36,21 +36,21 @@ Voici le flux logique d’un bot Informations :
 7. Application Insights collecte la télémétrie d’exécution pour faciliter le développement en fournissant des informations sur les performances et l’utilisation du bot.
 
 ## <a name="sample-bot"></a>Exemple de bot
-L’exemple de bot, écrit en C#, s’exécute dans Microsoft Azure utilisant les données indexées par le service Recherche Azure à partir d’une instance SQL Database. Le bot présente une liste de questions possibles, avec des informations sur la façon de formuler la question (la réponse) à l’aide de la fonctionnalité QnA Maker de Cognitive Services. L’utilisateur du bot peut alors taper une requête qui recherche les données par le biais du service Recherche Azure dans une zone générale ou spécifique de la base de données indexée. L’exemple fournit une base de données simple contenant des clients et des informations sur les commandes. Application Insights effectue le suivi de l’utilisation du bot et vous permet de surveiller si des exceptions se produisent dans le bot. Le bot est publié sous une application Azure AD, ce qui vous permet de restreindre la liste des utilisateurs ayant accès aux informations.
+L’exemple de bot, écrit en C#, s’exécute dans Microsoft Azure utilisant les données indexées par le service Recherche Azure à partir d’une instance SQL Database. Le bot présente une liste de questions possibles, avec des informations sur la façon de formuler la question (la réponse) avec Cognitive Services : QnA Maker. L’utilisateur du bot peut alors taper une requête qui recherche les données par le biais du service Recherche Azure dans une zone générale ou spécifique de la base de données indexée. L’exemple fournit une base de données simple contenant des clients et des informations sur les commandes. Application Insights effectue le suivi de l’utilisation du bot et vous permet de surveiller si des exceptions se produisent dans le bot. Le bot est publié sous une application Azure AD, ce qui vous permet de restreindre la liste des utilisateurs ayant accès aux informations.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de bot à partir du [référentiel d’exemples pour les scénarios Bot Framework courants](https://aka.ms/bot/scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de bot à partir du [référentiel d’exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Composants utilisés
 Le bot Informations utilise les composants suivants :
 -   Azure AD pour l’authentification
--   Cognitive Services : QnA Maker
+-   Cognitive Services : QnA Maker
 -   Recherche Azure
 -   Application Insights
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuaires et des identités basé sur le cloud mutualisé. En votre qualité de développeur de robots, Azure AD vous permet de vous concentrer sur la génération de votre robot en simplifiant et en accélérant son intégration au sein d’une solution de gestion des identités de classe mondiale utilisée par des millions d’organisations à travers le monde. En définissant une application Azure AD, vous pouvez contrôler qui a accès à votre bot et les données présentées par ce dernier, sans avoir à implémenter votre propre système complexe d’authentification et d’autorisation.
+Azure Active Directory (Azure AD) est le service Microsoft de gestion des annuaires et des identités basé sur le cloud mutualisé. En votre qualité de développeur de robots, Azure AD vous permet de vous concentrer sur la génération de votre robot en simplifiant et en accélérant son intégration au sein d’une solution de gestion des identités de classe mondiale utilisée par des millions d’organisations à travers le monde. En définissant une application Azure AD, vous pouvez contrôler qui a accès à votre robot et les données présentées par ce dernier, sans avoir à implémenter votre propre système complexe d’authentification et d’autorisation.
 
-### <a name="cognitive-services-qna-maker"></a>Cognitive Services : QnA Maker
+### <a name="cognitive-services-qna-maker"></a>Cognitive Services : QnA Maker
 La fonctionnalité QnA Maker de Cognitive Services vous aide à fournir une source de données FAQ que vos utilisateurs peuvent interroger à partir de votre bot. En cas d’utilisation de grandes quantités d’informations stockées dans différents systèmes, il peut être utile d’aider les utilisateurs à filtrer la source et l’ensemble d’informations. Si une base de données SQL comporte d’énormes quantités d’informations, une recherche en forme libre renvoie un volume d’informations excessif. En commençant par utiliser QnA Maker, vous pouvez définir une feuille de route pour les utilisateurs de votre bot afin de leur expliquer comment poser des questions intelligentes qui sont ensuite récupérables par le biais du service Recherche Azure.
 
 ### <a name="azure-search"></a>Recherche Azure

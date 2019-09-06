@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: b6bff3cd3d1245556b86a0d20845872d6074c104
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890635"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167394"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
@@ -27,7 +27,7 @@ Nous vous montrerons également comment passer des arguments entre différentes 
 ## <a name="prerequisites"></a>Prérequis
 
 - Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter les flux de conversation séquentiels][simple-dialog].
-- Une copie de l’exemple de dialogue complexe, au choix en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].
+- Une copie de l’exemple de dialogue complexe en [**C#** ][cs-sample] ou [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 

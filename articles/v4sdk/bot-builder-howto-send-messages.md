@@ -1,7 +1,7 @@
 ---
 title: Envoyer et recevoir des messages | Microsoft Docs
 description: Découvrez comment envoyer et recevoir des messages dans le kit SDK Bot Framework.
-keywords: envoi de messages, activités de messagerie, SMS simple, message, SMS, recevoir des messages
+keywords: envoi de messages, activités de messagerie, message simple, message, recevoir des messages
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani

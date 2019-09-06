@@ -9,22 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1641260f6673a810e7bc71ecaca1ada234286e42
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: b20670b85b876d7cf10dea7f031e4d24221071a8
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026316"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167152"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
-
 La capacité à comprendre ce que veut dire votre utilisateur du point de vue de la conversation et du contexte peut être une tâche difficile, mais peut donner à votre bot un sens de la conversation plus naturel. Le service de compréhension langagière, appelé LUIS, vous permet justement de faire cela ; votre bot peut ainsi reconnaître l’intention des messages de l’utilisateur, prendre en charge un langage plus naturel de l’utilisateur et mieux diriger le flux de la conversation. Cette rubrique vous guide dans l’ajout de LUIS à une application de réservation de vol pour reconnaître les différentes intentions et entités contenues dans les entrées utilisateur. 
 
 ## <a name="prerequisites"></a>Prérequis
 - Compte [LUIS](https://www.luis.ai)
-- Le code de cet article est basé sur l’exemple **Bot de base**. Vous avez besoin d’une copie de l’exemple, au choix en **[CSharp](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)** . 
+- Le code de cet article est basé sur l’exemple **Bot de base**. Vous aurez besoin d’une copie de l’exemple en **[C#](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)** . 
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) et de la [gestion des ressources de bot](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple

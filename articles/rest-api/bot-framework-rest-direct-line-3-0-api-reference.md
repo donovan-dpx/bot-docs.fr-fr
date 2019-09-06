@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 25f6e30898101b87289af775e8386f941aa747a9
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 618b2ffe99114679aa5592b816adf6e1b82be83e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037370"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167182"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Informations de référence sur l’API - API Direct Line 3.0
 
@@ -36,7 +36,7 @@ Pour plus d’informations sur l’obtention d’un secret ou d’un jeton que v
 
 ## <a name="http-status-codes"></a>Codes d’état HTTP
 
-Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">code d’état HTTP</a> retourné avec chaque réponse indique le résultat de la requête correspondante. 
+Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">code d’état HTTP</a> retourné avec chaque réponse indique le résultat de la requête correspondante.
 
 | Code d'état HTTP | Signification |
 |----|----|
@@ -71,10 +71,12 @@ POST https://directline.botframework.com/v3/directline/conversations/abc123/acti
 ```
 
 #### <a name="response"></a>response
+
 ```http
 HTTP/1.1 502 Bad Gateway
 [other headers]
 ```
+
 ```json
 {
     "error": {
@@ -84,112 +86,128 @@ HTTP/1.1 502 Bad Gateway
 }
 ```
 
-## <a name="token-operations"></a>Opérations de jeton 
+## <a name="token-operations"></a>Opérations de jeton
+
 Utilisez les opérations ci-après pour créer ou actualiser un jeton permettant à un client d’accéder à une conversation spécifique.
 
 | Opération | Description |
 |----|----|
-| [Générer un jeton](#generate-token) | Permet de générer un jeton pour une nouvelle conversation. | 
-| [Actualiser le jeton](#refresh-token) | Permet d’actualiser un jeton. | 
+| [Générer un jeton](#generate-token) | Permet de générer un jeton pour une nouvelle conversation. |
+| [Actualiser le jeton](#refresh-token) | Permet d’actualiser un jeton. |
 
 ### <a name="generate-token"></a>Générer un jeton
-Permet de générer un jeton valide pour une seule conversation. 
-```http 
+
+Permet de générer un jeton valide pour une seule conversation.
+
+```http
 POST /v3/directline/tokens/generate
 ```
 
 | | |
 |----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Objet [Conversation](#conversation-object) | 
+| **Corps de la demande** | Objet [TokenParameters](#tokenparameters-object) |
+| **Retourne** | Objet [Conversation](#conversation-object) |
 
 ### <a name="refresh-token"></a>Actualiser le jeton
-Permet d’actualiser le jeton. 
-```http 
+
+Permet d’actualiser le jeton.
+
+```http
 POST /v3/directline/tokens/refresh
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | n/a |
-| **Retourne** | Objet [Conversation](#conversation-object) | 
+| **Retourne** | Objet [Conversation](#conversation-object) |
 
-## <a name="conversation-operations"></a>Opérations de conversation 
+## <a name="conversation-operations"></a>Opérations de conversation
+
 Utilisez les opérations ci-après pour ouvrir une conversation avec votre bot et pour échanger des activités entre le client et le bot.
 
 | Opération | Description |
 |----|----|
-| [Start Conversation](#start-conversation) (Démarrer une conversation) | Ouvre une nouvelle conversation avec le bot. | 
+| [Start Conversation](#start-conversation) (Démarrer une conversation) | Ouvre une nouvelle conversation avec le bot. |
 | [Obtenir des informations de Conversation](#get-conversation-information) | Obtient des informations sur une conversation existante. Cette opération génère une nouvelle URL de flux de données WebSocket qu’un client peut utiliser pour se [reconnecter](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) à une conversation. |
 | [Obtenir des activités](#get-activities) | Récupère des activités du bot. |
-| [Envoyer une activité](#send-an-activity) | Envoyer une activité au bot. | 
-| [Upload and Send File(s)](#upload-send-files) (Charger et envoyer des fichiers) | Charge et envoie un ou plusieurs fichiers sous forme de pièces jointes. |
+| [Envoyer une activité](#send-an-activity) | Envoyer une activité au bot. |
+| [Upload and Send File(s)](#upload-and-send-files) (Charger et envoyer des fichiers) | Charge et envoie un ou plusieurs fichiers sous forme de pièces jointes. |
 
 ### <a name="start-conversation"></a>Start Conversation (Démarrer une conversation)
-Ouvre une nouvelle conversation avec le bot. 
-```http 
+
+Ouvre une nouvelle conversation avec le bot.
+
+```http
 POST /v3/directline/conversations
 ```
 
 | | |
 |----|----|
-| **Corps de la demande** | n/a |
-| **Retourne** | Objet [Conversation](#conversation-object) | 
+| **Corps de la demande** | Objet [TokenParameters](#tokenparameters-object) |
+| **Retourne** | Objet [Conversation](#conversation-object) |
 
 ### <a name="get-conversation-information"></a>Obtenir des informations de Conversation
+
 Cette opération obtient des informations sur une conversation existante et génère également une nouvelle URL de flux de données WebSocket qu’un client peut utiliser pour se [reconnecter](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md) à une conversation. Vous pouvez éventuellement fournir le paramètre `watermark` dans l’URI de requête pour indiquer le dernier message vu par le client.
-```http 
+
+```http
 GET /v3/directline/conversations/{conversationId}?watermark={watermark_value}
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | n/a |
-| **Retourne** | Objet [Conversation](#conversation-object) | 
+| **Retourne** | Objet [Conversation](#conversation-object) |
 
 ### <a name="get-activities"></a>Obtenir des activités
-Récupère des activités provenant du bot pour la conversation spécifiée. Vous pouvez éventuellement fournir le paramètre `watermark` dans l’URI de requête pour indiquer le dernier message vu par le client. 
 
-```http 
+Récupère des activités provenant du bot pour la conversation spécifiée. Vous pouvez éventuellement fournir le paramètre `watermark` dans l’URI de requête pour indiquer le dernier message vu par le client.
+
+```http
 GET /v3/directline/conversations/{conversationId}/activities?watermark={watermark_value}
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | n/a |
-| **Retourne** | Objet [ActivitySet](#activityset-object). La réponse contient `watermark` en tant que propriété de l’objet `ActivitySet`. Les clients doivent parcourir les activités disponibles en augmentant la valeur `watermark` jusqu’à ce qu’aucune activité ne soit plus retournée. | 
+| **Retourne** | Objet [ActivitySet](#activityset-object). La réponse contient `watermark` en tant que propriété de l’objet `ActivitySet`. Les clients doivent parcourir les activités disponibles en augmentant la valeur `watermark` jusqu’à ce qu’aucune activité ne soit plus retournée. |
 
 ### <a name="send-an-activity"></a>Envoyer une activité
-Envoyer une activité au bot. 
-```http 
+
+Envoyer une activité au bot.
+
+```http
 POST /v3/directline/conversations/{conversationId}/activities
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | Objet [Activité][] |
-| **Retourne** | Objet [ResourceResponse][] qui contient une propriété `id` spécifiant l’ID de l’activité envoyée au bot. | 
+| **Retourne** | Objet [ResourceResponse][] qui contient une propriété `id` spécifiant l’ID de l’activité envoyée au bot. |
 
-### <a id="upload-send-files"></a> Upload and Send File(s) (Charger et envoyer des fichiers)
+### <a name="upload-and-send-files"></a>Charger et envoyer des fichiers
+
 Charge et envoie un ou plusieurs fichiers sous forme de pièces jointes. Définissez le paramètre `userId` dans l’URI de requête pour spécifier l’ID de l’utilisateur envoyant la ou les pièces jointes.
-```http 
+
+```http
 POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 ```
 
 | | |
 |----|----|
 | **Corps de la demande** | Dans le cas d’une pièce jointe unique, remplissez le corps de la requête avec le contenu du fichier. Dans le cas de plusieurs pièces jointes, créez un corps de requête en plusieurs parties, contenant une partie pour chaque pièce jointe, et également (en option) une partie pour l’objet [Activité][] qui doit servir de conteneur aux pièces jointes spécifiées. Pour plus d’informations, consultez [Envoyer une activité au bot](bot-framework-rest-direct-line-3-0-send-activity.md). |
-| **Retourne** | Objet [ResourceResponse][] qui contient une propriété `id` spécifiant l’ID de l’activité envoyée au bot. | 
+| **Retourne** | Objet [ResourceResponse][] qui contient une propriété `id` spécifiant l’ID de l’activité envoyée au bot. |
 
 > [!NOTE]
 > Les fichiers chargés sont supprimés au bout de 24 heures.
 
 ## <a name="schema"></a>Schéma
 
-Le schéma Direct Line 3.0 inclut tous les objets définis par le [schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema) ainsi que l’objet `ActivitySet` et l’objet `Conversation`.
+Le schéma Direct Line 3.0 inclut tous les objets définis par le [schéma Bot Framework](bot-framework-rest-connector-api-reference.md#schema) ainsi que des objets qui sont spécifiques à Direct Line.
 
-### <a name="activityset-object"></a>Objet ActivitySet 
-Définit un ensemble d’activités.<br/><br/>
+### <a name="activityset-object"></a>Objet ActivitySet
+
+Définit un ensemble d’activités.
 
 | Propriété | Type | Description |
 |----|----|----|
@@ -197,24 +215,37 @@ Définit un ensemble d’activités.<br/><br/>
 | **watermark** | string | Filigrane maximal des activités au sein de l’ensemble. Un client peut utiliser la valeur `watermark` pour indiquer le message le plus récent qu’il a vu, soit lors de la [récupération d’activités à partir du bot](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get), soit lors de la [génération d’une nouvelle URL de flux de données WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
 
 ### <a name="conversation-object"></a>Objet Conversation
-Définit une conversation Direct Line.<br/><br/>
+
+Définit une conversation Direct Line.
 
 | Propriété | Type | Description |
 |----|----|----|
 | **conversationId** | string | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
+| **eTag** | string | ETag HTTP (étiquette d’entité). |
 | **expires_in** | number | Nombre de secondes avant l’expiration du jeton. |
+| **referenceGrammarId** | string | ID de la grammaire de référence pour ce bot. |
 | **streamUrl** | string | URL pour le flux de messages de la conversation. |
 | **token** | string | Jeton valide pour la conversation spécifiée. |
 
-### <a name="activities"></a>Activités
+### <a name="tokenparameters-object"></a>Objet TokenParameters
+
+Paramètres pour la création d’un jeton.
+
+| Propriété | Type | Description |
+|----|----|----|
+| **eTag** | string | ETag HTTP (étiquette d’entité). |
+| **trustedOrigins** | string[] | Origines approuvées à incorporer dans le jeton. |
+| **user** | [ChannelAccount][] | Compte d’utilisateur à incorporer dans le jeton. |
+
+## <a name="activities"></a>Activités
 
 Pour chaque [Activité][] qu’un client reçoit d’un bot via Direct Line :
 
 - Les cartes de pièces jointes sont conservées.
 - Les URL pour les pièces jointes chargées sont masquées avec un lien privé.
-- La propriété `channelData` est conservée sans modification. 
+- La propriété `channelData` est conservée sans modification.
 
-Les clients peuvent [recevoir](bot-framework-rest-direct-line-3-0-receive-activities.md) plusieurs activités à partir du bot en tant que partie d’un [ActivitySet](#activityset-object). 
+Les clients peuvent [recevoir](bot-framework-rest-direct-line-3-0-receive-activities.md) plusieurs activités à partir du bot en tant que partie d’un [ActivitySet](#activityset-object).
 
 Lorsqu’un client envoie une `Activity` à un bot via Direct Line :
 
@@ -224,13 +255,14 @@ Lorsqu’un client envoie une `Activity` à un bot via Direct Line :
 - La propriété `channelData` est conservée sans modification.
 - La taille totale de l’activité, quand elle est sérialisée dans JSON et chiffrée, ne doit pas dépasser 256 000 caractères. Nous vous recommandons donc de limiter les activités à 150 000 caractères. Si vous avez besoin d’une quantité plus importante de données, songez à diviser l’activité en plusieurs parties et/ou à utiliser des pièces jointes.
 
-Un client peut [envoyer](bot-framework-rest-direct-line-3-0-send-activity.md) une seule activité par requête. 
+Un client peut [envoyer](bot-framework-rest-direct-line-3-0-send-activity.md) une seule activité par requête.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
+- [Spécification des activités Bot Framework](https://aka.ms/botSpecs-activitySchema)
 
 [Activité]: bot-framework-rest-connector-api-reference.md#activity-object
+[ChannelAccount]: bot-framework-rest-connector-api-reference.md#channelaccount-object
 [Error]: bot-framework-rest-connector-api-reference.md#error-object
 [ErrorResponse]: bot-framework-rest-connector-api-reference.md#errorresponse-object
 [ResourceResponse]: bot-framework-rest-connector-api-reference.md#resourceresponse-object

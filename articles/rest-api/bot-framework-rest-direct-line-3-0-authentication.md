@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 37e02a34e7b8ecc4d501ed7330b6f374548fd5a0
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037445"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076569"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -26,7 +26,12 @@ Authorization: Bearer SECRET_OR_TOKEN
 
 Un **secret** Direct Line est une clé principale qui peut être utilisée pour accéder à toute conversation appartenant au robot associé. Un **secret** peut également être utilisé pour obtenir un **jeton**. Les secrets n’expirent pas. 
 
-Un **jeton** Direct Line est une clé qui peut être utilisée pour accéder à une seule conversation. Un jeton expire, mais peut être actualisé. 
+Un **jeton** Direct Line est une clé qui peut être utilisée pour accéder à une seule conversation. Un jeton expire, mais peut être actualisé.
+
+Pour déterminer quand ou s’il faut utiliser la clé **secrète** ou un **jeton**, vous devez vous baser sur des considérations relatives à la sécurité.
+L’exposition de la clé secrète peut être acceptable si cela se fait intentionnellement et avec précaution. Il s’agit en fait du comportement par défaut, car cela permet à Direct Line de déterminer si le client est légitime.
+D’une façon générale, la sécurité est cependant un problème si vous essayez de conserver des données utilisateur.
+Pour plus d’informations, consultez la section [Considérations relatives à la sécurité](#security-considerations).
 
 Si vous créez une application de service à service, l’approche la plus simple peut consister à spécifier le **secret** dans l’en-tête `Authorization` des demandes d’API Direct Line. Si vous écrivez une application où le client s’exécute dans un navigateur web ou une application mobile, vous souhaiterez peut-être échanger votre secret contre un jeton (qui fonctionne uniquement pour une conversation et expire sauf s’il est actualisé) et spécifier le **jeton** dans l’en-tête `Authorization` des demandes d’API Direct Line. Choisissez le modèle de sécurité qui vous convient le mieux.
 
@@ -167,6 +172,8 @@ Quand vous utilisez l’*authentification Azure Bot Service* avec [Web Chat](../
 
     2. En raison des problèmes rencontrés avec l’approche précédente, Azure Bot Service ne requiert plus l’utilisation du code magique. Azure Bot Service garantit que le processus de connexion peut uniquement être effectué dans la **même session de navigateur** que Web Chat lui-même. 
     Pour activer cette protection, en tant que développeur de bot, vous devez démarrer Web Chat avec un **jeton Direct Line** qui contient une **liste des domaines approuvés pouvant héberger le client Web Chat du bot**. Auparavant, vous pouviez obtenir ce jeton uniquement en passant un paramètre facultatif non documenté à l’API de jeton Direct Line. Maintenant, grâce aux options d’authentification avancée, vous pouvez spécifier de façon statique la liste (d’origine) des domaines approuvés dans la page de configuration de Direct Line.
+
+    Consultez aussi [Ajouter l’authentification à votre bot via Azure Bot Service](../v4sdk/bot-builder-authentication.md).
 
 ### <a name="code-examples"></a>Exemples de code
 

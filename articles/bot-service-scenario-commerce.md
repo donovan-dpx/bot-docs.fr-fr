@@ -2,18 +2,18 @@
 title: Scénario Robot Commerce | Microsoft Docs
 description: Explorez le scénario Robot Commerce avec Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f880bc9a424fd9905f7e4ced25e97e2c37155072
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9e2eac132922ad90437c88404cbfb97f6f495945
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996826"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167086"
 ---
 # <a name="commerce-bot-scenario"></a>Scénario Robot Commerce
 
@@ -36,7 +36,7 @@ Voici le flux logique d’un robot Commerce faisant office de concierge pour un 
 ## <a name="sample-bot"></a>Exemple de robot
 L’exemple de robot Commerce est conçu autour d’un service fictif de conciergerie d’hôtel. Les clients accèdent au robot écrit en C# une fois qu’ils ont authentifié Azure AD B2C auprès d’un hôtel via l’application mobile des services membres de la chaîne. La chaîne stocke les réservations dans une base de données SQL Database. Un client peut poser des questions en langage naturel, telles que « Combien me coûterait la location d’une cabanon de piscine pendant la durée de mon séjour ? ». Le robot dispose à son tour d’un contexte sur l’hôtel et la durée du séjour du client. En outre, le service Language Understanding (LUIS) aide le robot à obtenir du contexte même à partir d’expressions aussi simples que « cabanon de piscine ». Le robot donne la réponse, puis peut proposer de réserver un cabanon pour le client, en proposant des choix concernant le nombre de jours et le type de cabanon. Une fois que le robot dispose de toutes les données nécessaires, il réserve la demande. Le client peut également utiliser sa voix pour formuler la même demande.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/bot/scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Composants que vous allez utiliser
 Le robot Commerce utilise les composants suivants :

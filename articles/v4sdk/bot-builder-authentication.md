@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8b12068984396a015bfbb441f9b1e506acbb9154
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037520"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076576"
 ---
 <!-- 
 
@@ -431,6 +431,9 @@ Si vous utilisez une *invite OAuth*, cette activité d’appel doit être transf
 Enfin, veillez à ajouter un fichier `TeamsActivityHandler` approprié (`TeamsActivityHandler.cs` pour les bots C# et `teamsActivityHandler.js` pour les bots JavaScript) au niveau le plus élevé du dossier de votre bot.
 
 `TeamsActivityHandler` envoie également des activités de *réaction à un message*. Une activité de réaction à un message fait référence à l’activité d’origine à l’aide du champ *replyToId* Cette activité doit également être visible dans le [Flux d’activités][teams-activity-feed] de Microsoft Teams.
+
+> [!NOTE]
+> Vous devez créer un manifeste et inclure `token.botframework.com` dans la section `validDomains` ; sinon, le bouton **Se connecter** d’OAuthCard n’ouvre pas la fenêtre d’authentification. Utilisez [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio) pour générer votre manifeste.
 
 ### <a name="further-reading"></a>Pour aller plus loin
 
