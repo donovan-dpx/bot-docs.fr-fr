@@ -2,19 +2,18 @@
 title: Gérer les données d’état | Microsoft Docs
 description: Découvrez comment enregistrer et récupérer des données d’état avec le SDK Bot Framework pour Node.js.
 author: DucVo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 779411235bfef24719044b0fbad26574a373a34f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 4c93ba1b37166c784d6cdf687e926026f474de85
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404301"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299685"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
 

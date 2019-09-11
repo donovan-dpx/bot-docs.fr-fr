@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c6abff25dcccce4c18ad0083ef24b69495222c9f
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297357"
+---
 En règle générale, chaque message envoyé à l’utilisateur par un robot se rapporte directement à la saisie précédente de l’utilisateur.
 Dans certains cas, il se peut qu’un bot ait besoin d’envoyer à l’utilisateur un message qui n’est pas directement associé au sujet de conversation actuel ou au dernier message envoyé par l’utilisateur. Il s’agit de **messages proactifs**.
 

@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 0b9e2c406ee20535dfb065639beda8b66d0a2996
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037356"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70875994"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envoyer une activité au bot
 
-Le protocole Direct Line 3.0 permet aux clients et aux robots d’échanger différents types d’[activités](bot-framework-rest-connector-activities.md), notamment des activités de **messagerie** et de **saisie**, ainsi que des activités personnalisées prises en charge par le robot. Un client ne peut envoyer qu’une seule activité par requête. 
+Le protocole Direct Line 3.0 permet aux clients et aux robots d’échanger différents types d’[activités](https://aka.ms/botSpecs-activitySchema), notamment des activités de **messagerie** et de **saisie**, ainsi que des activités personnalisées prises en charge par le robot. Un client ne peut envoyer qu’une seule activité par requête. 
 
 ## <a name="send-an-activity"></a>Envoyer une activité
 

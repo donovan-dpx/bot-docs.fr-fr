@@ -2,19 +2,18 @@
 title: Envoyer des messages proactifs | Microsoft Docs
 description: Découvrez comment interrompre le flux de conversation actif par un message proactif à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e5f8ec76e5711371653e75e11ac6fcc447b4f2e1
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 58a6678561d048d0257dc81d37d4db4cbca9b382
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56590935"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299792"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -105,7 +104,7 @@ function startProactiveDialog(address) {
 > [!NOTE]
 > L’exemple de code ci-dessus nécessite un fichier personnalisé, **botadapter.js**, que vous pouvez [télécharger à partir de GitHub](https://aka.ms/js-botadaptor-file-v3).
 
-Le dialogue de l’enquête contrôle la conversation jusqu’à la fin. Ensuite, il se ferme (en appelant `session.endDialog()`), en rendant le contrôle au dialogue précédent. 
+La boîte d’enquête contrôle la conversation jusqu’à la fin. Ensuite, il se ferme (en appelant `session.endDialog()`), en rendant le contrôle au dialogue précédent. 
 
 
 ```javascript

@@ -7,15 +7,14 @@ ms.author: ggilaber
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7e85f7ebe5a39145314f10b3b0378c2c66dc361d
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.openlocfilehash: 1e9d079b46c1cc4cc8c49e234b58540aeb4b2e7c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68484396"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298982"
 ---
 # <a name="how-to-unit-test-bots"></a>Comment procéder à un test unitaire de robots
 
@@ -261,7 +260,7 @@ La propriété `DialogTurnResult` peut également être utilisée pour inspecter
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Certaines boîtes de dialogue telles que `BookingDialog` ou `DateResolverDialog` retournent une valeur à la boîte de dialogue appelante. L'objet `DialogTestClient` expose une propriété `dialogTurnResult` qui peut être utilisée pour analyser et déclarer les résultats retournés par la boîte de dialogue.
+Certaines boîtes de dialogue telles que `BookingDialog` ou `DateResolverDialog` retournent une valeur à la boîte de dialogue appelante. L’objet `DialogTestClient` expose une propriété `dialogTurnResult` qui peut être utilisée pour analyser et déclarer les résultats retournés par la boîte de dialogue.
 
 Par exemple :
 

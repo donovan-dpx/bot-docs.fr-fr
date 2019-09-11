@@ -2,19 +2,18 @@
 title: Gérer les actions de l’utilisateur | Microsoft Docs
 description: Découvrez comment gérer les actions de l’utilisateur en rendant votre bot capable d’écouter et de gérer les entrées utilisateur qui contiennent certains mots clés à l’aide du kit SDK Bot Framework pour Node.js.
 author: DucVo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a0756be0a29660ef63f50a67ce4fa0f27ccc50f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 56f5c66b03fe5ae8f0abeb66470a7c31997829ba
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405046"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299889"
 ---
 # <a name="handle-user-actions"></a>Gérer les actions de l’utilisateur
 

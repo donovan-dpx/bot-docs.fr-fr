@@ -2,19 +2,18 @@
 title: Migrer votre bot vers Azure | Microsoft Docs
 description: Découvrez comment migrer votre robot du portail d’infrastructure Bot hérité vers un service bot dans le portail Azure.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c6e91ebfe54857f11772bd4a926e3b5b2776c8cc
-ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
+ms.openlocfilehash: d0d2f6930dd9a686cff98b09ca3e863ec0980491
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58616935"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297520"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migrer votre bot vers Azure
 

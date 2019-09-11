@@ -3,18 +3,17 @@ title: Concevoir et contrôler un flux de conversation | Microsoft Docs
 description: Découvrez comment concevoir et contrôler un flux de conversation dans votre bot pour offrir une excellente expérience utilisateur.
 keywords: conception, contrôle, flux de conversation, gestion des interruptions, vue d’ensemble
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/19/2018
-ms.openlocfilehash: ae019f7da32969821db0c59a4710e32b57623b14
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 7b261ab363c91209a4030bed31fa8bfc23f3ff6c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563683"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297643"
 ---
 ::: moniker range="azure-bot-service-3.0"
 

@@ -2,18 +2,17 @@
 title: Clés Application Insights | Microsoft Docs
 description: Découvrez comment obtenir des clés Application Insights pour ajouter des données de télémétrie à un bot.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 87cdd27a3a413ae200273090d4a79b5edbc55dc1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d4fe7ae7f14349303f4445b321e55195483d210f
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996906"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297482"
 ---
 # <a name="application-insights-keys"></a>Clés Application Insights
 

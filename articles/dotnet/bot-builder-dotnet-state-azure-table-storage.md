@@ -1,19 +1,19 @@
 ---
 title: Gérer les données d’état personnalisé avec le stockage de table Azure | Microsoft Docs
 description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Stockage Table Azure avec le kit SDK Bot Framework pour .NET.
-author: kaiqb
+author: kamrani
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 05ab8f9148cd520be266d9340cd65a9903bf6e23
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 31679c478684366c106fc01a8e8804966f55e32e
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405622"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298759"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour .NET
 

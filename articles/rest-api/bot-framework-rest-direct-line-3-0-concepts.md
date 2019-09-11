@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 01/06/2019
-ms.openlocfilehash: 94ef9cc221e67f4f3762eb7a1a006a915e3c5307
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764097"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299596"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Concepts clés de Direct Line API 3.0
 

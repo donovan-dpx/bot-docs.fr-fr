@@ -2,19 +2,18 @@
 title: Gérer un flux de conversation avec des dialogues | Microsoft Docs
 description: Découvrez comment gérer une conversation avec des dialogues entre un bot et un utilisateur dans le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 497a00dd9327d3b4c26c1468bba04f18e2244ca1
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 08edd665b5aedef6dd05c34e3b30d1f11effa19d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405037"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299879"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 

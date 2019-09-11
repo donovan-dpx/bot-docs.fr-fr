@@ -3,19 +3,18 @@ title: Conversations dans le kit SDK Bot Framework | Microsoft Docs
 description: Découvrez ce qu’est une conversation dans le kit SDK Bot Framework.
 keywords: flux de la conversation, reconnaître une intention, tour unique, plusieurs tours, conversation de bot
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ea5cf37ec788f68e8eea32ee6610f59ec286193c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404146"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299395"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
 [!INCLUDE[applies-to](../includes/applies-to.md)]

@@ -3,19 +3,18 @@ title: Créer un bot à l’aide du kit SDK Bot Framework pour JavaScript | Micr
 description: Créez rapidement un bot à l’aide du kit SDK Bot Framework pour JavaScript.
 keywords: démarrage rapide, kit sdk bot framework, bien démarrer
 author: jonathanfingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da73a941da464b194f4da043b58bb3c8f1e505eb
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3eba1dec5e6c5e51c44c7d0aa20cc6fb16c10274
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214331"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297834"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-javascript"></a>Créer un bot à l’aide du kit SDK Bot Framework pour JavaScript
 

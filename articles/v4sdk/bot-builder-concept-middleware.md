@@ -3,19 +3,18 @@ title: Middlewares | Microsoft Docs
 description: Découvrez les middlewares (intergiciels) et leurs utilisations dans le SDK de bot.
 keywords: middleware, pipeline de middlewares, court-circuit, utilisations de middlewares
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c70470d66d1402fc3d4c29d8772193f8e0576913
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 42082f90db8079e7bc0152b2947705a9c1f15115
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215493"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299460"
 ---
 # <a name="middleware"></a>Middlewares
 
@@ -41,7 +40,7 @@ Le SDK définit un middleware de journalisation qui peut enregistrer des activit
 ## <a name="the-bot-middleware-pipeline"></a>Pipeline de middlewares de bot
 Pour chaque activité, l’adaptateur appelle les intergiciels dans l’ordre dans lequel vous les avez ajoutés. L’adaptateur transmet l’objet de contexte pour le tour et un délégué _next_, puis le middleware appelle le délégué pour passer le contrôle au middleware suivant dans le pipeline. Les middlewares peuvent également effectuer des opérations une fois que le délégué _next_ a retourné le contrôle avant la fin de la méthode. Vous pouvez considérer que chaque objet de middleware a une occasion unique d’agir par rapport aux objets de middleware qui le suivent dans le pipeline.
 
-Par exemple : 
+Par exemple :
 
 - Le gestionnaire de tour du 1er objet de middleware exécute du code avant d’appeler _next_.
   - Le gestionnaire de tour du 2e objet de middleware exécute du code avant d’appeler _next_.

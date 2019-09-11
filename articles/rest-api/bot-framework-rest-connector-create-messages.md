@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f8badd90c3be5191e24556d5f7fde66cc72fd6b
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037362"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876158"
 ---
 # <a name="create-messages"></a>Créer des messages
 
@@ -55,7 +55,7 @@ La propriété `suggestedActions` de l’objet [Activité][] peut être utilisé
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Aperçu des fonctionnalités avec l’inspecteur de canaux][ChannelInspector]
-- [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md)
+- [Vue d’ensemble des activités](https://aka.ms/botSpecs-activitySchema)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md)
 - [Ajouter des cartes détaillées aux messages](bot-framework-rest-connector-add-rich-cards.md)

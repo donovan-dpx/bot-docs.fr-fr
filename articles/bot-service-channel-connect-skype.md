@@ -3,18 +3,17 @@ title: Connecter un bot à Skype | Microsoft Docs
 description: Découvrez comment configurer un bot pour qu’il soit accessible par le biais de l’interface de Skype.
 keywords: Skype, Bot Channels, configurer Skype, publier, connecter à des canaux
 author: v-ducvo
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 10/11/2018
-ms.openlocfilehash: f52c8fd668299486eccda3920181df971f475a90
-ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
+ms.openlocfilehash: a34591e6af9657411739e04ab6dc547e4c692419
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53120656"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297658"
 ---
 # <a name="connect-a-bot-to-skype"></a>Connecter un bot à Skype
 

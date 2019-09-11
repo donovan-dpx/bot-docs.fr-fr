@@ -3,18 +3,17 @@ title: Connecter un robot à GroupMe | Microsoft Docs
 description: Découvrez comment configurer une connexion de robot à GroupMe.
 keywords: canal de robot, GroupMe, créer GroupMe, informations d’identification
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a2004293ff10cfbc7132f58b7c0c834a2012cfd1
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 67bcd518f8c6ae7a1e383c611108c15b51bd0292
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563582"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298735"
 ---
 # <a name="connect-a-bot-to-groupme"></a>Connecter un robot à GroupMe
 
@@ -36,7 +35,7 @@ Utilisez cette URL de rappel : `https://groupme.botframework.com/Home/Login`
 
 ## <a name="gather-credentials"></a>Collecter les informations d’identification
 
-1. Dans le champ **URL de redirection**, copiez la valeur après **client_id =**.
+1. Dans le champ **URL de redirection**, copiez la valeur après **client_id =** .
 2. Copiez la valeur **Jeton d’accès**.
 
 ![Copier l’ID client et le jeton d’accès](~/media/channels/GM-StepClientId.png)
