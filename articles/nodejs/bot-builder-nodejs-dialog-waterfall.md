@@ -2,19 +2,18 @@
 title: Définir des étapes de conversation avec des cascades | Microsoft Docs
 description: Découvrez comment utiliser des cascades pour définir les étapes d’une conversation avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225324"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299844"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Définir des étapes de conversation avec des cascades
 
@@ -164,18 +163,18 @@ bot.dialog('ensureProfile', [
 
 Un dialogue créé en utilisant une cascade doit être terminé explicitement. Autrement, le robot répète la cascade indéfiniment. Vous pouvez terminer une cascade en utilisant l’une des méthodes suivantes :
 
-* `session.endDialog` : utilisez cette méthode pour terminer la cascade s’il n’y a aucune donnée à retourner au dialogue appelant.
+* `session.endDialog`: utilisez cette méthode pour terminer la cascade s’il n’y a aucune donnée à retourner au dialogue appelant.
 
-* `session.endDialogWithResult` : utilisez cette méthode pour terminer la cascade s’il y a des données à retourner au dialogue appelant. L’argument `response` retourné peut être un objet JSON ou tout type de données primitives JavaScript. Par exemple : 
+* `session.endDialogWithResult`: utilisez cette méthode pour terminer la cascade s’il y a des données à retourner au dialogue appelant. L’argument `response` retourné peut être un objet JSON ou tout type de données primitives JavaScript. Par exemple :
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
   });
   ```
 
-* `session.endConversation` : utilisez cette méthode pour terminer la cascade si la fin de celle-ci représente la fin de la conversation.
+* `session.endConversation`: utilisez cette méthode pour terminer la cascade si la fin de celle-ci représente la fin de la conversation.
 
-Au lieu d’utiliser l’une de ces trois méthodes pour terminer une cascade, vous pouvez attacher le déclencheur `endConversationAction` au dialogue. Par exemple : 
+Au lieu d’utiliser l’une de ces trois méthodes pour terminer une cascade, vous pouvez attacher le déclencheur `endConversationAction` au dialogue. Par exemple :
 
 ```javascript
 bot.dialog('dinnerOrder', [

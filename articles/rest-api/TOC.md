@@ -5,7 +5,7 @@
 ## [Informations de référence sur l'API](bot-framework-rest-connector-api-reference.md)
 # Connecteur
 ## [Authentification](bot-framework-rest-connector-authentication.md)
-## [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md)
+## [Vue d’ensemble des activités](https://aka.ms/botSpecs-activitySchema)
 ## [Créer des messages](bot-framework-rest-connector-create-messages.md)
 ## [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 ## [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md)

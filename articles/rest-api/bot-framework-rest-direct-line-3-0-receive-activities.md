@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/13/2019
-ms.openlocfilehash: c99e7ce86415ee1291a92e2684b975fd03c822f7
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: 1e5c48dd3782100f9393c3498baa2b0a7c728cb3
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252693"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876144"
 ---
 # <a name="receive-activities-from-the-bot"></a>Recevoir des activités du bot
 
@@ -25,7 +24,7 @@ Un WebSocket qui diffuse des données en continu envoie (push) les messages aux 
 
 Le service autorise une seule connexion WebSocket par conversation. Direct Line peut fermer les connexions WebSocket supplémentaires avec le code motif `collision`.
 
-Certains [types d’activités](bot-framework-rest-connector-activities.md) ne sont pas disponibles à la fois dans WebSocket et dans HTTP GET. Le tableau suivant montre la disponibilité des différents types d’activités pour les clients qui utilisent le protocole Direct Line.
+Certains [types d’activités](https://aka.ms/botSpecs-activitySchema) ne sont pas disponibles à la fois dans WebSocket et dans HTTP GET. Le tableau suivant montre la disponibilité des différents types d’activités pour les clients qui utilisent le protocole Direct Line.
 
 | Type d’activité | Disponibilité | 
 |----|----|

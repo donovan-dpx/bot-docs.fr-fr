@@ -3,19 +3,19 @@ title: Déboguer votre bot à l’aide de fichiers de transcription | Microsoft 
 description: Comprendre comment utiliser un fichier de transcription pour vous aider à déboguer votre robot.
 keywords: débogage, faq, fichier de transcription, émulateur
 author: DanDev33
-ms.author: v-dashel
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservices: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8aff8c550541304d63db951e8ab6b4c014fc72ac
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 20d3ff54ed7c1ece0678c4b98bea920f8becdaf3
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404592"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299368"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Déboguer votre bot à l’aide de fichiers de transcription
 

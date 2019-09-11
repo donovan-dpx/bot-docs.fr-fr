@@ -3,19 +3,18 @@ title: Activer les fonctions vocales dans Discussion Web | Microsoft Docs
 description: Découvrez comment activer les fonctions vocales dans le contrôle de discussion web pour un robot connecté au canal Discussion Web.
 keywords: fonctions vocales, discussion web, voix, microphone, audio
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cdb512b0efe111870b34c440f978105786b6f36a
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.openlocfilehash: b83dff7969c58451e5752938f74b682b2163c49d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202575"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298204"
 ---
 # <a name="enable-speech-in-web-chat"></a>Activer les fonctions vocales dans Discussion Web
 Vous pouvez activer une interface vocale dans le contrôle Discussion Web. Les utilisateurs interagissent avec l’interface vocale à l’aide du microphone dans le contrôle Discussion Web.
@@ -56,7 +55,7 @@ Pour activer la fonctionnalité vocale dans Discussion Web, vous devez personnal
    | t | Jeton Direct Line. Pour plus d’informations sur la façon de générer ce jeton, voir [Générer un jeton Direct Line](rest-api/bot-framework-rest-direct-line-3-0-authentication.md). |
    | domaine | facultatif. URL d’un autre point de terminaison Direct Line.  |
    | webSocket | facultatif. Défini sur « true » afin d’utiliser WebSocket pour recevoir des messages. La valeur par défaut est `false`. |
-   | userId | facultatif. ID de l’utilisateur du robot.  |
+   | userid | facultatif. ID de l’utilisateur du robot.  |
    | username | facultatif. Nom d’utilisateur de l’utilisateur du robot.  |
    | botid | facultatif. ID du robot. |
    | botname | facultatif. Nom du robot. |

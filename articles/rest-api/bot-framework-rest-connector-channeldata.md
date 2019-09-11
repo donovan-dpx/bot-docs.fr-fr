@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037334"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876133"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
 
@@ -270,7 +270,6 @@ Cet extrait de code montre un exemple de la propriété `channelData` pour un me
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md)
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)

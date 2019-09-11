@@ -2,19 +2,18 @@
 title: Gérer les données d’état personnalisé avec le stockage de table Azure | Microsoft Docs
 description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Stockage Table Azure avec le kit SDK Bot Framework pour Node.js.
 author: DucVo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 34f2cb79d4dcef9ddb68c6de0333a94b4128b301
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3433e0c4218dcb9b5e991325a4e5508fc0422997
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404704"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299677"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour Node.js
 
