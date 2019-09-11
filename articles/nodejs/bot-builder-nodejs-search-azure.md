@@ -2,19 +2,18 @@
 title: Créer des expériences pilotées par les données avec Recherche Azure | Microsoft Docs
 description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure et permettre aux utilisateurs de parcourir de grandes quantités de contenu dans un bot avec le kit SDK Bot Framework pour Node.js et Recherche Azure.
 author: matthewshim-ms
-ms.author: v-shimma
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 259f709ae460fde13cdf25ce6d7cbf5dd44a333d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224857"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299752"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -24,7 +23,7 @@ ms.locfileid: "57224857"
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.JS](../nodejs/bot-builder-nodejs-search-azure.md)
 
-Vous pouvez ajouter [Recherche Azure][search] à votre robot pour permettre à l’utilisateur de naviguer dans de grandes quantités de contenu, et pour créer une expérience d’exploration pilotée par les données pour les utilisateurs de votre robot.
+Vous pouvez ajouter [Recherche Azure][search] à votre bot pour permettre à l’utilisateur de naviguer dans de grandes quantités de contenu, et pour créer une expérience d’exploration pilotée par les données pour les utilisateurs de votre bot.
 
 Recherche Azure est un service Azure qui offre des fonctionnalités, telles que la recherche par mot clé, une linguistique intégrée, la notation personnalisée, une navigation par facettes, et bien plus encore. Recherche Azure peut également indexer le contenu à partir de diverses sources, dont Azure SQL DB, DocumentDB, Stockage Blob et Stockage Table. La solution prend en charge l’indexation par « push » pour d’autres sources de données, et peut ouvrir des fichiers PDF, des documents Office ainsi que d’autres formats contenant des données non structurées. Une fois collecté, le contenu est placé dans un index Recherche Azure, que le robot peut ensuite interroger.
 
@@ -155,7 +154,7 @@ Pour obtenir deux exemples complets qui montrent comment prendre en charge Reche
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Recherche Azure][search]
+* [Azure Search][search]
 * [Nœud Util][NodeUtil]
 * [Dialogues](bot-builder-nodejs-dialog-manage-conversation.md)
 

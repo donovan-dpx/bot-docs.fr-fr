@@ -6,23 +6,22 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 710a8ce315faa02a72eaeb753c44b9b212524ec3
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224674"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297860"
 ---
 # <a name="basic-features-of-formflow"></a>Fonctionnalités de base de FormFlow
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Si les [dialogues](bot-builder-dotnet-dialogs.md) sont à la fois flexibles et très puissants, la gestion d’une conversation guidée, par exemple pour commander un sandwich, peut nécessiter beaucoup d’efforts. Chaque stade de la conversation peut donner lieu à une multitude de possibilités pour la suite. Par exemple, vous devrez peut-être éclaircir une ambiguïté, fournir de l’aide, revenir en arrière ou afficher la progression. En utilisant **FormFlow** dans le kit SDK Bot Framework pour .NET, vous pouvez grandement simplifier le processus de gestion d’une conversation guidée de ce type. 
+Si les [boîtes de dialogue](bot-builder-dotnet-dialogs.md) sont à la fois flexibles et très puissantes, la gestion d’une conversation guidée, par exemple pour commander un sandwich, peut nécessiter beaucoup d’efforts. Chaque stade de la conversation peut donner lieu à une multitude de possibilités pour la suite. Par exemple, vous devrez peut-être éclaircir une ambiguïté, fournir de l’aide, revenir en arrière ou afficher la progression. En utilisant **FormFlow** dans le kit SDK Bot Framework pour .NET, vous pouvez grandement simplifier le processus de gestion d’une conversation guidée de ce type. 
 
-FormFlow génère automatiquement les dialogues nécessaires à la gestion d’une conversation guidée en fonction des instructions que vous spécifiez. L’utilisation de FormFlow se fait au détriment de la flexibilité dont vous bénéficiez lorsque vous créez et gérez vous-même les dialogues. En revanche, FormFlow réduit considérablement le temps nécessaire au développement de votre bot pour la conception d’une conversation guidée. En outre, vous pouvez créer votre bot en combinant des dialogues générés par FormFlow et d’autres types de dialogues. Par exemple, un dialogue FormFlow peut guider l’utilisateur dans le processus de remplissage d’un formulaire, et un dialogue [LuisDialog][LuisDialog] peut évaluer l’entrée de l’utilisateur pour déterminer l’intention.
+FormFlow génère automatiquement les boîtes de dialogue nécessaires à la gestion d’une conversation guidée en fonction des instructions que vous spécifiez. L’utilisation de FormFlow se fait au détriment de la flexibilité dont vous bénéficiez lorsque vous créez et gérez vous-même les boîtes de dialogue. En revanche, FormFlow réduit considérablement le temps nécessaire au développement de votre bot pour la conception d’une conversation guidée. En outre, vous pouvez créer votre bot en combinant des boîtes de dialogue générées par FormFlow et d’autres types de boîtes de dialogue. Par exemple, un dialogue FormFlow peut guider l’utilisateur dans le processus de remplissage d’un formulaire et un dialogue [LuisDialog][LuisDialog] peut évaluer l’entrée de l’utilisateur pour déterminer l’intention.
 
 Cet article décrit comment créer un bot qui utilise les fonctionnalités de base de FormFlow pour collecter des informations auprès d’un utilisateur.
 
@@ -33,13 +32,13 @@ Pour créer un bot à l’aide de FormFlow, vous devez spécifier les informatio
 - Intégral (sbyte, byte, short, ushort, int, uint, long, ulong)
 - Virgule flottante (float, double)
 - Chaîne
-- Datetime
+- DateTime
 - Énumération
 - Liste d’énumérations
 
 Tous ces types de données peuvent être Nullable et utilisés pour spécifier que le champ n’a pas de valeur. Si un champ de formulaire est basé sur une propriété d’énumération qui n’est pas Nullable, la valeur **0** dans l’énumération représente **null** (c’est-à-dire qu’elle indique que le champ n’a pas de valeur), et vous devez commencer vos valeurs d’énumération par **1**. FormFlow ignore tous les autres types de propriétés et méthodes.
 
-Pour les objets complexes, vous devez créer un formulaire pour la classe C# de niveau supérieur et un autre formulaire pour l’objet complexe. Vous pouvez composer les formulaires à l’aide de la sémantique habituelle des [dialogues](bot-builder-dotnet-dialogs.md). Vous pouvez également définir un formulaire directement en implémentant [Advanced.IField][iField] ou en utilisant [Advanced.Field][field] et en remplissant les dictionnaires qu’il contient. 
+Pour les objets complexes, vous devez créer un formulaire pour la classe C# de niveau supérieur et un autre formulaire pour l’objet complexe. Vous pouvez composer les formulaires à l’aide de la sémantique habituelle des [boîtes de dialogue](bot-builder-dotnet-dialogs.md). Vous pouvez également définir un formulaire directement en implémentant [Advanced.IField][iField] ou en utilisant [Advanced.Field][field] et en remplissant les dictionnaires qu’il contient. 
 
 > [!NOTE]
 > Vous pouvez définir un formulaire à l’aide d’une classe C# ou d’un schéma JSON. Cet article décrit comment définir un formulaire à l’aide d’une classe C#. Pour plus d’informations sur l’utilisation d’un schéma JSON, consultez [Définir un formulaire à l’aide du schéma JSON](bot-builder-dotnet-formflow-json-schema.md).
@@ -254,7 +253,7 @@ Is this your selection?
 >
 ```
 
-Si l’utilisateur répond en entrant « no » (non), le bot lui permet de mettre à jour les sélections précédentes de son choix. Si l’utilisateur répond en entrant « yes » (oui), le formulaire est terminé et le contrôle revient au dialogue appelant. 
+Si l’utilisateur répond en entrant « no » (non), le bot lui permet de mettre à jour les sélections précédentes de son choix. Si l’utilisateur répond en entrant « yes » (oui), le formulaire est terminé et le contrôle revient à la boîte de dialogue appelante. 
 
 ```console
 Is this your selection?
@@ -312,7 +311,7 @@ Même si les fonctionnalités de base de FormFlow sont suffisantes dans certains
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-FormFlow simplifie le développement de dialogues. Les fonctionnalités avancées de FormFlow vous permettent de personnaliser le comportement d’un objet FormFlow.
+FormFlow simplifie le développement de boîtes de dialogue. Les fonctionnalités avancées de FormFlow vous permettent de personnaliser le comportement d’un objet FormFlow.
 
 > [!div class="nextstepaction"]
 > [Fonctionnalités avancées de FormFlow](bot-builder-dotnet-formflow-advanced.md)

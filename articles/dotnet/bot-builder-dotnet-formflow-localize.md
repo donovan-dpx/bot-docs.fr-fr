@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ec3d12a7d35f65adca901395edff2db3ab71c66
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 795232b401284becd940daed6bf7da8642c12efd
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225584"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297955"
 ---
 # <a name="localize-form-content"></a>Localiser le contenu d’un formulaire
 
@@ -37,7 +36,7 @@ Au lieu de cela, vous pouvez générer un fichier de ressources pour les chaîne
 
 ### <a name="use-iformbuildersaveresources"></a>Utiliser IFormBuilder.SaveResources
 
-Vous pouvez générer un fichier de ressources en appelant [IFormBuilder.SaveResources] [ saveResources] sur votre formulaire pour enregistrer les chaînes dans un fichier .resx.
+Vous pouvez générer un fichier de ressources en appelant [IFormBuilder.SaveResources][saveResources] sur votre formulaire pour enregistrer les chaînes dans un fichier .resx.
 
 ### <a name="use-rview"></a>Utiliser RView
 
@@ -83,10 +82,10 @@ Une fois que vous avez généré un fichier de ressources, ajoutez-le à votre p
 2. Cliquez sur **Informations de l’assembly**.
 3. Sélectionnez la valeur **Langue neutre** qui correspond à la langue dans laquelle vous avez développé votre bot.
 
-Lors de la création de votre formulaire, la méthode [IFormBuilder.Build] [ build] recherchera automatiquement les ressources contenant le nom de votre type de formulaire et s’en servira pour localiser les chaînes statiques de votre formulaire. 
+Lors de la création de votre formulaire, la méthode [IFormBuilder.Build][build] recherchera automatiquement les ressources contenant le nom de votre type de formulaire et s’en servira pour localiser les chaînes statiques de votre formulaire. 
 
 > [!NOTE]
-> Les champs calculés de manière dynamique et définis à l’aide de [Advanced.Field.SetDefine] [ setDefine] (comme décrit dans [Utilisation des champs dynamiques](bot-builder-dotnet-formflow-formbuilder.md#dynamically-define-field-values-confirmations-and-messages)) ne peuvent pas être localisés de la même manière que les champs statiques, étant donné que les chaînes des champs calculés de manière dynamique sont construites au moment où le formulaire est rempli. Vous pouvez cependant localiser des champs calculés de façon dynamique à l’aide de mécanismes de localisation C# standard.
+> Les champs calculés de manière dynamique et définis avec [Advanced.Field.SetDefine][setDefine] (comme décrit dans [Utilisation des champs dynamiques](bot-builder-dotnet-formflow-formbuilder.md#dynamically-define-field-values-confirmations-and-messages)) ne peuvent pas être localisés de la même manière que les champs statiques, étant donné que les chaînes des champs calculés de manière dynamique sont construites au moment où le formulaire est rempli. Vous pouvez cependant localiser des champs calculés de façon dynamique à l’aide de mécanismes de localisation C# standard.
 
 ### <a name="localize-resource-files"></a>Localiser des fichiers de ressources 
 

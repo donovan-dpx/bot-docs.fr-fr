@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225634"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297917"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Personnaliser l’expérience utilisateur avec le langage du modèle
 
@@ -93,17 +92,17 @@ Les invites et les modèles prennent en charge ces paramètres de mise en forme.
 | Usage | Description |
 |----|----|
 | `AllowDefault` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si le formulaire doit afficher la valeur actuelle du champ comme un choix possible. Si `true`, la valeur actuelle apparaît comme une valeur possible. Par défaut, il s’agit de `true`. |
-| `ChoiceCase` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si le texte de chaque choix est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). Par défaut, il s’agit de `CaseNormalization.None`. Pour les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
+| `ChoiceCase` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si le texte de chaque choix est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). Par défaut, il s’agit de `CaseNormalization.None`. Pour connaître les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
 | `ChoiceFormat` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine s’il faut afficher une liste de choix sous forme d’une liste numérotée ou d’une liste à puces. Pour une liste numérotée, définissez `ChoiceFormat` sur `{0}` (valeur par défaut). Pour une liste à puces, définissez `ChoiceFormat` sur `{1}`. |
 | `ChoiceLastSeparator` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si une liste incorporée de choix inclut un séparateur avant le dernier choix. |
 | `ChoiceParens` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si une liste incorporée de choix s’affiche entre parenthèses. Si `true`, la liste de choix s’affiche entre parenthèses. Par défaut, il s’agit de `true`. |
 | `ChoiceSeparator` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si une liste incorporée de choix inclut un séparateur avant chaque choix, à l’exception du dernier. | 
 | `ChoiceStyle` | S’applique aux éléments de modèle <code>{&#124;&#124;}</code>. Détermine si la liste de choix s’affiche de façon incorporée ou par ligne. La valeur par défaut `ChoiceStyleOptions.Auto` détermine, lors de l’exécution, s’il faut afficher le choix de façon incorporée ou dans une liste. Pour connaître les valeurs possibles, consultez [ChoiceStyleOptions][choiceStyleOptions]. |
 | `Feedback` | S’applique aux invites uniquement. Détermine si le formulaire renvoie le choix de l’utilisateur pour indiquer que le formulaire a compris la sélection. La valeur par défaut `FeedbackOptions.Auto` renvoie l’entrée utilisateur uniquement si une partie de celle-ci n’est pas comprise. Pour connaître les valeurs possibles, consultez [FeedbackOptions][feedbackOptions]. |
-| `FieldCase` | Détermine si le texte de la description du champ est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). La valeur par défaut `CaseNormalization.Lower` convertit la description en minuscules. Pour les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
+| `FieldCase` | Détermine si le texte de la description du champ est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). La valeur par défaut `CaseNormalization.Lower` convertit la description en minuscules. Pour connaître les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
 | `LastSeparator` | S’applique aux éléments de modèle `{[]}`. Détermine si un tableau d’éléments inclut un séparateur avant le dernier élément. |
 | `Separator` | S’applique aux éléments de modèle `{[]}`. Détermine si un tableau d’éléments inclut un séparateur avant chaque élément, à l’exception du dernier. |
-| `ValueCase` | Détermine si le texte de la valeur du champ est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). La valeur par défaut `CaseNormalization.InitialUpper` convertit la première lettre de chaque mot en majuscule. Pour les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
+| `ValueCase` | Détermine si le texte de la valeur du champ est normalisé (par exemple, si la première lettre de chaque mot est une majuscule). La valeur par défaut `CaseNormalization.InitialUpper` convertit la première lettre de chaque mot en majuscule. Pour connaître les valeurs possibles, consultez [CaseNormalization][caseNormalization]. |
 
 ### <a name="prompt-attribute-with-formatting-parameter"></a>Attribut Prompt avec paramètre de mise en forme 
 

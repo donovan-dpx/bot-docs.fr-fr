@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 08/03/2019
-ms.openlocfilehash: 4e5dc332b463e9490c7aa265a08e8f126d59d3f9
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866503"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386107"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Connecter un bot à Facebook
 
@@ -131,14 +131,31 @@ Assurez-vous que la page Facebook associée à ce bot est publiée. L’état s�
 
 ## <a name="connect-a-bot-to-facebook-workplace"></a>Connecter un bot à Facebook Workplace
 
+Facebook Workplace est une version orientée entreprise de Facebook, qui permet aux employés de se connecter et de collaborer facilement. Il contient des vidéos en direct, des flux d’actualités, des groupes, des messages, des réactions, des recherches et des publications populaires. Il prend également en charge :
+
+- Analytique et intégrations. Tableau de bord avec analytique, intégration, authentification unique et fournisseurs d’identité que les entreprises utilisent pour intégrer Workplace à leurs systèmes informatiques existants.
+- Groupes à plusieurs entreprises. Espaces partagés dans lesquels les employés de différentes organisations peuvent travailler ensemble et collaborer.
+
 Consultez le [centre d’aide Workplace](https://workplace.facebook.com/help/work/) pour en savoir plus sur Facebook Workplace, et la [documentation du développeur Workplace](https://developers.facebook.com/docs/workplace) pour obtenir des instructions sur le développement pour Facebook Workplace.
 
-Pour configurer un bot afin qu’il communique avec Facebook Workplace, créez une intégration personnalisée et connectez-y le bot.
+Pour utiliser Facebook Workplace avec votre bot, vous devez créer un compte Workplace et une intégration personnalisée pour connecter le bot.
 
+### <a name="create-a-workplace-premium-account"></a>Créer un compte Workplace Premium
 
-1. Créez un compte Facebook Workplace Premium. Suivez ces [instructions](https://www.facebook.com/workplace) pour créer un compte Facebook Workplace Premium et vous définir comme administrateur système. Gardez à l’esprit que seul l’administrateur système d’un Workplace peut créer des intégrations personnalisées.
+1. Soumettez une demande à [Workplace](https://www.facebook.com/workplace) pour le compte de votre société.
+1. Une fois votre demande approuvée, vous recevrez un e-mail vous invitant à participer. La réponse peut prendre un certain temps.
+1. À partir de l’invitation par e-mail, cliquez sur **Get Started** (Prise en main).
+1. Entrez vos informations de profil.
+    > [!TIP]
+    > Définissez-vous comme administrateur système. Gardez à l’esprit que seuls les administrateurs système peuvent créer des intégrations personnalisées.
+1. Cliquez sur **Preview Profile** (Aperçu du profil) et vérifiez que les informations sont correctes.
+1. Accédez à la *version d’évaluation gratuite*.
+1. Créez un **mot de passe**.
+1. Cliquez sur **Inviter des collègues**  pour inviter des employés à se connecter. Les employés que vous avez invités deviennent membres dès qu’ils se connectent. Ils passent par un processus de connexion similaire à celui décrit dans la présente procédure.
 
-1. Créez une [intégration personnalisée](https://developers.facebook.com/docs/workplace/custom-integrations-new) pour votre Workplace en suivant les étapes décrites ci-après. Lorsque vous créez une intégration personnalisée, une application avec des autorisations définies et une page de type « Bot », visible uniquement au sein de votre communauté Workplace, sont créées.
+### <a name="create-a-custom-integration"></a>Créer une intégration personnalisée
+
+Créez une [intégration personnalisée](https://developers.facebook.com/docs/workplace/custom-integrations-new) pour Workplace en suivant les étapes décrites ci-après. Lorsque vous créez une intégration personnalisée, une application avec des autorisations définies et une page de type « Bot », visible uniquement au sein de votre communauté Workplace, sont créées.
 
 1. Dans le panneau d’administration (**Admin Panel**), ouvrez l’onglet **Integrations** (Integrations).
 1. Cliquez sur le bouton **Create your own custom App** (Créer votre application personnalisée).

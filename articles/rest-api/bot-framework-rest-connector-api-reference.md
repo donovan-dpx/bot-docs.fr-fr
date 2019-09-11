@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/02/2019
-ms.openlocfilehash: 68ba9f8b2b47d501ebf629e8a804e6a1479e1839
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 52902456903fb8c5c9fd2037150a55a05f66f31c
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167215"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876122"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -433,7 +433,7 @@ Définit un message qui est échangé entre le bot et l’utilisateur.
 | **textHighlights** | [TextHighlight](#texthighlight-object)[] | Collection de fragments de texte à mettre en surbrillance quand l’activité contient une valeur **replyToId**. |
 | **timestamp** | string | Date et heure auxquelles le message a été envoyé dans le fuseau horaire UTC, exprimées au format [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | **topicName** | string | Sujet de la conversation à laquelle appartient l’activité. |
-| **type** | string | Type de l’activité. Une des valeurs suivantes : **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Pour plus d’informations sur les types d’activités, consultez [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md). |
+| **type** | string | Type de l’activité. Une des valeurs suivantes : **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Pour plus d’informations sur les types d’activités, consultez [Vue d’ensemble des activités](https://aka.ms/botSpecs-activitySchema). |
 | **value** | object | Valeur à durée indéterminée. |
 | **valueType** | string | Type de l’objet de valeur de l’activité. |
 
@@ -451,7 +451,7 @@ Définit une carte pouvant lire des images GIF animées ou de courtes vidéos.
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des images GIF animées à lire. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl**. Quand ce champ contient plusieurs URL, chaque URL est un autre format du même contenu.|
 | **shareable** | boolean | Indicateur qui indique si l’animation peut être partagée avec d’autres utilisateurs. Définissez cette propriété sur **true** si l’animation peut être partagée ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
@@ -522,7 +522,7 @@ Définit une carte qui peut lire un fichier audio.
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des fichiers audio à lire. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl**.  Quand ce champ contient plusieurs URL, chaque URL est un autre format du même contenu. |
 | **shareable** | boolean | Indicateur qui indique si les fichiers audio peuvent être partagés avec d’autres utilisateurs. Définissez cette propriété sur **true** si les fichiers audio peuvent être partagés ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |
@@ -940,7 +940,7 @@ Définit une carte pouvant lire des vidéos.
 | **buttons** | [CardAction](#cardaction-object)[] | Tableau d’objets **CardAction** qui permettent à l’utilisateur d’effectuer une ou plusieurs actions. Le canal détermine le nombre de boutons que vous pouvez spécifier. |
 | **duration** | string | La longueur du contenu du média, au [format de durée ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Objet **ThumbnailUrl** qui spécifie l’image à afficher sur la carte. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl** qui spécifie la liste des vidéos à lire. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Tableau d’objets **MediaUrl**.  Quand ce champ contient plusieurs URL, chaque URL est un autre format du même contenu. |
 | **shareable** | boolean | Indicateur qui indique si les vidéos peuvent être partagées avec d’autres utilisateurs. Définissez cette propriété sur **true** si les vidéos peuvent être partagées ; sinon, sur **false**. La valeur par défaut est **true**. |
 | **subtitle** | string | Sous-titre à afficher sous le titre de la carte. |
 | **text** | string | Description ou invitation à afficher sous le titre ou le sous-titre de la carte. |

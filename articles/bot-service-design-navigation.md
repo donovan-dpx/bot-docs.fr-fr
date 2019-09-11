@@ -7,14 +7,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f2a97b35f7e83a825e533be528951e8c04c521a1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7d1bfe669ebafa7e4a2104f384265760720d663c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998079"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298122"
 ---
 # <a name="design-bot-navigation"></a>Concevoir la navigation d’un bot
 
@@ -43,9 +42,9 @@ Examinez le scénario suivant :
 Les utilisateurs changent souvent d’avis, décident d’annuler, voire souhaitent tout reprendre à zéro. 
 
 > [!TIP]
-> <b>Ce qu’il faut faire</b> : concevoir le bot de façon à prendre en compte le fait que l’utilisateur peut à tout moment tenter de modifier le cours de la conversation. 
+> <b>À faire</b> : concevoir le bot de façon à prendre en compte le fait que l’utilisateur peut à tout moment tenter de modifier le cours de la conversation. 
 >
-> <b>Ce qu’il ne faut pas faire</b> : concevoir le bot de façon à ignorer les entrées utilisateur et à répéter toujours la même question dans une boucle sans fin. 
+> <b>À ne pas faire</b> : concevoir le bot de façon à ignorer les entrées utilisateur et à répéter toujours la même question dans une boucle sans fin. 
 
 Il existe de nombreuses manières d’éviter ce piège, mais le moyen le plus simple d’empêcher un bot de poser la même question indéfiniment est peut-être de spécifier un nombre maximal de nouvelles tentatives pour chaque question. Un bot conçu de cette manière ne fait rien « d’intelligent » pour comprendre l’entrée de l’utilisateur et y réagir de façon appropriée, mais évite au moins de poser en boucle la même question. 
 
@@ -60,11 +59,11 @@ Examinez le scénario suivant :
 S’il est tentant de concevoir chaque dialogue du bot de façon à guetter et réagir convenablement à certains mots clés, cette approche est déconseillée. 
 
 > [!TIP]
-> <b>Ce qu’il faut faire</b> : implémenter un [intergiciel (middleware)](v4sdk/bot-builder-create-middleware.md) qui cherche les mots clés spécifiés (par exemple, « aide », « annuler », « recommencer », etc.) dans les entrées utilisateur et réagit de façon appropriée. 
+> <b>À faire</b> : implémenter un [intergiciel (middleware)](v4sdk/bot-builder-create-middleware.md) qui cherche les mots clés spécifiés (par exemple, « aide », « annuler », « recommencer », etc.) dans les entrées utilisateur et réagit de façon appropriée. 
 > 
-> <b>Ce qu’il ne faut pas faire</b> : concevoir chaque dialogue de façon à chercher les mots clés de la liste dans les entrées utilisateur. 
+> <b>À ne pas faire</b> : concevoir chaque dialogue de façon à chercher les mots clés de la liste dans les entrées utilisateur. 
 
-En définissant la logique dans votre **intergiciel (middleware)**, vous la rendez accessible à chaque échange avec l’utilisateur. Ainsi, les différents dialogues et invites peuvent être conçus de façon à ignorer sans risque les mots clés si nécessaire.
+En définissant la logique dans votre **intergiciel (middleware)** , vous la rendez accessible à chaque échange avec l’utilisateur. Ainsi, les différents dialogues et invites peuvent être conçus de façon à ignorer sans risque les mots clés si nécessaire.
 
 ## <a name="the-mysterious-bot"></a>Le « bot mystérieux »
 
@@ -77,9 +76,9 @@ Examinez le scénario suivant :
 Dans certains cas, cette situation est le signe que le bot est en panne. Cependant, il peut simplement s’avérer qu’il est occupé à traiter l’entrée de l’utilisateur et n’a pas encore fini de compiler sa réponse. 
 
 > [!TIP]
-> <b>Ce qu’il faut faire</b> : concevoir le bot de façon à accuser immédiatement réception de l’entrée utilisateur, même dans les cas où il met un certain temps à compiler sa réponse. 
+> <b>À faire</b> : concevoir le bot de façon à accuser immédiatement réception de l’entrée utilisateur, même dans les cas où il met un certain temps à compiler sa réponse. 
 > 
-> <b>Ce qu’il ne faut pas faire</b> : concevoir le bot de façon à n’accuser réception de l’entrée utilisateur qu’après avoir fini de compiler sa réponse.
+> <b>À ne pas faire</b> : concevoir le bot de façon à n’accuser réception de l’entrée utilisateur qu’après avoir fini de compiler sa réponse.
 
 En confirmant immédiatement l’entrée de l’utilisateur, vous éliminez tout risque de confusion quant à l’état du bot. Si votre réponse est très longue à compiler, vous pouvez envoyer un message du type « XXX est en train d’écrire… » pour indiquer que votre bot fonctionne, puis le compléter par un [message proactif](v4sdk/bot-builder-howto-proactive-message.md).
 
@@ -92,9 +91,9 @@ Examinez le scénario suivant :
 ![robot](~/media/bot-service-design-navigation/captainobvious-bot.png)
 
 > [!TIP]
-> <b>Ce qu’il faut faire</b> : concevoir le bot de façon à donner des informations utiles à l’utilisateur. 
+> <b>À faire</b> : concevoir le bot de façon à donner des informations utiles à l’utilisateur. 
 > 
-> <b>Ce qu’il ne faut pas faire</b> : concevoir le bot de façon à donner des informations non sollicitées qui ne seront probablement pas utiles à l’utilisateur.
+> <b>À ne pas faire</b> : concevoir le bot de façon à donner des informations non sollicitées qui ne seront probablement pas utiles à l’utilisateur.
 
 En concevant votre bot de façon à donner des informations utiles, vous augmentez les chances que l’utilisateur interagisse avec lui.
 
@@ -107,9 +106,9 @@ Examinez le scénario suivant :
 ![robot](~/media/bot-service-design-navigation/rememberall-bot.png)
 
 > [!TIP]
-> <b>Ce qu’il faut faire</b> : concevoir le bot de façon à rester sur le même sujet de conversation, sauf si/jusqu'à ce que l’utilisateur exprime le désir de revenir à un ancien sujet. 
+> <b>À faire</b> : concevoir le bot de façon à rester sur le même sujet de conversation, sauf si/jusqu’à ce que l’utilisateur exprime le désir de revenir à un ancien sujet. 
 > 
-> <b>Ce qu’il ne faut pas faire</b> : concevoir le bot de façon à introduire des informations provenant de conversations passées alors qu’elles ne sont pas pertinentes pour la conversation actuelle.
+> <b>À ne pas faire</b> : concevoir le bot de façon à introduire des informations provenant de conversations passées alors qu’elles ne sont pas pertinentes pour la conversation actuelle.
 
 En gardant le même sujet de conversation, vous réduisez le risque de confusion et de mécontentement et augmentez les chances que l’utilisateur poursuive ses interactions avec le bot.
 

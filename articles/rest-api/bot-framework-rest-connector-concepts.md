@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 12a54d479f0222497589c2b14e017a4aa8d992fd
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037544"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876086"
 ---
 # <a name="key-concepts"></a>Concepts clés
 
@@ -24,7 +24,7 @@ Le service Bot Connector permet à votre robot d’échanger des messages avec d
 
 ### <a name="activity"></a>Activité
 
-Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet [Activité][]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. Pour plus d’informations sur les activités dans le service Bot Connector, voir [Vue d’ensemble des activités](bot-framework-rest-connector-activities.md).
+Le service Bot Connector échange des informations entre bot et canal (utilisateur) en transmettant un objet [Activité][]. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. Pour plus d’informations sur les activités dans le service Bot Connector, consultez [Vue d’ensemble des activités]https://aka.ms/botSpecs-activitySchema.
 
 ## <a name="bot-state-service"></a>Service Bot State
 

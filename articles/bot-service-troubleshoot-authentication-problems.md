@@ -2,17 +2,17 @@
 title: Résoudre les problèmes d’authentification du Bot Framework | Microsoft Docs
 description: Découvrez comment résoudre les erreurs d’authentification avec votre bot.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033653"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297457"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Résoudre les problèmes d’authentification du Bot Framework
 
@@ -223,9 +223,9 @@ Si vous rencontrez toujours des problèmes après avoir suivi les étapes ci-des
 
 * Consultez la procédure [Déboguer un bot](bot-service-debug-bot.md) ainsi que les autres articles de débogage de cette section.
 * [Déboguer votre bot dans le cloud](~/bot-service-debug-emulator.md) en utilisant Bot Framework Emulator et le logiciel de tunnelling <a href="https://ngrok.com/" target="_blank">ngrok</a>. *ngrok n’est pas un produit Microsoft.*
-* Utiliser un outil de proxy comme [Fiddler](https://www.telerik.com/fiddler) pour inspecter le trafic HTTPS vers votre bot et à partir de votre bot (*Fiddler n’est pas un produit Microsoft.*)
-* Consulter le [guide d’authentification de Bot Connector][BotConnectorAuthGuide] pour en savoir plus sur les technologies d’authentification utilisées par le Bot Framework.
-* Demander de l’aide à d’autres personnes en vous reportant aux ressources de [support][Support] du Bot Framework. 
+* Utiliser un outil de proxy comme [Fiddler](https://www.telerik.com/fiddler) pour inspecter le trafic HTTPS vers votre bot et à partir de votre bot (*Fiddler n’est pas un produit Microsoft.* )
+* Consulter le [guide d’authentification de Bot Connector][BotConnectorAuthGuide] pour en savoir plus sur les technologies d’authentification utilisées par Bot Framework.
+* Demander de l’aide à d’autres personnes en vous reportant aux ressources de [support][Support] de Bot Framework. 
 
 [BotConnectorAuthGuide]: ~/rest-api/bot-framework-rest-connector-authentication.md
 [Support]: bot-service-resources-links-help.md

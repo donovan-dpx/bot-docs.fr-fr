@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224994"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298371"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Dialogues dans le kit SDK Bot Framework pour .NET
 
@@ -57,13 +56,13 @@ La méthode `Conversation.SendAsync` est essentielle pour implémenter des dialo
 
 1. Elle instancie les composants requis.  
 2. Elle désérialise l’état de la conversation (la pile de dialogues et l’état de chacun d’eux dans la pile) à partir de `IBotDataStore`.
-3. Elle reprend le processus de conversation là où le bot l’a suspendu et attend un message.
+3. Elle reprend le processus de conversation là où le robot l’a suspendu et attend un message.
 4. Elle envoie les réponses.
 5. Elle sérialise l’état de la conversation mis à jour et le réenregistre dans `IBotDataStore`.
 
-Quand la conversation commence pour la première fois, le dialogue ne contient pas d’état. Ainsi, `Conversation.SendAsync` construit `EchoDialog` et appelle sa méthode `StartAsync`. La méthode `StartAsync` appelle `IDialogContext.Wait` avec le délégué de continuation pour spécifier la méthode à appeler los de la réception d’un nouveau message (`MessageReceivedAsync`). 
+Quand la conversation commence pour la première fois, la boîte de dialogue ne contient pas d’état. Ainsi, `Conversation.SendAsync` construit `EchoDialog` et appelle sa méthode `StartAsync`. La méthode `StartAsync` appelle `IDialogContext.Wait` avec le délégué de continuation pour spécifier la méthode à appeler los de la réception d’un nouveau message (`MessageReceivedAsync`). 
 
-La méthode `MessageReceivedAsync` attend un message, publie une réponse et attend le message suivant. À chaque appel de `IDialogContext.Wait`, le bot entre en état suspendu et peut être redémarré sur tout ordinateur recevant le message. 
+La méthode `MessageReceivedAsync` attend un message, publie une réponse et attend le message suivant. À chaque appel de `IDialogContext.Wait`, le robot entre en état suspendu et peut être redémarré sur tout ordinateur recevant le message. 
 
 Un robot créé à l’aide des exemples de code ci-dessus répond à chaque message envoyé par l’utilisateur en renvoyant simplement ce message préfixé avec le texte « Vous avez dit : ». Le robot étant créé à l’aide de dialogues, il peut évoluer pour prendre en charge des conversations plus complexes sans avoir à gérer explicitement l’état.
 
@@ -97,11 +96,11 @@ L’interface `Internals.IDialogStack` fournit des méthodes pour gérer la [pil
 
 ## <a name="serialization"></a>Sérialisation
 
-La pile de dialogues et l’état de tous les dialogues actifs sont sérialisés en [IBotDataBag][iBotDataBag] par utilisateur, par conversation. L’objet blob sérialisé est conservé dans les messages que le robot échange avec le [connecteur](bot-builder-dotnet-concepts.md#connector). Pour être sérialisée, une classe `Dialog` doit inclure l’attribut `[Serializable]`. Toutes les implémentations de `IDialog` dans la bibliothèque du [générateur][builderLibrary] sont marquées comme sérialisables. 
+La pile de dialogues et l’état de tous les dialogues actifs sont sérialisés en [IBotDataBag][iBotDataBag] par utilisateur, par conversation. L’objet blob sérialisé est conservé dans les messages que le robot échange avec le [connecteur](bot-builder-dotnet-concepts.md#connector). Pour être sérialisée, une classe `Dialog` doit inclure l’attribut `[Serializable]`. Toutes les implémentations de `IDialog` dans la bibliothèque [Builder][builderLibrary] sont marquées comme sérialisables. 
 
 Les [méthodes Chain](#dialog-chains) fournissent une interface courante aux dialogues, qui est utilisable dans la syntaxe de requête LINQ. La forme compilée de la syntaxe de requête LINQ utilise souvent des méthodes anonymes. Si ces méthodes anonymes ne font pas référence à l’environnement de variables locales, ces méthodes anonymes n’ont pas d’état et sont sérialisables de façon triviale. Toutefois, si la méthode anonyme capture une variable locale dans l’environnement, l’objet fermeture qui en résulte (généré par le compilateur) n’est pas marqué comme sérialisable. Dans ce cas, Bot Builder lève une exception `ClosureCaptureException` pour identifier le problème.
 
-Pour utiliser la réflexion pour sérialiser des classes qui ne sont pas marquées comme sérialisables, la bibliothèque du générateur inclut un substitut de sérialisation basé sur la réflexion, que vous pouvez utiliser pour vous inscrire auprès d’[Autofac][autofac].
+Pour utiliser la réflexion afin de sérialiser des classes qui ne sont pas marquées comme sérialisables, la bibliothèque Builder inclut un substitut de sérialisation basé sur la réflexion, que vous pouvez utiliser pour vous inscrire auprès d’[Autofac][autofac].
 
 [!code-csharp[Serialization](../includes/code/dotnet-dialogs.cs#serialization)]
 
@@ -110,7 +109,7 @@ Pour utiliser la réflexion pour sérialiser des classes qui ne sont pas marqué
 Si vous pouvez gérer explicitement la pile de dialogues actifs en utilisant `IDialogStack.Call<R>` et `IDialogStack.Done<R>`, vous pouvez également la gérer implicitement en utilisant ces méthodes [Chain][chain] courantes.
 
 
-|           Méthode            |  type   |                                 Notes                                  |
+|           Méthode            |  Type   |                                 Notes                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           Prend en charge « select » et « let » dans la syntaxe de requête LINQ.            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            Prend en charge des « from » successifs dans la syntaxe de requête LINQ.            |

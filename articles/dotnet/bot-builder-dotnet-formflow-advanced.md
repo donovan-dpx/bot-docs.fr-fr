@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225954"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298021"
 ---
 # <a name="advanced-features-of-formflow"></a>Fonctionnalités avancées de FormFlow
 
@@ -24,7 +23,7 @@ L’article sur les [fonctionnalités de base de FormFlow](bot-builder-dotnet-fo
 
 ## <a name="specify-initial-form-state-and-entities"></a>Spécifier les entités et l’état du formulaire initial
 
-Lorsque vous lancez [FormDialog][formDialog], vous pouvez le cas échéant passer une instance de votre état. Si vous décidez de passer une instance de votre état, par défaut FormFlow ignore les étapes de tous les champs qui contiennent déjà des valeurs ; l’utilisateur n’est pas invité à renseigner ces champs. Pour forcer le formulaire à proposer à l’utilisateur de remplir tous les champs (y compris les champs qui contiennent déjà des valeurs dans l’état initial), passez dans [FormOptions.PromptFieldsWithValues][promptFieldsWithValues] lorsque vous lancez `FormDialog`. Si un champ contient une valeur initiale, l’invite utilise cette valeur comme valeur par défaut.
+Lorsque vous lancez [FormDialog][formDialog], vous pouvez le cas échéant passer une instance de votre état. Si vous décidez de passer une instance de votre état, par défaut FormFlow ignore les étapes de tous les champs qui contiennent déjà des valeurs ; l’utilisateur n’est pas invité à renseigner ces champs. Pour forcer le formulaire à proposer à l’utilisateur de remplir tous les champs (dont les champs qui contiennent déjà des valeurs dans l’état initial), passez dans [FormOptions.PromptFieldsWithValues][promptFieldsWithValues] lorsque vous lancez `FormDialog`. Si un champ contient une valeur initiale, l’invite utilise cette valeur comme valeur par défaut.
 
 Vous pouvez également transmettre des entités [LUIS](https://luis.ai/) à lier à l’état. Si `EntityRecommendation.Type` est le chemin d’un champ dans votre classe C#, `EntityRecommendation.Entity` est transmis via le module de reconnaissance pour se lier à votre champ. FormFlow ignore les étapes des champs qui sont liés à une entité ; l’utilisateur n’est donc pas invité à renseigner ces champs-là. 
 
@@ -71,11 +70,11 @@ Vous pouvez ajouter ces attributs C# à votre classe pour personnaliser le compo
 | Attribut | Objectif |
 |----|----| 
 | [Describe][describeAttribute] | Modifier la façon dont une valeur ou un champ est affiché dans un modèle ou une carte |
-| [Numeric][numericAttribute] | Restreindre les valeurs acceptées d’un champ numérique |
-| [Optional][optionalAttribute] | Marquer un champ comme étant facultatif |
-| [Pattern][patternAttribute] | Définir une expression régulière pour valider un champ de chaîne |
+| [Numérique][numericAttribute] | Restreindre les valeurs acceptées d’un champ numérique |
+| [Facultatif][optionalAttribute] | Marquer un champ comme étant facultatif |
+| [Modèle][patternAttribute] | Définir une expression régulière pour valider un champ de chaîne |
 | [Prompt][promptAttribute] | Définir l’invite d’un champ |
-| [Template][templateAttribute] | Définir le modèle à utiliser pour générer des invites ou des valeurs dans les invites |
+| [Modèle][templateAttribute] | Définir le modèle à utiliser pour générer des invites ou des valeurs dans les invites |
 | [Terms][termsAttribute] | Définir les termes d’entrée qui correspondent à un champ ou à une valeur |
 
 ## <a name="customize-prompts-using-the-prompt-attribute"></a>Personnaliser les invites avec l’attribut Prompt

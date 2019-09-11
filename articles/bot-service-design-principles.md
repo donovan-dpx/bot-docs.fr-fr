@@ -7,14 +7,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3ac767e525c1082005f4521af9e9714dd8c39cff
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 27553a88ee4373eacb089eb6358520820509e195
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998516"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297595"
 ---
 # <a name="principles-of-bot-design"></a>Principes de conception des bots
 
@@ -28,9 +27,9 @@ Lorsque vous générez un bot, vous espérez généralement qu’il séduira des
 
 Lorsque vous concevez votre bot, sachez qu’aucun des facteurs suivants ne garantit sa réussite : 
 
-- **Degré d’« intelligence » du bot** : dans la plupart des cas, rendre votre bot plus intelligent ne garantit pas la satisfaction des utilisateurs ni l’adoption de votre plateforme. En réalité, de nombreux bots n’affichent que peu de capacités avancées en termes de Machine Learning et de langage naturel. Un bot peut bénéficier de telles capacités si elles sont nécessaires à la résolution des problèmes qu’il est supposé résoudre. Cependant, ne partez pas du principe qu’il existe une corrélation entre l’intelligence d’un bot et son adoption par les utilisateurs.
+- **Degré d’« intelligence » du bot** : dans la plupart des cas, rendre votre bot plus intelligent ne garantit pas la satisfaction des utilisateurs ni l’adoption de votre plateforme. En réalité, de nombreux bots n’affichent que peu de capacités avancées en termes de Machine Learning et de langage naturel. Un bot peut bénéficier de telles capacités si elles sont nécessaires à la résolution des problèmes qu’il est supposé résoudre. Cependant, ne partez pas du principe qu’il existe une corrélation entre l’intelligence d’un bot et son adoption par les utilisateurs.
 
-- **Degré de langage naturel pris en charge par le bot** : votre bot peut s’avérer excellent pour les conversations. Il peut bénéficier d’un vaste vocabulaire et peut même faire de très bonnes plaisanteries. Cependant, à moins qu’elles ne contribuent à résoudre les problèmes de vos utilisateurs, ces capacités ne favoriseront que très peu la réussite de votre bot. En fait, certains bots n’ont aucune capacité conversationnelle. Et dans de nombreux cas, cela ne pose aucun problème.
+- **Degré de langage naturel pris en charge par le bot** : votre bot peut s’avérer excellent pour les conversations. Il peut bénéficier d’un vaste vocabulaire et peut même faire de très bonnes plaisanteries. Cependant, à moins qu’elles ne contribuent à résoudre les problèmes de vos utilisateurs, ces capacités ne favoriseront que très peu la réussite de votre bot. En fait, certains bots n’ont aucune capacité conversationnelle. Et dans de nombreux cas, cela ne pose aucun problème.
 
 - **Voix** : l’ajout de capacités vocales à un bot n’ouvre pas systématiquement la voie à d’excellentes expériences utilisateur. Souvent, obliger les utilisateurs à utiliser la voix peut entraîner des expériences frustrantes. Lorsque vous concevez votre bot, demandez-vous toujours si la voix représente bien le canal approprié pour le problème donné. Serons-nous en présence d’un environnement bruyant ? La voix communiquera-t-elle les informations à partager avec l’utilisateur ? 
 

@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a13358afca190606e235475a58f6aedd146fee5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b738296d3d796cdccd40e0d3bda503b9d6349bff
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225404"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297995"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Personnaliser un formulaire à l’aide de FormBuilder
 
@@ -38,10 +37,10 @@ Cet exemple de code montre comment définir de façon dynamique la valeur du cha
 
 [!code-csharp[Define value](../includes/code/dotnet-formflow-formbuilder.cs#defineValue)]
 
-Dans cet exemple, la méthode [Advanced.Field.SetType][setType] spécifie le type de champ (`null` représente un champ d’énumération). La méthode [Advanced.Field.SetActive][setActive] spécifie que le champ doit uniquement être si la longueur du sandwich est `Length.FootLong`. Enfin, la méthode [Advanced.Field.SetDefine][setDefine] spécifie un délégué asynchrone qui définit le champ. Le délégué reçoit l’objet d’état actuel et la valeur [Advanced.Field][field] définie de façon dynamique. Le délégué utilise les méthodes Fluent du champ pour définir de façon dynamique les valeurs. Dans cet exemple, les valeurs sont des chaînes et les méthodes `AddDescription` et `AddTerms` spécifient les descriptions et les termes de chaque valeur.
+Dans cet exemple, la méthode [Advanced.Field.SetType][setType] spécifie le type de champ (`null` représente un champ d’énumération). La méthode [Advanced.Field.SetActive][setActive] spécifie que le champ doit uniquement être activé si la longueur du sandwich est `Length.FootLong`. Enfin, la méthode [Advanced.Field.SetDefine][setDefine] spécifie un délégué asynchrone qui définit le champ. Le délégué reçoit l’objet d’état actuel et la valeur [Advanced.Field][field] définie de façon dynamique. Le délégué utilise les méthodes Fluent du champ pour définir de façon dynamique les valeurs. Dans cet exemple, les valeurs sont des chaînes et les méthodes `AddDescription` et `AddTerms` spécifient les descriptions et les termes de chaque valeur.
 
 > [!NOTE]
-> Pour définir de façon dynamique une valeur de champ, vous pouvez implémenter [Advanced.IField][iField] vous-même, ou simplifier le processus à l’aide de la classe [Advanced.FieldReflector][FieldReflector] comme indiqué dans l’exemple ci-dessus. 
+> Pour définir de façon dynamique une valeur de champ, vous pouvez implémenter [Advanced.IField][iField] vous-même ou simplifier le processus à l’aide de la classe [Advanced.FieldReflector][FieldReflector] comme indiqué dans l’exemple ci-dessus. 
 
 ### <a name="dynamically-define-messages-and-confirmations"></a>Définir de façon dynamique des messages et des confirmations
 

@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3607957cd5cb8738e8268ece6eba4417250bc596
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7db0ccb84b2c5172348eeac667f78f3abaf95f94
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997957"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299656"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Informations de référence sur l’API - API Direct Line 1.1
 
@@ -155,14 +154,14 @@ Le schéma Direct Line 1.1 est une copie simplifiée du schéma Bot Framework v1
 
 Définit un message qu’un client envoie à un bot ou reçoit d’un bot.
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
-| **id** | chaîne | ID identifiant de manière unique le message (attribué par Direct Line). | 
-| **conversationId** | chaîne | ID identifiant la conversation.  | 
-| **created** | chaîne | Date et heure de création du message, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. | 
-| **from** | chaîne | ID identifiant l’utilisateur qui a expédié le message. Lorsque vous créez un message, les clients doivent définir cette propriété sur un ID d’utilisateur stable. Bien que Direct Line attribue un ID d’utilisateur si aucun n’est fourni, cette opération entraîne généralement un comportement inattendu. | 
-| **text** | chaîne | Texte du message envoyé par l’utilisateur au bot ou par le bot à l’utilisateur. | 
-| **channelData** | objet | Objet contenant le contenu propre au canal. Certains canaux fournissent des fonctionnalités qui nécessitent des informations supplémentaires impossibles à représenter à l’aide du schéma de pièce jointe. Dans ce type de cas, définissez cette propriété sur le contenu propre au canal, tel que défini dans la documentation du canal. Ces données sont envoyées telles quelles entre le client et le bot. Cette propriété doit être définie sur un objet complexe ou laissée vide. Ne la définissez pas sur une chaîne, un nombre ou un autre type simple. | 
+| **id** | string | ID identifiant de manière unique le message (attribué par Direct Line). | 
+| **conversationId** | string | ID identifiant la conversation.  | 
+| **created** | string | Date et heure de création du message, exprimées au format <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. | 
+| **from** | string | ID identifiant l’utilisateur qui a expédié le message. Lorsque vous créez un message, les clients doivent définir cette propriété sur un ID d’utilisateur stable. Bien que Direct Line attribue un ID d’utilisateur si aucun n’est fourni, cette opération entraîne généralement un comportement inattendu. | 
+| **text** | string | Texte du message envoyé par l’utilisateur au bot ou par le bot à l’utilisateur. | 
+| **channelData** | object | Objet contenant le contenu propre au canal. Certains canaux fournissent des fonctionnalités qui nécessitent des informations supplémentaires impossibles à représenter à l’aide du schéma de pièce jointe. Dans ce type de cas, définissez cette propriété sur le contenu propre au canal, tel que défini dans la documentation du canal. Ces données sont envoyées telles quelles entre le client et le bot. Cette propriété doit être définie sur un objet complexe ou laissée vide. Ne la définissez pas sur une chaîne, un nombre ou un autre type simple. | 
 | **images** | string[] | Tableau de chaînes contenant l’URL des images figurant dans le message. Dans certains cas, les chaînes de ce tableau peuvent être des URL relatives. Si l’une des chaînes de ce tableau ne commence pas par « http » ou « https », ajoutez `https://directline.botframework.com` au début de la chaîne pour former l’URL complète. | 
 | **attachments** | [Attachment](#attachment-object)[] | Tableau d’objets **Attachment** représentant les pièces jointes autres que des images qui figurent dans le message. Chaque objet du tableau contient une propriété `url` et une propriété `contentType`. Dans les messages qu’un client reçoit d’un bot, la propriété `url` peut parfois spécifier une URL relative. Si l’une des valeurs de propriété `url` ne commence pas par « http » ou « https », ajoutez `https://directline.botframework.com` au début de la chaîne pour former l’URL complète. | 
 
@@ -197,42 +196,42 @@ L’exemple ci-après présente un objet Message contenant toutes les propriét�
 ### <a name="messageset-object"></a>Objet MessageSet 
 Définit un ensemble de messages.<br/><br/>
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
 | **messages** | [Message](#message-object)[] | Tableau d’objets **Message**. |
-| **watermark** | chaîne | Filigrane maximal des messages au sein de l’ensemble. Un client peut utiliser la valeur `watermark` pour indiquer le dernier message qu’il a vu lors de la [récupération des messages émanant du bot](bot-framework-rest-direct-line-1-1-receive-messages.md). |
+| **watermark** | string | Filigrane maximal des messages au sein de l’ensemble. Un client peut utiliser la valeur `watermark` pour indiquer le dernier message qu’il a vu lors de la [récupération des messages émanant du bot](bot-framework-rest-direct-line-1-1-receive-messages.md). |
 
 ### <a name="attachment-object"></a>Objet Attachment
 Définit une pièce jointe autre qu’une image.<br/><br/> 
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
-| **contentType** | chaîne | Type de média du contenu de la pièce jointe. |
-| **url** | chaîne | URL du contenu de la pièce jointe. |
+| **contentType** | string | Type de média du contenu de la pièce jointe. |
+| **url** | string | URL du contenu de la pièce jointe. |
 
 ### <a name="conversation-object"></a>Objet Conversation
 Définit une conversation Direct Line.<br/><br/>
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
-| **conversationId** | chaîne | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
-| **token** | chaîne | Jeton valide pour la conversation spécifiée. |
+| **conversationId** | string | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
+| **token** | string | Jeton valide pour la conversation spécifiée. |
 | **expires_in** | number | Nombre de secondes avant l’expiration du jeton. |
 
 ### <a name="error-object"></a>Objet Error
 Définit une erreur.<br/><br/> 
 
-| Propriété | type | Description |
+| Propriété | Type | Description |
 |----|----|----|
-| **code** | chaîne | Code d’erreur. Valeurs possibles : **MissingProperty**, **MalformedData**, **NotFound**, **ServiceError**, **Internal**, **InvalidRange**, **NotSupported**, **NotAllowed**, **BadCertificate**. |
-| **message** | chaîne | Description de l’erreur. |
+| **code** | string | Code d’erreur. Une des valeurs suivantes : **MissingProperty**, **MalformedData**, **NotFound**, **ServiceError**, **Internal**, **InvalidRange**, **NotSupported**, **NotAllowed**, **BadCertificate**. |
+| **message** | string | Description de l’erreur. |
 | **statusCode** | number | Code d’état. |
 
 ### <a name="errormessage-object"></a>Objet ErrorMessage
 Charge utile d’erreur de message normalisée.<br/><br/> 
 
 
-|        Propriété        |          type          |                                 Description                                 |
+|        Propriété        |          Type          |                                 Description                                 |
 |------------------------|------------------------|-----------------------------------------------------------------------------|
 | <strong>error</strong> | [Error](#error-object) | Objet <strong>Error</strong> contenant des informations concernant l’erreur. |
 

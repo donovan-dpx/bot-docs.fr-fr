@@ -3,19 +3,18 @@ title: Différences entre les kits SDK v3 et v4 | Microsoft Docs
 description: Décrit les différences entre les kits SDK v3 et v4.
 keywords: migration de bot, formflow, dialogues, état
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 862fbf59cf33406e35e9051c0814489fdfdaa8f3
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 6444c1e3ef1948b3e407df50255aaa7c5350bf34
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215580"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298995"
 ---
 # <a name="differences-between-the-v3-and-v4-net-sdk"></a>Différences entre les kits SDK .NET v3 et v4
 
@@ -32,7 +31,7 @@ La v4 du kit SDK Bot Framework prend en charge le même service Bot Framework s
   - Pour plus d’informations, consultez la rubrique sur la [gestion de l’état][about-state].
 - Nouvelle bibliothèque de dialogues.
   - Les dialogues v3 doivent être réécrits pour la nouvelle bibliothèque de dialogues.
-  - Les dialogues scorables n’existent plus. Avant de passer le contrôle à vos dialogues, vous pouvez rechercher des commandes « globales » dans le gestionnaire de tours. Selon la façon dont vous concevez votre bot v4, cette opération peut s’effectuer dans le gestionnaire de messages ou dans un dialogue parent. Pour consulter un exemple, reportez-vous à la rubrique sur la [gestion des interruptions utilisateur][interruptions].
+  - Les dialogues scorables n’existent plus. Avant de passer le contrôle à vos dialogues, vous pouvez rechercher des commandes « globales » dans le gestionnaire de tours. Selon la façon dont vous concevez votre bot v4, cette opération peut s’effectuer dans le gestionnaire de messages ou dans un dialogue parent. Pour obtenir un exemple, découvrez comment [gérer les interruptions par l’utilisateur][interruptions].
   - Pour plus d’informations, consultez la rubrique sur la [bibliothèque de dialogues][about-dialogs].
 - Prise en charge d’ASP.NET Core.
   - Les modèles pour la création de bots C# ciblent le framework ASP.NET Core.
@@ -52,13 +51,13 @@ Lors du traitement d’un message, utilisez le contexte de tour pour obtenir des
 | | |
 |-|-|
 | Pour obtenir l’activité entrante | Obtenez la propriété `Activity` du contexte de tour. |
-| Pour créer une activité et l’envoyer à l’utilisateur | Appelez la méthode `SendActivityAsync` du contexte de tour.<br/>Pour plus d’informations, consultez les rubriques sur l’[envoi et la réception d’un message textuel][send-messages] et sur l’[ajout d’actifs multimédias aux messages][send-media]. |
+| Pour créer une activité et l’envoyer à l’utilisateur | Appelez la méthode `SendActivityAsync` du contexte de tour.<br/>Pour plus d’informations, consultez la rubrique sur l’[envoi et la réception d’un SMS][send-messages] et [Ajouter des médias aux messages][send-media]. |
 
 La classe `MessageFactory` fournit des méthodes d’assistance pour créer et mettre en forme des activités.
 
 ### <a name="scorables-is-gone"></a>Disparition des dialogues scorables
 
-Gérez ces éléments dans la boucle de messages du bot. La description de la procédure à suivre pour les dialogues v4 se trouve dans la rubrique sur la [gestion des interruptions utilisateur][interruptions].
+Gérez ces éléments dans la boucle de messages du bot. Pour la procédure à suivre avec les dialogues v4, consultez la rubrique sur la [gestion des interruptions de l’utilisateur][interruptions].
 
 Les arborescences de dispatch scorables composables et les dialogues de chaînes composables, comme l’_exception par défaut_, ont également disparu. Un moyen de reproduire cette fonctionnalité consiste à l’implémenter dans le gestionnaire de tour de votre bot.
 
@@ -126,7 +125,7 @@ Dans v3, vous avez utilisé `FormFlow` pour effectuer un nombre défini d’éta
 
 Vous pouvez également créer des flux de contrôle complexes avec plusieurs dialogues ; consultez la rubrique sur les [flux de conversation avancés][complex-flow].
 
-Pour accéder à un dialogue, vous devez placer une instance de celui-ci dans un _jeu de dialogues_, puis générer un _contexte de dialogue_ pour ce jeu. Vous devez fournir un accesseur de propriété d’état de dialogue quand vous créez un jeu de dialogues. Le framework peut ainsi rendre l’état du dialogue persistant d’un tour à l’autre. La [Gestion de l’état][about-state] décrit la façon dont l’état est géré dans v4.
+Pour accéder à un dialogue, vous devez placer une instance de celui-ci dans un _jeu de dialogues_, puis générer un _contexte de dialogue_ pour ce jeu. Vous devez fournir un accesseur de propriété d’état de dialogue quand vous créez un jeu de dialogues. Le framework peut ainsi rendre l’état du dialogue persistant d’un tour à l’autre. [Gestion de l’état][about-state] décrit la façon dont l’état est géré dans la v4.
 
 ### <a name="using-dialogs"></a>Utilisation de dialogues
 

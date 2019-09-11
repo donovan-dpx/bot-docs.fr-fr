@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225854"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298806"
 ---
 # <a name="define-a-form-using-json-schema"></a>Définir un formulaire à l’aide d’un schéma JSON
 
@@ -66,7 +65,7 @@ Pour spécifier des modèles et des invites dans le schéma JSON, utilisez le m�
 
 |   Propriété   |          Sommaire           |                                                   Description                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
-|   Datetime   |            bool             |                                  Indique si le champ est un champ `DateTime`.                                  |
+|   DateTime   |            bool             |                                  Indique si le champ est un champ `DateTime`.                                  |
 |   Describe   |      chaîne ou objet       |                  Description d’un champ, comme décrit dans [DescribeAttribute][describeAttribute].                  |
 |    Termes     |       `[string,...]`        |                  Expressions régulières pour faire correspondre une valeur de champ comme décrit dans TermsAttribute.                  |
 |  MaxPhrase   |             int             |                  Exécute les termes via `Language.GenerateTerms(string, int)` pour les développer.                   |

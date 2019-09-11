@@ -3,19 +3,18 @@ title: Ajouter des médias aux messages | Microsoft Docs
 description: Découvrez comment ajouter des médias à l’aide du kit SDK Bot Framework.
 keywords: médias, messages, images, audio, vidéo, fichiers, MessageFactory, cartes enrichies, messages, cartes adaptatives, carte de héros, actions suggérées
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 4caa11221ed930a627b53d7f46107adb226a816d
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464711"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876172"
 ---
 # <a name="add-media-to-messages"></a>Ajouter des médias aux messages
 
@@ -23,7 +22,15 @@ ms.locfileid: "67464711"
 
 Les messages échangés entre l’utilisateur et le bot peuvent contenir des pièces jointes multimédia, comme des images, des vidéos, des pistes audio et des fichiers. Le kit SDK Bot Framework prend en charge l’envoi de messages enrichis à l’utilisateur. Pour déterminer le type des messages enrichis pris en charge sur un canal (Facebook, Skype, Slack, etc.), consultez la documentation associée pour en savoir plus sur les limitations.
 
-Pour des exemples de cartes disponibles, consultez [Concevoir une expérience utilisateur](../bot-service-design-user-experience.md).
+## <a name="prerequisites"></a>Prérequis
+- Connaissances des [concepts de base des bots](bot-builder-basics.md).
+- Le code de cet article est basé sur les exemples suivants :
+
+  | Exemple de code | C# | JS |
+  | :------ | :----- | :---|
+  | Cartes | [Exemple de code C#](https://aka.ms/bot-cards-sample-code) | [Exemple de code JS](https://aka.ms/bot-cards-js-sample-code) |
+  | Pièces jointes | [Exemple de code C#](https://aka.ms/bot-attachments-sample-code) | [Exemple de code JS](https://aka.ms/bot-attachments-sample-code-js) |
+  | Actions suggérées | [Exemple de code C#](https://aka.ms/SuggestedActionsCSharp) | [Exemple de code JS](https://aka.ms/SuggestedActionsJS) |
 
 ## <a name="send-attachments"></a>Envoyer des pièces jointes
 
@@ -241,14 +248,6 @@ Pour envoyer un carrousel de cartes, envoyez une réponse avec les pièces joint
 Pour des exemples de cartes disponibles, consultez [Concevoir une expérience utilisateur](../bot-service-design-user-experience.md).
 
 Pour plus d’informations sur le schéma, consultez le [schéma de carte Bot Framework](https://aka.ms/botSpecs-cardSchema) et la [section sur l’activité de message](https://aka.ms/botSpecs-activitySchema#message-activity) dans le schéma d’activité Bot Framework.
-
-| Exemple de code | C# | JS |
-| :------ | :----- | :---|
-| Cartes | [Exemple de code C#](https://aka.ms/bot-cards-sample-code) | [Exemple de code JS](https://aka.ms/bot-cards-js-sample-code) |
-| Pièces jointes | [Exemple de code C#](https://aka.ms/bot-attachments-sample-code) | [Exemple de code JS](https://aka.ms/bot-attachments-sample-code-js) |
-| Actions suggérées | [Exemple de code C#](https://aka.ms/SuggestedActionsCSharp) | [Exemple de code JS](https://aka.ms/SuggestedActionsJS) |
-
-Pour obtenir plus d’exemples, consultez le référentiel d’exemples Bot Builder sur [GitHub](https://aka.ms/bot-samples-readme).
 
 ### <a name="code-sample-for-processing-adaptive-card-input"></a>Exemple de code pour le traitement d’une entrée de carte adaptative
 

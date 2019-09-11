@@ -3,18 +3,17 @@ title: Entités et types d’activités | Microsoft Docs
 description: Entités et les types d’activités.
 keywords: mentionner des entités, types d’activités, consommer des entités
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: e38d9887e50455e66ac7fdcd5c4e7bb309a3e3e9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 4a37824ffc6eeeda69330a659d3d026bde5f0069
+ms.sourcegitcommit: 99fa595b81e6fabb1f4a93e0694e88bfbfab2dd4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405941"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808434"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -138,10 +137,10 @@ if (entity[0].type === "GeoCoordinates" && entity[0].latitude > 34) {
 ---
 
 ## <a name="activity-types"></a>Types d'activités
+<!-- 
+This code example show how to process an activity of type **message**:
 
-Cet exemple de code montre comment traiter une activité de type **message** :
-
-# <a name="ctabcs"></a>[C#](#tab/cs)
+# [C#](#tab/cs)
 
 ```cs
 if (context.Activity.Type == ActivityTypes.Message){
@@ -149,7 +148,7 @@ if (context.Activity.Type == ActivityTypes.Message){
 }
 ```
 
-# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+# [JavaScript](#tab/js)
 
 ```js
 if(context.activity.type === 'message'){
@@ -157,9 +156,9 @@ if(context.activity.type === 'message'){
 }
 ```
 
----
+--- -->
 
-Les activités peuvent être de différents types, au-delà du **message** le plus courant. Vous trouverez plus d’informations et des explications sur la [page de schéma d’activité](https://aka.ms/botSpecs-activitySchema).
+Les activités peuvent être de différents types, au-delà du **message** le plus courant. Vous trouverez plus d’informations et des explications sur différents types d’activités dans le [schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema).
 
 ::: moniker range="azure-bot-service-3.0"
 
