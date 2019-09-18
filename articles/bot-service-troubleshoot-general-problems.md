@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2019
-ms.openlocfilehash: c9c8ff04e7093cd0375e52c4ecd90b44af4f4798
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 09/17/2019
+ms.openlocfilehash: 47f87555b48edcfdca6d07ab2bdaa52ef915a8da
+ms.sourcegitcommit: 61a2297fabf35c59693309f2a605e893634585b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298561"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71061069"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
@@ -78,7 +78,7 @@ Certaines plates-formes d’hébergement permettent de configurer le service de 
 
 ## <a name="how-can-i-guarantee-message-delivery-order"></a>Comment puis-je garantir l’ordre de livraison des messages ?
 
-Bot Framework conserve autant que possible l’ordre des messages. Par exemple, si vous envoyez le message A et que vous attendez la fin de cette opération HTTP avant de lancer une autre opération HTTP pour envoyer le message B, Bot Framework comprend automatiquement que le message A doit précéder le message B. Cependant, l’ordre de livraison du message ne peut généralement pas être garanti puisque le canal se charge en définitive de la livraison du message et peut réordonner les messages. Pour réduire le risque que les messages soient livrés dans le mauvais ordre, vous pouvez opter pour la mise en place d’un délai entre les messages.
+Bot Framework conserve autant que possible l’ordre des messages. Par exemple, si vous envoyez le message A et que vous attendez la fin de cette opération HTTP avant de lancer une autre opération HTTP pour envoyer le message B, Bot Framework comprend automatiquement que le message A doit précéder le message B. Cependant, l’ordre de livraison du message ne peut généralement pas être garanti puisque le canal se charge en définitive de la livraison du message et peut réordonner les messages.
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>Comment puis-je intercepter tous les messages entre l’utilisateur et mon robot ?
 
