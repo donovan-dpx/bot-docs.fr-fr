@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
+ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026343"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224787"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -91,7 +91,11 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 
 La première étape pour configurer une base de connaissances QnA Maker est de configurer un service QnA Maker dans Azure. Pour ce faire, suivez les instructions détaillées [ici](https://aka.ms/create-qna-maker).
 
-Une fois votre service QnA Maker créé dans Azure, vous devez enregistrer la clé _Clé 1_ Cognitive Services fournie pour celui-ci. Elle sera utilisée comme \<clé1-service-qna-azure> lors de l’ajout de l’application QnA Maker à votre application de dispatch. Les étapes suivantes vous fournissent cette clé :
+Une fois votre service QnA Maker créé dans Azure, vous devez enregistrer la clé _Clé 1_ Cognitive Services fournie pour celui-ci. Elle sera utilisée comme \<clé1-service-qna-azure> lors de l’ajout de l’application QnA Maker à votre application de dispatch. 
+
+Découvrez plus en détail les [deux différents types de clés](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) utilisés avec QnA Maker.
+
+Les étapes suivantes vous fournissent cette clé :
     
 ![Sélectionner Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
@@ -152,6 +156,8 @@ La **clé de création** est utilisée uniquement pour la création et la modifi
 |QnA Maker| **ID d’application** : disponible dans le [portail QnA Maker](https://http://qnamaker.ai) dans la page Paramètres une fois que vous publiez l’application. Il s’agit de l’ID figurant dans la première partie de la commande POST après la base de connaissances. `POST /knowledgebases/{APP-ID}/generateAnswer` est un exemple d’emplacement où trouver l’ID d’application.<br>**Clé de création** : disponible dans le portail Azure, pour la ressource QnA Maker, sous **Clés**. Vous avez seulement besoin d’une des clés.|
 
 La clé de création n’est pas utilisée pour obtenir un score de prédiction ni un score de confiance de l’application publiée. Vous avez besoin des clés de point de terminaison pour cette action. Les **[clés de point de terminaison](#service-endpoint-keys)** sont disponibles et utilisées ultérieurement dans ce tutoriel. 
+
+Découvrez plus en détail les [deux différents types de clés](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) utilisés avec QnA Maker.
 
 ## <a name="create-the-dispatch-model"></a>Créer le modèle de dispatch
 
