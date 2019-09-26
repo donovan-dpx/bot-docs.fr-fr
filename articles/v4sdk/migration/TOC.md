@@ -7,6 +7,8 @@
 # [Migrer un bot .NET v3 vers un bot .NET Core v4](conversion-core.md)
 # [Utilisation de l’état utilisateur .NET v3 dans un bot v4](csharp-user-state-using.md)
 # [Migrer un bot JavaScript v3 vers un bot v4](conversion-javascript.md)
+# [Utilisation de l’état utilisateur JavaScript v3 dans un bot v4](javascript-user-state-using.md)
+
 <!-- Remember to add JavaScript user state topic -->
 
 <!-- Current target:
