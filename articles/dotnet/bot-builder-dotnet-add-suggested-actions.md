@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4d3b89ddb9a170aa9372ad667b9fce271fec5fe3
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 26a253ed46f8ed0d23f2bd046de132f44cd19019
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297462"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278959"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Ajouter des actions suggérées aux messages
 
@@ -25,9 +25,6 @@ ms.locfileid: "70297462"
 > - [REST](../rest-api/bot-framework-rest-connector-add-suggested-actions.md)
 
 [!INCLUDE [Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)]
-
-> [!TIP]
-> Utilisez [Channel Inspector][channelInspector] pour découvrir l’aspect et le mode de fonctionnement des actions suggérées sur les différents canaux.
 
 ## <a name="send-suggested-actions"></a>Envoyer des actions suggérées
 
@@ -41,10 +38,9 @@ Lorsque l’utilisateur appuie sur l’une des actions suggérées, le robot re�
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
-- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activity</a>
+- [Classe Activity](https://aka.ms/ActivityClass-dotnet-API)
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">Interface IMessageActivity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.cardaction" target="_blank">CardAction class</a> (Classe CardAction)
 - <a href="/dotnet/api/microsoft.bot.connector.suggestedactions" target="_blank">SuggestedActions class</a> (Classe SuggestedActions)
@@ -52,7 +48,5 @@ Lorsque l’utilisateur appuie sur l’une des actions suggérées, le robot re�
 [cardAction]: /dotnet/api/microsoft.bot.connector.cardaction
 
 [inspector]: ../bot-service-channel-inspector.md
-
-[channelInspector]: ../bot-service-channel-inspector.md
 
 

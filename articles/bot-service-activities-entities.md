@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
-ms.openlocfilehash: 4a37824ffc6eeeda69330a659d3d026bde5f0069
-ms.sourcegitcommit: 99fa595b81e6fabb1f4a93e0694e88bfbfab2dd4
+ms.openlocfilehash: e1eae45702a1eee94714f96425050948310c7520
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808434"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693114"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -84,7 +84,7 @@ L’objet geoCoordinates contient ces propriétés :
 | Type | type de l’entité (« GeoCoordinates ») |
 | Nom | nom du lieu |
 | Longitude | longitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
-| Longitude | latitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
+| Latitude | latitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Elevation | élévation de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 
 Cet exemple de code montre comment ajouter une entité place à la collection d’entités :

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5036ff7e6fd563b15e80cf12ac40fe274af70775
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cce7537124810504c9b92d86ad0ef7bd3b3ac5e9
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298545"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278991"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 
@@ -88,4 +88,4 @@ L’activité **messageReaction** peut correspondre à n’importe quel nombre d
 
 - [Envoyer et recevoir des activités](bot-builder-dotnet-connector.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
-- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
+- [Classe Activité](https://aka.ms/ActivityClass-dotnet-API)

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 7/9/2019
-ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037509"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693133"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Déboguer un robot avec un intergiciel d’inspection
 Cet article explique comment déboguer votre bot à l’aide d’un intergiciel d’inspection. Cette fonctionnalité permet à l’émulateur Bot Framework Emulator de déboguer le trafic transitant par le bot, en plus d’inspecter l’état actuel du bot. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation. 
@@ -38,12 +38,14 @@ Pour vérifier la version de votre émulateur, sélectionnez **Aide** -> **À pr
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Configurez l’état d’inspection dans le fichier **Démarrage**. Ajoutez l’intergiciel d’inspection à l’adaptateur. L’état d’inspection est fourni par injection de dépendances. Consultez la mise à jour du code ci-dessous ou reportez-vous à l’exemple d’inspection ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
 
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+**Startup.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
 
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
+**EchoBot.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Avant de mettre à jour le code de votre robot, vous devez mettre à jour ses packages vers les versions les plus récentes en exécutant la commande suivante dans votre terminal : 
