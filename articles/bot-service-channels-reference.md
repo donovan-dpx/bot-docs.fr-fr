@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2019
-ms.openlocfilehash: ec160690fd76bfa921a3dea25eef598215787531
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ffb7864eabecd6aa509e2b347f3df48985d00584
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297204"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693141"
 ---
 # <a name="categorized-activities-by-channel"></a>Activités classées par canal
 
@@ -248,3 +248,12 @@ Par défaut, Web Chat affiche :
 - « others» : affiche un avertissement (jamais visible dans la version de production). Vous pouvez modifier ce pipeline de rendu pour ajouter, supprimer ou remplacer un rendu personnalisé.
 
 Vous pouvez utiliser Web Chat pour envoyer n’importe quel type d’activité ou de charge utile. Toutefois, cette fonctionnalité n’est ni documentée ni recommandée. Vous devez utiliser une activité d’événement à la place.
+
+## <a name="action-support-by-channel"></a>Prise en charge des actions par canal
+
+Le tableau suivant présente les actions de carte et la prise en charge des actions suggérées par canal.
+
+ \                      | Cortana  | Ligne directe | Direct Line (Web Chat) | Email | Facebook | GroupMe |   Kik   | Lignes  | Teams | Slack | Skype | Skype Entreprise | Telegram | Twilio  
+:---------------------- | :-----:  | :---------: | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :---: | :------------: | :------: | :----:  
+Actions suggérées       |    0     |     100     |          100           |   0   |    10    |    0    |   20    |  13   |   0   |  100  |  10   |       0        |    100   |   0     
+Actions de carte            |   100    |     100     |          100           |   0   |     3    |    0    |   20    |  99   |   3   |  100  |   3   |       0        |     0    |   0     

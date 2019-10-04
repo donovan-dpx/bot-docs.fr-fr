@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 5ca0e9d036d5d3628fff9ae8b0bf5d9f4aa9d8b4
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 3ef81582c500a403080908e0d2c63de2ead5b9ab
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671444"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693146"
 ---
 # <a name="about-azure-bot-service"></a>À propos d’Azure Bot Service
 
@@ -72,6 +72,8 @@ Les bots sont des applications complexes composées de nombreux éléments diff�
 - Testez votre bot en local avec l’[émulateur](bot-service-debug-emulator.md). L’émulateur Bot Framework Bot est une application autonome qui fournit non seulement une interface de conversation, mais également des outils de débogage et d’interrogation qui permettent de comprendre le comportement de votre bot.  L’émulateur peut être exécuté localement en même temps que votre application de bot en développement. 
  
 - Testez votre bot sur le [Web](bot-service-manage-test-webchat.md). Une fois configuré via le portail Azure, votre bot peut également être accessible via une interface de conversation web. L’interface de conversation web constitue un excellent moyen d’accorder l’accès à votre bot à des testeurs et à d’autres personnes ne disposant pas d’un accès direct au code d’exécution du bot.
+
+- Procédez à un [Test unitaire](https://docs.microsoft.com/en-us/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0) de votre bot avec la mise à jour de juillet du kit SDK de Bot Framework.
 
 ### <a name="publish"></a>Publish 
 Lorsque vous êtes prêt à rendre votre bot accessible sur le Web, publiez-le dans [Azure](bot-builder-howto-deploy-azure.md) ou dans votre propre centre de données ou service web. La possession d’une adresse sur l’Internet public est la première étape pour que votre bot prenne vie sur votre site, ou dans des canaux de conversation.

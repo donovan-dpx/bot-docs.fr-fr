@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037538"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279877"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -34,7 +34,7 @@ Quatre technologies d’authentification sont utilisées pour assurer la fiabili
 | Technology | Description |
 |----|----|
 | **SSL/TLS** | La technologie SSL/TLS est utilisée pour toutes les connexions de service à service. Les certificats `X.509v3` permettent de déterminer l’identité de tous les services HTTPS. **Les clients doivent toujours vérifier les certificats de service pour s’assurer de leur fiabilité et de leur validité.** (Ce programme N’utilise PAS de certificats de clients.) |
-| **OAuth 2.0** | Le service de connexion OAuth 2.0 au compte Microsoft (MSA)/AAD v2 permet de générer un jeton sécurisé pouvant être utilisé par un robot pour envoyer des messages. Il s’agit d’un jeton de service à service ; aucune connexion utilisateur n’est nécessaire. |
+| **OAuth 2.0** | OAuth 2.0 utilise le service de connexion de compte Azure Active Directory (Azure AD) v2 pour générer un jeton sécurisé qu’un bot peut utiliser pour envoyer des messages. Il s’agit d’un jeton de service à service ; aucune connexion utilisateur n’est nécessaire. |
 | **JSON Web Token (JWT)** | Les JWT permettent d’encoder les jetons qui sont envoyés vers et depuis le robot. **Les clients doivent vérifier tous les jetons JWT qu’ils reçoivent**, conformément aux exigences décrites dans cet article. |
 | **Métadonnées OpenID** | Le service Bot Connector publie une liste des jetons valides qu’il utilise pour signer ses propres jetons JWT sur les métadonnées OpenID à un point de terminaison statique bien défini. |
 
@@ -55,9 +55,9 @@ Ce diagramme montre les étapes de l’authentification du robot vers le connect
 > [!IMPORTANT]
 > Si vous ne l’avez pas déjà fait, vous devez [enregistrer votre robot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son identifiant d’application et son mot de passe. Pour demander un jeton d’accès, vous devez disposer de l’identifiant d’application et du mot de passe du robot.
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion MSA/AAD v2
+### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion de connexion de compte Azure AD v2
 
-Pour demander un jeton d’accès au service de connexion MSA/AAD v2, envoyez la requête suivante en remplaçant **MICROSOFT-APP-ID** et **MICROSOFT-APP-PASSWORD** par l’identifiant d’application et le mot de passe que vous avez obtenus lorsque vous avez [enregistré](../bot-service-quickstart-registration.md) votre robot avec Bot Framework.
+Pour demander un jeton d’accès au service de connexion, envoyez la requête suivante en remplaçant **MICROSOFT-APP-ID** et **MICROSOFT-APP-PASSWORD** par l’identifiant d’application et le mot de passe que vous avez obtenus lorsque vous avez [enregistré](../bot-service-quickstart-registration.md) votre bot avec Bot Framework.
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token
@@ -67,17 +67,17 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Étape 2 : Récupérer le jeton JWT dans la réponse du service de connexion MSA/AAD v2
+### <a name="step-2-obtain-the-jwt-token-from-the-the-azure-ad-v2-account-login-service-response"></a>Étape 2 : Obtenir le jeton JWT dans la réponse du service de connexion de compte Azure AD v2
 
-Si votre application est autorisée par le service de connexion MSA/AAD v2, le corps de réponse JSON indiquera votre clé d’accès, son type et son délai d’expiration (en secondes). 
+Si votre application est autorisée par le service de connexion, le corps de la réponse JSON indique votre jeton d’accès, son type et son délai d’expiration (en secondes).
 
 Lorsque vous ajoutez le jeton à l’en-tête `Authorization` d’une requête, vous devez utiliser la valeur exacte indiquée dans cette réponse (ne pas échapper ou encoder la valeur du jeton). Le jeton d’accès est valide jusqu’à son expiration. Pour éviter que l’expiration des jetons n’ait une incidence sur le fonctionnement de votre robot, vous pouvez choisir de les mettre en cache et de les actualiser de façon proactive.
 
-Cet exemple montre une réponse du service de connexion MSA/AAD v2 :
+Cet exemple montre une réponse du service de connexion de compte Azure AD v2 :
 
 ```http
 HTTP/1.1 200 OK
-... (other headers) 
+... (other headers)
 ```
 
 ```json
@@ -97,7 +97,8 @@ Lorsque vous envoyez une requête API au service Bot Connector, indiquez le jeto
 Authorization: Bearer ACCESS_TOKEN
 ```
 
-Toutes les requêtes que vous envoyez au service Bot Connector doivent inclure le jeton d’accès dans l’en-tête `Authorization`. Si le jeton est correctement formé, qu’il n’est pas expiré et qu’il a été créé par le service de connexion MSA/AAD v2, le service Bot Connector autorise la requête. Des vérifications supplémentaires sont effectuées pour s’assurer que le jeton appartient au robot qui a envoyé la requête.
+Toutes les requêtes que vous envoyez au service Bot Connector doivent inclure le jeton d’accès dans l’en-tête `Authorization`.
+Si le jeton est correctement formé, qu’il n’est pas expiré et qu’il a été créé par le service de connexion de connexion de compte Azure AD v2, le service Bot Connector autorise la requête. Des vérifications supplémentaires sont effectuées pour s’assurer que le jeton appartient au robot qui a envoyé la requête.
 
 L’exemple suivant montre comment indiquer le jeton d’accès dans l’en-tête `Authorization` de la requête. 
 
@@ -109,7 +110,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1Ni...
 ```
 
 > [!IMPORTANT]
-> Indiquez le jeton JWT uniquement dans l’en-tête `Authorization` des requêtes que vous envoyez au service Bot Connector. N’envoyez PAS le jeton sur des canaux non sécurisés et NE l’incluez PAS dans les requêtes HTTP que vous envoyez à d’autres services. Le jeton JWT que vous obtenez du service de connexion MSA/AAD v2 est comparable à un mot de passe. Il doit être manipulé avec le plus grand soin. Toutes les personnes qui disposent du jeton peuvent s’en servir pour effectuer des opérations au nom de votre robot. 
+> Indiquez le jeton JWT uniquement dans l’en-tête `Authorization` des requêtes que vous envoyez au service Bot Connector.
+> N’envoyez PAS le jeton sur des canaux non sécurisés et NE l’incluez PAS dans les requêtes HTTP que vous envoyez à d’autres services.
+> Le jeton JWT que vous obtenez du service de connexion de compte Azure AD v2 est comparable à un mot de passe et doit être utilisé avec le plus grand soin. Toutes les personnes qui disposent du jeton peuvent s’en servir pour effectuer des opérations au nom de votre robot.
 
 #### <a name="bot-to-connector-example-jwt-components"></a>Robot vers connecteur : exemple de composants JWT
 
