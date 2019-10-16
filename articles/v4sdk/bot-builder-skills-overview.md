@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
+ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167118"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236432"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Assistant virtuel : vue d’ensemble des compétences
 
@@ -44,7 +44,7 @@ Un objectif fondamental de la conception des compétences consistait à mainteni
 |[Compétence E-mail](https://aka.ms/bf-email-skill)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|
 |[Compétence ToDo](https://aka.ms/bf-todo-skill)|Ajoutez des fonctionnalités de gestion des tâches à votre assistant. Technologie Microsoft Graph.|
 |[Compétence Point d’intérêt](https://aka.ms/bf-poi-skill)|Trouvez des points d’intérêt et des directions. Technologie Azure Maps et FourSquare.|
-|[Compétence Secteur automobile](https://aka.ms/bf-autos-kill)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
+|[Compétence Secteur automobile](https://aka.ms/bf-auto-skill)|Compétence verticale du secteur présentant l’activation du contrôle des fonctionnalités d’un véhicule.|
 |[Compétences expérimentales](https://aka.ms/bf-experimental-skills)|Actualités, réservation de restaurant et météo.|
 
 ## <a name="getting-started"></a>Mise en route
