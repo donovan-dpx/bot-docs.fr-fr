@@ -6,13 +6,13 @@ manager: kamrani
 ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
-ms.date: 08/03/2019
-ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.date: 10/28/2019
+ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
+ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386107"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73031222"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Connecter un bot à Facebook
 
@@ -22,6 +22,9 @@ Votre bot peut être connecté à Facebook Messenger et à Facebook Workplace, a
 > L’interface utilisateur de Facebook peut être légèrement différente selon la version que vous utilisez.
 
 ## <a name="connect-a-bot-to-facebook-messenger"></a>Connecter un bot à Facebook Messenger
+
+> [!NOTE]
+> À compter du 16 décembre 2019, Workplace by Facebook change le modèle de sécurité pour les intégrations personnalisées.  Les intégrations actuelles créées avec Microsoft Bot Framework doivent être mises à jour pour utiliser Bot Framework Adapter (disponible dans JavaScript/Node.js) et déployées avec une application web sur Azure.  Les nouveaux bots Workplace développés avec Microsoft Bot Framework doivent également utiliser l’adaptateur JavaScript Facebook. Découvrez-en plus sur l’[utilisation de l’adaptateur Facebook](https://aka.ms/botframework-workplace-adapter). Les instructions ci-dessous sont valables jusqu’au 16 décembre 2019 uniquement.
 
 Pour en savoir plus sur le développement pour Facebook Messenger, consultez la [documentation de la plate-forme Messenger](https://developers.facebook.com/docs/messenger-platform). Si vous le souhaitez consultez les [directives de prélancement](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), le [guide de démarrage rapide](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) et le [guide de configuration](https://developers.facebook.com/docs/messenger-platform/guides/setup) Facebook.
 
