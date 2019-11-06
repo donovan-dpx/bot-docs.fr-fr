@@ -7,16 +7,16 @@ author: ivorb
 manager: kamrani
 ms.service: bot-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 11/01/2019
 ms.author: kamrani
-ms.openlocfilehash: 3a1bf9ef71ec3121cc845a2a93fd191eacc28f8f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cba508d0895b2e2657abd37073bc5c348c1eef44
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298191"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441609"
 ---
-## <a name="about-direct-line"></a>À propos de Direct Line
+# <a name="about-direct-line"></a>À propos de Direct Line
 
 Le canal Bot Framework Direct Line est un moyen simple d’intégrer votre bot dans votre application mobile, page web ou autre application.
 Direct Line est disponible sous trois formes :

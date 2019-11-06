@@ -7,13 +7,13 @@ keywords: Kit de développement logiciel (SDK) Bot Framework, robot de débogage
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 7/9/2019
-ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.date: 11/01/2019
+ms.openlocfilehash: 86521259b284694fcc35f27899953c9eea1b57d0
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693133"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592260"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Déboguer un robot avec un intergiciel d’inspection
 Cet article explique comment déboguer votre bot à l’aide d’un intergiciel d’inspection. Cette fonctionnalité permet à l’émulateur Bot Framework Emulator de déboguer le trafic transitant par le bot, en plus d’inspecter l’état actuel du bot. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation. 
@@ -22,8 +22,8 @@ Nous utilisons un EchoBot généré localement à l’aide de Bot Framework v4 (
 
 ## <a name="prerequisites"></a>Prérequis
 - Téléchargez et installez [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)
-- Connaissances de l’[intergiciel](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) du robot
-- Connaissances de l’[état de gestion](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) du robot
+- Connaissances de l’[intergiciel](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) du robot
+- Connaissances de l’[état de gestion](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) du robot
 - Télécharger et installer [ngrok](https://ngrok.com/) (si vous souhaitez déboguer un robot configuré dans Azure pour utiliser des canaux supplémentaires)
 
 ## <a name="update-your-emulator-to-the-latest-version"></a>Mettre à jour votre émulateur vers la dernière version 
