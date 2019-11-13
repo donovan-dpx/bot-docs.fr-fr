@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/05/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b6bff3cd3d1245556b86a0d20845872d6074c104
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ec56a36feb747160e1a82f9831aa323074d46801
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167394"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933625"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
@@ -79,7 +79,7 @@ Nous créons des services pour le bot que d’autres parties du code demandent.
 - Services pour gérer l’état : le stockage, l’état utilisateur et l’état de conversation.
 - Le dialogue que le bot va utiliser.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-55)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
 
 ---
 

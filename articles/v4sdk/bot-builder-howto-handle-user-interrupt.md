@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/18/2019
+ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 1c75349605e7b142035112c84c2b8684fe78ca85
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026335"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933554"
 ---
 # <a name="handle-user-interruptions"></a>Gérer les interruptions par l’utilisateur
 
@@ -56,7 +56,7 @@ Si l’utilisateur tape « aide », la méthode `InterrupAsync` envoie un mess
 
 Si l’utilisateur tape « annuler », elle appelle `CancelAllDialogsAsync` sur son contexte de dialogue interne, ce qui efface sa pile de dialogues et entraîne sa fermeture avec un état annulé et aucune valeur de résultat. Pour `MainDialog` (illustré plus tard), il apparaît que le dialogue de réservation s’est terminé et a retourné Null, comme quand l’utilisateur choisit de ne pas confirmer sa réservation.
 
-[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56&highlight=43-45,49-51)]
+[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -76,7 +76,7 @@ Si l’utilisateur tape « aide », la méthode `interrupt` envoie un message,
 
 Si l’utilisateur tape « annuler », elle appelle `cancelAllDialogs` sur son contexte de dialogue interne, ce qui efface sa pile de dialogues et entraîne sa fermeture avec un état annulé et aucune valeur de résultat. Pour `MainDialog` (illustré plus tard), il apparaît que le dialogue de réservation s’est terminé et a retourné Null, comme quand l’utilisateur choisit de ne pas confirmer sa réservation.
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-37&highlight=27-29,32-34)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
 
 ---
 
@@ -104,11 +104,11 @@ Le code dans `BookingDialog` n’apparaît pas ici car il n’est pas directemen
 
 Au moment où la nouvelle activité de message arrive, le bot exécute `MainDialog`. `MainDialog` invite l’utilisateur à indiquer ce qu’il veut. Ensuite, `bookingDialog` est démarré dans la méthode `MainDialog.actStep`, avec un appel à `beginDialog` comme indiqué ci-dessous.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-115&highlight=6,27)]
 
 Par la suite, dans la méthode `finalStep` de la classe `MainDialog`, le dialogue de réservation se termine et la réservation est considérée comme terminée ou annulée.
 
-[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=135-139)]
+[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=142-159)]
 
 Le code dans `BookingDialog` n’apparaît pas ici car il n’est pas directement liée à la gestion des interruptions. Il est utilisé pour inviter les utilisateurs à donner des détails sur la réservation. Vous trouverez ce code dans **dialogs/bookingDialogs.js**.
 
@@ -124,7 +124,7 @@ Ensuite, nous traitons les exceptions non gérées susceptibles de se produire.
 
 Dans notre exemple, le gestionnaire `OnTurnError` de l’adaptateur reçoit toutes les exceptions levées par la logique de tour de votre bot. Si une exception est levée, le gestionnaire supprime l’état de la conversation actuelle pour empêcher le bot de rester bloqué dans une boucle d’erreur provoquée par un état incorrect.
 
-[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=13-45)]
+[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=19-50)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -132,7 +132,7 @@ Dans notre exemple, le gestionnaire `OnTurnError` de l’adaptateur reçoit tout
 
 Dans notre exemple, le gestionnaire `onTurnError` de l’adaptateur reçoit toutes les exceptions levées par la logique de tour de votre bot. Si une exception est levée, le gestionnaire supprime l’état de la conversation actuelle pour empêcher le bot de rester bloqué dans une boucle d’erreur provoquée par un état incorrect.
 
-[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=34-44)]
+[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57)]
 
 ---
 
@@ -158,7 +158,7 @@ Enfin, dans `Startup.cs`, le bot est créé en tant que bot passager, et à chaq
 
 Enfin, dans `index.js`, le bot est créé.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=75-78)]
 
 À titre de référence, voici les définitions de classe utilisées dans l’appel pour créer le bot ci-dessus.
 

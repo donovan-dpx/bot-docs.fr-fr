@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2a1f36e548f92e9c057947f0c5a82e426a8d0d23
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 774738186127bff1e680d905d208b69097402d8e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167386"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933582"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envoyer des notifications proactives aux utilisateurs
 
@@ -93,7 +93,7 @@ Chaque fois que la page `/api/notify` du serveur est demandée, le serveur récu
 Le serveur utilise ensuite la méthode `continueConversation` pour envoyer le message proactif.
 Le paramètre pour `continueConversation` est une fonction qui sert de gestionnaire de tours au bot pour ce tour.
 
-[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=56-68&highlight=4-5)]
+[!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
 
 ---
 

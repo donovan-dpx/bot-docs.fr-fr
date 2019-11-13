@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/23/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c9303962c992ef9b0801d0bdaabf08886755777d
-ms.sourcegitcommit: 33b67191b3a1c5744e1b93b0c02345536db41a54
+ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72561364"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933761"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -310,7 +310,7 @@ Dans **BotServices.cs**, les informations contenues dans le fichier de configura
 
 **BotServices.cs**
 
-[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
+[!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=16-31)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
@@ -318,7 +318,7 @@ Dans **dispatchBot.js**, les informations contenues dans le fichier de configura
 
 **bots/dispatchBot.js**
 
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
 ---
 
@@ -343,7 +343,7 @@ Dans la méthode `onMessage` **dispatchBot.js**, nous vérifions le message d’
 
 **bots/dispatchBot.js**
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
 
 ---
 
@@ -366,7 +366,7 @@ Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur
 Lorsque le modèle renvoie un résultat, il indique quel service est le mieux à même de gérer l’énoncé. Le code de cet exemple utilise le _topIntent_ reconnu pour montrer comment router la demande vers le service correspondant.
 
 **bots/dispatchBot.js**  
-[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
 
 Si la méthode `processHomeAutomation` ou `processWeather` est appelée, les résultats lui sont passés à partir du modèle de dispatch au sein de _recognizerResult.luisResult_. La méthode spécifiée fournit alors des commentaires utilisateur indiquant la première intention du modèle de dispatch, ainsi que la liste ordonnée de tous les intentions et entités détectées.
 
