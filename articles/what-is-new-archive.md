@@ -7,16 +7,70 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 07/17/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6b0b85abe825e0a4298ceb9985cca1f31e35ddbb
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6d73ad7bc0226874253dfe37a00b09ab22677b92
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167318"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441650"
 ---
-# <a name="whats-new-in-bot-framework-may-2019"></a>Nouveautés de Bot Framework (mai 2019)
+# <a name="whats-new-july-2019"></a>Nouveautés (juillet 2019)
+
+[!INCLUDE[applies-to](includes/applies-to.md)]
+
+Le kit SDK Bot Framework v4 est un [kit SDK open source][1a] qui permet aux développeurs de modéliser et de créer une conversation sophistiquée à l’aide de leur langage de programmation préféré.
+
+Cet article résume les nouvelles fonctionnalités et les améliorations clés dans Bot Framework et Azure Bot Service.
+
+|   | C#  | JS  | Python |   
+|---|:---:|:---:|:------:|
+|Kit SDK |[4.5][1] | [4.5][2] | [4.4.0b2 (préversion)][3] | 
+|Docs | [docs][5] |[docs][5] |  | |
+|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+
+[1a]:https://github.com/microsoft/botframework-sdk/#readme
+[1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
+[2]:https://github.com/Microsoft/botbuilder-js#packages
+[3]:https://github.com/Microsoft/botbuilder-python#packages
+[5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
+[6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
+[7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
+[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_typescript
+[9]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_es6
+[10]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi
+[111]:https://github.com/Microsoft/botbuilder-python/tree/master/samples
+
+
+## <a name="bot-framework-channels"></a>Canaux Bot Framework
+- [Direct Line Speech (préversion publique)](https://aka.ms/streaming-extensions) | [Documentation](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0) : Bot Framework et les services Microsoft Speech fournissent un canal activant le streaming bidirectionnel de la parole et du texte, du client vers l’application de bot, à l’aide de WebStockets.  
+
+- [Extension Direct Line App Service (préversion publique)](https://portal.azure.com) | [Documentation](https://aka.ms/directline-ase) : version de Direct Line qui permet aux clients de se connecter directement aux bots à l’aide de l’API Direct Line. Cela offre de nombreux avantages, notamment des performances et une isolation accrues. L’extension Direct Line App Service est disponible sur tous les services Azure App Services, notamment ceux hébergés dans un Azure App Service Environment. Un Azure App Service Environment fournit une isolation et est idéal pour travailler au sein d’un réseau virtuel. Un réseau virtuel vous permet de créer votre propre espace privé dans Azure et il est essentiel pour votre réseau cloud, car il offre isolation, segmentation et d’autres avantages clés. 
+
+## <a name="bot-framework-sdk"></a>SDK Bot Framework
+- [Adaptive Dialog (préversion du SDK v4.6)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme) | [Documentation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs) | [Exemples C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore) : Adaptive Dialog (Boîte de dialogue adaptative) permet maintenant aux développeurs de mettre à jour dynamiquement le workflow de conversation en fonction du contexte et des événements. Cela s’avère particulièrement utile lorsque vous traitez des changements de contexte de conversation et des interruptions au milieu d’une conversation. 
+  
+- [SDK Python Bot Framework (préversion 2)](https://github.com/microsoft/botbuilder-python) | [Exemples](https://github.com/Microsoft/botbuilder-python/tree/master/samples) : Le SDK Python prend maintenant en charge OAuth, Prompts, CosmosDB et inclut toutes les fonctionnalités majeures du SDK 4.5, ainsi que des exemples pour vous aider à découvrir les nouvelles fonctionnalités du SDK.
+
+## <a name="bot-framework-testing"></a>Tests Bot Framework
+- [Documents](https://aka.ms/testing-framework) | Packages de tests unitaires ([C#](https://aka.ms/nuget-botbuilder-testing)/ [JavaScript](https://aka.ms/npm-botbuilder-testing)) | [Exemple C#](https://aka.ms/cs-core-test-sample) | [Exemple JS](https://aka.ms/js-core-test-sample) : en réponse aux demandes des clients et développeurs souhaitant de meilleurs outils de test, la version de juillet du SDK introduit une nouvelle fonctionnalité de test unitaire. Le package Microsoft.Bot.Builder.testing simplifie le processus des dialogues de test unitaire dans votre bot.  
+
+- [Tests de canaux](https://github.com/Microsoft/BotFramework-Emulator/releases) | [docs](https://aka.ms/channel-testing): 
+
+introduit lors de Microsoft Build 2019, Bot Inspector est une nouvelle fonctionnalité de Bot Framework Emulator qui vous permet de déboguer et de tester des bots sur des canaux tels que Microsoft Teams, Slack, Cortana, etc. Lorsque vous utilisez le bot sur des canaux spécifiques, les messages sont mis en miroir dans Bot Framework Emulator où vous pouvez inspecter les données de message que le bot a reçues. De plus, un instantané de l’état de mémoire du bot pour un tour donné entre le canal et le bot est également restitué.
+
+## <a name="web-chat"></a>Discussion Web
+- En réponse aux demandes des clients d’entreprise, nous avons ajouté [un exemple de conversation web](https://github.com/microsoft/BotFramework-WebChat/tree/master/samples/19.a.single-sign-on-for-enterprise-apps#single-sign-on-demo-for-enterprise-apps-using-oauth) qui montre comment autoriser un utilisateur à accéder aux ressources d’une application métier avec un bot. Deux types de ressources sont utilisés pour illustrer l’interopérabilité d’OAuth avec Microsoft Graph et l’API GitHub.
+
+## <a name="solutions"></a>solutions
+- [Accélérateur de solution Assistant virtuel](https://github.com/Microsoft/botframework-solutions#readme) : propose un ensemble de modèles, d’accélérateurs de solutions et de compétences pour aider à créer des expériences conversationnelles sophistiquées. Le nouveau client d’application Android pour l’Assistant virtuel qui s’intègre à la reconnaissance vocale Direct Line Speech et à l’Assistant virtuel montrant comment un client d’appareil peut interagir avec votre Assistant virtuel et afficher des cartes adaptatives. Les mises à jour incluent également la prise en charge des fonctionnalités vocales Direct Line Speech et de Microsoft Teams.
+  
+- [Agent virtuel Dynamics 365 pour le service client (préversion publique)](https://dynamics.microsoft.com/en-us/ai/virtual-agent-for-customer-service/) : avec la préversion publique, vous pouvez fournir un service client exceptionnel avec des agents virtuels intelligents et adaptables. Les experts du service client peuvent facilement créer et améliorer les bots avec des insights pilotés par l’intelligence artificielle.
+  
+- [Chat pour Dynamics 365](https://www.powerobjects.com/powerpacks/powerchat/) : Chat pour Dynamics 365 offre plusieurs fonctionnalités permettant de garantir que les agents du support et les utilisateurs finaux peuvent interagir efficacement et rester très productifs. Discutez en direct et suivez les conversations des visiteurs de votre site web au sein de Microsoft Dynamics 365.
+
+# <a name="whats-new-may-2019"></a>Nouveautés (mai 2019)
 
 |   | C#  | JS  | Python |  Java | 
 |---|:---:|:---:|:------:|:-----:|

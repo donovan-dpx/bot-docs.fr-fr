@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3ede676cd1a09566b42dc49cc3258aa6e42cbe05
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ff072cd3a16c3a58099cf91c1de962837994075b
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298948"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441501"
 ---
 # <a name="net-migration-quick-reference"></a>Aide-mémoire sur la migration .NET
 
@@ -529,19 +529,22 @@ Task WriteAsync(IDictionary<string, object> changes, CancellationToken cancellat
 ```
 
 ```csharp
-var storageOptions = new CosmosDbStorageOptions()
+var storageOptions = new CosmosDbPartitionedStorageOptions()
 {
     AuthKey = configuration["cosmosKey"],
-    CollectionId = configuration["cosmosCollection"],
-    CosmosDBEndpoint = new Uri(configuration["cosmosPath"]),
+    ContainerId = configuration["cosmosContainer"],
+    CosmosDbEndpoint = configuration["cosmosPath"],
     DatabaseId = configuration["cosmosDatabase"]
 };
 
-IStorage dataStore = new CosmosDbStorage(storageOptions);
+IStorage dataStore = new CosmosDbPartitionedStorage(storageOptions);
 var conversationState = new ConversationState(dataStore);
 services.AddSingleton(conversationState);
 
 ```
+
+> [!NOTE]
+> Quand vous utilisez `CosmosDbPartitionedStorage`, vous êtes chargé de créer une base de données et de fournir le point de terminaison Cosmos DB, la clé d’autorisation et l’ID de base de données comme indiqué ci-dessus. Il vous suffit de spécifier l’ID d’un conteneur (votre bot le crée à votre place en vérifiant qu’il est correctement configuré pour le stockage de l’état du bot). Si vous créez vous-même le conteneur, veillez à ce que la clé de partition soit définie sur **/id** et définissez la propriété `CosmosDbPartitionedStorageOptions.ContainerId`.
 
 ## <a name="to-use-form-flow"></a>Pour utiliser Form Flow
 

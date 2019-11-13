@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0e8a8275a7ede599b3d25576abcd3c1160873db7
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: dc2c222866796f584bcad950a6e0afc40ab43a90
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167200"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441628"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 
@@ -377,3 +377,5 @@ Les ressources du bot, telles que les ID d’application, mots de passe, clés o
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - Pour comprendre le rôle de l’état dans les bots, consultez [Gestion de l’état](bot-builder-concept-state.md).
+
+- Pour comprendre les concepts clés du développement de bots pour Microsoft Teams, consultez [Fonctionnement des bots Microsoft Teams](bot-builder-basics-teams.md).

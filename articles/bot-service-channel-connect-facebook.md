@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
 ms.date: 10/28/2019
-ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
-ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
+ms.openlocfilehash: ba9f0ec8f4b6f0e2f5a7069ab456f96b303a4c92
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73031222"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441636"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Connecter un bot à Facebook
 
@@ -133,6 +133,9 @@ Une fois la vérification effectuée, dans le tableau de bord de l’application
 Assurez-vous que la page Facebook associée à ce bot est publiée. L’état s’affiche dans les paramètres des pages.
 
 ## <a name="connect-a-bot-to-facebook-workplace"></a>Connecter un bot à Facebook Workplace
+
+> [!NOTE]
+> À compter du 16 décembre 2019, Workplace by Facebook change le modèle de sécurité pour les intégrations personnalisées.  Les intégrations actuelles générées avec Microsoft Bot Framework v4 dans JavaScript/Node.js doivent être mises à jour pour utiliser l’[adaptateur Facebook Workplace](https://aka.ms/botframework-workplace-adapter) de Bot Framework, puis déployées avec Azure Web App pour continuer de fonctionner après cette date. Les nouveaux bots Microsoft Bot Framework qui ciblent Workplace doivent aussi être développés en utilisant cet adaptateur.
 
 Facebook Workplace est une version orientée entreprise de Facebook, qui permet aux employés de se connecter et de collaborer facilement. Il contient des vidéos en direct, des flux d’actualités, des groupes, des messages, des réactions, des recherches et des publications populaires. Il prend également en charge :
 
