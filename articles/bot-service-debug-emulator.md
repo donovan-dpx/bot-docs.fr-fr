@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: b6db4fd406b115ca88298d0727ff118821dad0d5
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: de15fbc7fb000bde3b62883405149d22f3ac23a0
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298260"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933647"
 ---
 # <a name="debug-with-the-emulator"></a>Déboguer avec l’émulateur
 
@@ -55,6 +55,37 @@ Avant de connecter votre robot au Bot Framework Emulator, vous devez exécuter v
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Se connecter à un bot s’exécutant sur un hôte local
 
+<!-- auth config steps -->
+### <a name="configure-the-emulator-for-authentication"></a>Configurer l’émulateur pour l’authentification
+
+Si un bot nécessite une authentification par le biais d’une boîte de dialogue de connexion, vous devez configurer l’émulateur comme indiqué ci-dessous.
+
+#### <a name="using-sign-in-verification-code"></a>Utilisation d’un code de vérification de connexion
+
+1. Démarrez l’émulateur.
+1. Dans l’émulateur, cliquez sur l’icône d’engrenage en bas à gauche ou sous l’onglet **Paramètres de l’émulateur** en haut à droite.
+1. Cochez la case **Utiliser un code de vérification de connexion pour OAuthCards**.
+1. Cochez la case **Contourner ngrok pour l’adresse locale**
+1. Cliquez sur le bouton **Enregistrer**.
+
+Quand vous cliquez sur le bouton de connexion affiché par le bot, un code de validation est généré.
+Vous entrez le code dans la zone de conversation d’entrée du bot pour établir l’authentification.
+Vous pouvez ensuite effectuer les opérations autorisées.
+
+Sinon, vous pouvez effectuer les étapes décrites ci-dessous.
+
+#### <a name="using-authentication-tokens"></a>Utilisation de jetons d’authentification
+
+1. Démarrez l’émulateur.
+1. Dans l’émulateur, cliquez sur l’icône d’engrenage en bas à gauche ou sous l’onglet **Paramètres de l’émulateur** en haut à droite.
+1. Cochez la case **Utiliser des jetons d’authentification de version 1.0**.
+1. Entrez le chemin local de l’outil **ngrok**. Pour plus d’informations sur l’outil, consultez [ngrok](https://ngrok.com/).
+1. Cochez la case **Exécuter ngrok au démarrage de l’émulateur**.
+1. Cliquez sur le bouton **Enregistrer**.
+
+Quand vous cliquez sur le bouton de connexion affiché par le bot, vous êtes invité à entrer vos informations d’identification. Un jeton d’authentification est généré. Vous pouvez ensuite effectuer les opérations autorisées.
+
+
 ![Interface utilisateur de l’émulateur](media/emulator-v4/emulator-welcome.png)
 
 Pour vous connecter à un robot s’exécutant localement, cliquez sur **Ouvrir le robot**. Ajoutez le numéro de port que vous avez copié précédemment dans l’URL suivante et collez l’URL mise à jour dans la barre d’URL du robot :
@@ -64,7 +95,6 @@ Pour vous connecter à un robot s’exécutant localement, cliquez sur **Ouvrir 
 ![Interface utilisateur de l’émulateur](media/bot-service-debug-emulator/open_bot_emulator.png)
 
 Si votre bot s’exécute avec les [informations d’identification de compte Microsoft (MSA)](#use-bot-credentials), entrez également ces informations d’identification.
-
 
 ### <a name="use-bot-credentials"></a>Utiliser les informations d’identification du bot
 

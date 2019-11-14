@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c55e14f10bf6a5f4032033472c07401bde82a334
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 165eac6ac134a5807119c7a067b77fb7bc6e3282
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592272"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933705"
 ---
 <!-- 
 
@@ -273,30 +273,36 @@ Si vous ne savez pas comment récupérer votre **ID d’application Microsoft** 
 > [!NOTE]
 > Vous pourriez dès à présent publier ce code de bot sur votre abonnement Azure (cliquer avec le bouton droit sur le projet et choisir **Publier**), mais cela n’est pas nécessaire pour cet article. Vous devriez définir une configuration de publication qui utilise l’application et le plan d’hébergement que vous avez utilisés quand vous avez configuré le bot dans le portail Azure.
 
-## <a name="test-the-bot"></a>Tester le bot
+## <a name="test-the-bot-using-the-emulator"></a>Tester le bot dans l’émulateur
 
-1. Si ce n’est pas déjà fait, installez [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
-1. Exécutez l’exemple en local sur votre machine.
-1. Démarrez l’émulateur, connectez-vous à votre bot et envoyez des messages.
+Si ce n’est déjà fait, installez [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme). Consultez également [Déboguer avec l’émulateur](../bot-service-debug-emulator.md).
 
-    - Vous devez fournir l’ID et le mot de passe d’application de votre bot lorsque vous vous connectez à celui-ci.
+<!-- auth config steps -->
+Pour que l’exemple de connexion du bot fonctionne, vous devez configurer l’émulateur comme indiqué dans [Configurer l’émulateur pour l’authentification](../bot-service-debug-emulator.md#configure-the-emulator-for-authentication).
 
-        - Si vous deviez ajouter une séquence d’échappement XML à votre mot de passe dans le code de votre bot, vous devez également le faire ici.
+### <a name="testing"></a>Test
 
-    - Tapez `help` pour afficher la liste des commandes disponibles pour le bot, puis testez les fonctionnalités d’authentification.
-    - Une fois connecté, vous n’avez pas besoin de refournir vos informations d’identification jusqu’à ce que vous vous déconnectiez.
-    - Pour vous déconnecter et annuler votre authentification, tapez `logout`.
+Une fois que vous avez configuré le mécanisme d’authentification, vous pouvez effectuer les tests de l’exemple de bot réel.  
+
+1. Exécutez l’exemple de bot localement sur votre machine.
+1. Démarrez l’émulateur.
+1. Vous devez fournir l’ID et le mot de passe d’application de votre bot pour vous y connectez.
+    - Vous recevez l’ID et le mot de passe d’application en vous inscrivant à l’application Azure. Il s’agit des mêmes valeurs que celles que vous avez attribuées à l’application bot dans le fichier `appsettings.json` ou `.env`. Dans l’émulateur, vous attribuez ces valeurs dans le fichier de configuration ou la première fois que vous vous connectez au bot.
+    - Si vous deviez ajouter une séquence d’échappement XML à votre mot de passe dans le code de votre bot, vous devez également le faire ici.
+1. Tapez `help` pour afficher la liste des commandes disponibles pour le bot, puis testez les fonctionnalités d’authentification.
+1. Une fois connecté, vous n’avez pas besoin de refournir vos informations d’identification jusqu’à ce que vous vous déconnectiez.
+1. Pour vous déconnecter et annuler votre authentification, tapez `logout`.
 
 > [!NOTE]
 > L’authentification de bot nécessite l’utilisation du service Bot Connector. Le service accède aux informations d’inscription aux canaux de bot pour votre bot.
 
-# <a name="bot-authenticationtabbot-oauth"></a>[Authentification du bot](#tab/bot-oauth)
+## <a name="bot-authentication-example"></a>Exemple d’authentification du bot
 
 Dans l’exemple **Authentification du bot**, le dialogue est conçu pour récupérer le jeton utilisateur après la connexion de l’utilisateur.
 
 ![Exemple de sortie](media/how-to-auth/auth-bot-test.png)
 
-# <a name="bot-authentication-msgraphtabbot-msgraph-auth"></a>[Authentification du bot avec MSGraph](#tab/bot-msgraph-auth)
+## <a name="bot-authentication-msgraph-example"></a>Exemple d’authentification de bot MSGraph
 
 Dans l’exemple **Authentification du bot avec MSGraph**, le dialogue est conçu pour accepter un ensemble limité de commandes après la connexion de l’utilisateur.
 
@@ -423,7 +429,7 @@ Si vous utilisez une *invite OAuth*, cette activité d’appel doit être transf
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)  
 **Bots/DialogBot.cs**  
-[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=19)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
 **Bots/dialogBot.js**  

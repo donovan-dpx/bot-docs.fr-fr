@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f298f728f11327da1613549c08e405a89d8d180
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: f306fdbe39fd7863faf0ec32f99604c3a99da955
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890589"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933744"
 ---
 # <a name="save-user-and-conversation-data"></a>Enregistrer les données d’utilisateur et de conversation
 
@@ -23,6 +23,7 @@ ms.locfileid: "69890589"
 Un bot est par nature sans état. Une fois que votre bot est déployé, il ne peut pas s’exécuter dans le même processus ni sur le même ordinateur d’un tour à l’autre. Votre bot peut toutefois peut avoir besoin de suivre le contexte d’une conversation pour pouvoir gérer son comportement et se rappeler les réponses aux questions précédentes. Les fonctionnalités d’état et de stockage du SDK Bot Framework permettent d’ajouter un état à votre bot. Les bots utilisent la gestion de l’état et les objets de stockage pour gérer et conserver l’état. Le gestionnaire d’état fournit une couche d’abstraction qui vous permet d’accéder aux propriétés d’état à l’aide d’accesseurs de propriété, indépendamment du type de stockage sous-jacent.
 
 ## <a name="prerequisites"></a>Prérequis
+
 - Connaissances des [concepts de base des bots](bot-builder-basics.md) et de la façon dont ils [gèrent l’état](bot-builder-concept-state.md).
 - Le code présenté dans cet article est basé sur l’**exemple de bot de gestion d’état**. Vous aurez besoin d’une copie de l’exemple en [CSharp](https://aka.ms/statebot-sample-cs) ou en [JavaScript](https://aka.ms/statebot-sample-js).
 
@@ -30,9 +31,11 @@ Un bot est par nature sans état. Une fois que votre bot est déployé, il ne pe
 Quand il reçoit l’entrée utilisateur, cet exemple vérifie l’état de conversation stocké pour voir si cet utilisateur a précédemment été invité à fournir son nom. Si ce n’est pas le cas, le nom de l’utilisateur est demandé et cette entrée est stockée dans l’état utilisateur. Dans l’affirmative, le nom stocké dans l’état utilisateur sert à communiquer avec l’utilisateur. Par ailleurs, ses données d’entrée ainsi que l’heure de réception et l’ID du canal d’entrée sont retournés à l’utilisateur. Les valeurs d’heure et d’ID de canal sont récupérées à partir des données de conversation utilisateur, puis enregistrées dans l’état de conversation. Le diagramme suivant montre la relation entre le bot, le profil utilisateur et les classes de données de conversation.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ![exemple de bot avec état](media/StateBotSample-Overview.png)
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ![exemple de bot avec état](media/StateBotSample-JS-Overview.png)
 
 ---
@@ -67,17 +70,17 @@ La première étape nécessite le service de Bot Builder qui inclut des défini
 Ensuite, nous inscrivons `MemoryStorage` qui est utilisé pour créer les objets `UserState` et `ConversationState`. Les objets d’état utilisateur et de conversation sont créés lors de `Startup` et la dépendance est injectée dans le constructeur de bot. Les autres services inscrits qui disponibles pour un bot sont les suivants : un fournisseur d’informations d’identification, un adaptateur et l’implémentation de bot.
 
 **Startup.cs**  
-[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=17-36)]
+[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=26-29)]
+[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=51-57)]
 
-**StateManagementBot.cs**  
-[!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=15-22)]
+**Bots/StateManagementBot.cs** [!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=15-22)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Ensuite, nous inscrivons `MemoryStorage` qui est alors utilisé pour créer les objets `UserState` et `ConversationState`.
 
 **index.js**  
-[!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=32-38)]
+[!code-javascript[DefineMemoryStore](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/index.js?range=33-39)]
 
 ---
 
@@ -87,43 +90,39 @@ Ensuite, nous inscrivons `MemoryStorage` qui est alors utilisé pour créer les 
 
 Maintenant, nous créons des accesseurs de propriété à l’aide de la méthode `CreateProperty` qui fournit un handle à l’objet `BotState`. Chaque accesseur de propriété d’état vous permet d’obtenir ou de définir la valeur de la propriété d’état associée. Avant d’utiliser nos propriétés d’état, nous devons utiliser chaque accesseur pour charger la propriété à partir du stockage et la récupérer dans le cache d’état. Pour obtenir la clé incluse dans l’étendue appropriée et associée à la propriété d’état, nous appelons la méthode `GetAsync`.
 
-**StateManagementBot.cs**  
-[!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-46)]
+**Bots/StateManagementBot.cs** [!code-csharp[StateAccessors](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Bots/StateManagementBot.cs?range=38-46)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Nous créons maintenant des accesseurs de propriété pour `UserState` et `ConversationState`. Chaque accesseur de propriété d’état vous permet d’obtenir ou de définir la valeur de la propriété d’état associée. Nous utilisons chaque accesseur pour charger la propriété associée à partir du stockage et récupérer son état actuel à partir du cache.
 
-**StateManagementBot.js**.  
-[!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=6-19)]
+**bots/stateManagementBot.js** [!code-javascript[BotService](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=6-19)]
 
 ---
 
 ## <a name="access-state-from-your-bot"></a>Accéder à l’état à partir du bot
+
 La section précédente présente les étapes nécessaires au moment de l’initialisation pour ajouter des accesseurs de propriété d’état à notre bot. Nous pouvons à présent utiliser ces accesseurs au moment de l’exécution pour lire et écrire des informations d’état. L’exemple de code ci-dessous utilise le flux logique suivant :
+
 - Si userProfile.Name est vide et que conversationData.PromptedUserForName a la valeur _true_, nous récupérons le nom d’utilisateur fourni et nous le stockons dans l’état utilisateur.
 - Si userProfile.Name est vide et que conversationData.PromptedUserForName a la valeur _false_, nous demandons le nom de l’utilisateur.
 - Si userProfile.Name a été préalablement stocké, nous récupérons l’heure et l’ID de canal du message à partir de l’entrée utilisateur, nous renvoyons toutes les données à l’utilisateur, puis nous stockons les données récupérées dans l’état de conversation.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**StateManagementBot.cs**  
-[!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
+**Bots/StateManagementBot.cs** [!code-csharp[OnMessageActivityAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=38-85)]
 
 Avant de quitter le gestionnaire de tours, nous utilisons la méthode _SaveChangesAsync()_ des objets de gestion d’état pour écrire tous les changements d’état dans le stockage.
 
-**StateManagementBot.cs**  
-[!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
+**Bots/StateManagementBot.cs** [!code-csharp[OnTurnAsync](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=24-31)]
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-**StateManagementBot.js**  
-[!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-54)]
+**bots/stateManagementBot.js** [!code-javascript[OnMessage](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=21-58)]
 
 Avant de quitter chaque tour de dialogue, nous utilisons la méthode _saveChanges()_ des objets de gestion d’état pour conserver tous les changements en récrivant l’état dans le stockage.
 
-**StateManagementBot.js**  
-[!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
+**bots/stateManagementBot.js** [!code-javascript[OnDialog](~/../BotBuilder-Samples/samples/javascript_nodejs/45.state-management/bots/stateManagementBot.js?range=60-67)]
 
 ---
 

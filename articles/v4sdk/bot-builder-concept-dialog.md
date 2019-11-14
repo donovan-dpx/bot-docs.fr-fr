@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9911fda3458d686cce993a54223ab06036dee745
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 9dbb64dd941cdd7706b0ec8f7bd531530c8db59e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299513"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933598"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
@@ -106,7 +106,7 @@ Le contexte d’étape en cascade contient les éléments suivants :
 * *Valeurs* : contient les informations que vous pouvez ajouter au contexte, transmises aux étapes suivantes.
 * *Résultat* : contient le résultat de l’étape précédente.
 
-De plus, la méthode *next* passe à l’étape suivante du dialogue en cascade au sein du même tour, ce qui permet à votre bot d’ignorer une certaine étape si nécessaire.
+Par ailleurs, la méthode *next* (**NextAsync** en C#, **next** en JS) passe à l’étape suivante de la boîte de dialogue en cascade au sein du même tour, ce qui permet à votre bot d’ignorer une étape en particulier si nécessaire.
 
 #### <a name="prompt-options"></a>Options d’invite
 
