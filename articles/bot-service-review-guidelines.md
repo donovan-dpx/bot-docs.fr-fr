@@ -3,12 +3,12 @@ ms.topic: conceptual
 ms.author: kamrani
 ms.service: bot-service
 title: Instructions d’évaluation des bots
-ms.openlocfilehash: 14441847125cb0e79d10740c4267193655d83978
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1493c1bbc37f336a5c816618d32293f4bb97582c
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298001"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410459"
 ---
 # <a name="bot-review-guidelines"></a>Instructions d’évaluation des bots
 
@@ -55,9 +55,9 @@ Iubenda : [Générateur de politique de confidentialité](http://www.iubenda.co
 
 ### <a name="4--content"></a>4.  Contenu 
 - Tout le contenu de votre intégration d’application et des métadonnées associées, doit être créé à l’origine par l’éditeur, dûment autorisé par le détenteur de droits tiers, utilisé dans la mesure autorisée par celui-ci, ou utilisé conformément à ce que la loi autorise.
-- Vous vous interdisez de publier une intégration d’application ou du contenu dans votre intégration d’application présentant les caractéristiques suivantes : 
+- Vous vous interdisez de publier une intégration d’application ou du contenu dans votre intégration d’application qui : 
   - est illégal ;
-  - abuse les enfants, leur nuit ou risque leur de nuire ;
+  - abuse les enfants, leur nuit ou risque de leur nuire ;
   - inclut de la publicité, du courrier indésirable, des communications, publications ou messages en bloc indésirables ou non sollicités ;
   - pourrait être considéré comme inapproprié ou offensant (par exemple, nudité, bestialité, blasphème, pornographie ou sexualité explicite, violence graphique ou gratuite, tabagie, activités criminelles, dangereuses ou irresponsables, drogue, violations des droits humains, création d’armes ou utilisation illégale de celles-ci contre des personnes ou animaux du monde réel, utilisation irresponsable de produits alcoolisés) ;
   - est faux ou trompeur (par exemple, demande l’argent sous de faux prétextes, usurpation d’identité) ;

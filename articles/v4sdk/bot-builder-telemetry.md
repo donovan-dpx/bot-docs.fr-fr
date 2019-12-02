@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: a023fd97bfb7b8d55ad01d118075a6441e426575
+ms.sourcegitcommit: 08f9dc91152e0d4565368f72f547cdea1885af89
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933710"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74510757"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Ajouter des données de télémétrie à votre bot
 
@@ -113,7 +113,7 @@ Nous allons commencer par l'[exemple d’application CoreBot](https://aka.ms/cs-
     }
     ```
 
-7. Ajoutez la clé d’instrumentation Application Insights dans votre fichier `appsettings.json`. Le fichier `appsettings.json` contient des métadonnées sur les services externes que le robot utilise lors de son exécution. Par exemple, la connexion à CosmosDB, Application Insights et au service Language Understanding (LUIS) et les métadonnées y sont stockées. L’ajout à votre fichier `appsettings.json` doit être au format suivant :
+6. Ajoutez la clé d’instrumentation Application Insights dans votre fichier `appsettings.json`. Le fichier `appsettings.json` contient des métadonnées sur les services externes que le robot utilise lors de son exécution. Par exemple, la connexion à CosmosDB, Application Insights et au service Language Understanding (LUIS) et les métadonnées y sont stockées. L’ajout à votre fichier `appsettings.json` doit être au format suivant :
 
     ```json
     {
@@ -251,7 +251,7 @@ C’est tout ce qu’il faut savoir pour ajouter la télémétrie à vos boîtes
 
 ## <a name="enabling-telemetry-to-capture-usage-data-from-other-services-like-luis-and-qna-maker"></a>Activation de la télémétrie pour capturer les données d'utilisation d'autres services, comme LUIS et QnA Maker
 
-Nous allons ensuite implémenter la fonctionnalité de télémétrie dans votre service LUIS. Le service LUIS intègre une journalisation de télémétrie intégrée. Il est par conséquent très facile de commencer à obtenir des données de télémétrie à partir de LUIS.  
+Nous allons ensuite implémenter la fonctionnalité de télémétrie dans votre service LUIS. Le service LUIS intègre une journalisation de télémétrie intégrée. Il est par conséquent très facile de commencer à obtenir des données de télémétrie à partir de LUIS.  Si vous souhaitez activer la télémétrie dans un bot QnA Maker, consultez [Ajouter des données de télémétrie à votre bot QnAMaker](bot-builder-telemetry-QnAMaker.md)
 
 Pour cet exemple, nous devons simplement fournir le client de télémétrie de la même façon que nous l’avons fait pour les boîtes de dialogue. 
 
@@ -337,6 +337,8 @@ Vous y trouverez des informations par défaut sur les performances de votre robo
 
 ## <a name="additional-information"></a>Informations supplémentaires
 
+* [Ajouter des données de télémétrie à votre bot QnAMaker](bot-builder-telemetry-qnamaker.md)
+
 * [Présentation d’Application Insights](https://aka.ms/appinsights-overview)
 
 * [Utilisation de la recherche dans Application Insights](https://aka.ms/search-in-application-insights)
@@ -372,14 +374,6 @@ The easiest way to test is by creating a dashboard using [Azure portal's templat
 ```
 -->
 
-
-
-
-
-
-
-
-
 <!--
 ## Additional information
 
@@ -414,9 +408,7 @@ There are three main components available for your bot to log telemetry, and eac
 - [*LuisRecognizer* class.](#telemetry-support-luis)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 - [*QnAMaker*  class.](#telemetry-qnamaker)  You can override for custom logging in two ways - per invocation (add/replace properties) or derived classes.
 
-
 All components log using the `IBotTelemetryClient`  (or `BotTelemetryClient` in node.js) interface which can be overridden with a custom implementation.
-
 
 #### Telemetry Middleware
 
@@ -735,6 +727,7 @@ When logging events into Application Insights, the events generated contain defa
 
 > [!NOTE]
 > Custom telemetry clients will not be provided these values.
+
 
 Property |Type | Details
 --- | --- | ---

@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/15/2019
-ms.openlocfilehash: b8307877bf08db170173486ec9df88fae4d27c29
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.date: 11/22/2019
+ms.openlocfilehash: fd3a20822827a8d4500a1e91bbb9e998b05475dd
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890619"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479516"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Créer un bot avec Azure Bot Service
 
@@ -27,11 +27,11 @@ Azure Bot Service fournit les principaux composants permettant de créer des bot
 
 ## <a name="prerequisites"></a>Prérequis
 
-- Compte [Azure](http://portal.azure.com)
+- Compte [Azure](https://portal.azure.com)
 
 ### <a name="create-a-new-bot-service"></a>Créer un service de robot
 
-1. Connectez-vous au [portail Azure](http://portal.azure.com/).
+1. Connectez-vous au [portail Azure](https://portal.azure.com/).
 1. Cliquez sur le lien **Créer une nouvelle ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning**  >  **Robot de l’application web**. 
 
 ![créer un bot](../media/azure-bot-quickstarts/abs-create-blade.png)
@@ -50,7 +50,8 @@ Azure Bot Service fournit les principaux composants permettant de créer des bot
  | **Niveau tarifaire** | F0 | Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, consultez la page [Tarification Azure Bot Service](https://azure.microsoft.com/pricing/details/bot-service/). |
  | **Nom de l’application** | Un nom unique | Nom d’URL unique du bot. Par exemple, si vous nommez votre bot *myawesomebot*, l’URL de votre bot sera `http://myawesomebot.azurewebsites.net`. Ce nom doit uniquement comporter des caractères alphanumériques et des traits de soulignement. Ce champ est limité à 35 caractères. Le nom d’application n’est plus modifiable une fois le bot créé. |
  | **Modèle de bot** | Bot d’écho | Choisissez **SDK v4** (Kit SDK v4). Pour ce guide de démarrage rapide, sélectionnez C# ou Node.js, puis cliquez sur **Sélectionner**.  
- | **Plan/emplacement du service d’application** | Votre plan App Service  | Sélectionnez un emplacement de [plan App Service](https://azure.microsoft.com/pricing/details/app-service/plans/). Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot.Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
+ | **Plan/emplacement du service d’application** | Votre plan App Service  | Sélectionnez un emplacement de [plan App Service](https://azure.microsoft.com/pricing/details/app-service/plans/). Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
+ | **Comptes LUIS** _Uniquement disponible pour le modèle Bot de base_ | Nom de ressource LUIS Azure | Après avoir [migré les ressources LUIS vers une ressource Azure](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), entrez le nom de cette ressource Azure pour l’associer à l’application LUIS. 
  | **Application Insights** | Il en va | **Activez** ou **désactivez** [Application Insights](/bot-framework/bot-service-manage-analytics). Si vous sélectionnez **Activé**, spécifiez également un emplacement régional. Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot.Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
  | **ID d’application et mot de passe Microsoft** | Création automatique de l’ID d’application et du mot de passe | Utilisez cette option si vous voulez entrer manuellement un ID d’application et un mot de passe Microsoft. Sinon, ces derniers seront créés automatiquement au cours du processus de création du bot. Lorsque vous créez une inscription d’application manuellement pour Bot Service, vérifiez que les types de comptes pris en charge sont définis sur « Comptes dans un annuaire organisationnel » ou « Comptes dans un annuaire organisationnel et comptes personnels Microsoft (par exemple, Skype, Outlook.com, Xbox, etc.) ». |
 

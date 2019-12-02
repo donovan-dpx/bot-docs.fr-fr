@@ -1,18 +1,18 @@
 ---
 title: 'Service de bot : Forum Aux Questions | Microsoft Docs'
 description: Une liste de questions fréquemment posées sur les éléments du Bot Framework et la disponibilité de nouvelles fonctionnalités.
-author: DeniseMak
+author: scheyal
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/21/2019
-ms.openlocfilehash: 8804ee573f3bf16a831e58221e27d2c8557bd20f
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.date: 11/21/2019
+ms.openlocfilehash: c0feda708be8ac384c458289884fddf6ee798790
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933545"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479501"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -50,41 +50,40 @@ Pour plus d'informations, consultez les pages suivantes :
 - [Déployer le conteneur Language Understanding (LUIS) sur Azure Container Instances](https://docs.microsoft.com/azure/cognitive-services/luis/deploy-luis-on-container-instances)
 - [Prise en charge des conteneurs dans Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support)
 
+## <a name="bot-framework-sdk-version-3-lifetime-support-and-deprecation-notice"></a>Notification de dépréciation et de prise en charge de la durée de vie du kit SDK Bot Framework version 3.
+Le kit SDK Microsoft Bot Framework V4 a été publié en septembre 2018, depuis nous avons apporté quelques améliorations mineures à cette version. Comme annoncé précédemment, le kit SDK V3 est en cours de retrait. Par conséquent, il n’y aura plus de développement dans les dépôts V3. **Les charges de travail existantes des bots V3 continueront de s’exécuter sans interruption. Nous n’avons pas l’intention d’interrompre les charges de travail en cours d’exécution**.
 
-## <a name="bot-framework-sdk-version-3-lifetime-support"></a>Prise en charge de la durée de vie du kit SDK version 3 du Bot Framework 
-Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service.  Depuis la publication du SDK V4 du Bot Framework, comme avec d’autres frameworks, nous continuons de prendre en charge le SDK V3 en appliquant les correctifs de bogues de sécurité haute priorité et les mises à jour de la couche connecteur / protocole.  Les clients peuvent compter sur la prise en charge de v3 pendant toute l’année 2019.
+Comme mentionné, les bots du kit SDK Bot Builder V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service. La version 3 du kit SDK Bot Builder est prise en charge uniquement pour les correctifs de bogues de sécurité critiques, le connecteur et les mises à jour de compatibilité de la couche protocole.  
 
-### <a name="what-is-microsoft-plan-for-supporting-existing-v3-bots-what-happens-to-my-v3-bots-will-my-v3-bots-stop-working"></a>Qu’est-ce que prévoit Microsoft pour prendre en charge les bots V3 existants ? Qu’advient-il de mes bots V3 ? Mes bots V3 vont-ils s’arrêter de fonctionner ?
-Les bots du SDK V3 continuent de s’exécuter et d’être pris en charge par Azure Bot Service.  Depuis la publication du SDK V4 du Bot Framework, comme avec d’autres frameworks, nous continuons de prendre en charge le SDK V3 en appliquant les correctifs de bogues de sécurité haute priorité et les mises à jour de la couche connecteur / protocole.  Les clients peuvent compter sur la prise en charge de v3 pendant toute l’année 2019.
-- Azure Bot Service et Bot Framework V3 sont deux produits en disponibilité générale (GA) et sont entièrement pris en charge. Les bibliothèques de protocoles et de connecteurs Bot Framework sous-jacentes n’ont pas changé et sont partagées entre les SDK V3 et V4.  
-- Les bots créés avec le SDK V3 du Bot Framework (BotBuilder) continuent d’être pris en charge tout au long de l’année 2019. 
-- Les clients peuvent continuer à créer des bots V3 en utilisant le portail Azure ou les outils Azure CLI.
+Toutes les nouvelles fonctions et fonctionnalités sont développées exclusivement sur le [kit SDK Bot Framework V4](https://github.com/microsoft/botframework-sdk).  Nous encourageons les clients à migrer leurs bots vers la version 4 dès que possible.
 
-### <a name="what-happens-to-my-bot-written-to-rest--bot-framework-protocol-31"></a>Qu’advient-il de mes bots écrits avec REST et Bot Framework Protocol 3.1 ?
-- Azure Bot Service et Bot Framework V3 sont deux produits en disponibilité générale (GA) et sont entièrement pris en charge.
-- Le protocole Bot Framework n’a pas changé et est partagé entre les SDK V3 et V4.  
+Nous vous recommandons vivement de commencer la migration de vos bots v3 vers v4. Afin de prendre en charge cette migration, nous avons élaboré une documentation sur la migration et assurerons une prise en charge étendue des initiatives de migration (via les canaux standard, tels que Stack Overflow et le service clientèle Microsoft).
 
-### <a name="will-there-be-more-updates-additional-development-for-the-v3-sdk-or-just-bugfixes"></a>D’autres mises à jour ou développements sont-ils prévus pour le SDK V3, ou juste des correctifs de bogues ?  
-- Nous allons mettre à jour V3 avec des améliorations mineures, principalement au niveau de la couche connecteur, et avec des correctifs de bogues de sécurité haute priorité.  
-- Les mises à jour pour V3 seront publiées deux fois par an selon les besoins, en fonction des correctifs de bogues et/ou des changements de protocole obligatoires. 
-- Nous prévoyons actuellement de publier des versions correctives mineures de V3 sur NuGet et NPM pour nos kits SDK C# et JavaScript.
+Pour plus d’informations, reportez-vous aux références suivantes :
+* [Essential Migration Guidance ](https://aka.ms/bfv3v4migration)
+* Principaux dépôts V4 pour développer des bots Bot Framework
+  * [Botbuilder pour dotnet](https://github.com/microsoft/botbuilder-dotnet)
+  * [Botbuilder pour JS](https://github.com/microsoft/botbuilder-js) 
+* Les bibliothèques QnA Maker ont été remplacées par les bibliothèques V4 suivantes :
+  * [Bibliothèques pour dotnet](https://github.com/Microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder.AI.QnA)
+  * [Bibliothèques pour JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-ai/src/qnaMaker.ts)
+* Les bibliothèques Azure ont été remplacées par les bibliothèques V4 suivantes :
+  * [Botbuilder pour JS avec Azure](https://github.com/Microsoft/botbuilder-js/tree/master/libraries/botbuilder-azure)
+  * [Botbuilder pour dotnet avec Azure](https://github.com/Microsoft/botbuilder-dotnet/tree/master/libraries/Microsoft.Bot.Builder.Azure)
 
-### <a name="why-v4-is-not-backwards-compatible-with-v3"></a>Pourquoi V4 n’est pas rétrocompatible avec V3 ?
-- Au niveau protocole, la communication entre votre application de conversation (c’est-à-dire votre bot) et les différents canaux utilise le protocole Bot Framework Activity qui est le même entre V3 et V4. La même infrastructure Azure Bot Service (AZURE BOT SERVICE) sous-jacente prend en charge à la fois les bots V3 et les bots V4.
-- Le SDK V4 du Bot Framework offre une expérience de développement de conversation avec une architecture de SDK modulaire et extensible, permettant aux développeurs de créer des applications de conversation robustes et sophistiquées. La conception extensible de V4 est basée sur le feedback des clients qui suggérait que les modèles et les primitives de dialogue du SDK V3 étaient trop rigides et limitaient l’extensibilité.  
+### <a name="v3-status-summary"></a>Récapitulatif de l’état V3
 
-### <a name="what-is-the-general-migration-strategy-i-have-a-v3-bot-how-can-i-migrate-it-to-v4-can-i-migrate-my-v3-bot-to-v4"></a>Quelle est la stratégie de migration générale ? J’ai un bot V3, comment le migrer vers V4 / puis-je migrer mon bot V3 vers V4 ?
+#### <a name="abs-service"></a>Service ABS
+1.  Le service ABS continuera de prendre en charge les bots V3 s’exécutant sans fin de vie planifiée, et aucun bot en cours d’exécution ne sera interrompu. 
+2.  Les canaux restent compatibles avec la version 3 sans aucune interruption ni plan de fin de vie.
+3.  La création de bots V3 est désactivée sur le portail ; toutefois, les utilisateurs expérimentés qui souhaitent déployer leurs bots V3 indépendamment, et non sur ABS (par exemple, en tant que service d’application web) peuvent le faire.
 
-- Pour plus d’informations sur la migration des bots V3 vers V4, consultez [Différences entre les SDK .NET v3 et v4](v4sdk/migration/migration-about.md).
-- Actuellement, l’aide permettant de migrer des bots créés avec le SDK V3 vers le SDK V4 se présente sous forme d’une documentation et d’exemples. Nous n’avons pas prévu de fournir de couche de compatibilité de SDK V3 dans le SDK V4 qui permettrait aux bots créés avec V3 de fonctionner dans un bot V4.
-- Si vous avez déjà des bots du SDK V3 du Bot Framework en production, ne vous inquiétez pas, ils continueront de fonctionner de la même façon dans un avenir prévisible.
-- Le SDK V4 du Bot Framework est une évolution du très apprécié SDK V3. V4 est une version majeure contenant des changements cassants qui empêchent les bots V3 de s’exécuter sur le SDK V4 plus récent.
+#### <a name="sdk-and-tools"></a>Kit SDK et outils
 
-### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>Est-il préférable de créer un bot avec V3 ou V4 ?
-- Pour les nouvelles expériences de conversation, nous vous recommandons de commencer un nouveau bot avec le SDK V4 du Bot Framework.
-- Si vous êtes déjà familiarisé avec le SDK V3 du Bot Framework, prenez le temps de découvrir la nouvelle version et les fonctionnalités offertes dans le nouveau [SDK V4 du Bot Framework](https://aka.ms/botframeowrkoverview).
-- Si vous avez déjà des bots du SDK V3 du Bot Framework en production, ne vous inquiétez pas, ils continueront de fonctionner de la même façon dans un avenir prévisible.
-- Vous pouvez créer des bots avec le SDK V4 du Bot Framework et avec le SDK V3 plus ancien dans le portail Azure et la ligne de commande Azure. 
+1.  Concernant le kit SDK, nous n’investissons pas dans V3 et nous n’appliquerons que les correctifs de sécurité critiques aux branches du kit SDK pour l’instant (Exception : nous prévoyons d’ajouter un connecteur Skills pour permettre aux bots V4 d’appeler des bots V3 existants).
+2.  Le développement des kits SDK et des outils se fait exclusivement sur V4, sans travail effectué ni planifié dans la version 3 (la transition est donc faite pour nous).
+3.  Nous n’empêchons personne d’exécuter les anciens outils pour gérer leurs bots V3. 
+
 
 ### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Comment puis-je migrer Azure Bot Service d’une région à une autre ?
 
@@ -264,4 +263,3 @@ Si vous créez votre bot dans le Portail Azure, vous devez générer une clé se
 [DirectLineAPI]: https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts
 [Support]: bot-service-resources-links-help.md
 [WebChat]: bot-service-channel-connect-webchat.md
-

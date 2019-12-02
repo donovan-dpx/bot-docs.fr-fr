@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/06/2019
+ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 844f1514c0b90477cbe454d91dbc93637713d457
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 8b98610c649f145aed975ed1d4b8eb0281d26016
+ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933761"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479517"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -88,7 +88,7 @@ Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publie
 
 7. Une fois que votre nouvelle application LUIS a été publiée, sélectionnez l’onglet _MANAGE_. Depuis la page Informations sur l’application, enregistrez les valeurs `Application ID` sous _app-id-for-app_ et `Display name` sous _name-of-app_. Dans la page Clé et points de terminaison, enregistrez les valeurs `Authoring Key` sous _your-luis-authoring-key_ et `Region` sous _your-region_. Ces valeurs seront utilisées ultérieurement dans votre fichier appsetting.json.
 
-8. Une fois que vous avez terminé, _entraînez_ et _publiez_ votre application de **météo** LUIS et votre application de **dispatch** LUIS en répétant ces mêmes étapes pour le fichier Weather.json.
+8. Une fois que vous avez terminé, _entraînez_ et _publiez_ vos applications **Domotique** et **Météo** LUIS en répétant ces mêmes étapes pour le fichier Weather.json.
 
 ### <a name="create-qna-maker-knowledge-base"></a>Créer une base de connaissances QnA Maker
 
@@ -475,6 +475,16 @@ Vous pouvez utiliser l’outil en ligne de commande [Dispatch][dispatch-readme] 
 ### <a name="to-update-or-create-a-new-luis-model"></a>Mettre à jour ou créer un modèle LUIS
 
 cet exemple est basé sur un modèle LUIS préconfiguré. Vous trouverez [ici](https://aka.ms/create-luis-model#updating-your-cognitive-models) des informations complémentaires qui vous aideront à mettre à jour ce modèle ou à créer un modèle LUIS.
+
+Après la mise à jour des modèles sous-jacents (QnA ou LUIS), exécutez `dispatch refresh` pour mettre à jour votre application Dispatch LUIS. `dispatch refresh` est fondamentalement la même commande que `dispatch create`, à ceci près qu’aucun ID d’application LUIS n’est créé. 
+
+Notez que les énoncés ajoutés directement dans LUIS ne sont pas conservés lors de l’exécution de `dispatch refresh`. Pour conserver ces énoncés supplémentaires dans l’application Dispatch, ajoutez-les dans un fichier texte (un énoncé par ligne), puis ajoutez le fichier à Dispatch en exécutant la commande :
+
+```powershell
+dispatch add -t file -f <file path> --intentName <target intent name, ie l_General>
+```
+
+À partir du moment où le fichier contenant les énoncés supplémentaires est ajouté à Dispatch, les énoncés demeurent à chaque actualisation.
 
 ### <a name="to-delete-resources"></a>Pour supprimer des ressources
 

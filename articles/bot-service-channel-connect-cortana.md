@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 04/30/2018
-ms.openlocfilehash: caa7c71bc0b12ff6defb72f75dcb6d12ce512806
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.date: 11/22/2019
+ms.openlocfilehash: 912f913f5fa09d971ba1e87e31736292f707adc2
+ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167004"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464273"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Connecter un bot à Cortana
 
@@ -103,6 +103,8 @@ Cliquez sur **Add a user profile request** (Ajouter une demande de profil utilis
 Lorsque vous avez rempli le formulaire d’inscription pour votre compétence Cortana, cliquez sur **Deploy on Cortana** (Déployer sur Cortana) pour établir la connexion. Le système vous ramène au panneau Canaux de votre bot. Vous voyez que celui-ci est à présent connecté à Cortana.
 
 À ce stade, votre bot est déployé en tant que compétence Cortana dans votre compte.
+
+Ensuite, vous devez activer et autoriser la compétence du bot à se connecter à votre compte. Dans votre application Cortana, dites ou tapez « Demande le *Nom d’appel*», sachant que le « Nom d’appel » correspond à ce que vous avez configuré dans le canal Cortana sur le portail Azure. Cortana vous invite ensuite à autoriser votre compétence de bot à se connecter. Si vous choisissez « Oui » pour l’autoriser, la compétence fonctionnera et s’affichera désormais dans la liste des compétences de Cortana.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

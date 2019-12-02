@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
+ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279877"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74410443"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -52,12 +52,12 @@ Ce diagramme montre les étapes de l’authentification du robot vers le connect
 
 ![Authentifiez-vous auprès du service de connexion MSA, puis auprès du robot](../media/connector/auth_bot_to_bot_connector.png)
 
-> [!IMPORTANT]
-> Si vous ne l’avez pas déjà fait, vous devez [enregistrer votre robot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son identifiant d’application et son mot de passe. Pour demander un jeton d’accès, vous devez disposer de l’identifiant d’application et du mot de passe du robot.
-
 ### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion de connexion de compte Azure AD v2
 
-Pour demander un jeton d’accès au service de connexion, envoyez la requête suivante en remplaçant **MICROSOFT-APP-ID** et **MICROSOFT-APP-PASSWORD** par l’identifiant d’application et le mot de passe que vous avez obtenus lorsque vous avez [enregistré](../bot-service-quickstart-registration.md) votre bot avec Bot Framework.
+> [!IMPORTANT]
+> Si vous ne l’avez pas déjà fait, vous devez [enregistrer votre robot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son identifiant d’application et son mot de passe. Pour demander un jeton d’accès, vous avez besoin de l’identifiant d’application et du mot de passe du bot.
+
+Pour demander un jeton d’accès au service de connexion, envoyez la requête suivante en remplaçant **MICROSOFT-APP-ID** et **MICROSOFT-APP-PASSWORD** par l’identifiant d’application et le mot de passe du bot que vous avez obtenus lorsque vous avez [enregistré](../bot-service-quickstart-registration.md) votre bot avec Bot Framework.
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token
