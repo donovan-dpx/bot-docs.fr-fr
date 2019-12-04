@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: c0feda708be8ac384c458289884fddf6ee798790
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.openlocfilehash: 4c8a70e4b82e2bc4a5c10d4cf73abf51f5f904ea
+ms.sourcegitcommit: 91a393e885b9ef7e08ceb978ce2f567ea38e7f48
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479501"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74564406"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -84,8 +84,7 @@ Pour plus d’informations, reportez-vous aux références suivantes :
 2.  Le développement des kits SDK et des outils se fait exclusivement sur V4, sans travail effectué ni planifié dans la version 3 (la transition est donc faite pour nous).
 3.  Nous n’empêchons personne d’exécuter les anciens outils pour gérer leurs bots V3. 
 
-
-### <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Comment puis-je migrer Azure Bot Service d’une région à une autre ?
+## <a name="how-can-i-migrate-azure-bot-service-from-one-region-to-another"></a>Comment puis-je migrer Azure Bot Service d’une région à une autre ?
 
 Azure Bot Service ne prend pas en charge le déplacement entre régions. Il s’agit d’un service mondial qui n’est lié à aucune région spécifique.
 
