@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: d71cfc604484b521450465c483201952d4672fcd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298615"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491596"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Résoudre les problèmes de configuration de bot
 
@@ -21,7 +21,7 @@ La première étape de la résolution des problèmes d’un bot consiste à test
 
 ## <a name="test-in-web-chat"></a>Tester dans la Discussion Web
 
-1. Ouvrez votre ressource bot dans le [portail Azure](http://portal.azure.com/).
+1. Ouvrez votre ressource bot dans le [portail Azure](https://portal.azure.com/).
 1. Ouvrez le volet **Tester dans Web Chat**.
 1. Envoyez un message à votre bot.
 

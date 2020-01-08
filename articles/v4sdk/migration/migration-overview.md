@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 576947edf99705e5d0d8850837b3469f13381d06
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 25c7fcb994e0fae348014c1eba393451dc0d9e15
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491393"
 ---
 # <a name="migration-overview"></a>Vue d’ensemble de la migration
 
@@ -27,7 +27,7 @@ Une approche ouverte a été adoptée de sorte que le kit SDK Bot Framework v4 a
 
 ## <a name="what-happens-to-bots-built-using-sdk-v3"></a>Qu’advient-il des bots générés avec le kit SDK v3 ?
 
-Le kit SDK Bot Framework v3 sera supprimé, mais les charges de travail du bot v3 existantes continueront de fonctionner sans interruption. Pour plus d'informations, consultez les pages suivantes : [Prise en charge de la durée de vie du kit SDK Bot Framework version 3](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support).
+Le kit SDK Bot Framework v3 sera supprimé, mais les charges de travail du bot v3 existantes continueront de fonctionner sans interruption. Pour plus d'informations, consultez les pages suivantes : [Prise en charge de la durée de vie du kit SDK Bot Framework version 3](https://docs.microsoft.com/azure/bot-service/bot-service-resources-bot-framework-faq?view=azure-bot-service-4.0#bot-framework-sdk-version-3-lifetime-support).
 
 Nous vous recommandons vivement de commencer la migration de vos bots v3 vers v4. Afin de prendre en charge cette migration, nous avons élaboré une documentation connexe et nous assurerons une prise en charge étendue des initiatives de migration via les canaux standard.
 
@@ -69,7 +69,7 @@ Nous vous recommandons vivement de commencer la migration de vos bots v3 vers v4
 
 ## <a name="whats-changed"></a>Changements apportés
 
-Le kit SDK Bot Framework v4 prend en charge le même service Bot Framework sous-jacent que v3. Toutefois, la version v4 est une refactorisation des kits SDK précédents pour offrir davantage de flexibilité et de contrôle sur la création d’un bot. Les éléments suivants sont inclus :
+Le kit SDK Bot Framework v4 prend en charge le même service Bot Framework sous-jacent que v3. Toutefois, la version v4 est une refactorisation des kits SDK précédents pour offrir davantage de flexibilité et de contrôle sur la création d’un bot. Notamment :
 
 - Un adaptateur de bot a été introduit
   - L’adaptateur fait partie de la pile de traitement d’activité
@@ -101,7 +101,7 @@ Les feuilles de calcul suivantes peuvent vous guider dans l’estimation de votr
 | -- | -- | -- | -- | -- | -- |
 Pour obtenir l’activité entrante | IDialogContext.Activity | ITurnContext.Activity | count | Petite  
 Pour créer une activité et l’envoyer à l’utilisateur | activity.CreateReply(“text”) IDialogContext.PostAsync | MessageFactory.Text(“text”) ITurnContext.SendActivityAsync | count | Petite |
-Gestion de l'état | UserData, ConversationData et PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState et PrivateConversationState, avec accesseurs de propriété | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
+Gestion de l'état | UserData, ConversationData et PrivateConversationData context.UserData.SetValue context.UserData.TryGetValue botDataStore.LoadAsyn | UserState, ConversationState et PrivateConversationState, avec accesseurs de propriété | context.UserData.SetValue - count context.UserData.TryGetValue - count botDataStore.LoadAsyn - count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
 Gérer le début de votre dialogue | Implémentez IDialog.StartAsync | Définissez ceci comme première étape d’un dialogue en cascade. | count | Petite |  
 Envoyer une activité | IDialogContext.PostAsync. | Appelez ITurnContext.SendActivityAsync. | count | Petite |  
 Attendre la réponse d’un utilisateur | Utilisez un IAwaitable<IMessageActivity>parameter et appelez IDialogContext.Wait | Utilisez return await avec ITurnContext.PromptAsync pour commencer un dialogue d’invite. Ensuite, récupérez le résultat à l’étape suivante de la cascade. | count | Moyen (selon le flux) |  
@@ -118,7 +118,7 @@ Signaler que le dialogue en cours est terminé | IDialogContext.Done | Utilisez 
 | -- | -- | -- | -- | -- | -- |
 Pour obtenir l’activité entrante | IMessage | TurnContext.activity | count | Petite  
 Pour créer une activité et l’envoyer à l’utilisateur | Appeler Session.send('message') | Appeler TurnContext.sendActivity | count | Petite |
-Gestion de l'état | UserState & ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState et ConversationState avec accesseurs de propriété | count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
+Gestion de l'état | UserState & ConversationState UserState.get(), UserState.saveChanges(), ConversationState.get(), ConversationState.saveChanges() | UserState et ConversationState avec accesseurs de propriété | count | Moyen à Grand (consultez la [gestion de l’état utilisateur](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0#state-management) disponible) |
 Gérer le début de votre dialogue | Appeler session.beginDialog, en passant l’ID du dialogue | Appeler DialogContext.beginDialog | count | Petite |  
 Envoyer une activité | Appeler Session.send | Appeler TurnContext.sendActivity | count | Petite |  
 Attendre la réponse d’un utilisateur | Appelez une invite à partir de l’étape de cascade. Par exemple : builder.Prompts.text(session, 'Entrez votre destination'). Récupérez la réponse à l’étape suivante. | Utilisez return await avec TurnContext.prompt pour commencer un dialogue d’invite. Ensuite, récupérez le résultat à l’étape suivante de la cascade. | count | Moyen (selon le flux) |  
@@ -222,15 +222,15 @@ Voici des exemples de code que vous pouvez utiliser pour découvrir le kit SDK B
 
 Les ressources suivantes fournissent des informations et un support supplémentaires pour le développement de bots.
 
-[Ressources supplémentaires pour Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
+[Ressources supplémentaires pour Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help?view=azure-bot-service-4.0)
 
-### <a name="references"></a>Références
+### <a name="references"></a>References
 
 Reportez-vous aux ressources suivantes pour obtenir plus de détails et d’informations générales.
 
 | Rubrique | Description |
 | :--- | :--- |
-| [Nouveautés de Bot Framework](https://docs.microsoft.com/en-us/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Améliorations et fonctionnalités clés de Bot Framework et d’Azure Bot Service|
+| [Nouveautés de Bot Framework](https://docs.microsoft.com/azure/bot-service/what-is-new?view=azure-bot-service-4.0) | Améliorations et fonctionnalités clés de Bot Framework et d’Azure Bot Service|
 |[Fonctionnement des bots](../bot-builder-basics.md)|Mécanisme interne d’un bot|
 |[Gestion de l’état](../bot-builder-concept-state.md)|Abstractions pour faciliter la gestion d’état|
 |[Bibliothèque de boîtes de dialogues](../bot-builder-concept-dialog.md)| Concepts centraux pour gérer une conversation|

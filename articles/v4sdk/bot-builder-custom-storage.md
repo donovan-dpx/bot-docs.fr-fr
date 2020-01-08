@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7197cf4716369b00a8ccdff0f0e289bd3a0fdd16
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 699b4cfc1acc47757b7adc06dfeae577b09fba2e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491875"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Implémenter un stockage personnalisé pour votre bot
 
@@ -25,8 +25,8 @@ Les interactions d’un bot se répartissent en trois zones : tout d’abord, l�
 ![diagramme de scale-out](../media/scale-out/scale-out-interaction.png)
 
 
-## <a name="prerequisites"></a>Prérequis
-- L’exemple de code complet utilisé dans cet article est disponible ici : [Exemple de code C#](http://aka.ms/scale-out).
+## <a name="prerequisites"></a>Conditions préalables requises
+- L’exemple de code complet utilisé dans cet article est disponible ici : [Exemple de code C#](https://aka.ms/scale-out).
 
 Dans cet article, nous allons explorer la sémantique des interactions du bot avec Azure Bot Service et le Store.
 
@@ -146,5 +146,5 @@ Et enfin, l’accesseur personnalisé, il nous suffit d’implémenter Get, car 
 [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
 ## <a name="additional-information"></a>Informations supplémentaires
-L’[exemple de code C#](http://aka.ms/scale-out) utilisé dans cet article est disponible sur GitHub.
+L’[exemple de code C#](https://aka.ms/scale-out) utilisé dans cet article est disponible sur GitHub.
 

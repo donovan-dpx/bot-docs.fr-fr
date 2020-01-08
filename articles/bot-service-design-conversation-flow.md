@@ -7,17 +7,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/19/2018
-ms.openlocfilehash: 7b261ab363c91209a4030bed31fa8bfc23f3ff6c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: 7c46a89daf3e80d8579ffe0c475cce6b10fde9b5
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491339"
 ---
-::: moniker range="azure-bot-service-3.0"
+# <a name="design-and-control-conversation-flow"></a>Conception et contrôle d’un flux de conversation
 
-# <a name="design-and-control-conversation-flow"></a>Concevoir et contrôler un flux de conversation
+::: moniker range="azure-bot-service-3.0"
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
@@ -38,7 +38,7 @@ Les boîtes de dialogue peuvent éventuellement comporter des interfaces graphiq
 Pour obtenir une description détaillée de la gestion du flux de conversation en utilisant des dialogues et le kit SDK Bot Framework, consultez :
 
 - [Gérer un flux de conversation avec des dialogues (.NET)](./dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-- [Gérer un flux de conversation avec des boîtes de dialogue (Node.js)](./nodejs/bot-builder-nodejs-manage-conversation-flow.md)
+- [Gérer un flux de conversation avec des dialogues (Node.js)](./nodejs/bot-builder-nodejs-manage-conversation-flow.md)
 
 ## <a name="dialog-stack"></a>Pile de boîtes de dialogue
 
@@ -58,7 +58,7 @@ Puis, il sélectionnera un produit, confirmera et quittera ainsi la boîte de di
 
 Il serait très pratique que les utilisateurs naviguent toujours de façon logique et linéaire. Cependant, cela se produit rarement. 
 Les humains ne communiquent pas par « piles ». Ils ont tendance à changer fréquemment d’avis. 
-Considérez l'exemple suivant : 
+Prenons l’exemple suivant : 
 
 ![robot](./media/bot-service-design-conversation-flow/stack-issue.png)
 
@@ -80,8 +80,6 @@ La gestion de la navigation de l’utilisateur dans les boîtes de dialogue et l
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
-
-# <a name="design-and-control-conversation-flow"></a>Conception et contrôle d’un flux de conversation
 
 Dans une application classique, l’interface utilisateur (IU) se compose d’une série d’écrans. Une application ou un site web peut utiliser un ou plusieurs écrans selon les besoins du processus en termes d’échange d’informations avec l’utilisateur.
 La plupart des applications commencent par afficher un écran principal assurant l’accueil des utilisateurs et leur permettant de naviguer vers d’autres écrans. Ceux-ci peuvent offrir diverses fonctions comme la création d’une nouvelle commande, la consultation de produits ou la recherche d’aide.
@@ -108,7 +106,7 @@ Dans une application classique, tout commence par **l’écran principal**.
 Si **l’écran de nouvelle commande** se ferme, l’utilisateur est renvoyé à **l’écran principal**.
 
 Dans un bot, tout commence par le **dialogue racine**.
-La **boîte de dialogue racine** appelle la **boîte de dialogue de nouvelle commande**.
+Le **dialogue racine** appelle le **dialogue de nouvelle commande**.
 À ce stade, la **boîte de dialogue de nouvelle commande** prend le contrôle de la conversation et le conserve jusqu’à ce qu’elle se ferme ou appelle d’autres boîtes de dialogue, comme la **boîte de dialogue de recherche de produit**.
 Si le **dialogue de nouvelle commande** se ferme, le contrôle de la conversation revient au **dialogue racine**.
 
@@ -121,7 +119,7 @@ Par exemple, dans le cadre d’un flux de conversation procédural utilisant des
 
 Il serait très pratique que les utilisateurs naviguent toujours de façon logique et linéaire. Cependant, cela se produit rarement.
 Les humains ne communiquent pas avec des `dialogs` séquentielles. Ils ont tendance à changer fréquemment d’avis.
-Considérez l'exemple suivant :
+Prenons l’exemple suivant :
 
 ![robot](./media/bot-service-design-conversation-flow/stack-issue.png)
 

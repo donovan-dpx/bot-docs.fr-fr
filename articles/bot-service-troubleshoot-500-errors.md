@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 4/30/2019
-ms.openlocfilehash: 3dcb22c2310f8c686f02fae27617061681910d01
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: bed93200a7ea79f5d5fd8c4e698445b3f431e56e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491581"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Résoudre les erreurs HTTP 500
 
@@ -151,7 +151,7 @@ ASP.Net et Node émettent des journaux d’activité au niveau serveur que vous 
 
 #### <a name="set-up-a-browser-to-watch-your-logs"></a>Configurer un navigateur pour consulter vos journaux d’activité
 
-1. Ouvrez votre bot dans le [portail Azure](http://portal.azure.com/).
+1. Ouvrez votre bot dans le [portail Azure](https://portal.azure.com/).
 1. Ouvrez la page **Paramètres App Service / Tous les paramètres App Service** pour voir tous les paramètres de service.
 1. Ouvrez la page **Supervision / Journaux de diagnostic** du service d’application.
    - Vérifiez que **Journal des applications (Filesystem)** est activé. Veillez à cliquer sur **Enregistrer** si vous changez ce paramètre.

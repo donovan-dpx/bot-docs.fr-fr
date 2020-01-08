@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 7c565d77879641d92a3e331852ff38ea21fdaf9e
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 839fd125976fd70cb78817078ff7cf4709974a8a
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491266"
 ---
 # <a name="use-direct-line-app-service-extension-within-a-vnet"></a>Utiliser l’extension App Service Direct Line au sein d’un réseau virtuel
 
@@ -22,8 +22,8 @@ Cet article explique comment utiliser l’extension App Service Direct Line avec
 ## <a name="create-an-app-service-environment-and-other-azure-resources"></a>Créer un environnement App Service Environment et d’autres ressources Azure
 
 1. L’extension App Service Direct Line est disponible sur tous les **services Azure App Services**, notamment ceux hébergés dans un **environnement Azure App Service Environment**. Un environnement Azure App Service Environment assure l’isolation et est idéal pour travailler au sein d’un réseau virtuel.
-    - Vous trouverez des instructions sur la création d’un environnement App Service Environment externe dans l’article [Créer un environnement App Service externe](https://docs.microsoft.com/en-us/azure/app-service/environment/create-external-ase).
-    - Vous trouverez des instructions sur la création d’un environnement App Service Environment interne dans l’article [Créer et utiliser un environnement App Service Environment avec équilibreur de charge interne](https://docs.microsoft.com/en-us/azure/app-service/environment/create-ilb-ase).
+    - Vous trouverez des instructions sur la création d’un environnement App Service Environment externe dans l’article [Créer un environnement App Service externe](https://docs.microsoft.com/azure/app-service/environment/create-external-ase).
+    - Vous trouverez des instructions sur la création d’un environnement App Service Environment interne dans l’article [Créer et utiliser un environnement App Service Environment avec équilibreur de charge interne](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
 1. Une fois que vous avez créé votre environnement App Service Environment, vous devez ajouter un plan App Service à l’intérieur de celui-ci dans lequel vous pouvez déployer vos bots (et donc exécuter l’extension App Service Direct Line). Pour ce faire :
     - Accédez à https://portal.azure.com/
     - Créez une ressource « Plan App Service ».
@@ -40,8 +40,8 @@ Cet article explique comment utiliser l’extension App Service Direct Line avec
 |Destination|Adresses IP|
 |Adresses IP de destination|20.38.80.64, 40.82.248.64|
 |Plages de ports de destination|443|
-|Protocole|Quelconque|
-|Action|AUTORISER|
+|Protocol|Quelconque|
+|Action|Allow|
 
 
 ![Architecture de l’extension Direct Line](./media/channels/direct-line-extension-vnet.png)

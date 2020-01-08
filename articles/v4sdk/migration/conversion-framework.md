@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0dfe98c13d74f2f7d13a3eece505dd901184c849
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 530e7accbde7e9c6a9601ad17ccdd63ec5d0f691
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299062"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491638"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>Migrer un bot .NET v3 vers un bot .NET Framework v4
 
@@ -29,7 +29,7 @@ Cette conversion est décomposée en plusieurs étapes :
 Le résultat de cette conversion est le bot [ContosoHelpdeskChatBot .NET Framework v4](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework).
 Pour migrer vers un bot v4 .NET Core dans un nouveau projet, consultez [Migrer un bot .NET v3 vers un bot .NET Core v4](conversion-core.md).
 
-Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants :
+Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Parmi les principaux changements apportés au kit SDK, citons les suivants :
 
 - L’état est géré via des objets de gestion d’état et des accesseurs de propriété.
 - La configuration du gestionnaire de tour et la transmission des activités à ce dernier ont changé.
@@ -55,7 +55,7 @@ Pour plus d’informations sur des changements spécifiques, consultez [Différe
 
 > [!TIP]
 > Si votre projet cible .NET Framework 4.6, vous devez le mettre à jour vers la version 4.6.1 ou ultérieure, car **Bot.Builder.Community.Dialogs.Formflow** est une bibliothèque .NET Standard 2.0.
-> Pour plus d’informations, consultez la page sur le [support de l’implémentation .NET](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
+> Pour plus d’informations, consultez la page sur le [support de l’implémentation .NET](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support).
 
 Si vous procédez à la génération à ce stade, vous obtenez des erreurs du compilateur. Vous pouvez les ignorer. Une fois la conversion terminée, nous obtenons un code fonctionnel.
 
@@ -204,7 +204,7 @@ Dans le fichier **Dialogs/RootDialog.cs** :
    - L’invite de choix effectue une boucle jusqu’à ce qu’elle reçoive une entrée valide ou que toute la pile de dialogues soit annulée.  
     [!code-csharp[PromptForOptionsAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetFramework/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=51-65)]
 
-1. Nous pouvons remplacer `OnOptionSelected` par la première étape de notre dialogue en cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
+1. Nous pouvons remplacer `OnOptionSelected` par la seconde étape de notre dialogue en cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
    - L’invite de choix retourne une valeur `FoundChoice`. Cela s’affiche dans la propriété `Result` du contexte d’étape. La pile de dialogues traite toutes les valeurs de retour comme des objets. Si la valeur de retour provient d’un de vos dialogues, vous connaissez le type de valeur de l’objet. Consultez [Types d’invites](../bot-builder-concept-dialog.md#prompt-types) pour obtenir une liste ce que chaque type d’invite retourne.
    - Étant donné que l’invite de choix ne va pas lever d’exception, le bloc try-catch peut être supprimé.
    - Nous devons ajouter un passage afin que cette méthode retourne toujours une valeur appropriée. Ce code ne doit jamais être atteint mais, si c’est le cas, il permettra au dialogue d’« échouer de manière appropriée ».  

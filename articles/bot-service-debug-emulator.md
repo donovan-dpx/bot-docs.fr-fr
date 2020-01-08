@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: de15fbc7fb000bde3b62883405149d22f3ac23a0
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 7fd53098eecce95f3c6314806de6117802ef42e6
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491376"
 ---
 # <a name="debug-with-the-emulator"></a>Déboguer avec l’émulateur
 
 L’émulateur Bot Framework est une application de bureau qui permet aux développeurs de robots de tester et déboguer leurs créations localement ou à distance. L’émulateur vous permet de converser avec le robot et d’inspecter les messages qu’il envoie et reçoit. L’émulateur affiche les messages tels qu’ils apparaîtraient dans une interface utilisateur de conversation web, et journalise les requêtes et réponses JSON à mesure que vous échangez des messages avec le robot. Avant de déployer votre robot dans le cloud, exécutez-le et testez-le localement à l’aide de l’émulateur. Vous pouvez tester votre bot à l’aide de l’émulateur, même si vous ne l’avez pas encore [créé](./bot-service-quickstart.md) avec Azure Bot Service ou configuré pour s’exécuter sur des canaux.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 - Installez le [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 
 ## <a name="run-a-bot-locally"></a>Exécuter un robot localement
@@ -48,6 +48,17 @@ Avant de connecter votre robot au Bot Framework Emulator, vous devez exécuter v
 * Copiez le numéro de port sur lequel Restify écoute.
 
     ![Numéro de port JS](media/bot-service-debug-emulator/js_port_number.png)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+* Allez à l’invite de commande et remplacez le répertoire par le répertoire de votre projet de robot.
+* Démarrez le robot en exécutant la commande suivante :
+    ```
+   python app.py
+    ```
+* Copiez le numéro de port sur lequel Restify écoute.
+
+    ![Numéro de port JS](media/bot-service-debug-emulator/js_port_number.png)
+
 ---
 
 À ce stade, votre robot s’exécute localement. 

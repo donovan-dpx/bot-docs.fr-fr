@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: a11870dfa728621d346a7376363c7e31ddb1596c
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 35772bd4e31cad4787f6ef8b50a56503bfbef55c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491216"
 ---
 # <a name="use-webchat-with-the-direct-line-app-service-extension"></a>Utiliser WebChat avec l’extension App Service Direct Line
 
@@ -32,7 +32,7 @@ De façon générale, l’approche est la même que précédemment. Seule diffé
 L’URL Direct Line de votre bot sera `https://<your_app_service>.azurewebsites.net/.bot/`, où l’extension `/.bot/` est le **point de terminaison** Direct Line sur votre App Service.
 Si vous pouvez configurer votre propre nom de domaine, vous devez toujours ajouter le chemin `/.bot/` pour accéder aux API REST Direct Line.
 
-1. Échangez le secret pour un jeton en suivant les instructions fournies dans l’article [Authentification](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0). Toutefois, au lieu d’obtenir un jeton à l’emplacement `https://directline.botframework.com/v3/directline/tokens/generate`, vous générez le jeton directement à partir de votre extension App Service Direct Line à l’emplacement `https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate`.  
+1. Échangez le secret pour un jeton en suivant les instructions fournies dans l’article [Authentification](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0). Toutefois, au lieu d’obtenir un jeton à l’emplacement `https://directline.botframework.com/v3/directline/tokens/generate`, vous générez le jeton directement à partir de votre extension App Service Direct Line à l’emplacement `https://<your_app_service>.azurewebsites.net/.bot/v3/directline/tokens/generate`.  
 
 1. Une fois que vous avez un jeton, vous pouvez mettre à jour la page web qui utilise Webchat avec les modifications suivantes :
 
