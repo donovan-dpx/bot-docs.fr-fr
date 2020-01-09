@@ -5,6 +5,7 @@
 # Démarrage rapide
 ## [Créer un bot avec .NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ## [Créer un bot avec JavaScript](javascript/bot-builder-javascript-quickstart.md)
+## [Créer un bot avec Python](python/bot-builder-python-quickstart.md)
 ## [Créer un bot avec Azure Bot Service](v4sdk/abs-quickstart.md)
 # Tutoriels
 ## [1. Créer et déployer un bot de base](v4sdk/bot-builder-tutorial-basic-deploy.md)
@@ -31,7 +32,7 @@
 ### [Bot IoT](bot-service-scenario-internet-things.md)
 # Procédure 
 ## [Conception](design/TOC.md)
-## Développement
+## Développer
 <!-- ## [Best practice for welcoming the user](v4sdk/bot-builder-welcome-user.md) -->
 ### [Envoyer et recevoir des SMS](v4sdk/bot-builder-howto-send-messages.md)
 ### [Ajouter des médias aux messages](v4sdk/bot-builder-howto-add-media-attachments.md)
