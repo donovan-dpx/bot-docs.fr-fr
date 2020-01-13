@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: b6174f20be47d40287cedd2a94b2d4e87c29bc2f
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037496"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491280"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Connecter un bot au canal Discussion Web
 
@@ -32,7 +32,7 @@ Le canal Discussion Web du portail Bot Framework contient tout ce dont vous avez
 
 ## <a name="get-your-bot-secret-key"></a>Obtenir la clé secrète de votre bot
 
-1. Ouvrez votre bot dans le [Portail Azure](http://portal.azure.com) et cliquez sur le panneau **Canaux**.
+1. Ouvrez votre bot dans le [Portail Azure](https://portal.azure.com) et cliquez sur le panneau **Canaux**.
 
 2. Cliquez sur **Modifier** pour le canal **Web Chat** (Discussion Web).  
 ![Canal Discussion Web](./media/bot-service-channel-webchat/bot-service-channel-list.png)
@@ -58,7 +58,7 @@ Pour échanger votre secret contre un jeton et générer l’incorporation :
 
 2. La réponse à votre requête **GET** contient le jeton (entre guillemets) qui peut être utilisé pour démarrer une conversation en restituant le contrôle de discussion web au sein d’un **iframe**. Un jeton est valide pour une conversation uniquement. Pour démarrer une autre conversation, vous devez générer un nouveau jeton.
 
-3. Dans le **code incorporé** `iframe` que vous avez copié à partir du canal Discussion Web dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#get-your-bot-secret-key) ci-dessus), remplacez le paramètre `s=` par `t=`et remplacez « YOUR_SECRET_HERE » par votre jeton.
+3. Dans le **code incorporé** `iframe` que vous avez copié à partir du canal Web Chat dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#get-your-bot-secret-key) ci-dessus), remplacez le paramètre `s=` par `t=`, puis remplacez « YOUR_SECRET_HERE » par votre jeton.
 
 > [!NOTE]
 > Les jetons sont automatiquement renouvelés avant leur expiration. 
@@ -117,7 +117,7 @@ Utilisez cette option si vous souhaitez permettre aux autres développeurs d’i
 
 Pour incorporer votre bot dans votre site web en spécifiant le secret dans la balise `iframe` :
 
-1. Copiez le **code incorporé** `iframe` issu du canal Discussion Web, dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#get-your-bot-secret-key) ci-dessus).
+1. Copiez le **code incorporé** `iframe` issu du canal Web Chat, dans le portail Bot Framework (comme décrit à l’étape [Obtenir la clé secrète de votre bot](#get-your-bot-secret-key) ci-dessus).
 
 2. Dans ce **code incorporé**, remplacez « YOUR_SECRET_HERE » par la valeur de la **clé secrète** que vous avez copiée sur la même page.
 

@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 10/18/2019
+ms.date: 11/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 54c663a370cc4f613e0f38bb8057b10e49bf8c69
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 5728bac81e13548ca4de54c6e9fa525c659b6f81
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491650"
 ---
 # <a name="add-trace-activities-to-your-bot"></a>Ajouter des activités de trace à votre bot
 
@@ -64,7 +64,7 @@ Voici une activité de trace qui risque de s’afficher si vous exécutez le bot
 Le gestionnaire d’_erreurs de tour_ de l’adaptateur intercepte les exceptions qui ne l’ont pas été et que le bot a levées pendant un tour.
 Il s’agit de l’endroit idéal pour une activité de trace, car vous pouvez envoyer un message convivial à l’utilisateur et envoyer des informations de débogage à l’émulateur à propos de l’exception.
 
-Cet exemple de code est tiré de l’exemple du **bot Core**. Voyez l’exemple complet en [**C#** ](https://aka.ms/cs-core-sample) ou [**JavaScript**](https://aka.ms/js-core-sample).
+Cet exemple de code est tiré de l’exemple du **bot Core**. Consultez l’exemple complet en [**C#** ](https://aka.ms/cs-core-sample), [**JavaScript**](https://aka.ms/js-core-sample) ou [**Python**](https://aka.ms/py-core-sample).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -82,6 +82,30 @@ Le gestionnaire **onTurnError** de l’adaptateur crée l’activité de trace p
 
 [!code-javascript[onTurnError ](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57&highlight=8-14)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Le gestionnaire **on_error** de l’adaptateur crée l’activité de trace pour inclure les informations relatives aux exceptions, avant de les envoyer à l’émulateur.
+```python
+async def on_error(context: TurnContext, error: Exception):
+...
+
+if context.activity.channel_id == "emulator":
+
+# Create a trace activity that contains the error object
+trace_activity = Activity(
+    label="TurnError",
+    name="on_turn_error Trace",
+    timestamp=datetime.utcnow(),
+    type=ActivityTypes.trace,
+    value=f"{error}",
+    value_type="https://www.botframework.com/schemas/error",
+)
+
+# Send a trace activity, which will be displayed in Bot Framework Emulator
+await context.send_activity(trace_activity)
+
+...
+```
 ---
 
 ## <a name="additional-resources"></a>Ressources supplémentaires

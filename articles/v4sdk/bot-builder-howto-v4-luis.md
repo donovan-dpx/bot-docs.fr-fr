@@ -9,21 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: daf1091bc33b160affaefcd8aef0ed5797581fbc
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491727"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 La capacité à comprendre ce que veut dire votre utilisateur du point de vue de la conversation et du contexte peut être une tâche difficile, mais peut donner à votre bot un sens de la conversation plus naturel. Le service de compréhension langagière, appelé LUIS, vous permet justement de faire cela ; votre bot peut ainsi reconnaître l’intention des messages de l’utilisateur, prendre en charge un langage plus naturel de l’utilisateur et mieux diriger le flux de la conversation. Cette rubrique vous guide dans l’ajout de LUIS à une application de réservation de vol pour reconnaître les différentes intentions et entités contenues dans les entrées utilisateur. 
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 - Compte [LUIS](https://www.luis.ai)
-- Le code de cet article est basé sur l’exemple **Bot de base**. Vous aurez besoin d’une copie de l’exemple en **[C#](https://aka.ms/cs-core-sample) ou en [JavaScript](https://aka.ms/js-core-sample)** . 
+- Le code de cet article est basé sur l’exemple **Bot de base**. Vous aurez besoin d’une copie de l’exemple en **[C#](https://aka.ms/cs-core-sample)** , **[JavaScript](https://aka.ms/js-core-sample)** ou **[Python](https://aka.ms/python-core-sample)** . 
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), du [traitement en langage naturel](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) et de la [gestion des ressources de bot](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
@@ -38,7 +38,7 @@ Après chaque traitement d’entrée utilisateur, `DialogBot` enregistre l’ét
 
 ![Flux de la logique de l’exemple LUIS](./media/how-to-luis/luis-logic-flow.png)
 
-Le module `OnMessageActivityAsync` exécute le dialogue approprié par le biais de la méthode d’extension de dialogue `Run`. La boîte de dialogue principale appelle alors l’assistance LUIS pour rechercher les intentions utilisateur les mieux notées. Si la meilleure intention pour l’entrée de l’utilisateur retourne « BookFlight », l’assistance remplit les informations de l’utilisateur retournées par LUIS. Après cela, la boîte de dialogue principale démarre le `BookingDialog`, qui obtient des informations supplémentaires en fonction des besoins de l’utilisateur, par exemple :
+Le module `OnMessageActivityAsync` exécute le dialogue approprié par le biais de la méthode d’extension de dialogue `Run`. La boîte de dialogue principale appelle alors l’assistance LUIS pour rechercher les intentions utilisateur les mieux notées. Si la meilleure intention pour l’entrée de l’utilisateur retourne « BookFlight », l’assistance remplit les informations de l’utilisateur retournées par LUIS. Après cela, le dialogue principal démarre `BookingDialog`, qui obtient des informations supplémentaires selon les besoins de l’utilisateur, par exemple :
 
 - `Origin` la ville d’origine
 - `TravelDate` la date de réservation du vol
@@ -59,6 +59,20 @@ La boîte de dialogue principale appelle alors l’assistance LUIS `FlightBookin
 - `destination` la ville de destination.
 - `origin` la ville d’origine.
 - `travelDate` la date à laquelle réserver le vol.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+Après chaque traitement d’entrée utilisateur, `DialogBot` enregistre l’état actuel de `user_state` et de `conversation_state`. Lorsque toutes les informations nécessaires sont réunies, l’exemple de code crée une réservation de vol de démonstration. Dans cet article, nous allons aborder les aspects LUIS de cet exemple. Toutefois, le flux général de l’exemple est présenté ci-dessous :
+
+- `on_members_added_activity` est appelé lorsqu’un nouvel utilisateur est connecté et affiche une carte de bienvenue. 
+- `on_message_activity` est appelé pour chaque entrée d’utilisateur reçue.
+
+![Flux de la logique Python de l’exemple LUIS](./media/how-to-luis/luis-logic-flow-python.png)
+
+Le module `on_message_activity` exécute le dialogue approprié par le biais de la méthode d’extension de dialogue `run_dialog`. Le dialogue principal appelle ensuite `LuisHelper` pour rechercher l’intention utilisateur ayant le meilleur scoring. Si l’intention principale de l’entrée utilisateur retourne « BookFlight », la fonction d’assistance remplit les informations de l’utilisateur retournées par LUIS. Après cela, le dialogue principal démarre `BookingDialog`, qui obtient des informations supplémentaires selon les besoins de l’utilisateur, par exemple :
+
+- `destination` la ville de destination.
+- `origin` la ville d’origine.
+- `travel_date` la date à laquelle réserver le vol.
 
 ---
 
@@ -105,6 +119,12 @@ Ajoutez les informations demandées pour accéder à votre application LUIS, y c
 **.env**  
 [!code[env](~/../BotBuilder-Samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ajoutez les informations demandées pour accéder à votre application LUIS, y compris l’ID d’application, la clé de création et la région dans le fichier `config.py`. Il s’agit des valeurs que vous avez enregistrées précédemment à partir de votre application LUIS publiée. Notez que le nom d’hôte d’API doit être au format `<your region>.api.cognitive.microsoft.com`.
+
+**config.py** [!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/config.py?range=14-19)]
+
 ---
 
 ## <a name="configure-your-bot-to-use-your-luis-app"></a>Configurer votre bot pour qu’il utilise votre application LUIS
@@ -137,6 +157,20 @@ Pour vous connecter au service LUIS, le robot utilise les informations du fichie
 
 La logique d’extraction De, À et TravelDate est implémentée en tant que méthodes d’assistance à l’intérieur de `flightBookingRecognizer.js`. Ces méthodes sont utilisées après l'appel de `flightBookingRecognizer.executeLuisQuery()` à partir de `mainDialog.js`
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Vérifiez que le package pypi **botbuilder-ai** est installé pour votre projet.
+
+Pour vous connecter au service LUIS, le robot utilise les informations du fichier `config.py` que vous avez ajoutées précédemment. La classe `FlightBookingRecognizer` contient le code qui importe vos paramètres à partir du fichier `config.py` et interroge le service LUIS en appelant la méthode `recognize()`.
+
+**flight_booking_recognizer.py**
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/13.core-bot/flight_booking_recognizer.py?range=8-32)]
+
+La logique d’extraction de *From*, *To* et *travel_date* est implémentée sous forme de méthodes d’assistance à partir de la classe `LuisHelper` dans `luis_helper.py`. Ces méthodes sont utilisées après l'appel de `LuisHelper.execute_luis_query()` à partir de `main_dialog.py`
+
+**helpers/luis_helper.py** [!code-python[luis helper](~/../botbuilder-python/samples/python/13.core-bot/helpers/luis_helper.py?range=30-102)]
+
 ---
 
 LUIS est à présent configuré et connecté pour votre bot.
@@ -145,7 +179,7 @@ LUIS est à présent configuré et connecté pour votre bot.
 
 Téléchargez et installez la dernière version de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 
-1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier lisez-moi pour l’[exemple en C#](https://aka.ms/cs-core-sample) ou l’[exemple en JS](https://aka.ms/js-core-sample).
+1. Exécutez l’exemple en local sur votre machine. Si vous avez besoin d’instructions, consultez le fichier readme de l’[exemple en C#](https://aka.ms/cs-core-sample), l’[exemple en JS](https://aka.ms/js-core-sample) ou l’[exemple en Python](https://aka.ms/python-core-sample).
 
 1. Dans l’émulateur, tapez un message, tel que « voyage à paris » ou « aller de paris à berlin ». Utilisez n’importe quel énoncé trouvé dans le fichier FlightBooking.json pour l’apprentissage de l’intention « Réserver un vol ».
 

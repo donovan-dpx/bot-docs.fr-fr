@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dc2c222866796f584bcad950a6e0afc40ab43a90
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 97f8318b6f9035e3ac3be1983b0691f627240242
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491536"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 
@@ -84,6 +84,16 @@ Pour implémenter votre logique sur ces gestionnaires, vous substituez ces méth
 
 Généralement, il n’existe pas de situation qui justifie de vouloir remplacer le gestionnaire de tours standard, alors faites preuve de prudence si vous tentez de le faire. Pour des choses telles que l’[enregistrement de l’état](bot-builder-concept-state.md), que vous souhaitez faire à la fin d’un tour, il existe un gestionnaire spécial appelé `onDialog`. Le gestionnaire `onDialog` s’exécute à la fin, après l’exécution des gestionnaires restants, et il n’est pas lié à un certain type d’activité. Comme pour tous les gestionnaires ci-dessus, veillez à appeler `next()` pour garantir la clôture du reste du processus.
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Par exemple, si le bot reçoit une activité de message, le gestionnaire de tours voit cette activité entrante et l’envoie au gestionnaire d’activités `on_message_activity`. 
+
+Lors de la création du bot, votre logique de bot pour la gestion des messages et leur réponse passe dans ce gestionnaire `on_message_activity`. De la même façon, votre logique pour la gestion des membres ajoutés à la conversation va dans votre gestionnaire `on_members_added`, qui est appelé chaque fois qu’un membre est ajouté à la conversation.
+
+Pour implémenter votre logique sur ces gestionnaires, vous substituez ces méthodes dans votre bot, comme expliqué dans la section [Logique de bot](#bot-logic) ci-dessous. Comme aucun de ces gestionnaires ne dispose d’une implémentation de base, ajoutez simplement la logique que vous voulez dans votre remplacement.
+
+Il peut arriver que vous souhaitiez remplacer le gestionnaire de tours standard, tels que l’[enregistrement de l’état](bot-builder-concept-state.md) à la fin d’un tour. Lors de cette opération, veillez à appeler en premier `await super().on_turn(turnContext);` pour vous assurer que l’implémentation de base de `on_turn` est exécutée avant votre code supplémentaire. Cette implémentation de base est, entre autres choses, chargée d’appeler le reste des gestionnaires d’activités, tels que `on_message_activity`.
+
 ---
 
 ## <a name="middleware"></a>Middlewares
@@ -126,6 +136,18 @@ Pour utiliser le fichier de configuration **.env**, le modèle doit inclure un p
 
 `npm install dotenv`
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="requirementstxt"></a>requirements.txt
+
+**requirements.txt** spécifie les dépendances et leurs versions associées pour votre bot.  Tout cela est configuré par le modèle et votre système.
+
+Vous devez installer les dépendances à l’aide de `pip install -r requirements.txt`
+
+### <a name="configpy"></a>config.py
+
+Le fichier **config.py** spécifie les informations de configuration de votre bot, notamment le numéro de port, l’ID de l’application et le mot de passe. Si vous utilisez certaines technologies ou ce bot en production, vous devrez ajouter vos propres clés ou URL à cette configuration. Toutefois, pour les besoins de ce bot Echo, vous n’avez rien à faire à ce stade ; l’ID de l’application et le mot de passe peuvent rester non définis pour l’instant.
+
 ---
 
 ### <a name="bot-logic"></a>Logique du bot
@@ -142,7 +164,7 @@ Les gestionnaires définis dans `ActivityHandler` sont :
 | :-- | :-- | :-- |
 | Tout type d’activité reçu | `OnTurnAsync` | Appelle l’un des autres gestionnaires, selon le type d’activité reçu. |
 | Activité de message reçue | `OnMessageActivityAsync` | Remplacer celui-ci pour gérer une activité `message`. |
-| Activité de mise à jour de conversation reçue | `OnConversationUpdateActivityAsync` | Sur une activité `conversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
+| Activité reçue de mise à jour de conversation | `OnConversationUpdateActivityAsync` | Sur une activité `conversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
 | Des membres autres que le bot ont rejoint la conversation | `OnMembersAddedAsync` | Substituer celui-ci pour gérer les membres se joignant à une conversation. |
 | Des membres autres que le bot ont quitté la conversation | `OnMembersRemovedAsync` | Substituer celui-ci pour gérer les membres quittant une conversation. |
 | Activité d’événement reçue | `OnEventActivityAsync` | Sur une activité `event`, appelle un gestionnaire spécifique au type d’événement. |
@@ -226,6 +248,51 @@ class MyBot extends ActivityHandler {
 }
 
 module.exports.MyBot = MyBot;
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+La logique principale du bot est définie dans le code du bot, appelé ici `bots/echo_bot.py`. `EchoBot` dérive de `ActivityHandler`, qui à son tour dérive de l’interface `Bot`. `ActivityHandler` définit divers gestionnaires pour différents types d’activités, telles que les deux définis ici : `on_message_activity` et `on_members_added`. Ces méthodes sont protégées, mais peuvent être remplacées dans la mesure où nous dérivons de `ActivityHandler`.
+
+Les gestionnaires définis dans `ActivityHandler` sont :
+
+| Événement | Handler | Description |
+| :-- | :-- | :-- |
+| Tout type d’activité reçu | `on_turn` | Appelle l’un des autres gestionnaires, selon le type d’activité reçu. |
+| Activité de message reçue | `on_message_activity` | Remplacer celui-ci pour gérer une activité `message`. |
+| Activité reçue de mise à jour de conversation | `on_conversation_update_activity` | Sur une activité `conversationUpdate`, appelle un gestionnaire si des membres autres que le bot ont rejoint ou quitté la conversation. |
+| Des membres autres que le bot ont rejoint la conversation | `on_members_added_activity` | Substituer celui-ci pour gérer les membres se joignant à une conversation. |
+| Des membres autres que le bot ont quitté la conversation | `on_members_removed_activity` | Substituer celui-ci pour gérer les membres quittant une conversation. |
+| Activité d’événement reçue | `on_event_activity` | Sur une activité `event`, appelle un gestionnaire spécifique au type d’événement. |
+| Activité reçue d’événement de réponse de jeton | `on_token_response_event` | Substituer celui-ci pour gérer les événements de réponse de jeton. |
+| Activité reçue d’événement de réponse autre que celle du jeton | `on_event_activity` | Substituer celui-ci pour gérer d’autres types d’événements. |
+| Activité de réaction à un message reçue | `on_message_reaction_activity` | Sur une activité `messageReaction`, appelle un gestionnaire si une ou plusieurs réactions ont été ajoutées ou supprimées d’un message. |
+| Réactions de message ajoutées à un message | `on_reactions_added` | Remplacez ceci pour gérer les réactions ajoutées à un message. |
+| Réactions de message supprimées d’un message | `on_reactions_removed` | Remplacez ceci pour gérer les réactions supprimées d’un message. |
+| Autre type d’activité reçu | `on_unrecognized_activity_type` | Substituer celui-ci pour gérer tout type d’activité non géré autrement. |
+
+Ces différents gestionnaires disposent de `turn_context` qui fournit des informations sur l’activité entrante ; celle-ci correspond à la requête HTTP entrante. Les activités pouvant être de différents types, chaque gestionnaire fournit donc une activité fortement typée dans son paramètre de contexte de tour ; dans la plupart des cas, `on_message_activity` est toujours géré, et il est généralement le plus courant.
+
+Comme dans les précédentes versions 4.x de ce framework, il existe également la possibilité d’implémenter la méthode publique `on_turn`. Actuellement, l’implémentation de base de cette méthode gère la vérification des erreurs, et appelle ensuite chacun des gestionnaires spécifiques (par exemple, les deux que nous définissons dans cet exemple) selon le type d’activité entrante. Bien souvent, vous pouvez ignorer cette méthode et utiliser les gestionnaires individuels, mais si votre situation nécessite une implémentation personnalisée de `on_turn`, elle demeure une alternative.
+
+> [!IMPORTANT]
+> Si jamais vous substituez la méthode `on_turn`, vous devez appeler `super().on_turn` pour obtenir que l’implémentation de base appelle tous les autres gestionnaires `on_<activity>`, ou appeler ces gestionnaires vous-même. Sinon, ces gestionnaires ne sont pas appelés, et ce code n’est pas exécuté.
+
+Dans cet exemple, nous accueillons un nouvel utilisateur ou renvoyons le message que l’utilisateur a envoyé à l’aide de l’appel `send_activity`. L’activité sortante correspond à la requête HTTP POST sortante.
+
+```py
+class MyBot(ActivityHandler):
+    async def on_members_added_activity(
+        self, members_added: [ChannelAccount], turn_context: TurnContext
+    ):
+        for member in members_added:
+            if member.id != turn_context.activity.recipient.id:
+                await turn_context.send_activity("Hello and welcome!")
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        return await turn_context.send_activity(
+            f"Echo: {turn_context.activity.text}"
+        )
 ```
 
 ---
@@ -366,6 +433,98 @@ server.post('/api/messages', (req, res) => {
         await myBot.run(context);
     });
 });
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+#### <a name="apppy"></a>app.py
+
+`app.py` configure votre bot et le service d’hébergement qui transférera les activités à la logique de votre bot.
+
+#### <a name="required-libraries"></a>Bibliothèques requises
+
+Le tout début de votre fichier `app.py` répertorie une série de modules ou de bibliothèques requis. Ces modules vous donnent accès à un ensemble de fonctions que vous souhaiterez peut-être inclure dans votre application.
+
+```py
+from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, BotFrameworkAdapter
+from botbuilder.schema import Activity, ActivityTypes
+
+from bots import MyBot
+
+# Create the loop and Flask app
+LOOP = asyncio.get_event_loop()
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object("config.DefaultConfig")
+```
+
+#### <a name="set-up-services"></a>Configurer les services
+
+Les parties suivantes configurent le serveur et l’adaptateur qui permettent à votre bot de communiquer avec l’utilisateur et d’envoyer des réponses. Le serveur écoute le port spécifié à partir du fichier de configuration, ou revient au port _3978_ pour la connexion à votre émulateur. L’adaptateur jouera le rôle de conducteur de votre bot en dirigeant les communications entrantes et sortantes, l’authentification, et ainsi de suite.
+
+```py
+# Create adapter.
+# See https://aka.ms/about-bot-adapter to learn more about how bots work.
+SETTINGS = BotFrameworkAdapterSettings(app.config["APP_ID"], app.config["APP_PASSWORD"])
+ADAPTER = BotFrameworkAdapter(SETTINGS)
+
+# Catch-all for errors.
+async def on_error(context: TurnContext, error: Exception):
+    # This check writes out errors to console log .vs. app insights.
+    # NOTE: In production environment, you should consider logging this to Azure
+    #       application insights.
+    print(f"\n [on_turn_error] unhandled error: {error}", file=sys.stderr)
+
+    # Send a message to the user
+    await context.send_activity("The bot encountered an error or bug.")
+    await context.send_activity("To continue to run this bot, please fix the bot source code.")
+    # Send a trace activity if we're talking to the Bot Framework Emulator
+    if context.activity.channel_id == 'emulator':
+        # Create a trace activity that contains the error object
+        trace_activity = Activity(
+            label="TurnError",
+            name="on_turn_error Trace",
+            timestamp=datetime.utcnow(),
+            type=ActivityTypes.trace,
+            value=f"{error}",
+            value_type="https://www.botframework.com/schemas/error"
+        )
+        # Send a trace activity, which will be displayed in Bot Framework Emulator
+        await context.send_activity(trace_activity)
+
+ADAPTER.on_turn_error = on_error
+
+# Create the Bot
+BOT = MyBot()
+```
+
+#### <a name="forwarding-requests-to-the-bot-logic"></a>Transfert des requêtes à la logique du bot
+
+L’élément `process_activity` de l’adaptateur envoie les activités entrantes à la logique de votre bot.
+Le troisième paramètre de `process_activity` est un gestionnaire de fonctions ; il est appelé pour exécuter la logique du bot une fois que [l’activité](#the-activity-processing-stack) reçue a été prétraitée par l’adaptateur et acheminée par le biais d’un intergiciel. La variable de contexte de tour, transmise sous la forme d’un argument au gestionnaire de fonctions, peut être utilisée pour fournir des informations sur l’activité entrante, l’expéditeur et le destinataire, le canal, la conversation, etc. Le traitement de l’activité est acheminé vers la méthode `on_turn` du bot. `on_turn` est définie dans `ActivityHandler` ; elle effectue une vérification des erreurs, puis appelle les gestionnaires d’événements du bot en fonction du type de l’activité reçue.
+
+```py
+# Listen for incoming requests on /api/messages
+@app.route("/api/messages", methods=["POST"])
+def messages():
+    # Main bot message handler.
+    if "application/json" in request.headers["Content-Type"]:
+        body = request.json
+    else:
+        return Response(status=415)
+
+    activity = Activity().deserialize(body)
+    auth_header = (
+        request.headers["Authorization"] if "Authorization" in request.headers else ""
+    )
+
+    try:
+        task = LOOP.create_task(
+            ADAPTER.process_activity(activity, auth_header, BOT.on_turn)
+        )
+        LOOP.run_until_complete(task)
+        return Response(status=201)
+    except Exception as exception:
+        raise exception
 ```
 
 ---

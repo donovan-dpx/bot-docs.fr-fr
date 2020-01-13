@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ec56a36feb747160e1a82f9831aa323074d46801
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 51a77c9f95bdf8d77f87d081704284c5f7584df3
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491507"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Créer des flux de conversation avancés à l’aide de branches et de boucles
 
@@ -24,10 +24,10 @@ Vous pouvez gérer des flux de conversation simples et complexes avec la bibliot
 Dans cet article, nous allons vous montrer comment gérer des conversations complexes qui forment des branches et des boucles.
 Nous vous montrerons également comment passer des arguments entre différentes parties du dialogue.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon d’[implémenter les flux de conversation séquentiels][simple-dialog].
-- Une copie de l’exemple de dialogue complexe en [**C#** ][cs-sample] ou [**JavaScript**][js-sample].
+- Une copie de l’exemple de dialogue complexe en [**C#** ][cs-sample], [**JavaScript**][js-sample] ou [**Python**][python-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -73,13 +73,29 @@ Pour utiliser des dialogues, votre projet doit installer le package npm **botbui
 
 **index.js**
 
+Nous créons les services obligatoires suivants pour le bot :
+
+- Services de base : un adaptateur et l’implémentation du bot
+- Gestion d’état : stockage, état utilisateur et état de conversation
+- Dialogues : le bot les utilise pour gérer les conversations
+
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+![Flux de bot complexes](./media/complex-conversation-flow-python.png)
+
+Pour pouvoir utiliser les dialogues, votre projet nécessite l’installation du package pypi **botbuilder-dialogs** via l’exécution de `pip install botbuilder-dialogs`.
+
+**app.py**
+
 Nous créons des services pour le bot que d’autres parties du code demandent.
 
 - Services de base pour un bot : un adaptateur et l’implémentation du bot.
 - Services pour gérer l’état : le stockage, l’état utilisateur et l’état de conversation.
 - Le dialogue que le bot va utiliser.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=26-65)]
+[!code-python[ConfigureServices](~/../botbuilder-python/samples/python/43.complex-dialog/app.py?range=28-75)]
 
 ---
 
@@ -100,6 +116,13 @@ Nous créons des services pour le bot que d’autres parties du code demandent.
 **userProfile.js**
 
 [!code-javascript[UserProfile class](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/userProfile.js?range=4-12)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**data_models/user_profile.py**
+
+[!code-python[UserProfile class](~/../botbuilder-python/samples/python/43.complex-dialog/data_models/user_profile.py?range=7-13)]
+
 
 ---
 
@@ -169,6 +192,38 @@ Dans cette conception, le dialogue de niveau supérieur précède toujours le di
 
 [!code-javascript[step implementations](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=33-78)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs\main_dialog.py**
+
+Nous avons défini un dialogue de composant, `MainDialog`, qui contient quelques étapes principales. De plus, il dirige les dialogues et les invites. L’étape initiale appelle `TopLevelDialog`, ce qui est expliqué ci-dessous.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/main_dialog.py?range=29-50&highlight=4)]
+
+**dialogs\top_level_dialog.py**
+
+Le dialogue initial de niveau supérieur comporte quatre étapes :
+
+1. Demander le nom de l’utilisateur.
+1. Demander l’âge de l’utilisateur.
+1. Choisir une branche en fonction de l’âge de l’utilisateur.
+1. Enfin, remercier l’utilisateur pour sa participation et retourner les informations collectées.
+
+À la première étape, nous effaçons le profil de l’utilisateur, afin que le dialogue démarre chaque fois avec un profil vide. Dans la mesure où la dernière étape retourne des informations une fois qu’elle s’achève, `acknowledgementStep` conclut en les enregistrant dans l’état utilisateur, puis en les retournant au dialogue principal pour qu’elles soient utilisées à l’étape finale.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=43-95&highlight=2-3,43-44,52)]
+
+**dialogs/review_selection_dialog.py**
+
+Le dialogue de sélection de l’évaluation est démarré à partir de `startSelectionStep` dans le dialogue du niveau supérieur, et comporte deux étapes :
+
+1. Demander à l’utilisateur de choisir une entreprise à évaluer ou choisir `done` pour terminer.
+1. Répéter ce dialogue ou en sortir selon le cas.
+
+Dans cette conception, le dialogue de niveau supérieur précède toujours le dialogue de sélection de l’évaluation sur la pile, sachant que le dialogue de sélection de l’évaluation peut être considéré comme un enfant du dialogue de niveau supérieur.
+
+[!code-python[step implementations](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=42-99)]
+
 ---
 
 ## <a name="implement-the-code-to-manage-the-dialog"></a>Implémenter le code pour gérer le dialogue
@@ -232,6 +287,20 @@ Le gestionnaire de messages appelle la méthode d’assistance `run` pour gérer
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/dialog_bot.py**
+
+Le gestionnaire de messages appelle la méthode `run_dialog` pour gérer le dialogue, et nous avons remplacé le gestionnaire de tours pour enregistrer dans l’état de conversation et celui d’utilisateur les modifications pouvant se produire durant le tour. `on_turn` de base appellera la méthode `on_message_activity`, garantissant ainsi que les appels d’enregistrement se produisent à la fin de ce tour.
+
+[!code-python[Overrides](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_bot.py?range=29-41&highlight=32-34)]
+
+**bots/dialog_and_welcome_bot.py**
+
+`DialogAndWelcomeBot` étend `DialogBot` ci-dessus pour fournir un message de bienvenue quand l’utilisateur rejoint la conversation ; c’est ce qui est créé dans `config.py`.
+
+[!code-python[on_members_added](~/../botbuilder-python/samples/python/43.complex-dialog/bots/dialog_and_welcome_bot.py?range=28-39)]
+
 ---
 
 ## <a name="branch-and-loop"></a>Branche et boucle
@@ -263,6 +332,20 @@ Voici un exemple de logique de branche à partir d’une étape dans le dialogue
 Voici un exemple de logique de boucle à partir d’une étape dans le dialogue _vérifier la sélection_ :
 
 [!code-javascript[looping logic](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/dialogs/reviewSelectionDialog.js?range=71-77)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/top_level_dialog.py**
+
+Voici un exemple de logique de branche à partir d’une étape dans le dialogue de _niveau supérieur_ :
+
+[!code-python[branching logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/top_level_dialog.py?range=71-80)]
+
+**dialogs/review_selection_dialog.py**
+
+Voici un exemple de logique de boucle à partir d’une étape dans le dialogue _vérifier la sélection_ :
+
+[!code-python[looping logic](~/../botbuilder-python/samples/python/43.complex-dialog/dialogs/review_selection_dialog.py?range=93-98)]
 
 ---
 
@@ -300,3 +383,4 @@ Pour plus d’informations, consultez [Réutiliser des dialogues][component-dial
 
 [cs-sample]: https://aka.ms/cs-complex-dialog-sample
 [js-sample]: https://aka.ms/js-complex-dialog-sample
+[python-sample]: https://aka.ms/python-complex-dialog-sample

@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ROBOTS: NOINDEX
-ms.date: 10/04/2018
+ms.date: 11/14/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3bd411da4edd30b6045654884aeae5ae1cc4239f
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 2d36a1465fd1a81b0c5f30bab52824a6130c215e
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491207"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Ajouter l’authentification à votre bot par le biais d’Azure Bot Service
 
@@ -50,7 +50,7 @@ Vous pouvez vous appuyer sur les étapes décrites dans cet article pour ajouter
 
 Pour obtenir de l’aide ou des informations supplémentaires, reportez-vous à [Ressources supplémentaires sur Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help).
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Ce tutoriel crée un exemple de bot qui se connecte à Microsoft Graph à l’aide d’un jeton Azure AD v1 ou v2. <!--verify this info and fix wording--> Dans le cadre de ce processus, vous allez utiliser du code issu d’un dépôt GitHub ; ce tutoriel explique comment tout mettre en place, y compris l’application de bot.
 
@@ -142,7 +142,7 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 
 # <a name="azure-ad-v1tabaadv1"></a>[Azure AD v1](#tab/aadv1)
 
-1. Accédez à la page de ressources de votre bot sur le [portail Azure](http://portal.azure.com/).
+1. Accédez à la page de ressources de votre bot sur le [portail Azure](https://portal.azure.com/).
 1. Cliquez sur **Settings**.
 1. Sous **Paramètres de connexion OAuth** près du bas de la page, cliquez sur **Ajouter un paramètre**.
 1. Remplissez le formulaire comme suit :
@@ -167,7 +167,7 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 
 # <a name="azure-ad-v2tabaadv2"></a>[Azure AD v2](#tab/aadv2)
 
-1. Accédez à la page de l’inscription Bot Channels Registration de votre bot dans le [Portail Azure](http://portal.azure.com/).
+1. Accédez à la page de l’inscription Bot Channels Registration de votre bot dans le [Portail Azure](https://portal.azure.com/).
 1. Cliquez sur **Settings**.
 1. Sous **Paramètres de connexion OAuth** près du bas de la page, cliquez sur **Ajouter un paramètre**.
 1. Remplissez le formulaire comme suit :
@@ -234,7 +234,7 @@ L’étape suivante consiste à inscrire auprès de votre bot l’application Az
 Vous devez installer [l’émulateur de bot](https://github.com/Microsoft/BotFramework-Emulator) pour tester votre bot localement. Vous pouvez utiliser l’émulateur v3 ou v4.
 
 1. Démarrez votre bot (avec ou sans débogage).
-1. Notez le numéro de port localhost pour la page. Vous aurez besoin de ces informations pour interagir avec votre bot.
+1. Notez le numéro de port localhost de la page. Vous aurez besoin de ces informations pour interagir avec votre bot.
 1. Démarrez l’émulateur.
 1. Connectez-vous à votre bot.
 
@@ -290,7 +290,7 @@ Vous pouvez personnaliser la carte OAuthCard avec les texte et texte de bouton q
 
 - Définissez `ContentType` sur `OAuthCard.ContentType`.
 - Définissez la propriété `ConnectionName` sur le nom de la connexion que vous souhaitez utiliser.
-- Incluez un bouton avec un `CardAction` ayant pour `Type` `ActionTypes.Signin` ; notez que vous n’avez pas besoin de spécifier de valeur pour le lien de connexion.
+- Incluez un bouton avec un `CardAction` de `Type``ActionTypes.Signin` ; notez que vous n’avez pas besoin de spécifier de valeur pour le lien de connexion.
 
 À la fin de cet appel, le bot doit « attendre le retour du jeton ». Cette attente s’effectue sur le flux d’activité principal, car l’utilisateur pourrait être amené à faire beaucoup de choses pour se connecter.
 

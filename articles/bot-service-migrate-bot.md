@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d0d2f6930dd9a686cff98b09ca3e863ec0980491
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c4b058ecc4f6a01d51d3aa7abe8f4f926df4e771
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491356"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migrer votre bot vers Azure
 
 Tous les bots **Azure Bot Service (préversion)** créés dans le [portail d’infrastructure Bot](http://dev.botframework.com) doivent migrer vers le nouveau Service Bot dans Azure. Le service a été mis à la disposition générale (GA) en décembre 2017. 
 
-Notez que les bots d’inscription connectés uniquement aux canaux suivants ne nécessitent *pas* de migration : **Teams**, **Skype** ou **Cortana**. Par exemple, un bot d’inscription connecté à **Facebook** et à **Skype** *doit* migrer, mais un bot d’inscription connecté à **Skype** et **Cortana** *n’a pas besoin* de migrer.
+Notez que les bots d’inscription connectés uniquement aux canaux suivants ne nécessitent *pas* de migration : **Teams**, **Skype** ou **Cortana**. Par exemple, un bot d’inscription connecté à **Facebook** et à **Skype** *doit impérativement* faire l’objet d’une migration. Toutefois, un bot d’inscription connecté à **Skype** et **Cortana** *n’est pas obligé* de migrer.
 
 > [!IMPORTANT]
 > Avant de migrer un bot Functions créé avec Node.js, il est nécessaire d’utiliser le **Pack Azure Functions** pour maintenir ensemble les modules **node_modules**. Cela améliore les performances pendant la migration et l’exécution du bot Functions après sa migration. Pour empaqueter vos modules, consultez [Empaqueter un bot Functions avec Funcpack](#package-a-functions-bot-with-funcpack).
@@ -35,7 +35,7 @@ Pour migrer votre bot, procédez comme suit :
 
 Une fois le processus de migration terminée avec succès, le **Migration status** (état de la migration) indique que le bot a migré. Un bouton **Roll back migration** (restaurer la migration) sera disponible pendant une semaine après la date de migration en cas de problème.
 
-Cliquer sur le nom d’un bot migré ouvrira le bot dans le [portail Azure](http://portal.azure.com).
+Cliquer sur le nom d’un bot migré ouvrira le bot dans le [portail Azure](https://portal.azure.com).
 
 ## <a name="package-a-functions-bot-with-funcpack"></a>Empaqueter un bot Functions avec Funcpack
 
@@ -46,7 +46,7 @@ Les bots Functions créés avec Node.js doivent être empaquetés à l’aide de
 3.  Ouvrez **messages/index.js** et modifiez `module.exports = { default: connector.listen() }` par `module.exports = connector.listen();`
 4.  Installez Funcpack via npm : `npm install -g azure-functions-pack`
 5.  Pour empaqueter le répertoire **node_modules**, exécutez la commande suivante : `funcpack pack ./`
-6.  Testez votre bot en local en exécutant le bot Functions à l’aide de Bot Framework Channel Emulator. Plus d’informations sur la façon d’exécuter le bot *funcpack* [ici](https://github.com/Azure/azure-functions-pack#how-to-run). 
+6.  Testez votre bot en local en exécutant le bot Functions à l’aide de Bot Framework Channel Emulator. Plus d’informations sur la façon d’exécuter le bot *funcpack*[ici](https://github.com/Azure/azure-functions-pack#how-to-run). 
 7.  Chargez votre code vers Azure. Assurez-vous que le répertoire `.funcpack` est chargé. Vous n’avez pas besoin de charger le répertoire **node_modules**.
 8. Testez votre bot distant pour vous assurer qu’il répond comme prévu.
 9. Migrez votre bot à l’aide de la procédure ci-dessus.
@@ -69,12 +69,12 @@ Il s’agit du type le plus simple. Le groupe de ressources dans Azure contient 
 
 ![Listes des bots Bot Channel Registration dans Azure](~/media/bot-service-migrate-bot/channel-registration-bot.png)
 
-### <a name="web-app-bot"></a>Bot Web App
+### <a name="web-app-bot"></a>Robot Web App
 La migration de bot d’application Web approvisionnera une ressource de Service bot de type « Web App Bot » et une nouvelle application web App Service (en vert dans la capture d’écran ci-dessous). Le bot Azure Bot Service (préversion) précédent est toujours disponible et peut être supprimé (en rouge dans la capture d’écran ci-dessous).
 
 ![Listes de bots Web App dans Azure](~/media/bot-service-migrate-bot/web-app-bot.png)
 
-### <a name="functions-bot"></a>Bot Functions
+### <a name="functions-bot"></a>Robot Functions
 La migration de bot Functions approvisionnera une ressource de Service bot de type « Functions Bot » et une nouvelle application de fonctions App Service (en vert dans la capture d’écran ci-dessous). Le bot Azure Bot Service (préversion) précédent est toujours disponible et peut être supprimé (en rouge dans la capture d’écran ci-dessous).
 
 ![Listes de bots Functions dans Azure](~/media/bot-service-migrate-bot/functions-bot.png)

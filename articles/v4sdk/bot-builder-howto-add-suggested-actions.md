@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 603b6d6fe9fed99cb31649539e518651c135241a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: b121a60b72551dd473a880d47868a61763e5afa0
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491494"
 ---
 # <a name="use-button-for-input"></a>Utiliser un bouton pour fournir une entrée
 
@@ -38,11 +38,22 @@ Le code source affiché ici repose sur l’[exemple d’actions suggérées](htt
 
 [!code-javascript[suggested actions](~/../botbuilder-samples/samples/javascript_nodejs/08.suggested-actions/bots/suggestedActionsBot.js?range=61-64)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Le code source affiché ici repose sur l’[exemple d’actions suggérées](https://aka.ms/SuggestActionsPython).
+
+[!code-python[suggested actions](~/../botbuilder-python/samples/python/08.suggested-actions/bots/suggested_actions_bot.py?range=63-81)]
+
+
 ---
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Vous pouvez accéder au code source complet affiché ici : l’[exemple CSharp](https://aka.ms/SuggestedActionsCSharp) ou l’[exemple JavaScript](https://aka.ms/SuggestActionsJS).
+Vous pouvez accéder au code source complet présenté ici :
+- [Exemple de code C#](https://aka.ms/SuggestedActionsCSharp)
+- [Exemple en JavaScript](https://aka.ms/SuggestActionsJS)
+- [Exemple en Python](https://aka.ms/SuggestActionsPython)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

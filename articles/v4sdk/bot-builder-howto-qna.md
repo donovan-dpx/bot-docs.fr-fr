@@ -9,30 +9,30 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b58307732ae973719231987a35eab6374ea704e4
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: fc22235e53307e5b1dde737930c6cd06c2e9df8a
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491805"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Utiliser QnA Maker pour répondre aux questions
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-QnA Maker fournit une couche de questions et réponses conversationnelle sur vos données. Votre bot peut ainsi envoyer une question à QnA Maker et recevoir une réponse sans que vous ayez besoin d’analyser et d’interpréter l’intention de la question.
+QnA Maker fournit une couche de questions et réponses conversationnelle sur vos données. Cela permet à votre bot d’envoyer une question à QnA Maker et de recevoir une réponse sans avoir besoin d’analyser et d’interpréter l’intention de la question.
 
-Une des exigences de base de la création de votre propre service QnA Maker est à l’amorçage des questions et des réponses. Dans de nombreux cas, les questions et réponses existent déjà dans du contenu comme un Forum aux questions ou d’autres documents ; parfois, vous souhaiterez personnaliser vos réponses aux questions de manière plus naturelle et conversationnelle.
+L’une des exigences de base pour créer votre propre service QnA Maker est de remplir ce dernier à l’aide de questions et de réponses. Dans de nombreux cas, les questions et réponses existent déjà dans du contenu comme un Forum aux questions ou d’autres documents ; parfois, vous souhaiterez personnaliser vos réponses aux questions de manière plus naturelle et conversationnelle.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
-- Le code de cet article est basé sur l’exemple QnA Maker. Vous aurez besoin d’une copie de ce dernier en **[C#](https://aka.ms/cs-qna) ou [JavaScript](https://aka.ms/js-qna-sample)** .
+- Le code de cet article est basé sur l’exemple QnA Maker. Vous aurez besoin d’une copie de ce dernier en **[C#](https://aka.ms/cs-qna)** , **[JavaScript](https://aka.ms/js-qna-sample)** ou **[Python](https://aka.ms/bot-qna-python-sample-code)** . 
 - Compte [QnA Maker](https://www.qnamaker.ai/)
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), de [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview) et de la [gestion des ressources de bot](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
-Pour que votre bot utilise QnA Maker, vous devez d’abord créer une base de connaissances sur [QnA Maker](https://www.qnamaker.ai/), opération que nous aborderons dans la section suivante. Votre bot peut ensuite lui envoyer la requête d’un utilisateur et obtenir en retour la meilleure réponse.
+Pour utiliser QnA Maker dans votre bot, vous devez créer une base de connaissances dans le portail [​​QnA Maker](https://www.qnamaker.ai/), comme indiqué dans la section suivante. Votre bot peut alors envoyer les questions de l’utilisateur au QNA Maker pour fournir les meilleures réponses.
 
 ## <a name="ctabcs"></a>[C#](#tab/cs)
 
@@ -45,6 +45,12 @@ Pour que votre bot utilise QnA Maker, vous devez d’abord créer une base de co
 ![Flux de la logique JS QnABot](./media/qnabot-js-logic-flow.png)
 
 `OnMessage` est appelé pour chaque entrée d’utilisateur reçue. Quand il est appelé, il accède à votre connecteur `qnamaker` qui a été préconfiguré à l’aide des valeurs fournies à partir du fichier `.env` de votre exemple de code.  La méthode `getAnswers` qnamaker connecte votre bot à votre base de connaissances QnA Maker externe.
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+![Flux de la logique JS QnABot](./media/qnabot-python-logic-flow.png)
+
+`on_message_activity` est appelé pour chaque entrée d’utilisateur reçue. Quand il est appelé, il accède à votre connecteur `qna_maker` qui a été préconfiguré à l’aide des valeurs fournies à partir du fichier `config.py` de votre exemple de code.  La méthode `qna_maker.getAnswers` connecte votre bot à votre base de connaissances externe QnA Maker.
 
 ---
 
@@ -90,6 +96,12 @@ Si vous n’effectuez pas le déploiement dans un environnement de production, v
 
 [!code-javascript[.env file](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/.env)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="update-your-configpy-file"></a>Mettre à jour votre fichier config.py
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/11.qnamaker/config.py?range=10-18)]
+
 ---
 
 ## <a name="set-up-the-qna-maker-instance"></a>Configurer l’instance de QnA Maker
@@ -102,17 +114,27 @@ Vérifiez que le package NuGet **Microsoft.Bot.Builder.AI.QnA** est installé po
 
 Dans **QnABot.cs**, dans la méthode `OnMessageActivityAsync`, nous créons une instance de QnAMaker. La classe `QnABot` est également l’endroit où sont insérés les noms des informations de connexion, enregistrées dans `appsettings.json` ci-dessus. Si vous avez choisi des noms différents pour vos informations de connexion à la base de connaissances dans votre fichier de paramètres, veillez à mettre à jour les noms ici afin qu’ils reflètent le nom choisi.
 
-**Bots/QnABot.cs** [!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-39)]
+**Bots/QnABot.cs**
+
+[!code-csharp[qna connection](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=32-39)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 Veillez à ce que le package npm **botbuilder-ai** soit installé pour votre projet.
 
-Dans notre exemple, le code de la logique de bot se trouve dans un fichier **QnABot.js**.
+Dans notre exemple, le code de la logique du bot se trouve dans le fichier **QnABot.js**.
 
 Dans le fichier **QnABot.js**, nous utilisons les informations de connexion fournies par votre fichier .env pour établir une connexion au service QnA Maker : _this.qnaMaker_.
 
-**bots/QnABot.js** [!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+**bots/QnABot.js**
+
+[!code-javascript[QnAMaker](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=12-16)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+Dans le fichier **qna_bot.py**, nous utilisons les informations de connexion fournies par le fichier `config.py` pour établir une connexion au service QnA Maker : `self.qna_maker`.
+
+**bots/qna_bot.py** [!code-python[QnAMaker](~/../botbuilder-python/samples/python/11.qnamaker/bots/qna_bot.py?range=13-19)]
 
 ---
 
@@ -122,19 +144,30 @@ Dans le fichier **QnABot.js**, nous utilisons les informations de connexion four
 
 Lorsque votre bot a besoin d’une réponse de QnA Maker, appelez `GetAnswersAsync()` à partir du code de votre bot pour obtenir la réponse appropriée en fonction du contexte actuel. Si vous accédez à votre propre base de connaissances, changez le message _no answers found_ (aucune réponse trouvée) ci-dessous pour fournir des instructions utiles à vos utilisateurs.
 
-**Bots/QnABot.cs** [!code-csharp[qna get answers](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
+**Bots/QnABot.cs**
+
+[!code-csharp[qna get answers](~/../botbuilder-samples/samples/csharp_dotnetcore/11.qnamaker/Bots/QnABot.cs?range=43-52)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 Dans le fichier **QnABot.js**, nous passons l’entrée de l’utilisateur dans la méthode `getAnswers` du service QnA Maker pour obtenir des réponses à partir de la base de connaissances. Si QnA Maker retourne une réponse, elle est présentée à l’utilisateur. Sinon, l’utilisateur reçoit le message « No QnA Maker answers were found » (« Aucune réponse QnA Maker n’a été trouvée »).
 
-**bots/QnABot.js** [!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=46-55)]
+**bots/QnABot.js**
+
+[!code-javascript[OnMessage](~/../botbuilder-samples/samples/javascript_nodejs/11.qnamaker/bots/QnABot.js?range=46-55)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+Dans le fichier **qna_bot.py**, nous passons l’entrée de l’utilisateur à la méthode `get_answers` du service QnA Maker pour obtenir des réponses provenant de la base de connaissances. Si QnA Maker retourne une réponse, elle est présentée à l’utilisateur. Sinon, l’utilisateur reçoit le message *No QnA Maker answers were found* (Réponses QnA Maker introuvables).
+
+**bots/qna_bot.py** [!code-python[get_answers](~/../botbuilder-python/samples/python/11.qnamaker/bots/qna_bot.py?range=33-37)]
 
 ---
 
 ## <a name="test-the-bot"></a>Tester le bot
 
 Exécutez l’exemple en local sur votre machine. Si ce n’est déjà fait, installez [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download). Pour d’autres instructions, consultez le fichier readme (lisez-moi) de l’[exemple C#](https://aka.ms/cs-qna) ou de l’[exemple Javascript](https://aka.ms/js-qna-sample).
+Vous pouvez également consulter l’[exemple en Python](https://aka.ms/bot-qna-python-sample-code). 
 
 Démarrez l’émulateur, connectez-vous à votre bot et envoyez un message, comme indiqué ci-dessous.
 

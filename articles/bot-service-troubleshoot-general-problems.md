@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/17/2019
-ms.openlocfilehash: 47f87555b48edcfdca6d07ab2bdaa52ef915a8da
-ms.sourcegitcommit: 61a2297fabf35c59693309f2a605e893634585b7
+ms.openlocfilehash: d958f2a9f85af4a42dab241264115050f1972d4d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71061069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75490844"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.
@@ -136,7 +136,7 @@ Direct Line 3.0 retourne le code d’état HTTP 502 lorsqu’il essaie de commun
 
 ## <a name="what-is-the-idialogstackforward-method-in-the-bot-framework-sdk-for-net"></a>En quoi consiste la méthode IDialogStack.Forward dans le kit SDK Bot Framework pour .NET ?
 
-Le but principal de `IDialogStack.Forward` est de réutiliser un dialogue enfant existant qui est souvent « réactif », c’est-à-dire que le dialogue enfant (dans `IDialog.StartAsync`) attend un objet `T` avec un certain gestionnaire `ResumeAfter`. En particulier, si un dialogue enfant attend `IMessageActivity` `T`, vous pouvez transférer le `IMessageActivity` entrant (déjà reçu par certains dialogues parents) à l’aide de la méthode `IDialogStack.Forward`. Par exemple, pour transférer un `IMessageActivity` entrant à un `LuisDialog`, appelez `IDialogStack.Forward` afin de pousser le `LuisDialog` sur la pile de dialogues, exécutez le code dans `LuisDialog.StartAsync` jusqu’à ce qu’il programme une attente pour le message suivant, puis répondez immédiatement à cette attente avec le `IMessageActivity` transféré.
+Le but principal de `IDialogStack.Forward` est de réutiliser un dialogue enfant existant qui est souvent « réactif », c’est-à-dire que le dialogue enfant (dans `IDialog.StartAsync`) attend un objet `T` avec un certain gestionnaire `ResumeAfter`. En particulier, si un dialogue enfant attend `IMessageActivity``T`, vous pouvez transférer le `IMessageActivity` entrant (déjà reçu par un dialogue parent) à l’aide de la méthode `IDialogStack.Forward`. Par exemple, pour transférer un `IMessageActivity` entrant à un `LuisDialog`, appelez `IDialogStack.Forward` afin de pousser le `LuisDialog` sur la pile de dialogues, exécutez le code dans `LuisDialog.StartAsync` jusqu’à ce qu’il programme une attente pour le message suivant, puis répondez immédiatement à cette attente avec le `IMessageActivity` transféré.
 
 `T` est habituellement un `IMessageActivity`, puisque `IDialog.StartAsync` est typiquement construit en vue d’attendre ce type d’activité. Vous pouvez utiliser `IDialogStack.Forward` vers `LuisDialog` comme mécanisme d’interception des messages de l’utilisateur pour un certain traitement avant de transmettre le message à un `LuisDialog` existant. Sinon, vous pouvez également utiliser `DispatchDialog` avec `ContinueToNextGroup` à cette fin.
 
@@ -180,7 +180,7 @@ Pour stocker ces données dans vos centres de données, vous pouvez fournir une 
 * Utiliser les interfaces Builder dans la couche de langage (Node.js ou C#).
 
 > [!IMPORTANT]
-> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et peut être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, consultez l’article **Gérer les données d’état** de l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production, et pourra être dépréciée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, consultez la rubrique **Gérer les données d’état** pour l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
 
 ::: moniker-end
 
@@ -267,11 +267,11 @@ Le kit SDK Bot Framework pour Node.js et le kit SDK Bot Framework pour.NET peuve
 
 ## <a name="why-do-i-get-an-authorization_requestdenied-exception-when-creating-a-bot"></a>Pourquoi est-ce que j’obtiens l’exception Authorization_RequestDenied lors de la création d’un robot ?
 
-La permission de créer des robots Azure Bot Service est gérée par le biais du portail Azure Active Directory (AAD). Si les permissions ne sont pas correctement configurées dans le portail [AAD](http://aad.portal.azure.com), les utilisateurs obtiennent l’exception **Authorization_RequestDenied** lors de la création d’un service de robot.
+La permission de créer des robots Azure Bot Service est gérée par le biais du portail Azure Active Directory (AAD). Si les permissions ne sont pas correctement configurées dans le portail [AAD](https://aad.portal.azure.com), les utilisateurs obtiennent l’exception **Authorization_RequestDenied** lors de la création d’un service de robot.
 
 Vérifiez d’abord que vous êtes un « Invité » du répertoire :
 
-1. Connectez-vous au [Portail Microsoft Azure](http://portal.azure.com).
+1. Connectez-vous au [Portail Microsoft Azure](https://portal.azure.com).
 2. Cliquez sur **Tous les services** et recherchez *actif*.
 3. Sélectionnez **Azure Active Directory**.
 4. Cliquez sur **Utilisateurs**.
@@ -281,7 +281,7 @@ Vérifiez d’abord que vous êtes un « Invité » du répertoire :
 
 Après avoir vérifié que vous n’êtes pas un **Invité**, l’administrateur du répertoire doit configurer les paramètres suivants pour s’assurer que les utilisateurs d’un répertoire actif peuvent créer un service de robot :
 
-1. Connectez-vous au [portail AAD](http://aad.portal.azure.com). Dans **Utilisateurs et groupes**, sélectionnez **Paramètres utilisateur**.
+1. Connectez-vous au [portail AAD](https://aad.portal.azure.com). Dans **Utilisateurs et groupes**, sélectionnez **Paramètres utilisateur**.
 2. Dans la section **Inscription des applications** , mettez **Les utilisateurs peuvent enregistrer des applications** sur **Oui**. Les utilisateurs de votre répertoire pourront ainsi créer un service de robot.
 3. Dans la section **Utilisateurs externes**, mettez **Les permissions des utilisateurs invités sont limitées** sur **Non**. Les utilisateurs invités de votre répertoire pourront ainsi créer un service de robot.
 

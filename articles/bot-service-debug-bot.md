@@ -8,21 +8,21 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 27af606506eb19b98a327e276a00201ac417c7e4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: dcc8ae71be76d2629681a058ea43e280aebad795
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298185"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75736770"
 ---
 # <a name="debug-a-bot"></a>Déboguer un bot
 
 Cet article explique comment déboguer votre bot à l’aide d’un environnement de développement intégré (IDE) tels que Visual Studio ou Visual Studio Code et l’émulateur Bot Framework. Vous pouvez utiliser ces méthodes pour déboguer n’importe quel bot localement, mais cet article utilise un [bot C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) ou un [bot Javascript](~/javascript/bot-builder-javascript-quickstart.md) créé dans le démarrage rapide.
 
 > [!NOTE]
-> Dans cet article, nous utilisons Bot Framework Emulator pour envoyer et recevoir des messages à partir du robot durant le débogage. Si vous recherchez d’autres façons de déboguer votre robot à l’aide de Bot Framework Emulator, veuillez lire l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
+> Dans cet article, nous utilisons Bot Framework Emulator pour envoyer et recevoir des messages à partir du robot durant le débogage. Si vous recherchez d’autres façons de déboguer votre robot à l’aide de Bot Framework Emulator, veuillez lire l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator). 
 
-## <a name="prerequisites"></a>Prérequis 
+## <a name="prerequisites"></a>Conditions préalables requises 
 - Téléchargez et installez l’[émulateur Bot Framework](https://aka.ms/Emulator-wiki-getting-started).
 - Téléchargez et installez [Visual Studio Code](https://code.visualstudio.com) ou [Visual Studio](https://www.visualstudio.com/downloads) (Community Edition ou version ultérieure).
 
@@ -48,9 +48,12 @@ Dans Visual Studio Code, vous pouvez définir des points d’arrêt et exécuter
 1. Lancez VS Code et ouvrez le dossier de votre projet de bot.
 2. Dans la barre de menus, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**. Si vous êtes invité à sélectionner un moteur d’exécution pour exécuter votre code, sélectionnez **Node.js**. À ce stade, le bot s’exécute localement. 
 3. Cliquez sur le fichier **.js** et définissez les points d’arrêt selon vos besoins. Dans VS Code, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur ce point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
+
    ![Définir un point d’arrêt dans VS Code](~/media/bot-service-debug-bot/breakpoint-set.png)
-4. Démarrez Bot Framework Emulator et connectez-vous à votre robot, comme décrit dans l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0). 
+
+4. Démarrez Bot Framework Emulator et connectez-vous à votre robot, comme décrit dans l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator). 
 5. À partir de l’émulateur, envoyez un message à votre robot (par exemple, envoyer le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
+
    ![Déboguer dans VS Code](~/media/bot-service-debug-bot/breakpoint-caught.png)
 
 ## <a name="debug-a-c-bot-using-breakpoints-in-visual-studio"></a>Déboguer un bot C# à l’aide de points d’arrêt dans Visual Studio
@@ -62,23 +65,26 @@ Dans Visual Studio (VS), vous pouvez définir des points d’arrêt et exécuter
 3. Dans l’**Explorateur de solutions**, cliquez sur le fichier **.cs** et définissez les points d’arrêt selon vos besoins. Ce fichier définit la logique principale de votre bot. Dans VS, vous pouvez définir des points d’arrêt en plaçant votre souris sur la colonne à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur le point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
 4. Dans le menu, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**. À ce stade, le bot s’exécute localement. 
 
+   ![Définir le point d’arrêt dans Visual Studio](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
+
 <!--
    > [!NOTE]
    > If you get the "Value cannot be null" error, check to make sure your **Table Storage** setting is valid.
    > The **EchoBot** is default to using **Table Storage**. To use Table Storage in your bot, you need the table *name* and *key*. If you do not have a Table Storage instance ready, you can create one or for testing purposes, you can comment out the code that uses **TableBotDataStore** and uncomment the line of code that uses **InMemoryDataStore**. The **InMemoryDataStore** is intended for testing and prototyping only.
 -->
-   ![Définir le point d’arrêt dans Visual Studio](~/media/bot-service-debug-bot/breakpoint-set-vs.png)
 
 5. Démarrez l’émulateur Bot Framework et connectez-vous à votre bot, comme décrit dans la section ci-dessus. 
 6. À partir de l’émulateur, envoyez un message à votre bot (par exemple : le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
-   ![Déboguer dans VS](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
-::: moniker range="azure-bot-service-3.0" 
+
+   ![Débogage dans Visual Studio](~/media/bot-service-debug-bot/breakpoint-caught-vs.png)
+
+::: moniker range="azure-bot-service-3.0"
 
 ## <a id="debug-csharp-serverless"></a> Déboguer un bot Plan consommation C\# Functions
 
 L’environnement de plan consommation sans serveur C\# de Bot Service partage plus d’éléments avec Node.js qu’une application C\# standard, car il nécessite un hôte de runtime, comme le moteur du nœud. Dans Azure, le runtime fait partie de l’environnement d’hébergement dans le cloud, mais vous devez répliquer cet environnement localement sur votre bureau. 
 
-### <a name="prerequisites"></a>Prérequis
+### <a name="prerequisites"></a>Conditions préalables requises
 
 Avant de pouvoir déboguer votre bot C# Plan de consommation, vous devez effectuer ces tâches.
 
@@ -122,6 +128,25 @@ En outre, vous pouvez afficher les détails du journal dans la fenêtre de conso
 ![Fenêtre de console](~/media/bot-service-debug-bot/csharp-azureservice-debug-debughostlogging.png)
 
 ::: moniker-end
+
+## <a name="debug-a-python--bot-using-breakpoints-in-visual-studio-code"></a>Déboguer un bot Python à l’aide de points d’arrêt dans Visual Studio Code
+
+Dans Visual Studio Code, vous pouvez définir des points d’arrêt et exécuter le bot en mode débogage pour parcourir votre code. Consultez également [Créer un bot à l’aide du kit SDK Bot Framework pour Python](~/python/bot-builder-python-quickstart.md).
+
+1. Lancez VS Code et ouvrez le dossier de votre projet de bot.
+1. Définissez les points d’arrêt si nécessaire. Vous pouvez définir des points d’arrêt en passant votre souris sur la colonne située à gauche des numéros de ligne. Un petit point rouge s’affiche. Si vous cliquez sur ce point, le point d’arrêt est défini. Si vous cliquez à nouveau sur le point, le point d’arrêt est supprimé.
+1. Sélectionnez `app.py`.
+1. Dans la barre de menus, cliquez sur **Déboguer**, puis sur **Démarrer le débogage**.
+1. Sélectionnez **Fichier Python** pour déboguer le fichier sélectionné.
+
+   ![Définir des points d’arrêt](~/media/bot-service-debug-bot/bot-debug-python-breakpoints.png)
+
+1. Démarrez Bot Framework Emulator et connectez-vous à votre robot, comme décrit dans l’article [Déboguer avec Bot Framework Emulator](https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator). 
+1. À partir de l’émulateur, envoyez un message à votre robot (par exemple, envoyer le message « Salut »). L’exécution s’arrêtera à la ligne où vous placez le point d’arrêt.
+
+   ![Déboguer dans VS Code](~/media/bot-service-debug-bot/bot-debug-python-breakpoint-caught.png)
+
+Pour plus d’informations, consultez [Déboguer votre code Python](https://aka.ms/bot-debug-python).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

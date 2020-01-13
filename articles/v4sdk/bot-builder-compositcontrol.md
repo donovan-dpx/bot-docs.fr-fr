@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ef79b62aecbc79ed277f3962606d5ed5d9ceeb3
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: c273b0c157abd40dd139739411b19656565fa7c7
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491527"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
 
@@ -22,14 +22,14 @@ ms.locfileid: "73933573"
 
 Avec les dialogues composants, vous pouvez créer des dialogues indépendants pour gérer des scénarios spécifiques, en divisant un jeu de dialogues en éléments plus petits et donc plus faciles à gérer. Chacun de ces éléments a son propre jeu de dialogues, ce qui permet d’éviter toute collision de nom avec les jeux de dialogues externes.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Connaissances des [concepts de base des bots][concept-basics], de la [bibliothèque de dialogues][concept-dialogs] et de la façon de [gérer les conversations][simple-flow].
-- Une copie de l’exemple d’invite multitour en [**C#** ][cs-sample] ou [**JavaScript**][js-sample].
+- Une copie de l’exemple d’invite multitour en [**C#** ][cs-sample], [**JavaScript**][js-sample] ou [**Python**][python-sample].
 
 ## <a name="about-the-sample"></a>À propos de l’exemple
 
-Dans l’exemple d’invite à plusieurs tours, nous utilisons un dialogue en cascade, quelques invites et un dialogue composant pour créer une interaction simple qui pose à l’utilisateur une série de questions. Le code utilise un dialogue pour suivre ces étapes :
+Dans l’exemple d’invite multitour, nous utilisons un dialogue en cascade, quelques invites et un dialogue de composant pour créer une interaction simple qui pose à l’utilisateur une série de questions. Le code utilise un dialogue pour suivre ces étapes :
 
 | Étapes        | Type d’invite  |
 |:-------------|:-------------|
@@ -55,15 +55,15 @@ Pour utiliser les dialogues, installez le package NuGet **Microsoft.Bot.Builder.
 
 Ici, la classe `UserProfileDialog` dérive de la classe `ComponentDialog`.
 
-[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=13)]
+[!code-csharp[Class](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17)]
 
 Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
 
-[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=17-42)]
+[!code-csharp[Constructor](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=21-48)]
 
 Il s’agit de l’implémentation de la première étape du dialogue en cascade.
 
-[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=44-54)]
+[!code-csharp[First step](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=50-60)]
 
 Pour plus d’informations sur l’implémentation des dialogues en cascade, consultez la rubrique sur l’[implémentation des flux de conversation séquentiels](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -87,6 +87,26 @@ Il s’agit de l’implémentation de la première étape du dialogue en cascade
 
 Pour plus d’informations sur l’implémentation des dialogues en cascade, consultez la rubrique sur l’[implémentation des flux de conversation séquentiels](bot-builder-dialog-manage-complex-conversation-flow.md).
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Pour utiliser les dialogues, installez les packages pypi **botbuilder-dialogs** et **botbuilder-ai** en exécutant `pip install botbuilder-dialogs` et `pip install botbuilder-ai` à partir d’un terminal.
+
+**dialogs/user_profile_dialog.py**
+
+Ici la classe `UserProfileDialog` étend `ComponentDialog`.
+
+[!code-python[Class](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25)]
+
+Dans le constructeur, la méthode `add_dialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `initial_dialog_id`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
+
+[!code-python[Constructor](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=25-57)]
+
+Il s’agit de l’implémentation de la première étape du dialogue en cascade.
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/dialogs/user_profile_dialog.py?range=59-71)]
+
+Pour plus d’informations sur l’implémentation des dialogues en cascade, consultez la rubrique sur l’[implémentation des flux de conversation séquentiels](bot-builder-dialog-manage-complex-conversation-flow.md).
+
 ---
 
 Au moment de l’exécution, le dialogue composant gère sa propre pile de dialogues. Au démarrage du dialogue composant :
@@ -105,7 +125,7 @@ Pour utiliser un dialogue composant, ajoutez une instance de celui-ci au jeu de 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-**Bots\DialoBot.cs**
+**Bots\DialogBot.cs**
 
 Dans l’exemple, c’est fait en utilisant la méthode `RunAsync` qui est appelée à partir de la méthode `OnMessageActivityAsync` du bot.
 
@@ -124,6 +144,18 @@ Dans l’exemple, nous avons ajouté une méthode `run` au dialogue du profil ut
 La méthode `run` est appelée depuis la méthode `onMessage` du bot.
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**helpers/dialog_helper.py**
+
+Dans l’exemple, nous avons ajouté une méthode `run_dialog` au dialogue du profil utilisateur.
+
+[!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/helpers/dialog_helper.py?range=8-19)]
+
+Il s’agit de la méthode `run_dialog`, qui est appelée à partir de la méthode `on_message_activity` du bot.
+
+**bots/dialog_bot.py** [!code-python[First step](~/../botbuilder-python/samples/python/05.multi-turn-prompt/bots/dialog_bot.py?range=46-51)]
 
 ---
 
@@ -164,3 +196,4 @@ Vous pouvez améliorer vos bots de manière à ce qu’il réagissent à des ent
 
 [cs-sample]: https://aka.ms/cs-multi-prompts-sample
 [js-sample]: https://aka.ms/js-multi-prompts-sample
+[python-sample]: https://aka.ms/python-multi-prompts-sample

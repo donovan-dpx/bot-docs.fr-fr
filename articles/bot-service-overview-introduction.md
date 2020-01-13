@@ -7,13 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/05/2019
-ms.openlocfilehash: 0206cf3381d95fbc58d49924aa19dadea5f226dc
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.date: 11/15/2019
+ms.openlocfilehash: 6bdb6381c31045563963b4640faa31708be47ba4
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75490766"
 ---
 # <a name="about-azure-bot-service"></a>À propos d’Azure Bot Service
 
@@ -44,11 +44,11 @@ Azure Bot Service et Bot Framework proposent un ensemble intégré d’outils et
 
 ![Présentation des bots](media/bot-service-overview.png) 
 
-### <a name="plan"></a>Planification
+### <a name="plan"></a>Plan
 Comme avec n’importe quel type de logiciel, il est important pour le processus de création d’un bot réussi de disposer d’une compréhension approfondie des objectifs, des processus et des besoins des utilisateurs. Avant d’écrire votre code, consultez les [instructions relatives à la conception](bot-service-design-principles.md)  des bots, pour connaître les bonnes pratiques et déterminer les besoins de votre bot. Vous pouvez créer un bot simple ou inclure des fonctionnalités plus élaborées, telles que des fonctions vocales, la compréhension du langage naturel ou la capacité de répondre aux questions.
 
-### <a name="build"></a>Créer
-Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Bot Framework Service est l’un des composants d’Azure Bot Service et de Bot Framework. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez commencer le développement de votre bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser des modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md)] pour un développement local.
+### <a name="build"></a>Build
+Votre bot est un service web qui implémente une interface de conversation et communique avec Bot Framework Service pour envoyer et recevoir des messages et des événements. Bot Framework Service est l’un des composants d’Azure Bot Service et de Bot Framework. Vous pouvez créer des bots dans divers environnements et langages. Vous pouvez démarrer le développement de bot dans le [portail Azure](bot-service-quickstart.md), ou utiliser les modèles [[C#](dotnet/bot-builder-dotnet-sdk-quickstart.md) | [JavaScript](javascript/bot-builder-javascript-quickstart.md) | [Python](python/bot-builder-python-quickstart.md)] pour un développement local.
 
 Dans le cadre d’Azure Bot Service et de Bot Framework, nous proposons des composants supplémentaires que vous pouvez utiliser pour étendre les fonctionnalités de votre bot :
 
@@ -73,12 +73,14 @@ Les bots sont des applications complexes composées de nombreux éléments diff�
  
 - Testez votre bot sur le [Web](bot-service-manage-test-webchat.md). Une fois configuré via le portail Azure, votre bot peut également être accessible via une interface de conversation web. L’interface de conversation web constitue un excellent moyen d’accorder l’accès à votre bot à des testeurs et à d’autres personnes ne disposant pas d’un accès direct au code d’exécution du bot.
 
-- Procédez à un [Test unitaire](https://docs.microsoft.com/azure/bot-service/unit-test-bots?view=azure-bot-service-4.0) de votre bot avec la mise à jour de juillet du kit SDK de Bot Framework.
+- Procédez à un [Test unitaire](https://docs.microsoft.com/azure/bot-service/unit-test-bots) de votre bot avec la mise à jour de juillet du kit SDK de Bot Framework.
+
+
 
 ### <a name="publish"></a>Publish 
 Lorsque vous êtes prêt à rendre votre bot accessible sur le Web, publiez-le dans [Azure](bot-builder-howto-deploy-azure.md) ou dans votre propre centre de données ou service web. La possession d’une adresse sur l’Internet public est la première étape pour que votre bot prenne vie sur votre site, ou dans des canaux de conversation.
 
-### <a name="connect"></a>Connecter          
+### <a name="connect"></a>Se connecter          
 Connectez votre bot aux canaux tels que Facebook, Messenger, Kik, Skype, Slack, Microsoft Teams, Telegram, SMS, Twilio, Cortana et Skype. Bot Framework effectue la plupart des opérations nécessaires pour envoyer et recevoir des messages de l’ensemble de ces différentes plateformes : l’application de votre bot reçoit un flux unifié et normalisé de messages, quels que soient le nombre et le type de canaux auxquels il est connecté. Pour plus d’informations sur l’ajout de canaux, consultez la rubrique [Canaux](bot-service-manage-channels.md).
 
 ### <a name="evaluate"></a>Évaluer 

@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 422c1285d6f668b6f5c39617f5d25419b2874eea
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: c22e0b8413fc0bcfb4ced330470d88a8a4fbea81
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491447"
 ---
-# <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Didacticiel : Utiliser QnA Maker dans votre bot pour répondre à des questions
+# <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Tutoriel : Utiliser QnA Maker dans votre bot pour répondre à des questions
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Vous pouvez utiliser le service QnA Maker et une base de connaissances pour ajouter une prise en charge des questions et réponses à votre bot. Quand vous créez une base de connaissances, vous l’amorcez avec des questions et réponses.
 
-Ce tutoriel vous montre comment effectuer les opérations suivantes :
+Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un service QnA Maker et une base de connaissances
@@ -32,7 +32,7 @@ Ce tutoriel vous montre comment effectuer les opérations suivantes :
 
 Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) avant de commencer.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * Le bot créé dans le [tutoriel précédent](bot-builder-tutorial-basic-deploy.md). Nous allons ajouter une fonctionnalité de questions et réponses au bot.
 * Il est utile de connaître les bases de [QnA Maker](https://qnamaker.ai/). Nous allons créer, entraîner et publier la base de connaissances à utiliser avec le bot via le portail QnA Maker.
@@ -75,7 +75,7 @@ Ces valeurs seront utilisées dans votre fichier `appsettings.json` ou `.env` à
 La base de connaissances est maintenant prête à être utilisée par votre bot.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Ajouter les informations de la base de connaissances à votre bot
-À compter de Bot Framework 4.3, Azure ne fournit plus de fichier .bot dans le code source de votre bot téléchargé. Utilisez les instructions suivantes pour connecter votre bot CSharp ou JavaScript à votre base de connaissances.
+À compter de Bot Framework 4.3, Azure ne fournit plus de fichier .bot dans le code source de votre bot téléchargé. Utilisez les instructions suivantes pour connecter votre bot CSharp, JavaScript ou Python à votre base de connaissances.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -107,13 +107,29 @@ QnAAuthKey="qna-maker-resource-key"
 QnAEndpointHostName="your-hostname" // This is a URL ending in /qnamaker
 ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ajoutez les valeurs suivantes à votre fichier `config.py` :
+
+```python
+class DefaultConfig:
+    """ Bot Configuration """
+    PORT = 3978
+    APP_ID = os.environ.get("MicrosoftAppId", "")
+    APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
+
+    QNA_KNOWLEDGEBASE_ID = os.environ.get("QnAKnowledgebaseId", "")
+    QNA_ENDPOINT_KEY = os.environ.get("QnAEndpointKey", "")
+    QNA_ENDPOINT_HOST = os.environ.get("QnAEndpointHostName", "")
+
+```
+
 ---
 
 | Champ | Valeur |
 |:----|:----|
-| QnAKnowledgebaseId | `knowledge-base-id` à partir de l’exemple de requête HTTP *Postman*.|
-| QnAAuthKey | `qna-maker-resource-key` à partir de l’exemple de requête HTTP *Postman*. |
-| QnAEndpointHostName | `your-hostname` à partir de l’exemple de requête HTTP *Postman*. Utilisez l’URL complète, avec `https://` au début et `/qnamaker` à la fin. La chaîne d’URL complète doit ressembler à `https://<your knowledge base name>.azurewebsites.net/qnamaker`. |
+
+| QnAKnowledgebaseId | ID de base de connaissances que le portail QnA Maker a généré automatiquement. | | QnAAuthKey (QnAEndpointKey en Python) | Clé de point de terminaison que le portail QnA Maker a générée automatiquement. | | QnAEndpointHostName | URL d’hôte générée par le portail QnA Maker. Utilisez l’URL complète, avec `https://` au début et `/qnamaker` à la fin. La chaîne d’URL complète doit ressembler à « https://< >.azure.net/qnamaker ». |
 
 Enregistrez vos modifications.
 
@@ -284,6 +300,81 @@ Mettez à jour votre code d’initialisation pour charger les informations du se
     });
     ```
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+1. Vérifiez que vous avez installé les packages comme décrit dans le fichier README du dépôt d’exemples.
+1. Ajoutez la référence `botbuilder-ai` au fichier `requirements.txt`, comme indiqué ci-dessous.
+
+   **requirements.txt**
+   <!-- Removed version numbers -->
+   ```text
+      botbuilder-core
+      botbuilder-ai
+      flask
+   ```
+
+   Notez que les versions peuvent varier.
+
+1. Dans le fichier `app.py`, modifiez la création de l’instance de bot comme indiqué ci-dessous.
+
+   **app.py**
+
+   ```python
+   # Create the main dialog
+   BOT = MyBot(APP.config)
+   ```
+
+1. Dans le fichier `bot.py`, importez `QnAMaker` et `QnAMakerEndpoint`. Importez également `Config`, comme indiqué ci-dessous.
+
+   **bot.py**
+
+   ```python
+   from flask import Config
+
+   from botbuilder.ai.qna import QnAMaker, QnAMakerEndpoint
+   from botbuilder.core import ActivityHandler, MessageFactory, TurnContext
+   from botbuilder.schema import ChannelAccount
+   ```
+
+1. Ajoutez une fonction __init__ pour instancier un objet `qna-maker`. à l’aide des paramètres de configuration fournis dans le fichier `config.py`.  
+
+   **bot.py**
+
+   ```python
+   def __init__(self, config: Config):
+      self.qna_maker = QnAMaker(
+         QnAMakerEndpoint(
+            knowledge_base_id=config["QNA_KNOWLEDGEBASE_ID"],
+            endpoint_key=config["QNA_ENDPOINT_KEY"],
+            host=config["QNA_ENDPOINT_HOST"],
+      )
+   )
+
+   ```
+
+1. Mettez à jour `on_message_activity` pour rechercher une réponse dans votre base de connaissances. Passez chaque entrée utilisateur à votre base de connaissances QnA Maker, puis retournez la première réponse de QnA Maker à l’utilisateur.
+
+   **bot.py**
+
+   ```python
+   async def on_message_activity(self, turn_context: TurnContext):
+      # The actual call to the QnA Maker service.
+      response = await self.qna_maker.get_answers(turn_context)
+      if response and len(response) > 0:
+         await turn_context.send_activity(MessageFactory.text(response[0].answer))
+      else:
+         await turn_context.send_activity("No QnA Maker answers were found.")
+
+   ```
+
+1. Vous pouvez éventuellement mettre à jour le message de bienvenue dans `on_members_added_activity`, par exemple :
+
+   **bot.py**
+
+   ```python
+   await turn_context.send_activity("Hello and welcome to QnA!")
+   ```
+
 ---
 
 ### <a name="test-the-bot-locally"></a>Testez le bot localement
@@ -302,6 +393,7 @@ Vous pouvez maintenant republier votre bot sur Azure. Vous devez compresser votr
 > Before creating a zip of your project files, make sure that you are _in_ the correct folder. 
 > - For C# bots, it is the folder that has the .csproj file. 
 > - For JS bots, it is the folder that has the app.js or index.js file. 
+> - For Python bots, it is the folder that has the app.py file. 
 >
 > Select all the files and zip them up while in that folder, then run the command while still in that folder.
 >
@@ -319,16 +411,18 @@ az webapp deployment source config-zip --resource-group "resource-group-name" --
 
 [!INCLUDE [publish snippet](~/includes/deploy/snippet-publish-js.md)]
 
---- -->
+# [Python](#tab/python)
 
-### <a name="test-the-published-bot"></a>Tester le bot publié
+az webapp deployment source config-zip --resource-group "resource_group_name" --name "unique_bot_name" --src "zi
 
-Après avoir publié le bot, patientez une à deux minutes, le temps qu’Azure mette à jour le bot et le démarre.
+### Test the published bot
 
-Servez-vous de l’émulateur pour tester le point de terminaison de production pour votre bot ou utilisez le portail Azure pour tester le bot dans Web Chat.
-Dans les deux cas, vous devez observer le même comportement qu’au moment du test local.
+After you publish the bot, give Azure a minute or two to update and start the bot.
 
-## <a name="clean-up-resources"></a>Supprimer des ressources
+Use the Emulator to test the production endpoint for your bot, or use the Azure portal to test the bot in Web Chat.
+In either case, you should see the same behavior as you did when you tested it locally.
+
+## Clean up resources
 
 <!-- In the first tutorial, we should tell them to use a new resource group, so that it is easy to clean up resources. We should also mention in this step in the first tutorial not to clean up resources if they are continuing with the sequence. -->
 

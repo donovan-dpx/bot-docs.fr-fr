@@ -9,20 +9,20 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c48d71c21d5e482b497cd38095af377ce2d04f6d
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: d1d086f11838f7e0fc658cce586216110ff205f1
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491753"
 ---
-# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Didacticiel : Créer et déployer un bot de base
+# <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutoriel : Créer et déployer un bot de base
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Ce tutoriel vous aide à créer pas à pas un bot de base avec le kit SDK Bot Framework et à le déployer dans Azure. Si vous avez déjà créé un bot de base et qu’il s’exécute localement, passez directement à la section [Déployer votre bot](#deploy-your-bot).
 
-Ce tutoriel vous montre comment effectuer les opérations suivantes :
+Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un bot Echo de base
@@ -39,14 +39,18 @@ Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://az
 
 [!INCLUDE [javascript quickstart](~/includes/quickstart-javascript.md)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[!INCLUDE [python quickstart](~/includes/quickstart-python.md)]
+
 ---
 
 ## <a name="deploy-your-bot"></a>Déployer votre bot
 
-### <a name="prerequisites"></a>Prérequis
+### <a name="prerequisites"></a>Conditions préalables requises
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 
-### <a name="prepare-for-deployment"></a>Préparation du déploiement
+### <a name="prepare-for-deployment"></a>Préparer le déploiement
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 
 #### <a name="1-login-to-azure"></a>1. Connexion à Azure
@@ -59,7 +63,12 @@ Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://az
 [!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
 
 #### <a name="4-deploy-via-arm-template"></a>4. Déployer le bot avec un modèle ARM
-Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux. 
+Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux.
+
+> [!NOTE]
+> Vous ne pouvez pas déployer les bots Python sur un groupe de ressources qui contient des services/bots Windows.  Vous pouvez déployer plusieurs bots Python sur le même groupe de ressources, mais vous devez créer les autres services (LUIS, QnA, etc.) dans un autre groupe de ressources.
+>
+
 ##### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Déployer par le biais du modèle ARM avec un nouveau groupe de ressources**
 [!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
 

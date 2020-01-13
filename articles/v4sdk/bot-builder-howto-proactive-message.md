@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 774738186127bff1e680d905d208b69097402d8e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 24435d186569d29165760cf1d7d41ee50e665d06
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933582"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491475"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envoyer des notifications proactives aux utilisateurs
 
@@ -31,10 +31,10 @@ Un message proactif ad hoc constitue le type de message proactif le plus simple.
 
 Pour gérer plus facilement les notifications, pensez à d’autres méthodes pour intégrer la notification dans le flux de messages. Par exemple, vous pouvez définir un indicateur dans l’état de la conversation ou ajouter la notification à une file d’attente.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Comprendre les [concepts de base des bots](bot-builder-basics.md).
-- Une copie de l’exemple de messages proactifs en **[C#](https://aka.ms/proactive-sample-cs) ou [JavaScript](https://aka.ms/proactive-sample-js)** . Cet exemple est utilisé pour expliquer la messagerie proactive dans cet article.
+- Une copie de l’exemple de messages proactifs en [**C#** ](https://aka.ms/proactive-sample-cs), [**JavaScript**](https://aka.ms/proactive-sample-js) ou [**Python**](https://aka.ms/bot-proactive-python-sample-code). L’exemple sert à expliquer la messagerie proactive dans cet article.
 
 ## <a name="about-the-proactive-sample"></a>À propos de l’exemple proactif
 
@@ -59,6 +59,12 @@ Lorsque l’émulateur se connecte au bot, celui-ci reçoit deux activités de m
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=13-17&highlight=2)]
 
 [!code-javascript[onConversationUpdateActivity](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/bots/proactiveBot.js?range=41-44&highlight=2-3)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bots/proactive_bot.py** [!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=14-16&highlight=2)]
+
+[!code-python[on_conversation_update_activity](~/../botbuilder-python/samples/python/16.proactive-messages/bots/proactive_bot.py?range=35-45)]
 
 ---
 
@@ -95,11 +101,19 @@ Le paramètre pour `continueConversation` est une fonction qui sert de gestionna
 
 [!code-javascript[Notify logic](~/../botbuilder-samples/samples/javascript_nodejs/16.proactive-messages/index.js?range=68-80&highlight=4-6)]
 
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Chaque fois que la page de notification du bot est demandée, le serveur récupère les références de conversation dans le dictionnaire.
+Le serveur utilise ensuite `_send_proactive_message` pour envoyer le message proactif.
+
+**app.py** [!code-python[Notify logic](~/../botbuilder-python/samples/python/16.proactive-messages/app.py?range=104-110&highlight=3-7)]
+
 ---
 
 ## <a name="test-your-bot"></a>Tester votre robot
 
-1. Si ce n’est pas déjà fait, installez [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+1. Si ce n’est déjà fait, installez [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 1. Exécutez l’exemple en local sur votre machine.
 1. Démarrez l’émulateur et connectez-vous à votre bot.
 1. Chargez à la page de notification/d’api de votre bot. Un message proactif est alors généré dans l’émulateur.
@@ -110,7 +124,7 @@ En plus de l’exemple utilisé dans cet article, d’autres exemples sont dispo
 
 ### <a name="avoiding-401-unauthorized-errors"></a>Évitez les erreurs 401 « Non autorisé » 
 
-Par défaut, le kit SDK BotBuilder ajoute `serviceUrl` à la liste des noms d’hôte approuvés si la requête entrante est authentifiée par BotAuthentication. Ils sont conservés dans un cache en mémoire. Si votre bot est redémarré, un utilisateur en attente d’un message proactif ne peut pas le recevoir, sauf s’il a sollicité de nouveau le bot par un message après son redémarrage. 
+Par défaut, le kit SDK BotBuilder ajoute `serviceUrl` à la liste des noms d’hôte approuvés si la requête entrante est authentifiée par BotAuthentication. Ils sont conservés dans un cache en mémoire. Si votre bot est redémarré, un utilisateur en attente d’un message proactif ne peut pas le recevoir, sauf s’il a sollicité de nouveau le bot par un message après son redémarrage.
 
 Pour éviter ce problème, vous devez ajouter manuellement `serviceUrl` à la liste des noms d’hôtes approuvés à l’aide de : 
 
@@ -133,6 +147,16 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 Pour la messagerie proactive, `serviceUrl` est l’URL du canal que le destinataire du message proactif utilise ; elle se trouve dans `activity.serviceUrl`.
 
 Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Dans l’[exemple de messages proactifs](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages), vous devez le placer dans `index.js` juste avant `await turnContext.sendActivity('proactive hello');`.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+MicrosoftAppCredentials.trustServiceUrl(serviceUrl)
+```
+
+Pour la messagerie proactive, `serviceUrl` est l’URL du canal que le destinataire du message proactif utilise ; elle se trouve dans `activity.serviceUrl`.
+
+Vous devez ajouter le code ci-dessus, juste avant le code qui envoie le message proactif. Dans l’[exemple de messages proactifs](https://aka.ms/bot-proactive-python-sample-code), vous l’ajoutez à `app.py` avant d’envoyer le message *proactif de salutation*.
 
 ---
 

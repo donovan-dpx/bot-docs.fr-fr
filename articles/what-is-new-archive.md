@@ -7,16 +7,54 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.date: 11/01/2019
+ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a57e5bd2b17cb2ac7553e71ac66f2bdfe97f3b35
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: a6a957a636d82e0e4f0bf755d4215893d99bb07d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491389"
 ---
-# <a name="whats-new-july-2019"></a>Nouveautés (juillet 2019)
+# <a name="whats-new-november-2019"></a>Nouveautés de novembre 2019
+
+[!INCLUDE[applies-to](includes/applies-to.md)]
+
+Le kit SDK Bot Framework v4 est un [kit SDK open source](https://github.com/microsoft/botframework-sdk/#readme) qui permet aux développeurs de modéliser et de créer une conversation sophistiquée à l’aide de leur langage de programmation préféré.
+
+Cet article résume les nouvelles fonctionnalités et les améliorations clés dans Bot Framework et Azure Bot Service.
+
+
+|   | C#  | JS  | Python |  Java | 
+|---|:---:|:---:|:------:|:-----:|
+|Libérer |[4.6 GA][1] | [4.6 GA][2] | [Bêta 4][3] | [Préversion 3][3a]|
+|Docs | [docs][5] |[docs][5] |  | |
+|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7], [TypeScript][8], [es6][9]  | | | 
+
+#### <a name="bot-framework-sdk-for-microsoft-teams-ga"></a>SDK Bot Framework pour Microsoft Teams (GA)
+La version du kit SDK Bot Framework v4.6 intègre entièrement la prise en charge de la création de bots Teams, ce qui permet aux utilisateurs de s’en servir dans les conversations de canal ou de groupe. En ajoutant un bot à une équipe ou à une conversation, tous les utilisateurs de la conversation peuvent profiter de la fonctionnalité de bot directement dans la conversation.  [[Docs](https://docs.microsoft.com/azure/bot-service/bot-builder-basics-teams)]
+
+#### <a name="bot-framework-for-power-virtual-agent-preview"></a>Bot Framework for Power Virtual Agent (préversion)
+
+Power Virtual Agent a été conçu pour permettre aux utilisateurs professionnels de créer des bots dans le cadre d’une expérience SaaS de création de bot basée sur l’interface utilisateur, sans avoir à programmer ni gérer des services IA spécifiques. Power Virtual Agents peut être étendu avec Microsoft Bot Framework, ce qui permet aux développeurs et aux utilisateurs professionnels de collaborer à la création de bots pour leur organisation. [[Docs](https://docs.microsoft.com/dynamics365/ai/customer-service-virtual-agent/overview)]
+
+
+#### <a name="bot-framework-sdk-for-skills-preview"></a>SDK Bot Framework for Skills (préversion)
+
+- **Compétences pour bots** : créez des compétences conversationnelles réutilisables pour ajouter des fonctionnalités à un bot. Tirez parti des compétences prédéfinies comme Calendrier, E-mail, Tâche, Point d’intérêt, Automobile, Météo et Actualités. Les compétences comprennent des modèles de langage, des dialogues, des questions et réponses et du code d’intégration destinés à personnaliser et étendre, selon les besoins. [[Docs](https://microsoft.github.io/botframework-solutions/overview/skills/)]
+
+- **Skills for Power Virtual Agent – À venir !**  : pour les bots créés avec Power Virtual Agents, vous pouvez créer des compétences pour ces bots à l’aide de Bot Framework et d’Azure Cognitive Services sans avoir à créer entièrement un nouveau bot. 
+
+#### <a name="adaptive-dialogs-preview"></a>Adaptive Dialogs (préversion)
+Adaptive Dialogs permet aux développeurs de mettre à jour dynamiquement le flux de conversation en fonction du contexte et des événements. Cela s’avère particulièrement pratique quand vous faites face à des changements de contexte de conversation et à des interruptions au milieu d’une conversation. [[Docs][48] | [Exemples C#][49]] 
+
+#### <a name="language-generation-preview"></a>Language Generation (préversion)
+Language Generation permet aux développeurs de séparer la logique utilisée pour générer les réponses du bot, notamment la capacité à définir plusieurs variantes dans une expression, à exécuter des expressions simples basées sur le contexte et à se reporter à la mémoire conversationnelle. [[Docs][44] | [Exemples C#][45]]
+
+#### <a name="common-expression-language-preview"></a>Common Expression Language (préversion)
+Common Expression Language vous permet d’évaluer le résultat d’une logique basée sur une condition au moment de l’exécution. Le langage commun peut être utilisé dans le SDK Bot Framework et les composants d’IA conversationnelle, comme Adaptative Dialogs et Language Generation. [[Docs][40] | [API][41]]
+
+## <a name="whats-new-july-2019"></a>Nouveautés (juillet 2019)
 
 [!INCLUDE[applies-to](includes/applies-to.md)]
 
@@ -28,42 +66,30 @@ Cet article résume les nouvelles fonctionnalités et les améliorations clés d
 |---|:---:|:---:|:------:|
 |Kit SDK |[4.5][1] | [4.5][2] | [4.4.0b2 (préversion)][3] | 
 |Docs | [docs][5] |[docs][5] |  | |
-|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
-
-[1a]:https://github.com/microsoft/botframework-sdk/#readme
-[1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
-[2]:https://github.com/Microsoft/botbuilder-js#packages
-[3]:https://github.com/Microsoft/botbuilder-python#packages
-[5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
-[6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
-[7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
-[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_typescript
-[9]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_es6
-[10]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi
-[111]:https://github.com/Microsoft/botbuilder-python/tree/master/samples
+|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][11] | | 
 
 
-## <a name="bot-framework-channels"></a>Canaux Bot Framework
+### <a name="bot-framework-channels"></a>Canaux Bot Framework
 - [Direct Line Speech (préversion publique)](https://aka.ms/streaming-extensions) | [Documentation](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0) : Bot Framework et les services Microsoft Speech fournissent un canal activant le streaming bidirectionnel de la parole et du texte, du client vers l’application de bot, à l’aide de WebStockets.  
 
 - [Extension Direct Line App Service (préversion publique)](https://portal.azure.com) | [Documentation](https://aka.ms/directline-ase) : version de Direct Line qui permet aux clients de se connecter directement aux bots à l’aide de l’API Direct Line. Cela offre de nombreux avantages, notamment des performances et une isolation accrues. L’extension Direct Line App Service est disponible sur tous les services Azure App Services, notamment ceux hébergés dans un Azure App Service Environment. Un Azure App Service Environment fournit une isolation et est idéal pour travailler au sein d’un réseau virtuel. Un réseau virtuel vous permet de créer votre propre espace privé dans Azure et il est essentiel pour votre réseau cloud, car il offre isolation, segmentation et d’autres avantages clés. 
 
-## <a name="bot-framework-sdk"></a>SDK Bot Framework
+### <a name="bot-framework-sdk"></a>SDK Bot Framework
 - [Adaptive Dialog (préversion du SDK v4.6)](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme) | [Documentation](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs) | [Exemples C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore) : Adaptive Dialog (Boîte de dialogue adaptative) permet maintenant aux développeurs de mettre à jour dynamiquement le workflow de conversation en fonction du contexte et des événements. Cela s’avère particulièrement utile lorsque vous traitez des changements de contexte de conversation et des interruptions au milieu d’une conversation. 
   
 - [SDK Python Bot Framework (préversion 2)](https://github.com/microsoft/botbuilder-python) | [Exemples](https://github.com/Microsoft/botbuilder-python/tree/master/samples) : Le SDK Python prend maintenant en charge OAuth, Prompts, CosmosDB et inclut toutes les fonctionnalités majeures du SDK 4.5, ainsi que des exemples pour vous aider à découvrir les nouvelles fonctionnalités du SDK.
 
-## <a name="bot-framework-testing"></a>Tests Bot Framework
+### <a name="bot-framework-testing"></a>Tests Bot Framework
 - [Documents](https://aka.ms/testing-framework) | Packages de tests unitaires ([C#](https://aka.ms/nuget-botbuilder-testing)/ [JavaScript](https://aka.ms/npm-botbuilder-testing)) | [Exemple C#](https://aka.ms/cs-core-test-sample) | [Exemple JS](https://aka.ms/js-core-test-sample) : en réponse aux demandes des clients et développeurs souhaitant de meilleurs outils de test, la version de juillet du SDK introduit une nouvelle fonctionnalité de test unitaire. Le package Microsoft.Bot.Builder.testing simplifie le processus des dialogues de test unitaire dans votre bot.  
 
 - [Tests de canaux](https://github.com/Microsoft/BotFramework-Emulator/releases) | [docs](https://aka.ms/channel-testing): 
 
 introduit lors de Microsoft Build 2019, Bot Inspector est une nouvelle fonctionnalité de Bot Framework Emulator qui vous permet de déboguer et de tester des bots sur des canaux tels que Microsoft Teams, Slack, Cortana, etc. Lorsque vous utilisez le bot sur des canaux spécifiques, les messages sont mis en miroir dans Bot Framework Emulator où vous pouvez inspecter les données de message que le bot a reçues. De plus, un instantané de l’état de mémoire du bot pour un tour donné entre le canal et le bot est également restitué.
 
-## <a name="web-chat"></a>Discussion Web
+### <a name="web-chat"></a>Discussion Web
 - En réponse aux demandes des clients d’entreprise, nous avons ajouté [un exemple de conversation web](https://github.com/microsoft/BotFramework-WebChat/tree/master/samples/19.a.single-sign-on-for-enterprise-apps#single-sign-on-demo-for-enterprise-apps-using-oauth) qui montre comment autoriser un utilisateur à accéder aux ressources d’une application métier avec un bot. Deux types de ressources sont utilisés pour illustrer l’interopérabilité d’OAuth avec Microsoft Graph et l’API GitHub.
 
-## <a name="solutions"></a>solutions
+### <a name="solutions"></a>Solutions
 - [Accélérateur de solution Assistant virtuel](https://github.com/Microsoft/botframework-solutions#readme) : propose un ensemble de modèles, d’accélérateurs de solutions et de compétences pour aider à créer des expériences conversationnelles sophistiquées. Le nouveau client d’application Android pour l’Assistant virtuel qui s’intègre à la reconnaissance vocale Direct Line Speech et à l’Assistant virtuel montrant comment un client d’appareil peut interagir avec votre Assistant virtuel et afficher des cartes adaptatives. Les mises à jour incluent également la prise en charge des fonctionnalités vocales Direct Line Speech et de Microsoft Teams.
   
 - [Agent virtuel Dynamics 365 pour le service client (préversion publique)](https://dynamics.microsoft.com/en-us/ai/virtual-agent-for-customer-service/) : avec la préversion publique, vous pouvez fournir un service client exceptionnel avec des agents virtuels intelligents et adaptables. Les experts du service client peuvent facilement créer et améliorer les bots avec des insights pilotés par l’intelligence artificielle.
@@ -76,21 +102,7 @@ introduit lors de Microsoft Build 2019, Bot Inspector est une nouvelle fonction
 |---|:---:|:---:|:------:|:-----:|
 |Kit SDK |[4.4.3][1] | [4.4.0][2] | [4.4.0b1 (préversion)][3] | [4.0.0a6 (préversion)][3a]|
 |Docs | [docs][5] |[docs][5] |  | |
-|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
-
-[1a]:https://github.com/microsoft/botframework-sdk/#readme
-[1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
-[2]:https://github.com/Microsoft/botbuilder-js#packages
-[3]:https://github.com/Microsoft/botbuilder-python#packages
-[3a]:https://github.com/Microsoft/botbuilder-java#packages
-[4]:https://github.com/Microsoft/botbuilder-java#packages
-[5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
-[6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
-[7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
-[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_typescript
-[9]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_es6
-[10]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi
-[111]:https://github.com/Microsoft/botbuilder-python/tree/master/samples
+|Exemples |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][11] | | 
 
 <a name="V4-whats-new"></a>
 ## <a name="bot-framework-sdk-new-in-preview"></a>Kit SDK Bot Framework (Nouveau ! En préversion)
@@ -101,17 +113,6 @@ introduit lors de Microsoft Build 2019, Bot Inspector est une nouvelle fonction
 
 - [Langage d’expression commun][40] | [api][41] : Les dialogues adaptatifs et la génération de langage s’appuient sur un langage d’expression commun pour dynamiser les conversations de bot.
 
-[40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
-[41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
-[43]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation#readme
-[44]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/docs
-[45]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/csharp_dotnetcore
-[46]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/javascript_nodejs/13.core-bot
-[47]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme
-[48]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs
-[49]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore
-[50]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/declarative
-
 ## <a name="botkit"></a>Botkit
 [Botkit][100] est un outil de développeur et un kit SDK permettant de créer des chatbots, des applications et des intégrations personnalisées pour les principales plateformes de messagerie. Les bots Botkit sont à l’écoute (`hear()`) des déclencheurs, posent (`ask()`) des questions et donnent (`say()`) des réponses. Les développeurs peuvent utiliser cette syntaxe pour créer des dialogues : désormais compatible avec la dernière version du kit SDK Bot Framework. 
 
@@ -119,23 +120,14 @@ De plus, Botkit est accompagné de 6 adaptateurs de plateforme, autorisant les 
 
 Botkit fait partie de Microsoft Bot Framework et est publié sous la [licence MIT open source][101]
 
-[100]:https://github.com/howdyai/botkit#readme
-[101]:https://github.com/howdyai/botkit/blob/master/LICENSE.md
-[102]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-slack#readme
-[103]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-webex#readme
-[104]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-hangouts#readme
-[105]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-facebook#readme
-[106]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-twilio-sms#readme
-[107]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-web#readme
-
 ## <a name="bot-framework-solutions-new-in-preview"></a>Bot Framework Solutions (Nouveauté ! En préversion)
 
 Le [dépôt Bot Framework Solutions](https://github.com/Microsoft/AI#readme) propose un ensemble de modèles, d’accélérateurs de solutions et de compétences pour aider à créer des expériences conversationnelles avancées, de type assistant.
 
-| Nom | Description |  
+| Name | Description |  
 |:------------|:------------| 
 |[**Assistant virtuel**](https://github.com/Microsoft/AI/tree/master/docs#virtual-assistant) | Les clients souhaitent ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs utilisateurs, et disponible sur un large éventail de canevas et d’appareils. <br/><br/> Le modèle d’entreprise simplifie considérablement la création d’un nouveau projet de bot, y compris : les intentions conversationnelles de base, l’intégration de Dispatch, QnA Maker, Application Insights et un déploiement automatisé.|
-|[**Compétences**](https://github.com/Microsoft/AI/blob/master/docs/overview/skills.md)| Les développeurs peuvent composer des expériences conversationnelles en combinant des fonctionnalités conversationnelles réutilisables, appelées « compétences ». Les compétences sont elles-mêmes des bots appelés à distance et un modèle de développement de compétences (.NET, TS) est disponible pour faciliter la création de compétences. 
+|[**Compétences**](https://github.com/Microsoft/AI/blob/master/docs/overview/skills.md)| Les développeurs peuvent composer des expériences conversationnelles en combinant des fonctionnalités conversationnelles réutilisables, appelées « compétences ». Les compétences sont elles-mêmes des bots, appelés à distance, et un modèle de développement de compétences (.NET, TS) est disponible pour faciliter leur création. 
 |[**Analytics**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| Obtenez des informations clés sur la santé de votre bot et son comportement avec les solutions AI Analytics conversationnelles. Passez en revue les données de télémétrie disponibles, les exemples de requêtes Application Insights et les tableaux de bord Power BI pour comprendre tout l’éventail de conversations de votre bot avec les utilisateurs. |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
@@ -147,11 +139,6 @@ Azure Bot Service vous permet d’héberger des bots intelligents de classe Entr
 
 * **Nouveau ! Canal Direct Line Speech** : Nous avons rassemblé Bot Framework et les services Microsoft Speech pour fournir un canal permettant le streaming bidirectionnel de la parole et du texte, du client vers l’application de bot.  Pour plus d’informations, consultez la façon d’ajouter un [canal vocal à votre bot](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0).
 
-[27]:https://azure.microsoft.com/services/bot-service/
-[28]:https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0
-[29]:https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0
-[30]:https://github.com/Microsoft/BotFramework-DirectLineJS/blob/master/README.md
-
 
 ## <a name="bot-framework-emulator"></a>Émulateur de Bot Framework
 [Bot Framework Emulator][60] est une application de bureau multiplateforme qui permet aux développeurs de bots de tester et de déboguer les bots créés à l’aide du kit SDK Bot Framework. Vous pouvez utiliser Bot Framework Emulator pour tester des bots qui s’exécutent localement sur votre machine ou pour vous connecter à des bots qui s’exécutent à distance.
@@ -162,10 +149,6 @@ Azure Bot Service vous permet d’héberger des bots intelligents de classe Entr
 ### <a name="bot-inspector-new-in-preview"></a>Bot Inspector (Nouveau ! En préversion)
 
 Bot Framework Emulator a publié une version bêta de la nouvelle fonctionnalité d’inspecteur de bot. Elle fournit un moyen de déboguer et de tester vos bots de kit SDK Bot Framework v4 sur des canaux comme Microsoft Teams, Slack, Cortana, Facebook Messenger, Skype, etc. Pendant la conversation, les messages sont mis en miroir vers Bot Framework Emulator où vous pouvez inspecter les données de message que le bot a reçues. De plus, un instantané de l’état du bot pour n’importe quel tour donné entre le canal et le bot est également rendu. En savoir plus sur [Bot Inspector](https://github.com/Microsoft/BotFramework-Emulator/blob/master/content/CHANNELS.md).
-
-[60]:https://github.com/Microsoft/BotFramework-Emulator#readme
-[61]:https://github.com/Microsoft/BotFramework-Emulator/releases/latest
-[62]:https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0
 
 
 ## <a name="related-services"></a>Services connexes
@@ -181,12 +164,6 @@ Service basé sur le machine learning permettant de générer des expériences d
 
 [Docs][31] | [Ajouter Language Understanding à votre robot][32] 
 
-[18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
-[19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
-[30]:https://www.luis.ai
-[31]:https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
-[32]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=csharp
-
 ### <a name="qna-maker"></a>QnA Maker
 [QnA Maker][33] est un service d’API cloud qui crée une couche conversationnelle de questions-réponses sur vos données. Avec QnA Maker, vous pouvez générer, entraîner et publier en quelques minutes un bot de questions-réponses simple reposant sur des URL de FAQ, des documents structurés, des manuels de produit ou des contenus éditoriaux.
 
@@ -198,10 +175,6 @@ Service basé sur le machine learning permettant de générer des expériences d
 
 [Docs][34]  | [ajouter qnamaker à votre robot][35] 
 
-[33]:https://www.qnamaker.ai/
-[34]:https://aka.ms/what-is-qnamaker
-[35]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
-
 ### <a name="speech-services"></a>Services Speech
 Les [services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) convertissent du contenu audio en texte, effectuent une traduction vocale et convertissent du texte en parole avec les services vocaux unifiés. Vous pouvez utiliser les services vocaux pour intégrer la parole dans votre bot, créer des mots déclencheurs personnalisés et créer du contenu dans plusieurs langues.
 
@@ -210,3 +183,54 @@ Les [cartes adaptatives](https://adaptivecards.io) sont un standard ouvert qui p
 
 ## <a name="additional-information"></a>Informations supplémentaires
 - Consultez la [page GitHub](https://github.com/Microsoft/botframework/blob/master/whats-new.md#whats-new) pour plus d’informations.
+
+[1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
+[1a]:https://github.com/microsoft/botframework-sdk/#readme
+[2]:https://github.com/Microsoft/botbuilder-js#packages
+[3]:https://github.com/Microsoft/botbuilder-python#packages
+[3a]:https://github.com/Microsoft/botbuilder-java#packages
+[5]:https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0
+[6]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore
+[7]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs
+[8]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/typescript_nodejs
+[9]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/javascript_es6
+[10]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/samples/csharp_webapi
+[11]:https://github.com/Microsoft/botbuilder-python/tree/master/samples
+
+[18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
+[19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
+
+[27]:https://azure.microsoft.com/services/bot-service/
+[28]:https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0
+[29]:https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0
+
+[30]:https://www.luis.ai
+[31]:https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
+[32]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=csharp
+[33]:https://www.qnamaker.ai/
+[34]:https://aka.ms/what-is-qnamaker
+[35]:https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&branch=pr-en-us-1325&tabs=cs
+
+[40]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/common-expression-language#readme
+[41]:https://github.com/Microsoft/BotBuilder-Samples/blob/master/experimental/common-expression-language/api-reference.md
+[43]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation#readme
+[44]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/docs
+[45]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/csharp_dotnetcore
+[46]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/language-generation/javascript_nodejs/13.core-bot
+[47]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog#readme
+[48]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/docs
+[49]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore
+[50]:https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/declarative
+
+[60]:https://github.com/Microsoft/BotFramework-Emulator#readme
+[61]:https://github.com/Microsoft/BotFramework-Emulator/releases/latest
+[62]:https://docs.microsoft.com/azure/bot-service/bot-service-debug-emulator?view=azure-bot-service-4.0
+
+[100]:https://github.com/howdyai/botkit#readme
+[101]:https://github.com/howdyai/botkit/blob/master/LICENSE.md
+[102]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-slack#readme
+[103]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-webex#readme
+[104]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-hangouts#readme
+[105]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-facebook#readme
+[106]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-twilio-sms#readme
+[107]:https://github.com/howdyai/botkit/tree/master/packages/botbuilder-adapter-web#readme

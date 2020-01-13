@@ -6,13 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 12/13/2017
-ms.openlocfilehash: d4fe7ae7f14349303f4445b321e55195483d210f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.date: 11/19/2019
+ms.openlocfilehash: db295251284fb93ebd730572d2ced1e431460c90
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491586"
 ---
 # <a name="application-insights-keys"></a>Clés Application Insights
 
@@ -25,12 +25,12 @@ Azure **Application Insights** affiche les données relatives à votre applicati
 Cette rubrique vous montre comment créer ces clés Application Insights.
 
 > [!NOTE]
-> Pendant le processus de création ou d’inscription du bot, vous avez pu choisir entre *activer* ou *désactiver* **Application Insights**. Si vous l’avez *activé*, votre bot a déjà toutes les clés Application Insights nécessaires. Toutefois, si vous l’avez *désactivé*, vous pouvez suivre les instructions de cette rubrique pour savoir comment créer ces clés manuellement.
+> Au cours du processus de création ou d’inscription du bot, vous avez eu le choix entre *Activer* ou *Désactiver* **Application Insights**. Si vous l’avez *activé*, votre bot a déjà toutes les clés Application Insights nécessaires. Toutefois, si vous l’avez *désactivé*, vous pouvez suivre les instructions de cette rubrique pour savoir comment créer ces clés manuellement.
 
 ## <a name="instrumentation-key"></a>Clé d’instrumentation
 
 Pour obtenir la clé d’instrumentation, effectuez les étapes suivantes :
-1. À partir du [portail Azure](http://portal.azure.com), sous la section « Surveiller », créez une ressource **Application Insights** (ou utilisez-en une existante).
+1. À partir du [portail Azure](https://portal.azure.com), sous la section « Surveiller », créez une ressource **Application Insights** (ou utilisez-en une existante).
 ![Capture d’écran du portail listant les ressources Application Insights](~/media/portal-app-insights-add-new.png)
 
 2. Dans la liste des ressources Application Insights, cliquez sur celle que vous venez de créer.

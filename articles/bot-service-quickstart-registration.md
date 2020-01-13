@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 014f5c998fcb9d322439ca8b0e0bf2ba5f9f0679
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: 78de3676332561aafd4b24f755962b614cb9a27d
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491566"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>Inscrire un bot auprès d’Azure Bot Service
 
@@ -44,10 +44,10 @@ Pour **Web Bot App**, suivez les étapes décrites dans l’article : [Créer u
    |**Abonnement**|Votre abonnement|Sélectionnez l’abonnement Azure à utiliser.|
    |**Groupe de ressources**|myResourceGroup|Vous pouvez créer un [groupe de ressources](/azure/azure-resource-manager/resource-group-overview#resource-groups) ou en choisir un.|
    |**Lieu**|USA Ouest|Choisissez un emplacement proche de celui où est déployé votre bot ou proche d’autres services auxquels il accédera.|
-   |**Niveau tarifaire**|F0|Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, voir [Prix de Bot Service](https://azure.microsoft.com/pricing/details/bot-service/).|
+   |**Niveau tarifaire**|F0|Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, consultez la page [Tarification Azure Bot Service](https://azure.microsoft.com/pricing/details/bot-service/).|
    |**Point de terminaison de messagerie**|URL|Entrez l’URL du point de terminaison de messagerie de votre bot.|
-   |**Application Insights**|Il en va| **Activez** ou **désactivez** [Application Insights](bot-service-manage-analytics.md). Si vous sélectionnez **Activé**, spécifiez également un emplacement régional. |
-   |**ID d'application et mot de passe Microsoft**| Création automatique de l’ID d’application et du mot de passe |Utilisez cette option si vous voulez entrer manuellement un ID d’application et un mot de passe Microsoft. Consultez la section suivante, [Inscription manuelle de l’application](#manual-app-registration). Sinon, un nouvel ID d’application et un nouveau mot de passe seront créés durant le processus d’inscription. |
+   |**Application Insights**|Il en va| Déterminez si vous souhaitez **Activer** ou **Désactiver** [Application Insights](bot-service-manage-analytics.md). Si vous sélectionnez **Activé**, spécifiez également un emplacement régional. |
+   |**ID d’application et mot de passe Microsoft**| Création automatique de l’ID d’application et du mot de passe |Utilisez cette option si vous voulez entrer manuellement un ID d’application et un mot de passe Microsoft. Consultez la section suivante, [Inscription manuelle de l’application](#manual-app-registration). Sinon, un nouvel ID d’application et un nouveau mot de passe seront créés durant le processus d’inscription. |
 
     > [!IMPORTANT]
     > N’oubliez pas d’entrer l’URL du point de terminaison de messagerie de votre bot.
@@ -87,7 +87,7 @@ Une inscription manuelle est nécessaire dans les situations suivantes :
 Consultez [FAQ - Inscription d’application](bot-service-resources-bot-framework-faq.md#app-registration).
 
 > [!IMPORTANT]
-> Dans la section *Supports account types* (Prend en charge les types de comptes), vous devez choisir l’un de ces deux types multilocataires : *Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire)* ou *Comptes dans un annuaire organisationnel (tout annuaire Azure AD - Multilocataire) et comptes personnels Microsoft (par exemple, Skype, Xbox, Outlook.com)*  quand vous créez l’application ; sinon, le bot ne fonctionnera pas. Pour plus d’informations, consultez [Inscrire une nouvelle application à l’aide du portail Azure](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal).
+> Dans la section *Supports account types* (Prend en charge les types de comptes), vous devez choisir l’un de ces deux types multilocataires : *Comptes dans un annuaire d’organisation (tout annuaire Azure AD - Multilocataire)* ou *Comptes dans un annuaire organisationnel (tout annuaire Azure AD - Multilocataire) et comptes personnels Microsoft (par exemple, Skype, Xbox, Outlook.com)*  quand vous créez l’application ; sinon, le bot ne fonctionnera pas. Pour plus d’informations, consultez [Inscrire une nouvelle application à l’aide du portail Azure](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal).
 
 ## <a name="update-the-bot"></a>Mettre à jour le bot
 

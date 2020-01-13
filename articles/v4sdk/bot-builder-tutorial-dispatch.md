@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8b98610c649f145aed975ed1d4b8eb0281d26016
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.openlocfilehash: c0e07dfa828854e44b2236aff2e1e17e60d69bfa
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491658"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Utiliser plusieurs modèles LUIS et QnA
 
@@ -22,11 +22,11 @@ ms.locfileid: "74479517"
 
 Si un bot utilise plusieurs modèles LUIS et bases de connaissances QnA Maker, vous pouvez utiliser l’outil Disptach pour déterminer quel modèle LUIS ou quelle base de connaissances QnA Maker correspond le mieux à l’entrée utilisateur. L’outil Dispatch peut le déterminer en créant une application LUIS unique pour router l’entrée utilisateur vers le modèle correct. Pour plus d’informations sur l’outil Disptach, notamment les commandes CLI, reportez-vous au fichier [LISEZMOI][dispatch-readme].
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Connaissances des [concepts de base des bots](bot-builder-basics.md), de [LUIS][howto-luis] et de [QnA Maker][howto-qna].
 - [Outil Répartition](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-- Une copie du **NLP avec Dispatch** issue du dépôt de code de l’[exemple C#][cs-sample] ou de l’[exemple JS][js-sample].
+- Une copie du **NLP avec Dispatch** provenant du dépôt de code de l’[exemple en C#][cs-sample], de l’[exemple en JS][js-sample] ou de l’[exemple en Python][python-sample].
 - Un compte [luis.ai](https://www.luis.ai/) pour publier des applications LUIS.
 - Un compte [QnA Maker](https://www.qnamaker.ai/) pour publier la base de connaissances QnA Maker.
 
@@ -54,6 +54,16 @@ Cet exemple est basé sur un ensemble prédéfini d’applications LUIS et QnA M
 - `processWeather` : pour les requêtes météo.
 - `processHomeAutomation` : pour les commandes d’éclairage domestique.
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+![Flux de la logique de l’exemple de code](./media/tutorial-dispatch/dispatch-logic-flow-python.png)
+
+`on_message_activity` est appelé pour chaque entrée d’utilisateur reçue. Ce module recherche l’intention utilisateur du scoring le plus élevé et passe ce résultat à `_dispatch_to_top_intent`. _dispatch_to_top_intent, à son tour, appelle le gestionnaire d’applications approprié
+
+- `_process_sample_qna` : pour les questions fréquentes sur les bots.
+- `_process_weather` : pour les requêtes météo.
+- `_process_home_automation` : pour les commandes d’éclairage domestique.
+
 ---
 
 Le gestionnaire appelle le service LUIS ou QnA Maker, puis retourne le résultat généré à l’utilisateur.
@@ -62,7 +72,7 @@ Le gestionnaire appelle le service LUIS ou QnA Maker, puis retourne le résultat
 
 Pour pouvoir créer le modèle de dispatch, vous avez besoin de créer et publier vos applications LUIS et bases de connaissances QnA. Dans cet article, nous allons publier les modèles suivants inclus dans l’exemple _NLP avec Dispatch_ dans le dossier `\CognitiveModels` :
 
-| Nom | Description |
+| Name | Description |
 |------|------|
 | HomeAutomation | Application LUIS qui reconnaît une intention domotique avec les données d’entité associées.|
 | Météo | Application LUIS qui reconnaît les intentions liées à la météo avec des données de localisation.|
@@ -298,6 +308,41 @@ LuisAPIHostName=<your-dispatch-app-region>
 
 Quand tous les changements sont en place, enregistrez ce fichier.
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+### <a name="installing-packages"></a>Installation des packages
+
+Avant d’exécuter cette application pour la première fois, vous devez installer plusieurs packages pypi.
+
+```powershell
+pip install azure
+pip install botbuilder-core
+pip install botbuilder-ai
+```
+
+### <a name="manually-update-your-configpy-file"></a>Mettre à jour manuellement votre fichier config.py
+Une fois que toutes vos applications de service sont créées, vous devez ajouter les informations de chacune d’elles dans votre fichier « config.py ». Le code de l’[exemple en Python][python-sample] initial contient un fichier config.py vide. 
+
+**config.py**
+
+[!code-python[config.py](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/config.py?range=10-24)]
+
+Pour chacune des entités indiquées ci-dessous, ajoutez les valeurs que vous avez enregistrées précédemment dans ces instructions :
+```python
+APP_ID = os.environ.get("MicrosoftAppId", "")
+APP_PASSWORD = os.environ.get("MicrosoftAppPassword", "")
+
+QNA_KNOWLEDGEBASE_ID = os.environ.get("QnAKnowledgebaseId", "<knowledge-base-id>")
+QNA_ENDPOINT_KEY = os.environ.get("QnAEndpointKey", "<qna-maker-resource-key>")
+QNA_ENDPOINT_HOST = os.environ.get("QnAEndpointHostName", "<your-hostname>")
+
+LUIS_APP_ID = os.environ.get("LuisAppId", "<app-id-for-dispatch-app>")
+LUIS_API_KEY = os.environ.get("LuisAPIKey", "<your-luis-endpoint-key>")
+# LUIS endpoint host name, ie "westus.api.cognitive.microsoft.com"
+LUIS_API_HOST_NAME = os.environ.get("LuisAPIHostName", "<your-dispatch-app-region>")
+```
+Quand tous les changements sont en place, enregistrez ce fichier.
+
 ---
 
 ### <a name="connect-to-the-services-from-your-bot"></a>Vous connecter aux services à partir de votre bot
@@ -320,6 +365,13 @@ Dans **dispatchBot.js**, les informations contenues dans le fichier de configura
 
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-26)]
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+Dans **dispatch_bot.py**, les informations contenues au sein du fichier config _config.py_ permettent de connecter votre bot de dispatch aux services _QnAMaker_ et _LuisRecognizer_. Les constructeurs utilisent les valeurs que vous avez fournies pour se connecter à ces services.
+
+**bots/dispatch_bot.py**
+
+[!code-python[ReadConfigurationInfo](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=14-30)]
+
 ---
 
 > [!NOTE]
@@ -339,11 +391,17 @@ Dans le fichier **DispatchBot.cs**, chaque fois que la méthode `OnMessageActivi
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
-Dans la méthode `onMessage` **dispatchBot.js**, nous vérifions le message d’entrée utilisateur par rapport au modèle Dispatch, nous recherchons _topIntent_, puis nous passons le résultat en appelant  _dispatchToTopIntentAsync_.
-
-**bots/dispatchBot.js**
+Dans la méthode **dispatchBot.js** `onMessage`, nous vérifions le message d’entrée de l’utilisateur par rapport au modèle Dispatch, nous recherchons _topIntent_, puis nous passons le résultat en appelant _dispatchToTopIntentAsync_.
 
 [!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=31-44)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+Dans le fichier **dispatch_bot.py**, chaque fois que la méthode `on_message_activity` est appelée, nous vérifions le message utilisateur entrant par rapport au modèle Dispatch. Nous passons ensuite les éléments `top_intent` et `recognize_result` du modèle Dispatch à la méthode appropriée pour appeler le service et retourner le résultat.
+
+**bots/dispatch_bot.py**
+
+[!code-python[on_message](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=46-54)]
 
 ---
 
@@ -369,6 +427,18 @@ Lorsque le modèle renvoie un résultat, il indique quel service est le mieux à
 [!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=61-77)]
 
 Si la méthode `processHomeAutomation` ou `processWeather` est appelée, les résultats lui sont passés à partir du modèle de dispatch au sein de _recognizerResult.luisResult_. La méthode spécifiée fournit alors des commentaires utilisateur indiquant la première intention du modèle de dispatch, ainsi que la liste ordonnée de tous les intentions et entités détectées.
+
+Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur contenue dans turnContext pour générer une réponse à partir de la base de connaissances et présenter ce résultat à l’utilisateur.
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+Lorsque le modèle renvoie un résultat, il indique quel service est le mieux à même de gérer l’énoncé. Le code de cet exemple utilise l’intention _principale_ reconnue pour montrer comment router la requête vers le service correspondant.
+
+**bots\dispatch_bot.py**
+
+[!code-python[dispatch top intent](~/../botbuilder-python/samples/python/14.nlp-with-dispatch/bots/dispatch_bot.py?range=56-70)]
+
+Si la méthode `_process_home_automation` ou `_process_weather` est appelée, les résultats du modèle de dispatch sont passés dans _recognizer_result.properties["luisResult"]_ . La méthode spécifiée fournit alors des commentaires utilisateur indiquant la première intention du modèle de dispatch, ainsi que la liste ordonnée de tous les intentions et entités détectées.
 
 Si la méthode `q_sample-qna` est appelée, elle utilise l’entrée utilisateur contenue dans turnContext pour générer une réponse à partir de la base de connaissances et présenter ce résultat à l’utilisateur.
 
@@ -512,11 +582,14 @@ Pour améliorer les services utilisés dans cet exemple, reportez-vous aux bonne
 
 <!-- Foot-note style links -->
 
+
+
 [howto-luis]: bot-builder-howto-v4-luis.md
 [howto-qna]: bot-builder-howto-qna.md
 
 [cs-sample]: https://aka.ms/dispatch-sample-cs
 [js-sample]: https://aka.ms/dispatch-sample-js
+[python-sample]: https://aka.ms/dispatch-sample-python
 
 [dispatch-readme]: https://aka.ms/dispatch-command-line-tool
 <!--[dispatch-evaluate]: https://aka.ms/dispatch-command-line-tool#evaluating-your-dispatch-model-->

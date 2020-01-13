@@ -8,19 +8,19 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 0e59c6d3548e273a8fb164526ddeb6ba66f48e3e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933524"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75736821"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Déboguer un robot avec un intergiciel d’inspection
 Cet article explique comment déboguer votre bot à l’aide d’un intergiciel d’inspection. Cette fonctionnalité permet à l’émulateur Bot Framework Emulator de déboguer le trafic transitant par le bot, en plus d’inspecter l’état actuel du bot. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation. 
 
-Nous utilisons un EchoBot généré localement à l’aide de Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0)) pour montrer comment déboguer et inspecter l’état du message du bot. Vous pouvez aussi [Déboguer un bot à l’aide de l’IDE](./bot-service-debug-bot.md) ou le [Déboguer avec Bot Framework Emulator](./bot-service-debug-emulator.md), mais pour déboguer l’état, vous devez ajouter l’intergiciel d’inspection à votre bot. Les exemples de robot d’inspection sont disponibles ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection) et [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection). 
+Nous utilisons un EchoBot généré localement à l’aide de Bot Framework v4 ([C#](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) | [JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0) | [Python](https://docs.microsoft.com/azure/bot-service/python/bot-builder-python-quickstart?view=azure-bot-service-4.0)) pour montrer comment déboguer et inspecter l’état du message du bot. Vous pouvez aussi [Déboguer un bot à l’aide de l’IDE](./bot-service-debug-bot.md) ou le [Déboguer avec Bot Framework Emulator](./bot-service-debug-emulator.md), mais pour déboguer l’état, vous devez ajouter l’intergiciel d’inspection à votre bot. Les exemples de robot d’inspection sont disponibles ici : [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection), [JavaScript](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/47.inspection) et [Python](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/python/47.inspection). 
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 - Téléchargez et installez [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)
 - Connaissances de l’[intergiciel](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) du robot
 - Connaissances de l’[état de gestion](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) du robot
@@ -66,6 +66,24 @@ Mettez à jour la classe de robot dans le fichier **bot.js**.
 
 [!code-javascript [inspection bot sample](~/../botbuilder-samples/samples/javascript_nodejs/47.inspection/bot.js?range=6-50)]
 
+# <a name="pythontabpython"></a>[Python](#tab/python)
+Avant de mettre à jour le code de votre bot, installez les packages pypi nécessaires en exécutant les commandes suivantes dans un terminal :
+```cmd
+pip install aiohttp
+pip install botbuilder-core>=4.7.0
+```
+Configurez l’état d’inspection dans le fichier **app.py** en ajoutant un intergiciel (middleware) à l’adaptateur.
+
+**app.py**
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/app.py?range=74-86)]
+
+Mettez à jour la classe de bot dans le fichier **echo_bot.py**.
+
+**bots/echo_bot.py** 
+
+[!code-python [inspection bot sample](~/../botbuilder-samples/samples/python/47.inspection/bots/echo_bot.py?range=16-64)]
+
 ---
 
 ## <a name="test-your-bot-locally"></a>Tester votre bot localement 
@@ -83,6 +101,11 @@ dotnet run
 
 ```cmd
 npm start 
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+```cmd
+python app.py
 ```
 
 ---

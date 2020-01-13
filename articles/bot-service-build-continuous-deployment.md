@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: daf5624f3ab327602ae75bcbbd00d4b527661ff4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5ef5901f778d34983e5725e983d39f14b6fa0014
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491301"
 ---
 # <a name="set-up-continuous-deployment"></a>Configurer un déploiement continu
 
@@ -22,9 +22,9 @@ ms.locfileid: "70297735"
 
 Cet article vous explique comment configurer un déploiement continu pour votre bot. Vous pouvez activer le déploiement continu pour déployer automatiquement les modifications de code à partir de votre dépôt source dans Azure. Dans cette rubrique, nous parlerons de la configuration du déploiement continu pour GitHub. Pour des informations sur la configuration du déploiement continu avec d’autres systèmes de contrôle de code source, consultez la section des ressources supplémentaires au bas de cette page.
 
-## <a name="prerequisites"></a>Prérequis
-- Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](http://portal.azure.com) avant de commencer.
-- Vous **devez** [déployer votre bot dans Azure](bot-builder-deploy-az-cli.md) avant d’activer le déploiement continu.
+## <a name="prerequisites"></a>Conditions préalables requises
+- Si vous n’avez pas d’abonnement Azure, créez un [compte gratuit](https://portal.azure.com) avant de commencer.
+- Vous **devez** [déployer votre bot sur Azure](bot-builder-deploy-az-cli.md) avant d’activer le déploiement continu.
 
 ## <a name="prepare-your-repository"></a>Préparer votre dépôt
 Vérifiez que la racine de votre dépôt comprend les fichiers nécessaires à votre projet. Cela vous permettra d’obtenir des builds automatiques à partir du serveur de build Kudu d’Azure App Service. 
@@ -33,6 +33,7 @@ Vérifiez que la racine de votre dépôt comprend les fichiers nécessaires à v
 |:-------|:---------------------|
 | ASP.NET Core | .sln ou .csproj |
 | Node.js | server.js, app.js ou package.json avec un script de démarrage |
+| Python | app.py |
 
 
 ## <a name="continuous-deployment-using-github"></a>Déploiement continu avec GitHub

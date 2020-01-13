@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1e5c2068fe9b4fdc13641d098eb1579c01dd24c2
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: 7faa7091198202058c00ddca4aee79fe87d700e9
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491163"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 
@@ -22,14 +22,14 @@ ms.locfileid: "70386024"
 
 Dans cet article, nous vous montrons comment déployer un bot simple dans Azure. Nous vous expliquons comment préparer votre bot en vue de son déploiement, comment le déployer dans Azure et comment le tester dans Web Chat. Il est plus judicieux de lire cet article avant de suivre les étapes, afin de bien comprendre ce qu’implique le déploiement d’un bot.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 [!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
 <!-- - A subscription to [Microsoft Azure](https://azure.microsoft.com/free/)
 - A C#, JavaScript, or TypeScript bot that you have developed on your local machine
 - Latest version of the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 - Familiarity with [Azure CLI and ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) -->
 
-## <a name="prepare-for-deployment"></a>Préparation du déploiement
+## <a name="prepare-for-deployment"></a>Préparer le déploiement
 [!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
 <!-- When you create a bot using [Visual Studio template](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) or [Yeoman template](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0), the source code generated contains a `deploymentTemplates` folder with ARM templates. The deployment process documented here uses the ARM template to provision required resources for the bot in Azure by using the Azure CLI. 
 
@@ -82,7 +82,11 @@ The above command outputs JSON with the key `appId`, save the value of this key 
 > ``` -->
 
 ### <a name="4-deploy-via-arm-template"></a>4. Déployer le bot avec un modèle ARM
-Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux. 
+Vous pouvez déployer votre bot dans un groupe de ressources nouveau ou existant. Choisissez l’option qui vous convient le mieux.
+
+> [!NOTE]
+> Vous ne pouvez pas déployer les bots Python sur un groupe de ressources qui contient des services/bots Windows.  Vous pouvez déployer plusieurs bots Python sur le même groupe de ressources, mais vous devez créer les autres services (LUIS, QnA, etc.) dans un autre groupe de ressources.
+>
 
 #### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Déployer par le biais du modèle ARM (avec un **nouveau** groupe de ressources)**
 <!-- ##### Create Azure resources -->

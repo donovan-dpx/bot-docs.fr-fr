@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 3de06fb5aa3ae09f4730cf7b0d4e0a587d568b8c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491706"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
@@ -22,10 +22,10 @@ ms.locfileid: "73441556"
 
 Vous pouvez lire et écrire directement dans votre objet de stockage sans utiliser d’intergiciel ou d’objet de contexte. Cela peut convenir pour les données que votre bot utilise pour préserver une conversation, ou les données qui proviennent d’une source située en dehors du flux de conversation de votre bot. Dans ce modèle de stockage de données, au lieu d’utiliser un gestionnaire d’états, les données sont lues directement à partir du stockage. Les exemples de code dans cet article vous montrent comment lire et écrire des données dans le stockage à l’aide du **stockage mémoire**, de **Cosmos DB**, du **Stockage Blob** et du **magasin de transcription d’objets blob Azure**. 
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 - Si vous n’avez pas d’abonnement Azure, créez un compte [gratuit](https://azure.microsoft.com/free/) avant de commencer.
-- Bonne connaissance de l’article : Créez un bot localement pour [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart) ou [nodeJS](https://aka.ms/bot-framework-www-node-js-quickstart).
-- Modèle de kit SDK Bot Framework v4 pour [modèle C#](https://aka.ms/bot-vsix) ou [nodeJS](https://nodejs.org) et [yeoman](http://yeoman.io).
+- Bonne connaissance de l’article : Créez un bot localement pour [dotnet](https://aka.ms/bot-framework-www-c-sharp-quickstart), [nodeJS](https://aka.ms/bot-framework-www-node-js-quickstart) ou [Python](https://aka.ms/bot-framework-www-node-python-quickstart).
+- Modèle de kit SDK Bot Framework v4 pour [modèle C#](https://aka.ms/bot-vsix), [nodeJS](https://nodejs.org) et [yeoman](http://yeoman.io).
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 L’exemple de code de cet article commence par la structure d’un bot d’écho de base, puis étend les fonctionnalités de ce bot par ajout de code (ci-dessous). Ce code étendu crée une liste pour conserver les entrées utilisateur au fur et à mesure qu’elles sont reçues. À chaque tour, la liste complète des entrées utilisateur est répercutée vers l’utilisateur. La structure de données contenant cette liste d’entrées est ensuite enregistrée dans le stockage à la fin du tour. Différents types de stockage sont explorés lorsque des fonctionnalités supplémentaires sont ajoutées à cet exemple de code.
@@ -36,7 +36,7 @@ Le kit SDK Bot Framework permet de stocker les entrées utilisateur en utilisant
 
 #### <a name="build-a-basic-bot"></a>Créer un bot de base
 
-Le reste de cette rubrique s’appuie sur un bot Echo. L’exemple de code de bot d’écho peut être généré localement en suivant les instructions de démarrage rapide pour la création d’un [bot d’écho C#](https://aka.ms/bot-framework-www-c-sharp-quickstart) ou d’un [bot d’écho JS](https://aka.ms/bot-framework-www-node-js-quickstart).
+Le reste de cette rubrique s’appuie sur un bot Echo. Vous pouvez générer localement l’exemple de code de bot d’écho en suivant les instructions du guide de démarrage rapide pour la génération d’un [EchoBot en C#](https://aka.ms/bot-framework-www-c-sharp-quickstart), d’un [EchoBot en JS](https://aka.ms/bot-framework-www-node-js-quickstart) ou d’un [EchoBot en Python](https://aka.ms/bot-framework-www-node-python-quickstart).
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -233,6 +233,64 @@ async function logMessageText(storage, turnContext) {
 module.exports.MyBot = MyBot;
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+**bot.py**
+```py
+from botbuilder.core import ActivityHandler, TurnContext, StoreItem, MemoryStorage
+
+
+class UtteranceLog(StoreItem):
+    """
+    Class for storing a log of utterances (text of messages) as a list.
+    """
+
+    def __init__(self):
+        super(UtteranceLog, self).__init__()
+        self.utterance_list = []
+        self.turn_number = 0
+        self.e_tag = "*"
+
+
+class MyBot(ActivityHandler):
+    """
+    Represents a bot saves and echoes back user input.
+    """
+
+    def __init__(self):
+        self.storage = MemoryStorage()
+
+    async def on_message_activity(self, turn_context: TurnContext):
+        utterance = turn_context.activity.text
+
+        # read the state object
+        store_items = await self.storage.read(["UtteranceLog"])
+
+        if "UtteranceLog" not in store_items:
+            # add the utterance to a new state object.
+            utterance_log = UtteranceLog()
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = 1
+        else:
+            # add new message to list of messages existing state object.
+            utterance_log: UtteranceLog = store_items["UtteranceLog"]
+            utterance_log.utterance_list.append(utterance)
+            utterance_log.turn_number = utterance_log.turn_number + 1
+
+        # Show user list of utterances.
+        await turn_context.send_activity(f"{utterance_log.turn_number}: "
+                                         f"The list is now: {','.join(utterance_log.utterance_list)}")
+
+        try:
+            # Save the user message to your Storage.
+            changes = {"UtteranceLog": utterance_log}
+            await self.storage.write(changes)
+        except Exception as exception:
+            # Inform the user an error occurred.
+            await turn_context.send_activity("Sorry, something went wrong storing your message!")
+```
+
 ---
 
 ### <a name="start-your-bot"></a>Démarrer votre robot
@@ -252,7 +310,7 @@ Envoyez un message à votre bot. Le bot liste les messages qu’il a reçus.
 ## <a name="using-cosmos-db"></a>Utilisation de Cosmos DB
 Maintenant que vous avez utilisé le stockage mémoire, nous allons mettre à jour le code pour utiliser Azure Cosmos DB. Cosmos DB est un service de base de données multimodèle mondialement distribué de Microsoft. Azure Cosmos DB vous permet de faire évoluer en toute flexibilité et de façon indépendante le débit et le stockage sur n’importe quel nombre de régions géographiques Azure. Il offre des garanties en termes de débit, de latence, de disponibilité et de cohérence avec des contrats SLA complets. 
 
-### <a name="set-up"></a>Installation
+### <a name="set-up"></a>Configurer
 Pour utiliser Cosmos DB dans votre bot, vous devez créer une ressource de base de données avant d’aborder le code. Pour une description approfondie de la création de base de données et d’application par Cosmos DB, accédez ici à la documentation pour [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) ou [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
 
 ### <a name="create-your-database-account"></a>Créer votre compte de base de données
@@ -323,6 +381,18 @@ AUTH_KEY="<your-authorization-key>"
 DATABASE_ID="<your-database-id>"
 CONTAINER="bot-storage"
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Ajoutez les informations suivantes à votre fichier `bot.py`.
+
+```javascript
+COSMOSDB_SERVICE_ENDPOINT = "<your-cosmos-db-URI>"
+COSMOSDB_KEY = "<your-authorization-key>"
+COSMOSDB_DATABASE_ID = "<your-database-id>"
+COSMOSDB_CONTAINER_ID = "bot-storage"
+```
+
 ---
 
 #### <a name="installing-packages"></a>Installation des packages
@@ -348,6 +418,15 @@ S’il n’est pas encore installé, obtenez le package dotnet à partir de npm 
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+vous pouvez ajouter des références à botbuilder-azure dans votre projet via pip.
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>Implémentation 
@@ -390,12 +469,12 @@ public class EchoBot : ActivityHandler
 
 L’exemple de code suivant est semblable au [stockage mémoire](#memory-storage), à quelques petites différences près.
 
-Demandez `CosmosDbStorage` à partir de `botbuilder-azure` et configurez dotenv pour lire le fichier `.env`.
+Demandez `CosmosDbPartitionedStorage` à partir de `botbuilder-azure` et configurez dotenv pour lire le fichier `.env`.
 
 **bot.js**
 
 ```javascript
-const { CosmosDbStorage } = require("botbuilder-azure");
+const { CosmosDbPartitionedStorage } = require("botbuilder-azure");
 ```
 Décommentez Memory Storage, remplacez-le par une référence à Cosmos DB.
 
@@ -417,6 +496,33 @@ var storage = new CosmosDbPartitionedStorage({
 })
 
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+L’exemple de code suivant est semblable au [stockage mémoire](#memory-storage), à quelques petites différences près.
+
+Imposez l’obtention de `CosmosDbStorage` à partir de `botbuilder-azure`, et créez l’objet CosmosDBStorage.
+
+**bot.py**
+
+```py
+from botbuilder.azure import CosmosDbStorage, CosmosDbConfig
+```
+
+Décommentez le stockage en mémoire dans `__init__`, et remplacez-le par une référence à Cosmos DB.  Utilisez le point de terminaison, la clé d’authentification, l’ID de base de données et l’ID de conteneur employés ci-dessus.
+
+**bot.py**
+```py
+def __init__(self):
+    cosmos_config = CosmosDbConfig(
+        endpoint=COSMOSDB_SERVICE_ENDPOINT,
+        masterkey=COSMOSDB_KEY,
+        database=COSMOSDB_DATABASE_ID,
+        container=COSMOSDB_CONTAINER_ID
+    )
+    self.storage = CosmosDbStorage(cosmos_config)
+```
+
 ---
 
 ## <a name="start-your-bot"></a>Démarrer votre robot
@@ -497,6 +603,15 @@ S’il n’est pas encore installé, obtenez le package dotnet à partir de npm 
 ```powershell
 npm install --save dotenv
 ```
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+vous pouvez ajouter des références à botbuilder-azure dans votre projet via pip.
+
+```powershell
+pip install botbuilder-azure 
+```
+
 ---
 
 ### <a name="implementation"></a>Implémentation 
@@ -547,6 +662,33 @@ var storage = new BlobStorage({
     storageAccountOrConnectionString: process.env.BLOB_STRING
 });
 ```
+
+
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+L’exemple de code suivant est semblable au [stockage mémoire](#memory-storage), à quelques petites différences près.
+
+Imposez l’obtention de `BlobStorage` à partir de `botbuilder-azure`, et créez l’objet CosmosDBStorage.
+
+**bot.py**
+
+```py
+from botbuilder.azure import BlobStorage, BlobStorageSettings
+```
+
+Décommentez le stockage en mémoire dans `__init__`, et remplacez-le par une référence à Cosmos DB.  Utilisez le nom du conteneur et la chaîne de connexion employés ci-dessus.
+
+**bot.py**
+```py
+def __init__(self):
+    blob_settings = BlobStorageSettings(
+        container_name="<your_container_name>",
+        connection_string="<your_connection_string>"
+    )
+    self.storage = BlobStorage(blob_settings)
+```
+
 ---
 
 Une fois que votre stockage est défini pour pointer sur votre compte de stockage d’objets blob, le code de votre bot va maintenant stocker et récupérer des données depuis le stockage d’objets blob.
@@ -571,8 +713,11 @@ Une fois que vous avez exécuté votre bot et enregistré vos informations, nous
 ## <a name="blob-transcript-storage"></a>Stockage de transcriptions d’objets blob
 Le stockage de transcriptions d’objets blob Azure fournit une option de stockage spécialisée qui vous permet d’enregistrer et de récupérer facilement des conversations d’utilisateur sous la forme d’une transcription enregistrée. Le stockage de transcriptions d’objets blob Azure est particulièrement utile pour capturer automatiquement les entrées utilisateur à examiner lors du débogage des performances de votre bot.
 
-### <a name="set-up"></a>Installation
+**REMARQUE : JavaScript et Python ne prennent pas en charge AzureBlobTranscriptStore.  Les instructions suivantes s’appliquent uniquement au C#**
+
+### <a name="set-up"></a>Configurer
 Le stockage de transcriptions d’objets blob Azure peut utiliser le même compte de stockage Blob créé en suivant les étapes détaillées dans les sections « _Créer votre compte de stockage Blob_ » et « _Ajouter des informations de configuration_ ». Un conteneur est maintenant ajouté pour stocker vos transcriptions.
+
 
 ![Créer un conteneur de transcriptions](./media/create-blob-transcript-container.png)
 
@@ -834,6 +979,44 @@ await updateSampleNote(storage, turnContext);
 ```
 
 Si la note est mise à jour dans le magasin par un autre utilisateur avant que vous tentiez de mettre à jour vos modifications, la valeur `eTag` ne correspondra plus et l’appel à `write` lèvera une exception.
+
+### <a name="pythontabpython"></a>[Python](#tab/python)
+
+Commencez par créer une classe qui implémente `StoreItem`.
+
+**bot.py**
+```py
+class Note(StoreItem):
+    def __init__(self, name: str, contents: str, e_tag="*"):
+        super(Note, self).__init__()
+        self.name = name
+        self.contents = contents
+        self.e_tag = e_tag
+```
+
+Créez ensuite une première note avec un nouvel objet de stockage que vous a ajoutez à la banque.
+
+**bot.py**
+```py
+# create a note for the first time, with a non-null, non-* ETag.
+changes = {"Note": Note(name="Shopping List", contents="eggs", e_tag="x")}
+
+await self.storage.write(changes)
+```
+
+Accédez à la note et actualisez-la ultérieurement, en gardant le `eTag` que vous lisez dans la banque.
+
+**bot.py**
+```py
+store_items = await self.storage.read(["Note"])
+    note = store_items["Note"]
+    note.contents = note.contents + ", bread"
+
+    changes = {"Note": note}
+    await self.storage.write(changes)
+```
+
+Si la note a été actualisée dans la banque avant que vous n’écriviez vos modifications, l’appel à `write` lance une exception.
 
 ---
 

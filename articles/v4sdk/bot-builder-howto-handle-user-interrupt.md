@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1c75349605e7b142035112c84c2b8684fe78ca85
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 63ecbd2aaef40d5d25c49ef93aa665853ff0054c
+ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75491738"
 ---
 # <a name="handle-user-interruptions"></a>Gérer les interruptions par l’utilisateur
 
@@ -22,10 +22,10 @@ ms.locfileid: "73933554"
 
 La gestion des interruptions représente un aspect essentiel d’un bot efficace. Les utilisateurs ne suivent pas toujours votre flux de conversation défini, étape par étape. Ils peuvent essayer de poser une question au milieu du processus ou souhaitez tout simplement l’annuler au lieu d’aller jusqu’à la fin. Dans cette rubrique, nous examinerons certaines méthodes courantes pour gérer les interruptions par l’utilisateur dans votre bot.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Connaissances des [concepts de base des bots][concept-basics], de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs] et de la façon de [réutiliser des dialogues][component-dialogs].
-- Une copie de l’exemple de bot principal en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].
+- Une copie de l’exemple de bot principal en [**CSharp**][cs-sample], [**JavaScript**][js-sample] ou [**Python**][python-sample].
 
 ## <a name="about-this-sample"></a>À propos de cet exemple
 
@@ -48,7 +48,7 @@ Nous commençons en implémentant la classe `CancelAndHelpDialog` pour gérer le
 
 [!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
-Dans la classe `CancelAndHelpDialog`, la méthode `OnContinueDialogAsync` appelle la méthode `InerruptAsync` pour vérifier si l’utilisateur a interrompu le flux normal ou pas. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `InterruptAsync` est retourné.
+Dans la classe `CancelAndHelpDialog`, la méthode `OnContinueDialogAsync` appelle la méthode `InerruptAsync` pour vérifier si l’utilisateur a interrompu le flux normal. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `InterruptAsync` est retourné.
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
@@ -68,7 +68,7 @@ Nous commençons en implémentant la classe `CancelAndHelpDialog` pour gérer le
 
 [!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
-Dans la classe `CancelAndHelpDialog`, la méthode `onContinueDialog` appelle la méthode `interrupt` pour vérifier si l’utilisateur a interrompu le flux normal ou pas. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `interrupt` est retourné.
+Dans la classe `CancelAndHelpDialog`, la méthode `onContinueDialog` appelle la méthode `interrupt` pour vérifier si l’utilisateur a interrompu le flux normal. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `interrupt` est retourné.
 
 [!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 
@@ -76,7 +76,30 @@ Si l’utilisateur tape « aide », la méthode `interrupt` envoie un message,
 
 Si l’utilisateur tape « annuler », elle appelle `cancelAllDialogs` sur son contexte de dialogue interne, ce qui efface sa pile de dialogues et entraîne sa fermeture avec un état annulé et aucune valeur de résultat. Pour `MainDialog` (illustré plus tard), il apparaît que le dialogue de réservation s’est terminé et a retourné Null, comme quand l’utilisateur choisit de ne pas confirmer sa réservation.
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-39)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js??range=20-39)]
+
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+Pour utiliser les dialogues, installez le package `botbuilder-dialogs`, puis vérifiez que l’exemple de fichier `requirements.txt` contient la référence appropriée, notamment `botbuilder-dialogs>=4.5.0`. Pour plus d’informations sur l’installation des packages, consultez le fichier [README](https://github.com/microsoft/botbuilder-python) relatif au dépôt d’exemples.
+> [!NOTE]
+> L’exécution de `pip install botbuilder-dialogs` entraîne également l’installation de `botbuilder-core`, `botbulder-connector` et `botbuilder-schema`.
+
+**dialogs/cancel-and-help-dialog.py**
+
+Nous commençons en implémentant la classe `CancelAndHelpDialog` pour gérer les interruptions par l’utilisateur.
+
+[!code-python[class signature](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=14)]
+
+Dans la classe `CancelAndHelpDialog`, la méthode `on_continue_dialog` appelle la méthode `interrupt` pour vérifier si l’utilisateur a interrompu le flux normal. Si le flux est interrompu, les méthodes de classe de base sont appelées. Sinon, la valeur de retour de `InterruptAsync` est retourné.
+
+[!code-python[dialog](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=18-23)]
+
+Si l’utilisateur tape *help* (aide) ou *?* , la méthode `interrupt` envoie un message, puis appelle `DialogTurnResult(DialogTurnStatus.Waiting)` pour indiquer que le dialogue en haut de la pile attend une réponse de la part de l’utilisateur. Ainsi, le flux de conversation est interrompu pour un seul tour, et au tour suivant, nous reprenons là où nous nous sommes arrêtés.
+
+Si l’utilisateur tape *cancel* (annuler) ou *quit* (quitter), elle appelle `cancel_all_dialogs()` dans son contexte de dialogue interne, ce qui efface sa pile de dialogues et entraîne sa fermeture avec un état annulé et aucune valeur de résultat. Pour `MainDialog`, illustré plus loin, il apparaît que le dialogue de réservation a pris fin et qu’il a retourné une valeur null, comme au moment où l’utilisateur choisit de ne pas confirmer sa réservation.
+
+[!code-python[interrupt](~/../botbuilder-python/samples/python/13.core-bot/dialogs/cancel_and_help_dialog.py?range=25-47)]
 
 ---
 
@@ -112,6 +135,18 @@ Par la suite, dans la méthode `finalStep` de la classe `MainDialog`, le dialogu
 
 Le code dans `BookingDialog` n’apparaît pas ici car il n’est pas directement liée à la gestion des interruptions. Il est utilisé pour inviter les utilisateurs à donner des détails sur la réservation. Vous trouverez ce code dans **dialogs/bookingDialogs.js**.
 
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**dialogs/main_dialog.py**
+
+Au moment où la nouvelle activité de message arrive, le bot exécute `MainDialog`. `MainDialog` invite l’utilisateur à indiquer ce qu’il veut. Ensuite, `bookingDialog` est démarré dans la méthode `MainDialog.act_step`, avec un appel à `begin_dialog` comme indiqué ci-dessous.
+
+[!code-python[act step](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=63-100&highlight=4-5,20)]
+
+Par la suite, dans la méthode `final_step` de la classe `MainDialog`, le dialogue de réservation se termine et la réservation est considérée comme terminée ou annulée.
+
+[!code-python[final step](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=102-118)]
+
 ---
 
 ## <a name="handle-unexpected-errors"></a>Gérer les erreurs inattendues
@@ -133,6 +168,14 @@ Dans notre exemple, le gestionnaire `OnTurnError` de l’adaptateur reçoit tout
 Dans notre exemple, le gestionnaire `onTurnError` de l’adaptateur reçoit toutes les exceptions levées par la logique de tour de votre bot. Si une exception est levée, le gestionnaire supprime l’état de la conversation actuelle pour empêcher le bot de rester bloqué dans une boucle d’erreur provoquée par un état incorrect.
 
 [!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=35-57)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**adapter_with_error_handler.py**
+
+Dans notre exemple, le gestionnaire `on_error` de l’adaptateur reçoit toutes les exceptions levées par la logique de tour de votre bot. Si une exception est levée, le gestionnaire supprime l’état de la conversation actuelle pour empêcher le bot de rester bloqué dans une boucle d’erreur provoquée par un état incorrect.
+
+[!code-python[adapter_with_error_handler](~/../botbuilder-python/samples/python/13.core-bot/adapter_with_error_handler.py?range=15-54)]
 
 ---
 
@@ -165,6 +208,20 @@ Enfin, dans `index.js`, le bot est créé.
 [!code-javascript[MainDialog signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=11)]
 [!code-javascript[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogAndWelcomeBot.js?range=8)]
 [!code-javascript[DialogBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogBot.js?range=6)]
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+**app.py** Enfin, dans `app.py`, le bot est créé.
+
+[!code-python[create bot](~/../botbuilder-python/samples/python/13.core-bot/app.py?range=44-48)]
+
+Pour référence, voici les définitions de classe utilisées dans l’appel pour créer le bot.
+
+[!code-python[main dialog](~/../botbuilder-python/samples/python/13.core-bot/dialogs/main_dialog.py?range=20)]
+
+[!code-python[dialog and welcome](~/../botbuilder-python/samples/python/13.core-bot/bots/dialog_and_welcome_bot.py?range=21)]
+
+[!code-python[dialog](~/../botbuilder-python/samples/python/13.core-bot/bots/dialog_bot.py?range=9)]
 
 ---
 
@@ -199,3 +256,4 @@ Enfin, dans `index.js`, le bot est créé.
 
 [cs-sample]: https://aka.ms/cs-core-sample
 [js-sample]: https://aka.ms/js-core-sample
+[python-sample]: https://aka.ms/bot-core-python-sample-code
