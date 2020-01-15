@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e2a43cf5880da0036415d80d19e59db4c84d2f73
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 9a2618533dfefe86be1a15fb5d88740182e04b6d
+ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491749"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751876"
 ---
 ## <a name="prerequisites"></a>Conditions préalables requises
 - Python [3.6](https://www.python.org/downloads/release/python-369/) ou [3.7](https://www.python.org/downloads/release/python-375/)
@@ -27,7 +27,7 @@ Le dernier package, Cookiecutter, est utilisé pour générer votre bot. Vérifi
 cookiecutter https://github.com/microsoft/botbuilder-python/releases/download/Templates/echo.zip
 ```
 
-Cette commande crée un bot d’écho basé sur le [modèle Echo](https://github.com/microsoft/BotBuilder-Samples/tree/master/generators/python/app/templates/echo/%7B%7Bcookiecutter.bot_name%7D%7D) en Python.
+Cette commande crée un bot d’écho basé sur le [modèle Echo](https://github.com/microsoft/botbuilder-python/tree/master/generators/app/templates/echo) en Python.
 
 3. Vous êtes ensuite invité à entrer le *nom* du bot et une *description*. Nommez votre bot `echo-bot`, puis indiquez la description `A bot that echoes back user response.` comme indiqué ci-dessous :
 
@@ -41,8 +41,6 @@ Copiez les quatre derniers chiffres de l’adresse sur la dernière ligne (en r�
 2. Une fois les packages installés, exécutez `python app.py` pour démarrer votre bot. Vous savez que votre bot est prêt à être testé quand vous voyez s’afficher la dernière ligne indiquée dans la capture d’écran ci-dessous :
 
 ![bot s’exécutant localement](~/media/python/quickstart/bot-running-locally.png)
-<!---
-Alternatively, you can set the file in an environment variable with set `FLASK_APP=app.py` in Windows and `export FLASK_APP=app.py` in Mac OS/Linux and then run `flask run --host=127.0.0.1 --port=3978`.-->
 
 ## <a name="start-the-emulator-and-connect-your-bot"></a>Démarrer l’émulateur et connecter votre robot
 1. Démarrez l’émulateur, puis cliquez sur le bouton **Ouvrir le bot**.
