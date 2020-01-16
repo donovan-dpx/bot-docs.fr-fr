@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble des dialogues | Microsoft Docs
+title: Vue d'ensemble des boîtes de dialogue (v3 JS) - Bot Service
 description: Découvrez comment utiliser les dialogues dans le kit SDK Bot Framework pour Node.js pour modéliser les conversations et gérer le flux de conversation.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9ec846c5d464821538902dd726e8b9ee68d4bae1
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: be983482273eaaa5be79f7c4100dcd4741f62469
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299870"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790921"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-nodejs"></a>Dialogues dans le kit SDK Bot Framework pour Node.js
 
@@ -41,7 +41,7 @@ Il existe plusieurs façons de structurer et de modifier une conversation :
 
 Une conversation peut être vue comme un parent de dialogues. Une conversation contient donc une *pile de dialogues* et conserve son propre ensemble de données d’état, à savoir `conversationData` et `privateConversationData`. Par ailleurs, un dialogue conserve `dialogData`. Pour plus d’informations sur les données d’état, consultez [Gérer les données d’état](bot-builder-nodejs-state.md).
 
-## <a name="dialog-stack"></a>Pile de dialogues
+## <a name="dialog-stack"></a>Pile de boîtes de dialogue
 
 Un robot interagit avec un utilisateur par le biais d’une série de dialogues conservés dans une pile de dialogues. Les dialogues sont poussés dans la pile et en sortent au fil des conversations. La pile fonctionne comme une pile LIFO normale : le dernier dialogue ajouté est le premier à être exécuté. Lorsqu’un dialogue se termine, le contrôle revient au dialogue précédent dans la pile.
 

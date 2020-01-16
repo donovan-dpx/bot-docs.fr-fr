@@ -1,5 +1,5 @@
 ---
-title: Tutoriel pour créer et déployer un bot de base | Microsoft Docs
+title: Tutoriel consacré à la création et au déploiement d'un bot de base - Bot Service
 description: Apprenez à créer un bot de base et à le déployer dans Azure.
 keywords: bot echo, déployer, azure, tutoriel
 author: Ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d1d086f11838f7e0fc658cce586216110ff205f1
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: fadc7410925d337a518129736c9374035fe2114d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491753"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791211"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutoriel : Créer et déployer un bot de base
 

@@ -1,5 +1,5 @@
 ---
-title: Ajouter la compréhension du langage naturel à votre bot | Microsoft Docs
+title: Ajouter la compréhension du langage naturel à votre bot - Bot Service
 description: Découvrez comment utiliser LUIS pour la compréhension du langage naturel avec le kit SDK Bot Framework.
 keywords: Language Understanding, LUIS, intention, module de reconnaissance, entités, middleware (intergiciel)
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3b7847fcc97f4a95587f7fa45f91ade93b0c1e38
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: eda82d8b929282fe322c0b28cc4683396ae26dbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491727"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798204"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Ajouter la compréhension du langage naturel à votre bot
 

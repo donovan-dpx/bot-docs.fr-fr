@@ -1,5 +1,5 @@
 ---
-title: Gérer un robot | Microsoft Docs
+title: Gérer un bot - Bot Service
 description: Découvrez comment gérer un robot via le portail Service Bot.
 keywords: portail azure, gestion de robot, test dans discussion web, MicrosoftAppID, MicrosoftAppPassword, paramètres ’application
 author: v-ducvo
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 8/13/2019
-ms.openlocfilehash: 2aea5c5feb144f5e9b1cb7f2947f409f827fb009
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 9a62a6d2bc1d47862d8ab25250dd3839d3e21d56
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890493"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794154"
 ---
 # <a name="manage-a-bot"></a>Gérer un robot
 
@@ -36,7 +36,7 @@ Le panneau **Vue d’ensemble** présente des informations de haut niveau sur vo
 | Option |  Description |
 | ---- | ---- |
 | **Créer** | L’onglet Créer fournit des options pour apporter des modifications à votre robot. Cette option n’est pas disponible pour le **Bot d’inscription uniquement**. |
-| **Tester dans Discussion Web** | Utilisez le contrôle intégré Discussion Web pour vous aider à tester rapidement votre robot. |
+| **Tester dans la discussion web** | Utilisez le contrôle intégré Discussion Web pour vous aider à tester rapidement votre robot. |
 | **Analyse** | Si l’analytique est activée pour votre robot, vous pouvez afficher les données d’analyse qu’Application Insights a collectées pour votre robot. |
 | **Canaux** | Configurez les canaux que votre robot utilise pour communiquer avec les utilisateurs. |
 | **Paramètres** | Gérer les divers paramètres de profil de robot, tels que le nom d’affichage, l’analytique et de point de terminaison de messagerie. |

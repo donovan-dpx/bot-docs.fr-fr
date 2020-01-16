@@ -1,5 +1,5 @@
 ---
-title: Configurer les paramètres du bot| Microsoft Docs
+title: Configurer les paramètres du bot - Bot Service
 description: Découvrez comment configurer les différentes options de votre bot sur le Portail Azure.
 keywords: configurer les paramètres du bot, nom d’affichage, icône, Application Insights, panneau Paramètres
 author: v-royhar
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7497726039823777afeb8a7d317212d859d66a36
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a3f822c7af635d7c7cac7d9f56038bd5d20a1722
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297555"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794988"
 ---
 # <a name="configure-bot-settings"></a>Configurer les paramètres du bot
 

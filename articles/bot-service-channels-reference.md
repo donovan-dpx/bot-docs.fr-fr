@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/03/2019
-ms.openlocfilehash: 8cc058b32e6cdb64d25f2177ef809a5763902379
-ms.sourcegitcommit: a5935cfa353071cee069632c83a34c20d1ff6cf3
+ms.openlocfilehash: ed7395475378e95793592f88826fe4fc849797b8
+ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2019
-ms.locfileid: "75201782"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75756481"
 ---
 # <a name="categorized-activities-by-channel"></a>Activités classées par canal
 
@@ -251,14 +251,18 @@ Vous pouvez utiliser Web Chat pour envoyer n’importe quel type d’activité o
 
 ## <a name="action-support-by-channel"></a>Prise en charge des actions par canal
 
-Le tableau suivant montre le nombre total d’actions de carte et d’actions suggérées prises en charge par canal.
+Le tableau suivant indique le nombre maximum d'Actions suggérées et d'Actions de carte prises en charge dans chaque canal.  Le :x: indique que l'action n'est pas du tout prise en charge dans le canal spécifié.
 
- \                      | Cortana  | Ligne directe | Direct Line (Web Chat) | Email | Facebook | GroupMe |   Kik   | Lignes  | Teams | Slack | Skype | Skype Entreprise | Telegram | Twilio  
-:---------------------- | :-----:  | :---------: | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :---: | :------------: | :------: | :----:  
-Actions suggérées       |    :x:     |     100     |          100           |   :x:   |    10    |    :x:    |   20    |  13   |   :x:   |  100  |  10   |       :x:        |    100   |   :x:     
-Actions de carte            |   100    |     100     |          100           |   :x:   |     3    |    :x:    |   20    |  99   |   3   |  100  |   3   |       :x:        |     :x:    |   :x:     
+| \                 | Cortana | Ligne directe | Direct Line (Web Chat) | Email | Facebook | GroupMe |   Kik   | Lignes  | Teams | Slack | Skype | Skype Entreprise | Telegram | Twilio | 
+| :---------------- | :-----: | :---------: | :--------------------: |:----: | :------: | :-----: | :-----: | :---: | :---: | :---: | :---: | :------------: | :------: | :----: |
+| Actions suggérées |   :x:   |     100     |          100           |  :x:  |    10    |   :x:   |   20    |  13   |  :x:  |  100  |  10   |      :x:       |    100   |   :x:  |  
+| Actions de carte      |   100   |     100     |          100           |  :x:  |     3    |   :x:   |   20    |  99   |   3   |  100  |   3   |      :x:       |    :x:   |   :x:  |  
 
 Pour plus d’informations sur les nombres indiqués dans le tableau ci-dessus, consultez le code de prise en charge par canal indiqué [ici](https://aka.ms/channelactions). 
+
+Pour plus d'informations sur les _Actions suggérées_, reportez-vous à l'article [Utiliser un bouton pour fournir une entrée](https://aka.ms/howto-add-buttons).
+
+Pour plus d'informations sur les _Actions de carte_, reportez-vous à la section [Envoyer une carte de héros](https://aka.ms/howto-add-media#send-a-hero-card) de l'article _Ajouter des médias aux messages_.
 
 ## <a name="card-support-by-channel"></a>Prise en charge des cartes par canal
 
@@ -274,7 +278,7 @@ Pour plus d’informations sur les nombres indiqués dans le tableau ci-dessus, 
 |Skype|❌|✔|✔|✔|✔|✔|✔|✔|
 |Slack|🔶|✔|🌐|🌐|✔|✔|🌐|🌐|
 |Telegram|⚠🔶|✔|🌐|✔|✔|✔|✔|✔|
-|Twilio|🔶|✔|❌|✔|✔|🌐|✔|❌|
+|Twilio|🔶|🌐|❌|🌐|🌐|🌐|🌐|❌|
 |Discussion Web|✔|✔|✔|✔|✔|✔|✔|✔|
 
 *Remarque : Le canal Direct Line prend techniquement en charge toutes les cartes, mais il revient au client de les implémenter*

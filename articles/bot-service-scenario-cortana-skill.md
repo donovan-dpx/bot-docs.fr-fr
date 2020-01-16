@@ -1,5 +1,5 @@
 ---
-title: Scénario de robot Compétence Cortana | Microsoft Docs
+title: Scénario relatif au bot de compétences Cortana - Bot Service
 description: Explorez le scénario de robot Compétence Cortana avec Bot Framework.
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d6ba5b414ff7e600fac1e5d4ebce27363340f42f
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ebf63a7bfceb6f70084a7897508c328a017aa5f0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167052"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794789"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Scénario de robot Compétence Cortana
 
@@ -32,12 +32,12 @@ Voici le flux logique d’un robot Compétence Cortana pour un atelier automobil
 3. Le robot étant intégré avec Cortana, il a accès au calendrier de l’utilisateur et applique une logique à la demande.
 4. Avec ces informations, le robot peut interroger le service automobile pour connaître les rendez-vous possibles.
 5. Lorsque des options contextuelles lui sont présentées, l’utilisateur peut réserver le rendez-vous.
-6. Application Insights collecte la télémétrie du runtime pour faciliter le développement à l’aide des informations sur les performances et l’utilisation du robot.
+6. Application Insights collecte la télémétrie du runtime pour faciliter le développement à l’aide des informations sur les performances et l’utilisation du bot.
 
-## <a name="sample-bot"></a>Exemple de robot
+## <a name="sample-bot"></a>Exemple de bot
 Avec un robot Compétence Cortana, tout est affaire de contexte personnel. Cortana vous permet d’utiliser votre voix pour demander que le « Service d’entretien mobile de Bob » vienne travailler sur votre voiture en fonction de votre localisation. En utilisant les informations personnelles exposées via Cortana, votre robot peut confirmer l’emplacement en fonction de la localisation de l’utilisateur au moment où il parle au robot.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de bot à partir des [Exemples de scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Composants que vous allez utiliser
 Le robot Cortana utilise les composants suivants :

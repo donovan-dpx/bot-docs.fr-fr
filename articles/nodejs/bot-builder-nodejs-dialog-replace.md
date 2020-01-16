@@ -1,5 +1,5 @@
 ---
-title: Remplacer des boîtes de dialogue | Microsoft Docs
+title: Remplacer des boîtes de dialogue - Bot Service
 description: Découvrez comment remplacer des dialogues pour demander à effectuer une nouvelle entrée et gérer le flux de conversation à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 92782463a4f7d0de6d0fa30693542eea051366bd
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 79083626f60564d8fa6a500cf7c45805e4488e22
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299836"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790903"
 ---
 # <a name="replace-dialogs"></a>Remplacer des boîtes de dialogue
 
@@ -163,7 +163,7 @@ Le premier déclencheur ([`reloadAction`](https://docs.botframework.com/node/bui
 
 Le deuxième déclencheur ([`cancelAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction)) permet à l’utilisateur d’interrompre complètement le processus de commande à l’aide de l’entrée « cancel » (annuler). Ce déclencheur n’affiche pas de nouveau le menu principal automatiquement. Il envoie un message indiquant à l’utilisateur la prochaine étape : « Type 'Main Menu' to continue » (Saisissez Main Menu pour continuer).
 
-### <a name="dialog-loops"></a>Boucles de boîte de dialogue
+### <a name="dialog-loops"></a>Boucles de dialogue
 
 Dans l’exemple ci-dessus, l’utilisateur peut sélectionner uniquement un élément par commande. Ainsi, si l’utilisateur souhaite commander deux éléments à partir du menu, il doit suivre l’ensemble du processus de commande pour le premier élément, puis reprendre tout le processus pour le deuxième élément. 
 

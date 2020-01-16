@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble de l’interface de ligne de commande (CLI) d’Azure Bot Framework | Microsoft Docs
+title: Vue d'ensemble de l'interface de ligne de commande (CLI) d'Azure Bot Framework - Bot Service
 description: Découvrez l’interface de ligne de commande (CLI) de Bot Framework.
 keywords: Interface de ligne de commande de Bot Framework, interface CLI de Bot Framework
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4780d5258af7d2c93fafece361326fd2b0f8df77
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 8b885b19ed22c4d91163b59abe4e253018531b59
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443187"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791426"
 ---
 <!--TODO:
 - [?] Add to TOC: Reference/Bot Framework CLI/Reference
@@ -26,7 +26,7 @@ ms.locfileid: "73443187"
 
 L’interface de ligne de commande (CLI) de Bot Framework est un outil multiplateforme qui vous permet de gérer les bots et les services associés. Elle remplace un ensemble d’outils CLI autonomes plus anciens et les regroupe dans un seul et même outil. 
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Node.js](https://nodejs.org/), version 10.14.1 ou ultérieure.
 
@@ -57,7 +57,7 @@ Pour obtenir des informations de référence sur le mappage entre les anciens et
 
 _Remarque : Les anciens outils CLI seront dépréciés dans les versions à venir et leur prise en charge prendra fin à terme. Tous les nouveaux investissements, les correctifs de bogues et les nouvelles fonctionnalités dans ce domaine cibleront uniquement l’interface CLI BF._
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 L’interface CLI BF gère les bots et les services associés. Elle fait partie intégrante de Microsoft Bot Framework, framework complet destiné à créer des expériences IA conversationnelles pour grandes entreprises. En plus de gérer les ressources liées aux bots, l’interface CLI BF peut être utilisée dans les pipelines d’intégration continue et de déploiement continu (CI/CD). Au moment de créer votre bot, vous aurez peut-être aussi besoin d’intégrer des services IA comme LUIS pour la compréhension de la langue, QnA Maker pour permettre à votre bot de réponde à des questions simples dans un format questions et réponses, etc. Pour intégrer des services IA dans votre bot, utilisez :
 

@@ -1,5 +1,5 @@
 ---
-title: Mettre à niveau votre robot vers l’API Bot Framework v3 | Microsoft Docs
+title: Mettre à niveau votre bot vers l'API Bot Framework v3 - Bot Service
 description: Découvrez comment mettre à niveau votre robot vers l’API Bot Framework v3.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: a9fa1fe134f8ac7716796f4e9090acb60915afe8
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6f08da5acbf8ac050d5dbf6a1a0290c3e6288013
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298592"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790991"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Mettre à niveau votre robot vers l’API Bot Framework v3
 
@@ -20,7 +20,7 @@ Dans le cadre de la Conférence Build 2016, Microsoft a annoncé Microsoft Bot 
 
 En juillet 2016, l’API Bot Framework v3 a été publiée et l’API Bot Framework v1 déconseillée. Les robots qui utilisent l’API v1 ont cessé de fonctionner sur Skype en décembre 2016, et sur tous les autres canaux le 23 février 2017. Si vous avez créé un robot à l’aide de l’API v1 et souhaitez le rendre à nouveau fonctionnel, vous devez le mettre à niveau vers l’API v3 en suivant les instructions de cet article. Pour être certain de comprendre le processus de mise à niveau de bout en bout, lisez attentivement cet article avant de commencer. 
 
-## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Étape 1 : Obtenir les identifiant et mot de passe de votre application sur le portail Bot Framework
+## <a name="step-1-get-your-app-id-and-password-from-the-bot-framework-portal"></a>Étape 1 : Obtenir les identifiant et mot de passe de votre application sur le portail Bot Framework
 
 Connectez-vous au [portail Bot Framework](https://dev.botframework.com/), cliquez sur **My bots** (Mes robots), puis sélectionnez votre robot pour ouvrir son tableau de bord. Ensuite, cliquez sur le lien **SETTINGS** (PARAMÈTRES) qui se trouve à gauche de la page sous **Bot Management** (Gestion des bots). 
 
@@ -66,7 +66,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> Étape 2 : Mettre à jour le code de votre bot vers la version 4.0
+## <a id="update-code"></a> Étape 2 : Mettre à jour le code de votre bot vers la version 4.0
 
 Les bots v1 ne sont plus compatibles. Pour mettre à jour votre bot, vous devrez en créer un nouveau au niveau de version V3. Si vous souhaitez conserver votre ancien code, vous devrez le migrer manuellement.
 
@@ -101,7 +101,7 @@ Le Kit de développement logiciel (SDK) `Microsoft.Bot.Connector` autonome est d
 
 ### <a name="message-is-now-activity"></a>Le message est désormais Activité
 
-L’objet `Message` a été remplacé par l’objet `Activity` dans l’API v3. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activité utilisables pour communiquer différents types d’informations à un robot ou à un canal. Pour plus d’informations sur les messages, voir [Créer des messages](~/dotnet/bot-builder-dotnet-create-messages.md) et [Envoyer et recevoir des activités](~/dotnet/bot-builder-dotnet-connector.md).
+L’objet `Message` a été remplacé par l’objet `Activity` dans l’API v3. Le type d’activité le plus courant est **message**, mais il existe d’autres types d’activités qui peuvent être utilisés pour communiquer différents types d’informations à un bot ou à un canal. Pour plus d’informations sur les messages, voir [Créer des messages](~/dotnet/bot-builder-dotnet-create-messages.md) et [Envoyer et recevoir des activités](~/dotnet/bot-builder-dotnet-connector.md).
 
 ### <a name="activity-types--events"></a>Types d’activités et événements
 
@@ -119,9 +119,9 @@ L’emplacement où les informations sur l’expéditeur, le destinataire et le 
 
 |Champ de l’API v1 | Champ de l’API v3|
 |--------|--------|
-| Object `From` | Object `From` |
-| Object `To` | Object `Recipient` |
-| Propriété `ChannelConversationID` | Object `Conversation`|
+| l'objet `From` | l'objet `From` |
+| l'objet `To` | l'objet `Recipient` |
+| Propriété `ChannelConversationID` | l'objet `Conversation`|
 | Propriété `ChannelId` | Propriété `ChannelId` |
 
 Pour plus d’informations sur l’adressage des messages, voir [Envoyer et recevoir des activités](~/dotnet/bot-builder-dotnet-connector.md).
@@ -148,7 +148,7 @@ L’API Bot Framework v3 introduit une implémentation plus robuste des cartes e
 Dans l’API Bot Framework v1, l’API de gestion des données d’état du robot a été intégrée dans l’API de messagerie. Dans l’API Bot Framework v3, ces API sont distinctes. Désormais, vous devez utiliser le service Bot State pour obtenir les données d’état (au lieu de supposer qu’elles seront incluses dans l’objet `Message`) et les stocker (au lieu de le transmettre dans l’objet `Message`). Pour plus d’informations sur la gestion des données d’état du robot à l’aide du service Bot State, voir [Gérer les données d’état](~/dotnet/bot-builder-dotnet-state.md).
 
 > [!IMPORTANT]
-> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production et pourra être déconseillée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, voir l’article **Gérer les données d’état** pour l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
+> L’API du service Bot Framework State n’est pas recommandée pour les environnements de production, et pourra être dépréciée dans une version ultérieure. Nous vous recommandons de mettre à jour le code de votre bot pour qu’il utilise le stockage en mémoire à des fins de test ou pour qu’il utilise l’une des **extensions Azure** pour les bots de production. Pour plus d’informations, consultez la rubrique **Gérer les données d’état** pour l’implémentation [.NET](~/dotnet/bot-builder-dotnet-state.md) ou [Node](~/nodejs/bot-builder-nodejs-state.md).
 
 ### <a name="webconfig-changes"></a>Modifications de Web.config
 
@@ -162,7 +162,7 @@ L’API Bot Framework v3 stocke les propriétés d’authentification avec ces c
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Étape 3 : Déployer votre bot de mise à jour dans Azure
+## <a id="step-3"></a> Étape 3 : Déployer votre bot de mise à jour dans Azure
 
 Après avoir mis à niveau le code votre bot vers l’API v3, déployez le bot dans Azure en suivant ces [instructions](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Comme V1 n’est plus pris en charge, tous les bots utilisent automatiquement l’API V3 lors du déploiement sur les services Azure.
 

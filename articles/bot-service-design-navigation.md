@@ -1,5 +1,5 @@
 ---
-title: Concevoir la navigation d’un bot | Microsoft Docs
+title: Concevoir la navigation des bots - Bot Service
 description: Découvrez comment concevoir une bonne structure de navigation pour votre bot et éviter les erreurs de conception les plus courantes.
 keywords: navigation, vue d’ensemble, bot rebelle, bot stupide, bot mystérieux, bot Captain Obvious, bot qui n’oublie rien
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7d1bfe669ebafa7e4a2104f384265760720d663c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 596d11bacd55c73011176abf76e07e9b05ecc229
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792337"
 ---
 # <a name="design-bot-navigation"></a>Concevoir la navigation d’un bot
 
@@ -35,7 +35,7 @@ Les caractéristiques de conception de la navigation du bot dépendent en grande
 
 Le bot rebelle tient absolument à maintenir le fil de la conversation, même lorsque l’utilisateur tente de l’orienter dans une autre direction. 
 
-Examinez le scénario suivant : 
+Examinez le cas suivant : 
 
 ![robot](~/media/bot-service-design-navigation/stubborn-bot-new.png)
 
@@ -52,7 +52,7 @@ Il existe de nombreuses manières d’éviter ce piège, mais le moyen le plus s
 
 Le bot stupide répond de manière absurde lorsqu’il ne comprend pas la tentative de l’utilisateur d’accéder à certaines fonctionnalités. Il arrive que l’utilisateur essaye des commandes par mot clé courantes comme « aide » ou « annuler » en partant du principe que le bot réagira certainement de manière appropriée.
 
-Examinez le scénario suivant : 
+Examinez le cas suivant : 
 
 ![robot](~/media/bot-service-design-navigation/clueless-bot.png)
 
@@ -69,7 +69,7 @@ En définissant la logique dans votre **intergiciel (middleware)** , vous la ren
 
 Le bot mystérieux n’indique en rien qu’il a reçu l’entrée de l’utilisateur. 
 
-Examinez le scénario suivant : 
+Examinez le cas suivant : 
 
 ![robot](~/media/bot-service-design-navigation/mysterious-bot.png)
 
@@ -86,7 +86,7 @@ En confirmant immédiatement l’entrée de l’utilisateur, vous éliminez tout
 
 Le bot Captain Obvious donne des informations non sollicitées, complètement évidentes et par conséquent inutiles pour l’utilisateur. 
 
-Examinez le scénario suivant :
+Examinez le cas suivant :
 
 ![robot](~/media/bot-service-design-navigation/captainobvious-bot.png)
 
@@ -101,7 +101,7 @@ En concevant votre bot de façon à donner des informations utiles, vous augment
 
 Le bot qui n’oublie rien intègre à tort des informations issues de conversations passées dans la conversation actuelle. 
 
-Examinez le scénario suivant :
+Examinez le cas suivant :
 
 ![robot](~/media/bot-service-design-navigation/rememberall-bot.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Intercepter des messages | Microsoft Docs
+title: Intercepter des messages (v3 JS) - Bot Service
 description: Découvrez comment créer des journaux d’activité ou d’autres enregistrements en interceptant et traitant des échanges d’informations à l’aide du kit SDK Bot Framework pour Node.js.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2ca85c598d5515e8a785326ba12fd872ffce741f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 32934a8cb857b9ff3f2b4f2058a58fcce12cfc3d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299823"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790881"
 ---
 # <a name="intercept-messages"></a>Intercepter des messages
 
@@ -25,7 +25,7 @@ ms.locfileid: "70299823"
 
 [!INCLUDE [Introduction to message logging](../includes/snippet-message-logging-intro.md)]
 
-## <a name="example"></a>Exemples
+## <a name="example"></a>Exemple
 
 L’exemple de code suivant montre comment intercepter des messages échangés entre un utilisateur et un bot en utilisant le concept d’**intergiciel (middleware)** dans le kit SDK Bot Framework pour Node.js. 
 

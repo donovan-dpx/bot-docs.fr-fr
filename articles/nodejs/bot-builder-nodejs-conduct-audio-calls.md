@@ -1,5 +1,5 @@
 ---
-title: Passer des appels audio | Microsoft Docs
+title: Passer des appels audio - Bot Service
 description: Découvrez comment passer des appels audio avec Skype dans un bot à l’aide de Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3934450f8fe2f971dc18d5a62cbcc74a97bd5869
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 25f1941c732363f849f1d82c149d80094c16860f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299902"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790951"
 ---
 # <a name="support-audio-calls-with-skype"></a>Prise en charge des appels audio avec Skype
 
@@ -66,7 +66,7 @@ Lors de l’inscription de votre bot, un ID d’application et un mot de passe v
 ### <a name="add-bot-to-contacts"></a>Ajouter un bot aux contacts
 Dans le portail des développeurs, la page d’inscription de votre bot inclut un bouton **add to Skype** (ajouter à Skype) en regard du canal Skype de votre bot. Cliquez sur le bouton pour ajouter votre bot à votre liste de contacts dans Skype.  Une fois cette tâche effectuée, vous serez en mesure de communiquer avec le bot (de même que toutes les personnes auxquelles vous avez fourni le lien de participation).
 
-### <a name="test-your-bot"></a>Tester votre bot
+### <a name="test-your-bot"></a>Tester votre robot
 Vous pouvez tester votre bot à l’aide d’un client Skype. Vous voyez l’icône d’appel s’allumer lorsque vous cliquez sur l’entrée de contact de votre bot (vous devrez peut-être rechercher le bot pour l’afficher.)  Vous devrez peut-être attendre quelques minutes pour voir l’icône d’appel s’allumer si vous avez ajouté l’appel à un bot existant.  
 
 Si vous cliquez sur le bouton d’appel, le système établit la communication avec votre bot, et vous devez entendre « Watson… come here! » (Watson, viens ici.) Puis, le bot raccroche.

@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble du modèle d’assistant virtuel | Microsoft Docs
+title: Vue d'ensemble du modèle d'Assistant virtuel - Bot Service
 description: Découvrir le modèle d’assistant virtuel
 author: darrenj
 ms.author: darrenj
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: fdbed58a4093f70b57d65e8f89ee76b305777a1a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167067"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791171"
 ---
 # <a name="virtual-assistant---template-outline"></a>Assistant virtuel  : structure du modèle
 
@@ -29,7 +29,7 @@ Indicateurs de saisie  | Indicateurs de saisie visuels automatisés durant les c
 Modèle LUIS de base  | Prise en charge des intentions courantes comme **Annuler**, **Aide**, **Escalader**, etc.
 Dialogues de base | Flux de dialogues pour capturer les informations utilisateur de base ainsi que la logique d’interruption pour les intentions Annuler et Aide
 Réponses de base  | Réponses par reconnaissance et synthèse vocales pour les intentions et dialogues de base
-Forum Aux Questions | Intégration à [QnA Maker](https://www.qnamaker.ai) pour répondre aux questions générales à partir d’une base de connaissances 
+Questions fréquentes (FAQ) | Intégration à [QnA Maker](https://www.qnamaker.ai) pour répondre aux questions générales à partir d’une base de connaissances 
 Échange de conversation (chit-chat) | Modèle d’échange de conversation professionnel pour fournir des réponses standard aux demandes courantes ([en savoir plus](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
 Répartiteur | Modèle [Dispatch](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) intégré pour déterminer si un énoncé donné doit être traité par LUIS ou QnA Maker
 Support multilingue | Disponible en anglais, français, italien, allemand, espagnol et chinois
@@ -52,7 +52,7 @@ Chaque bot doit disposer d’un niveau de base pour la compréhension du langage
 
 Les fichiers .lu fournissent les intentions suivantes en allemand, anglais, chinois, espagnol, français et italien.
 
-Intention       | Exemples d’énoncés |
+Intentionnel       | Exemples d’énoncés |
 -------------|-------------|
 Annuler       |*cancel*, *nevermind*|
 Escalader     |*puis-je parler à quelqu’un ?*|

@@ -1,5 +1,5 @@
 ---
-title: Créer un bot pour Telegram | Microsoft Docs
+title: Créer un bot pour Telegram - Bot Service
 description: Découvrez comment configurer la connexion d’un bot à Telegram.
 keywords: configurer un bot, Telegram, canal de bot, bot de Telegram, jeton d’accès
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: cdf9a98d77f876fb582432ab9b4704d2ac98d45f
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.openlocfilehash: fd60fbb10e9560e3df6e427f0d5193df463ec473
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70385974"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791817"
 ---
 # <a name="connect-a-bot-to-telegram"></a>Connecter un bot à Telegram
 

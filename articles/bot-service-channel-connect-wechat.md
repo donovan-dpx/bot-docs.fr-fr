@@ -1,5 +1,5 @@
 ---
-title: Connecter un bot à WeChat | Microsoft Docs
+title: Connecter un bot à WeChat - Bot Service
 description: Découvrez comment configurer la connexion d’un bot à WeChat.
 keywords: WeChat, Tencent, canal de bot, application WeChat, bot WeChat, ID d’application, secret d’application, informations d’identification
 author: seaen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: egorn
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: aee02ba1707f08fbcb4479b37edd065fd28efd8f
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 9abba3093ce819f7ebc07bb03e342da797971f25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73443087"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791790"
 ---
 # <a name="connect-a-bot-to-wechat"></a>Connecter un bot à WeChat
 
@@ -48,7 +48,7 @@ Si vous voulez simplement tester l’intégration de WeChat et du bot, vous pouv
 
 Bot Project est un projet SDK Bot Framework V4 normal. Pour pouvoir le lancer, vous devez vérifier que vous pouvez exécuter le bot. Téléchargez [WeChat Adapter for Bot Framework](https://github.com/microsoft/BotFramework-WeChat/).
 
-### <a name="prerequisites"></a>Prérequis
+### <a name="prerequisites"></a>Conditions préalables requises
 
     .NET Core SDK (version 2.2.x)
 

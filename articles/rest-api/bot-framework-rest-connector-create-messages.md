@@ -1,5 +1,5 @@
 ---
-title: Créer des messages avec l’API Bot Connector | Microsoft Docs
+title: Créer des messages avec l'API Bot Connector - Bot Service
 description: En savoir plus sur les propriétés de message couramment utilisées au sein de l’API Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: f3f084f65c1fb4fc84a6c8c75ce36b56487ebd0d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789959"
 ---
 # <a name="create-messages"></a>Créer des messages
 
@@ -20,7 +20,9 @@ Votre bot enverra des objets [Activité][] de type **message** pour communiquer 
 
 ## <a name="message-text-and-formatting"></a>Texte du message et mise en forme
 
-Le texte du message peut être mis en forme à l’aide de **brut**, **markdown**, ou **xml**. Le format par défaut de la propriété `textFormat` est **markdown** et interprète le texte à l’aide de normes de mise en forme Markdown. Le niveau de prise en charge du format de texte varie en fonction des canaux. Pour vérifier si une fonctionnalité que vous souhaitez utiliser est prise en charge par le canal ciblé, affichez un aperçu de la fonctionnalité avec [Channel Inspector][ChannelInspector]. 
+Le texte du message peut être mis en forme à l’aide de **brut**, **markdown**, ou **xml**. Le format par défaut de la propriété `textFormat` est **markdown** et interprète le texte à l’aide de normes de mise en forme Markdown. Le niveau de prise en charge du format de texte varie en fonction des canaux. 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 La propriété `textFormat` de l’objet [Activité][] peut être utilisée pour spécifier le format du texte. Par exemple, pour créer un message de base contenant uniquement du texte brut, définissez la propriété `textFormat` de l’objet `Activity` sur **brut**, définissez la propriété `text` sur le contenu du message et définissez la propriété `locale` sur les paramètres régionaux de l’expéditeur. 
 
@@ -54,17 +56,17 @@ La propriété `suggestedActions` de l’objet [Activité][] peut être utilisé
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités avec l’inspecteur de canaux][ChannelInspector]
+- [Informations de référence sur les canaux][ChannelInspector]
 - [Vue d’ensemble des activités](https://aka.ms/botSpecs-activitySchema)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md)
 - [Ajouter des cartes détaillées aux messages](bot-framework-rest-connector-add-rich-cards.md)
-- [Ajouter de la reconnaissance vocale aux messages](bot-framework-rest-connector-text-to-speech.md)
+- [Ajouter la reconnaissance vocale aux messages](bot-framework-rest-connector-text-to-speech.md)
 - [Ajouter des conseils de saisie aux messages](bot-framework-rest-connector-add-input-hints.md)
 - [Ajouter des actions suggérées aux messages](bot-framework-rest-connector-add-suggested-actions.md)
 - [Implémenter des fonctionnalités spécifiques au canal](bot-framework-rest-connector-channeldata.md)
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 [textFormating]: ../bot-service-channel-inspector.md#text-formatting
 
 [Activité]: bot-framework-rest-connector-api-reference.md#activity-object

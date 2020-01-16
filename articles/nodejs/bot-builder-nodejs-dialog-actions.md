@@ -1,5 +1,5 @@
 ---
-title: Gérer les actions de l’utilisateur | Microsoft Docs
+title: Gérer les actions de l'utilisateur - Bot Service
 description: Découvrez comment gérer les actions de l’utilisateur en rendant votre bot capable d’écouter et de gérer les entrées utilisateur qui contiennent certains mots clés à l’aide du kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 56f5c66b03fe5ae8f0abeb66470a7c31997829ba
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 43a0737a11942cb3e8c032b98eda37154a47d340
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299889"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790931"
 ---
 # <a name="handle-user-actions"></a>Gérer les actions de l’utilisateur
 
@@ -25,7 +25,7 @@ ms.locfileid: "70299889"
 
 Les utilisateurs tentent souvent d’accéder à certaines fonctionnalités dans un bot en utilisant des mots clés, tels que « aider », « annuler » ou « recommencer ». Ils agissent de cette façon au milieu d’une conversation alors que le bot attend une réponse différente. En implémentant des **actions**, vous pouvez concevoir votre bot pour qu’il gère de telles demandes de façon plus appropriée. Les gestionnaires examinent l’entrée utilisateur par rapport aux mots clés que vous spécifiez, comme « aider », « annuler » ou « recommencer », et réagissent en conséquence. 
 
-![manière dont les utilisateurs s’expriment](../media/designing-bots/capabilities/trigger-actions.png)
+![Manière dont les utilisateurs s’expriment](../media/designing-bots/capabilities/trigger-actions.png)
 
 ## <a name="action-types"></a>Types d’actions
 
@@ -33,8 +33,8 @@ Les types d’actions que vous pouvez attacher à un dialogue sont répertoriés
 
 | Action | Étendue | Description |
 |------|------| ---- |
-| [triggerAction](#bind-a-triggeraction) | Globale | Lie une action au dialogue, qui efface la pile de dialogues et se place (push) d’elle-même au bas de la pile. Utilisez l’option `onSelectAction` permettant de remplacer ce comportement par défaut. |
-| [customAction](#bind-a-customaction) | Globale | Lie une action personnalisée au bot, qui peut traiter les informations ou prendre des mesures sans affecter la pile de dialogues. Utilisez l’option `onSelectAction` pour personnaliser les fonctionnalités de cette action. |
+| [triggerAction](#bind-a-triggeraction) | Global | Lie une action au dialogue, qui efface la pile de dialogues et se place (push) d’elle-même au bas de la pile. Utilisez l’option `onSelectAction` permettant de remplacer ce comportement par défaut. |
+| [customAction](#bind-a-customaction) | Global | Lie une action personnalisée au bot, qui peut traiter les informations ou prendre des mesures sans affecter la pile de dialogues. Utilisez l’option `onSelectAction` pour personnaliser les fonctionnalités de cette action. |
 [beginDialogAction](#bind-a-begindialogaction) | Contextuelle | Lie une action au dialogue, qui démarre un autre dialogue quand elle est déclenchée. Le dialogue de départ est poussé dans la pile, et retiré dès qu’il est terminé. |
 [reloadAction](#bind-a-reloadaction) | Contextuelle | Lie une action au dialogue, qui provoque le rechargement de ce dialogue quand elle est déclenchée. Vous pouvez utiliser `reloadAction` pour gérer des énoncés d’utilisateur, tels que « recommencer ». |
 [cancelAction](#bind-a-cancelaction) | Contextuelle | Lie une action au dialogue, qui annule ce dialogue quand elle est déclenchée. Vous pouvez utiliser `cancelAction` pour gérer des énoncés d’utilisateur, tels que « annuler » ou « tant pis ». |

@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état | Microsoft Docs
+title: Gérer les données d'état - Bot Service
 description: Découvrez comment stocker et récupérer les données d’état à l’aide du service Bot State.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: c0e7fa30b21cdb5f4315c4dc931fca45e8865804
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 1453ad74725e0084f0b5f45fa7d20475dbee2fa6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757124"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789211"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
 

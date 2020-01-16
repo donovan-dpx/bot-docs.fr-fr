@@ -1,5 +1,5 @@
 ---
-title: Migrer un bot existant dans un nouveau projet .NET Core | Microsoft Docs
+title: Migrer un bot existant dans un nouveau projet .NET Core - Bot Service
 description: Nous prenons un bot .NET v3 existant que nous migrons vers le kit SDK .NET v4, à l’aide d’un nouveau projet .NET Core.
 keywords: migration de bot, formflow, dialogues, bot v3
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 06/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 23646cf47b49e73eec9c3ce9a4deb1e053892fa1
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 776ba2013e7f66abc36cbf4810a7520a8da8e496
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037264"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791101"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-core-v4-bot"></a>Migrer un bot .NET v3 vers un bot .NET Core v4
 
@@ -31,7 +31,7 @@ Cette conversion est décomposée en plusieurs étapes :
 Le résultat de cette conversion est le bot [ContosoHelpdeskChatBot .NET Core v4](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore).
 Pour migrer vers un bot .NET Framework v4 _sans convertir le type de projet_, consultez [Migrer un bot .NET v3 vers un bot .NET Framework v4](conversion-framework.md).
 
-Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants :
+Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Parmi les principaux changements apportés au kit SDK, citons les suivants :
 
 - L’état est géré via des objets de gestion d’état et des accesseurs de propriété.
 - La configuration du gestionnaire de tour et la transmission des activités à ce dernier ont changé.
@@ -213,7 +213,7 @@ Dans le fichier **Dialogs/RootDialog.cs** :
    - L’invite de choix effectue une boucle jusqu’à ce qu’elle reçoive une entrée valide ou que toute la pile de dialogues soit annulée.
     [!code-csharp[PromptForOptionsAsync](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=51-65)]
 
-1. Nous pouvons remplacer `OnOptionSelected` par la première étape de notre dialogue en cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
+1. Nous pouvons remplacer `OnOptionSelected` par la seconde étape de notre dialogue en cascade. Nous commençons toujours un dialogue enfant basé sur l’entrée de l’utilisateur.
    - L’invite de choix retourne une valeur `FoundChoice`. Cela s’affiche dans la propriété `Result` du contexte d’étape. La pile de dialogues traite toutes les valeurs de retour comme des objets. Si la valeur de retour provient d’un de vos dialogues, vous connaissez le type de valeur de l’objet. Consultez [Types d’invites](../bot-builder-concept-dialog.md#prompt-types) pour obtenir une liste ce que chaque type d’invite retourne.
    - Étant donné que l’invite de choix ne va pas lever d’exception, le bloc try-catch peut être supprimé.
    - Nous devons ajouter un passage afin que cette méthode retourne toujours une valeur appropriée. Ce code ne doit jamais être atteint mais, si c’est le cas, il permettra au dialogue d’« échouer de manière appropriée ».

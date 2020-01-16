@@ -1,5 +1,5 @@
 ---
-title: Aide-mémoire sur la migration de .NET v3 vers v4 | Microsoft Docs
+title: Aide-mémoire sur la migration de .NET v3 vers v4 - Bot Service
 description: Liste des principales différences entre la version v3 et la version v4 du SDK .NET Bot Framework.
 keywords: .net, migration bot, dialogues, bot v3
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ff072cd3a16c3a58099cf91c1de962837994075b
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: f8569aa3d4e2e227e7b348675429e5f347b13329
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441501"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791021"
 ---
 # <a name="net-migration-quick-reference"></a>Aide-mémoire sur la migration .NET
 
@@ -497,7 +497,7 @@ L’interface pour le stockage des _données utilisateur_, des _données de conv
 
 L’état était rendu persistant en utilisant une implémentation `IBotDataStore` et en l’injectant dans le système d’état de dialogue du SDK à l’aide d’Autofac.  Microsoft fournissait des classes `MemoryStorage`, `DocumentDbBotDataStore`, `TableBotDataStore` et `SqlBotDataStore` dans [Microsoft.Bot.Builder.Azure](https://github.com/Microsoft/BotBuilder-Azure/).
 
-[IBotDataStore<BotData> ](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) était utilisé pour rendre les données persistantes.
+[IBotDataStore<BotData>](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.dialogs.internals.ibotdatastore-1?view=botbuilder-dotnet-3.0) était utilisé pour rendre les données persistantes.
 
 ```csharp
 Task<bool> FlushAsync(IAddress key, CancellationToken cancellationToken);

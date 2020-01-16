@@ -1,5 +1,5 @@
 ---
-title: Concepts clés de Bot Framework Direct Line API 1.1 | Microsoft Docs
+title: Concepts clés de l'API Direct Line 1.1 de Bot Framework - Bot Service
 description: Découvrez les concepts clés de Bot Framework Direct Line API 1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 63475546472d2305ef665fd4ab29c6f2df2b08eb
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 165079f862a11fc8d226a54bede7d497885a104a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299630"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789705"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Concepts clés de Direct Line API 1.1
 
@@ -27,11 +27,11 @@ Les requêtes Direct Line API 1.1 peuvent être authentifiées soit à l’aide 
 
 ## <a name="starting-a-conversation"></a>Démarrage d’une conversation
 
-Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le bot et le client y participent, et tant que leurs informations d’identification sont valides. Pour plus d’informations, consultez [Démarrer une conversation](bot-framework-rest-direct-line-1-1-start-conversation.md).
+Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le robot et le client y participent et tant que leurs informations d’identification sont valides. Pour plus d’informations, consultez [Démarrer une conversation](bot-framework-rest-direct-line-1-1-start-conversation.md).
 
 ## <a name="sending-messages"></a>Envoi de messages
 
-À l’aide de Direct Line API 1.1, un client peut envoyer des messages à votre bot en émettant des requêtes `HTTP POST`. Un client peut envoyer un seul message par requête. Pour plus d’informations, consultez [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md).
+À l’aide de Direct Line API 1.1, un client peut envoyer des messages à votre bot en émettant des requêtes `HTTP POST`. Un client peut envoyer un seul message par demande. Pour plus d’informations, consultez [Envoyer un message au bot](bot-framework-rest-direct-line-1-1-send-message.md).
 
 ## <a name="receiving-messages"></a>Réception de messages
 
@@ -41,7 +41,7 @@ Les conversations Direct Line sont explicitement ouvertes par les clients et peu
 
 ### <a name="client-library"></a>Bibliothèque cliente
 
-Bot Framework fournit une bibliothèque de client qui facilite l’accès à Direct Line API 1.1 via le langage C#. Pour utiliser la bibliothèque de client au sein d’un projet Visual Studio, installez le <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">package NuGet v1.x</a> `Microsoft.Bot.Connector.DirectLine`. 
+Bot Framework fournit une bibliothèque de client qui facilite l’accès à Direct Line API 1.1 via le langage C#. Pour utiliser la bibliothèque de client au sein d'un projet Visual Studio, installez le `Microsoft.Bot.Connector.DirectLine` <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine/1.1.1" target="_blank">package NuGet v1.x</a>. 
 
 Comme alternative à l’utilisation de la bibliothèque de client C#, vous pouvez générer votre propre bibliothèque de client dans le langage de votre choix à l’aide du <a href="https://docs.botframework.com/restapi/directline/swagger.json" target="_blank">fichier Swagger Direct Line API 1.1</a>.
 

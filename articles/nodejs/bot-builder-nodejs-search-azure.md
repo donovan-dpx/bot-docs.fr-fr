@@ -1,5 +1,5 @@
 ---
-title: Créer des expériences pilotées par les données avec Recherche Azure | Microsoft Docs
+title: Créer des expériences pilotées par les données avec Recherche Azure (v3 JS) - Bot Service
 description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure et permettre aux utilisateurs de parcourir de grandes quantités de contenu dans un bot avec le kit SDK Bot Framework pour Node.js et Recherche Azure.
 author: matthewshim-ms
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 44d84cf84362105bfd1f97a7993d4b18d73d7eae
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299752"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790638"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -35,7 +35,7 @@ Recherche Azure est un service Azure qui offre des fonctionnalités, telles que 
 * [lodash](https://www.npmjs.com/package/lodash)
 * [requête](https://www.npmjs.com/package/request)
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce qui suit est **obligatoire** : 
 - Avoir un abonnement Azure et une clé primaire de Recherche Azure. Vous le trouverez sur le portail Azure.

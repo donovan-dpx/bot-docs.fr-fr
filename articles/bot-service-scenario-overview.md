@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble des scénarios Bot Service | Microsoft Docs
+title: Vue d'ensemble des scénarios Bot Service - Bot Service
 description: Découvrez les scénarios clés dans lesquels vous pouvez tirer parti de la puissance des bots créés avec Bot Service.
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6786a25d56bbf37262760ca5285e32aa860c5959
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167353"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793446"
 ---
 # <a name="bot-scenarios"></a>Scénarios impliquant des bots
 
@@ -23,7 +23,7 @@ Cette rubrique explore les scénarios clés dans lesquels vous pouvez tirer part
 
 Vous pouvez télécharger ou cloner le code source de tous les exemples de scénarios de bot ici : [Samples for Common Bot Framework Scenarios](https://aka.ms/abs-scenarios).
 
-## <a name="commerce-bot-scenario"></a>Scénario impliquant le bot Commerce
+## <a name="commerce-bot-scenario"></a>Scénario Robot Commerce
 Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le bot utilise Cognitive Services pour mieux traiter les demandes des clients par le texte et la voix avec un contexte résultant de l’intégration de services backend.
 
 Dans le scénario du bot Commerce, un client peut faire une demande auprès de la réception d’un hôtel. Il est authentifié via un point de terminaison d’authentification Azure Active Directory v2. Le bot peut parcourir les réservations du client et lui fournir différentes options de service. Par exemple, le client peut avoir réservé une cabine près de la piscine. Le bot utilise les services LUIS (Language Understanding Intelligent Services) pour analyser la demande, puis guide l’utilisateur dans la réservation d’une cabine dans le cadre de sa réservation.
@@ -39,7 +39,7 @@ Le bot s’intègre à Office 365 pour accélérer et faciliter la création d�
 ## <a name="information-bot-scenario"></a>Scénario impliquant le bot Informations
 Le [bot Informations](bot-service-scenario-informational.md) peut répondre à des questions définies dans une base de connaissances ou des questions fréquentes (FAQ) à l’aide du service QnA Maker de Cognitive Services. De plus, il peut répondre à des questions plus ouvertes à l’aide de la Recherche Azure.
 
-Souvent, les informations sont enfouies dans des banques de données structurées telles que SQL Server, et peuvent être facilement récupérées au moyen d’une recherche. Imaginez-vous rechercher le statut d’une commande client à l’aide de commandes de conversation simples. Avec QnA Maker de Cognitive Services, l’utilisateur se voit proposer un ensemble d’options de recherche valides, comme la recherche d’un client, de sa commande la plus récente, etc. Lorsque le format QnA est défini, l’utilisateur peut facilement poser des questions, aidé par la Recherche Azure qui recherche les données stockées dans une base de données SQL.
+Les informations sont souvent enfouies dans des banques de données structurées telles que SQL Server, et peuvent être facilement récupérées au moyen d’une recherche. Imaginez-vous rechercher le statut d’une commande client à l’aide de commandes de conversation simples. Avec QnA Maker de Cognitive Services, l’utilisateur se voit proposer un ensemble d’options de recherche valides, comme la recherche d’un client, de sa commande la plus récente, etc. À l’aide du format QnA défini, l’utilisateur peut facilement poser des questions, soutenu par le service Recherche Azure qui peut rechercher les données stockées dans un service SQL Database.
 
 ## <a name="iot-bot-scenario"></a>Scénario impliquant le bot IoT
 Le [bot IoT](bot-service-scenario-internet-things.md) vous permet de contrôler facilement les appareils de votre maison, comme l’éclairage Philips Hue, à l’aide des commandes de conversation interactive.
@@ -50,4 +50,4 @@ Avec ce simple bot et le service gratuit IFTTT, vous pouvez contrôler vos lumi�
 Maintenant que vous avez eu une vue d’ensemble des scénarios, vous pouvez approfondir chacun d’eux.
 
 > [!div class="nextstepaction"]
-> [Bot Commerce](bot-service-scenario-commerce.md)
+> [Bot commercial](bot-service-scenario-commerce.md)

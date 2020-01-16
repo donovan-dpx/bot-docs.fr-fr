@@ -1,5 +1,5 @@
 ---
-title: Envoyer et recevoir des activités | Microsoft Docs
+title: Envoyer et recevoir des activités - Bot Service
 description: Découvrez comment échanger des informations avec un utilisateur sur différents canaux en utilisant le service Connector via le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5a869196e99d4e5f8709c6d54ced94abea2f883
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c361067c7c51a4230d6b3da127a932fcb93cd2fe
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297245"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796664"
 ---
 # <a name="send-and-receive-activities"></a>Envoyer et recevoir des activités
 
@@ -65,11 +65,11 @@ Si votre robot fait partie d’une conversation, il peut envoyer un message qui 
 Vous pouvez utiliser la méthode `CreateReply` pour initialiser le nouveau message (qui définirait automatiquement les propriétés `Recipient`, `From`, et `Conversation` pour le message). Vous pouvez également utiliser la méthode `CreateMessageActivity` pour créer le nouveau message et définir toutes les valeurs de la propriété vous-même.
 
 > [!NOTE]
-> L’infrastructure Bot n’impose aucune restriction concernant le nombre de messages qu’un robot est susceptible d’envoyer. Toutefois, la plupart des canaux appliquent des limitations de requêtes pour empêcher les bots d’envoyer un grand nombre de messages dans un court laps de temps. En outre, si le bot envoie plusieurs messages successifs rapidement, le canal risque de ne pas toujours afficher les messages dans le bon ordre.
+> Bot Framework n’impose aucune restriction concernant le nombre de messages qu’un bot peut envoyer. Toutefois, la plupart des canaux appliquent des limitations de requêtes pour empêcher les bots d’envoyer un grand nombre de messages dans un court laps de temps. En outre, si le bot envoie plusieurs messages successifs rapidement, le canal risque de ne pas toujours afficher les messages dans le bon ordre.
 
 ## <a name="start-a-conversation"></a>Démarrer une conversation
 
-Il peut arriver que votre robot ait besoin de démarrer une conversation avec un ou plusieurs utilisateurs. Vous pouvez démarrer une conversation en appelant la méthode `CreateDirectConversation` (pour une conversation privée avec un seul utilisateur) ou la méthode `CreateConversation` (pour une conversation de groupe avec plusieurs utilisateurs) afin de récupérer un objet `ConversationAccount`. Ensuite, créez le message et envoyez-le en appelant la méthode `SendToConversation`. Pour utiliser soit la méthode `CreateDirectConversation` ou la méthode `CreateConversation`, vous devez d’abord [créer le client du connecteur](#create-a-connector-client) à l’aide des URL de service du canal cible (que vous pouvez récupérer à partir du cache, si vous les avez conservées des précédents messages). 
+Il peut arriver que votre bot ait besoin de démarrer une conversation avec un ou plusieurs utilisateurs. Vous pouvez démarrer une conversation en appelant la méthode `CreateDirectConversation` (pour une conversation privée avec un seul utilisateur) ou la méthode `CreateConversation` (pour une conversation de groupe avec plusieurs utilisateurs) afin de récupérer un objet `ConversationAccount`. Ensuite, créez le message et envoyez-le en appelant la méthode `SendToConversation`. Pour utiliser soit la méthode `CreateDirectConversation` ou la méthode `CreateConversation`, vous devez d’abord [créer le client du connecteur](#create-a-connector-client) à l’aide des URL de service du canal cible (que vous pouvez récupérer à partir du cache, si vous les avez conservées des précédents messages). 
 
 > [!NOTE]
 > Tous les canaux ne prennent pas en charge les conversations de groupe. Pour déterminer si un canal prend en charge les conversations de groupe, consultez la documentation du canal.

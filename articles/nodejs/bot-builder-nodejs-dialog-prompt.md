@@ -1,5 +1,5 @@
 ---
-title: Demander par invite aux utilisateurs d’entrer des informations | Microsoft Docs
+title: Demander par invite aux utilisateurs d'entrer des informations - Bot Service
 description: Découvrez comment utiliser des invites pour recueillir des entrées utilisateur avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f0b9e7457c63ee1be8b2d3063d098e4186b1db3a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 723f81d5ef76eb92df74d1946532fe475c617c59
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299865"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791091"
 ---
 # <a name="prompt-for-user-input"></a>Demander par invite aux utilisateurs d’entrer des informations
 
@@ -161,12 +161,12 @@ Pour spécifier le style de la liste qui est présentée à l’utilisateur, dé
 
 Les valeurs enum `ListStyle` sont les suivantes :
 
-| Index | Nom | Description |
+| Index | Name | Description |
 | ---- | ---- | ---- |
 | 0 | Aucun | Aucune liste n’est restituée. S’utilise lorsque la liste fait partie intégrante de l’invite. |
 | 1 | inline | Les choix sont restitués sous la forme d’une liste incorporée du formulaire « 1. rouge, 2. vert ou 3. bleu. » |
 | 2 | list | Les choix sont restitués sous la forme d’une liste numérotée. |
-| 3 | button | Les choix sont restitués sous la forme de boutons pour les canaux qui prennent en charge des boutons. Pour les autres canaux, ils sont restitués sous forme de texte. |
+| 3 | Bouton | Les choix sont restitués sous la forme de boutons pour les canaux qui prennent en charge des boutons. Pour les autres canaux, ils sont restitués sous forme de texte. |
 | 4 | auto | Le style est sélectionné automatiquement en fonction du canal et du nombre d’options. | 
 
 Vous pouvez accéder à cette énumération à partir de l’objet `builder`, ou vous pouvez fournir un index pour choisir un `ListStyle`. Par exemple, les deux instructions dans l’extrait de code suivant accomplissent la même chose.

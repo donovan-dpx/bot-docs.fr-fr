@@ -1,5 +1,5 @@
 ---
-title: Créer un bot avec le service Bot Connector | Microsoft Docs
+title: Créer un bot avec le service Bot Connector - Bot Service
 description: Créez un bot avec le service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: f517385fd6d194772004b44b2d8407f2515dc17d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037472"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789901"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Créer un bot avec le service Bot Connector
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Le service Bot Connector permet à votre bot d’échanger des messages avec des
 > [!IMPORTANT]
 > Si vous ne l’avez pas encore fait, vous devez [inscrire votre bot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son ID d’application et son mot de passe. Vous devrez disposer de l’ID d’application et du mot de passe du bot pour obtenir un jeton d’accès.
 
-Pour communiquer avec le service Bot Connector, vous devez indiquer un jeton d’accès dans l’en-tête `Authorization` de chaque requête d’API, au format suivant : 
+Pour communiquer avec le service Bot Connector, vous devez indiquer un jeton d’accès dans l’en-tête `Authorization` de chaque requête API, au format suivant : 
 
 ```http
 Authorization: Bearer ACCESS_TOKEN
@@ -134,7 +134,7 @@ Content-Type: application/json
 }
 ```
 
-Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri). 
+Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri). 
 
 > [!IMPORTANT]
 > Comme indiqué dans cet exemple, l’en-tête `Authorization` de chaque requête d’API que vous envoyez doit contenir le mot **Bearer** suivi du jeton d’accès que vous avez [obtenu auprès de Bot Framework](#get-token).

@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble des activités | Microsoft Docs
+title: Vue d'ensemble des activités - Bot Service
 description: Découvrez les différents types d’activité disponibles dans le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cce7537124810504c9b92d86ad0ef7bd3b3ac5e9
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: 9aa9edf7d0bd20d1fa615ccbba5fc655a8dc40f1
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278991"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797265"
 ---
 # <a name="activities-overview"></a>Vue d’ensemble des activités
 

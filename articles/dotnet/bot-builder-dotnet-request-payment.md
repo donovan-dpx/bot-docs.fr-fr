@@ -1,5 +1,5 @@
 ---
-title: Demander un paiement | Microsoft Docs
+title: Demander un paiement (v3 C#) - Bot Service
 description: Découvrez comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ee7711ab15da9fbbb42d857b216a6099e44880e4
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 026b6ad3b6b9037a09b2727838e7499562b83fba
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094429"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797994"
 ---
 # <a name="request-payment"></a>Demander un paiement
 
@@ -26,7 +26,7 @@ ms.locfileid: "71094429"
 
 Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-dotnet-add-rich-card-attachments.md). Cet article explique comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour .NET, vous devez au préalable effectuer les tâches requises suivantes.
 
@@ -56,7 +56,7 @@ Mettez à jour le fichier **Web.config** de votre bot pour définir `MicrosoftAp
 Le modèle <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/sample-payments" target="_blank">Bot de paiement</a> fournit un exemple de bot qui envoie une demande de paiement à l’aide de .NET. Pour voir cet exemple de bot en action, vous pouvez <a href="https://webchat.botframework.com/embed/paymentsample?s=d39Bk7JOMzQ.cwA.Rig.dumLki9bs3uqfWFMjXPn5PFnQVmT2VAVR1Zl1iPi07k" target="_blank">le tester dans un chat web</a>, l’<a href="https://join.skype.com/bot/9fbc0f17-43eb-40fe-bf3b-af151e6ce45e" target="_blank">ajouter comme un contact Skype</a> ou télécharger l’exemple de bot de paiement et l’exécuter localement à l’aide de l’émulateur Bot Framework. 
 
 > [!NOTE]
-> Pour terminer le processus de paiement de bout en bout à l’aide de l’exemple **Bot de paiement** dans un chat web ou sur Skype, vous devez spécifier une carte de crédit valide ou une carte de débit dans votre compte Microsoft (par exemple, une carte valide émise par un établissement bancaire aux États-Unis). Votre carte ne sera pas débitée et le cryptogramme visuel de la carte n’est pas vérifié car l’exemple **Bot de paiement** s’exécute en mode test (par exemple, `LiveMode` a la valeur `false` dans **Web.config**).
+> Pour effectuer le processus de paiement de bout en bout à l’aide de l’exemple **Bot de paiement** dans un webchat ou sur Skype, vous devez spécifier une carte de crédit ou une carte de débit valide dans votre compte Microsoft (par exemple, une carte valide émise par un établissement bancaire aux États-Unis). Votre carte ne sera pas débitée et le cryptogramme visuel de la carte n’est pas vérifié car l’exemple **Bot de paiement** s’exécute en mode test (par exemple, `LiveMode` a la valeur `false` dans **Web.config**).
 
 Les sections suivantes de cet article décrivent les trois parties du processus de paiement, dans le contexte de l’exemple **Bot de paiement**.
 
@@ -105,9 +105,9 @@ Des rappels HTTP seront envoyés à votre bot pour indiquer qu’il doit effectu
 
 ### <a name="payment-complete-callbacks"></a>Rappels de finalisation de paiement
 
-Lors de la réception d’un rappel de finalisation de paiement, votre bot obtient une copie de la demande de paiement initiale, non modifiée, ainsi que les objets de la réponse de paiement dans la propriété `Activity.Value`. L’objet de la réponse de paiement contiendra les sélections finales effectuées par le client ainsi qu’un jeton de paiement. Votre bot devrait pouvoir recalculer la demande de paiement finale en fonction de la demande de paiement initiale et des sélections finales du client. En supposant que les sélections du client sont définies comme étant valides, le bot doit vérifier le montant et la monnaie locale dans l’en-tête du jeton de paiement pour s’assurer que ces valeurs correspondent à la demande de paiement finale.  Si le bot décide de facturer le client, il doit facturer uniquement le montant figurant dans l’en-tête du jeton de paiement, car il s’agit du prix confirmé par le client. En cas d’incohérence entre les valeurs attendues par le bot et les valeurs qu’il a reçues dans le rappel de finalisation du paiement, il peut annuler la demande de paiement en envoyant le code d’état HTTP `200 OK` et en affichant la valeur `failure` dans le champ de résultat.   
+Lors de la réception d’un rappel de finalisation de paiement, votre bot obtient une copie de la demande de paiement initiale, non modifiée, ainsi que les objets de la réponse de paiement dans la propriété `Activity.Value`. L’objet de la réponse de paiement contient les sélections finales effectuées par le client ainsi qu’un jeton de paiement. Votre bot devrait pouvoir recalculer la demande de paiement finale en fonction de la demande de paiement initiale et des sélections finales du client. En supposant que les sélections du client sont définies comme étant valides, le bot doit vérifier le montant et la monnaie locale dans l’en-tête du jeton de paiement pour s’assurer que ces valeurs correspondent à la demande de paiement finale.  Si le bot décide de facturer le client, il doit facturer uniquement le montant figurant dans l’en-tête du jeton de paiement, car il s’agit du prix confirmé par le client. En cas d’incohérence entre les valeurs attendues par le bot et les valeurs qu’il a reçues dans le rappel de finalisation du paiement, il peut annuler la demande de paiement en envoyant le code d’état HTTP `200 OK` et en affichant la valeur `failure` dans le champ de résultat.   
 
-En plus de vérifier les détails du paiement, le bot doit également vérifier que la commande peut être honorée avant de lancer le traitement du paiement. Par exemple, il peut vérifier si les articles achetés sont toujours en stock. Si les valeurs sont correctes et que votre processeur de paiement a facturé avec succès le jeton de paiement, le bot doit répondre avec le code d’état HTTP `200 OK` en affichant la valeur `success` dans le champ de résultat, afin que l’interface web de paiement affiche la confirmation du paiement. Le jeton de paiement reçu par le bot ne peut être utilisé qu’une seule fois par le vendeur qui l’a demandé, et il doit être soumis à Stripe (le seul processeur de paiement actuellement pris en charge par Bot Framework). L’envoi d’un code d’état HTTP compris entre `400` et `500` entraînera une erreur générique pour le client.
+En plus de vérifier les détails du paiement, le bot doit également vérifier que la commande peut être honorée avant de lancer le traitement du paiement. Par exemple, il peut vérifier si les articles achetés sont toujours en stock. Si les valeurs sont correctes et que votre processeur de paiement a facturé avec succès le jeton de paiement, le bot doit répondre avec le code d’état HTTP `200 OK` en affichant la valeur `success` dans le champ de résultat, afin que l’interface web de paiement affiche la confirmation du paiement. Le jeton de paiement reçu par le bot ne peut être utilisé qu’une seule fois par le vendeur qui l’a demandé, et il doit être soumis à Stripe (le seul processeur de paiement actuellement pris en charge par Bot Framework). L’envoi d’un code d’état HTTP compris entre `400` et `500` entraîne une erreur générique pour le client.
 
 La méthode `OnInvoke` dans l’exemple **Bot de paiement** traite les rappels reçus par le bot. 
 

@@ -1,5 +1,5 @@
 ---
-title: Scénario de robot de productivité d’entreprise | Microsoft Docs
+title: Scénario relatif au bot de productivité d'entreprise - Bot Service
 description: Explorez le scénario de robot de productivité d’entreprise avec Bot Framework.
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ae87b52864ae1a9a4b7b439529e5093d6d3be8e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 3d3f40e5a24b349aff64791d35929017c5c0adfb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167069"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794849"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Scénario de robot de productivité d’entreprise
 
@@ -32,11 +32,11 @@ Voici le flux logique d’un robot de productivité d’entreprise :
 3. Le robot de productivité d’entreprise est capable d’interroger le calendrier Office 365 de l’employé via Microsoft Azure AD Graph.
 4. À l’aide des données extraites du calendrier, le robot accède aux informations spécifiques dans Dynamics CRM.
 5. Les informations sont retournées à l’employé qui peut filtrer les données sans quitter le robot.
-6. Application Insights collecte la télémétrie d’exécution pour faciliter le développement en fournissant des informations sur les performances et l’utilisation du robot.
+6. Application Insights collecte la télémétrie du runtime pour faciliter le développement à l’aide des informations sur les performances et l’utilisation du bot.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de bot à partir des [Exemples de scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
-## <a name="sample-bot"></a>Exemple de robot
+## <a name="sample-bot"></a>Exemple de bot
 Étant donné que les robots sont accessibles à partir de divers canaux, vous pouvez les utiliser sur votre bureau à partir d’un portail d’entreprise ou de Skype lors de vos déplacements. Il suffit que vous soyez authentifié. Avec l’intégration d’Azure AD, votre robot de productivité d’entreprise sait que, si vous pouvez y accéder, vous avez été authentifié par Azure AD. À partir de là, vous pouvez demander au robot de vérifier votre prochain rendez-vous avec un client particulier. Le robot obtient ces informations en interrogeant Office 365 via l’API Graph. Ensuite, si un rendez-vous est planifié au cours des sept prochains jours, le robot interroge CRM afin de rechercher des cas récents pour le client. Le Bot répond soit sans aucun cas trouvé, ou avec le nombre de cas ouverts et fermés. A partir de là, vous pouvez demander au robot de répertorier les cas par type et de sonder des cas individuels.
 
 ## <a name="components-youll-use"></a>Composants que vous allez utiliser

@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état personnalisé avec le stockage de table Azure | Microsoft Docs
+title: Gérer les données d'état personnalisé avec le Stockage de table Azure (v3 JS) - Bot Service
 description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Stockage Table Azure avec le kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3433e0c4218dcb9b5e991325a4e5508fc0422997
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6eb4645437210f98cf43270a50b1654faf30ef25
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299677"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790344"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Gérer les données d’état personnalisé avec le stockage de table Azure pour Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Dans cet article, vous implémentez le stockage de table Azure pour stocker et gérer les données d’état de votre robot. Le service d’état du connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser un stockage d’état personnalisé :
+Dans cet article, vous implémentez le stockage de table Azure pour stocker et gérer les données d’état de votre robot. Le service d’état du connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
 
 - Débit d’API d’état plus élevé (meilleur contrôle des performances)
 - Latence inférieure pour la distribution géographique
@@ -28,15 +28,15 @@ Dans cet article, vous implémentez le stockage de table Azure pour stocker et g
 - Base de données d’état non partagée avec d’autres robots
 - Stockage de plus de 32 Ko
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - [Node.js](https://nodejs.org/en/).
 - [Émulateur Bot Framework](~/bot-service-debug-emulator.md).
-- Vous devez avoir un robot Node.js. Si vous n’en avez pas, accédez [Créer un robot](bot-builder-nodejs-quickstart.md). 
+- Vous devez avoir un bot Node.js. Si vous n’en avez pas, accédez à [Créer un bot](bot-builder-nodejs-quickstart.md). 
 - [Explorateur Stockage](http://storageexplorer.com/).
 
 ## <a name="create-azure-account"></a>Créer un compte Azure
-Si vous n’avez pas encore de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
+Si vous n’avez pas de compte Azure, cliquez [ici](https://azure.microsoft.com/free/) pour vous inscrire et bénéficier d’un compte gratuit.
 
 ## <a name="set-up-the-azure-table-storage-service"></a>Configurer le service de stockage de table Azure
 1. Une fois connecté au portail Azure, créez un service de stockage de table Azure en cliquant sur **Nouveau**. 
@@ -53,7 +53,7 @@ Pour installer le module `botbuilder-azure` à partir d’une invite de commande
 npm install --save botbuilder-azure
 ```
 
-## <a name="modify-your-bot-code"></a>Modifier le code de votre robot
+## <a name="modify-your-bot-code"></a>Modifier le code de votre bot
 
 Pour utiliser votre stockage **Table azure** , ajoutez les lignes de code suivantes au fichier **app.js** de votre robot.
 
@@ -63,7 +63,7 @@ Pour utiliser votre stockage **Table azure** , ajoutez les lignes de code suivan
    var azure = require('botbuilder-azure'); 
    ```
 
-2. Configurez les paramètres de connexion à Azure.
+2. Configurez les paramètres de connexion pour se connecter à Azure.
    ```javascript
    // Table storage
    var tableName = "Table-Name"; // You define

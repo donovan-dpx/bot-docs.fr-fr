@@ -1,5 +1,5 @@
 ---
-title: Recevoir des messages du robot | Microsoft Docs
+title: Recevoir des messages du bot - Bot Service
 description: Découvrez comment recevoir des messages du robot à l’aide de l’API Direct Line v1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6f9a132b538a278b0990271864a70e77ea7dc56c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: c88d3f363bf4bcc40fa7a21aa1fcdd0b764abe1e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299622"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789695"
 ---
 # <a name="receive-messages-from-the-bot"></a>Recevoir des messages du robot
 
 > [!IMPORTANT]
-> Cet article décrit comment recevoir des messages du robot à l’aide de l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre bot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-receive-activities.md).
+> Cet article décrit comment recevoir des messages du robot à l’aide de l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-receive-activities.md).
 
 À l’aide du protocole Direct Line 1.1, les clients doivent interroger une interface `HTTP GET` pour recevoir des messages. 
 

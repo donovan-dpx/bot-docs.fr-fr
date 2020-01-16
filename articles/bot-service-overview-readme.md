@@ -1,5 +1,5 @@
 ---
-title: Fonctionnement de Service Bot | Microsoft Docs
+title: Fonctionnement de Service Bot - Bot Service
 description: Découvrez les fonctionnalités et capacités de Service Bot.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 1a49b9c3653af1a9fa56724a1562d34eb1834f43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405808"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794626"
 ---
 # <a name="how-bot-service-works"></a>Fonctionnement de Service Bot
 

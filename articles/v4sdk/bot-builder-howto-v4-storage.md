@@ -1,5 +1,5 @@
 ---
-title: Écrire directement dans le stockage | Microsoft Docs
+title: Écrire directement dans le stockage - Bot Service
 description: Découvrez comment écrire directement dans le stockage avec le kit SDK Bot Framework pour .NET.
 keywords: stockage, lecture et écriture, stockage de données, stockage de mémoire, étiquette d’entité
 author: DeniseMak
@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3de06fb5aa3ae09f4730cf7b0d4e0a587d568b8c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 2f16b34715b78635b1dd5028f4955bad0269973b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491706"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798231"
 ---
 # <a name="write-directly-to-storage"></a>Écrire directement dans le stockage
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Vous pouvez lire et écrire directement dans votre objet de stockage sans utiliser d’intergiciel ou d’objet de contexte. Cela peut convenir pour les données que votre bot utilise pour préserver une conversation, ou les données qui proviennent d’une source située en dehors du flux de conversation de votre bot. Dans ce modèle de stockage de données, au lieu d’utiliser un gestionnaire d’états, les données sont lues directement à partir du stockage. Les exemples de code dans cet article vous montrent comment lire et écrire des données dans le stockage à l’aide du **stockage mémoire**, de **Cosmos DB**, du **Stockage Blob** et du **magasin de transcription d’objets blob Azure**. 
+Vous pouvez lire et écrire directement dans votre objet de stockage sans utiliser d’intergiciel ou d’objet de contexte. Cela peut convenir pour les données que votre bot utilise afin de préserver une conversation, ou les données provenant d'une source située en dehors du flux de conversation de votre bot. Dans ce modèle de stockage de données, plutôt que d'utiliser un gestionnaire d'états, les données sont lues directement à partir du stockage. Les exemples de code de cet article montrent comment lire et écrire des données dans le stockage à l'aide du **stockage en mémoire**, de **Cosmos DB**, du **Stockage Blob**, du **Stockage de table Azure** et du **magasin de transcription d'objets blob Azure**. 
 
 ## <a name="prerequisites"></a>Conditions préalables requises
 - Si vous n’avez pas d’abonnement Azure, créez un compte [gratuit](https://azure.microsoft.com/free/) avant de commencer.
@@ -32,7 +32,7 @@ L’exemple de code de cet article commence par la structure d’un bot d’éch
 
 ## <a name="memory-storage"></a>Stockage mémoire
 
-Le kit SDK Bot Framework permet de stocker les entrées utilisateur en utilisant un stockage en mémoire. Le stockage mémoire est utilisé uniquement à des fins de test et n’est pas destiné à une utilisation en production. Les types de stockage persistant, tels que le stockage de base de données, sont plus adaptés aux bots de production. Veillez à définir le stockage sur Cosmos DB ou Stockage Blob avant de publier votre bot.
+Le kit SDK Bot Framework permet de stocker les entrées utilisateur en utilisant un stockage en mémoire. Le stockage mémoire est utilisé uniquement à des fins de test et n’est pas destiné à une utilisation en production. Le stockage en mémoire est volatile et temporaire puisque les données sont effacées à chaque redémarrage du bot. Les types de stockage persistant, tels que le stockage de base de données, sont plus adaptés aux bots de production. Veillez à définir le stockage sur **Cosmos DB**, **Stockage Blob** ou [**Stockage de table Azure**](~/nodejs/bot-builder-nodejs-state-azure-table-storage.md) avant de publier votre bot.
 
 #### <a name="build-a-basic-bot"></a>Créer un bot de base
 
@@ -1027,4 +1027,3 @@ Maintenant que vous savez comment lire et écrire directement dans le stockage, 
 
 > [!div class="nextstepaction"]
 > [Enregistrer l’état à l’aide des propriétés de la conversation et de l’utilisateur](bot-builder-howto-v4-state.md)
-

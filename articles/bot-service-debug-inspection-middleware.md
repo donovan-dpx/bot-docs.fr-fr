@@ -1,5 +1,5 @@
 ---
-title: Déboguer un robot avec un intergiciel d’inspection | Microsoft Docs
+title: Déboguer un bot avec un intergiciel d'inspection - Bot Service
 description: Découvrir comment déboguer un robot avec un intergiciel d’inspection
 author: zxyanliu
 ms.author: v-liyan
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 3bb0dea0b66acfdffd75904770cc88572e377258
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 9218ed5019294d2fc18d63b0fe4abe853af83e2b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736821"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792601"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Déboguer un robot avec un intergiciel d’inspection
 Cet article explique comment déboguer votre bot à l’aide d’un intergiciel d’inspection. Cette fonctionnalité permet à l’émulateur Bot Framework Emulator de déboguer le trafic transitant par le bot, en plus d’inspecter l’état actuel du bot. Vous pouvez utiliser un message de suivi pour envoyer des données au l’émulateur, puis inspecter l’état de votre robot dans n’importe quel tour de la conversation. 

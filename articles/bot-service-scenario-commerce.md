@@ -1,5 +1,5 @@
 ---
-title: Scénario Robot Commerce | Microsoft Docs
+title: Scénario relatif au bot de commerce - Bot Service
 description: Explorez le scénario Robot Commerce avec Bot Framework.
 author: BrianRandell
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e2eac132922ad90437c88404cbfb97f6f495945
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 8bc6f6e0c027e9b949997046133020b74ef18afe
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167086"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794751"
 ---
 # <a name="commerce-bot-scenario"></a>Scénario Robot Commerce
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
-Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le robot tire parti de Cognitive Services pour mieux traiter les demandes textuelles et vocales des clients avec un contexte obtenu grâce à une intégration avec des services principaux.
+Le scénario [Robot Commerce](bot-service-scenario-commerce.md) décrit un robot qui remplace les interactions par e-mail et par téléphone que les utilisateurs ont généralement avec le service de conciergerie d’un hôtel. Le bot utilise Cognitive Services pour mieux traiter les demandes des clients par le texte et la voix avec un contexte résultant de l’intégration de services backend.
 
 ![Diagramme du robot d’application](~/media/scenarios/bot-service-scenario-commerce-bot.png)
 
@@ -31,12 +31,12 @@ Voici le flux logique d’un robot Commerce faisant office de concierge pour un 
 4. Les services Cognitive Services aident à traiter la demande en langage naturel.
 5. La réponse est examinée par le client, qui peut affiner sa question en s’exprimant en langage naturel.
 6. Quand l’utilisateur est satisfait des résultats, le robot Application met à jour la réservation du client.
-7. Application Insights collecte la télémétrie du runtime pour faciliter le développement à l’aide des informations sur les performances et l’utilisation du robot.
+7. Application Insights collecte la télémétrie du runtime pour faciliter le développement à l’aide des informations sur les performances et l’utilisation du bot.
 
-## <a name="sample-bot"></a>Exemple de robot
+## <a name="sample-bot"></a>Exemple de bot
 L’exemple de robot Commerce est conçu autour d’un service fictif de conciergerie d’hôtel. Les clients accèdent au robot écrit en C# une fois qu’ils ont authentifié Azure AD B2C auprès d’un hôtel via l’application mobile des services membres de la chaîne. La chaîne stocke les réservations dans une base de données SQL Database. Un client peut poser des questions en langage naturel, telles que « Combien me coûterait la location d’une cabanon de piscine pendant la durée de mon séjour ? ». Le robot dispose à son tour d’un contexte sur l’hôtel et la durée du séjour du client. En outre, le service Language Understanding (LUIS) aide le robot à obtenir du contexte même à partir d’expressions aussi simples que « cabanon de piscine ». Le robot donne la réponse, puis peut proposer de réserver un cabanon pour le client, en proposant des choix concernant le nombre de jours et le type de cabanon. Une fois que le robot dispose de toutes les données nécessaires, il réserve la demande. Le client peut également utiliser sa voix pour formuler la même demande.
 
-Vous pouvez télécharger ou cloner le code source pour cet exemple de robot à partir des [Exemples pour les scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
+Vous pouvez télécharger ou cloner le code source pour cet exemple de bot à partir des [Exemples de scénarios Bot Framework courants](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Composants que vous allez utiliser
 Le robot Commerce utilise les composants suivants :

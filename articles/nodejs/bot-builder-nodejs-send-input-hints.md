@@ -1,5 +1,5 @@
 ---
-title: Ajouter des conseils de saisie aux messages | Microsoft Docs
+title: Ajouter des conseils de saisie aux messages (v3 JS) - Bot Service
 description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5e4d246942ef667bf233d5292ca2472cb470c7ce
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 354adb42b4442fdc443192cd6b058a9f56d45eed
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299746"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790567"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 
@@ -28,19 +28,19 @@ En spécifiant un conseil de saisie pour un message, vous pouvez indiquer si vot
 
 ## <a name="accepting-input"></a>Acceptation d’entrées
 
-Pour indiquer que votre bot est passivement prêt pour l’entrée sans être en attente d’une réponse de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.acceptingInput`. Sur la plupart des canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que la coupure du microphone tout en restant accessible à l’utilisateur. Par exemple, Cortana ouvre le microphone afin d’accepter une entrée de l’utilisateur si l’utilisateur maintient le bouton du microphone enfoncé. L’exemple de code suivant crée un message qui indique que le bot accepte l’entrée utilisateur.
+Pour indiquer que votre bot est passivement prêt pour l’entrée sans être en attente d’une réponse de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.acceptingInput`. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que la coupure du microphone, tout en restant accessible à l’utilisateur. Par exemple, Cortana ouvre le microphone afin d’accepter une entrée de l’utilisateur si l’utilisateur maintient le bouton du microphone enfoncé. L’exemple de code suivant crée un message qui indique que le bot accepte l’entrée utilisateur.
 
 [!code-javascript[IMessage.speak](../includes/code/node-input-hints.js#InputHintAcceptingInput)]
 
 ## <a name="expecting-input"></a>Attente d’entrée
 
-Pour indiquer que votre bot attend une réponse de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.expectingInput`. Sur la plupart des canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que l’activation du microphone. L’exemple de code suivant crée une invite qui indique que le bot attend l’entrée utilisateur.
+Pour indiquer que votre bot attend une réponse de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.expectingInput`. Sur de nombreux canaux, cela entraîne l’activation de la zone de saisie du client, ainsi que l’ouverture du microphone. L’exemple de code suivant crée une invite qui indique que le bot attend l’entrée utilisateur.
 
 [!code-javascript[Prompt](../includes/code/node-input-hints.js#InputHintExpectingInput)]
 
 ## <a name="ignoring-input"></a>Ignorer l’entrée
 
-Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.ignoringInput`. Sur la plupart des canaux, cela entraîne la désactivation de la zone de saisie du client ainsi que la coupure du microphone. L’exemple de code suivant utilise la méthode `session.say()` pour envoyer un message qui indique que le bot ignore l’entrée utilisateur.
+Pour indiquer que votre bot n’est pas prêt à recevoir une entrée de l’utilisateur, définissez le conseil de saisie du message sur `builder.InputHint.ignoringInput`. Sur de nombreux canaux, cela entraîne la désactivation de la zone de saisie du client ainsi que la coupure du microphone. L’exemple de code suivant utilise la méthode `session.say()` pour envoyer un message qui indique que le bot ignore l’entrée utilisateur.
 
 [!code-javascript[Session.say()](../includes/code/node-input-hints.js#InputHintIgnoringInput)]
 

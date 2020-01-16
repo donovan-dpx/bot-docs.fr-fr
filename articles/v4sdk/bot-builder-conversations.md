@@ -1,5 +1,5 @@
 ---
-title: Conversations dans le kit SDK Bot Framework | Microsoft Docs
+title: Conversations dans le kit SDK Bot Framework - Bot Service
 description: Découvrez ce qu’est une conversation dans le kit SDK Bot Framework.
 keywords: flux de la conversation, reconnaître une intention, tour unique, plusieurs tours, conversation de bot
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ea5cf37ec788f68e8eea32ee6610f59ec286193c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e4c4f11999b9ab4b932e373db7eb27c6547cb537
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299395"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798667"
 ---
 # <a name="conversation-flow"></a>Flux de la conversation
 [!INCLUDE[applies-to](../includes/applies-to.md)]
@@ -87,7 +87,7 @@ Une façon d’effectuer le suivi de votre avancement dans une conversation cons
 
 Dans le cas d’un bot plus complexe, vous pouvez également imaginer une séquence de flux de conversation qui se produisent dans une pile ; par exemple, le bot appelle le flux de nouvelle commande, puis le flux de recherche de produit. Ensuite, l’utilisateur sélectionne un produit et confirme son choix, en suivant le flux de recherche de produit, puis passe la commande.
 
-Toutefois, les conversations suivent rarement un chemin aussi logique et linéaire. Les utilisateurs ne communiquent sous forme de « piles », mais ont tendance à changer fréquemment d’avis. Considérez l'exemple suivant :
+Toutefois, les conversations suivent rarement un chemin aussi logique et linéaire. Les utilisateurs ne communiquent sous forme de « piles », mais ont tendance à changer fréquemment d’avis. Prenons l’exemple suivant :
 
 ![L’utilisateur dit quelque chose d’inattendu](./media/concept-conversation/interruption.png)
 

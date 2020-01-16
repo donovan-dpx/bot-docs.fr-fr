@@ -1,5 +1,5 @@
 ---
-title: Concevoir l’expérience utilisateur | Microsoft Docs
+title: Concevoir l'expérience utilisateur - Bot Service
 description: Apprenez à concevoir votre robot pour offrir une expérience utilisateur engageante, en utilisant des contrôles utilisateur riches, ainsi que la reconnaissance et la synthèse vocales.
 keywords: vue d’ensemble, conception, expérience utilisateur, contrôle utilisateur riche
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/20/2018
-ms.openlocfilehash: 75907c07887fdf7ba21e4bb5d25bca488a70697d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 54b797c10ba69684c64c7d9f6c7e144d603084ca
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298569"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793517"
 ---
 # <a name="design-the-user-experience"></a>Concevoir l’expérience utilisateur
 
@@ -31,15 +31,15 @@ Les cartes vous permettent de présenter à vos utilisateurs une variété de me
 
 Les cartes du service Microsoft Bot sont des objets programmables contenant des collections standardisées de contrôles utilisateur riches, reconnus sur un vaste éventail de canaux. Le tableau suivant décrit la liste des cartes disponibles et les meilleures pratiques d’utilisation suggérées pour chaque type de carte.
 
-| Type de carte | Exemples | Description |
+| Type de carte | Exemple | Description |
 | ---- | ---- | ---- |
 | AdaptiveCard | ![Image de carte adaptative](./media/adaptive-card.png) | Format d’échange de carte ouvert restitué sous la forme d’un objet JSON. Généralement utilisé pour le déploiement de cartes via plusieurs canaux. Les cartes s’adaptent à l’apparence de chaque canal hôte. |
-| AnimationCard | ![Image de carte d’animation](./media/animation-card1.png) | Carte pouvant lire des GIF animés ou des vidéos courtes. |
+| AnimationCard | ![Image de carte d’animation](./media/animation-card1.png) | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | AudioCard | ![Image de carte audio](./media/audio-card.png) | Carte pouvant lire un fichier audio. |
 | HeroCard | ![Image de carte de bannière](./media/hero-card1.png) | Carte contenant une image de grande taille, un ou plusieurs boutons, et du texte. Généralement utilisée pour mettre en évidence une sélection d’utilisateur potentielle. |
 | ThumbnailCard | ![Image de carte de miniature](./media/thumbnail-card.png) | Carte contenant une image miniature, un ou plusieurs boutons, et du texte. Généralement utilisée pour mettre en évidence les boutons destinés à une sélection d’utilisateur potentielle. |
-| ReceiptCard | ![Image de carte de reçu](./media/receipt-card1.png) | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des postes à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
-| SignInCard | ![Image de carte de connexion](./media/sign-in-card.png) | Carte permettant à un robot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
+| ReceiptCard | ![Image de carte de reçu](./media/receipt-card1.png) | Carte permettant à un robot de fournir un reçu à l’utilisateur. Elle contient généralement la liste des articles à inclure sur le reçu, la taxe et le total, ainsi que du texte. |
+| SignInCard | ![Image de carte de connexion](./media/sign-in-card.png) | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 | SuggestedAction | ![Image de carte d’actions suggérées](./media/suggested-actions.png) | Présente à l’utilisateur un ensemble de CardActions représentant un choix d’utilisateur. Cette carte disparaît après sélection de l’une des actions suggérées. |
 | VideoCard | ![Image de carte de vidéo](./media/video-card.png) | Carte pouvant lire des vidéos. Généralement utilisée pour ouvrir une URL et diffuser en continu une vidéo disponible. |
 | CardCarousel | ![Image de carrousel de cartes](./media/card-carousel.png) | Collection de cartes à défilement horizontal permettant à l’utilisateur de visualiser facilement une série de choix d’utilisateur possibles.|
@@ -86,7 +86,7 @@ Dans d’autres scénarios, un utilisateur peut **taper des demandes simples for
 
 Les API permettent à votre robot d’extraire les composants clés du texte de l’utilisateur pour identifier l’intention de celui-ci. Lors de l’implémentation de fonctionnalités de compréhension du langage naturel dans votre robot, définissez des attentes réalistes en ce qui concerne le niveau de détail que les utilisateurs sont susceptibles de fournir en entrée. 
 
-![manière dont les utilisateurs s’expriment](./media/bot-service-design-user-experience/buy-house.png)
+![Manière dont les utilisateurs s’expriment](./media/bot-service-design-user-experience/buy-house.png)
 
 > [!TIP]
 > Lors de la création de modèles de langage naturel, ne supposez pas que les utilisateurs fourniront toutes les informations requises dans leur requête initiale. Concevez votre robot de façon à ce qu’il demande spécifiquement les informations dont il a besoin, en amenant l’utilisateur à les lui fournir au travers d’une série de questions, si nécessaire. 

@@ -1,5 +1,5 @@
 ---
-title: Personnaliser l’expérience utilisateur avec le langage du modèle | Microsoft Docs
+title: Personnaliser l'expérience utilisateur avec le langage du modèle - Bot Service
 description: Découvrez comment personnaliser les invites FormFlow et remplacer des modèles FormFlow en utilisant le langage du modèle avec le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 032d3c9553c5be774bf5d71fb2477d5a5689ca40
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 43ae6504dcd58c221d0dfe2678c2363323ac63cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297917"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796817"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Personnaliser l’expérience utilisateur avec le langage du modèle
 

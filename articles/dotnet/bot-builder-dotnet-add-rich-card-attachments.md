@@ -1,5 +1,5 @@
 ---
-title: Ajouter des pièces jointes de cartes enrichies aux messages | Microsoft Docs
+title: Ajouter des pièces jointes de cartes enrichies aux messages (v3 C#) - Bot Service
 description: Découvrez comment ajouter des cartes enrichies aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 37c652e101f5501295b243386ba9b675c578624f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e30ac144d4e960672f3d129935a657c42ed1aa6d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298398"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796512"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 
@@ -61,7 +61,7 @@ Pour traiter les événements dans les cartes enrichies, définissez les objets 
 | Valeur | string | valeur nécessaire pour effectuer le type d’action spécifié |
 
 > [!NOTE]
-> Les boutons dans les cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les <a href="http://adaptivecards.io" target="_blank">cartes adaptatives</a>. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez [Ajouter une carte adaptative à un message](#adaptive-card).
+> Les boutons dans les cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les <a href="http://adaptivecards.io" target="_blank">cartes adaptatives</a>. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez la section [Ajouter une carte adaptative à un message](#adaptive-card).
 
 Ce tableau répertorie les valeurs valides pour `CardAction.Type` et décrit le contenu attendu de `CardAction.Value` pour chaque type :
 
@@ -77,7 +77,7 @@ Ce tableau répertorie les valeurs valides pour `CardAction.Type` et décrit le 
 | downloadFile | URL du fichier à télécharger. |
 | signin | URL du flux OAuth à démarrer. |
 
-## <a name="add-a-hero-card-to-a-message"></a>Ajouter une carte de héros à un message
+## <a name="add-a-hero-card-to-a-message"></a>Ajouter une carte de bannière à un message
 
 La carte de héros contient généralement une image de grande taille, un ou plusieurs boutons et du texte. 
 
@@ -125,12 +125,12 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
+- [Informations de référence sur les canaux](../bot-service-channels-reference.md)
 - <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
 - [Ajouter des pièces jointes multimédia aux messages](bot-builder-dotnet-add-media-attachments.md)
-- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe d’activité</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
 - <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
@@ -147,4 +147,4 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 [videoCard]: /dotnet/api/microsoft.bot.connector.videocard
 
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

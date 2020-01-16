@@ -1,5 +1,5 @@
 ---
-title: Activer les fonctions vocales dans Discussion Web | Microsoft Docs
+title: Activer les fonctions vocales dans Discussion Web - Bot Service
 description: Découvrez comment activer les fonctions vocales dans le contrôle de discussion web pour un robot connecté au canal Discussion Web.
 keywords: fonctions vocales, discussion web, voix, microphone, audio
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b83dff7969c58451e5752938f74b682b2163c49d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 72a247fe0e8373323626a5d01360d2a923b09b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298204"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793246"
 ---
 # <a name="enable-speech-in-web-chat"></a>Activer les fonctions vocales dans Discussion Web
 Vous pouvez activer une interface vocale dans le contrôle Discussion Web. Les utilisateurs interagissent avec l’interface vocale à l’aide du microphone dans le contrôle Discussion Web.
@@ -23,7 +23,7 @@ Vous pouvez activer une interface vocale dans le contrôle Discussion Web. Les u
 
 Si l’utilisateur tape une réponse au lieu de la prononcer, Discussion Web désactive la fonctionnalité vocale et le robot fournit uniquement une réponse textuelle au lieu de la prononcer. Pour réactiver la réponse vocale, l’utilisateur peut utiliser le microphone pour répondre au robot la prochaine fois. Si le microphone accepte l’entrée, il apparaît sombre ou rempli. S’il est grisé, l’utilisateur clique dessus pour l’activer.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
   Avant d’exécuter l’exemple, vous devez avoir un secret ou un jeton Direct Line pour le robot que vous souhaitez exécuter à l’aide du contrôle Discussion Web. 
   * Pour plus d’informations sur l’obtention d’un secret Direct Line associé à votre robot, voir [connecter un robot à Direct Line](bot-service-channel-connect-directline.md).

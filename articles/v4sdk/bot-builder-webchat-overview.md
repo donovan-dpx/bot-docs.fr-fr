@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble de Web Chat | Microsoft Docs
+title: Vue d'ensemble de Discussion Web - Bot Service
 description: Découvrez comment configurer Bot Framework Web Chat.
 keywords: bot framework, conversation web, conversation, exemples, react, référence
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: e04ba2abe8d92246149cb6b7bfa185826448d71e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037384"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791151"
 ---
 # <a name="web-chat-overview"></a>Vue d’ensemble de Web Chat
 
@@ -221,8 +221,8 @@ Il y existe plusieurs propriétés que vous pouvez passer dans votre composant W
 | `adaptiveCardHostConfig`   | Passez une configuration d'hôte Adaptive Cards personnalisée. Vérifiez la version d’Adaptive Cards utilisée avec votre configuration d'hôte. Consultez la [configuration de l’hôte personnalisé](https://github.com/microsoft/BotFramework-WebChat/issues/2034#issuecomment-501818238) pour plus d’informations.                                                                                                                                                                                                                                                                                                                                    |
 | `attachmentMiddleware`     | Chaîne d’intergiciel qui permet au développeur d’ajouter ses propres éléments HTML personnalisés sur les pièces jointes. La signature est la suivante : `options => next => card => next(card)`.                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `attachmentRenderer`       | Version « aplatie » de `attachmentMiddleware`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `cardActionMiddleware`     | Chaîne d’intergiciel qui permet au développeur de modifier les actions des cartes, comme Adaptive Cards ou les actions suggérées. La signature d’intergiciel est la suivante : `cardActionMiddleware: () => next => ({ cardAction, getSignInUrl }) => next(cardAction)`                                                                                                                                                                                                                                                                                                                                           |
-| `createDirectLine`         | Méthode de fabrique permettant d’instancier l’objet Direct Line. Les utilisateurs Azure Government doivent utiliser `createDirectLine({ domain: 'https://directline.botframework.azure.us/v3/directline', token });` pour modifier le point de terminaison. La liste complète des paramètres sont : `conversationId`, `domain`, `fetch`, `pollingInterval`, `secret`, `streamUrl`, `token`, `watermark` `webSocket`.                                                                                                                                                                                                                         |
+| `cardActionMiddleware`     | Chaîne d’intergiciel qui permet au développeur de modifier les actions des cartes, comme Adaptive Cards ou les actions suggérées. La signature de l’intergiciel est la suivante : `cardActionMiddleware: () => next => ({ cardAction, getSignInUrl }) => next(cardAction)`                                                                                                                                                                                                                                                                                                                                           |
+| `createDirectLine`         | Méthode de fabrique permettant d’instancier l’objet Direct Line. Les utilisateurs Azure Government doivent utiliser `createDirectLine({ domain: 'https://directline.botframework.azure.us/v3/directline', token });` pour modifier le point de terminaison. La liste complète des paramètres est la suivante : `conversationId`, `domain`, `fetch`, `pollingInterval`, `secret`, `streamUrl`, `token`, `watermark` `webSocket`.                                                                                                                                                                                                                         |
 | `createStore`              | Chaîne d’intergiciel qui permet au développeur de modifier les actions de magasin. La signature de l’intergiciel est la suivante : `createStore: ({}, ({ dispatch }) => next => action => next(cardAction)`                                                                                                                                                                                                                                                                                                                                                                                                |
 | `directLine`               | Spécifiez l’objet DirectLine avec le jeton DirectLine.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `disabled`                 | Désactivez l’interface utilisateur Web Chat (par exemple, pour le mode de présentation).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -279,8 +279,8 @@ Le réabonnement requiert la réinitialisation de votre registre.
 
 Consultez notre [page de contribution](https://github.com/Microsoft/BotFramework-WebChat/tree/master/.github/CONTRIBUTING.md) pour plus d’informations sur la façon de générer le projet et les directives de notre référentiel pour les demandes de tirage.
 
-Ce projet a adopté le [Code de conduite open source de Microsoft](https://opensource.microsoft.com/codeofconduct/).
-Pour plus d’informations, consultez la [FAQ sur le code de conduite](https://opensource.microsoft.com/codeofconduct/faq/) ou envoyez vos questions ou vos commentaires à [opencode@microsoft.com](mailto:opencode@microsoft.com).
+Ce projet a adopté le [Code de conduite Open Source de Microsoft](https://opensource.microsoft.com/codeofconduct/).
+Pour plus d’informations, consultez le [Forum Aux Questions sur le Code de conduite](https://opensource.microsoft.com/codeofconduct/faq/) ou contactez [opencode@microsoft.com](mailto:opencode@microsoft.com) si vous avez d’autres questions ou des commentaires.
 
 ## <a name="reporting-security-issues"></a>Signaler des problèmes de sécurité
 

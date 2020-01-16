@@ -1,5 +1,5 @@
 ---
-title: Reconnaître les intentions et les entités avec LUIS | Microsoft Docs
+title: Reconnaître les intentions et les entités avec LUIS (v3 JS) - Bot Service
 description: Intégrez un bot avec LUIS pour détecter les intentions de l’utilisateur et apporter des réponses appropriées en déclenchant des dialogues à l’aide du kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d3cdbc2c9a2c620860f55cc2c31f3ce3ba5695e1
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 49f76f4615184a38e381fdf3e2084057ee5338c9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299771"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790743"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconnaître les intentions et les entités avec LUIS 
 
@@ -52,7 +52,7 @@ Une fois le bot enregistré, cliquez sur **Test dans le chat web** pour ouvrir l
 
   ![Tester le bot dans la Discussion Web](../media/bot-builder-nodejs-use-luis/bot-service-web-chat.png)
 
-Le bot répond : « Vous vous trouvez dans l’intention Salutations. Vous avez dit : "Bonjour". » Cela confirme que le bot a reçu votre message et l’a transmis à une application LUIS par défaut qu’il a créée. Celle-ci a détecté une intention de type Salutations.
+Le bot répond : « Vous vous trouvez dans l’intention Salutations. Vous avez dit : bonjour ». Cela confirme que le bot a reçu votre message et l’a transmis à une application LUIS par défaut qu’il a créée. Celle-ci a détecté une intention de type Salutations.
 
 ## <a name="modify-the-luis-app"></a>Modifier l’application LUIS
 
@@ -76,7 +76,7 @@ Les étapes suivantes permettent d’ajouter les intentions Note.Create, Note.Re
    * Note.ReadAloud
    * Note.Create
    * Note.Delete
-   * Aucun
+   * None
    * Aide
    * Salutations
    * Annuler
@@ -558,7 +558,7 @@ Dans le Portail Azure, cliquez sur **Test dans le chat web** pour tester le bot.
    ![Test du bot de prise de notes dans la Discussion Web](../media/bot-builder-nodejs-use-luis/bot-service-test-notebot.png)
 
 > [!TIP]
-> Si vous trouvez que votre bot ne reconnaît pas toujours la bonne intention ou les bonnes entités, améliorez les performances de votre application LUIS en lui donnant d’autres exemples d’énoncés pour l’entraîner. Ce nouvel apprentissage est possible sans aucune modification du code du bot. Voir [Ajouter des exemples d’énoncés](/azure/cognitive-services/LUIS/add-example-utterances) et [Entraîner et tester votre application LUIS](/azure/cognitive-services/LUIS/train-test).
+> Si vous trouvez que votre bot ne reconnaît pas toujours la bonne intention ou les bonnes entités, améliorez les performances de votre application LUIS en lui donnant d’autres exemples d’énoncés pour l’entraîner. Ce nouvel apprentissage de votre application LUIS est possible sans aucune modification du code du bot. Voir [Ajouter des exemples d’énoncés](/azure/cognitive-services/LUIS/add-example-utterances) et [Entraîner et tester votre application LUIS](/azure/cognitive-services/LUIS/train-test).
 
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -1,5 +1,5 @@
 ---
-title: Connecter un bot à Twilio | Microsoft Docs
+title: Connecter un bot à Twilio - Bot Service
 description: Découvrez comment configurer la connexion d’un bot à Twilio.
 keywords: Twilio, canaux de bot, SMS, application, téléphone, configurer Twilio, communication cloud, texte
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/9/2018
-ms.openlocfilehash: 74df41b6a5a9e02918ec3a7746a95ca7c915d981
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 42e79bbf79418c30ff0b4b6c584ab4791cd246c0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297262"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793090"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Connecter un bot à Twilio
 
@@ -66,6 +66,165 @@ Dans une fenêtre distincte, revenez sur le site du Bot Framework à l’adresse
 
 Une fois ces étapes effectuées, votre bot est correctement configuré pour communiquer avec les utilisateurs de Twilio.
 
-## <a name="also-available-as-an-adapter"></a>Également disponible en tant qu’adaptateur
+## <a name="connect-a-bot-to-twilio-using-the-twilio-adapter"></a>Connecter un bot à Twilio à l'aide de l'adaptateur Twilio
 
-Ce canal est également [disponible en tant qu’adaptateur](https://botkit.ai/docs/v4/platforms/twilio-sms.html). Pour vous aider à choisir entre un adaptateur et un canal, consultez [Adaptateurs disponibles actuellement](bot-service-channel-additional-channels.md#currently-available-adapters).
+Outre le canal disponible dans Azure Bot Service pour connecter votre bot à Twilio, vous pouvez également utiliser l'adaptateur Twilio. Dans cet article, vous allez apprendre à connecter un bot à Twilio à l'aide de l'adaptateur.  Cet article vous guide tout au long de la procédure de modification de l'exemple EchoBot pour le connecter à Twilio.
+
+> [!NOTE]
+> Les instructions ci-dessous s'appliquent à l'implémentation C# de l'adaptateur Twilio. Pour en savoir plus sur l'utilisation de l'adaptateur JS, qui fait partie des bibliothèques BotKit, [consultez la documentation BotKit Twilio](https://botkit.ai/docs/v4/platforms/twilio.html).
+
+### <a name="prerequisites"></a>Conditions préalables requises
+
+* L'[exemple de code EchoBot](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/02.echo-bot)
+
+* Un compte Twilio Si vous n'avez pas de compte Twilio, vous pouvez [en créer un ici](https://www.twilio.com/try-twilio).
+
+### <a name="get-a-twilio-number-and-gather-account-credentials"></a>Obtenir un numéro Twilio et collecter les informations d'identification du compte
+
+1. Connectez-vous à [Twilio](https://twilio.com/console). Sur le côté droit de la page, vous verrez le **SID DU COMPTE** et le **JETON D'AUTHENTIFICATION** de votre compte. Notez-les car vous en aurez besoin plus tard lors de la configuration de votre application bot.
+
+2. Choisissez l'option **Voix programmable** sous **Prise en main de Twilio**.
+
+![Prise en main de la fonctionnalité Voix programmable](~/media/bot-service-channel-connect-twilio/get-started-voice.png)
+
+3. Sur la page suivante, cliquez sur le bouton **Obtenir votre premier numéro Twilio**.  Une fenêtre contextuelle vous présente un nouveau numéro, que vous pouvez accepter en cliquant sur **Choisir ce numéro** (vous pouvez également rechercher un autre numéro en suivant les instructions affichées à l'écran).
+
+4. Une fois votre numéro choisi, notez-le, car vous en aurez besoin plus tard lors de la configuration de votre application de bot.
+
+### <a name="wiring-up-the-twilio-adapter-in-your-bot"></a>Connecter l'adaptateur Twilio dans votre bot
+
+Maintenant que vous disposez de votre numéro Twilio et des informations d'identification du compte, vous devez configurer votre application bot.
+
+#### <a name="install-the-twilio-adapter-nuget-package"></a>Installer le package NuGet de l'adaptateur Twilio
+
+Ajoutez le package NuGet [Microsoft.Bot.Builder.Adapters.Twilio](https://www.nuget.org/packages/Microsoft.Bot.Builder.Adapters.Twilio/). Pour plus d'informations sur l'utilisation de NuGet, consultez [Installer et gérer des packages dans Visual Studio](https://aka.ms/install-manage-packages-vs).
+
+#### <a name="create-a-twilio-adapter-class"></a>Créer une classe d'adaptateur Twilio
+
+Créez une classe qui hérite de la classe ***TwilioAdapter***. Cette classe sera notre adaptateur pour le canal Twilio et inclura des fonctionnalités de traitement des erreurs (comme pour la classe ***BotFrameworkAdapterWithErrorHandler*** déjà présente dans l'exemple et utilisée pour traiter d'autres requêtes d'Azure Bot Service).
+
+```csharp
+public class TwilioAdapterWithErrorHandler : TwilioAdapter
+{
+    public TwilioAdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger)
+            : base(configuration, logger)
+        {
+            OnTurnError = async (turnContext, exception) =>
+            {
+                // Log any leaked exception from the application.
+                logger.LogError(exception, $"[OnTurnError] unhandled error : {exception.Message}");
+
+                // Send a message to the user
+                await turnContext.SendActivityAsync("The bot encountered an error or bug.");
+                await turnContext.SendActivityAsync("To continue to run this bot, please fix the bot source code.");
+
+                // Send a trace activity, which will be displayed in the Bot Framework Emulator
+                await turnContext.TraceActivityAsync("OnTurnError Trace", exception.Message, "https://www.botframework.com/schemas/error", "TurnError");
+            };
+        }
+}
+```
+
+#### <a name="create-a-new-controller-for-handling-twilio-requests"></a>Créer un contrôleur pour traiter les requêtes Twilio
+
+Créez un contrôleur qui traitera les requêtes de Twilio, sur un nouveau point de terminaison « api/twilio » au lieu du point de terminaison « api/messages » par défaut utilisé pour les requêtes des canaux Azure Bot Service.  L'ajout d'un point de terminaison supplémentaire à votre bot vous permettra d'accepter les requêtes des canaux Bot Service, ainsi que de Twilio, en utilisant le même bot.
+
+```csharp
+[Route("api/twilio")]
+[ApiController]
+public class TwilioController : ControllerBase
+{
+    private readonly TwilioAdapter _adapter;
+    private readonly IBot _bot;
+
+    public TwilioController(TwilioAdapter adapter, IBot bot)
+    {
+        _adapter = adapter;
+        _bot = bot;
+    }
+
+    [HttpPost]
+    [HttpGet]
+    public async Task PostAsync()
+    {
+        // Delegate the processing of the HTTP POST to the adapter.
+        // The adapter will invoke the bot.
+        await _adapter.ProcessAsync(Request, Response, _bot);
+    }
+}
+```
+
+#### <a name="inject-the-twilio-adapter-in-your-bot-startupcs"></a>Injecter l'adaptateur Twilio dans le fichier startup.cs de votre bot
+
+Dans votre fichier startup.cs, ajoutez la ligne suivante à la méthode ***ConfigureServices***. Cela permettra d'enregistrer votre adaptateur Twilio et de le mettre à la disposition de votre nouvelle classe de contrôleur.  Les paramètres de configuration que vous avez ajoutés à l'étape précédente seront automatiquement utilisés par l'adaptateur.
+
+```csharp
+services.AddSingleton<TwilioAdapter, TwilioAdapterWithErrorHandler>();
+```
+
+Une fois ajoutée, votre méthode ***ConfigureServices*** doit être semblable à ce qui suit.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+    // Create the default Bot Framework Adapter (used for Azure Bot Service channels and emulator).
+    services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkAdapterWithErrorHandler>();
+
+    // Create the Twilio Adapter
+    services.AddSingleton<TwilioAdapter, TwilioAdapterWithErrorHandler>();
+
+    // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
+    services.AddTransient<IBot, EchoBot>();
+}
+```
+
+#### <a name="obtain-a-url-for-your-bot"></a>Récupérer l'URL de votre bot
+
+Maintenant que vous avez connecté l'adaptateur dans votre projet de bot, vous devez identifier le point de terminaison qui doit être fourni à Twilio afin que votre bot puisse recevoir des messages. Vous aurez également besoin de cette URL pour terminer la configuration de votre application bot.
+
+Pour accomplir cette étape, [déployez votre bot sur Azure](https://aka.ms/bot-builder-deploy-az-cli) et notez l'URL du bot déployé.
+
+> [!NOTE]
+> Si vous n'êtes pas prêt à déployer votre bot sur Azure, ou si vous souhaitez le déboguer lors de l'utilisation de l'adaptateur Twilio, vous pouvez utiliser un outil tel que [ngrok](https://www.ngrok.com) (que vous aurez probablement déjà installé si vous avez précédemment utilisé l'émulateur Bot Framework) pour passer par le bot local et obtenir une URL publiquement accessible. 
+> 
+> Si vous souhaitez créer un tunnel ngrok et obtenir une URL d'accès à votre bot, utilisez la commande suivante dans une fenêtre de terminal (cela suppose que votre bot local s'exécute sur le port 3978 ; si ce n'est pas le cas, modifiez les numéros de port dans la commande).
+> 
+> ```
+> ngrok.exe http 3978 -host-header="localhost:3978"
+> ```
+
+#### <a name="add-twilio-app-settings-to-your-bots-configuration-file"></a>Ajouter les paramètres de l'application Twilio au fichier de configuration de votre bot
+
+Ajoutez les paramètres ci-dessous au fichier appSettings.json de votre projet de bot. Vous devez renseigner les champs**TwilioNumber**, **TwilioAccountSid** et **TwilioAuthToken** à l'aide des valeurs que vous avez recueillies lors de la création de votre numéro Twilio. **TwilioValidationUrl** doit être l'URL de votre bot, plus le point de terminaison `api/twilio` que vous avez spécifié dans le contrôleur nouvellement créé. Par exemple : `https://yourboturl.com/api/twilio`.
+
+
+```json
+  "TwilioNumber": "",
+  "TwilioAccountSid": "",
+  "TwilioAuthToken": "",
+  "TwilioValidationUrl", ""
+```
+
+Après avoir renseigné les champs ci-dessus, vous devez redéployer votre bot (ou le redémarrer en cas d'exécution locale avec ngrok).
+
+### <a name="complete-configuration-of-your-twilio-number"></a>Terminer la configuration de votre numéro Twilio
+
+La dernière étape consiste à configurer le point de terminaison de messagerie de votre nouveau numéro Twilio pour veiller à ce que votre bot reçoive les messages.
+
+1. Accédez à la [page Numéros actifs](https://www.twilio.com/console/phone-numbers/incoming) de Twilio.
+
+2. Cliquez sur le numéro de téléphone que vous avez créé à l'étape précédente.
+
+3. Dans la section **Messagerie**, complétez la section **UN MESSAGE ARRIVE DANS** en choisissant **Webhook** dans la liste déroulante et en renseignant la zone de texte avec le point de terminaison que vous avez utilisé pour le paramètre **TwilioValidationUrl** à l'étape précédente, par exemple `https://yourboturl.com/api/twilio`.
+
+![Configurer le webhook du numéro Twilio](~/media/bot-service-channel-connect-twilio/twilio-number-messaging-settings.png)
+
+4. Cliquez sur le bouton **Enregistrer** .
+
+### <a name="test-your-bot-with-adapter-in-twilio"></a>Tester votre bot avec l'adaptateur Twilio
+
+Vous pouvez maintenant vérifier que votre bot est correctement connecté à Twilio en envoyant un SMS à votre numéro Twilio.  Une fois le message reçu par votre bot, il vous renvoie un message contenant le même texte.
+
+Vous pouvez également tester cette fonctionnalité à l'aide de l'[exemple de bot relatif à l'adaptateur Twilio](https://aka.ms/csharp-63-twilio-adapter-sample) en renseignant le fichier appSettings.json avec les mêmes valeurs que celles décrites dans les étapes ci-dessus.

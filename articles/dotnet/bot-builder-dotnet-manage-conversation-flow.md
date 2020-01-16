@@ -1,5 +1,5 @@
 ---
-title: Gérer un flux de conversation avec des dialogues | Microsoft Docs
+title: Gérer un flux de conversation avec des dialogues - Bot Service
 description: Découvrez comment modéliser les conversations et gérer un flux de conversation à l’aide des dialogues et du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9e183c375e16a951ed77819ab982790944ac0c13
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 16c0835216fc32e3a62241ebc19ffb616227ce43
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298824"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788856"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 

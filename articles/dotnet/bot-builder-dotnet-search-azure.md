@@ -1,5 +1,5 @@
 ---
-title: Créer des expériences pilotées par les données avec Recherche Azure | Microsoft Docs
+title: Créer des expériences pilotées par les données avec Recherche Azure (v3 C#) - Bot Service
 description: Découvrez comment créer des expériences pilotées par les données avec Recherche Azure et permettre aux utilisateurs de parcourir de grandes quantités de contenu dans un bot à l’aide du kit SDK Bot Framework pour .NET et de Recherche Azure.
 author: matthewshim-ms
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2328357c372cabc186e589ccbf65f36517d4789c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 2cdf73fcb5152768d3613cf78f209ebf79ca1edc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297812"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798543"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Créer des expériences pilotées par les données avec Recherche Azure 
 
@@ -25,9 +25,9 @@ ms.locfileid: "70297812"
 
 Vous pouvez ajouter [Recherche Azure](https://azure.microsoft.com/services/search/) à un bot pour permettre aux utilisateurs de faire naviguer de grandes quantités de contenu, et pour créer une expérience d’exploration pilotée par les données.
 
-Recherche Azure est un service Azure qui offre des fonctionnalités, telles que la recherche par mot clé, une linguistique intégrée, la notation personnalisée, une navigation par facettes, et bien plus encore. Recherche Azure peut également indexer le contenu à partir de diverses sources, y compris Azure SQL DB, DocumentDB, Stockage Blob et Stockage Table. La solution prend en charge l’indexation par « push » pour d’autres sources de données, et peut ouvrir des fichiers PDF, des documents Office ainsi que d’autres formats contenant des données non structurées. Une fois collecté, le contenu est placé dans un index Recherche Azure, que le robot peut ensuite interroger.
+Recherche Azure est un service Azure qui offre des fonctionnalités, telles que la recherche par mot clé, une linguistique intégrée, la notation personnalisée, une navigation par facettes, et bien plus encore. Recherche Azure peut également indexer le contenu à partir de diverses sources, dont Azure SQL DB, DocumentDB, Stockage Blob et Stockage Table. La solution prend en charge l’indexation par « push » pour d’autres sources de données, et peut ouvrir des fichiers PDF, des documents Office ainsi que d’autres formats contenant des données non structurées. Une fois collecté, le contenu est placé dans un index Recherche Azure, que le robot peut ensuite interroger.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Installez le package Nuget [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/4.0.0-preview) dans votre projet de bot.
 
@@ -49,7 +49,7 @@ Configurez les paramètres de Recherche Azure dans le fichier **Web.config** du 
 </appSettings>
 ```
 
-## <a name="create-a-search-dialog"></a>Créer un dialogue de recherche
+## <a name="create-a-search-dialog"></a>Créer une dialogue de recherche
 
 Dans votre projet de bot, créez une classe `AzureSearchDialog` pour appeler le service Azure dans le bot. Cette nouvelle classe doit hériter de la classe `SearchDialog` à partir du projet **Search.Dialogs**, qui gère le plus gros du travail. Le remplacement `GetTopRefiners()` permet aux utilisateurs d’affiner/filtrer leurs résultats de recherche sans avoir à recommencer la recherche depuis le début, par la conservation de l’état de l’objet de recherche. Vous pouvez ajouter vos propres affinements personnalisés dans le tableau `TopRefiners` pour laisser vos utilisateurs filtrer ou affiner leurs résultats de recherche. 
 

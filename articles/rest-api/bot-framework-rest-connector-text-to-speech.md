@@ -1,5 +1,5 @@
 ---
-title: Ajouter des fonctionnalités vocales aux messages | Microsoft Docs
+title: Ajouter de la reconnaissance vocale aux messages - Bot Service
 description: Découvrez comment ajouter des fonctionnalités vocales aux messages à l’aide du service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7b649f0ae434df79ebb5ad715e0917c470b66c60
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 6cab3dbff6d2d7a4ba79edb88b138ae77beee956
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415124"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789830"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Si vous générez un bot pour un canal où sont activées les fonctionnalités v
 Pour spécifier le texte que doit énoncer votre bot sur un canal où sont activées les fonctionnalités vocales, définissez la propriété `speak` dans l’objet [Activity][Activity] qui représente votre message. Vous pouvez utiliser la propriété `speak`, une chaîne de texte brut ou une chaîne au format <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML (Speech Synthesis Markup Language)</a>, qui est un langage de balisage XML qui vous permet de gérer diverses caractéristiques de votre bot, telles que la voix, le débit, le volume, la prononciation, le ton, etc. 
 
 
-La requête suivante envoie un message qui spécifie le texte à afficher et le texte à énoncer, et indique que le bot [attend l’entrée utilisateur](bot-framework-rest-connector-add-input-hints.md). Elle spécifie la propriété `speak` à l’aide du format <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a> pour indiquer que l’expression « bien sûr » doit être prononcée en y mettant l’accent. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
+La requête suivante envoie un message qui spécifie le texte à afficher et le texte à énoncer, et indique que le bot [attend l’entrée utilisateur](bot-framework-rest-connector-add-input-hints.md). Elle spécifie la propriété `speak` à l’aide du format <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a> pour indiquer que l’expression « bien sûr » doit être prononcée en y mettant l’accent. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723

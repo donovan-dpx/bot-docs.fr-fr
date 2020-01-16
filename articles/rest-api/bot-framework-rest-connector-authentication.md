@@ -1,5 +1,5 @@
 ---
-title: Authentifier les requêtes | Microsoft Docs
+title: Authentifier les requêtes - Bot Service
 description: Découvrez comment authentifier les requêtes API dans les API Bot Connector et Bot State.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: cc2421c5693d123f8dd76b238c37d6e4198b5dd8
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 60a246d60f3b74b037f793a306d58df1a5398141
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410443"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790787"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -52,7 +52,7 @@ Ce diagramme montre les étapes de l’authentification du robot vers le connect
 
 ![Authentifiez-vous auprès du service de connexion MSA, puis auprès du robot](../media/connector/auth_bot_to_bot_connector.png)
 
-### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion de connexion de compte Azure AD v2
+### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Étape 1 : Demander un jeton d’accès au service de connexion de connexion de compte Azure AD v2
 
 > [!IMPORTANT]
 > Si vous ne l’avez pas déjà fait, vous devez [enregistrer votre robot](../bot-service-quickstart-registration.md) auprès de Bot Framework pour obtenir son identifiant d’application et son mot de passe. Pour demander un jeton d’accès, vous avez besoin de l’identifiant d’application et du mot de passe du bot.
@@ -67,7 +67,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-the-azure-ad-v2-account-login-service-response"></a>Étape 2 : Obtenir le jeton JWT dans la réponse du service de connexion de compte Azure AD v2
+### <a name="step-2-obtain-the-jwt-token-from-the-the-azure-ad-v2-account-login-service-response"></a>Étape 2 : Obtenir le jeton JWT dans la réponse du service de connexion de compte Azure AD v2
 
 Si votre application est autorisée par le service de connexion, le corps de la réponse JSON indique votre jeton d’accès, son type et son délai d’expiration (en secondes).
 
@@ -146,7 +146,7 @@ Ce diagramme montre la procédure d’authentification du connecteur vers le rob
 
 ![Authentifier les appels de Bot Connector à votre robot](../media/connector/auth_bot_connector_to_bot.png)
 
-### <a id="openid-metadata-document"></a> Étape 2 : Récupérer le document de métadonnées OpenID
+### <a id="openid-metadata-document"></a> Étape 2 : Récupérer le document de métadonnées OpenID
 
 Le document de métadonnées OpenID indique l’emplacement d’un second document qui énumère les clés de signature valides du service Bot Connector. Pour récupérer le document de métadonnées OpenID, envoyez la requête suivante via HTTPS :
 
@@ -173,7 +173,7 @@ L’exemple suivant montre un document de métadonnées OpenID qui est renvoyé 
 }
 ```
 
-### <a id="connector-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
+### <a id="connector-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
 
 Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple :
 
@@ -246,7 +246,7 @@ Ce diagramme montre la procédure d’authentification de l’émulateur vers le
 ![Authentifier les appels de l’émulateur de Bot Framework vers votre robot](../media/connector/auth_bot_framework_emulator_to_bot.png)
 
 ---
-### <a name="step-2-get-the-msa-openid-metadata-document"></a>Étape 2 : Récupérer le document de métadonnées OpenID de MSA
+### <a name="step-2-get-the-msa-openid-metadata-document"></a>Étape 2 : Récupérer le document de métadonnées OpenID de MSA
 
 Le document de métadonnées OpenID indique l’emplacement d’un second document qui énumère les clés de signature valides. Pour récupérer le document de métadonnées OpenID de MSA, envoyez la requête suivante via HTTPS :
 
@@ -266,7 +266,7 @@ L’exemple suivant montre un document de métadonnées OpenID qui est renvoyé 
 }
 ```
 
-### <a id="emulator-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
+### <a id="emulator-to-bot-step-3"></a> Étape 3 : Récupérer la liste des clés de signature valides
 
 Pour obtenir la liste des clés de signature valides, envoyez une requête `GET` via HTTPS à l’URL indiquée par la propriété `jwks_uri` dans le document de métadonnées OpenID. Par exemple :
 

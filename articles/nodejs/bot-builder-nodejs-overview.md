@@ -1,5 +1,5 @@
 ---
-title: Kit SDK Bot Framework pour Node.js | Microsoft Docs
+title: SDK Bot Framework pour Node.js - Bot Service
 description: Explorez le kit SDK Bot Framework pour Node.js, framework de génération de bots puissant et facile à utiliser.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 20b0f852c4e5cddced42e9e710bb5d62663945a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 047293c00e8ade5445f75218be6d4dfbe332934c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299785"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790824"
 ---
 # <a name="bot-framework-sdk-for-nodejs"></a>SDK Bot Framework pour Node.js
 
@@ -36,7 +36,7 @@ Le kit SDK vous permet de tirer parti des fonctionnalités du SDK suivantes :
 - Prise en charge intégrée de puissants frameworks d’intelligence artificielle comme <a href="http://luis.ai" target="_blank">LUIS</a>.
 - Gestionnaires d’événements et modules de reconnaissance intégrés qui guident l’utilisateur tout au long de la conversation, apportant de l’aide, des informations de navigation, des clarifications et des confirmations selon les besoins.
 
-## <a name="get-started"></a>Prise en main
+## <a name="get-started"></a>Bien démarrer
 
 Si vous débutez dans la rédaction de bots, [créez votre premier bot avec Node.js](bot-builder-nodejs-quickstart.md) en suivant des instructions détaillées qui vous aideront à configurer votre projet, installer le kit SDK et exécuter votre premier bot. 
 

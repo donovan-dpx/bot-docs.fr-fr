@@ -1,5 +1,5 @@
 ---
-title: Utilisation de l’état utilisateur JavaScript v3 dans un bot v4 | Microsoft Docs
+title: Utilisation de l'état utilisateur JavaScript v3 dans un bot v4 - Bot Service
 description: Exemple illustrant l’utilisation de l’état utilisateur v3 dans un bot v4
 keywords: JavaScript, migration de bot, bot v3
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4697ecf47464114de68ec6c0d872b45ff1ee5e54
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: ad3f9a1cc9ce3f06bad71615e244a791025904d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278975"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791061"
 ---
 <!-- This article is on hold -->
 
@@ -26,7 +26,7 @@ L’exemple de code est disponible [ici](https://github.com/microsoft/BotBuilder
 > [!NOTE]
 > Un bot gère l’**état de conversation** pour suivre et diriger la conversation ainsi que poser des questions à l’utilisateur. Il gère l’**état utilisateur** pour suivre les réponses de l’utilisateur.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - npm version 6.9.0 ou ultérieure (nécessaire pour prendre en charge les alias de package).
 
@@ -39,7 +39,7 @@ L’exemple de code est disponible [ici](https://github.com/microsoft/BotBuilder
     node --version
     ```
 
-## <a name="setup"></a>Paramétrage
+## <a name="setup"></a>Programme d’installation
 
 1. Cloner le référentiel
 
@@ -132,7 +132,7 @@ Cette classe étend la classe `BotState` v4 (`botbuilder-core`) afin qu’elle u
 
 Pour en savoir plus sur le déploiement d’un bot dans Azure et obtenir des instructions de déploiement complètes, consultez [Déployer votre bot dans Azure][40].
 
-## <a name="further-reading"></a>Pour aller plus loin
+## <a name="further-reading"></a>Lectures supplémentaires
 
 - [Présentation d’Azure Bot Service][21]
 - [Bot State][7]

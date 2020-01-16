@@ -1,5 +1,5 @@
 ---
-title: Fonctionnalités de base de FormFlow | Microsoft Docs
+title: Fonctionnalités de base de FormFlow - Bot Service
 description: Découvrez comment guider les flux de conversation en utilisant FormFlow dans le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bf22566229d9a502b42a8b516138a1427b5d6845
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297860"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797198"
 ---
 # <a name="basic-features-of-formflow"></a>Fonctionnalités de base de FormFlow
 
@@ -31,7 +31,7 @@ Pour créer un bot à l’aide de FormFlow, vous devez spécifier les informatio
 
 - Intégral (sbyte, byte, short, ushort, int, uint, long, ulong)
 - Virgule flottante (float, double)
-- Chaîne
+- String
 - DateTime
 - Énumération
 - Liste d’énumérations
@@ -61,7 +61,7 @@ Pour connecter le formulaire à l’infrastructure, vous devez l’ajouter au co
 
 [!code-csharp[Connect form to framework](../includes/code/dotnet-formflow.cs#connectToFramework)]
 
-### <a name="see-it-in-action"></a>Visualisation du processus en action
+### <a name="see-it-in-action"></a>Voir en action
 
 En définissant simplement le formulaire avec une classe C# et en le connectant à l’infrastructure, vous avez autorisé FormFlow à gérer automatiquement la conversation entre le bot et l’utilisateur. Les exemples d’interactions ci-après illustrent les capacités d’un bot créé à l’aide des fonctionnalités de base de FormFlow. Pour chaque interaction, un symbole **>** indique le stade auquel l’utilisateur entre une réponse. 
 

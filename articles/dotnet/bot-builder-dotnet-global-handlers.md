@@ -1,5 +1,5 @@
 ---
-title: Implémenter des gestionnaires de messages globaux | Microsoft Docs
+title: Implémenter des gestionnaires de messages globaux - Bot Service
 description: Découvrez comment permettre à votre bot d’écouter et de gérer les entrées utilisateur contenant certains mots clés à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8e997b33e48964b5723d6cd1fef0b1e6542b4ba3
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5097c2c9e82932f118e77af64d7fadab92a56b17
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297236"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788829"
 ---
 # <a name="implement-global-message-handlers"></a>Implémenter des gestionnaires de messages globaux
 
@@ -91,10 +91,10 @@ protected override async Task PostAsync(IActivity item, string state, Cancellati
 
 ## <a name="sample-code"></a>Exemple de code
 
-Pour obtenir un exemple complet qui montre comment implémenter des gestionnaires de messages globaux à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">exemple Global Message Handlers</a> dans GitHub.
+Pour obtenir un exemple complet qui montre comment implémenter des gestionnaires de messages globaux à l’aide du kit SDK Bot Framework pour .NET, consultez l’<a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">exemple Global Message Handlers</a> dans GitHub. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - [Concevoir et contrôler un flux de conversation](../bot-service-design-conversation-flow.md)
 - <a href="/dotnet/api/?view=botbuilder-3.12.2.4" target="_blank">Informations de référence sur le kit SDK Bot Framework pour .NET</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-GlobalMessageHandlers" target="_blank">Exemples de gestionnaires de messages globaux (GitHub)</a>
+- <a href="https://github.com/microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/core-GlobalMessageHandlers" target="_blank">Exemples de gestionnaires de messages globaux (GitHub)</a>

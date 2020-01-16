@@ -1,5 +1,5 @@
 ---
-title: Résolution des problèmes des robots | Microsoft Docs
+title: Résoudre les problèmes liés aux bots - Bot Service
 description: Résoudre les problèmes généraux dans le développement des robots à l’aide des forums aux questions techniques.
 author: DeniseMak
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/17/2019
-ms.openlocfilehash: d958f2a9f85af4a42dab241264115050f1972d4d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 255c0d5761460a631542e671976c13e61b45da23
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75490844"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795728"
 ---
 # <a name="troubleshooting-general-problems"></a>Résolution des problèmes généraux
 Les forums aux questions permettent de résoudre les problèmes les plus courants de développement et de fonctionnement des robots.

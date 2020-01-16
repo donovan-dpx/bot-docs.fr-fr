@@ -1,5 +1,5 @@
 ---
-title: Créer un bot à fonctionnalité vocale avec des compétences Cortana | Microsoft Docs
+title: Créer un bot à reconnaissance vocale avec des compétences Cortana - Bot Service
 description: Découvrez comment créer un bot à reconnaissance vocale avec des compétences Cortana et le kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 manager: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cd37f973bb5b8ca9528c83e30d83f97145786508
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: f3a10198fc43b696017446116e5a1e8aa64fc058
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167218"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790941"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -58,7 +58,7 @@ La propriété **inputHint** permet d’indiquer à Cortana si votre bot attend 
 |------|------|
 | **acceptingInput** | Votre bot est passivement prêt pour l’entrée, mais il n’est pas en attente d’une réponse. Cortana accepte une entrée de l’utilisateur si celui-ci maintient le bouton du microphone appuyé.|
 | **expectingInput** | Indique que le bot attend activement une réponse de l’utilisateur. Cortana est à l’écoute de l’utilisateur qui doit parler dans le microphone.  |
-||REMARQUE :  _N’utilisez pas_ **expectingInput** sur les appareils sans interface utilisateur (sans écran). Consultez les [Questions fréquentes (FAQ) sur le kit de compétences Cortana](https://review.docs.microsoft.com/cortana/skills/faq).|
+||REMARQUE :  _N’utilisez pas_**expectingInput** sur les appareils sans interface utilisateur (sans écran). Consultez les [Questions fréquentes (FAQ) sur le kit de compétences Cortana](https://review.docs.microsoft.com/cortana/skills/faq).|
 | **ignoringInput** | Cortana ignore l’entrée. Votre bot peut envoyer cet indicateur s’il traite activement une requête. Il ignorera les entrées des utilisateurs jusqu’à ce que cette requête soit traitée.  |
 
 L’exemple suivant montre comment Cortana lit le texte brut ou code SSML :
@@ -192,7 +192,7 @@ module.exports.speak = function (template, params, options) {
 }
 
 ```
-## <a name="sample-rollerskill"></a>Exemple : RollerSkill
+## <a name="sample-rollerskill"></a>Exemple : RollerSkill
 Le code des sections suivantes provient d’un exemple de compétence Cortana pour le lancement de dés. Téléchargez le code complet du bot à partir du [dépôt BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
 Vous appelez la compétence en disant son [nom d’appel][InvocationNameGuidelines] à Cortana. Pour la compétence de lancement de dés, après avoir [ajouté le bot au canal Cortana][CortanaChannel] et l’avoir inscrit en tant que compétence Cortana, vous pouvez l’appeler en disant à Cortana : « Demande Roller » ou « Demande à Roller de lancer les dés ».

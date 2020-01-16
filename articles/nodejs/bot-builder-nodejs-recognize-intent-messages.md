@@ -1,5 +1,5 @@
 ---
-title: Reconnaître une intention à partir du contenu d’un message | Microsoft Docs
+title: Reconnaître une intention à partir du contenu d'un message - Bot Service
 description: Apprenez à reconnaître l’intention de l’utilisateur à l’aide des expressions régulières ou de la vérification du contenu du message.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 370ba1fc756ecea8fd745067109fdb13b6e825a9
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: cab45fa2eca7fad94ce8a66e2a17495a529935c3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026315"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790682"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Reconnaître l’intention de l’utilisateur à partir du contenu d’un message
 
@@ -39,7 +39,7 @@ Une fois le module de reconnaissance ajouté à votre robot, joignez un [trigger
 
 [!code-js[Map the CancelIntent recognizer to a cancel dialog (JavaScript)](../includes/code/node-regex-recognizer.js#bindCancelDialogToRegexRecognizer)]
 
-Les modules de reconnaissance de l’intention sont globaux, ce qui signifie que le module de reconnaissance sera exécuté pour chaque message reçu de l’utilisateur. Si un module de reconnaissance détecte une intention liée à une boîte de dialogue à l’aide d’un `triggerAction`, il peut déclencher l’interruption de la boîte de dialogue active. L’autorisation et la gestion des interruptions est une conception flexible qui tient compte de ce que les utilisateurs font réellement.
+Les modules de reconnaissance de l’intention sont globaux, ce qui signifie que le module de reconnaissance sera exécuté pour chaque message reçu de l’utilisateur. Si un module de reconnaissance détecte une intention liée à une boîte de dialogue à l’aide d’un `triggerAction`, il peut déclencher l’interruption de la boîte de dialogue active. L’autorisation et la gestion des interruptions correspondent à une conception flexible qui tient compte de ce que les utilisateurs font réellement.
 
 > [!TIP]
 > Pour savoir comment un `triggerAction` fonctionne avec les boîtes de dialogue, consultez [Gérer le flux de la conversation](bot-builder-nodejs-manage-conversation-flow.md). Pour en savoir plus sur les différentes actions que vous pouvez associer à une intention reconnue, [Gérer les actions de l’utilisateur](bot-builder-nodejs-dialog-actions.md).

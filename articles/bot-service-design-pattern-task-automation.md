@@ -1,5 +1,5 @@
 ---
-title: Créer des bots d’automatisation de tâche | Microsoft Docs
+title: Créer des bots d'automatisation de tâche - Bot Service
 description: Découvrez comment concevoir des bots effectuant des tâches sans intervention humaine.
 author: matvelloso
 ms.author: mateusv
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8bad1459dfce89f79906dec0f4c03cb50a242449
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 0a6643ab0445e569d26a2f3c6b49532e7746a3c2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70166955"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793341"
 ---
 # <a name="create-task-automation-bots"></a>Créer des bots d’automatisation de tâche
 
@@ -33,7 +33,7 @@ John, un développeur expérimenté de Contoso, décide de créer un bot pour au
 
 La spécification définit le modèle de navigation :
 
-![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task1.png)
+![Structure du dialogue](~/media/bot-service-design-pattern-task-automation/simple-task1.png)
 
 L’utilisateur accède d’abord à la boîte de dialogue `RootDialog`. Lorsqu’il demande une réinitialisation de mot de passe, il  
 accède à la boîte de dialogue `ResetPasswordDialog`. Dans la boîte de dialogue `ResetPasswordDialog`, le bot demande à l’utilisateur deux informations : son numéro de téléphone et sa date de naissance. 
@@ -57,7 +57,7 @@ La boîte de dialogue racine offre à l’utilisateur deux options :
 
 La spécification décrit la boîte de dialogue racine comme illustré dans la capture d’écran suivante.
 
-![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task2.png)
+![Structure du dialogue](~/media/bot-service-design-pattern-task-automation/simple-task2.png)
 
 #### <a name="resetpassword-dialog"></a>Boîte de dialogue ResetPassword
 
@@ -68,19 +68,19 @@ Lorsque l’utilisateur choisit l’option **Réinitialiser le mot de passe** da
 
 La spécification décrit la boîte de dialogue `ResetPassword`.
 
-![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task3.png)
+![Structure du dialogue](~/media/bot-service-design-pattern-task-automation/simple-task3.png)
 
 #### <a name="promptstringregex-dialog"></a>Boîte de dialogue PromptStringRegex
 
 La boîte de dialogue `PromptStringRegex` invite l’utilisateur à entrer son numéro de téléphone et vérifie que ce numéro respecte le format attendu. Elle gère également le scénario où l’utilisateur fournit une entrée non valide à plusieurs reprises. La spécification décrit la boîte de dialogue `PromptStringRegex`.
 
-![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task4.png)
+![Structure du dialogue](~/media/bot-service-design-pattern-task-automation/simple-task4.png)
 
 ### <a name="prototype"></a>Prototype
 
 Enfin, la spécification fournit l’exemple d’un utilisateur qui communique avec le bot pour effectuer correctement la tâche de réinitialisation de mot de passe.
 
-![Structure des boîtes de dialogue](~/media/bot-service-design-pattern-task-automation/simple-task5.png)
+![Structure du dialogue](~/media/bot-service-design-pattern-task-automation/simple-task5.png)
 
 ## <a name="bot-app-or-website"></a>Bot, application ou site web ?
 

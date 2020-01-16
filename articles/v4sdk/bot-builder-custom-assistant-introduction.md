@@ -1,5 +1,5 @@
 ---
-title: Présentation de l’assistant personnalisé | Microsoft Docs
+title: Présentation de l'assistant personnalisé - Bot Service
 description: Découvrez comment créer votre propre assistant personnalisé.
 author: darrenj
 ms.author: darrenj
@@ -8,30 +8,30 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 276ee900a30e9f164cdf697d8f429acd59b2d286
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 1b3cb313a06f8f834aa7d212db43eafb2a621af5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441521"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798619"
 ---
 # <a name="custom-assistant-overview"></a>Présentation de l’assistant personnalisé
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Nous avons constaté que nos clients et partenaires souhaitaient ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs clients, et disponible sur un large éventail de canevas et d’appareils conversationnels. Dans la continuité de l’approche open source de Microsoft vis-à-vis du SDK Bot Framework, l’assistant personnel personnalisé open source offre un contrôle total sur l’expérience de l’utilisateur final et repose sur un ensemble de fonctionnalités de base. En outre, l’expérience peut être enrichie d’informations sur l’utilisateur final et sur les appareils/écosystèmes pour une expérience véritablement intégrée et intelligente.
 
 Nous avons la conviction que nos clients doivent entretenir et enrichir leurs relations et leurs insights clients. Par conséquent, tout assistant personnalisé offre à nos clients et partenaires un contrôle complet sur l'expérience utilisateur. Le nom, la voix et la personnalité peuvent être modifiés pour répondre aux besoins de l’organisation. Notre solution d'assistant personnalisé simplifie la création de votre propre assistant et vous permet de démarrer en quelques minutes. 
 
-La portée de l’assistant personnel personnalisé est vaste et celui-ci offre généralement aux utilisateurs finaux une large gamme de fonctionnalités. Pour accroître la productivité des développeurs et créer un écosystème dynamique d'expériences conversationnelles réutilisables, nous fournissons aux développeurs des exemples initiaux de compétences conversationnelles réutilisables. Ces compétences peuvent être ajoutées à l'application conversationnelle pour éclairer une expérience de conversation spécifique, comme la recherche d'un point d'intérêt, l'interaction avec le calendrier, les tâches, le courrier électronique et de nombreux autres scénarios. Les compétences sont entièrement personnalisables et se composent de différents modèles de langage, de dialogues et de code.
+La portée de l’assistant personnel personnalisé est vaste et celui-ci offre généralement aux utilisateurs finaux une large gamme de fonctionnalités. Pour accroître la productivité des développeurs et créer un écosystème dynamique d’expériences conversationnelles réutilisables, nous fournissons aux développeurs des exemples initiaux de compétences conversationnelles réutilisables. Ces compétences peuvent être ajoutées à l'application conversationnelle pour éclairer une expérience de conversation spécifique, comme la recherche d'un point d'intérêt, l'interaction avec le calendrier, les tâches, le courrier électronique et de nombreux autres scénarios. Les compétences sont entièrement personnalisables et se composent de différents modèles de langage, de dialogues et de code.
 
-Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d'un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir. 
+Nous exécutons actuellement une préversion initiale et travaillons en étroite collaboration avec des clients et partenaires initiaux au sein d’un référentiel open source pour créer les premières expériences et proposer cette version à un public plus large dans les mois à venir. 
 
 ![Schéma d’assistant personnalisé](media/enterprise-template/CustomAssistantDiagram.jpg)
 
 ## <a name="complete-control-of-the-user-experience"></a>Contrôle total sur l’expérience utilisateur
 
-Vous détenez et contrôlez tous les aspects de l’expérience de l’utilisateur final. Cela inclut la marque, le nom, la voix, la personnalité, les réponses et l’avatar. Le code source vers l’assistant personnalisé et la prise en charge des compétences sont fournis en intégralité pour vous permettre d’effectuer les ajustements nécessaires.
+Vous détenez et contrôlez tous les aspects de l’expérience de l’utilisateur final. Cela inclut la personnalisation en fonction de la marque, le nom, la voix, la personnalité, les réponses et l’avatar. Le code source vers l’assistant personnalisé et la prise en charge des compétences sont fournis en intégralité pour vous permettre d’effectuer les ajustements nécessaires.
 
 ## <a name="complete-ownership-and-control-of-data"></a>Propriété et contrôle complets sur les données
 
@@ -47,7 +47,7 @@ La solution d’assistant personnalisé repose sur Azure Bot Service, Language U
 
 En outre, la prise en charge de Language Understanding est fournie par LUIS Cognitive Service qui prend en charge un large ensemble de langages [répertoriés ici](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) propose des fonctionnalités de traduction machine pour étendre encore davantage la portée de votre assistant personnalisé.
 
-## <a name="integrated-and-context-aware"></a>Intégré et prenant en charge le contexte
+## <a name="integrated-and-context-aware"></a>Intégré et prenant en compte le contexte
 
 Votre assistant personnalisé peut être intégré à votre appareil et écosystème pour une expérience véritablement intégrée et intelligente. Cette prise en compte du contexte permet de développer des expériences plus intelligentes et d’offrir davantage de personnalisation.
 
@@ -61,14 +61,14 @@ Notre architecture d’assistant personnalisé est flexible et peut être intég
 
 ## <a name="adaptive-cards"></a>Cartes adaptatives
 
-Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant personnalisé de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant l’expérience de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started).
+Les [cartes adaptatives](https://adaptivecards.io/) offrent la possibilité à votre assistant personnalisé de renvoyer des éléments de l’expérience utilisateur (p. ex. des cartes, des images, des boutons), ainsi que des réponses de type texte. Si le canevas de conversation ou l’appareil est doté d’un écran, ces cartes adaptatives peuvent être affichées sur une large gamme d’appareils et de plateformes fournissant une expérience utilisateur de prise en charge quand cela est nécessaire. Vous pouvez trouver des exemples de cartes adaptatives [ici](https://adaptivecards.io/samples/) avec plus d’informations sur les options d’affichage dans la documentation [ici](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started).
 
 
 ## <a name="skills"></a>Compétences
 
 En plus de l’assistant de base, il existe un large éventail de fonctionnalités courantes que chaque développeur doit configurer. La productivité est un excellent exemple dans lequel chaque organisation doit créer des modèles de langage (LUIS), des dialogues (code), l’intégration (code) et la génération de langage (réponses) pour activer les scénarios communs de point d'intérêt, de calendrier ou de tâche.
 
-Cela se complique ensuite avec le besoin de prendre en charge plusieurs langages et se traduit par une importante quantité de travail à fournir par les organisations créant leur propre assistant.
+Cela se complique ensuite avec le besoin de prendre en charge plusieurs langages, et se traduit par une importante quantité de travail à fournir par les organisations créant leur propre assistant.
 
 Notre solution d’assistant personnalisé inclut une nouvelle fonctionnalité de compétence permettant d’ajouter d’autres fonctionnalités à un assistant personnalisé par configuration uniquement. 
 

@@ -1,5 +1,5 @@
 ---
-title: Concepts clés du kit SDK Bot Framework pour Node.js | Microsoft Docs
+title: Concepts clés du kit SDK Bot Framework pour Node.js - Bot Service
 description: Assimilez les concepts clés et les outils permettant de créer et de déployer les bots conversationnels disponibles dans le kit SDK Bot Framework pour Node.js.
 author: DeniseMak
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 81a4f184f2011e6a09c645e61e1d8c3dfabdebaa
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: d88fa567d25358dba33b776082da69b675f93892
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415152"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790961"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Concepts clés du kit SDK Bot Framework pour Node.js
 
@@ -33,7 +33,9 @@ Le connecteur facilite la communication entre le robot et l’utilisateur en tra
 Le kit SDK Bot Framework pour Node.js propose les classes [UniversalBot][UniversalBot] et [ChatConnector][ChatConnector] pour configurer le bot de façon à envoyer et recevoir des messages par le biais de Bot Framework Connector. La classe `UniversalBot` constitue le cerveau de votre robot. Elle est chargée de gérer toutes les conversations de votre robot avec les utilisateurs. La classe `ChatConnector` connecte votre bot au service du connecteur de Bot Framework.
 Pour obtenir un exemple qui montre l’utilisation de ces classes, consultez [Créer un bot avec le kit SDK Bot Framework pour Node.js](bot-builder-nodejs-quickstart.md).
 
-Le connecteur normalise également les messages que le robot envoie sur les canaux afin que vous puissiez développer votre robot indépendamment de la plate-forme. La normalisation d’un message implique sa conversion depuis le schéma Bot Framework vers le schéma du canal. Lorsque le canal ne prend pas en charge tous les aspects du schéma du cadre, le connecteur tente de convertir le message dans un format pris en charge par le canal. Par exemple, si le robot envoie au canal SMS un message contenant une carte avec des boutons d’action, le connecteur peut présenter la carte sous forme d’image et inclure les actions sous forme de liens dans le texte du message. Le [Channel Inspector][ChannelInspector] est un outil web qui vous montre comment le connecteur présente les messages sur les différents canaux.
+Le connecteur normalise également les messages que le robot envoie sur les canaux afin que vous puissiez développer votre robot indépendamment de la plate-forme. La normalisation d’un message implique sa conversion depuis le schéma Bot Framework vers le schéma du canal. Lorsque le canal ne prend pas en charge tous les aspects du schéma du cadre, le connecteur tente de convertir le message dans un format pris en charge par le canal. Par exemple, si le robot envoie au canal SMS un message contenant une carte avec des boutons d’action, le connecteur peut présenter la carte sous forme d’image et inclure les actions sous forme de liens dans le texte du message. 
+
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 L’élément `ChatConnector` nécessite la configuration d’un point de terminaison API dans votre robot. Dans le kit de développement logiciel Node.js, cela s’effectue généralement en installant le module Node.js `restify`. Il est également possible de créer des robots pour la console via [ConsoleConnector][ConsoleConnector] qui ne nécessite pas de point de terminaison API.
 
@@ -43,7 +45,7 @@ Les messages peuvent être constitués de texte à afficher, de texte à prononc
 
 Pour obtenir un exemple qui illustre comment envoyer une carte graphique enrichie contenant des boutons interactifs sur lesquels l’utilisateur peut cliquer pour lancer une action, consultez [Ajouter des cartes enrichies aux messages](bot-builder-nodejs-send-rich-cards.md). Pour obtenir un exemple illustrant comment envoyer et recevoir des pièces jointes, consultez [Envoyer des pièces jointes](bot-builder-nodejs-send-receive-attachments.md). Pour obtenir un exemple illustrant comment envoyer un message qui précise le texte devant être prononcé par votre robot sur un canal vocal, consultez [Ajouter la synthèse vocale aux messages](bot-builder-nodejs-text-to-speech.md). Pour obtenir un exemple qui illustre comment envoyer des suggestions d’actions, consultez [Envoyer des suggestions d’actions](bot-builder-nodejs-send-suggested-actions.md).
 
-## <a name="dialogs"></a>Dialogues
+## <a name="dialogs"></a>Boîtes de dialogue
 Les dialogues vous permettent d’organiser la logique conversationnelle de votre robot. Ils sont essentiels à la [conception du flux de conversation](../bot-service-design-conversation-flow.md). Pour obtenir une présentation des dialogues, consultez [Gérer une conversation à l’aide des dialogues](bot-builder-nodejs-dialog-manage-conversation.md).
 
 ## <a name="actions"></a>Actions
@@ -85,7 +87,7 @@ Bot Builder vous permet d’utiliser LUIS pour intégrer un module de compréhen
 [ChatConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.chatconnector.html
 [ConsoleConnector]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.consoleconnector.html
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 
 [Session]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html
 [SessionSend]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send

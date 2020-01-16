@@ -1,5 +1,5 @@
 ---
-title: Nouveautés | Microsoft Docs
+title: Nouveautés(Archive) - Bot Service
 description: Découvrez les nouveautés dans Bot Framework.
 keywords: Bot Framework, Azure Bot Service
 author: kamrani
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a6a957a636d82e0e4f0bf755d4215893d99bb07d
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 91a0ba8d2e13d8f17213ac9669eca374e27e3863
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491389"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791051"
 ---
 # <a name="whats-new-november-2019"></a>Nouveautés de novembre 2019
 

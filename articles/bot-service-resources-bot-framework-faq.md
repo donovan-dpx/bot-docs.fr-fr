@@ -1,5 +1,5 @@
 ---
-title: 'Service de bot : Forum Aux Questions | Microsoft Docs'
+title: Forum Aux Questions sur Bot Service - Bot Service
 description: Une liste de questions fréquemment posées sur les éléments du Bot Framework et la disponibilité de nouvelles fonctionnalités.
 author: scheyal
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d23c1497fa5ab58ef6eba4725035c4c0929586f
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 96dfd465c34580dfd41f50c6a9be4d91be9e7b77
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491367"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794778"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Bot Framework : Forum Aux Questions
 
@@ -154,6 +154,9 @@ Si vous disposez d’un pare-feu pour le trafic sortant qui bloque le trafic ver
 - cortanabfchannelwestus.azurewebsites.net (canal Cortana)
 - *.botframework.com (canaux)
 
+> [!NOTE] 
+> Vous pouvez utiliser `<channel>.botframework.com` si vous préférez exclure de la liste verte une URL accompagnée d'un astérisque. `<channel>` correspond à chacun des canaux utilisés par votre bot, par exemple `directline.botframework.com`, `webchat.botframework.com` et `slack.botframework.com`. Il convient également de surveiller le trafic sur votre pare-feu tout en testant le bot pour vous assurer que rien d'autre n'est bloqué.
+
 ### <a name="can-i-block-all-traffic-to-my-bot-except-traffic-from-the-bot-connector-service"></a>Puis-je bloquer la totalité du trafic en direction de mon bot, à l’exception du trafic émanant du service Bot Connector ?
 Non. Ce type de mise en liste verte d’adresses IP ou de DNS est irréaliste. Le service Bot Framework Connector est hébergé dans les centres de données Azure du monde entier, et la liste des adresses IP Azure évolue constamment. La mise en liste verte de certaine adresses IP peut donc cesser de fonctionner du jour au lendemain lorsque les adresses IP Azure changent.
  
@@ -232,7 +235,7 @@ Pour créer votre ID d’application, procédez comme suit.
 3. Entrez un nom d’affichage pour l’inscription de l’application dans le champ *Nom*, puis sélectionnez les types de comptes pris en charge. Le nom ne doit pas nécessairement correspondre à l’ID du bot.
 
     > [!IMPORTANT]
-    > Dans la section *Types de comptes pris en charge*, sélectionnez le bouton d’option *Comptes dans un annuaire organisationnel et comptes personnels Microsoft (par exemple, Skype, Xbox, Outlook.com)* . Si les autres options sont sélectionnées, **la création du bot échouera**.
+    > Dans la section *Types de comptes pris en charge*, sélectionnez le bouton d’option *Comptes dans un annuaire organisationnel et comptes personnels Microsoft (par exemple, Skype, Xbox, Outlook.com)* . Si une des autres options est sélectionnée, **le bot sera inutilisable**.
 
     ![détails de l’inscription](media/app-registration/registration-details.png)
 

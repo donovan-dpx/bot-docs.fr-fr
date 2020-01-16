@@ -1,5 +1,5 @@
 ---
-title: Principes de conception des bots | Microsoft Docs
+title: Principes de conception des bots - Bot Service
 description: Découvrez comment créer un excellent bot conversationnel et comment planifier et concevoir des bots répondant à vos besoins tout en assurant la satisfaction de vos utilisateurs.
 keywords: meilleures pratiques, conception de bot
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ca343ccb400a652a382ae1a8c279010ff7456bf1
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: d3c9cb1f0b3bbbcf14995398213f0be67e00e8de
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71278951"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793473"
 ---
 # <a name="principles-of-bot-design"></a>Principes de conception des bots
 

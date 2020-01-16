@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état | Microsoft Docs
+title: Gérer les données d'état (v3 C#) - Bot Service
 description: Découvrez comment enregistrer et récupérer des données d’état avec le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9dc2519e74147d1147e2d5f2cb7fba883bd1269c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 0856805c285f47f1f219e49d36daf4892af2dcc7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298788"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797859"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
 
@@ -83,9 +83,9 @@ Ce tableau répertorie les méthodes que vous pouvez utiliser pour gérer les do
 | `GetConversationData` | Conversation | Obtenir les données d’état précédemment enregistrées pour la conversation sur le canal spécifié |
 | `GetPrivateConversationData` | Utilisateur et conversation | Obtenir les données d’état précédemment enregistrées pour l’utilisateur dans la conversation sur le canal spécifié |
 | `SetUserData` | Utilisateur | Enregistrer les données d’état pour l’utilisateur sur le canal spécifié |
-| `SetConversationData` | Conversation | Enregistrer les données d’état pour la conversation sur le canal spécifié <br/><br/>**Remarque**: sachant que la méthode `DeleteStateForUser` ne supprime pas les données qui ont été stockées à l’aide de la méthode `SetConversationData`, vous ne devez PAS utiliser cette méthode pour stocker les informations d’identification personnelle (PII) d’un utilisateur. |
+| `SetConversationData` | Conversation | Enregistrer les données d’état pour la conversation sur le canal spécifié <br/><br/>**Remarque** : sachant que la méthode `DeleteStateForUser` ne supprime pas les données qui ont été stockées à l’aide de la méthode `SetConversationData`, vous ne devez PAS utiliser cette méthode pour stocker les informations d’identification personnelle (PII) d’un utilisateur. |
 | `SetPrivateConversationData` | Utilisateur et conversation | Enregistrer les données d’état pour l’utilisateur dans la conversation sur le canal spécifié |
-| `DeleteStateForUser` | Utilisateur | Supprimer les données d’état de l’utilisateur qui ont été précédemment stockées par le biais de la méthode `SetUserData` ou de la méthode `SetPrivateConversationData` <br/><br/>**Remarque**: votre bot doit appeler cette méthode quand il reçoit une activité de type [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) ou une activité de type [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) qui indique que le bot a été supprimé de la liste de contacts de l’utilisateur. |
+| `DeleteStateForUser` | Utilisateur | Supprimer les données d’état de l’utilisateur qui ont été précédemment stockées par le biais de la méthode `SetUserData` ou de la méthode `SetPrivateConversationData` <br/><br/>**Remarque** : votre bot doit appeler cette méthode quand il reçoit une activité de type [deleteUserData](bot-builder-dotnet-activities.md#deleteuserdata) ou une activité de type [contactRelationUpdate](bot-builder-dotnet-activities.md#contactrelationupdate) qui indique que le bot a été supprimé de la liste de contacts de l’utilisateur. |
 
 Si votre bot enregistre les données d’état en utilisant l’une des méthodes « **Set...Data** », les messages que votre bot recevra par la suite dans le même contexte contiendront ces données, auxquelles votre bot pourra accéder à l’aide de la méthode « **Get...Data** » correspondante.
 

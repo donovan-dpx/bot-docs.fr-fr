@@ -1,5 +1,5 @@
 ---
-title: Résoudre les problèmes d’authentification du Bot Framework | Microsoft Docs
+title: Résoudre les problèmes d'authentification de Bot Framework - Bot Service
 description: Découvrez comment résoudre les erreurs d’authentification avec votre bot.
 author: DeniseMak
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: eda2e2887eddce7c113ff69871162a6b67cc398e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297457"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796922"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Résoudre les problèmes d’authentification du Bot Framework
 
@@ -30,7 +30,7 @@ Si ce n’est déjà fait, [déployez votre bot sur Azure](~/bot-builder-howto-d
 > [!NOTE]
 > Pour trouver les paramètres **AppID** et **AppPassword** d’un bot déjà déployé, consultez la rubrique [MicrosoftAppID et MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
 
-## <a name="step-1-disable-security-and-test-on-localhost"></a>Étape 1 : Désactiver la sécurité et tester le bot sur localhost
+## <a name="step-1-disable-security-and-test-on-localhost"></a>Étape 1 : Désactiver la sécurité et tester le bot sur localhost
 
 Cette étape consiste à vérifier que votre bot est accessible et fonctionnel sur localhost lorsque la sécurité est désactivée. 
 
@@ -104,7 +104,7 @@ Si une ou plusieurs erreurs sont indiquées dans la fenêtre de conversation, cl
 * Les paramètres de l’émulateur spécifient une valeur pour les champs **Microsoft App ID** (ID d’application Microsoft) et/ou **Microsoft App Password** (Mot de passe d’application Microsoft). Ces deux champs doivent être vides.
 * La sécurité n’a pas été désactivée pour le bot. [Vérifiez](#disable-security-localhost) que le bot ne spécifie pas une valeur pour l’ID ou le mot de passe d’application.
 
-## <a id="step-2"></a> Étape 2 : Vérifier l’ID et le mot de passe d’application de votre bot
+## <a id="step-2"></a> Étape 2 : Vérifier l’ID et le mot de passe d’application de votre bot
 
 Cette étape consiste à vérifier que le l’ID et le mot de passe d’application utilisés par votre bot pour l’authentification sont valides. (Si vous ne connaissez pas ces valeurs, [récupérez-les](#PW) maintenant.) 
 
@@ -198,7 +198,7 @@ Le Bot Framework implique que les bots soient accessibles sur Internet. Par cons
 
 Si vous déployez votre bot sur Azure, le protocole SSL sera automatiquement configuré pour votre application. Le point de terminaison **HTTPS** requis par le Bot Framework sera ainsi disponible. Si vous effectuez le déploiement sur un autre fournisseur d’hébergement cloud, veillez à vérifier que votre application est configurée pour le protocole SSL, de sorte que le bot dispose d’un point de terminaison **HTTPS**.
 
-### <a name="test-your-bot"></a>Tester votre bot 
+### <a name="test-your-bot"></a>Tester votre robot 
 
 Pour tester votre bot dans le cloud avec la sécurité activée, procédez comme suit.
 

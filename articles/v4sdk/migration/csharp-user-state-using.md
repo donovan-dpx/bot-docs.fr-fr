@@ -1,5 +1,5 @@
 ---
-title: Utilisation de l’état utilisateur .NET v3 dans un bot v4 | Microsoft Docs
+title: Utilisation de l'état utilisateur .NET v3 dans un bot v4 - Bot Service
 description: Exemple illustrant l’utilisation de l’état utilisateur v3 dans un bot v4
 keywords: Csharp, migration de bot, bot v3
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/21/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bae27b9cf2bdc6a53a5c55fe7458802729160c1
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 51aef13bee896feeb901040cef641f7b1011dbd5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026698"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798082"
 ---
 # <a name="using-net-v3-user-state-in-a-v4-bot"></a>Utilisation de l’état utilisateur .NET v3 dans un bot v4
 
@@ -22,7 +22,7 @@ Un bot gère l’état de conversation avec `MemoryStorage` pour suivre et dirig
 
 L’exemple de code est disponible [ici](https://github.com/microsoft/BotBuilder-Samples/tree/master/MigrationV3V4/CSharp/V4StateBotFromV3Providers).
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - [SDK .NET Core](https://dotnet.microsoft.com/download) version 2.1
 
@@ -31,7 +31,7 @@ L’exemple de code est disponible [ici](https://github.com/microsoft/BotBuilder
     dotnet --version
     ```
 
-## <a name="setup"></a>Paramétrage
+## <a name="setup"></a>Programme d’installation
 
 1. Cloner le référentiel
 
@@ -137,7 +137,7 @@ Cette classe hérite de la classe `BotState` v4 et utilise une clé de style v3 
 - Entrez l’URL de bot `http://localhost:3978/api/messages`
 
 
-## <a name="further-reading"></a>Pour aller plus loin
+## <a name="further-reading"></a>Lectures supplémentaires
 
 - [Présentation d’Azure Bot Service][21]
 - [Bot State][7]

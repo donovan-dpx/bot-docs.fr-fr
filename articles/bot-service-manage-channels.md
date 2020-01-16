@@ -1,5 +1,5 @@
 ---
-title: Configurer un bot pour qu’il s’exécute sur un ou plusieurs canaux | Microsoft Docs
+title: Configurer un bot pour qu'il s'exécute sur un ou plusieurs canaux - Bot Service
 description: Découvrez comment configurer un bot pour l’exécuter sur un ou plusieurs canaux à l’aide du portail Bot Framework.
 keywords: canaux de bots, configurer, cortana, facebook messenger, kik, slack, Skype, portail azure
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 09/22/2018
-ms.openlocfilehash: cb951e9fd2bad6e68552a025ff3188fecd1783b2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 226d31b255d18b39ed1e3817b76d65a9bdd951bc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297602"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794100"
 ---
 # <a name="connect-a-bot-to-channels"></a>Connecter un bot à des canaux
 

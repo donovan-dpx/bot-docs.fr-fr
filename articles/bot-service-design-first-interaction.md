@@ -1,5 +1,5 @@
 ---
-title: Concevoir une première interaction d’utilisateur avec un robot | Microsoft Docs
+title: Concevoir une première interaction d'utilisateur avec un bot - Bot Service
 description: Découvrez ce qui fait une excellente première expérience utilisateur et comment concevoir vos robots pour réussir.
 keywords: première impression, débuts, langage et menu
 author: matvelloso
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: d0ef3b7cbac1ea2d8486c2f38d1ab762471878c6
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 46b3cbfc84379a695e1ac3066bddd90a50947956
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297083"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792364"
 ---
 # <a name="design-a-bots-first-user-interaction"></a>Concevoir une première interaction d’utilisateur avec un robot
 
@@ -43,7 +43,7 @@ Les menus offrent une solution simple à ce problème. Tout d’abord, en réper
 
 Vous pouvez également poser des questions plus pointues pour orienter l’utilisateur si le robot a une fonction spécifique. Par exemple, si votre bot est chargé de prendre des commandes de sandwich, votre première interaction pourrait être « Bonjour ! Je suis ici pour prendre la commande de votre sandwich. Quel type de pain voulez-vous ? Nous avons du pain blanc, de froment, ou du pain de seigle. » De cette manière, l’utilisateur sait comment répondre, et reçoit des repères pour naviguer dans la conversation.
 
-## <a name="other-considerations"></a>Autres points à considérer
+## <a name="other-considerations"></a>Autres considérations
 
 En plus de fournir une première interaction intuitive et aisément navigable, un robot bien conçu permet à l’utilisateur d’accéder à des informations sur sa politique de confidentialité et ses conditions d’utilisation. 
 

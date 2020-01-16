@@ -1,5 +1,5 @@
 ---
-title: Migrer un bot JavaScript v3 existant vers un nouveau projet v4 | Microsoft Docs
+title: Migrer un bot JavaScript v3 existant vers un nouveau projet v4 - Bot Service
 description: Nous prenons un bot JavaScript v3 existant que nous migrons vers le SDK v4 en utilisant un nouveau projet.
 keywords: JavaScript, migration de bot, dialogues, bot v3
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: f377aacbd809b79ecb0d558384a10da8eca5a772
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026394"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791081"
 ---
 # <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Migrer un bot JavaScript v3 vers un bot v4
 
@@ -28,7 +28,7 @@ Cette conversion se décompose en plusieurs étapes :
 
 À la fin de ce processus, nous aurons un bot v4 opérationnel. Une copie du bot converti figure également dans le référentiel d’exemples, [core-MultiDialogs-v4](https://aka.ms/v4-js-core-multidialog-migration-sample).
 
-Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Les principaux changements du kit SDK sont notamment les suivants :
+Le kit SDK Bot Framework v4 est basé sur la même API REST sous-jacente que le kit SDK v3. Toutefois, le kit SDK v4 est une refactorisation de la version précédente du kit pour offrir aux développeurs plus de flexibilité et de contrôle sur leurs bots. Parmi les principaux changements apportés au kit SDK, citons les suivants :
 
 - L’état est géré via des objets de gestion d’état et des accesseurs de propriété.
 - Le mode de gestion des tours a changé, autrement dit la façon dont le bot reçoit une activité entrante et y répond à partir du canal de l’utilisateur.
@@ -42,7 +42,7 @@ For more information about specific changes, see [differences between the v3 and
 > [!NOTE]
 > Dans le cadre de la migration, nous avons également nettoyé une partie du code, mais nous mettrons seulement en évidence les modifications que nous avons apportées à la logique v3.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Node.js
 - Visual Studio Code

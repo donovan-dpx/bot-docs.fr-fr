@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état | Microsoft Docs
+title: Gérer les données d'état (v3 JS) - Bot Service
 description: Découvrez comment enregistrer et récupérer des données d’état avec le SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4c93ba1b37166c784d6cdf687e926026f474de85
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 40293ff3756687f270847dd9045a04a19363ad1b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299685"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790324"
 ---
 # <a name="manage-state-data"></a>Gérer les données d’état
 
@@ -27,7 +27,7 @@ ms.locfileid: "70299685"
 
 ## <a name="in-memory-data-storage"></a>Stockage de données en mémoire
 
-Le stockage de données en mémoire est uniquement destiné aux tests. Ce stockage est volatile et temporaire. Les données sont effacées chaque fois que le robot est redémarré. Pour utiliser le stockage en mémoire à des fins de test, vous devez procéder à deux opérations. Commencez par créer une nouvelle instance du stockage en mémoire :
+Le stockage de données en mémoire est uniquement destiné aux tests. Ce stockage est volatile et temporaire. Les données sont effacées chaque fois que le bot est redémarré. Pour utiliser le stockage en mémoire à des fins de test, vous devez procéder à deux opérations. Commencez par créer une nouvelle instance du stockage en mémoire :
 
 ```javascript
 var inMemoryStorage = new builder.MemoryBotStorage();
@@ -62,7 +62,7 @@ Dans le kit Bot Framework pour Node.js, l’objet `session` présente les propri
 | [`userData`][userDataURL] | Utilisateur | Contient les données sauvegardées pour l’utilisateur sur le canal spécifié. Ces données seront conservées dans plusieurs conversations. |
 | [`privateConversationData`][privateConversationDataURL] | Conversation | Contient les données sauvegardées pour l’utilisateur dans le cadre d’une conversation donnée sur le canal spécifié. Ces données sont réservées à l’utilisateur actuel et ne seront conservées que pour la conversation en cours. La propriété est effacée en fin de conversation ou en cas d’appel explicite de `endConversation`. |
 | [`conversationData`][conversationDataURL] | Conversation | Contient les données sauvegardées dans le cadre d’une conversation donnée sur le canal spécifié. Ces données sont partagées avec tous les utilisateurs participant à la conversation et ne seront conservées que pendant la conversation en cours. La propriété est effacée en fin de conversation ou en cas d’appel explicite de `endConversation`. |
-| [`dialogData`][dialogDataURL] | Dialogue | Contient les données sauvegardées uniquement pour le dialogue en cours. Chaque dialogue conserve sa propre copie de cette propriété. La propriété est effacée lorsque le dialogue est effacé de la pile de dialogues. |
+| [`dialogData`][dialogDataURL] | Boîte de dialogue | Contient les données sauvegardées uniquement pour le dialogue en cours. Chaque dialogue conserve sa propre copie de cette propriété. La propriété est effacée lorsque le dialogue est effacé de la pile de dialogues. |
 
 Ces quatre propriétés correspondent aux quatre conteneurs de stockage de données pouvant être utilisés pour stocker des données. Les propriétés utilisées pour stocker les données dépendent de l’étendue appropriée des données stockées, de leur nature et de la durée pendant laquelle elles doivent être conservées. Par exemple, si vous avez besoin de stocker des données utilisateur devant être accessibles dans plusieurs conversations, pensez à utiliser la propriété `userData`. Si vous avez besoin de stocker temporairement des valeurs de variables locales dans le cadre d’un dialogue, pensez à utiliser la propriété `dialogData`. Si vous avez besoin de stocker temporairement des données devant être accessibles dans plusieurs dialogues, pensez à utiliser la propriété `conversationData`.
 
@@ -136,7 +136,7 @@ session.userData.about.job.Title = "Senior Developer";
 session.save();
 ```
 
-## <a name="get-data"></a>Obtention des données
+## <a name="get-data"></a>Obtenir des données
 
 Pour accéder aux données enregistrées dans un conteneur de stockage donné, il suffit de faire référence à la propriété correspondante. Les exemples de code suivants montrent comment accéder à des données stockées antérieurement sous forme de données primitives, de tableau, de carte d’objets et d’objet Date complexe.
 
