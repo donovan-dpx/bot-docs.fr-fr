@@ -1,5 +1,5 @@
 ---
-title: Fonctionnalités avancées de FormFlow | Microsoft Docs
+title: Fonctionnalités avancées de FormFlow - Bot Service
 description: Découvrez comment personnaliser l’expérience utilisateur avec FormFlow et le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5620fd3a0e26cf7b56772e6bc8f47b8ceac596cd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298021"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796658"
 ---
 # <a name="advanced-features-of-formflow"></a>Fonctionnalités avancées de FormFlow
 

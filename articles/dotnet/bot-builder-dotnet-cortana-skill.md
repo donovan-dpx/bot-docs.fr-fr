@@ -1,5 +1,5 @@
 ---
-title: Générer une compétence Cortana avec .NET | Microsoft Docs
+title: Générer une compétence Cortana avec .NET - Bot Service
 description: Découvrez les concepts de base de création d’une compétence Cortana dans le kit SDK Bot Framework pour .NET.
 keywords: Bot Framework, compétence Cortana, reconnaissance vocale, .NET, SDK, concepts clés, concepts de base
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c0dd854cf2f8eb1f4cbe13c8d562425616e8cf40
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: ecdbf3e573c091893d0f2da8d2c7acb0c6348810
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167341"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796686"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Créer un bot à reconnaissance vocale avec des compétences Cortana
 
@@ -96,7 +96,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 -->
 
 
-## <a name="sample-rollerskill"></a>Exemple : RollerSkill
+## <a name="sample-rollerskill"></a>Exemple : RollerSkill
 Le code des sections suivantes provient d’un exemple de compétence Cortana pour le lancement de dés. Téléchargez le code complet du bot à partir du [dépôt BotBuilder-Samples](https://github.com/Microsoft/BotBuilder-Samples/).
 
 Vous appelez la compétence en disant son [nom d’appel][InvocationNameGuidelines] à Cortana. Pour la compétence de lancement de dés, après avoir [ajouté le bot au canal Cortana][CortanaChannel] et l’avoir inscrit en tant que compétence Cortana, vous pouvez l’appeler en disant à Cortana : « Demande Roller » ou « Demande à Roller de lancer les dés ».

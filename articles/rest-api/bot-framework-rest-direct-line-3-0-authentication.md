@@ -1,5 +1,5 @@
 ---
-title: Authentification | Microsoft Docs
+title: Authentification - Bot Service
 description: Découvrez comment authentifier des demandes d’API dans l’API Direct Line v3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 37e02a34e7b8ecc4d501ed7330b6f374548fd5a0
-ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
+ms.openlocfilehash: 59a97acffe26b0bb896ec75dd5ca03fa43eafd67
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076569"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789519"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -78,7 +78,7 @@ La charge utile de la demande, qui contient les paramètres de jeton, est facult
 }
 ```
 
-| Paramètre | type | Description |
+| Paramètre | Type | Description |
 | :--- | :--- | :--- |
 | `user.id` | string | facultatif. ID spécifique au canal de l’utilisateur à encoder dans le jeton. Pour un utilisateur Direct Line, il doit commencer par `dl_`. Vous pouvez créer un ID utilisateur unique pour chaque conversation et, pour une meilleure sécurité, vous devez faire en sorte que cet ID ne puisse pas être deviné. |
 | `user.name` | string | facultatif. Nom convivial complet de l’utilisateur à encoder dans le jeton. |

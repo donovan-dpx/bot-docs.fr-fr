@@ -1,5 +1,5 @@
 ---
-title: Ajouter des fonctionnalités vocales aux messages | Microsoft Docs
+title: Ajouter de la reconnaissance vocale aux messages (v3 JS) - Bot Service
 description: Découvrez comment ajouter la reconnaissance vocale aux messages à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 14bda9e14f0f812cf528a6b9fdf01175e7eb21ae
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: a5e97aa859f8b200fecb6df213bce1f9d9c1f912
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866648"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790354"
 ---
 # <a name="add-speech-to-messages"></a>Ajouter de la reconnaissance vocale aux messages
 

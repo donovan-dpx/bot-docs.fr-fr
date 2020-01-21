@@ -1,5 +1,5 @@
 ---
-title: Création d’une compétence Cortana à l’aide de Node.js | Microsoft Docs
+title: Création d’une compétence Cortana à l’aide de Node.js - Bot Service
 description: Découvrez les concepts de base liés à la création d’une compétence Cortana dans le kit SDK Bot Framework pour Node.js.
 keywords: Bot Framework, compétence Cortana, voix, Node.js, Bot Builder, Kit de développement logiciel (SDK), concepts clés, concepts fodamentaux
 author: DeniseMak
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6aca29556fe877866d4beee8487ce0f1537334e6
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 477b20b090ae20ee9c4d723710a9fa11fff356fd
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68866746"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790334"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Concepts clés pour la création d’un robot pour Compétence Cortana à l’aide de Node.js
  
@@ -41,13 +41,13 @@ Lorsque vous créez un robot de reconnaissance vocale, vous devez tenter d’ét
 Les utilisateurs sont plongés dans la confusion quand un système ne parvient pas fonder leurs énoncés. Par exemple, la conversation suivante peut être une source de confusion quand le robot demande « Et ensuite ? » :
 
 > **Cortana** : Voulez-vous voir d’autres éléments de votre profil ?  
-> **Utilisateur** :  Non.  
-> **Cortana** : Et ensuite ?
+> **Utilisateur** : Non.  
+> **Cortana** : Quelle est l’étape suivante ?
 
 Si le robot ajoute « OK » en tant qu’accusé de réception, c’est plus convivial pour l’utilisateur :
 
 > **Cortana** : Voulez-vous voir d’autres éléments de votre profil ?  
-> **Utilisateur** :  Non.  
+> **Utilisateur** : Non.  
 > **Cortana** : **OK**, et maintenant ?
 
 Degrés de fondement, du plus faible au plus fort :

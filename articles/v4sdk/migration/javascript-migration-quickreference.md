@@ -1,5 +1,5 @@
 ---
-title: Aide-mémoire sur la migration de JavaScript v3 vers v4 | Microsoft Docs
+title: Aide-mémoire sur la migration de JavaScript  v3 vers v4 - Bot Service
 description: Liste des principales différences entre la version v3 et la version v4 du SDK JavaScript Bot Framework.
 keywords: JavaScript, migration de bot, dialogues, bot v3
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2935c187b9c9687d4fbf207c2d78a135d3c8959f
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: ea71cfa7adb9ba4f38b3f0ec79641cf28b0f64f3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933778"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791071"
 ---
 # <a name="javascript-migration-quick-reference"></a>Aide-mémoire sur la migration JavaScript
 

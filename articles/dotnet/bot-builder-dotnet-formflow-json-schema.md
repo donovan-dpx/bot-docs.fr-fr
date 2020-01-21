@@ -1,5 +1,5 @@
 ---
-title: Définir un formulaire à l’aide du schéma JSON et de FormFlow | Microsoft Docs
+title: Définir un formulaire à l’aide du schéma JSON et de FormFlow Bot Service
 description: Découvrez comment définir un formulaire à l’aide du schéma JSON et de FormFlow avec le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cd884c49507b4d7edc84f4bbd79396fe36073a82
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298806"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796502"
 ---
 # <a name="define-a-form-using-json-schema"></a>Définir un formulaire à l’aide d’un schéma JSON
 
@@ -29,11 +29,11 @@ FormFlow prend en charge les mots clés de <a href="http://json-schema.org/docum
 
 | Mot clé | Description | 
 |----|----|
-| Type | Définit le type de données que contient le champ. |
+| type | Définit le type de données que contient le champ. |
 | enum | Définit les valeurs valides pour le champ. |
 | minimum | Définit la valeur numérique minimale autorisée pour le champ (comme décrit dans [NumericAttribute][numericAttribute]). |
 | maximum | Définit la valeur numérique maximale autorisée pour le champ (comme décrit dans [NumericAttribute][numericAttribute]). |
-| required | Définit les champs obligatoires. |
+| Obligatoire | Définit les champs obligatoires. |
 | modèle | Valide les valeurs de chaîne (comme décrit dans [PatternAttribute][patternAttribute]). |
 
 ## <a name="extensions-to-json-schema"></a>Extensions au schéma JSON
@@ -45,7 +45,7 @@ FormFlow étend le <a href="http://json-schema.org/documentation.html" target="_
 | Propriété | Valeur |
 |----|----|
 | OnCompletion | Script C# avec des arguments `(IDialogContext context, JObject state)` pour compléter le formulaire. |
-| Références | Références à inclure dans les scripts. Par exemple : `[assemblyReference, ...]`. Les chemins d’accès doivent être absolus ou relatifs au répertoire actuel. Par défaut, le script inclut `Microsoft.Bot.Builder.dll`. |
+| References | Références à inclure dans les scripts. Par exemple : `[assemblyReference, ...]`. Les chemins d’accès doivent être absolus ou relatifs au répertoire actuel. Par défaut, le script inclut `Microsoft.Bot.Builder.dll`. |
 | Importations | Importations à inclure dans les scripts. Par exemple : `[import, ...]`. Par défaut, le script inclut les espaces de noms `Microsoft.Bot.Builder`, `Microsoft.Bot.Builder.Dialogs`, `Microsoft.Bot.Builder.FormFlow`, `Microsoft.Bot.Builder.FormFlow.Advanced`, `System.Collections.Generic` et `System.Linq`. |
 
 ### <a name="additional-properties-at-the-root-of-the-schema-or-as-peers-of-the-type-property"></a>Propriétés supplémentaires à la racine du schéma, ou en tant qu’homologues de la propriété de type
@@ -63,7 +63,7 @@ Pour spécifier des modèles et des invites dans le schéma JSON, utilisez le m�
 
 ### <a name="additional-properties-as-peers-of-the-type-property"></a>Propriétés supplémentaires en tant qu’homologues de la propriété de type
 
-|   Propriété   |          Sommaire           |                                                   Description                                                    |
+|   Propriété   |          Contents           |                                                   Description                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
 |   DateTime   |            bool             |                                  Indique si le champ est un champ `DateTime`.                                  |
 |   Describe   |      chaîne ou objet       |                  Description d’un champ, comme décrit dans [DescribeAttribute][describeAttribute].                  |
@@ -72,10 +72,10 @@ Pour spécifier des modèles et des invites dans le schéma JSON, utilisez le m�
 |    Valeurs    | `{ string: {Describe:string |                                  object, Terms:[string, ...], MaxPhrase}, ...}`                                  |
 |    Actif    |           script            | Script C# avec des arguments `(JObject state)->bool` pour tester l’activité du champ, du message ou de la confirmation.  |
 |   Valider   |           script            |      Script C# avec des arguments `(JObject state, object value)->ValidateResult` pour valider une valeur de champ.      |
-|    Define    |           script            |        Script C# avec des arguments `(JObject state, Field<JObject> field)` pour définir de façon dynamique un champ.        |
+|    Définir    |           script            |        Script C# avec des arguments `(JObject state, Field<JObject> field)` pour définir de façon dynamique un champ.        |
 |     Suivant     |           script            | Script C# avec des arguments `(object value, JObject state)` pour déterminer l’étape suivante après avoir rempli un champ. |
 |    Avant    |          `[confirm          |                                                  message, ...]`                                                  |
-|    Après     |          `[confirm          |                                                  message, ...]`                                                  |
+|    After     |          `[confirm          |                                                  message, ...]`                                                  |
 | Les dépendances |        [string, ...]        |                           Champs dont dépend ce champ, ce message ou cette confirmation.                           |
 
 Utilisez `{Confirm:script|[string, ...], ...templateArgs}` au sein de la valeur de la propriété **Before** ou **After** pour définir une confirmation à l’aide d’un script C# avec l’argument `(JObject state)` ou un ensemble de modèles qui sera sélectionné au hasard avec des arguments de modèle facultatifs.
@@ -93,7 +93,7 @@ Plusieurs des propriétés décrites ci-dessus contiennent un script en tant que
 | ifield | `IField<JObject>` pour autoriser le raisonnement sur le champ actuel pour tous les scripts à l’exception des générateurs d’invite de message/confirmation. |
 | value | Valeur d’objet à valider pour **Validate**. |
 | field | `Field<JObject>` pour autoriser la mise à jour dynamique d’un champ dans **Define**. |
-| context | Contexte `IDialogContext` pour permettre la publication des résultats dans **OnCompletion**. |
+| contexte | Contexte `IDialogContext` pour permettre la publication des résultats dans **OnCompletion**. |
 
 Les champs définis par le biais d’un schéma JSON peuvent également étendre ou remplacer les définitions par programmation, comme n’importe quel autre champ. Ils peuvent également être localisés de la même façon.
 

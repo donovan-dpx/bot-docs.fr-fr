@@ -1,5 +1,5 @@
 ---
-title: Ajouter des pièces jointes multimédias aux messages | Microsoft Docs
+title: Ajouter des pièces jointes multimédia aux messages - Bot Service
 description: Découvrez comment ajouter des pièces jointes multimédias aux messages à l’aide du service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2018
-ms.openlocfilehash: be56700664e7626c247bb77899dc89f3cac32469
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 35a4a1846aadddb7505015872f830132cf625841
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037213"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790168"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 > [!div class="op_single_selector"]
@@ -22,8 +22,7 @@ ms.locfileid: "70037213"
 
 Les robots et les canaux échangent généralement des chaînes de texte, mais certains canaux prennent également en charge l’échange de pièces jointes, ce qui permet à votre robot d’envoyer des messages enrichis aux utilisateurs. Par exemple, votre robot peut envoyer des [cartes riches](bot-framework-rest-connector-add-rich-cards.md) et des pièces jointes multimédias (comme des images, des vidéos, des données audio ou des fichiers). Cet article décrit comment ajouter des pièces jointes multimédia à des messages à l’aide du service Bot Connector.
 
-> [!TIP]
-> Pour déterminer le type et le nombre de pièces jointes qu’un canal prend en charge, et la manière dont le canal effectue le rendu des pièces jointes, voir [Inspecteur de canaux][Inspecteur de canaux].
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a name="add-a-media-attachment"></a>Ajouter une pièce jointe multimédia  
 

@@ -1,5 +1,5 @@
 ---
-title: Ajouter des pièces jointes de cartes enrichies aux messages | Microsoft Docs
+title: Ajouter des pièces jointes de cartes enrichies aux messages (v3 JS) - Bot Service
 description: Découvrez comment envoyer des cartes enrichies attrayantes et interactives à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9b56539146909be1231611319703c3e9cf2ef5c2
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 246052bc971be3198fb5f3cd04f7d94e39c6b5d1
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299716"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790462"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 
@@ -168,7 +168,7 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
+* [Informations de référence sur les canaux][inspector]
 * <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 * [AnimationCard][animationCard]
 * [AudioCard][audioCard]
@@ -198,4 +198,4 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 
 [videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
-[inspector]: ../bot-service-channel-inspector.md
+[inspector]: ../bot-service-channels-reference.md

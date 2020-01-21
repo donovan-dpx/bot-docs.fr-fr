@@ -1,5 +1,5 @@
 ---
-title: Démarrer une conversation | Microsoft Docs
+title: Démarrer une conversation à l’aide de Direct Line API 1.1 - Bot Service
 description: Découvrez comment démarrer une conversation à l’aide de l’API Direct Line v1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 16ad7b817ccde2139b703e858e57bee2abf36fb8
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6aa107dc54f6a960aabc4f03b5e9acb49a9c6cb0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299601"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789590"
 ---
 # <a name="start-a-conversation"></a>Démarrer une conversation
 

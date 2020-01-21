@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble des dialogues | Microsoft Docs
+title: Vue d'ensemble des dialogues (v3 C#) - Bot Service
 description: Découvrez comment utiliser les dialogues dans le kit SDK Bot Framework pour .NET pour modéliser les conversations et gérer le flux de conversation.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e7c852245bdf09ada446a873bd1c974b85417672
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298371"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793352"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Dialogues dans le kit SDK Bot Framework pour .NET
 

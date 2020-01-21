@@ -1,5 +1,5 @@
 ---
-title: Informations de référence sur l’API | Microsoft Docs
+title: Informations de référence sur les API - Bot Service
 description: Découvrez les en-têtes, les opérations, les objets et les erreurs associés aux services Bot Connector et Bot State.
 author: ivorb
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/02/2019
-ms.openlocfilehash: 52902456903fb8c5c9fd2037150a55a05f66f31c
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 7788a3bc8ecc3ee01cd44b25297a637f8fc07b01
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790070"
 ---
 # <a name="api-reference"></a>Informations de référence sur l'API
 
@@ -113,7 +113,7 @@ Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_bla
 | 500 | Une erreur de serveur interne s’est produite. |
 | 503 | Le service n’est pas disponible. |
 
-### <a name="errors"></a>Errors
+### <a name="errors"></a>Erreurs
 
 Toute réponse qui spécifie un code d’état HTTP dans la plage 4xx ou 5xx va inclure un objet [ErrorResponse](#errorresponse-object) dans le corps de la réponse qui fournit des informations sur l’erreur. Si vous recevez une réponse d’erreur dans la plage 4xx, examinez l’objet **ErrorResponse** pour identifier la cause de l’erreur et résoudre votre problème avant de renvoyer la requête.
 
@@ -341,7 +341,7 @@ Le service Microsoft Bot Framework State a été mis hors service le 30 mars 2
 | `Get Private Conversation Data` | Récupère les données d’état précédemment stockées pour un utilisateur dans le contexte d’une conversation d’un canal. |
 | `Delete State For User` | Supprime les données d’état qui ont été précédemment stockées pour un utilisateur. |
 
-## <a name="schema"></a>Schéma
+## <a name="schema"></a>schéma
 
 Le schéma Bot Framework définit les objets et leurs propriétés que votre bot peut utiliser pour communiquer avec un utilisateur.
 
@@ -410,7 +410,7 @@ Définit un message qui est échangé entre le bot et l’utilisateur.
 | **id** | string | ID qui identifie de façon unique l’activité sur le canal. |
 | **importance** | string | Définit l’importance d’une activité. Une des valeurs suivantes : **low**, **normal**, **high**. |
 | **inputHint** | string | Valeur qui indique si votre bot accepte, attend ou ignore l’entrée utilisateur, une fois le message remis au client. Peut avoir l’une des valeurs suivantes : **acceptingInput**, **expectingInput**, **ignoringInput**. |
-| **libellé** | string | Étiquette descriptive de l’activité. |
+| **label** | string | Étiquette descriptive de l’activité. |
 | **listenFor** | string[] | Liste des expressions et des références dont les systèmes d’amorçage de la parole et de la langue doivent être à l’écoute. |
 | **locale** | string | Paramètres régionaux de la langue qui doit être utilisée pour afficher du texte dans le message, au format `<language>-<country>`. Le canal utilise cette propriété pour indiquer la langue de l’utilisateur, pour que le bot puisse spécifier des chaînes d’affichage dans cette langue. La valeur par défaut est **en-US**. |
 | **localTimestamp** | string | Date et heure auxquelles le message a été envoyé dans le fuseau horaire local, exprimées au format [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601). |
@@ -505,7 +505,7 @@ Définit l’affichage d’une pièce jointe.
 
 | Propriété | Type | Description |
 |----|----|----|
-| **taille** | number | Taille du fichier. |
+| **size** | nombre | Taille du fichier. |
 | **viewId** | string | ID de l’affichage. |
 
 [Retour au tableau Schéma](#schema)
@@ -663,7 +663,7 @@ Objet de métadonnées appartenant à une activité.
 
 [Retour au tableau Schéma](#schema)
 
-### <a name="error-object"></a>Objet Error
+### <a name="error-object"></a>Objet d’erreur
 
 Objet représentant les informations d’erreur.
 
@@ -702,9 +702,9 @@ Définit un emplacement géographique à l’aide des coordonnées World Geodeti
 
 | Propriété | Type | Description |
 |----|----|----|
-| **elevation** | number | Élévation de l’emplacement. |
-| **latitude** | number | Latitude de l’emplacement. |
-| **longitude** | number | Longitude de l’emplacement. |
+| **elevation** | nombre | Élévation de l’emplacement. |
+| **latitude** | nombre | Latitude de l’emplacement. |
+| **longitude** | nombre | Longitude de l’emplacement. |
 | **name** | string | Nom de l’emplacement. |
 | **type** | string | Type de cet objet. Toujours définir sur **GeoCoordinates**. |
 
@@ -731,7 +731,7 @@ Objet représentant une erreur HTTP interne.
 
 | Propriété | Type | Description |
 |----|----|----|
-| **statusCode** | number | Code d’état HTTP de la requête en échec. |
+| **statusCode** | nombre | Code d’état HTTP de la requête en échec. |
 | **body** | object | Corps de la requête en échec. |
 
 [Retour au tableau Schéma](#schema)
@@ -887,7 +887,7 @@ Référence une sous-chaîne de contenu dans un autre champ.
 
 | Propriété | Type | Description |
 |----|----|----|
-| **occurrence** | number | Occurrence du champ de texte dans le texte référencé, s’il en existe plusieurs. |
+| **occurrence** | nombre | Occurrence du champ de texte dans le texte référencé, s’il en existe plusieurs. |
 | **text** | string | Définit l’extrait de texte à mettre en surbrillance. |
 
 [Retour au tableau Schéma](#schema)
@@ -924,7 +924,7 @@ Collection d’activités à charger à l’aide de [Envoyer l’historique des 
 
 | Propriété | Type | Description |
 |----|----|----|
-| **activités** | array | Tableau d’objets [Activity](#activity-object). Ils doivent posséder chacun un ID unique et un horodatage. |
+| **activités** | tableau | Tableau d’objets [Activity](#activity-object). Ils doivent posséder chacun un ID unique et un horodatage. |
 
 [Retour au tableau Schéma](#schema)
 

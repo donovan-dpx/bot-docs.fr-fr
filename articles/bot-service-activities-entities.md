@@ -1,5 +1,5 @@
 ---
-title: Entités et types d’activités | Microsoft Docs
+title: Entités et types d’activités - Bot Service
 description: Entités et les types d’activités.
 keywords: mentionner des entités, types d’activités, consommer des entités
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 03/01/2018
-ms.openlocfilehash: e1eae45702a1eee94714f96425050948310c7520
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.openlocfilehash: cd11cc1fbbacb7e555da4e00337d6fd4b79a4df6
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693114"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789076"
 ---
 # <a name="entities-and-activity-types"></a>Entités et types d’activités
 
@@ -75,14 +75,14 @@ L’objet Place contient les propriétés suivantes :
 | Adresse | objet de description ou d’adresse postale (à venir) |
 | Zone géographique | GeoCoordinates |
 | HasMap | URL vers une carte ou un objet de carte (à venir) |
-| Nom | nom du lieu |
+| Name | nom du lieu |
 
 L’objet geoCoordinates contient ces propriétés :
 
 | Propriété | Description |
 |----|----|
 | Type | type de l’entité (« GeoCoordinates ») |
-| Nom | nom du lieu |
+| Name | nom du lieu |
 | Longitude | longitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Latitude | latitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Elevation | élévation de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |

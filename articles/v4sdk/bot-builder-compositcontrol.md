@@ -1,5 +1,5 @@
 ---
-title: Réutiliser des dialogues | Microsoft Docs
+title: Réutiliser des dialogues - Bot Service
 description: Apprenez à modulariser votre logique de bot à l’aide des dialogues composants du kit SDK Bot Framework.
 keywords: contrôle composite, logique de bot modulaire
 author: v-ducvo
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c273b0c157abd40dd139739411b19656565fa7c7
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 2e40e6a9a8da2e884be0469fb00f0da5f011f22d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491527"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798893"
 ---
 # <a name="reuse-dialogs"></a>Réutiliser des dialogues
 
@@ -75,15 +75,15 @@ Pour utiliser des dialogues, votre projet doit installer le package npm **botbui
 
 Ici la classe `UserProfileDialog` étend `ComponentDialog`.
 
-[!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=24)]
+[!code-javascript[Class](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=28)]
 
 Dans le constructeur, la méthode `AddDialog` ajoute des dialogues et des invites au dialogue composant. Le premier élément que vous ajoutez avec cette méthode est défini comme dialogue initial, mais vous pouvez le changer en définissant explicitement la propriété `InitialDialogId`. Quand vous démarrez un dialogue composant, celui-ci démarre son _dialogue initial_.
 
-[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
+[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=29-51)]
 
 Il s’agit de l’implémentation de la première étape du dialogue en cascade.
 
-[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=64-71)]
+[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=70-77)]
 
 Pour plus d’informations sur l’implémentation des dialogues en cascade, consultez la rubrique sur l’[implémentation des flux de conversation séquentiels](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -129,7 +129,7 @@ Pour utiliser un dialogue composant, ajoutez une instance de celui-ci au jeu de 
 
 Dans l’exemple, c’est fait en utilisant la méthode `RunAsync` qui est appelée à partir de la méthode `OnMessageActivityAsync` du bot.
 
-[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48)]
+[!code-csharp[OnMessageActivityAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=42-48&highlight=6)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -137,7 +137,7 @@ Dans l’exemple, c’est fait en utilisant la méthode `RunAsync` qui est appel
 
 Dans l’exemple, nous avons ajouté une méthode `run` au dialogue du profil utilisateur.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=59-68)]
 
 **bots/dialogBot.js**
 

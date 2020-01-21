@@ -1,5 +1,5 @@
 ---
-title: Gérer les interruptions par l’utilisateur | Microsoft Docs
+title: Gérer les interruptions de l’utilisateur - Bot Service
 description: Découvrez comment gérer les interruptions par l’utilisateur et diriger le flux de conversation.
 keywords: interruption, interruptions, changement de sujet, arrêt
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 63ecbd2aaef40d5d25c49ef93aa665853ff0054c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: fca68b09632c89cd027d012a92fe99e186324f70
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491738"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798373"
 ---
 # <a name="handle-user-interruptions"></a>Gérer les interruptions par l’utilisateur
 

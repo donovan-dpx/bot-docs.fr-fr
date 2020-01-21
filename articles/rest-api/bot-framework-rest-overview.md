@@ -1,5 +1,5 @@
 ---
-title: API REST Bot Framework | Microsoft Docs
+title: API REST Bot Framework - Bot Service
 description: Commencez avec les API REST Bot Framework permettant des créer des robots et des clients qui se connectent à des robots.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 9f9acf2dc2b1aa0981196bf316a3f1c351467d32
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: f0ee10d86c09d374f2cfedef551a28bf9107180b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299528"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789201"
 ---
 # <a name="bot-framework-rest-apis"></a>API REST Bot Framework
 > [!div class="op_single_selector"]

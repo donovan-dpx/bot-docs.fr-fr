@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4305a38a917c7e2bb1b7cd92f3bd007c1ed77d49
-ms.sourcegitcommit: 46fbb8982144c66864b83889b6457187e890badd
+ms.openlocfilehash: 3df1e44b5643f0dae98e659d76b8e30224081782
+ms.sourcegitcommit: 86495b597e55c94309a0c73fc1945a3393ddcbbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/08/2020
-ms.locfileid: "75736831"
+ms.locfileid: "75756375"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-python"></a>Créer un bot à l’aide du kit SDK Bot Framework pour Python
 
@@ -48,7 +48,7 @@ Cette commande crée un bot d’écho basé sur le [modèle Echo](https://github
 
 ![définir le nom et la description](../media/python/quickstart/set-name-description.png)
 
-Copiez les quatre derniers chiffres de l’adresse sur la dernière ligne (en règle générale 3978), car vous allez les utiliser à l’étape suivante. Vous êtes maintenant prêt à démarrer votre bot.
+Copiez les quatre derniers chiffres de l’adresse sur la dernière ligne (en règle générale 3978), car vous allez les utiliser à l’étape suivante. Vous êtes maintenant prêt à démarrer votre bot.
 
 ## <a name="start-you-bot"></a>Démarrer votre bot
 1. Depuis un terminal, accédez au dossier `echo-bot` dans lequel vous avez enregistré votre bot. Exécutez `pip install -r requirements.txt` pour installer les packages nécessaires à l’exécution de votre bot.

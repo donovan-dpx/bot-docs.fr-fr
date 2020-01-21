@@ -1,5 +1,5 @@
 ---
-title: Tutoriel Azure Bot Service pour que votre bot réponde aux questions | Microsoft Docs
+title: Tutoriel Azure Bot Service pour que votre bot réponde aux questions - Bot Service
 description: Tutoriel sur l’utilisation de QnA Maker pour que votre bot réponde à des questions.
 keywords: QnA Maker, question et réponse, base de connaissances
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c22e0b8413fc0bcfb4ced330470d88a8a4fbea81
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 96669a1f461975978291fe20a15b5c196f475694
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491447"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791201"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Tutoriel : Utiliser QnA Maker dans votre bot pour répondre à des questions
 

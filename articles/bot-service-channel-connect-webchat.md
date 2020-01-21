@@ -1,5 +1,5 @@
 ---
-title: Connecter un bot au canal Discussion Web | Microsoft Docs
+title: Connecter un bot au canal Discussion Web - Bot Service
 description: Découvrez comment utiliser le contrôle de discussion web dans votre page web pour un bot connecté au canal Discussion Web.
 keywords: discussion web, canal de bot, page web, clé secrète, iframe, HTML
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
-ms.openlocfilehash: 55bf98c3665558d55c92585f4d9915ac91554a79
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: a77f621d46b9ce69d92b83a9f6ada0c9fbf6286e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491280"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791750"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Connecter un bot au canal Discussion Web
 

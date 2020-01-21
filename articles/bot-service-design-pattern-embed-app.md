@@ -1,5 +1,5 @@
 ---
-title: Incorporer un bot dans une application | Microsoft Docs
+title: Incorporer un bot dans une application - Bot Service
 description: Découvrez comment concevoir un bot à incorporer dans une autre application.
 author: matvelloso
 ms.author: mateusv
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/15/2018
-ms.openlocfilehash: 3e6a659667dca6089cb094a6b4eccda338219996
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a8f6b4f70ca51e4b4c607dcf116c78030e28506d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298681"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793615"
 ---
 # <a name="embed-a-bot-in-an-app"></a>Incorporer un bot dans une application
 

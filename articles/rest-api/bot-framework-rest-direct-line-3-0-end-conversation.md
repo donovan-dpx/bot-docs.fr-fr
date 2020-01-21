@@ -1,5 +1,5 @@
 ---
-title: Mettre fin à une conversation | Microsoft Docs
+title: Mettre fin à une conversation - Bot Service
 description: Découvrez comment mettre fin à une conversation à l’aide de l’API Direct Line v3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3006672ba8459ebec7d754a7ec31679debdba4aa
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4b8a3046ee53d90fe2abdc97a3c931a4f67c051f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876161"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789431"
 ---
 # <a name="end-a-conversation"></a>Mettre fin à une conversation
 
-L’[activité](https://aka.ms/botSpecs-activitySchema) **endOfConversation** signifie que le canal ou le bot a mis fin à la conversation. 
+L'**activité** [endOfConversation](https://aka.ms/botSpecs-activitySchema) signifie que le canal ou le bot a mis fin à la conversation. 
 
 > [!NOTE] 
 > Alors que l’événement **endOfConversation** est envoyé uniquement par très peu de canaux, le canal Cortana est le seul qui l’accepte. D’autres canaux, dont Direct Line, n’implémentent pas cette fonctionnalité. À la place, ils déposent ou transfèrent l’activité. Chaque canal détermine comment réagir à une activité endOfConversation. Si vous concevez un client DirectLine, vous devrez mettre à jour le client pour qu’il se comporte de manière adéquate, en générant par exemple une erreur si le bot a envoyé une activité à une conversation déjà terminée.

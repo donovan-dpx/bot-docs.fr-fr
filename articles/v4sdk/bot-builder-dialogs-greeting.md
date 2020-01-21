@@ -1,5 +1,5 @@
 ---
-title: Implémenter un dialogue d’accueil | Microsoft Docs
+title: Implémenter un dialogue d’accueil - Bot Service
 description: Utiliser un dialogue pour accueillir un utilisateur lorsqu’il rejoint une conversation.
 keywords: message d’accueil, dialogues, flux de conversation, jeu de dialogues
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ea41c8ea879d20ba9d031bf3345b0862171458d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: b57e88dfc5133029a2a847a211c11cb187d9492a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299291"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798498"
 ---
 # <a name="implement-a-greeting-dialog"></a>Implémenter un dialogue d’accueil
 
@@ -24,7 +24,7 @@ Vous pouvez utiliser un dialogue pour accueillir un utilisateur dans une convers
 
 Pour plus d’informations sur la façon d’accueillir des utilisateurs, consultez le guide pratique pour [envoyer des messages de bienvenue aux utilisateurs][send-welcome].
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Connaissances de la [gestion de l’état][concept-state], de la [bibliothèque de dialogues][concept-dialogs], de la façon dont [gérer les conversations][simple-flow] et [collecter les entrées utilisateur avec une invite de dialogue][prompting].
 - Une copie de l’exemple de ??? en [**CSharp**][cs-sample] ou en [**JavaScript**][js-sample].

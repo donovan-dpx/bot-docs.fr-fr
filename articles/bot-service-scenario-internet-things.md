@@ -1,5 +1,5 @@
 ---
-title: Scénario de bot Internet des objets | Microsoft Docs
+title: Scénario impliquant le bot Internet des objets - Bot Service
 description: Découvrez le scénario de bot Internet des objets avec Bot Framework.
 author: BrianRandell
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 53a99c4313604d55da6554e927109f0f2f74104c
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 1089296005b060185617e4bf0280cb81198b32a2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167363"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795049"
 ---
 # <a name="internet-of-things-iot-bot-scenario"></a>Scénario de bot dans l’Internet des objets (IoT)
 

@@ -1,5 +1,5 @@
 ---
-title: Concepts clés de Bot Framework Direct Line API 3.0 | Microsoft Docs
+title: Concepts clés de Direct Line API 3.0 - Bot Service
 description: Découvrez les concepts clés de Bot Framework Direct Line API 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/06/2019
-ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 83273ade9aa79266c20287682ea3c151b1b0f8a5
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299596"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789441"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Concepts clés de Direct Line API 3.0
 
@@ -24,11 +24,11 @@ Les requêtes Direct Line API 3.0 peuvent être authentifiées soit à l’aide 
 
 ## <a name="starting-a-conversation"></a>Démarrage d’une conversation
 
-Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le bot et le client y participent, et tant que leurs informations d’identification sont valides. Pour plus d’informations, consultez [Démarrer une conversation](bot-framework-rest-direct-line-3-0-start-conversation.md).
+Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le robot et le client y participent et tant que leurs informations d’identification sont valides. Pour plus d’informations, consultez [Démarrer une conversation](bot-framework-rest-direct-line-3-0-start-conversation.md).
 
 ## <a name="sending-messages"></a>Envoi de messages
 
-À l’aide de Direct Line API 3.0, un client peut envoyer des messages à votre bot en émettant des requêtes `HTTP POST`. Un client peut envoyer un seul message par requête. Pour plus d’informations, consultez [Envoyer une activité au bot](bot-framework-rest-direct-line-3-0-send-activity.md).
+À l’aide de Direct Line API 3.0, un client peut envoyer des messages à votre bot en émettant des requêtes `HTTP POST`. Un client peut envoyer un seul message par demande. Pour plus d’informations, consultez [Envoyer une activité au bot](bot-framework-rest-direct-line-3-0-send-activity.md).
 
 ## <a name="receiving-messages"></a>Réception de messages
 
@@ -40,7 +40,7 @@ Avec Direct Line API 3.0, un client peut recevoir des messages de votre bot via 
 
 Bot Framework fournit des bibliothèques de client qui facilitent l’accès à Direct Line API 3.0 via le langage C# et Node.js. 
 
-- Pour utiliser la bibliothèque de client .NET dans un projet Visual Studio, installez le <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine" target="_blank">package NuGet</a> `Microsoft.Bot.Connector.DirectLine`. 
+- Pour utiliser la bibliothèque de client .NET dans un projet Visual Studio, installez le `Microsoft.Bot.Connector.DirectLine` <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine" target="_blank">package NuGet</a>. 
 
 - Pour utiliser la bibliothèque de client Node.js, installez la bibliothèque `botframework-directlinejs` à l’aide de <a href="https://www.npmjs.com/package/botframework-directlinejs" target="_blank">NPM</a> (ou <a href="https://github.com/Microsoft/BotFramework-DirectLineJS" target="_blank">téléchargez</a> le code source).
 

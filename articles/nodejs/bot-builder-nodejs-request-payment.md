@@ -1,5 +1,5 @@
 ---
-title: Demander un paiement | Microsoft Docs
+title: Demander un paiement (v3 JS) - Bot Service
 description: Découvrez comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3f9ed2cd7c82752d62d8ccfb8ae677ba5d8b9891
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: b4b8d6763c79cea6fc06666145dc851283bd8a63
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094450"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790630"
 ---
 # <a name="request-payment"></a>Demander un paiement
 
@@ -27,7 +27,7 @@ ms.locfileid: "71094450"
 
 Si votre bot permet aux utilisateurs d’acheter des articles, il peut demander le paiement en incluant un type spécial de bouton dans une [carte enrichie](bot-builder-nodejs-send-rich-cards.md). Cet article explique comment envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Framework pour Node.js, vous devez au préalable effectuer les tâches requises suivantes.
 
@@ -36,7 +36,7 @@ Avant de pouvoir envoyer une demande de paiement à l’aide du kit SDK Bot Fram
 Mettez à jour les variables d’environnement de votre bot pour définir `MicrosoftAppId` et `MicrosoftAppPassword` selon les valeurs d’ID et de mot de passe de l’application qui ont été générées pour votre bot lors du processus [d’inscription](~/bot-service-quickstart-registration.md). 
 
 > [!NOTE]
-> Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez [MicrosoftAppID et MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
+> Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la rubrique [MicrosoftAppID and MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword).
 
 ### <a name="create-and-configure-merchant-account"></a>Créer et configurer le compte du vendeur
 
@@ -52,7 +52,7 @@ Mettez à jour les variables d’environnement de votre bot pour définir `Micro
 
 [!INCLUDE [Payment process overview](../includes/snippet-payment-process-overview.md)]
 
-## <a name="payment-bot-sample"></a>Exemple Bot de paiement
+## <a name="payment-bot-sample"></a>Exemple de bot de paiement
 
 L’exemple <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/sample-payments" target="_blank">Bot de paiement</a> fournit un exemple de bot qui envoie une demande de paiement à l’aide de Node.js. Pour voir cet exemple de bot en action, vous pouvez <a href="https://webchat.botframework.com/embed/paymentsample?s=d39Bk7JOMzQ.cwA.Rig.dumLki9bs3uqfWFMjXPn5PFnQVmT2VAVR1Zl1iPi07k" target="_blank">le tester dans un webchat</a>, <a href="https://join.skype.com/bot/9fbc0f17-43eb-40fe-bf3b-af151e6ce45e" target="_blank">l’ajouter comme contact Skype</a> ou télécharger l’exemple de bot de paiement et l’exécuter localement à l’aide de Bot Framework Emulator. 
 

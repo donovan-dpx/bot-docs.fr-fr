@@ -1,5 +1,5 @@
 ---
-title: Envoyer des messages proactifs | Microsoft Docs
+title: Envoyer des messages proactifs (v3 C#) - Bot Service
 description: Découvrez comment envoyer des messages proactifs à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: c601db171f253b83bfa2d354f79018f03287bcf6
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: a6dd39b76d12262097013095be67b8e401846cbc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297338"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795470"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 

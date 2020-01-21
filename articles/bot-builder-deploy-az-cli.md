@@ -1,5 +1,5 @@
 ---
-title: Déployer votre bot | Microsoft Docs
+title: Déployer votre bot - Bot Service
 description: Déployer votre bot dans le cloud Azure
 keywords: déployer bot, déployer bot azure, publier bot
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7faa7091198202058c00ddca4aee79fe87d700e9
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 1c5c4a1d09b1108d5ccbfbb8736efa4304688613
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491163"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75788947"
 ---
 # <a name="deploy-your-bot"></a>Déployer votre bot
 

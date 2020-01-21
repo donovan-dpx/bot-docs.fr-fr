@@ -1,5 +1,5 @@
 ---
-title: Passer des appels audio avec Skype | Microsoft Docs
+title: Passer des appels audio avec Skype - Bot Service
 description: Découvrez comment passer des appels audio avec Skype en utilisant le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4a6d634f1b199358830674042cc289742c7efc10
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3d21bcbea0fb6d164b1eafad855f1db854df1876
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298423"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75793625"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Passer des appels audio avec Skype
 

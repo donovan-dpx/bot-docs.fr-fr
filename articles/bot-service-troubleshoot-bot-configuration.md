@@ -1,5 +1,5 @@
 ---
-title: Résoudre les problèmes de configuration de bot | Microsoft Docs
+title: Résoudre les problèmes de configuration de bot - Bot Service
 description: Comment résoudre les problèmes de configuration dans un bot déployé.
 keywords: résoudre les problèmes, dépanner, configuration, web chat, problèmes.
 author: jonathanFingold
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 4/30/2019
-ms.openlocfilehash: 6f24a2e5c4fbc2bf88d99ba4225506e25c4262a8
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 6d5cb95c529a9a49f07681678f11a54c8f9e55b3
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491596"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795718"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Résoudre les problèmes de configuration de bot
 
@@ -46,9 +46,14 @@ Si le point de terminaison retourne une erreur « Impossible d’atteindre ce s
 
 Si le bot fonctionne comme prévu dans Web Chat mais ne fonctionne pas dans certains autres canaux, les raisons possibles sont :
 
-- [Problèmes de configuration de canal](#channel-configuration-issues)
-- [Comportement spécifique au canal](#channel-specific-behavior)
-- [Panne de canal](#channel-outage)
+- [Résoudre les problèmes de configuration de bot](#troubleshoot-bot-configuration-issues)
+  - [Tester dans la discussion web](#test-in-web-chat)
+  - [Le bot ne fonctionne pas dans Discussion Web](#bot-does-not-work-in-web-chat)
+  - [Le bot fonctionne dans Discussion Web, mais pas dans les autres canaux](#bot-works-in-web-chat-but-not-in-other-channels)
+    - [Problèmes de configuration de canal](#channel-configuration-issues)
+    - [Comportement spécifique au canal](#channel-specific-behavior)
+    - [Panne de canal](#channel-outage)
+  - [Ressources supplémentaires](#additional-resources)
 
 ### <a name="channel-configuration-issues"></a>Problèmes de configuration de canal
 
@@ -71,7 +76,7 @@ Les liens ci-dessous fournissent des instructions pour configurer les canaux pri
 
 ### <a name="channel-specific-behavior"></a>Comportement spécifique au canal
 
-L’implémentation de certaines fonctionnalités peut différer selon le canal. Par exemple, les canaux ne prennent pas tous en charge les cartes adaptatives. La plupart des canaux prennent en charge les boutons, mais les restituent selon leur propre mode d’affichage. Si vous voyez des différences de fonctionnement de certains types de messages dans les différents canaux, consultez les [informations de référence sur les canaux](bot-service-channels-reference.md).
+L’implémentation de certaines fonctionnalités peut différer selon le canal. Par exemple, les canaux ne prennent pas tous en charge les cartes adaptatives. La plupart des canaux prennent en charge les boutons, mais les restituent selon leur propre mode d’affichage. Si vous constatez des différences de fonctionnement de certains types de messages dans les différents canaux, consultez l'article contenant des [informations de référence sur les canaux](bot-service-channels-reference.md).
 
 Voici quelques liens supplémentaires qui peuvent aider sur chacun des canaux :
 

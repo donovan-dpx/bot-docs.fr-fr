@@ -1,5 +1,5 @@
 ---
-title: Personnalisation de Web Chat | Microsoft Docs
+title: Personnalisation de Discussion Web - Bot Service
 description: Découvrez comment configurer le Web Chat Bot Framework.
 keywords: bot framework, conversation web, conversation, exemples, react, référence
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 9310bdf8cab253cd379b7b49daa18deed79f27ae
-ms.sourcegitcommit: 96d26f6b0576747fa62767710af922ace0ff0e3b
+ms.openlocfilehash: 5016c5810d2c3623d8e8556b0a96d717ee83000d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71060342"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791161"
 ---
 # <a name="web-chat-customization"></a>Personnalisation de Web Chat
 

@@ -1,5 +1,5 @@
 ---
-title: Envoyer un message de bienvenue aux utilisateurs | Microsoft Docs
+title: Envoyer un message de bienvenue aux utilisateurs - Bot Service
 description: Découvrez comment développer votre bot pour offrir une expérience utilisateur conviviale.
 keywords: vue d’ensemble, développer, expérience utilisateur, Accueil, expérience personnalisée, C#, JS, message de bienvenue, bot, salut, salutations
 author: DanDev33
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d3c369772736bddc96cab8b9e15e4005bd05bc3c
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: b9e863e261aa8a5dab0eafeff1e9e39fe97659cb
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491696"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791278"
 ---
 # <a name="send-welcome-message-to-users"></a>Envoyer un message de bienvenue aux utilisateurs
 
@@ -109,10 +109,10 @@ Au démarrage, l’état utilisateur et le message de bienvenue sont définis da
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Nous créons maintenant un accesseur de propriété qui nous fournit un handle vers WelcomeUserState dans la méthode OnMessageActivityAsync.
-Appelons ensuite la méthode GetAsync pour obtenir la clé incluse dans l’étendue appropriée. Nous enregistrons alors les données d’état utilisateur après chaque itération d’entrée utilisateur à l’aide de la méthode `SaveChangesAsync`.
+Nous créons maintenant un accesseur de propriété pour fournir un descripteur à `WelcomeUserState` au sein de la méthode `OnMessageActivityAsync`.
+Ensuite, nous appelons la méthode `GetAsync` pour obtenir la clé incluse dans l’étendue appropriée. Nous enregistrons alors les données d’état utilisateur après chaque itération d’entrée utilisateur à l’aide de la méthode `SaveChangesAsync`.
 
-**WelcomeUserBot.cs**  
+**Bots\WelcomeUserBot.cs**  
 [!code-csharp[Get state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range=68-71)]
 [!code-csharp[Save state](~/../BotBuilder-Samples/samples/csharp_dotnetcore/03.welcome-user/bots/WelcomeUserBot.cs?range= 103-105)]
 

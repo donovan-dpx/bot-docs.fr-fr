@@ -1,5 +1,5 @@
 ---
-title: Différences entre les kits SDK NodeJS v3 et v4 | Microsoft Docs
+title: Différences entre les kits de développement logiciel (SDK) NodeJS v3 et v4 - Bot Service
 description: Décrit les différences entre les kits SDK NodeJS v3 et v4.
 keywords: migration de bot, dialogues, état
 author: mmiele
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f97d8a2467572ed596cc5033ad0f76435200e4
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 5d614fc34f3daa9deddb2ccedbe58bdef2ba067a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491407"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791041"
 ---
 # <a name="differences-between-the-v3-and-v4-javascript-sdk"></a>Différences entre les kits SDK JavaScript v3 et v4
 

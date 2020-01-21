@@ -1,5 +1,5 @@
 ---
-title: Développer un bot Direct Line Speech | Microsoft Docs
+title: Développer un bot Direct Line Speech - Bot Service
 description: Développer un bot Direct Line Speech
 keywords: développer un bot Direct Line Speech, un bot vocal
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc2eb84751f64a1ca1493515ccb231a0a78bbd4
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 2aaafb7c46097a178761b356299612d874b1a823
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592248"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795962"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>Utiliser Direct Line Speech dans votre bot
 
@@ -22,11 +22,11 @@ ms.locfileid: "73592248"
 
 Direct Line Speech utilise une nouvelle fonctionnalité de streaming basée sur WebSocket de Bot Framework pour échanger des messages entre le canal Direct Line Speech et votre bot. Après avoir activé le canal Direct Line Speech dans le portail Azure, vous devez mettre à jour votre bot pour écouter et accepter ces connexions WebSocket. Les instructions suivantes expliquent comment procéder.  
 
-## <a name="step-1-upgrade-to-the-46-sdk"></a>Étape 1 : Effectuer une mise à niveau vers le kit SDK 4.6 
+## <a name="step-1-upgrade-to-the-46-sdk"></a>Étape 1 : Effectuer une mise à niveau vers le kit SDK 4.6 
 
 Pour Direct Line Speech, veillez à utiliser la version 4.6 ou supérieure du kit SDK Bot Builder. 
 
-## <a name="step-2-update-your-net-core-bot-codeif-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller"></a>Étape 2 : Mettre à jour le code de votre bot .NET Core si celui-ci utilise AddBot et UseBotFramework et non un BotController 
+## <a name="step-2-update-your-net-core-bot-codeif-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller"></a>Étape 2 : Mettre à jour le code de votre bot .NET Core si celui-ci utilise AddBot et UseBotFramework et non un BotController 
 
 Si vous avez créé un bot en utilisant la version v4 du kit SDK Bot Builder avant la version 4.3.2, votre bot n’inclut probablement pas un BotController mais utilise à la place les méthodes AddBot() et UseBotFramework() dans le fichier Startup.cs pour exposer le point de terminaison POST où le bot reçoit les messages. Pour exposer le nouveau point de terminaison de streaming, vous devez ajouter un BotController et supprimer les méthodes AddBot() et UseBotFramework(). Ces instructions passent en revue les modifications à apporter. Si vous avez déjà apporté ces modifications, passez à l’étape suivante. 
 

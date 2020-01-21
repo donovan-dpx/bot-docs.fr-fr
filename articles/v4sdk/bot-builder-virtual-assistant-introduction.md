@@ -1,5 +1,5 @@
 ---
-title: Présentation de l’assistant virtuel | Microsoft Docs
+title: Présentation de l'assistant virtuel - Bot Service
 description: Découvrez comment créer votre propre assistant virtuel
 author: darrenj
 ms.author: darrenj
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 65a55550dff284ad44fd85cfe9223107cb8f4baf
-ms.sourcegitcommit: dbc7eaee5c1f300b23c55abe6b60cd01c7408915
+ms.openlocfilehash: 4f817ff4911229d8bc36d2c50348bf0320d09e47
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74415134"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791857"
 ---
 # <a name="virtual-assistant-overview"></a>Présentation de l’assistant virtuel
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
 Les clients et partenaires souhaitent ardemment être en mesure de fournir un assistant conversationnel adapté à leur marque et à leurs utilisateurs, et disponible sur un large éventail de canevas et d’appareils.
 

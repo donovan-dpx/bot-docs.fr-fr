@@ -1,5 +1,5 @@
 ---
-title: Tester une compétence Cortana | Microsoft Docs
+title: Tester une compétence Cortana - Bot Service
 description: Découvrez comment tester un bot Cortana en appelant une compétence Cortana.
 keywords: Kit SDK Bot Framework, inscrire un bot, cortana
 author: v-ducvo
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/01/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 996063bef2e139292187f125318f63745373e7bb
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 62ed0fb7cb05072024617d65266cf457c554d4c7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70166943"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792768"
 ---
 # <a name="test-a-cortana-skill"></a>Tester une compétence Cortana
 
@@ -54,7 +54,7 @@ Pour tester votre bot à l’aide du contrôle Discussion Web intégré au servi
 Pour tester votre bot à l’aide de [l’émulateur](~/bot-service-debug-emulator.md), procédez comme suit :
 
 1. Exécutez le bot.
-2. Ouvrez l’émulateur et renseignez les informations nécessaires. Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la section [MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword). 
+2. Ouvrez l’émulateur et renseignez les informations nécessaires. Pour trouver les paramètres **AppID** et **AppPassword** de votre bot, consultez la rubrique [MicrosoftAppID and MicrosoftAppPassword](bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword) (MicrosoftAppID et MicrosoftAppPassword). 
 3. Cliquez sur **Connecter** pour connecter l’émulateur à votre bot.
 4. Tapez un message pour vérifier que votre bot fonctionne.
 
@@ -70,7 +70,7 @@ Vous pouvez appeler votre compétence Cortana en appelant Cortana à l’aide de
 
 3. Si Cortana reconnaît votre phrase de commande, votre bot se lance dans le canevas de Cortana. 
 
-## <a name="troubleshoot"></a>Résolution des problèmes
+## <a name="troubleshoot"></a>Dépanner
 
 Si le lancement de votre compétence Cortana échoue, procédez aux vérifications suivantes :
 * Vérifiez que vous êtes connecté à Cortana avec le même compte Microsoft que celui que vous avez utilisé pour inscrire votre bot dans le portail Bot Framework.

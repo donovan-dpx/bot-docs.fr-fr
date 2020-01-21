@@ -1,5 +1,5 @@
 ---
-title: Ajouter des actions suggérées aux messages | Microsoft Docs
+title: Ajouter des actions suggérées aux messages - Bot Service
 description: Découvrez comment ajouter des actions suggérées aux messages à l’aide du service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: b8b0eb454b77332a8b19104af78d9553582ab854
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ea8c76df736678754db95d7306605f5ef10b6a11
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037143"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790080"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Ajouter des actions suggérées aux messages
 > [!div class="op_single_selector"]

@@ -1,5 +1,5 @@
 ---
-title: Envoyer un message au robot | Microsoft Docs
+title: Envoyer un message au robot - Bot Service
 description: Découvrez comment envoyer un message au robot à l’aide de l’API Direct Line v1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 461ea04e0865991c3a6d643db7511e58d516ec41
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e6504c1d6cd8cbcf3eab4fadaa62485deba14efa
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299615"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789715"
 ---
 # <a name="send-a-message-to-the-bot"></a>Envoyer un message au robot
 
 > [!IMPORTANT]
-> Cet article décrit comment envoyer un message au robot à l’aide de l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt l’[API Direct Line 3.0](bot-framework-rest-direct-line-3-0-send-activity.md).
+> Cet article décrit comment envoyer un message au robot à l’aide de l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-send-activity.md).
 
 Le protocole Direct Line 1.1 permet aux clients d’échanger des messages avec des robots. Ces messages sont convertis dans le schéma que le robot prend en charge (Bot Framework v1 ou Bot Framework v3). Un client peut envoyer un seul message par demande. 
 
@@ -53,7 +53,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="total-time-for-the-send-message-requestresponse"></a>Durée totale de la demande/réponse Envoyer un message
 
-La durée totale pour publier (POSt) un message dans une conversation Direct Line est la somme des valeurs suivantes :
+La durée totale de PUBLICATION d’un message à une conversation Direct Line est égale à la somme des éléments suivants :
 
 - Délai de transmission de la requête HTTP du client au service Direct Line
 - Temps de traitement interne dans Direct Line (généralement inférieur à 120 ms)
@@ -63,7 +63,7 @@ La durée totale pour publier (POSt) un message dans une conversation Direct Lin
 
 ## <a name="send-attachments-to-the-bot"></a>Envoyer des pièces jointes au robot
 
-Dans certaines situations, un client peut avoir besoin d’envoyer au robot des pièces jointes telles que des images ou des documents. Un client peut envoyer des pièces jointes au robot soit en [spécifiant les URL](#send-by-url) des pièces jointes dans l’objet [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) qu’il envoie en utilisant `POST /api/conversations/{conversationId}/messages`, ou en [chargeant des pièces jointes](#upload-attachments) en utilisant `POST /api/conversations/{conversationId}/upload`.
+Dans certains cas, un client peut avoir besoin d’envoyer des pièces jointes au robot, par exemple des images ou des documents. Un client peut envoyer des pièces jointes au robot soit en [spécifiant les URL](#send-by-url) des pièces jointes dans l’objet [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) qu’il envoie en utilisant `POST /api/conversations/{conversationId}/messages`, ou en [chargeant des pièces jointes](#upload-attachments) en utilisant `POST /api/conversations/{conversationId}/upload`.
 
 ## <a id="send-by-url"></a> Envoyer des pièces jointes par URL
 
@@ -87,7 +87,7 @@ Content-Disposition: ATTACHMENT_INFO
 [file content]
 ```
 
-Dans l’URI de cette demande, remplacez **{conversationId}** par l’ID de la conversation et **{userId}** avec l’ID de l’utilisateur qui envoie le message. Dans les en-têtes de demande, définissez `Content-Type` pour spécifier le type de la pièce jointe, et définissez `Content-Disposition` pour spécifier le nom de fichier de la pièce jointe.
+Dans cette requête URI, remplacez **{conversationId}** par l’identifiant de la conversation et **{userId}** par l’identifiant de l’utilisateur qui envoie le message. Dans les en-têtes de demande, définissez `Content-Type` pour spécifier le type de la pièce jointe, et définissez `Content-Disposition` pour spécifier le nom de fichier de la pièce jointe.
 
 Les extraits de code suivants montrent la requête et la réponse de l’envoi d’une seule pièce jointe.
 
@@ -114,11 +114,11 @@ HTTP/1.1 204 No Content
 
 ### <a id="upload-multiple-attachments"></a> Envoyer plusieurs pièces jointes par chargement
 
-Pour envoyer plusieurs pièces jointes par chargement, publiez (`POST`) une demande en plusieurs parties sur le point de terminaison `/api/conversations/{conversationId}/upload`. Définissez l’en-tête `Content-Type` de la requête sur `multipart/form-data` et insérez les en-têtes `Content-Type` et `Content-Disposition` à chaque partie pour indiquer le type et le nom de fichier de chaque pièce jointe. Dans l’URI de la demande, définissez le paramètre `userId` sur l’ID de l’utilisateur qui envoie le message. 
+Pour envoyer plusieurs pièces jointes par chargement, publiez (`POST`) une demande en plusieurs parties sur le point de terminaison `/api/conversations/{conversationId}/upload`. Définissez l’en-tête `Content-Type` de la requête sur `multipart/form-data` et insérez les en-têtes `Content-Type` et `Content-Disposition` à chaque partie pour indiquer le type et le nom de fichier de chaque pièce jointe. Dans la requête URI, définissez le paramètre `userId` à l’identifiant de l’utilisateur qui envoie le message. 
 
-Vous pouvez inclure un objet [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) dans la demande en ajoutant une partie spécifiant la valeur d’en-tête `Content-Type` `application/vnd.microsoft.bot.message`. Cela permet au client de personnaliser le message contenant les pièces jointes. Si la demande inclut un message, les pièces jointes spécifiées par d’autres parties de la charge utile sont ajoutées en tant que pièces jointes à ce Message avant son envoi. 
+Vous pouvez inclure un objet [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) dans la demande en ajoutant une partie spécifiant la valeur d’en-tête `Content-Type``application/vnd.microsoft.bot.message`. Cela permet au client de personnaliser le message contenant les pièces jointes. Si la demande inclut un message, les pièces jointes spécifiées par d’autres parties de la charge utile sont ajoutées en tant que pièces jointes à ce Message avant son envoi. 
 
-Les extraits de code suivants fournissent un exemple de demande et réponse Envoyer (plusieurs) pièces jointes. Dans cet exemple, la demande envoie un message contenant du texte et une image unique en pièce jointe. La requête peut comporter des parties supplémentaires afin d’inclure plusieurs pièces jointes dans le message.
+Les extraits de code suivants montrent la requête et la réponse de l’envoi de plusieurs pièces jointes. Dans cet exemple, la demande envoie un message contenant du texte et une image unique en pièce jointe. La requête peut comporter des parties supplémentaires afin d’inclure plusieurs pièces jointes dans le message.
 
 #### <a name="request"></a>Requête
 

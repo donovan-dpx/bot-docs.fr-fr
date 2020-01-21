@@ -1,5 +1,5 @@
 ---
-title: Informations de référence sur l’API - API Direct Line 1.1 | Microsoft Docs
+title: Informations de référence sur l’API - Direct Line API 1.1 - Bot Service
 description: Découvrez les en-têtes, les codes d’état HTTP, le schéma, les opérations et les objets de l’API Direct Line 1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7db0ccb84b2c5172348eeac667f78f3abaf95f94
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 6cb2d9cd933952e363631d64f527b4c12d5f3b40
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299656"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791389"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Informations de référence sur l’API - API Direct Line 1.1
 
 > [!IMPORTANT]
-> Cet article contient les informations de référence relatives à l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre bot, utilisez [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-api-reference.md) à la place.
+> Cet article contient les informations de référence relatives à l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-api-reference.md).
 
 Vous pouvez activer la communication de votre application cliente avec votre bot à l’aide de l’API Direct Line 1.1. L’API Direct Line 1.1 utilise les standards REST et JSON sur HTTPS.
 
@@ -146,7 +146,7 @@ POST /api/conversations/{conversationId}/upload?userId={userId}
 > [!NOTE]
 > Les fichiers chargés sont supprimés au bout de 24 heures.
 
-## <a name="schema"></a>Schéma
+## <a name="schema"></a>schéma
 
 Le schéma Direct Line 1.1 est une copie simplifiée du schéma Bot Framework v1 incluant les objets suivants.
 
@@ -216,16 +216,16 @@ Définit une conversation Direct Line.<br/><br/>
 |----|----|----|
 | **conversationId** | string | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
 | **token** | string | Jeton valide pour la conversation spécifiée. |
-| **expires_in** | number | Nombre de secondes avant l’expiration du jeton. |
+| **expires_in** | nombre | Nombre de secondes avant l’expiration du jeton. |
 
-### <a name="error-object"></a>Objet Error
+### <a name="error-object"></a>Objet d’erreur
 Définit une erreur.<br/><br/> 
 
 | Propriété | Type | Description |
 |----|----|----|
 | **code** | string | Code d’erreur. Une des valeurs suivantes : **MissingProperty**, **MalformedData**, **NotFound**, **ServiceError**, **Internal**, **InvalidRange**, **NotSupported**, **NotAllowed**, **BadCertificate**. |
 | **message** | string | Description de l’erreur. |
-| **statusCode** | number | Code d’état. |
+| **statusCode** | nombre | Code d’état. |
 
 ### <a name="errormessage-object"></a>Objet ErrorMessage
 Charge utile d’erreur de message normalisée.<br/><br/> 

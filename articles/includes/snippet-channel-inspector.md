@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 7fc07c722c8f31170757022650fb97a57db89011
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: 7c2dbf65e7f1ff9e0419212a202896fb9a33ae66
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230441"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789958"
 ---
 > [!TIP]
-> Pour découvrir l’aspect et le mode de fonctionnement des différentes fonctionnalités de Bot Framework sur ce canal, [utilisez l’inspecteur de canaux](~/bot-service-channel-inspector.md).
+> Pour obtenir des tableaux décrivant les fonctionnalités prises en charge sur chaque canal, consultez l’article contenant des [informations de référence sur les canaux](../bot-service-channels-reference.md). 

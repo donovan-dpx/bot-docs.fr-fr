@@ -1,5 +1,5 @@
 ---
-title: Événements générés par la télémétrie de Bot Framework Service | Microsoft Docs
+title: Événements générés par la télémétrie Bot Framework Service - Bot Service
 description: Découvrez les événements déclenchés avec les nouvelles fonctionnalités de télémétrie.
 keywords: télémétrie, appinsights, bot monitor
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dbb58a6a287124d0b393a4fc5a617e89840d1542
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: f4de4c0f6e4c90461a46d471806cb290b183935e
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299158"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792029"
 ---
 # <a name="events-generated-by-the-bot-framework-service-telemetry"></a>Événements générés par la télémétrie Bot Framework Service
 
@@ -205,7 +205,7 @@ Journalise les résultats du service LUIS.
 - Channel ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ActivityType ([provenant de l’initialiseur de télémétrie](https://aka.ms/telemetry-initializer))
 - ApplicationId
-- Intention
+- Intentionnel
 - IntentScore
 - Intent2 
 - IntentScore2 

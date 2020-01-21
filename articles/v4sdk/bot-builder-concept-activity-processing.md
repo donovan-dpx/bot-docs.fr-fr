@@ -1,5 +1,5 @@
 ---
-title: Traitement des activités | Microsoft Docs
+title: Traitement des activités - Bot Service
 description: Découvrez le traitement des activités dans le SDK de bot.
 keywords: adaptateur de bot, middleware (intergiciel) personnalisé, court-circuit, repli, gestionnaires d’événements
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 315bebddeda21301d29fa003ce9c8f43e1677000
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 2896dcf1d99ace250ec73f5ecfc2b3857afb0c83
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970725"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798822"
 ---
 # <a name="activity-processing"></a>Traitement des activités
 

@@ -1,5 +1,5 @@
 ---
-title: Gérer un flux de conversation avec des dialogues | Microsoft Docs
+title: Gérer un flux de conversation avec des dialogues - Bot Service
 description: Découvrez comment gérer une conversation avec des dialogues entre un bot et un utilisateur dans le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 08edd665b5aedef6dd05c34e3b30d1f11effa19d
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: cd16586ec6e412d37f34bbe8784fdc86e837d9b7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299879"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791131"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Gérer un flux de conversation avec des dialogues
 
@@ -88,7 +88,7 @@ Le dialogue par défaut est créé sous la forme d’un tableau de fonctions qui
 
 La capture d’écran ci-après illustre les résultats de l’exécution de ce bot dans l’application [Bot Framework Emulator](../bot-service-debug-emulator.md) :
 
-![Gestion d’un flux de conversation avec une cascade](../media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
+![Gérer un flux de conversation avec une cascade](../media/bot-builder-nodejs-dialog-manage-conversation/waterfall-results.png)
 
 ### <a name="prompt-user-for-input"></a>Inviter l’utilisateur à saisir une entrée
 

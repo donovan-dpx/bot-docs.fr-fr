@@ -1,5 +1,5 @@
 ---
-title: Informations de référence sur l’API - API Direct Line 3.0 | Microsoft Docs
+title: Informations de référence sur l’API - Direct Line API 3.0 - Bot Service
 description: Découvrez les en-têtes, les codes d’état HTTP, le schéma, les opérations et les objets de l’API Direct Line 3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 618b2ffe99114679aa5592b816adf6e1b82be83e
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 24dfb2e1ef95dcc53e037fc3c30c4a7c74b114ad
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167182"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789580"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Informations de référence sur l’API - API Direct Line 3.0
 
@@ -54,7 +54,7 @@ Le <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_bla
 > [!NOTE]
 > Le code d’état HTTP 101 est utilisé dans le chemin d’accès de la connexion WebSocket, bien que ceci soit probablement géré par votre client WebSocket.
 
-### <a name="errors"></a>Errors
+### <a name="errors"></a>Erreurs
 
 Toute réponse qui spécifie un code d’état HTTP dans la plage 4xx ou 5xx va inclure un objet [ErrorResponse][] dans le corps de la réponse qui fournit des informations sur l’erreur. Si vous recevez une réponse d’erreur dans la plage 4xx, examinez l’objet **ErrorResponse** pour identifier la cause de l’erreur et résoudre votre problème avant de renvoyer la requête.
 
@@ -201,7 +201,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 > [!NOTE]
 > Les fichiers chargés sont supprimés au bout de 24 heures.
 
-## <a name="schema"></a>Schéma
+## <a name="schema"></a>schéma
 
 Le schéma Direct Line 3.0 inclut tous les objets définis par le [schéma Bot Framework](bot-framework-rest-connector-api-reference.md#schema) ainsi que des objets qui sont spécifiques à Direct Line.
 
@@ -222,7 +222,7 @@ Définit une conversation Direct Line.
 |----|----|----|
 | **conversationId** | string | ID identifiant de manière unique la conversation pour laquelle le jeton spécifié est valide. |
 | **eTag** | string | ETag HTTP (étiquette d’entité). |
-| **expires_in** | number | Nombre de secondes avant l’expiration du jeton. |
+| **expires_in** | nombre | Nombre de secondes avant l’expiration du jeton. |
 | **referenceGrammarId** | string | ID de la grammaire de référence pour ce bot. |
 | **streamUrl** | string | URL pour le flux de messages de la conversation. |
 | **token** | string | Jeton valide pour la conversation spécifiée. |

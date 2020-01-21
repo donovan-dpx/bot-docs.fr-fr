@@ -1,5 +1,5 @@
 ---
-title: Connecter un robot à Kik | Microsoft Docs
+title: Connecter un bot à Kik - Bot Service
 description: Découvrez comment configurer la connexion d’un robot à Kik.
 keywords: connecter un robot, canal de robot, robot Kik, informations d’identification, configurer, téléphone
 author: RobStand
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 9024de58fd40fc3ef9f3c064a23b5e0811c20a89
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 640c430786bbba6ec78d6ce3b1c02d8955a54b09
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298359"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791982"
 ---
 # <a name="connect-a-bot-to-kik"></a>Connecter un robot à Kik
 
@@ -49,7 +49,7 @@ Sous l’onglet Configuration, copiez le **Nom** et la **Clé API**.
 
 Cliquez sur **Submit Kik Credentials** (Envoyer les informations d’identification Kik).
 
-## <a name="enable-the-bot"></a>Activer le robot
+## <a name="enable-the-bot"></a>Activer le bot
 
 Cochez **Enable this bot on Kik** (Activer ce robot sur Kik). Cliquez ensuite sur **I’m done configuring Kik** (J’ai terminé la configuration de Kik).
 

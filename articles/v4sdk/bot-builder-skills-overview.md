@@ -1,5 +1,5 @@
 ---
-title: Vue d’ensemble des compétences Bot Framework | Microsoft Docs
+title: Vue d’ensemble des compétences Bot Framework - Bot Service
 description: Découvrir les compétences Bot Framework
 author: darrenj
 ms.author: darrenj
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
-ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
+ms.openlocfilehash: 7d7c4271fd03100c24ba7dd774dea93909bdd8a0
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72236432"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791231"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Assistant virtuel : vue d’ensemble des compétences
 
 > [!NOTE]
 > Cet article s’applique à la version v4 du Kit de développement logiciel (SDK). 
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d’ensemble
 
-Les développeurs peuvent composer des expériences conversationnelles en combinant des fonctionnalités conversationnelles réutilisables, appelées compétences.
+Les développeurs peuvent composer des expériences conversationnelles en combinant des fonctionnalités conversationnelles réutilisables, appelées « compétences ».
 
 Au sein d’une entreprise, cela peut se traduire par la création d’un bot parent rassemblant plusieurs sous-bots détenus par différentes équipes ou plus largement tirant parti de fonctionnalités courantes fournies par d’autres développeurs. Avec cette préversion des compétences, les développeurs peuvent créer un bot (généralement par le biais du modèle d’assistant virtuel) et ajouter/supprimer des compétences au moyen d’une seule opération de ligne de commande englobant toutes les modifications Dispatch et de configuration.     
 
@@ -38,7 +38,7 @@ Un objectif fondamental de la conception des compétences consistait à mainteni
 
 ![Scénarios de compétences](./media/enterprise-template/skills-at-build.png)
 
-| Nom | Description |
+| Name | Description |
 | ---- | ----------- |
 |[Compétence Calendrier](https://aka.ms/bf-calendar-skill)|Ajoutez des fonctionnalités de calendrier à votre assistant. Technologie Microsoft Graph et Google.|
 |[Compétence E-mail](https://aka.ms/bf-email-skill)|Ajoutez des fonctionnalités d’e-mail à votre assistant. Technologie Microsoft Graph et Google.|

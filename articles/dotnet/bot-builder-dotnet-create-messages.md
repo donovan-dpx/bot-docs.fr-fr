@@ -1,5 +1,5 @@
 ---
-title: Créer des messages avec le kit SDK Bot Framework pour .NET | Microsoft Docs
+title: Créer des messages avec le kit SDK Bot Framework pour .NET - Bot Service
 description: Découvrez les propriétés de message couramment utilisées au sein du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bb75e49e50a479e0141000ef49d75559148fe43a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 8f043afc1b4faad3f7edc66c7ef1d788c42d8403
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297305"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75794670"
 ---
 # <a name="create-messages"></a>Créer des messages
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Votre bot enverra des [activités](bot-builder-dotnet-activities.md) de **message** pour communiquer des informations aux utilisateurs et, en retour, recevoir des activités de **message** de la part des utilisateurs. Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un [texte à énoncer](bot-builder-dotnet-text-to-speech.md), des [actions suggérées](bot-builder-dotnet-add-suggested-actions.md), des [pièces jointes multimédia](bot-builder-dotnet-add-media-attachments.md), des [cartes riches](bot-builder-dotnet-add-rich-card-attachments.md) et des [données spécifiques du canal](bot-builder-dotnet-channeldata.md). 
+Votre bot enverra des **activités** de [message](bot-builder-dotnet-activities.md) pour communiquer des informations aux utilisateurs et, en retour, recevoir des activités de **message** de la part des utilisateurs. Certains messages peuvent consister simplement en un texte brut, tandis que d’autres peuvent contenir un contenu plus riche, par exemple un [texte à énoncer](bot-builder-dotnet-text-to-speech.md), des [actions suggérées](bot-builder-dotnet-add-suggested-actions.md), des [pièces jointes multimédia](bot-builder-dotnet-add-media-attachments.md), des [cartes riches](bot-builder-dotnet-add-rich-card-attachments.md) et des [données spécifiques du canal](bot-builder-dotnet-channeldata.md). 
 
 Cet article décrit certaines des propriétés de message couramment utilisées.
 
@@ -70,14 +70,14 @@ L’objet `Place` contient les propriétés suivantes :
 | Adresse | description ou objet `PostalAddress` (à venir) | 
 | Zone géographique | GeoCoordinates | 
 | HasMap | URL vers une carte ou un objet `Map` (à venir) |
-| Nom | nom du lieu |
+| Name | nom du lieu |
 
 L’objet `GeoCoordinates` contient les propriétés suivantes :
 
 | Propriété | Description | 
 |----|----|
 | Type | type de l’entité (« GeoCoordinates ») |
-| Nom | nom du lieu |
+| Name | nom du lieu |
 | Longitude | longitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitude | latitude de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Elevation | élévation de l’emplacement (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 

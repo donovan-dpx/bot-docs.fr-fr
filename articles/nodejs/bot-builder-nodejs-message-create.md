@@ -1,5 +1,5 @@
 ---
-title: Créer des messages | Microsoft Docs
+title: Créer des messages - Bot Service
 description: Découvrez comment créer des messages avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7e2f48a3450154de9e2465f9d0d992ace4f3996f
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1837b302b8d0b1d05e16d4d979b5807fa3e2d268
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299807"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790844"
 ---
 # <a name="create-messages"></a>Créer des messages
 
@@ -55,7 +55,7 @@ var userMessage = session.message.text;
 
 Pour avoir plus de contrôle sur la mise en forme du texte de vos messages, vous pouvez créer un objet [`message`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html) personnalisé et définir les propriétés nécessaires avant de l’envoyer à l’utilisateur.
 
-Cet exemple montre comment créer un objet `message` personnalisé et définir les propriétés `text``textFormat` et `textLocale`.
+Cet exemple montre comment créer un objet `message` personnalisé et définir les propriétés `text`, `textFormat` et `textLocale`.
 
 ```javascript
 var customMessage = new builder.Message(session)

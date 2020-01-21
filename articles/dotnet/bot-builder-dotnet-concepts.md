@@ -1,5 +1,5 @@
 ---
-title: Concepts clés du kit SDK Bot Framework pour .NET | Microsoft Docs
+title: Concepts clés du kit SDK Bot Framework pour .NET - Bot Service
 description: Appréhendez les concepts clés et les outils permettant de créer et de déployer les bots conversationnels disponibles dans le kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 027006f2ad3d6aff1094142a41d791ba0e5d8922
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298385"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789820"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Concepts clés du kit SDK Bot Framework pour .NET
 
@@ -37,7 +37,7 @@ Dans le kit SDK Bot Framework pour .NET, la bibliothèque [Connector][connectorL
 
 Pour plus d’informations sur les activités disponibles dans le kit SDK Bot Framework pour .NET, consultez [Vue d’ensemble des activités](bot-builder-dotnet-activities.md).
 
-## <a name="dialog"></a>Dialogue
+## <a name="dialog"></a>Boîte de dialogue
 
 Quand vous créez un bot à l’aide du kit SDK Bot Framework pour .NET, vous pouvez utiliser des [dialogues](bot-builder-dotnet-dialogs.md) pour modéliser une conversation et gérer un [flux de conversation](../bot-service-design-conversation-flow.md#dialog-stack). Un dialogue peut se composer d’autres dialogues afin d’en optimiser la réutilisation, et un contexte de dialogue conserve la [pile des dialogues](../bot-service-design-conversation-flow.md) qui sont actifs dans la conversation à un instant donné. Une conversation constituée de dialogues est portable sur divers ordinateurs, permettant ainsi la mise à l’échelle de l’implémentation de votre bot. 
 

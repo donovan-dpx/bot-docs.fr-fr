@@ -1,5 +1,5 @@
 ---
-title: Authentification | Microsoft Docs
+title: Authentification Direct Line API 1.1 - Bot Service
 description: Découvrez comment authentifier les requêtes d’API dans l’API Direct Line v1.1.
 author: RobStand
 ms.author: kamrani
@@ -7,17 +7,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 555cb3298114c3eb8ba8a4e1c41b5515e929fd91
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 27da3fbe5b122e23e0284c8396f75a5ac73da13b
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299642"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789759"
 ---
 # <a name="authentication"></a>Authentication
 
 > [!IMPORTANT]
-> Cet article décrit l’authentification dans l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre bot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-authentication.md).
+> Cet article décrit l’authentification dans l’API Direct Line 1.1. Si vous créez une connexion entre votre application cliente et votre robot, utilisez plutôt [l’API Direct Line 3.0](bot-framework-rest-direct-line-3-0-authentication.md).
 
 Un client peut authentifier les requêtes destinées à l’API Direct Line 1.1 soit à l’aide d’un **secret** que vous [obtenez dans la page de configuration du canal Direct Line](../bot-service-channel-connect-directline.md) sur le portail Bot Framework, soit à l’aide d’un **jeton** que vous obtenez au moment de l’exécution.
 
@@ -89,7 +89,7 @@ Si vous envisagez de distribuer le jeton aux clients et souhaitez qu’ils initi
 
 ## <a id="refresh-token"></a> Actualiser un jeton Direct Line
 
-Un jeton Direct Line est valide pendant 30 minutes à partir du moment où il est généré. Il peut être actualisé un nombre illimité de fois, tant qu’il n’a pas expiré. Un jeton qui a expiré ne peut pas être actualisé. Pour actualiser un jeton Direct Line, émettez la requête suivante :
+Un jeton Direct Line est valide pendant 30 minutes à partir du moment où il est généré. Il peut être actualisé un nombre illimité de fois, tant qu’il n’a pas expiré. Il n’est pas possible d’actualiser un jeton qui a expiré. Pour actualiser un jeton Direct Line, émettez la demande suivante :
 
 ```http
 POST https://directline.botframework.com/api/tokens/{conversationId}/renew

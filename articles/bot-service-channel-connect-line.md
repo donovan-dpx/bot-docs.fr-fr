@@ -1,5 +1,5 @@
 ---
-title: Connecter un bot à LINE | Microsoft Docs
+title: Connecter un bot à LINE - Bot Service
 description: Découvrez comment configurer la connexion d’un bot à LINE.
 keywords: connecter un bot, canal de bot, bot LINE, informations d’identification, configurer, téléphone
 author: ivorb
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 1/7/2019
-ms.openlocfilehash: 8be0c7f89595e3222e5170fc7f11d052f9cb6851
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 092a8327f4a4828642a413201dc0c9483b779345
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298469"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791948"
 ---
 # <a name="connect-a-bot-to-line"></a>Connecter un bot à LINE
 
@@ -119,7 +119,7 @@ Vous pouvez également choisir de conserver ces messages. Dans ce cas, il peut �
 
 ![Capture d’écran de LINE - Définir la réponse automatique](./media/channels/LINE-screenshot-11.png)
 
-## <a name="troubleshooting"></a>Résolution de problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 * Dans le cas où votre bot ne répond pas à aucun de vos messages, accédez à votre bot dans le portail Azure, puis choisissez Tester dans Web Chat.  
     * Si le bot fonctionne ici mais qu’il ne répond pas dans LINE, rechargez votre page Console développeur de LINE et répétez les instructions ci-dessus relatives au webhook. Veillez à définir l’**URL du webhook** avant d’activer les webhooks.

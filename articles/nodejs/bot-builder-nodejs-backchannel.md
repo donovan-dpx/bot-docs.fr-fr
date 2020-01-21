@@ -1,5 +1,5 @@
 ---
-title: Échanger des informations à l’aide du contrôle web | Microsoft Docs
+title: Échanger des informations à l’aide du contrôle web - Bot Service
 description: Découvrez comment échanger des informations entre le bot et une page web à l’aide du kit SDK Bot Framework pour Node.js.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 52f57cba5824deb01b176363880084760a95a41b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 1b4548b02f714ce3948acb3eaed25fcf916a2d9f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299921"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790971"
 ---
 # <a name="use-the-backchannel-mechanism"></a>Utiliser le mécanisme de backchannel
 

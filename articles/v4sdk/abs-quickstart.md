@@ -1,18 +1,18 @@
 ---
-title: Créer un bot avec le service de robot | Microsoft Docs
+title: Créer un bot avec Azure Bot Service - Bot Service
 description: Découvrez comment créer un bot avec le service de robot, un environnement de développement de bots dédié intégré.
 keywords: Démarrage rapide, créer un bot, service de robot, bot d’application web
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/22/2019
-ms.openlocfilehash: fd3a20822827a8d4500a1e91bbb9e998b05475dd
-ms.sourcegitcommit: a4a437a1d44137375ea044dcc11bccc8d004e3db
+ms.date: 01/09/2020
+ms.openlocfilehash: 9190c2eefbfe290ea43531630473772addb1b60a
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479516"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798886"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Créer un bot avec Azure Bot Service
 
@@ -25,14 +25,14 @@ Azure Bot Service fournit les principaux composants permettant de créer des bot
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - Compte [Azure](https://portal.azure.com)
 
 ### <a name="create-a-new-bot-service"></a>Créer un service de robot
 
 1. Connectez-vous au [portail Azure](https://portal.azure.com/).
-1. Cliquez sur le lien **Créer une nouvelle ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning**  >  **Robot de l’application web**. 
+1. Cliquez sur le lien **Créer une nouvelle ressource** dans le coin supérieur gauche du Portail Azure, puis sélectionnez **IA + Machine Learning** > **Robot de l’application web**. 
 
 ![créer un bot](../media/azure-bot-quickstarts/abs-create-blade.png)
 
@@ -50,9 +50,9 @@ Azure Bot Service fournit les principaux composants permettant de créer des bot
  | **Niveau tarifaire** | F0 | Sélectionnez un niveau tarifaire. Vous pourrez mettre à jour le niveau tarifaire à tout moment. Pour plus d’informations, consultez la page [Tarification Azure Bot Service](https://azure.microsoft.com/pricing/details/bot-service/). |
  | **Nom de l’application** | Un nom unique | Nom d’URL unique du bot. Par exemple, si vous nommez votre bot *myawesomebot*, l’URL de votre bot sera `http://myawesomebot.azurewebsites.net`. Ce nom doit uniquement comporter des caractères alphanumériques et des traits de soulignement. Ce champ est limité à 35 caractères. Le nom d’application n’est plus modifiable une fois le bot créé. |
  | **Modèle de bot** | Bot d’écho | Choisissez **SDK v4** (Kit SDK v4). Pour ce guide de démarrage rapide, sélectionnez C# ou Node.js, puis cliquez sur **Sélectionner**.  
- | **Plan/emplacement du service d’application** | Votre plan App Service  | Sélectionnez un emplacement de [plan App Service](https://azure.microsoft.com/pricing/details/app-service/plans/). Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
+ | **Plan/emplacement du service d’application** | Votre plan App Service  | Sélectionnez un emplacement de [plan App Service](https://azure.microsoft.com/pricing/details/app-service/plans/). Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot.Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
  | **Comptes LUIS** _Uniquement disponible pour le modèle Bot de base_ | Nom de ressource LUIS Azure | Après avoir [migré les ressources LUIS vers une ressource Azure](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), entrez le nom de cette ressource Azure pour l’associer à l’application LUIS. 
- | **Application Insights** | Il en va | **Activez** ou **désactivez** [Application Insights](/bot-framework/bot-service-manage-analytics). Si vous sélectionnez **Activé**, spécifiez également un emplacement régional. Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot.Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
+ | **Application Insights** | Il en va | Déterminez si vous souhaitez **Activer** ou **Désactiver** [Application Insights](/bot-framework/bot-service-manage-analytics). Si vous sélectionnez **Activé**, spécifiez également un emplacement régional. Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot.Vous pouvez choisir n’importe quel emplacement répertorié, même s’il est généralement préférable de sélectionner le même emplacement que celui des services du bot. |
  | **ID d’application et mot de passe Microsoft** | Création automatique de l’ID d’application et du mot de passe | Utilisez cette option si vous voulez entrer manuellement un ID d’application et un mot de passe Microsoft. Sinon, ces derniers seront créés automatiquement au cours du processus de création du bot. Lorsque vous créez une inscription d’application manuellement pour Bot Service, vérifiez que les types de comptes pris en charge sont définis sur « Comptes dans un annuaire organisationnel » ou « Comptes dans un annuaire organisationnel et comptes personnels Microsoft (par exemple, Skype, Outlook.com, Xbox, etc.) ». |
 
 4. Cliquez sur **Créer** pour créer le service et déployer le bot dans le cloud. Ce processus peut prendre quelques minutes.

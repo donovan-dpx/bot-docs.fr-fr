@@ -1,5 +1,5 @@
 ---
-title: Fonctionnement des bots | Microsoft Docs
+title: Fonctionnement des bots - Bot Service
 description: Décrit le fonctionnement des activités et de http dans le kit SDK Bot Framework.
 keywords: flux de conversation, tour, conversation du bot, dialogues, invites, cascades, jeu de dialogues
 author: johnataylor
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 97f8318b6f9035e3ac3be1983b0691f627240242
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: f34d59c801708b62f1429b9edb17fccc05a3b983
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491536"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791308"
 ---
 # <a name="how-bots-work"></a>Fonctionnement des bots
 

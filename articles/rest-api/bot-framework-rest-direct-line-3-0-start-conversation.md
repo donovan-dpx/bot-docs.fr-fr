@@ -1,5 +1,5 @@
 ---
-title: Démarrer une conversation | Microsoft Docs
+title: Démarrer une conversation - Bot Service
 description: Découvrez comment démarrer une conversation à l’aide de l’API Direct Line v3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 7cc77133b6b2a212b7fde2e0b9d8c854e2bbab9c
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: bc3679c48f67ffc5fadfbc387ee41c69ad96884f
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299542"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789289"
 ---
 # <a name="start-a-conversation"></a>Démarrer une conversation
 
-Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le bot et le client y participent et tant que leurs informations d’identification sont valides. La conversation étant ouverte, le robot et le client peuvent envoyer des messages. Plusieurs clients peuvent se connecter à une conversation donnée, et chaque client peut participer pour le compte de plusieurs utilisateurs.
+Les conversations Direct Line sont explicitement ouvertes par les clients et peuvent durer tant que le robot et le client y participent et tant que leurs informations d’identification sont valides. La conversation étant ouverte, le robot et le client peuvent envoyer des messages. Plusieurs clients peuvent se connecter à une conversation donnée, et chaque client peut participer pour le compte de plusieurs utilisateurs.
 
 ## <a name="open-a-new-conversation"></a>Ouvrir une nouvelle conversation
 

@@ -1,5 +1,5 @@
 ---
-title: Envoyer une activité au robot | Microsoft Docs
+title: Envoyer une activité au bot - Bot Service
 description: Découvrez comment envoyer une activité au robot à l’aide de l’API Direct Line v3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 5c7ac61da6c2e0d09fb2f8dc4cd0bf3961bcfc4f
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 90eeb3157cf53f1ee87d1ac08313c6d659e6c1d9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875994"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789316"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envoyer une activité au bot
 
@@ -77,11 +77,11 @@ La durée totale de PUBLICATION d’un message à une conversation Direct Line e
 
 Dans certains cas, un client peut avoir besoin d’envoyer des pièces jointes au robot, par exemple des images ou des documents. Un client peut envoyer des pièces jointes au robot en [ indiquant la ou les URL ](#send-by-url) de la ou des pièces jointes dans l’objet [Activité][] envoyé à l’aide de `POST /v3/directline/conversations/{conversationId}/activities` ou en [ téléchargeant la ou les pièces jointes ](#upload-attachments) à l’aide de `POST /v3/directline/conversations/{conversationId}/upload`.
 
-## <a id="send-by-url"></a>Envoyer une ou des pièces jointes par URL
+## <a id="send-by-url"></a> Envoyer des pièces jointes par URL
 
 Pour envoyer une ou plusieurs pièces jointes faisant partie de l’objet [Activité][] à l’aide de `POST /v3/directline/conversations/{conversationId}/activities`, il suffit d’inclure un ou plusieurs objets [Attachment][] dans l’objet Activité et de définir la propriété `contentUrl` de chaque objet Pièce jointe pour spécifier l’URI HTTP, HTTPS ou `data`. URI de la pièce jointe.
 
-## <a id="upload-attachments"></a>Envoyer une ou des pièces jointes par téléchargement
+## <a id="upload-attachments"></a> Envoyer des pièces jointes par chargement
 
 Il arrive souvent qu’un client ait des images ou des documents sur un périphérique qu’il veut envoyer au bot, mais ne dispose pas des URL correspondant aux fichiers. Dans cette situation, un client peut lancer une requête `POST /v3/directline/conversations/{conversationId}/upload` afin d’envoyer des pièces jointes au robot par téléchargement. Le format et le contenu de la demande varient selon que le client [envoie une pièce jointe unique](#upload-one-attachment) ou [envoie plusieurs pièces jointes](#upload-multiple-attachments).
 
@@ -99,7 +99,7 @@ Content-Disposition: ATTACHMENT_INFO
 [file content]
 ```
 
-Dans cette requête URI, remplacez **{conversationId}** par l’identifiant de la conversation et **{userId}** par l’identifiant de l’utilisateur qui envoie le message. Le paramètre `userId` est obligatoire. Dans les en-têtes de requête, définissez `Content-Type` pour indiquer le type de pièce jointe et définissez `Content-Disposition` pour indiquer le nom de fichier de la pièce jointe.
+Dans cette requête URI, remplacez **{conversationId}** par l’identifiant de la conversation et **{userId}** par l’identifiant de l’utilisateur qui envoie le message. Le paramètre `userId` est obligatoire. Dans les en-têtes de demande, définissez `Content-Type` pour spécifier le type de la pièce jointe, et définissez `Content-Disposition` pour spécifier le nom de fichier de la pièce jointe.
 
 Les extraits de code suivants montrent la requête et la réponse de l’envoi d’une seule pièce jointe.
 
@@ -130,7 +130,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a id="upload-multiple-attachments"></a> Envoyer plusieurs pièces jointes par téléchargement
+### <a id="upload-multiple-attachments"></a> Envoyer plusieurs pièces jointes par chargement
 
 Pour envoyer plusieurs pièces jointes par chargement, publiez (`POST`) une demande en plusieurs parties sur le point de terminaison `/v3/directline/conversations/{conversationId}/upload`. Définissez l’en-tête `Content-Type` de la requête sur `multipart/form-data` et insérez les en-têtes `Content-Type` et `Content-Disposition` à chaque partie pour indiquer le type et le nom de fichier de chaque pièce jointe. Dans la requête URI, définissez le paramètre `userId` à l’identifiant de l’utilisateur qui envoie le message. 
 

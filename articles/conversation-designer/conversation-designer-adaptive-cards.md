@@ -1,5 +1,5 @@
 ---
-title: Configurer des cartes adaptatives | Microsoft Docs
+title: Configurer des cartes adaptatives - Bot Service
 description: Découvrez comment configurer des cartes adaptatives.
 author: vkannan
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: cb03703b7d301a77d64577ef8e56da3dc7a4e0af
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 2d7c898a555dde53f01cf09b6ab54abf2c91960d
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298554"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75795918"
 ---
 # <a name="configure-adaptive-cards"></a>Configurer des cartes adaptatives
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ Lorsque vous créez une carte, un aperçu riche de celle-ci est rendu dans le po
 
 ## <a name="input-form"></a>Formulaire d’entrée
 
-Des cartes adaptatives peuvent contenir des formulaires d’entrée. Dans Conversation Designer, les formulaires sont intégrés avec des entités de tâche. Par exemple, si un champ a une `id` **myName** et que l’action `Submit` du formulaire est exécutée, une `taskEntity` nommée **myName** est créée, qui contient la valeur du champ. 
+Des cartes adaptatives peuvent contenir des formulaires d’entrée. Dans Conversation Designer, les formulaires sont intégrés avec des entités de tâche. Par exemple, si un champ a une `id`**myName** et que l’action `Submit` du formulaire est exécutée, une `taskEntity` nommée **myName** est créée, qui contient la valeur du champ. 
 
 L’extrait de code ci-dessous montre comment l’entité **myName** est définie dans le code :
 

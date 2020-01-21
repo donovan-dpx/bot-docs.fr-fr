@@ -1,5 +1,5 @@
 ---
-title: Gérer les ressources du bot | Microsoft Docs
+title: Gérer les ressources du bot - Bot Service
 description: Décrit l’objectif et l’utilisation du fichier de bot.
 keywords: fichier de bot, .bot, fichier .bot, msbot, ressources de bot, gérer les ressources de bot
 author: ivorb
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14c6b9c180d02acbb7c8f3df7843bf90bc0e400a
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 65b7b3c3da9fb04d1d086c5304439b53bbc30cf7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299132"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791141"
 ---
 # <a name="manage-bot-resources"></a>Gérer les ressources du bot
 

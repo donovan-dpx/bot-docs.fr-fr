@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état personnalisé avec Azure Cosmos DB | Microsoft Docs
+title: Gérer les données d’état personnalisé avec Azure Cosmos DB (v3 C#) - Bot Service
 description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Azure Cosmos DB avec le kit SDK Bot Framework pour .NET.
 author: kamrani
 ms.author: kamrani
@@ -8,25 +8,25 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2495e0506072609e47f4014f1027ed5033fb4bf7
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 5057b05d598e8ff985a1d0daf5d18fef6c0ffc95
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70297773"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75797940"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-net"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour .NET
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Dans cet article, vous implémentez Azure Cosmos DB pour stocker et gérer les données d’état de votre bot. Le service d’état de connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
+Dans cet article, vous implémentez Azure Cosmos DB pour stocker et gérer les données d’état de votre bot. Le service d’état du connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://github.com/Microsoft/BotBuilder-Azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
  - Débit d’API d’état plus élevé (meilleur contrôle des performances)
  - Latence inférieure pour la géodistribution
  - Contrôle de l’emplacement où les données sont stockées
  - Accès aux données d’état réelles
  - Stockage de plus de 32 ko de données
  
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 Vous devez disposer des éléments suivants :
  - [Compte Microsoft Azure](https://azure.microsoft.com/free/)
  - [Visual Studio 2015 ou ultérieur](https://www.visualstudio.com/)
@@ -102,19 +102,19 @@ namespace SampleApp
 }
 ```
 
-Enregistrez le fichier Global.asax.cs. Vous êtes maintenant prêt à tester le bot avec l’émulateur.
+Enregistrez le fichier Global.asax.cs. Vous êtes à présent prêt à tester le robot avec l’émulateur.
 
 ## <a name="run-your-bot-app"></a>Exécuter votre application de bot
 Exécutez votre bot dans Visual Studio, le code que vous avez ajouté crée la table **botdata** personnalisée dans Azure.
 
 ## <a name="connect-your-bot-to-the-emulator"></a>Connecter votre bot à l’émulateur
-À ce stade, votre bot s’exécute localement. Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
-1. Tapez http://localhost:port-number/api/messages dans la barre d’adresses, où port-number correspond au numéro de port affiché dans le navigateur dans lequel votre application est en cours d’exécution. Vous pouvez laisser les champs <strong>Microsoft App ID</strong> (ID d’application Microsoft) et <strong>Microsoft App Password</strong> (Mot de passe d’application Microsoft) vides pour l’instant. Vous obtiendrez ces informations ultérieurement lors de l’[inscription du bot](~/bot-service-quickstart-registration.md).
+À ce stade, votre bot s’exécute localement. Démarrez à présent l’émulateur, puis connectez-vous à votre bot dans l’émulateur :
+1. Tapez http://localhost:port-number/api/messages dans la barre d’adresses, où port-number correspond au numéro de port affiché dans le navigateur dans lequel votre application est en cours d’exécution. Pour l’instant, vous pouvez laisser vides les champs <strong>ID d’application Microsoft</strong> et <strong>Mot de passe d’application Microsoft</strong>. Vous obtiendrez ces informations ultérieurement lors de l’[inscription du bot](~/bot-service-quickstart-registration.md).
 2. Cliquez sur **Connecter**. 
 3. Testez votre bot en entrant quelques messages dans l’émulateur. 
 
-## <a name="view-state-data-on-azure-portal"></a>Afficher les données d’état sur le portail Azure
-Pour afficher les données d’état, connectez-vous au portail Azure et accédez à votre base de données. Cliquez sur **Explorateur de données (préversion)** pour vérifier que les informations d’état à partir de votre bot sont en cours d’enregistrement. 
+## <a name="view-state-data-on-azure-portal"></a>Voir les données d’état dans le portail Azure
+Pour voir les données d’état, connectez-vous au portail Azure et accédez à votre base de données. Cliquez sur **Explorateur de données (préversion)** pour vérifier que les informations d’état à partir de votre bot sont en cours d’enregistrement. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 Dans cet article, vous avez utilisé Cosmos DB pour enregistrer et gérer les données de votre bot. Découvrez maintenant comment modéliser le flux de la conversation avec des dialogues.

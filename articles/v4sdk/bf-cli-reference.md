@@ -1,5 +1,5 @@
 ---
-title: Informations de référence sur l’interface de ligne de commande (CLI) d’Azure Bot Framework | Microsoft Docs
+title: Informations de référence sur l’interface de ligne de commande (CLI) d’Azure Bot Framework - Bot Service
 description: Découvrez l’interface de ligne de commande (CLI) de Bot Framework.
 keywords: Interface de ligne de commande de Bot Framework, interface CLI de Bot Framework
 author: JonathanFingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 10/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5123b61859c2fb00886458e462941cb5e6e1f896
-ms.sourcegitcommit: dcacda776c927bcc7c76d00ff3cc6b00b062bd6b
+ms.openlocfilehash: 6ae0edc8e2717d7e96ae8681cd832f7cb6cde66c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74410464"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75791345"
 ---
 # <a name="bot-framework-cli-reference"></a>Informations de référence sur l’interface CLI de Bot Framework
 
@@ -117,7 +117,7 @@ _Voir le code : [@microsoft/bf-chatdown](https://github.com/microsoft/botframew
 
 ## `bf config`
 
-Configure divers paramètres au sein de l’interface CLI.
+Configure divers paramètres dans l’interface CLI.
 
 ```text
 USAGE

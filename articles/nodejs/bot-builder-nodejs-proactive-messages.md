@@ -1,5 +1,5 @@
 ---
-title: Envoyer des messages proactifs | Microsoft Docs
+title: Envoyer des messages proactifs (v3 JS) - Bot Service
 description: Découvrez comment interrompre le flux de conversation actif par un message proactif à l’aide du kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58a6678561d048d0257dc81d37d4db4cbca9b382
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e23d74c5f1dfb36625db99fc906185159d3362a9
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299792"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790834"
 ---
 # <a name="send-proactive-messages"></a>Envoyer des messages proactifs
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]

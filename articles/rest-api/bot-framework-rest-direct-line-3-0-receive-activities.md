@@ -1,5 +1,5 @@
 ---
-title: Recevoir des activités du bot | Microsoft Docs
+title: Recevoir des activités du bot - Bot Service
 description: Découvrez comment envoyer des activités à partir du bot à l’aide de l’API Direct Line v3.0.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/13/2019
-ms.openlocfilehash: 1e5c48dd3782100f9393c3498baa2b0a7c728cb3
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: bfe40a33747dfd6724f6a5efe2104ffde01781bc
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876144"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75789370"
 ---
 # <a name="receive-activities-from-the-bot"></a>Recevoir des activités du bot
 
@@ -174,5 +174,5 @@ Les clients qui interrogent les données à l’aide de `HTTP GET` doivent chois
 - [Authentification](bot-framework-rest-direct-line-3-0-authentication.md)
 - [Démarrer une conversation](bot-framework-rest-direct-line-3-0-start-conversation.md)
 - [Se reconnecter à une conversation](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
-- [Envoyer une activité au bot](bot-framework-rest-direct-line-3-0-send-activity.md)
+- [Envoyer une activité au robot](bot-framework-rest-direct-line-3-0-send-activity.md)
 - [Mettre fin à une conversation](bot-framework-rest-direct-line-3-0-end-conversation.md)

@@ -1,5 +1,5 @@
 ---
-title: Gérer les données d’état personnalisé avec Azure Cosmos DB | Microsoft Docs
+title: Gérer les données d’état personnalisé avec Azure Cosmos DB (v3 JS) - Bot Service
 description: Découvrez comment enregistrer et récupérer des données d’état en utilisant Azure Cosmos DB avec le kit SDK Bot Framework pour Node.js.
 author: DucVo
 ms.author: kamrani
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dcf4b4cbeb9e0827f0baa4d1a799355bd422a9de
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: e878972dab75813f7a977244d4bce06f3d6a72a2
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299689"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790364"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Gérer les données d’état personnalisé avec Azure Cosmos DB pour Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et gérer les données d’état de votre bot. La valeur par défaut du service d’état des connecteurs utilisé par les bots n’est pas destinée à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser un stockage d’état personnalisé :
+Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et gérer les données d’état de votre bot. Le service d’état du connecteur par défaut utilisé par les bots n’est pas destiné à l’environnement de production. Vous devez utiliser les [Extensions Azure](https://www.npmjs.com/package/botbuilder-azure) disponibles sur GitHub ou implémenter un client avec un état personnalisé à l’aide de la plateforme de stockage de données de votre choix. Voici quelques-unes des raisons d’utiliser le stockage d’état personnalisé :
 
 - Débit d’API d’état plus élevé (meilleur contrôle des performances)
 - Latence inférieure pour la distribution géographique
@@ -28,7 +28,7 @@ Dans cet article, vous allez implémenter le stockage Cosmos DB pour stocker et 
 - Base de données d’état non partagée avec d’autres robots
 - Stockage de plus de 32 Ko
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 - [Node.js](https://nodejs.org/en/).
 - [Bot Framework Emulator](~/bot-service-debug-emulator.md)

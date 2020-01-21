@@ -1,5 +1,5 @@
 ---
-title: Envoyer des notifications proactives aux utilisateurs | Microsoft Docs
+title: Envoyer des notifications proactives aux utilisateurs - Bot Service
 description: Comprendre comment envoyer des messages de notification
 keywords: message proactif, message de notification, notification de bot,
 author: jonathanfingold
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 24435d186569d29165760cf1d7d41ee50e665d06
-ms.sourcegitcommit: a547192effb705e4c7d82efc16f98068c5ba218b
+ms.openlocfilehash: 12863035f0fbe361d75d12021a5bdca5f740b1aa
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75491475"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75798383"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envoyer des notifications proactives aux utilisateurs
 

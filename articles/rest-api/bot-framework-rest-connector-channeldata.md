@@ -1,5 +1,5 @@
 ---
-title: Implémenter des fonctionnalités spécifiques du canal | Microsoft Docs
+title: Implémenter des fonctionnalités spécifiques au canal à l'aide de l'API REST - Bot Service
 description: Découvrez comment implémenter des fonctionnalités spécifiques du canal à l’aide de l’API Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f437b2e807035a6ae0d6ec655c1edf17aacf12e
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 4716ff913940b09fa24f199492de9e19cf009b71
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876133"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790009"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implémenter une fonctionnalité spécifique du canal
 
@@ -20,7 +20,7 @@ Certains canaux fournissent des fonctionnalités qui ne peuvent pas être implé
 
 Cet article explique comment utiliser une propriété `channelData` d’activité de message pour implémenter cette fonctionnalité propre au canal :
 
-| Canal | Fonctionnalités |
+| Channel | Fonctionnalités |
 |----|----|
 | Email | Envoyer et recevoir un e-mail qui contient un corps, un objet et des métadonnées d’importance |
 | Slack | Envoyer des messages Slack de fidélité |
@@ -273,6 +273,6 @@ Cet extrait de code montre un exemple de la propriété `channelData` pour un me
 - [Créer des messages](bot-framework-rest-connector-create-messages.md)
 - [Envoyer et recevoir des messages](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
-- [Aperçu des fonctionnalités avec l’inspecteur de canaux](../bot-service-channel-inspector.md)
+- [Informations de référence sur les canaux](../bot-service-channels-reference.md)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

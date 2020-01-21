@@ -1,5 +1,5 @@
 ---
-title: Ajouter des conseils de saisie aux messages | Microsoft Docs
+title: Ajouter des conseils de saisie aux messages - Bot Service
 description: Découvrez comment ajouter des conseils de saisie aux messages à l’aide du service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: ef031d250708d6613a64f5d0cb301cf83b6a26ff
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 67da678ec77532dfdfd60374aa2663aeefe8af53
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037206"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790797"
 ---
 # <a name="add-input-hints-to-messages"></a>Ajouter des conseils de saisie aux messages
 > [!div class="op_single_selector"]

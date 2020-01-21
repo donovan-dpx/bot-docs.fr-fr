@@ -1,5 +1,5 @@
 ---
-title: Connecter un bot au courrier Office 365 | Microsoft Docs
+title: Connecter un bot au courrier Office 365 - Bot Service
 description: Découvrez comment configurer un bot pour l’envoi et la réception d’e-mails avec Office 365.
 keywords: Office 365, canaux de bot, e-mail, informations d’identification de courrier, portail azure, e-mail personnalisé
 author: kamrani
@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/15/2019
-ms.openlocfilehash: 3ad7829af9dc24ca9e10ebab352b4513b3bcad28
-ms.sourcegitcommit: 78da125eafe93b3c6d254708b82bdd01de7c3afb
+ms.openlocfilehash: 8ca2735dac838982af3ba97221e07d80155153b7
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464285"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75792090"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Connecter un bot au courrier Office 365
 
@@ -73,9 +73,12 @@ Pour plus d’informations sur l’utilisation de `channelData`, consultez l’e
 Pour plus d’informations sur l’utilisation de `channelData`, consultez l’article portant sur [l’implémentation de fonctionnalités spécifiques du canal](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
 
-## <a name="other-considerations"></a>Autres points à considérer
+## <a name="other-considerations"></a>Autres considérations
 
 Si votre bot ne retourne pas un code d’état HTTP 200 OK dans les 15 secondes en réponse à un e-mail entrant, le canal de messagerie tente de renvoyer le message, et votre bot peut recevoir la même activité d’e-mail plusieurs fois. Pour plus d’informations, consultez la section [Détails HTTP](v4sdk/bot-builder-basics.md#http-details) dans **Fonctionnement des bots** et l’article de procédure de[Résolution des erreurs de dépassement de délai d’attente](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md).
+
+> [!NOTE]
+> Si vous utilisez un compte Office 365 sur lequel l'authentification multifacteur est activée, désactivez-la pour le compte spécifié avant de configurer ce dernier pour le canal de messagerie. À défaut, la connexion échouera. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -83,10 +86,11 @@ Si votre bot ne retourne pas un code d’état HTTP 200 OK dans les 15 secondes 
 ::: moniker range="azure-bot-service-3.0"
 * Connectez un bot à des [canaux](~/bot-service-manage-channels.md)
 * [Implémenter des fonctionnalités propres à un canal](dotnet/bot-builder-dotnet-channeldata.md) à l’aide du kit SDK Bot Framework pour .NET
-* Utilisez [l’inspecteur de canaux](bot-service-channel-inspector.md) pour découvrir la manière dont un canal affiche une fonctionnalité spécifique de votre application bot
+* Pour plus d’informations sur les fonctionnalités prises en charge sur chaque canal, consultez l’article contenant des [informations de référence sur les canaux](bot-service-channels-reference.md).
 ::: moniker-end
 ::: moniker range="azure-bot-service-4.0"
 * Connectez un bot à des [canaux](~/bot-service-manage-channels.md)
 * [Implémenter des fonctionnalités propres à un canal](~/v4sdk/bot-builder-channeldata.md) à l’aide du kit SDK Bot Framework pour .NET
-* Utilisez [l’inspecteur de canaux](bot-service-channel-inspector.md) pour découvrir la manière dont un canal affiche une fonctionnalité spécifique de votre application bot
+* Pour plus d’informations sur les fonctionnalités prises en charge sur chaque canal, consultez l’article contenant des [informations de référence sur les canaux](bot-service-channels-reference.md).
 ::: moniker-end
+

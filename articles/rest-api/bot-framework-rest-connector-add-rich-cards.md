@@ -1,5 +1,5 @@
 ---
-title: Ajouter des pièces jointes de cartes enrichies aux messages | Microsoft Docs
+title: Ajouter des pièces jointes de cartes enrichies aux messages - Bot Service
 description: Découvrez comment ajouter des cartes enrichies aux messages à l’aide du service Bot Connector.
 author: RobStand
 ms.author: kamrani
@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3a4bf05a6c9b9eeca4a3cccef7aaf77c2f304048
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 64df798d363318c2368ea20f57a502c8cd26918c
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876186"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790090"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Ajouter des pièces jointes de cartes enrichies aux messages
 > [!div class="op_single_selector"]
@@ -23,16 +23,16 @@ ms.locfileid: "70876186"
 Les robots et les canaux échangent généralement des chaînes de texte, mais certains canaux prennent également en charge l’échange de pièces jointes, ce qui permet à votre robot d’envoyer des messages enrichis aux utilisateurs. Par exemple, votre bot peut envoyer des cartes enrichies et des pièces jointes multimédias (comme des images, des vidéos, des données audio ou des fichiers). Cet article vous expliquer comment ajouter des pièces jointes de cartes enrichies aux messages à l’aide du service Bot Connector.
 
 > [!NOTE]
-> Pour plus d’informations sur l’ajout de pièces jointes multimédias aux messages, consultez l’article [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md).
+> Pour en savoir plus sur la façon d’ajouter des pièces jointes aux messages, consultez [Ajouter des pièces jointes aux messages](bot-framework-rest-connector-add-media-attachments.md).
 
-## <a id="types-of-cards"></a> Types de cartes enrichies
+## <a name="types-of-rich-cards"></a>Types de cartes enrichies
 
 Une carte enrichie comporte un titre, une description, un lien et des images. Un message peut contenir plusieurs cartes enrichies, affichées au format liste ou au format carrousel.
 Bot Framework prend actuellement en charge huit types de cartes enrichies : 
 
 | Type de carte | Description |
 |----|----|
-| <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status). |
+| [AdaptiveCard](/adaptive-cards/get-started/bots) | Carte personnalisable pouvant inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Consultez l’article sur la [prise en charge de ces cartes par canal](/adaptive-cards/get-started/bots#channel-status). |
 | [AnimationCard][] | Carte pouvant lire des images GIF animées ou de courtes vidéos. |
 | [AudioCard][] | Carte pouvant lire un fichier audio. |
 | [HeroCard][] | Carte contenant généralement une grande image, un ou plusieurs boutons et du texte. |
@@ -41,8 +41,7 @@ Bot Framework prend actuellement en charge huit types de cartes enrichies :
 | [SignInCard][] | Carte permettant à un bot de demander à un utilisateur de se connecter. Elle contient généralement du texte et un ou plusieurs boutons sur lesquels l’utilisateur peut cliquer pour lancer le processus de connexion. |
 | [VideoCard][] | Carte pouvant lire des vidéos. |
 
-> [!TIP]
-> Pour déterminer le type de cartes enrichies prises en charge par un canal et voir comment le canal affiche les cartes enrichies, consultez l’article concernant l’[Inspecteur de canal][ChannelInspector]. Pour plus d’informations sur les limites applicables au contenu des cartes (par exemple, nombre maximal de boutons ou longueur maximale du titre), consultez la documentation du canal.
+[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a name="process-events-within-rich-cards"></a>Traiter des événements dans les cartes enrichies
 
@@ -53,17 +52,17 @@ Pour traiter les événements dans les cartes enrichies, utilisez les objets [Ca
 | channelData | string | données spécifiques au canal associées à cette action |
 | displayText | string | texte à afficher dans le flux de conversation si l’utilisateur clique sur le bouton | 
 | text | string | texte de l’action | 
-| Type | string | type d’action (une des valeurs indiquées dans le tableau ci-dessous) |
+| type | string | type d’action (une des valeurs indiquées dans le tableau ci-dessous) |
 | title | string | titre du bouton |
 | image | string | URL d’image du bouton |
 | value | string | valeur nécessaire pour effectuer le type d’action spécifié |
 
 > [!NOTE]
-> Les boutons dans les cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les <a href="http://adaptivecards.io" target="_blank">cartes adaptatives</a>. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez la section [Ajouter une carte adaptative à un message](#adaptive-card).
+> Les boutons des cartes adaptatives ne sont pas créés avec les objets `CardAction`, mais à l’aide du schéma défini par les cartes adaptatives. Pour obtenir un exemple illustrant comment ajouter des boutons à une carte adaptative, consultez la section [Ajouter une carte adaptative à un message](#add-an-adaptive-card-to-a-message).
 
 Ce tableau répertorie les valeurs valides pour la propriété `type` d’un objet `CardAction` et décrit le contenu attendu de la propriété `value` pour chaque type :
 
-| Type | value | 
+| type | value | 
 |----|----|
 | openUrl | URL à ouvrir dans le navigateur intégré |
 | imBack | Texte du message à envoyer au bot (de la part de l’utilisateur qui a cliqué sur le bouton ou appuyé sur la carte). Ce message (de l’utilisateur au bot) sera visible par tous les participants à la conversation par le biais de l’application cliente qui héberge la conversation. |
@@ -77,7 +76,7 @@ Ce tableau répertorie les valeurs valides pour la propriété `type` d’un obj
 
 ## <a name="add-a-hero-card-to-a-message"></a>Ajouter une carte de bannière à un message
 
-Pour ajouter une pièce jointe de carte enrichie à un message, commencez par créer un objet qui correspond au [type de carte](#types-of-cards) que vous souhaitez ajouter au message. Créez ensuite un objet [Attachment][], et définissez sa propriété `contentType` sur le type multimédia de la carte et sa propriété `content` sur l’objet que vous avez créé pour représenter la carte. Spécifiez votre objet `Attachment` dans le tableau `attachments` du message.
+Pour ajouter une pièce jointe de carte enrichie à un message, commencez par créer un objet qui correspond au [type de carte](#types-of-rich-cards) que vous souhaitez ajouter au message. Créez ensuite un objet [Attachment][], et définissez sa propriété `contentType` sur le type multimédia de la carte et sa propriété `content` sur l’objet que vous avez créé pour représenter la carte. Spécifiez votre objet `Attachment` dans le tableau `attachments` du message.
 
 > [!TIP]
 > Les messages qui contiennent des pièces jointes de cartes enrichies ne spécifient généralement pas d’éléments `text`.
@@ -87,7 +86,7 @@ Certains canaux vous permettent d’ajouter plusieurs cartes enrichies au tablea
 > [!TIP]
 > Pour afficher plusieurs cartes enrichies au format liste, définissez la propriété `attachmentLayout` de l’objet [Activité][] sur « list ». Pour afficher plusieurs cartes enrichies au format carrousel, définissez la propriété `attachmentLayout` de l’objet `Activity` sur « carousel ». Si le canal ne prend pas en charge le format carrousel, les cartes riches s’afficheront au format liste, bien que la propriété `attachmentLayout` indique « carrousel ».
 
-L’exemple ci-après présente une requête qui envoie un message ne contenant qu’une seule pièce jointe de carte de bannière. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
+L’exemple ci-après présente une requête qui envoie un message ne contenant qu’une seule pièce jointe de carte de bannière. Dans cet exemple de demande, `https://smba.trafficmanager.net/apis` représente l’URI de base. L’URI de base pour les demandes émises par votre robot peut être différente. Pour plus d’informations sur la définition de l’URI de base, voir [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
@@ -147,108 +146,130 @@ Content-Type: application/json
 }
 ```
 
-## <a id="adaptive-card"></a> Ajouter une carte adaptative à un message
+## <a name="add-an-adaptive-card-to-a-message"></a>Ajouter une carte adaptative à un message
 
-La carte adaptive peut inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Les cartes adaptatives sont créées à l’aide du format JSON spécifié sur le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives), ce qui vous donne un contrôle total sur le contenu et le format de la carte. 
+La carte adaptive peut inclure n’importe quelle combinaison de texte, données vocales, images, boutons et champs d’entrée. Les cartes adaptatives sont créées à l’aide du format JSON spécifié sur le site [Adaptive Cards](http://adaptivecards.io) (Cartes adaptatives), ce qui vous donne un contrôle total sur le contenu et le format de la carte. 
 
-Tirez profit des informations fournies par le site <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Cartes adaptatives) pour comprendre le schéma de carte adaptative, explorer les éléments de carte adaptative et découvrir des exemples JSON qui permettent de créer des cartes présentant différents types de compositions et niveaux de complexité. En outre, vous pouvez utiliser le visualiseur interactif pour concevoir des charges utiles de carte adaptative et afficher un aperçu de la sortie des cartes.
-
-L’exemple ci-après présente une requête qui envoie un message contenant une carte adaptative pour un rappel du Calendrier. Dans cet exemple de requête, `https://smba.trafficmanager.net/apis` représente l’URI de base, qui peut être différent de celui des requêtes émises par votre bot. Pour plus d’informations sur la définition de l’URI de base, consultez l’article [Informations de référence sur l’API](bot-framework-rest-connector-api-reference.md#base-uri).
-
-```http
-POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723 
-Authorization: Bearer ACCESS_TOKEN
-Content-Type: application/json
-```
+Tirez profit des informations fournies par le site [Adaptive Cards](http://adaptivecards.io) (Cartes adaptatives) pour comprendre le schéma de carte adaptative, explorer les éléments de carte adaptative et découvrir des exemples JSON qui permettent de créer des cartes présentant différents types de compositions et niveaux de complexité. En outre, vous pouvez utiliser le visualiseur interactif pour concevoir des charges utiles de carte adaptative et afficher un aperçu de la sortie des cartes. L’exemple suivant correspond à une carte adaptative unique pour une affectation de travail.
 
 ```json
 {
-    "type": "message",
-    "from": {
-        "id": "12345678",
-        "name": "sender's name"
-    },
-    "conversation": {
-        "id": "abcd1234",
-        "name": "conversation's name"
-    },
-    "recipient": {
-        "id": "1234abcd",
-        "name": "recipient's name"
-    },
-    "attachments": [
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
         {
-            "contentType": "application/vnd.microsoft.card.adaptive",
-            "content": {
-                "type": "AdaptiveCard",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Adaptive Card design session",
-                        "size": "large",
-                        "weight": "bolder"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "Conf Room 112/3377 (10)"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "12:30 PM - 1:30 PM"
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "Snooze for"
-                    },
-                    {
-                        "type": "Input.ChoiceSet",
-                        "id": "snooze",
-                        "style": "compact",
-                        "choices": [
-                            {
-                                "title": "5 minutes",
-                                "value": "5",
-                                "isSelected": true
-                            },
-                            {
-                                "title": "15 minutes",
-                                "value": "15"
-                            },
-                            {
-                                "title": "30 minutes",
-                                "value": "30"
-                            }
-                        ]
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "Snooze"
-                    },
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "I'll be late"
-                    },
-                    {
-                        "type": "Action.Http",
-                        "method": "POST",
-                        "url": "http://foo.com",
-                        "title": "Dismiss"
-                    }
-                ]
+          "type": "TextBlock",
+          "text": "Publish Adaptive Card schema",
+          "weight": "bolder",
+          "size": "medium"
+        },
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Image",
+                  "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
+                  "size": "small",
+                  "style": "person"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Matt Hidinger",
+                  "weight": "bolder",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "spacing": "none",
+                  "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
+                  "isSubtle": true,
+                  "wrap": true
+                }
+              ]
             }
+          ]
         }
-    ],
-    "replyToId": "5d5cdc723"
+      ]
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Now that we have defined the main rules and features of the format, we need to produce a schema and publish it to GitHub. The schema will be the starting point of our reference documentation.",
+          "wrap": true
+        },
+        {
+          "type": "FactSet",
+          "facts": [
+            {
+              "title": "Board:",
+              "value": "Adaptive Card"
+            },
+            {
+              "title": "List:",
+              "value": "Backlog"
+            },
+            {
+              "title": "Assigned to:",
+              "value": "Matt Hidinger"
+            },
+            {
+              "title": "Due date:",
+              "value": "Not set"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.ShowCard",
+      "title": "Comment",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "comment",
+            "isMultiline": true,
+            "placeholder": "Enter your comment"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "OK"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View",
+      "url": "https://adaptivecards.io"
+    }
+  ]
 }
+
 ```
 
-La carte résultante contient trois blocs de texte, un champ d’entrée (liste de choix) et trois boutons :
+La carte obtenue contient un titre, des informations sur la personne qui a créé la carte (nom et avatar), la date de création de la carte, une description de l'affectation de travail, ainsi que des informations relatives à cette affectation. Il existe également des boutons sur lesquels vous pouvez cliquer pour commenter l’affectation de travail ou l'afficher :
 
 ![Carte adaptative de rappel du Calendrier](../media/adaptive-card-reminder.png)
 
@@ -260,9 +281,8 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 - [Ajouter des pièces jointes multimédia aux messages](bot-framework-rest-connector-add-media-attachments.md)
 - [Schéma d’activité Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Channel Inspector][ChannelInspector]
-- <a href="http://adaptivecards.io" target="_blank">Cartes adaptatives</a>
 
-[ChannelInspector]: ../bot-service-channel-inspector.md
+[ChannelInspector]: ../bot-service-channels-reference.md
 [Activité]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
 [CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
@@ -273,3 +293,4 @@ La carte résultante contient trois blocs de texte, un champ d’entrée (liste 
 [ReceiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object
 [SignInCard]: bot-framework-rest-connector-api-reference.md#signincard-object
 [VideoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
+

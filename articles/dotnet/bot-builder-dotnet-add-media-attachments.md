@@ -1,5 +1,5 @@
 ---
-title: Ajouter des pièces jointes multimédias aux messages | Microsoft Docs
+title: Ajouter des pièces jointes multimédias aux messages (v3 C#) - Bot Service
 description: Découvrez comment ajouter des pièces jointes multimédias aux messages à l’aide du kit SDK Bot Framework pour .NET.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 19f3db74aef7aeffcd754e0bea753fa73b7ea285
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ad6a1228b8fc54f8f626c07c7ed43375c249c456
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298442"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75796017"
 ---
 # <a name="add-media-attachments-to-messages"></a>Ajouter des pièces jointes multimédia aux messages
 
@@ -41,13 +41,12 @@ Si la pièce jointe est une image, un contenu audio ou une vidéo, le service Co
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Aperçu des fonctionnalités avec l’inspecteur de canaux][inspector]
+- [Informations de référence sur les canaux][inspector]
 - [Vue d’ensemble des activités](bot-builder-dotnet-activities.md)
 - [Créer des messages](bot-builder-dotnet-create-messages.md)
-- [Ajouter des cartes enrichies aux messages](bot-builder-dotnet-add-rich-card-attachments.md)
-- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activity</a>
+- [Ajouter des cartes détaillées aux messages](bot-builder-dotnet-add-rich-card-attachments.md)
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Classe Activité</a>
 - <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachments Class</a> (Classe Attachments)
 
-[inspector]: ../bot-service-channel-inspector.md
-
+[inspector]: ../bot-service-channels-reference.md
 

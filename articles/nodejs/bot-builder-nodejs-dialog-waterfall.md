@@ -1,5 +1,5 @@
 ---
-title: Définir des étapes de conversation avec des cascades | Microsoft Docs
+title: Définir des étapes de conversation avec des cascades - Bot Service
 description: Découvrez comment utiliser des cascades pour définir les étapes d’une conversation avec le kit SDK Bot Framework pour Node.js.
 author: v-ducvo
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 3445c9d092c11952eb3c7a21e471d453653237a4
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299844"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75790911"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Définir des étapes de conversation avec des cascades
 

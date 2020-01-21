@@ -1,5 +1,5 @@
 ---
-title: Dialogues dans le kit SDK Bot Framework | Microsoft Docs
+title: Dialogues dans le kit SDK Bot Framework - Bot Service
 description: Découvrez ce qu’est un dialogue et comment il fonctionne dans le kit SDK Bot Framework.
 keywords: flux de conversation, invite, état de dialogue, reconnaître l’intention, tour unique, plusieurs tours, conversation de bot, dialogues, invites, cascades, ensemble de dialogues
 author: johnataylor
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9dbb64dd941cdd7706b0ec8f7bd531530c8db59e
-ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
+ms.openlocfilehash: 2cab43300eb7797649b541f9254d07cb57f57483
+ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73933598"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75799100"
 ---
 # <a name="dialogs-library"></a>Bibliothèque des dialogues
 
