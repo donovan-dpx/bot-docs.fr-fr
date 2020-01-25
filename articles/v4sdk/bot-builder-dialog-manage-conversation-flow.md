@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9ee6e9445871445008f6ab406f3250af0226c0dd
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 874d22eef5a387df9be8b1cee72935812bf9879b
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75798508"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76256012"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implémenter des flux de conversation séquentiels
 
@@ -42,7 +42,7 @@ Dans l’exemple d’invite multitour, nous utilisons un dialogue en cascade, qu
 | Demander son nom à l’utilisateur | Invite de texte |
 | Demander à l’utilisateur s’il souhaite indiquer son âge | Invite de confirmation |
 | S’il a répondu « oui », demander son âge | Invite de nombre avec validation pour accepter uniquement des âges compris entre 0 et 150 |
-| S’il n’utilise pas Microsoft Teams, lui demander un avatar | Invite de pièce jointe avec validation pour autoriser une pièce jointe manquante |
+| S’il n’utilise pas Microsoft Teams, demandez-lui un avatar | Invite de pièce jointe avec validation pour autoriser une pièce jointe manquante |
 | Demander si les informations collectées sont correctes | Invite de réutilisation de la confirmation |
 
 Enfin, si l’utilisateur a répondu « oui », afficher les informations collectées ; sinon, lui indiquer que ses informations ne seront pas conservées.

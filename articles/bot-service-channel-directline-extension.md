@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/09/2019
-ms.openlocfilehash: c4c54e50450ae81098992c880e23a049229fa09f
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: 2145709c9cc458ec5dd9f4fbf1145ddbad893a04
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039758"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76256002"
 ---
 # <a name="direct-line-app-service-extension"></a>Extension App Service Direct Line
 
@@ -36,9 +36,10 @@ L’extension App Service Direct Line est préinstallée sur toutes les instance
 
 ## <a name="see-also"></a>Voir aussi
 
-|Nom|Description|
+|Name|Description|
 |---|---|
-|[Configurer un bot .NET pour l’extension](bot-service-channel-directline-extension-net-bot.md)|Mettez à jour un bot pour qu’il fonctionne avec des **canaux nommés** et activez l’extension App Service Direct Line dans la ressource **Azure App Service** où le bot est hébergé.  |
+|[Configurer un bot .NET pour l’extension](bot-service-channel-directline-extension-net-bot.md)|Mettez à jour un bot .NET pour qu’il fonctionne avec des **canaux nommés** et activez l’extension App Service Direct Line dans la ressource **Azure App Service** où le bot est hébergé.  |
+|[Configurer un bot Node.js pour l’extension](bot-service-channel-directline-extension-node-bot.md)|Mettez à jour un bot Node.js pour qu’il fonctionne avec des **canaux nommés** et activez l’extension App Service Direct Line dans la ressource **Azure App Service** où le bot est hébergé.  |
 |[Créer un client .NET avec l’extension](bot-service-channel-directline-extension-net-client.md)|Créez un client .NET en C# qui se connecte à l’extension App Service Direct Line|
 |[Utiliser l’extension avec Webchat](bot-service-channel-directline-extension-webchat-client.md)|Utiliser WebChat avec l’extension App Service Direct Line|
 |[Utiliser une extension dans un réseau virtuel](bot-service-channel-directline-extension-vnet.md)|Utiliser l’extension App Service Direct Line avec un réseau virtuel Azure|

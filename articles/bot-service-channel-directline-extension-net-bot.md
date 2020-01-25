@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: d49ec4b742d644371458cc732fe60c605878ff27
-ms.sourcegitcommit: f8b5cc509a6351d3aae89bc146eaabead973de97
+ms.openlocfilehash: 246e9ecace56126d625d5f9e2571e8d27ba780e8
+ms.sourcegitcommit: df2b8d4e29ebfbb9e8a10091bb580389fe4c34cc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75791716"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76255992"
 ---
 # <a name="configure-net-bot-for-extension"></a>Configurer un bot .NET pour l’extension
 
@@ -76,13 +76,6 @@ Cette section décrit comment activer l’extension App Service Direct Line à l
     Les valeurs sont les **AppID** et **AppSecret** associés au groupe d’inscription du service.
 
 6. **Publiez** le bot sur votre Azure App Service.
-7. Dans votre navigateur, accédez à https://<votre_app_service>.azurewebsites.net/.bot. Si tout est correct, la page retourne le contenu JSON suivant : `{"k":true,"ib":true,"ob":true,"initialized":true}`. Il s’agit des informations que vous obtenez quand **tout fonctionne correctement**, où
-
-    - **k** détermine si l’extension App Service Direct Line peut lire une clé d’extension à partir de sa configuration. 
-    - **initialized** détermine si l’extension App Service Direct Line peut utiliser la clé d’extension pour télécharger les métadonnées de bot à partir d’Azure Bot Service
-    - **ib** détermine si l’extension App Service Direct Line peut établir une connexion entrante avec le bot.
-    - **ob** détermine si l’extension App Service Direct Line peut établir une connexion sortante avec le bot. 
-
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Rassembler vos clés d’extension Direct Line
 
@@ -109,6 +102,15 @@ Cette section décrit comment activer l’extension App Service Direct Line à l
 
 1. Dans la section *Configuration*, cliquez sur la section de paramètres **Général** et activez **WebSockets**
 1. Cliquez sur **Enregistrer** pour enregistrer les paramètres. Ceci redémarre Azure App Service.
+
+## <a name="confirm-direct-line-app-extension-and-the-bot-are-initialized"></a>Vérifier l’initialisation du bot et de l’extension App Service Direct Line
+
+1. Dans votre navigateur, accédez à https://<votre_app_service>.azurewebsites.net/.bot. Si tout est correct, la page retourne le contenu JSON suivant : `{"k":true,"ib":true,"ob":true,"initialized":true}`. Il s’agit des informations que vous obtenez quand **tout fonctionne correctement**, où
+
+    - **k** détermine si l’extension App Service Direct Line peut lire une clé d’extension App Service à partir de sa configuration. 
+    - **initialized** détermine si l’extension App Service Direct Line peut utiliser la clé d’extension App Service pour télécharger les métadonnées de bot à partir d’Azure Bot Service.
+    - **ib** détermine si l’extension App Service Direct Line peut établir une connexion entrante avec le bot.
+    - **ob** détermine si l’extension App Service Direct Line peut établir une connexion sortante avec le bot. 
 
 ## <a name="additional-information"></a>Informations supplémentaires 
 
@@ -139,7 +141,7 @@ Autorisez votre application à utiliser **UseNamedPipes** :
         app.UseStaticFiles();
 
         // Allow bot to use named pipes.
-        app.UseNamedPiped();
+        app.UseNamedPipes();
 
         app.UseMvc();
     }
